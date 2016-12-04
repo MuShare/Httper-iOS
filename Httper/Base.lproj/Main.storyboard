@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Mat-dr-3BR">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="Mat-dr-3BR">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Request-->
@@ -10,12 +14,16 @@
             <objects>
                 <navigationController id="8kg-PD-hDA" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Request" image="tab_request" id="ycq-uj-2O5"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="quO-np-ipP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="quO-np-ipP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.2581908106803894" green="0.27822533249855042" blue="0.29491040110588074" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
-                        <segue destination="5G8-WQ-ITa" kind="relationship" relationship="rootViewController" id="sfG-JB-hmj"/>
+                        <segue destination="J2A-Wk-9m9" kind="relationship" relationship="rootViewController" id="hRk-xi-ydu"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="heX-1s-S9j" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -23,31 +31,21 @@
             <point key="canvasLocation" x="715" y="-58"/>
         </scene>
         <!--Httper-->
-        <scene sceneID="NjC-Le-cnh">
+        <scene sceneID="p5p-hD-aRI">
             <objects>
-                <tableViewController id="5G8-WQ-ITa" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="nll-ct-ZPb">
+                <viewController id="J2A-Wk-9m9" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="F0M-7C-dq0"/>
+                        <viewControllerLayoutGuide type="bottom" id="DJS-kZ-XHR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dLb-Mz-zd3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="YHQ-HQ-LBS">
-                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YHQ-HQ-LBS" id="kPS-ia-OEb">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="5G8-WQ-ITa" id="Civ-FC-fcu"/>
-                            <outlet property="delegate" destination="5G8-WQ-ITa" id="2Et-TO-Gco"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Httper" id="qmq-QP-qo0"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="B41-iW-Ksv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" red="0.18746668100357056" green="0.2114855945110321" blue="0.23234263062477112" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Httper" id="K3M-vp-ejE"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bez-Qf-KXg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1250" y="-58"/>
         </scene>
@@ -56,9 +54,13 @@
             <objects>
                 <navigationController id="63h-VV-0nO" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Store" image="tab_store" id="VC4-yd-b0v"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="EjN-55-fj3">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="EjN-55-fj3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.2581908107" green="0.27822533249999998" blue="0.2949104011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="UCZ-NT-q1P" kind="relationship" relationship="rootViewController" id="K4f-zv-Iiv"/>
@@ -75,10 +77,10 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="cDQ-R9-1zd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="DLx-wM-A8M">
-                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DLx-wM-A8M" id="vA2-en-n6J">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -102,9 +104,13 @@
             <objects>
                 <navigationController id="5XP-Ao-WeG" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="History" image="tab_history" id="JOg-fn-6iM"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AO7-Cr-emD">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="AO7-Cr-emD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.2581908106803894" green="0.27822533249855042" blue="0.29491040110588074" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="eNb-gg-F8c" kind="relationship" relationship="rootViewController" id="x60-yV-LDN"/>
@@ -121,17 +127,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Gmo-hA-woh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="rXy-Dd-9Yy">
-                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rXy-Dd-9Yy" id="4kA-hH-N6o">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <connections>
                             <outlet property="dataSource" destination="eNb-gg-F8c" id="jaF-iz-jCv"/>
                             <outlet property="delegate" destination="eNb-gg-F8c" id="0UJ-md-z3H"/>
@@ -143,14 +139,14 @@
             </objects>
             <point key="canvasLocation" x="1250" y="607"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main View Controller-->
         <scene sceneID="3B8-rH-Tez">
             <objects>
-                <tabBarController id="Mat-dr-3BR" sceneMemberID="viewController">
+                <tabBarController id="Mat-dr-3BR" customClass="MainViewController" customModule="Httper" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="G8D-ns-FGQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="8kg-PD-hDA" kind="relationship" relationship="viewControllers" id="ssh-9h-H9J"/>
@@ -168,4 +164,9 @@
         <image name="tab_request" width="30" height="30"/>
         <image name="tab_store" width="30" height="30"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4_0.fullscreen"/>
+    </simulatedMetricsContainer>
 </document>
