@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F51F2CAB45DDC76A9F169B1 /* Pods_Httper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5637677047F4C4B6CA981D18 /* Pods_Httper.framework */; };
 		C0D814AFF94EAE2B15B571CA /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19C4306D6D6AE084FB1A8FA9 /* Pods.framework */; };
 		E40B257E1DF44BD20039CA8D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40B257D1DF44BD20039CA8D /* MainViewController.swift */; };
 		E46A306E1DB7B402008A394B /* RequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46A306D1DB7B402008A394B /* RequestTableViewController.swift */; };
@@ -39,6 +40,9 @@
 /* Begin PBXFileReference section */
 		19C4306D6D6AE084FB1A8FA9 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4787A86C21239A8AA4ADE88E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		4F2FE7831EA2CA12EBD27AA5 /* Pods-Httper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Httper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Httper/Pods-Httper.debug.xcconfig"; sourceTree = "<group>"; };
+		5637677047F4C4B6CA981D18 /* Pods_Httper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Httper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7EBC322CA510BFBBFF4AB72E /* Pods-Httper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Httper.release.xcconfig"; path = "Pods/Target Support Files/Pods-Httper/Pods-Httper.release.xcconfig"; sourceTree = "<group>"; };
 		E40B257D1DF44BD20039CA8D /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E455B3EE1D4CFA7C007C14B8 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		E46A306D1DB7B402008A394B /* RequestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestTableViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +68,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0D814AFF94EAE2B15B571CA /* Pods.framework in Frameworks */,
+				4F51F2CAB45DDC76A9F169B1 /* Pods_Httper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +94,8 @@
 			children = (
 				4787A86C21239A8AA4ADE88E /* Pods.debug.xcconfig */,
 				EF3A954FCEE5E084F25916CA /* Pods.release.xcconfig */,
+				4F2FE7831EA2CA12EBD27AA5 /* Pods-Httper.debug.xcconfig */,
+				7EBC322CA510BFBBFF4AB72E /* Pods-Httper.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -97,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				19C4306D6D6AE084FB1A8FA9 /* Pods.framework */,
+				5637677047F4C4B6CA981D18 /* Pods_Httper.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -164,12 +172,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E48D417F1D444F3F0028B84F /* Build configuration list for PBXNativeTarget "Httper" */;
 			buildPhases = (
-				B34714CFC077D59594A73EA9 /* Check Pods Manifest.lock */,
+				B34714CFC077D59594A73EA9 /* [CP] Check Pods Manifest.lock */,
 				E48D41501D444F3F0028B84F /* Sources */,
 				E48D41511D444F3F0028B84F /* Frameworks */,
 				E48D41521D444F3F0028B84F /* Resources */,
-				5FBDFA7A01C00541D71051CF /* Embed Pods Frameworks */,
-				21CA65E0E182E6B09AB474C8 /* Copy Pods Resources */,
+				5FBDFA7A01C00541D71051CF /* [CP] Embed Pods Frameworks */,
+				21CA65E0E182E6B09AB474C8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -291,49 +299,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		21CA65E0E182E6B09AB474C8 /* Copy Pods Resources */ = {
+		21CA65E0E182E6B09AB474C8 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Httper/Pods-Httper-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5FBDFA7A01C00541D71051CF /* Embed Pods Frameworks */ = {
+		5FBDFA7A01C00541D71051CF /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Httper/Pods-Httper-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B34714CFC077D59594A73EA9 /* Check Pods Manifest.lock */ = {
+		B34714CFC077D59594A73EA9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -488,7 +496,7 @@
 		};
 		E48D41801D444F3F0028B84F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4787A86C21239A8AA4ADE88E /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 4F2FE7831EA2CA12EBD27AA5 /* Pods-Httper.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6ANM44X2CJ;
@@ -504,7 +512,7 @@
 		};
 		E48D41811D444F3F0028B84F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EF3A954FCEE5E084F25916CA /* Pods.release.xcconfig */;
+			baseConfigurationReference = 7EBC322CA510BFBBFF4AB72E /* Pods-Httper.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6ANM44X2CJ;

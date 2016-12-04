@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,7 +13,7 @@
             <objects>
                 <navigationController id="8kg-PD-hDA" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Request" image="tab_request" id="ycq-uj-2O5"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="quO-np-ipP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="quO-np-ipP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.2581908106803894" green="0.27822533249855042" blue="0.29491040110588074" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -30,7 +29,7 @@
             </objects>
             <point key="canvasLocation" x="715" y="-58"/>
         </scene>
-        <!--Httper-->
+        <!--View Controller-->
         <scene sceneID="p5p-hD-aRI">
             <objects>
                 <viewController id="J2A-Wk-9m9" sceneMemberID="viewController">
@@ -41,9 +40,54 @@
                     <view key="view" contentMode="scaleToFill" id="dLb-Mz-zd3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sne-eO-Yb6">
+                                <rect key="frame" x="213" y="79" width="91" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="GET">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Request Methods" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iyi-f6-e6M">
+                                <rect key="frame" x="16" y="75" width="189" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ogK-0n-ujD">
+                                <rect key="frame" x="16" y="120" width="304" height="1"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://" placeholder="URL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1NK-Ds-epT">
+                                <rect key="frame" x="16" y="129" width="288" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q0F-rA-54u">
+                                <rect key="frame" x="16" y="177" width="304" height="1"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="0.18746668100357056" green="0.2114855945110321" blue="0.23234263062477112" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Httper" id="K3M-vp-ejE"/>
+                    <navigationItem key="navigationItem" id="K3M-vp-ejE">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="26J-YB-JPH">
+                            <rect key="frame" x="96" y="7" width="128" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="HTTP"/>
+                                <segment title="HTTPS"/>
+                            </segments>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </segmentedControl>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bez-Qf-KXg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -54,7 +98,7 @@
             <objects>
                 <navigationController id="63h-VV-0nO" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Store" image="tab_store" id="VC4-yd-b0v"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="EjN-55-fj3">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="EjN-55-fj3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.2581908107" green="0.27822533249999998" blue="0.2949104011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -83,7 +127,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DLx-wM-A8M" id="vA2-en-n6J">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -104,7 +148,7 @@
             <objects>
                 <navigationController id="5XP-Ao-WeG" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="History" image="tab_history" id="JOg-fn-6iM"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="AO7-Cr-emD">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AO7-Cr-emD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.2581908106803894" green="0.27822533249855042" blue="0.29491040110588074" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
