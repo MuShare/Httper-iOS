@@ -17,6 +17,7 @@
 		E48D41651D444F3F0028B84F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E48D41631D444F3F0028B84F /* LaunchScreen.storyboard */; };
 		E48D41701D444F3F0028B84F /* HttperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48D416F1D444F3F0028B84F /* HttperTests.swift */; };
 		E48D417B1D444F3F0028B84F /* HttperUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48D417A1D444F3F0028B84F /* HttperUITests.swift */; };
+		E4D1CAE51DF5C028008DC4F9 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		E48D41761D444F3F0028B84F /* HttperUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HttperUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E48D417A1D444F3F0028B84F /* HttperUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttperUITests.swift; sourceTree = "<group>"; };
 		E48D417C1D444F3F0028B84F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		EF3A954FCEE5E084F25916CA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,14 +132,14 @@
 		E48D41561D444F3F0028B84F /* Httper */ = {
 			isa = PBXGroup;
 			children = (
+				E4D1CAE01DF5BFCF008DC4F9 /* Request */,
 				E48D41571D444F3F0028B84F /* AppDelegate.swift */,
-				E48D415B1D444F3F0028B84F /* Main.storyboard */,
 				E48D41611D444F3F0028B84F /* Assets.xcassets */,
-				E48D41631D444F3F0028B84F /* LaunchScreen.storyboard */,
-				E48D41661D444F3F0028B84F /* Info.plist */,
-				E48D415E1D444F3F0028B84F /* Httper.xcdatamodeld */,
 				E455B3EE1D4CFA7C007C14B8 /* Header.h */,
-				E46A306D1DB7B402008A394B /* RequestTableViewController.swift */,
+				E48D415E1D444F3F0028B84F /* Httper.xcdatamodeld */,
+				E48D41661D444F3F0028B84F /* Info.plist */,
+				E48D41631D444F3F0028B84F /* LaunchScreen.storyboard */,
+				E48D415B1D444F3F0028B84F /* Main.storyboard */,
 				E40B257D1DF44BD20039CA8D /* MainViewController.swift */,
 			);
 			path = Httper;
@@ -159,6 +161,15 @@
 				E48D417C1D444F3F0028B84F /* Info.plist */,
 			);
 			path = HttperUITests;
+			sourceTree = "<group>";
+		};
+		E4D1CAE01DF5BFCF008DC4F9 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				E46A306D1DB7B402008A394B /* RequestTableViewController.swift */,
+				E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */,
+			);
+			name = Request;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,6 +360,7 @@
 			files = (
 				E48D41601D444F3F0028B84F /* Httper.xcdatamodeld in Sources */,
 				E46A306E1DB7B402008A394B /* RequestTableViewController.swift in Sources */,
+				E4D1CAE51DF5C028008DC4F9 /* RequestViewController.swift in Sources */,
 				E48D41581D444F3F0028B84F /* AppDelegate.swift in Sources */,
 				E40B257E1DF44BD20039CA8D /* MainViewController.swift in Sources */,
 			);
