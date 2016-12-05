@@ -56,7 +56,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         headerView.addSubview(addButton)
         //Set line
         let lineView: UIView = UILabel(frame: CGRect(x: 15, y: 29, width: headerView.bounds.size.width - 15, height: 1))
-        lineView.backgroundColor = UIColor .white
+        lineView.backgroundColor = UIColor.lightGray
         headerView.addSubview(lineView)
         return headerView
     }
