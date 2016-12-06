@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4F51F2CAB45DDC76A9F169B1 /* Pods_Httper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5637677047F4C4B6CA981D18 /* Pods_Httper.framework */; };
 		E40B257E1DF44BD20039CA8D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40B257D1DF44BD20039CA8D /* MainViewController.swift */; };
+		E431C4A91DF7179D006BB2D6 /* RequestMethodsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E431C4A81DF7179D006BB2D6 /* RequestMethodsTableViewController.swift */; };
+		E431C4AC1DF72172006BB2D6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E431C4AB1DF72172006BB2D6 /* Localizable.strings */; };
 		E48D41581D444F3F0028B84F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48D41571D444F3F0028B84F /* AppDelegate.swift */; };
 		E48D415D1D444F3F0028B84F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E48D415B1D444F3F0028B84F /* Main.storyboard */; };
 		E48D41601D444F3F0028B84F /* Httper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E48D415E1D444F3F0028B84F /* Httper.xcdatamodeld */; };
@@ -42,6 +44,8 @@
 		5637677047F4C4B6CA981D18 /* Pods_Httper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Httper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EBC322CA510BFBBFF4AB72E /* Pods-Httper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Httper.release.xcconfig"; path = "Pods/Target Support Files/Pods-Httper/Pods-Httper.release.xcconfig"; sourceTree = "<group>"; };
 		E40B257D1DF44BD20039CA8D /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		E431C4A81DF7179D006BB2D6 /* RequestMethodsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestMethodsTableViewController.swift; sourceTree = "<group>"; };
+		E431C4AB1DF72172006BB2D6 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		E455B3EE1D4CFA7C007C14B8 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		E48D41541D444F3F0028B84F /* Httper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Httper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E48D41571D444F3F0028B84F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +109,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E431C4AA1DF7215A006BB2D6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E431C4AB1DF72172006BB2D6 /* Localizable.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		E48D414B1D444F3F0028B84F = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +142,7 @@
 		E48D41561D444F3F0028B84F /* Httper */ = {
 			isa = PBXGroup;
 			children = (
+				E431C4AA1DF7215A006BB2D6 /* Supporting Files */,
 				E4D1CAE01DF5BFCF008DC4F9 /* Request */,
 				E48D41571D444F3F0028B84F /* AppDelegate.swift */,
 				E48D41611D444F3F0028B84F /* Assets.xcassets */,
@@ -165,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */,
+				E431C4A81DF7179D006BB2D6 /* RequestMethodsTableViewController.swift */,
 			);
 			name = Request;
 			sourceTree = "<group>";
@@ -281,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E48D41651D444F3F0028B84F /* LaunchScreen.storyboard in Resources */,
+				E431C4AC1DF72172006BB2D6 /* Localizable.strings in Resources */,
 				E48D41621D444F3F0028B84F /* Assets.xcassets in Resources */,
 				E48D415D1D444F3F0028B84F /* Main.storyboard in Resources */,
 			);
@@ -359,6 +374,7 @@
 				E4D1CAE51DF5C028008DC4F9 /* RequestViewController.swift in Sources */,
 				E48D41581D444F3F0028B84F /* AppDelegate.swift in Sources */,
 				E40B257E1DF44BD20039CA8D /* MainViewController.swift in Sources */,
+				E431C4A91DF7179D006BB2D6 /* RequestMethodsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

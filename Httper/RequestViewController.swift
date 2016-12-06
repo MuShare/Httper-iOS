@@ -14,18 +14,26 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var protocolLabel: UILabel!
     @IBOutlet weak var urlTextField: UITextField!
     @IBOutlet weak var valueTableView: UITableView!
+    @IBOutlet weak var sendButton: UIButton!
     
-    var headers = 1
-    var parameters = 1
-    
+    var headers = 1, parameters = 1
+    var method = "GET"
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
 
         urlTextField.attributedPlaceholder = NSAttributedString(string: " Request URL", attributes: [NSForegroundColorAttributeName:UIColor.lightGray])
+        
+        sendButton.layer.borderColor = UIColor.lightGray.cgColor
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        requestMethodButton.setTitle(method, for: .normal)
+    }
+    
     //MARK: - UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -36,7 +44,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0.1
+        return 0.01
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
