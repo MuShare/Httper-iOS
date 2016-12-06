@@ -183,6 +183,7 @@
                         <outlet property="protocolLabel" destination="fLh-Rx-jbi" id="PfB-z8-74Y"/>
                         <outlet property="requestMethodButton" destination="Sne-eO-Yb6" id="k9q-zz-j9A"/>
                         <outlet property="urlTextField" destination="1NK-Ds-epT" id="3ME-vC-gNG"/>
+                        <outlet property="valueTableView" destination="DzG-jS-f9d" id="v2F-9P-HYf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bez-Qf-KXg" userLabel="First Responder" sceneMemberID="firstResponder"/>
