@@ -47,20 +47,33 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         let headerView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
         headerView.backgroundColor = UIColor.clear
         //Set name
-        let nameLabel: UILabel = UILabel(frame: CGRect(x: 15, y: 0, width: headerView.bounds.size.width - headerView.bounds.size.height, height: headerView.bounds.size.height))
-        nameLabel.textColor = UIColor.white
-        nameLabel.text = (section == 0) ? "Headers" : "Parameters"
-        headerView.addSubview(nameLabel)
+        let nameLabel: UILabel = {
+            let lebel = UILabel(frame: CGRect(x: 15, y: 0, width: headerView.bounds.size.width - headerView.bounds.size.height, height: headerView.bounds.size.height))
+            lebel.textColor = UIColor.white
+            lebel.text = (section == 0) ? "Headers" : "Parameters"
+            return lebel
+        }()
+
         //Set button
-        let addButton: UIButton = UIButton(frame: CGRect(x: tableView.bounds.size.width - headerView.bounds.size.height, y: 0, width: headerView.bounds.size.height, height: headerView.bounds.size.height))
-        addButton.setImage(UIImage.init(named: "add_value"), for: UIControlState.normal)
-        addButton.tag = section
-        addButton.addTarget(self, action: #selector(addNewValue(_:)), for: .touchUpInside)
-        headerView.addSubview(addButton)
+        let addButton: UIButton = {
+            let button = UIButton(frame: CGRect(x: tableView.bounds.size.width - headerView.bounds.size.height, y: 0, width: headerView.bounds.size.height, height: headerView.bounds.size.height))
+            button.setImage(UIImage.init(named: "add_value"), for: UIControlState.normal)
+            button.tag = section
+            button.addTarget(self, action: #selector(addNewValue(_:)), for: .touchUpInside)
+            return button
+        }()
+        
         //Set line
-        let lineView: UIView = UILabel(frame: CGRect(x: 15, y: 29, width: headerView.bounds.size.width - 15, height: 1))
-        lineView.backgroundColor = UIColor.lightGray
+        let lineView: UIView = {
+            let view = UILabel(frame: CGRect(x: 15, y: 29, width: headerView.bounds.size.width - 15, height: 1))
+            view.backgroundColor = UIColor.lightGray
+            return view
+        }()
+        
+        headerView.addSubview(nameLabel)
+        headerView.addSubview(addButton)
         headerView.addSubview(lineView)
+        
         return headerView
     }
     
@@ -75,17 +88,12 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     //MARK: - Service
     func addNewValue(_ sender: AnyObject?) {
-        var row: Int
         let section = sender?.tag
-        
         if section == 0 {
-            row = headers.count
             headers.add(["": ""])
         } else if section == 1 {
-            row = parameters.count
             parameters.add(["": ""])
         }
-
         valueTableView.reloadData()
     }
 

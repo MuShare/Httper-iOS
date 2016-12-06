@@ -102,9 +102,9 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a5T-Wj-2Ta">
-                                                    <rect key="frame" x="145" y="8" width="167" height="40"/>
+                                                    <rect key="frame" x="145" y="8" width="146" height="40"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="ZEV-gI-ks3"/>
+                                                        <constraint firstAttribute="height" constant="40" id="cle-61-xjc"/>
                                                     </constraints>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -122,13 +122,19 @@
                                                         <constraint firstAttribute="height" constant="1" id="uos-I0-jWu"/>
                                                     </constraints>
                                                 </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yat-D9-gH7">
+                                                    <rect key="frame" x="291" y="13" width="30" height="30"/>
+                                                    <state key="normal" image="delete_value"/>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Dvn-Qd-PQ3" secondAttribute="trailing" id="0zm-C4-xoy"/>
-                                                <constraint firstItem="a5T-Wj-2Ta" firstAttribute="leading" secondItem="75k-0G-PU7" secondAttribute="leadingMargin" constant="137" id="D30-ke-hPX"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="a5T-Wj-2Ta" secondAttribute="trailing" id="VN1-vW-0Ee"/>
+                                                <constraint firstItem="Yat-D9-gH7" firstAttribute="top" secondItem="75k-0G-PU7" secondAttribute="topMargin" constant="5" id="79t-Ox-lQQ"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="a5T-Wj-2Ta" secondAttribute="trailing" constant="21" id="7EK-XA-Xtc"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Yat-D9-gH7" secondAttribute="trailing" constant="-9" id="BUC-2B-VS3"/>
+                                                <constraint firstItem="a5T-Wj-2Ta" firstAttribute="leading" secondItem="75k-0G-PU7" secondAttribute="leadingMargin" constant="137" id="dJu-CB-9KV"/>
                                                 <constraint firstItem="Dvn-Qd-PQ3" firstAttribute="leading" secondItem="75k-0G-PU7" secondAttribute="leadingMargin" constant="137" id="jru-8p-Rqk"/>
-                                                <constraint firstAttribute="topMargin" secondItem="a5T-Wj-2Ta" secondAttribute="top" id="w22-Y6-QOP"/>
+                                                <constraint firstAttribute="topMargin" secondItem="a5T-Wj-2Ta" secondAttribute="top" id="nN7-sG-wmS"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Dvn-Qd-PQ3" secondAttribute="trailing" id="r4w-iz-dln"/>
                                                 <constraint firstItem="Dvn-Qd-PQ3" firstAttribute="top" secondItem="75k-0G-PU7" secondAttribute="topMargin" constant="46" id="yPT-Pp-s02"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -224,7 +230,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DLx-wM-A8M" id="vA2-en-n6J">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -301,6 +307,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="delete_value" width="30" height="30"/>
         <image name="tab_history" width="30" height="30"/>
         <image name="tab_request" width="30" height="30"/>
         <image name="tab_store" width="30" height="30"/>
