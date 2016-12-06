@@ -15,8 +15,8 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var urlTextField: UITextField!
     @IBOutlet weak var valueTableView: UITableView!
     
-    let headers: NSMutableArray = NSMutableArray(object: ["": ""])
-    let parameters: NSMutableArray = NSMutableArray(object: ["": ""])
+    var headers = 1
+    var parameters = 1
     
     
     override func viewDidLoad() {
@@ -32,7 +32,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (section == 0) ? headers.count : parameters.count
+        return (section == 0) ? headers : parameters
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -56,7 +56,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
 
         //Set button
         let addButton: UIButton = {
-            let button = UIButton(frame: CGRect(x: tableView.bounds.size.width - headerView.bounds.size.height, y: 0, width: headerView.bounds.size.height, height: headerView.bounds.size.height))
+            let button = UIButton(frame: CGRect(x: tableView.bounds.size.width - 35, y: 0, width: headerView.bounds.size.height, height: headerView.bounds.size.height))
             button.setImage(UIImage.init(named: "add_value"), for: UIControlState.normal)
             button.tag = section
             button.addTarget(self, action: #selector(addNewValue(_:)), for: .touchUpInside)
@@ -86,15 +86,33 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
     
+    //MARK: - Action
+    @IBAction func deleteValue(_ sender: Any) {
+        let cell: UITableViewCell = (sender as! UIView).superview?.superview as! UITableViewCell
+        let indexPath = valueTableView.indexPath(for: cell)
+        if indexPath?.section == 0 {
+            if headers > 1 {
+                headers -= 1
+                valueTableView.deleteRows(at: [indexPath!], with: .automatic)
+            }
+        } else if indexPath?.section == 1 {
+            if parameters > 1 {
+                parameters -= 1
+                valueTableView.deleteRows(at: [indexPath!], with: .automatic)
+            }
+        }
+    }
+    
     //MARK: - Service
     func addNewValue(_ sender: AnyObject?) {
-        let section = sender?.tag
+        let section: Int! = sender?.tag
+        let indexPath = IndexPath(row: (section == 0) ? headers: parameters, section: section)
         if section == 0 {
-            headers.add(["": ""])
+            headers += 1
         } else if section == 1 {
-            parameters.add(["": ""])
+            parameters += 1
         }
-        valueTableView.reloadData()
+        valueTableView.insertRows(at: [indexPath], with: .automatic)
     }
 
 }
