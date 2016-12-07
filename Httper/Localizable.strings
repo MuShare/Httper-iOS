@@ -6,6 +6,11 @@
   Copyright © 2016 limeng. All rights reserved.
 */
 
+tip_name = "Tip";
+cancel_name = "Cancel";
+
+url_empty = "Request URL cannot be empty!";
+
 GET = "The GET method is used to retrieve information from the given server using a given URI.";
 HEAD = "Same as GET, but transfers the status line and header section only.";
 POST = "POST request is used to send data to the server, for example, customer information, file upload, etc. using HTML forms.";

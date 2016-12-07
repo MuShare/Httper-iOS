@@ -19,11 +19,14 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var sendButton: UIButton!
     
     var headers = 1, parameters = 1
-    var method = "GET"
-    var protocolName = protocols[0]
+    var method: String = "GET"
+    var headerValues: NSMutableDictionary = NSMutableDictionary()
+    var parameterValues: NSMutableDictionary = NSMutableDictionary()
     
     override func viewDidLoad() {
-        
+        #if DEBUG
+            print(DEBUG_ASSERT_COMPONENT_NAME_STRING)
+        #endif
         super.viewDidLoad()
 
         urlTextField.attributedPlaceholder = NSAttributedString(string: " Request URL", attributes: [NSForegroundColorAttributeName:UIColor.lightGray])
@@ -55,8 +58,12 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
-        headerView.backgroundColor = UIColor.clear
+        let headerView: UIView = {
+            let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
+            view.backgroundColor = UIColor.init(colorLiteralRed: 48.0 / 255, green: 54.0 / 255, blue: 59.0 / 255, alpha: 1.0)
+            return view
+        }()
+       
         //Set name
         let nameLabel: UILabel = {
             let lebel = UILabel(frame: CGRect(x: 15, y: 0, width: headerView.bounds.size.width - headerView.bounds.size.height, height: headerView.bounds.size.height))
@@ -76,7 +83,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         //Set line
         let lineView: UIView = {
-            let view = UILabel(frame: CGRect(x: 15, y: 29, width: headerView.bounds.size.width - 15, height: 1))
+            let view = UILabel(frame: CGRect(x: 15, y: 28, width: headerView.bounds.size.width - 15, height: 1))
             view.backgroundColor = UIColor.lightGray
             return view
         }()
@@ -97,6 +104,16 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
     
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "resultSegue" {
+            segue.destination.setValue(method, forKey: "method")
+            segue.destination.setValue(protocolLabel.text! + urlTextField.text!, forKey: "url")
+            segue.destination.setValue(headerValues, forKey: "headers")
+            segue.destination.setValue(parameterValues, forKey: "parameters")
+        }
+    }
+ 
     //MARK: - Action
     @IBAction func deleteValue(_ sender: Any) {
         let cell: UITableViewCell = (sender as! UIView).superview?.superview as! UITableViewCell
@@ -115,30 +132,34 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     @IBAction func chooseProtocol(_ sender: UISegmentedControl) {
-        protocolName = protocols[sender.selectedSegmentIndex]
+        let protocolName = protocols[sender.selectedSegmentIndex]
         protocolLabel.text = protocolName as! String + "://"
     }
     
     @IBAction func sendRequest(_ sender: Any) {
-        let headers: NSMutableDictionary = NSMutableDictionary()
-        let parameters: NSMutableDictionary = NSMutableDictionary()
+        if urlTextField.text == "" {
+            AlertTool.showAlert(title: NSLocalizedString("tip_name", comment: "") as NSString,
+                                content: NSLocalizedString("url_empty", comment: "") as NSString,
+                                controller: self)
+            return
+        }
+        headerValues = NSMutableDictionary()
+        parameterValues = NSMutableDictionary()
         for section in 0 ..< valueTableView.numberOfSections {
-            for row in 0 ..< valueTableView.numberOfRows(inSection: 0) {
-                let cell: UITableViewCell = valueTableView.cellForRow(at: IndexPath(row: row, section: 0))!
+            for row in 0 ..< valueTableView.numberOfRows(inSection: section) {
+                let cell: UITableViewCell = valueTableView.cellForRow(at: IndexPath(row: row, section: section))!
                 let keyTextField = cell.viewWithTag(1) as! UITextField
                 let valueTextField = cell.viewWithTag(2) as! UITextField
                 if section == 0 {
-                    headers.setValue(valueTextField.text!, forKey: keyTextField.text!)
+                    headerValues.setValue(valueTextField.text!, forKey: keyTextField.text!)
                 } else if section == 1 {
-                    parameters.setValue(valueTextField.text!, forKey: keyTextField.text!)
+                    parameterValues.setValue(valueTextField.text!, forKey: keyTextField.text!)
                 }
             }
         }
-        print(headers)
-        print(parameters)
+        self.performSegue(withIdentifier: "resultSegue", sender: self)
     }
     
-    @IBOutlet weak var sendRequest: UIButton!
     //MARK: - Service
     func addNewValue(_ sender: AnyObject?) {
         let section: Int! = sender?.tag

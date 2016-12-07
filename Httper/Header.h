@@ -9,5 +9,4 @@
 #ifndef Header_h
 #define Header_h
 
-#import <AFNetworking/AFNetworking.h>
 #endif /* Header_h */

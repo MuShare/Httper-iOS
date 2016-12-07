@@ -11,6 +11,8 @@
 		E40B257E1DF44BD20039CA8D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40B257D1DF44BD20039CA8D /* MainViewController.swift */; };
 		E431C4A91DF7179D006BB2D6 /* RequestMethodsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E431C4A81DF7179D006BB2D6 /* RequestMethodsTableViewController.swift */; };
 		E431C4AC1DF72172006BB2D6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E431C4AB1DF72172006BB2D6 /* Localizable.strings */; };
+		E447287B1DF7CE80007D2C8B /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E447287A1DF7CE80007D2C8B /* ResultViewController.swift */; };
+		E447287E1DF7D644007D2C8B /* AlertTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = E447287D1DF7D644007D2C8B /* AlertTool.swift */; };
 		E48D41581D444F3F0028B84F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48D41571D444F3F0028B84F /* AppDelegate.swift */; };
 		E48D415D1D444F3F0028B84F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E48D415B1D444F3F0028B84F /* Main.storyboard */; };
 		E48D41601D444F3F0028B84F /* Httper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E48D415E1D444F3F0028B84F /* Httper.xcdatamodeld */; };
@@ -46,6 +48,8 @@
 		E40B257D1DF44BD20039CA8D /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E431C4A81DF7179D006BB2D6 /* RequestMethodsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestMethodsTableViewController.swift; sourceTree = "<group>"; };
 		E431C4AB1DF72172006BB2D6 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		E447287A1DF7CE80007D2C8B /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		E447287D1DF7D644007D2C8B /* AlertTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertTool.swift; sourceTree = "<group>"; };
 		E455B3EE1D4CFA7C007C14B8 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		E48D41541D444F3F0028B84F /* Httper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Httper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E48D41571D444F3F0028B84F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +121,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		E447287C1DF7D615007D2C8B /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				E447287D1DF7D644007D2C8B /* AlertTool.swift */,
+			);
+			name = Tool;
+			sourceTree = "<group>";
+		};
 		E48D414B1D444F3F0028B84F = {
 			isa = PBXGroup;
 			children = (
@@ -142,8 +154,9 @@
 		E48D41561D444F3F0028B84F /* Httper */ = {
 			isa = PBXGroup;
 			children = (
-				E431C4AA1DF7215A006BB2D6 /* Supporting Files */,
 				E4D1CAE01DF5BFCF008DC4F9 /* Request */,
+				E447287C1DF7D615007D2C8B /* Tool */,
+				E431C4AA1DF7215A006BB2D6 /* Supporting Files */,
 				E48D41571D444F3F0028B84F /* AppDelegate.swift */,
 				E48D41611D444F3F0028B84F /* Assets.xcassets */,
 				E455B3EE1D4CFA7C007C14B8 /* Header.h */,
@@ -151,7 +164,6 @@
 				E48D41661D444F3F0028B84F /* Info.plist */,
 				E48D41631D444F3F0028B84F /* LaunchScreen.storyboard */,
 				E48D415B1D444F3F0028B84F /* Main.storyboard */,
-				E40B257D1DF44BD20039CA8D /* MainViewController.swift */,
 			);
 			path = Httper;
 			sourceTree = "<group>";
@@ -179,6 +191,8 @@
 			children = (
 				E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */,
 				E431C4A81DF7179D006BB2D6 /* RequestMethodsTableViewController.swift */,
+				E447287A1DF7CE80007D2C8B /* ResultViewController.swift */,
+				E40B257D1DF44BD20039CA8D /* MainViewController.swift */,
 			);
 			name = Request;
 			sourceTree = "<group>";
@@ -370,11 +384,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E447287E1DF7D644007D2C8B /* AlertTool.swift in Sources */,
 				E48D41601D444F3F0028B84F /* Httper.xcdatamodeld in Sources */,
 				E4D1CAE51DF5C028008DC4F9 /* RequestViewController.swift in Sources */,
 				E48D41581D444F3F0028B84F /* AppDelegate.swift in Sources */,
 				E40B257E1DF44BD20039CA8D /* MainViewController.swift in Sources */,
 				E431C4A91DF7179D006BB2D6 /* RequestMethodsTableViewController.swift in Sources */,
+				E447287B1DF7CE80007D2C8B /* ResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
