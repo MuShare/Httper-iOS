@@ -14,7 +14,7 @@
             <objects>
                 <navigationController id="8kg-PD-hDA" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Request" image="tab_request" id="ycq-uj-2O5"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="quO-np-ipP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="quO-np-ipP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.2581908106803894" green="0.27822533249855042" blue="0.29491040110588074" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -157,7 +157,7 @@
                                     <outlet property="delegate" destination="J2A-Wk-9m9" id="iUZ-tF-Dhd"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="https://" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLh-Rx-jbi">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="http://" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLh-Rx-jbi">
                                 <rect key="frame" x="16" y="129" width="56" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -180,6 +180,9 @@
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="sendRequest:" destination="J2A-Wk-9m9" eventType="touchUpInside" id="TGm-3H-0mn"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.18746668100357056" green="0.2114855945110321" blue="0.23234263062477112" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -214,6 +217,9 @@
                                 <segment title="HTTPS"/>
                             </segments>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="chooseProtocol:" destination="J2A-Wk-9m9" eventType="valueChanged" id="AX5-fZ-0p5"/>
+                            </connections>
                         </segmentedControl>
                     </navigationItem>
                     <connections>
@@ -315,7 +321,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DLx-wM-A8M" id="vA2-en-n6J">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>

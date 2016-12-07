@@ -8,6 +8,8 @@
 
 import UIKit
 
+let protocols: NSArray = ["http", "https"]
+
 class RequestViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var requestMethodButton: UIButton!
@@ -18,6 +20,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var headers = 1, parameters = 1
     var method = "GET"
+    var protocolName = protocols[0]
     
     override func viewDidLoad() {
         
@@ -86,9 +89,9 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "parameterIdentifier", for: indexPath as IndexPath)
-        let keyTextField: UITextField = cell.viewWithTag(1) as! UITextField
-        let valueTextField: UITextField = cell.viewWithTag(2) as! UITextField
+        let cell = tableView.dequeueReusableCell(withIdentifier: "parameterIdentifier", for: indexPath as IndexPath)
+        let keyTextField = cell.viewWithTag(1) as! UITextField
+        let valueTextField = cell.viewWithTag(2) as! UITextField
         keyTextField.attributedPlaceholder = NSAttributedString(string: "key", attributes: [NSForegroundColorAttributeName:UIColor.lightGray])
         valueTextField.attributedPlaceholder = NSAttributedString(string: "value", attributes: [NSForegroundColorAttributeName:UIColor.lightGray])
         return cell
@@ -111,6 +114,31 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    @IBAction func chooseProtocol(_ sender: UISegmentedControl) {
+        protocolName = protocols[sender.selectedSegmentIndex]
+        protocolLabel.text = protocolName as! String + "://"
+    }
+    
+    @IBAction func sendRequest(_ sender: Any) {
+        let headers: NSMutableDictionary = NSMutableDictionary()
+        let parameters: NSMutableDictionary = NSMutableDictionary()
+        for section in 0 ..< valueTableView.numberOfSections {
+            for row in 0 ..< valueTableView.numberOfRows(inSection: 0) {
+                let cell: UITableViewCell = valueTableView.cellForRow(at: IndexPath(row: row, section: 0))!
+                let keyTextField = cell.viewWithTag(1) as! UITextField
+                let valueTextField = cell.viewWithTag(2) as! UITextField
+                if section == 0 {
+                    headers.setValue(valueTextField.text!, forKey: keyTextField.text!)
+                } else if section == 1 {
+                    parameters.setValue(valueTextField.text!, forKey: keyTextField.text!)
+                }
+            }
+        }
+        print(headers)
+        print(parameters)
+    }
+    
+    @IBOutlet weak var sendRequest: UIButton!
     //MARK: - Service
     func addNewValue(_ sender: AnyObject?) {
         let section: Int! = sender?.tag
