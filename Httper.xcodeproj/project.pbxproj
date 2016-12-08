@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4F51F2CAB45DDC76A9F169B1 /* Pods_Httper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5637677047F4C4B6CA981D18 /* Pods_Httper.framework */; };
 		E40B257E1DF44BD20039CA8D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40B257D1DF44BD20039CA8D /* MainViewController.swift */; };
+		E41642D31DF970CE00F0339E /* CommonTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41642D21DF970CE00F0339E /* CommonTool.swift */; };
 		E431C4A91DF7179D006BB2D6 /* RequestMethodsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E431C4A81DF7179D006BB2D6 /* RequestMethodsTableViewController.swift */; };
 		E431C4AC1DF72172006BB2D6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E431C4AB1DF72172006BB2D6 /* Localizable.strings */; };
 		E447287B1DF7CE80007D2C8B /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E447287A1DF7CE80007D2C8B /* ResultViewController.swift */; };
@@ -46,6 +47,8 @@
 		5637677047F4C4B6CA981D18 /* Pods_Httper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Httper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EBC322CA510BFBBFF4AB72E /* Pods-Httper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Httper.release.xcconfig"; path = "Pods/Target Support Files/Pods-Httper/Pods-Httper.release.xcconfig"; sourceTree = "<group>"; };
 		E40B257D1DF44BD20039CA8D /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		E41642D11DF96F6800F0339E /* Httper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Httper-Bridging-Header.h"; sourceTree = "<group>"; };
+		E41642D21DF970CE00F0339E /* CommonTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonTool.swift; sourceTree = "<group>"; };
 		E431C4A81DF7179D006BB2D6 /* RequestMethodsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestMethodsTableViewController.swift; sourceTree = "<group>"; };
 		E431C4AB1DF72172006BB2D6 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		E447287A1DF7CE80007D2C8B /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				E431C4AB1DF72172006BB2D6 /* Localizable.strings */,
+				E41642D11DF96F6800F0339E /* Httper-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -125,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				E447287D1DF7D644007D2C8B /* AlertTool.swift */,
+				E41642D21DF970CE00F0339E /* CommonTool.swift */,
 			);
 			name = Tool;
 			sourceTree = "<group>";
@@ -386,6 +391,7 @@
 			files = (
 				E447287E1DF7D644007D2C8B /* AlertTool.swift in Sources */,
 				E48D41601D444F3F0028B84F /* Httper.xcdatamodeld in Sources */,
+				E41642D31DF970CE00F0339E /* CommonTool.swift in Sources */,
 				E4D1CAE51DF5C028008DC4F9 /* RequestViewController.swift in Sources */,
 				E48D41581D444F3F0028B84F /* AppDelegate.swift in Sources */,
 				E40B257E1DF44BD20039CA8D /* MainViewController.swift in Sources */,
@@ -541,7 +547,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.fczm.Httper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = Httper/Header.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "Httper/Httper-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -561,7 +567,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.fczm.Httper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = Httper/Header.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "Httper/Httper-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

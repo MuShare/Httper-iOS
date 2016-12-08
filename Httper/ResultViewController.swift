@@ -8,6 +8,15 @@
 
 import UIKit
 import Alamofire
+import M80AttributedLabel
+
+enum PrettyColor: Int {
+    case normal = 0xEEEEEE
+    case key = 0xFF9999
+    case value = 0x33CCFF
+}
+
+let symbols = ["{", "}", "[", "]", ":", ","]
 
 class ResultViewController: UIViewController {
     
@@ -23,9 +32,53 @@ class ResultViewController: UIViewController {
             print("Response: \(response.response)")
             print("Error: \(response.error)")
             
+            
+            
+            let label = M80AttributedLabel()
+            var space = String()
+            var color = RGB(PrettyColor.normal.rawValue)
+            
             if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
-                print("Data: \(utf8Text)")
+                for char in utf8Text.characters {
+                    let text: String
+                    switch char {
+                    case "{":
+                        color = RGB(PrettyColor.key.rawValue)
+                        fallthrough
+                    case "[":
+                        space.append("  ")
+                        text = "\(char)\n\(space)"
+                    case ",":
+                        text = "\(char)\n\(space)"
+                        color = RGB(PrettyColor.key.rawValue)
+                    case "}":
+                        fallthrough
+                    case "]":
+                        space = space.substring(to: space.index(space.endIndex, offsetBy: -2))
+                        text = "\n\(space)\(char)"
+                    case "\n":
+                        fallthrough
+                    case " ":
+                        text = ""
+                    case ":":
+                        color = RGB(PrettyColor.value.rawValue)
+                        fallthrough
+                    default:
+                        text = "\(char)"
+                    }
+                    
+                    let attributedText = NSMutableAttributedString(string: text)
+                    attributedText.m80_setTextColor(symbols.contains("\(char)") ? RGB(PrettyColor.normal.rawValue) : color)
+                    label.appendAttributedText(attributedText)
+                    
+                }
             }
+            
+            
+            label.frame = self.view.bounds.insetBy(dx: 0, dy: 65)
+            label.font = UIFont(name: "Menlo", size: 12)
+            label.backgroundColor = UIColor.clear
+            self.view.addSubview(label)
         }
     }
     
