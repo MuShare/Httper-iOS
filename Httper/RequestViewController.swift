@@ -130,9 +130,9 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBAction func sendRequest(_ sender: Any) {
         if urlTextField.text == "" {
-            AlertTool.showAlert(title: NSLocalizedString("tip_name", comment: "") as NSString,
-                                content: NSLocalizedString("url_empty", comment: "") as NSString,
-                                controller: self)
+            showAlert(title: NSLocalizedString("tip_name", comment: ""),
+                      content: NSLocalizedString("url_empty", comment: ""),
+                      controller: self)
             return
         }
         headers = HTTPHeaders()
@@ -141,6 +141,9 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
             for row in 0 ..< valueTableView.numberOfRows(inSection: section) {
                 let cell: UITableViewCell = valueTableView.cellForRow(at: IndexPath(row: row, section: section))!
                 let keyTextField = cell.viewWithTag(1) as! UITextField
+                if keyTextField.text == "" {
+                    continue
+                }
                 let valueTextField = cell.viewWithTag(2) as! UITextField
                 if section == 0 {
                     headers.updateValue(valueTextField.text!, forKey: keyTextField.text!)
@@ -154,6 +157,12 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     //MARK: - Service
     func addNewValue(_ sender: AnyObject?) {
+        if headerCount + parameterCount == 7 {
+            showAlert(title: NSLocalizedString("tip_name", comment: ""),
+                      content: NSLocalizedString("value_max", comment: ""),
+                      controller: self)
+            return
+        }
         let section: Int! = sender?.tag
         let indexPath = IndexPath(row: (section == 0) ? headerCount: parameterCount, section: section)
         if section == 0 {

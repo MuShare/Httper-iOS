@@ -10,79 +10,69 @@ import UIKit
 import Alamofire
 import M80AttributedLabel
 
-enum PrettyColor: Int {
-    case normal = 0xEEEEEE
-    case key = 0xFF9999
-    case value = 0x33CCFF
+enum Style: Int {
+    case pretty = 0
+    case row = 1
+    case preview = 2
 }
 
-let symbols = ["{", "}", "[", "]", ":", ","]
-
-class ResultViewController: UIViewController {
+class ResultViewController: UIViewController, UIPageViewControllerDataSource {
+    var pageViewController: UIPageViewController!
+    
+    var prettyViewController: PrettyViewController!
+    var rowViewController: RawViewController!
+    var previewViewController: PreviewViewController!
     
     var method: String!, url: String!
     var headers: HTTPHeaders!
     var parameters: Parameters!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        Alamofire.request(url, method: getHTTPMethod(method: method), parameters: parameters, encoding: URLEncoding.default, headers: headers).response { response in
-            print("Request: \(response.request)")
-            print("Response: \(response.response)")
-            print("Error: \(response.error)")
-            
-            
-            
-            let label = M80AttributedLabel()
-            var space = String()
-            var color = RGB(PrettyColor.normal.rawValue)
-            
-            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
-                for char in utf8Text.characters {
-                    let text: String
-                    switch char {
-                    case "{":
-                        color = RGB(PrettyColor.key.rawValue)
-                        fallthrough
-                    case "[":
-                        space.append("  ")
-                        text = "\(char)\n\(space)"
-                    case ",":
-                        text = "\(char)\n\(space)"
-                        color = RGB(PrettyColor.key.rawValue)
-                    case "}":
-                        fallthrough
-                    case "]":
-                        space = space.substring(to: space.index(space.endIndex, offsetBy: -2))
-                        text = "\n\(space)\(char)"
-                    case "\n":
-                        fallthrough
-                    case " ":
-                        text = ""
-                    case ":":
-                        color = RGB(PrettyColor.value.rawValue)
-                        fallthrough
-                    default:
-                        text = "\(char)"
-                    }
-                    
-                    let attributedText = NSMutableAttributedString(string: text)
-                    attributedText.m80_setTextColor(symbols.contains("\(char)") ? RGB(PrettyColor.normal.rawValue) : color)
-                    label.appendAttributedText(attributedText)
-                    
-                }
-            }
-            
-            
-            label.frame = self.view.bounds.insetBy(dx: 0, dy: 65)
-            label.font = UIFont(name: "Menlo", size: 12)
-            label.backgroundColor = UIColor.clear
-            self.view.addSubview(label)
+        
+        pageViewController = self.childViewControllers.first as! UIPageViewController
+        pageViewController.dataSource = self
+        
+        Alamofire.request(url,
+                          method: getHTTPMethod(method: method),
+                          parameters: parameters,
+                          encoding: URLEncoding.default,
+                          headers: headers)
+            .response { response in
+                let utf8Text = String(data: response.data!, encoding: .utf8)
+                self.prettyViewController = PrettyViewController(text: utf8Text!)
+                self.rowViewController = RawViewController(text: utf8Text!)
+                self.previewViewController = PreviewViewController(text: utf8Text!)
+                self.pageViewController.setViewControllers([self.prettyViewController], direction: .forward, animated: true, completion: nil)
         }
+
+    }
+
+    //MARK: - UIPageViewControllerDataSource
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        if viewController.isKind(of: PrettyViewController.self) {
+            return self.rowViewController
+        } else if viewController.isKind(of: RawViewController.self) {
+            return self.previewViewController
+        }
+        return nil
     }
     
-    //MARK: -Service
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        if viewController.isKind(of: PreviewViewController.self) {
+            return self.rowViewController
+        } else if viewController.isKind(of: RawViewController.self) {
+            return self.prettyViewController
+        }
+        return nil
+    }
+    
+    //MARK: - Action
+    @IBAction func selectStyle(_ sender: UISegmentedControl) {
+        
+    }
+    
+    //MARK: - Service
     func getHTTPMethod(method: String) -> HTTPMethod {
         switch method {
         case "GET":

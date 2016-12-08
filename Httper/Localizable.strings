@@ -10,6 +10,7 @@ tip_name = "Tip";
 cancel_name = "Cancel";
 
 url_empty = "Request URL cannot be empty!";
+value_max = "Cannot add more parameters and headers due to max limits 7.";
 
 GET = "The GET method is used to retrieve information from the given server using a given URI.";
 HEAD = "Same as GET, but transfers the status line and header section only.";
