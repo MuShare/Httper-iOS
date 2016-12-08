@@ -25,13 +25,8 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     var parameters: Parameters!
     
     override func viewDidLoad() {
-        #if DEBUG
-            print(DEBUG_ASSERT_COMPONENT_NAME_STRING)
-        #endif
         super.viewDidLoad()
 
-        urlTextField.attributedPlaceholder = NSAttributedString(string: " Request URL", attributes: [NSForegroundColorAttributeName:UIColor.lightGray])
-        
         sendButton.layer.borderColor = UIColor.lightGray.cgColor
     }
 
@@ -98,10 +93,6 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "parameterIdentifier", for: indexPath as IndexPath)
-        let keyTextField = cell.viewWithTag(1) as! UITextField
-        let valueTextField = cell.viewWithTag(2) as! UITextField
-        keyTextField.attributedPlaceholder = NSAttributedString(string: "key", attributes: [NSForegroundColorAttributeName:UIColor.lightGray])
-        valueTextField.attributedPlaceholder = NSAttributedString(string: "value", attributes: [NSForegroundColorAttributeName:UIColor.lightGray])
         return cell
     }
     
