@@ -19,3 +19,4 @@ DELETE = "Removes all current representations of the target resource given by a 
 CONNECT = "Establishes a tunnel to the server identified by a given URI.";
 OPTIONS = "Describes the communication options for the target resource.";
 TRACE = "Performs a message loop-back test along the path to the target resource.";
+PATCH = "PATCH can be used to update partial resources when you only need to update one field of the resource.";

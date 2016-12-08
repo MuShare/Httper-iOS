@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 let protocols: NSArray = ["http", "https"]
 
@@ -18,10 +19,10 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var valueTableView: UITableView!
     @IBOutlet weak var sendButton: UIButton!
     
-    var headers = 1, parameters = 1
+    var headerCount = 1, parameterCount = 1
     var method: String = "GET"
-    var headerValues: NSMutableDictionary = NSMutableDictionary()
-    var parameterValues: NSMutableDictionary = NSMutableDictionary()
+    var headers: HTTPHeaders!
+    var parameters: Parameters!
     
     override func viewDidLoad() {
         #if DEBUG
@@ -46,7 +47,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (section == 0) ? headers : parameters
+        return (section == 0) ? headerCount : parameterCount
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -108,9 +109,9 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "resultSegue" {
             segue.destination.setValue(method, forKey: "method")
-            segue.destination.setValue(protocolLabel.text! + urlTextField.text!, forKey: "url")
-            segue.destination.setValue(headerValues, forKey: "headers")
-            segue.destination.setValue(parameterValues, forKey: "parameters")
+            segue.destination.setValue("\(protocolLabel.text!)\(urlTextField.text!)", forKey: "url")
+            segue.destination.setValue(headers, forKey: "headers")
+            segue.destination.setValue(parameters, forKey: "parameters")
         }
     }
  
@@ -119,13 +120,13 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell: UITableViewCell = (sender as! UIView).superview?.superview as! UITableViewCell
         let indexPath = valueTableView.indexPath(for: cell)
         if indexPath?.section == 0 {
-            if headers > 1 {
-                headers -= 1
+            if headerCount > 1 {
+                headerCount -= 1
                 valueTableView.deleteRows(at: [indexPath!], with: .automatic)
             }
         } else if indexPath?.section == 1 {
-            if parameters > 1 {
-                parameters -= 1
+            if parameterCount > 1 {
+                parameterCount -= 1
                 valueTableView.deleteRows(at: [indexPath!], with: .automatic)
             }
         }
@@ -133,7 +134,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBAction func chooseProtocol(_ sender: UISegmentedControl) {
         let protocolName = protocols[sender.selectedSegmentIndex]
-        protocolLabel.text = protocolName as! String + "://"
+        protocolLabel.text = "\(protocolName)://"
     }
     
     @IBAction func sendRequest(_ sender: Any) {
@@ -143,17 +144,17 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
                                 controller: self)
             return
         }
-        headerValues = NSMutableDictionary()
-        parameterValues = NSMutableDictionary()
+        headers = HTTPHeaders()
+        parameters = Parameters()
         for section in 0 ..< valueTableView.numberOfSections {
             for row in 0 ..< valueTableView.numberOfRows(inSection: section) {
                 let cell: UITableViewCell = valueTableView.cellForRow(at: IndexPath(row: row, section: section))!
                 let keyTextField = cell.viewWithTag(1) as! UITextField
                 let valueTextField = cell.viewWithTag(2) as! UITextField
                 if section == 0 {
-                    headerValues.setValue(valueTextField.text!, forKey: keyTextField.text!)
+                    headers.updateValue(valueTextField.text!, forKey: keyTextField.text!)
                 } else if section == 1 {
-                    parameterValues.setValue(valueTextField.text!, forKey: keyTextField.text!)
+                    parameters.updateValue(valueTextField.text!, forKey: keyTextField.text!)
                 }
             }
         }
@@ -163,11 +164,11 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     //MARK: - Service
     func addNewValue(_ sender: AnyObject?) {
         let section: Int! = sender?.tag
-        let indexPath = IndexPath(row: (section == 0) ? headers: parameters, section: section)
+        let indexPath = IndexPath(row: (section == 0) ? headerCount: parameterCount, section: section)
         if section == 0 {
-            headers += 1
+            headerCount += 1
         } else if section == 1 {
-            parameters += 1
+            parameterCount += 1
         }
         valueTableView.insertRows(at: [indexPath], with: .automatic)
     }

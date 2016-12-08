@@ -8,7 +8,7 @@
 
 import UIKit
 
-let methods: NSArray = ["GET", "HEAD", "POST", "PUT", "DELETE", "CONNECT", "OPTIONS", "TRACE"]
+let methods: NSArray = ["GET", "HEAD", "POST", "PUT", "DELETE", "CONNECT", "OPTIONS", "TRACE", "PATCH"]
 
 class RequestMethodsTableViewController: UITableViewController {
 

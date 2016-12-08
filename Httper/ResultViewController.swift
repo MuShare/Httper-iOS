@@ -7,32 +7,52 @@
 //
 
 import UIKit
-import AFNetworking
+import Alamofire
 
 class ResultViewController: UIViewController {
     
-    var method: String?, url: String?
-    var headers: NSArray = [], parameters: NSArray = []
+    var method: String!, url: String!
+    var headers: HTTPHeaders!
+    var parameters: Parameters!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        Alamofire.request(url, method: getHTTPMethod(method: method), parameters: parameters, encoding: URLEncoding.default, headers: headers).response { response in
+            print("Request: \(response.request)")
+            print("Response: \(response.response)")
+            print("Error: \(response.error)")
+            
+            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+                print("Data: \(utf8Text)")
+            }
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    //MARK: -Service
+    func getHTTPMethod(method: String) -> HTTPMethod {
+        switch method {
+        case "GET":
+            return HTTPMethod.get
+        case "HEAD":
+            return HTTPMethod.head
+        case "POST":
+            return HTTPMethod.post
+        case "PUT":
+            return HTTPMethod.put
+        case "DELETE":
+            return HTTPMethod.delete
+        case "CONNECT":
+            return HTTPMethod.connect
+        case "OPTIONS":
+            return HTTPMethod.options
+        case "TRACE":
+            return HTTPMethod.trace
+        case "PATCH":
+            return HTTPMethod.patch
+        default:
+            return HTTPMethod.get
+        }
     }
-    */
-
+    
 }
