@@ -11,8 +11,9 @@ import Alamofire
 
 let protocols = ["http", "https"]
 let backgroudColor = 0x30363b, accessoryBackgroudColot = 0x1e2121
+let keyboardHeight: CGFloat = 260.0
 
-class RequestViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class RequestViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     @IBOutlet weak var requestMethodButton: UIButton!
     @IBOutlet weak var protocolLabel: UILabel!
@@ -34,7 +35,6 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         requestMethodButton.setTitle(method, for: .normal)
     }
     
@@ -102,7 +102,27 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
     
-    // MARK: - Navigation
+    //MARK: - UITextViewDelegate
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        let cell = textField.superview?.superview
+        let rect = cell?.convert((cell?.bounds)!, to: self.view)
+        let y = (rect?.origin.y)!
+        let screenHeight = (self.view.window?.frame.size.height)!
+        if y > (screenHeight - keyboardHeight) {
+            let offset = keyboardHeight - (screenHeight - y) + (cell?.frame.size.height)!
+            UIView.animate(withDuration: 0.5, animations: {
+                self.view.frame = CGRect(x: 0, y: -offset, width: self.view.frame.size.width, height: self.view.frame.size.height)
+            })
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+        })
+    }
+    
+    //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "resultSegue" {
             segue.destination.setValue(method, forKey: "method")
