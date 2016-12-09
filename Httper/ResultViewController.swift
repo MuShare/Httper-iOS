@@ -12,15 +12,17 @@ import M80AttributedLabel
 
 enum Style: Int {
     case pretty = 0
-    case row = 1
+    case raw = 1
     case preview = 2
 }
 
 class ResultViewController: UIViewController, UIPageViewControllerDataSource {
+    @IBOutlet weak var styleSegmentedControl: UISegmentedControl!
+    
     var pageViewController: UIPageViewController!
     
     var prettyViewController: PrettyViewController!
-    var rowViewController: RawViewController!
+    var rawViewController: RawViewController!
     var previewViewController: PreviewViewController!
     
     var method: String!, url: String!
@@ -41,17 +43,18 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
             .response { response in
                 let utf8Text = String(data: response.data!, encoding: .utf8)
                 self.prettyViewController = PrettyViewController(text: utf8Text!)
-                self.rowViewController = RawViewController(text: utf8Text!)
+                self.rawViewController = RawViewController(text: utf8Text!)
                 self.previewViewController = PreviewViewController(text: utf8Text!)
                 self.pageViewController.setViewControllers([self.prettyViewController], direction: .forward, animated: true, completion: nil)
         }
 
+        NotificationCenter.default.addObserver(self, selector: #selector(currentPageChanged(notification:)), name: NSNotification.Name(rawValue: "currentPageChanged"), object: nil)
     }
 
     //MARK: - UIPageViewControllerDataSource
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         if viewController.isKind(of: PrettyViewController.self) {
-            return self.rowViewController
+            return self.rawViewController
         } else if viewController.isKind(of: RawViewController.self) {
             return self.previewViewController
         }
@@ -60,7 +63,7 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         if viewController.isKind(of: PreviewViewController.self) {
-            return self.rowViewController
+            return self.rawViewController
         } else if viewController.isKind(of: RawViewController.self) {
             return self.prettyViewController
         }
@@ -69,7 +72,16 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
     
     //MARK: - Action
     @IBAction func selectStyle(_ sender: UISegmentedControl) {
-        
+        switch sender.selectedSegmentIndex {
+        case Style.pretty.rawValue:
+            self.pageViewController.setViewControllers([self.prettyViewController], direction: .forward, animated: true, completion: nil)
+        case Style.raw.rawValue:
+            self.pageViewController.setViewControllers([self.rawViewController], direction: .forward, animated: true, completion: nil)
+        case Style.preview.rawValue:
+            self.pageViewController.setViewControllers([self.previewViewController], direction: .forward, animated: true, completion: nil)
+        default:
+            break
+        }
     }
     
     //MARK: - Service
@@ -96,6 +108,10 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
         default:
             return HTTPMethod.get
         }
+    }
+    
+    func currentPageChanged(notification: Notification) {
+        styleSegmentedControl.selectedSegmentIndex = notification.object as! Int
     }
     
 }

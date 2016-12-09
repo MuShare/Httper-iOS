@@ -97,7 +97,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="57" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DzG-jS-f9d">
-                                <rect key="frame" x="0.0" y="186" width="320" height="277"/>
+                                <rect key="frame" x="0.0" y="186" width="320" height="326"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="parameterIdentifier" id="boq-Bm-dcS">
@@ -180,7 +180,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0VV-qc-MoB">
-                                <rect key="frame" x="15" y="471" width="289" height="40"/>
+                                <rect key="frame" x="15" y="520" width="289" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="rSx-5m-ffp"/>
                                 </constraints>
@@ -293,6 +293,9 @@
                             </connections>
                         </segmentedControl>
                     </navigationItem>
+                    <connections>
+                        <outlet property="styleSegmentedControl" destination="QG4-JF-fLM" id="Bzg-At-wDc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KaP-ZN-tX2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

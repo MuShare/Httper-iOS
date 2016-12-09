@@ -37,5 +37,10 @@ class PreviewViewController: UIViewController {
         self.view.addSubview(previewWebView)
 
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "currentPageChanged"), object: Style.preview.rawValue)
+    }
+    
 }
