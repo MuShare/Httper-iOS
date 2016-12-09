@@ -6,6 +6,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -74,7 +75,7 @@
                                     <constraint firstAttribute="height" constant="1" id="eC8-6i-42b"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="rate.mushare.cn/api/currencies" placeholder="request URL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1NK-Ds-epT">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="request URL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1NK-Ds-epT">
                                 <rect key="frame" x="72" y="130" width="232" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="xuq-PK-F5l"/>
@@ -265,7 +266,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uyG-pS-4uJ">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <connections>
-                                    <segue destination="dpY-yy-Edy" kind="embed" id="7fo-95-3Vd"/>
+                                    <segue destination="dpY-yy-Edy" kind="embed" identifier="" id="7fo-95-3Vd"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -295,6 +296,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="styleSegmentedControl" destination="QG4-JF-fLM" id="Bzg-At-wDc"/>
+                        <segue destination="mAI-TK-3je" kind="push" identifier="requestInfoSegue" id="vkc-Ms-pOS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KaP-ZN-tX2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -307,7 +309,7 @@
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="dpY-yy-Edy" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T1t-MQ-c9w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2251" y="-58"/>
+            <point key="canvasLocation" x="2275" y="-346"/>
         </scene>
         <!--Request Methods-->
         <scene sceneID="aEs-L5-oas">
@@ -361,6 +363,81 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qUI-S4-Khx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1765" y="-754"/>
+        </scene>
+        <!--Response Information-->
+        <scene sceneID="eHX-Ly-sdM">
+            <objects>
+                <tableViewController id="mAI-TK-3je" customClass="ResponseInfoTableViewController" customModule="Httper" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="cSI-FS-mxt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.18746668100357056" green="0.2114855945110321" blue="0.23234263062477112" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="urlIdentifier" id="rc7-AD-Zd4">
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rc7-AD-Zd4" id="yUD-1o-ScV">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LrC-Yd-fgQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                        </scrollView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="LrC-Yd-fgQ" firstAttribute="leading" secondItem="yUD-1o-ScV" secondAttribute="leadingMargin" constant="-8" id="7et-em-eaU"/>
+                                        <constraint firstItem="LrC-Yd-fgQ" firstAttribute="top" secondItem="yUD-1o-ScV" secondAttribute="topMargin" constant="-8" id="BIE-Fz-S9S"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="LrC-Yd-fgQ" secondAttribute="bottom" constant="-8" id="LTU-RV-X9P"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="LrC-Yd-fgQ" secondAttribute="trailing" constant="-8" id="xfH-mZ-En4"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="headerIdentifier" id="FJs-Q3-hne">
+                                <rect key="frame" x="0.0" y="72" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FJs-Q3-hne" id="sXg-gh-1S8">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="key" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="GNe-RU-rcZ">
+                                            <rect key="frame" x="15" y="11" width="110" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="EQ8-F3-a6W"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="value" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="eCE-zf-8hk">
+                                            <rect key="frame" x="133" y="11" width="179" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="GNe-RU-rcZ" firstAttribute="leading" secondItem="sXg-gh-1S8" secondAttribute="leadingMargin" constant="7" id="4lN-NH-95B"/>
+                                        <constraint firstItem="eCE-zf-8hk" firstAttribute="width" secondItem="sXg-gh-1S8" secondAttribute="width" multiplier="0.6" id="Rpm-7e-kSB"/>
+                                        <constraint firstItem="eCE-zf-8hk" firstAttribute="top" secondItem="sXg-gh-1S8" secondAttribute="topMargin" constant="3" id="UPh-To-GdF"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="eCE-zf-8hk" secondAttribute="trailing" id="YpS-Kl-1fj"/>
+                                        <constraint firstItem="GNe-RU-rcZ" firstAttribute="width" secondItem="sXg-gh-1S8" secondAttribute="width" multiplier="0.4" id="kcz-lJ-7f6"/>
+                                        <constraint firstItem="GNe-RU-rcZ" firstAttribute="top" secondItem="sXg-gh-1S8" secondAttribute="topMargin" constant="3" id="lrr-DD-L2t"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="mAI-TK-3je" id="ela-qa-WcB"/>
+                            <outlet property="delegate" destination="mAI-TK-3je" id="3p1-Lq-bZj"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Response Information" id="eeE-QF-hIP"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lPd-Ey-2LJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2275" y="287"/>
         </scene>
         <!--Store-->
         <scene sceneID="Cyp-uR-lbM">

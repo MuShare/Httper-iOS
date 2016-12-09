@@ -8,14 +8,6 @@
 
 import UIKit
 
-func showAlert(title: String, content: String, controller: UIViewController) {
-    let alertController = UIAlertController(title: title,
-                                            message: content,
-                                            preferredStyle: .alert)
-    alertController.addAction(UIAlertAction.init(title: NSLocalizedString("cancel_name", comment: ""), style: .cancel, handler: nil))
-    controller.present(alertController, animated: true, completion: nil)
-}
-
 func RGB(_ value : Int) -> UIColor {
     let r = CGFloat((value & 0xFF0000) >> 16) / 255.0
     let g = CGFloat((value & 0x00FF00) >> 8 ) / 255.0
@@ -31,4 +23,23 @@ func ClassByName(name : String) ->  AnyClass? {
         result = NSClassFromString(className)
     }
     return result
+}
+
+func showAlert(title: String, content: String, controller: UIViewController) {
+    let alertController = UIAlertController(title: title,
+                                            message: content,
+                                            preferredStyle: .alert)
+    alertController.addAction(UIAlertAction.init(title: NSLocalizedString("cancel_name", comment: ""), style: .cancel, handler: nil))
+    controller.present(alertController, animated: true, completion: nil)
+}
+
+func replaceBarButtonItemWithActivityIndicator(controller: UIViewController) {
+    let activityIndicatorView = UIActivityIndicatorView.init(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+    activityIndicatorView.startAnimating()
+    replaceBaeButtonItemWithView(controller: controller, view: activityIndicatorView)
+}
+
+func replaceBaeButtonItemWithView(controller: UIViewController, view: UIView) {
+    let barButton = UIBarButtonItem(customView: view)
+    controller.navigationItem.rightBarButtonItem = barButton
 }

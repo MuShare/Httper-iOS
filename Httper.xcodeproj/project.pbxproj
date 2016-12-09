@@ -10,6 +10,7 @@
 		4F51F2CAB45DDC76A9F169B1 /* Pods_Httper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5637677047F4C4B6CA981D18 /* Pods_Httper.framework */; };
 		E40B257E1DF44BD20039CA8D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40B257D1DF44BD20039CA8D /* MainViewController.swift */; };
 		E41642D31DF970CE00F0339E /* CommonTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41642D21DF970CE00F0339E /* CommonTool.swift */; };
+		E42DDC841DFA8CB200FAD174 /* ResponseInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42DDC831DFA8CB200FAD174 /* ResponseInfoTableViewController.swift */; };
 		E431C4A91DF7179D006BB2D6 /* RequestMethodsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E431C4A81DF7179D006BB2D6 /* RequestMethodsTableViewController.swift */; };
 		E431C4AC1DF72172006BB2D6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E431C4AB1DF72172006BB2D6 /* Localizable.strings */; };
 		E447287B1DF7CE80007D2C8B /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E447287A1DF7CE80007D2C8B /* ResultViewController.swift */; };
@@ -51,6 +52,7 @@
 		E40B257D1DF44BD20039CA8D /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E41642D11DF96F6800F0339E /* Httper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Httper-Bridging-Header.h"; sourceTree = "<group>"; };
 		E41642D21DF970CE00F0339E /* CommonTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonTool.swift; sourceTree = "<group>"; };
+		E42DDC831DFA8CB200FAD174 /* ResponseInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseInfoTableViewController.swift; sourceTree = "<group>"; };
 		E431C4A81DF7179D006BB2D6 /* RequestMethodsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestMethodsTableViewController.swift; sourceTree = "<group>"; };
 		E431C4AB1DF72172006BB2D6 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		E447287A1DF7CE80007D2C8B /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
@@ -197,13 +199,14 @@
 		E4D1CAE01DF5BFCF008DC4F9 /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */,
-				E431C4A81DF7179D006BB2D6 /* RequestMethodsTableViewController.swift */,
-				E447287A1DF7CE80007D2C8B /* ResultViewController.swift */,
 				E40B257D1DF44BD20039CA8D /* MainViewController.swift */,
 				E48553311DF9B2AF00A1DB60 /* PrettyViewController.swift */,
-				E48553331DF9B2BF00A1DB60 /* RawViewController.swift */,
 				E48553351DF9B2CF00A1DB60 /* PreviewViewController.swift */,
+				E48553331DF9B2BF00A1DB60 /* RawViewController.swift */,
+				E431C4A81DF7179D006BB2D6 /* RequestMethodsTableViewController.swift */,
+				E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */,
+				E42DDC831DFA8CB200FAD174 /* ResponseInfoTableViewController.swift */,
+				E447287A1DF7CE80007D2C8B /* ResultViewController.swift */,
 			);
 			name = Request;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E48D41601D444F3F0028B84F /* Httper.xcdatamodeld in Sources */,
+				E42DDC841DFA8CB200FAD174 /* ResponseInfoTableViewController.swift in Sources */,
 				E41642D31DF970CE00F0339E /* CommonTool.swift in Sources */,
 				E4D1CAE51DF5C028008DC4F9 /* RequestViewController.swift in Sources */,
 				E48553361DF9B2CF00A1DB60 /* PreviewViewController.swift in Sources */,
@@ -553,7 +557,7 @@
 				INFOPLIST_FILE = Httper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.fczm.Httper;
+				PRODUCT_BUNDLE_IDENTIFIER = pw.fczm.Httper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Httper/Httper-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
@@ -573,7 +577,7 @@
 				INFOPLIST_FILE = Httper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.fczm.Httper;
+				PRODUCT_BUNDLE_IDENTIFIER = pw.fczm.Httper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Httper/Httper-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

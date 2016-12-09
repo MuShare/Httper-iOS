@@ -29,11 +29,15 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
     var headers: HTTPHeaders!
     var parameters: Parameters!
     
+    var httpURLResponse: HTTPURLResponse!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         pageViewController = self.childViewControllers.first as! UIPageViewController
         pageViewController.dataSource = self
+        
+        replaceBarButtonItemWithActivityIndicator(controller: self)
         
         Alamofire.request(url,
                           method: getHTTPMethod(method: method),
@@ -41,6 +45,14 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
                           encoding: URLEncoding.default,
                           headers: headers)
             .response { response in
+
+                self.httpURLResponse = response.response
+                let infoBarButtonItem = UIBarButtonItem(image: UIImage.init(named: "info"),
+                                                        style: UIBarButtonItemStyle.plain,
+                                                        target: self,
+                                                        action: #selector(self.showRequestInfo))
+                self.navigationItem.rightBarButtonItem = infoBarButtonItem
+                
                 let utf8Text = String(data: response.data!, encoding: .utf8)
                 self.prettyViewController = PrettyViewController(text: utf8Text!)
                 self.rawViewController = RawViewController(text: utf8Text!)
@@ -68,6 +80,13 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
             return self.prettyViewController
         }
         return nil
+    }
+    
+    //MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "requestInfoSegue" {
+            segue.destination.setValue(httpURLResponse, forKey: "response")
+        }
     }
     
     //MARK: - Action
@@ -114,4 +133,7 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
         styleSegmentedControl.selectedSegmentIndex = notification.object as! Int
     }
     
+    func showRequestInfo() {
+        self.performSegue(withIdentifier: "requestInfoSegue", sender: self)
+    }
 }
