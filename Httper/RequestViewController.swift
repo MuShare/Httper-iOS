@@ -9,10 +9,11 @@
 import UIKit
 import Alamofire
 
-let protocols: NSArray = ["http", "https"]
+let protocols = ["http", "https"]
+let backgroudColor = 0x30363b, accessoryBackgroudColot = 0x1e2121
 
 class RequestViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     @IBOutlet weak var requestMethodButton: UIButton!
     @IBOutlet weak var protocolLabel: UILabel!
     @IBOutlet weak var urlTextField: UITextField!
@@ -26,10 +27,11 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         sendButton.layer.borderColor = UIColor.lightGray.cgColor
+        setCloseKeyboardAccessoryForSender(sender: urlTextField)
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -56,10 +58,10 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView: UIView = {
             let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
-            view.backgroundColor = UIColor.init(colorLiteralRed: 48.0 / 255, green: 54.0 / 255, blue: 59.0 / 255, alpha: 1.0)
+            view.backgroundColor = RGB(backgroudColor)
             return view
         }()
-       
+        
         //Set name
         let nameLabel: UILabel = {
             let lebel = UILabel(frame: CGRect(x: 15, y: 0, width: headerView.bounds.size.width - headerView.bounds.size.height, height: headerView.bounds.size.height))
@@ -67,7 +69,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
             lebel.text = (section == 0) ? "Headers" : "Parameters"
             return lebel
         }()
-
+        
         //Set button
         let addButton: UIButton = {
             let button = UIButton(frame: CGRect(x: tableView.bounds.size.width - 35, y: 0, width: headerView.bounds.size.height, height: headerView.bounds.size.height))
@@ -93,6 +95,10 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "parameterIdentifier", for: indexPath as IndexPath)
+        let keyTextField = cell.viewWithTag(1) as! UITextField
+        let valueTextField = cell.viewWithTag(2) as! UITextField
+        setCloseKeyboardAccessoryForSender(sender: keyTextField)
+        setCloseKeyboardAccessoryForSender(sender: valueTextField)
         return cell
     }
     
@@ -105,7 +111,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
             segue.destination.setValue(parameters, forKey: "parameters")
         }
     }
- 
+    
     //MARK: - Action
     @IBAction func deleteValue(_ sender: Any) {
         let cell: UITableViewCell = (sender as! UIView).superview?.superview as! UITableViewCell
@@ -172,5 +178,41 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         valueTableView.insertRows(at: [indexPath], with: .automatic)
     }
-
+    
+    func setCloseKeyboardAccessoryForSender(sender: UITextField) {
+        let topView: UIToolbar = {
+            let view = UIToolbar.init(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 35))
+            view.barStyle = .black;
+            let spaceButtonItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+            let doneButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(editFinish))
+            doneButtonItem.tintColor = UIColor.white
+            view.setItems([spaceButtonItem, doneButtonItem], animated: false)
+            return view
+        }()
+        
+        sender.inputAccessoryView = topView
+    }
+    
+    func editFinish() {
+        if urlTextField.isFirstResponder {
+            urlTextField.resignFirstResponder()
+            return
+        }
+        for section in 0 ..< valueTableView.numberOfSections {
+            for row in 0 ..< valueTableView.numberOfRows(inSection: section) {
+                let cell: UITableViewCell = valueTableView.cellForRow(at: IndexPath(row: row, section: section))!
+                let keyTextField = cell.viewWithTag(1) as! UITextField
+                let valueTextField = cell.viewWithTag(2) as! UITextField
+                if keyTextField.isFirstResponder {
+                    keyTextField.resignFirstResponder()
+                    return
+                }
+                if valueTextField.isFirstResponder {
+                    valueTextField.resignFirstResponder()
+                    return
+                }
+            }
+        }
+    }
+    
 }
