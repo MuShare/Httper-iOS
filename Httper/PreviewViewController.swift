@@ -11,11 +11,13 @@ import UIKit
 class PreviewViewController: UIViewController {
 
     var text: String!
+    var url: URL!
     
     var previewWebView: UIWebView!
     
-    init?(text: String) {
+    init?(text: String, url: URL) {
         self.text = text
+        self.url = url
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -32,7 +34,7 @@ class PreviewViewController: UIViewController {
         }()
         
         //Set preview web view
-        self.previewWebView.loadHTMLString(text, baseURL: nil)
+        self.previewWebView.loadHTMLString(text, baseURL: url)
 
         self.view.addSubview(previewWebView)
 

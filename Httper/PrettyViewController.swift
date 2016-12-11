@@ -8,15 +8,18 @@
 
 import UIKit
 import M80AttributedLabel
+import Alamofire
 
 class PrettyViewController: UIViewController {
     
     var text: String!
-
+    var headers: [AnyHashable : Any]!
+    
     let prettyLabel = M80AttributedLabel()
     
-    init?(text: String) {
+    init?(text: String, headers: [AnyHashable : Any]) {
         self.text = text
+        self.headers = headers
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -30,8 +33,22 @@ class PrettyViewController: UIViewController {
         let width = self.view.frame.size.width
         let height = self.view.frame.size.height
         
+        let contentType = headers["Content-Type"] as? String
+        if contentType == nil  {
+//            let attributedText = NSMutableAttributedString(string: text)
+//            attributedText.m80_setTextColor(RGB(PrettyColor.normal.rawValue))
+//            attributedText.m80_setFont(UIFont(name: "Menlo", size: 12)!)
+//            self.prettyLabel.appendAttributedText(attributedText)
+            
+            formatHTML()
+        } else if contentType!.contains("text/html") {
+            formatHTML()
+        } else if contentType!.contains("application/json") {
+            formatJSON()
+        }
+
         //Set pretty scroll view
-        formatResponse(text: text)
+        
         let prettySize = prettyLabel.sizeThatFits(CGSize.init(width: width - 10, height: CGFloat.greatestFiniteMagnitude))
         prettyLabel.frame = CGRect.init(x: 5, y: 5, width: prettySize.width, height: prettySize.height)
         prettyLabel.backgroundColor = UIColor.clear
@@ -52,7 +69,7 @@ class PrettyViewController: UIViewController {
     }
     
     //MARK: - Service
-    func formatResponse(text: String) {
+    func formatJSON() {
         var space = String()
         var color = RGB(PrettyColor.normal.rawValue)
         for char in text.characters {
@@ -88,5 +105,9 @@ class PrettyViewController: UIViewController {
             attributedText.m80_setFont(UIFont(name: "Menlo", size: 12)!)
             self.prettyLabel.appendAttributedText(attributedText)
         }
+    }
+    
+    func formatHTML() {
+
     }
 }

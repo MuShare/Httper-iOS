@@ -17,6 +17,7 @@ enum Style: Int {
 }
 
 class ResultViewController: UIViewController, UIPageViewControllerDataSource {
+    
     @IBOutlet weak var styleSegmentedControl: UISegmentedControl!
     
     var pageViewController: UIPageViewController!
@@ -45,7 +46,7 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
                           encoding: URLEncoding.default,
                           headers: headers)
             .response { response in
-
+                
                 self.httpURLResponse = response.response
                 let infoBarButtonItem = UIBarButtonItem(image: UIImage.init(named: "info"),
                                                         style: UIBarButtonItemStyle.plain,
@@ -54,9 +55,9 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
                 self.navigationItem.rightBarButtonItem = infoBarButtonItem
                 
                 let utf8Text = String(data: response.data!, encoding: .utf8)
-                self.prettyViewController = PrettyViewController(text: utf8Text!)
+                self.prettyViewController = PrettyViewController(text: utf8Text!, headers: (response.response?.allHeaderFields)!)
                 self.rawViewController = RawViewController(text: utf8Text!)
-                self.previewViewController = PreviewViewController(text: utf8Text!)
+                self.previewViewController = PreviewViewController(text: utf8Text!, url: (response.response?.url)!)
                 self.pageViewController.setViewControllers([self.prettyViewController], direction: .forward, animated: true, completion: nil)
         }
 
