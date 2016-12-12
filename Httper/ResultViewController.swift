@@ -10,12 +10,6 @@ import UIKit
 import Alamofire
 import M80AttributedLabel
 
-enum Style: Int {
-    case pretty = 0
-    case raw = 1
-    case preview = 2
-}
-
 class ResultViewController: UIViewController, UIPageViewControllerDataSource {
     
     @IBOutlet weak var styleSegmentedControl: UISegmentedControl!

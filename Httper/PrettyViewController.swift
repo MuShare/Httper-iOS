@@ -10,6 +10,12 @@ import UIKit
 import M80AttributedLabel
 import Alamofire
 
+enum Style: Int {
+    case pretty = 0
+    case raw = 1
+    case preview = 2
+}
+
 class PrettyViewController: UIViewController {
     
     var text: String!
