@@ -11,7 +11,7 @@ import Alamofire
 
 let protocols = ["http", "https"]
 let backgroudColor = 0x30363b, accessoryBackgroudColot = 0x1e2121
-let keyboardHeight: CGFloat = 260.0
+let keyboardHeight: CGFloat = 280.0
 
 class RequestViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
@@ -25,12 +25,15 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     var method: String = "GET"
     var headers: HTTPHeaders!
     var parameters: Parameters!
+    var body: String! = "{\n    \"mail\":\"lm2343635@126.com\",\n    \"password\":\"123\"\n}"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         sendButton.layer.borderColor = UIColor.lightGray.cgColor
         setCloseKeyboardAccessoryForSender(sender: urlTextField)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(bodyChanged(notification:)), name: NSNotification.Name(rawValue: "bodyChanged"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,11 +43,18 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     //MARK: - UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (section == 0) ? headerCount : parameterCount
+        switch section {
+        case 0:
+            return headerCount
+        case 1:
+            return parameterCount
+        default:
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -64,41 +74,61 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         //Set name
         let nameLabel: UILabel = {
-            let lebel = UILabel(frame: CGRect(x: 15, y: 0, width: headerView.bounds.size.width - headerView.bounds.size.height, height: headerView.bounds.size.height))
-            lebel.textColor = UIColor.white
-            lebel.text = (section == 0) ? "Headers" : "Parameters"
-            return lebel
+            let label = UILabel(frame: CGRect(x: 15, y: 0, width: headerView.bounds.size.width - headerView.bounds.size.height, height: headerView.bounds.size.height))
+            label.textColor = UIColor.white
+            switch section {
+            case 0:
+                label.text = "Headers"
+            case 1:
+                label.text = "Parameters"
+            case 2:
+                label.text = "Body"
+            default:
+                break
+            }
+            return label
         }()
+        headerView.addSubview(nameLabel)
         
-        //Set button
-        let addButton: UIButton = {
-            let button = UIButton(frame: CGRect(x: tableView.bounds.size.width - 35, y: 0, width: headerView.bounds.size.height, height: headerView.bounds.size.height))
-            button.setImage(UIImage.init(named: "add_value"), for: UIControlState.normal)
-            button.tag = section
-            button.addTarget(self, action: #selector(addNewValue(_:)), for: .touchUpInside)
-            return button
-        }()
-        
+        if section < 2 {
+            //Set button
+            let addButton: UIButton = {
+                let button = UIButton(frame: CGRect(x: tableView.bounds.size.width - 35, y: 0, width: headerView.bounds.size.height, height: headerView.bounds.size.height))
+                button.setImage(UIImage.init(named: "add_value"), for: UIControlState.normal)
+                button.tag = section
+                button.addTarget(self, action: #selector(addNewValue(_:)), for: .touchUpInside)
+                return button
+            }()
+            headerView.addSubview(addButton)
+        }
+
         //Set line
         let lineView: UIView = {
             let view = UILabel(frame: CGRect(x: 15, y: 28, width: headerView.bounds.size.width - 15, height: 1))
             view.backgroundColor = UIColor.lightGray
             return view
         }()
-        
-        headerView.addSubview(nameLabel)
-        headerView.addSubview(addButton)
         headerView.addSubview(lineView)
         
         return headerView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "parameterIdentifier", for: indexPath as IndexPath)
-        let keyTextField = cell.viewWithTag(1) as! UITextField
-        let valueTextField = cell.viewWithTag(2) as! UITextField
-        setCloseKeyboardAccessoryForSender(sender: keyTextField)
-        setCloseKeyboardAccessoryForSender(sender: valueTextField)
+        let cell: UITableViewCell!
+        switch indexPath.section {
+        case 0:
+            fallthrough
+        case 1:
+            cell = tableView.dequeueReusableCell(withIdentifier: "parameterIdentifier", for: indexPath as IndexPath)
+            let keyTextField = cell.viewWithTag(1) as! UITextField
+            let valueTextField = cell.viewWithTag(2) as! UITextField
+            setCloseKeyboardAccessoryForSender(sender: keyTextField)
+            setCloseKeyboardAccessoryForSender(sender: valueTextField)
+        case 2:
+            cell = tableView.dequeueReusableCell(withIdentifier: "bodyIdentifier", for: indexPath)
+        default:
+            cell = nil
+        }
         return cell
     }
     
@@ -129,6 +159,8 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
             segue.destination.setValue("\(protocolLabel.text!)\(urlTextField.text!)", forKey: "url")
             segue.destination.setValue(headers, forKey: "headers")
             segue.destination.setValue(parameters, forKey: "parameters")
+        } else if segue.identifier == "requestBodySegue" {
+            segue.destination.setValue(body, forKey: "body")
         }
     }
     
@@ -163,7 +195,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         headers = HTTPHeaders()
         parameters = Parameters()
-        for section in 0 ..< valueTableView.numberOfSections {
+        for section in 0 ..< 2 {
             for row in 0 ..< valueTableView.numberOfRows(inSection: section) {
                 let cell: UITableViewCell = valueTableView.cellForRow(at: IndexPath(row: row, section: section))!
                 let keyTextField = cell.viewWithTag(1) as! UITextField
@@ -235,4 +267,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    func bodyChanged(notification: Notification) {
+        body = notification.object as! String
+    }
 }

@@ -75,7 +75,7 @@
                                     <constraint firstAttribute="height" constant="1" id="eC8-6i-42b"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="www.fczm.pw/blogs/8a2e746757be63690157c1b5a4080005" placeholder="request URL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1NK-Ds-epT">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="test.mushare.cn/api/user/account/login" placeholder="request URL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1NK-Ds-epT">
                                 <rect key="frame" x="72" y="130" width="232" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="xuq-PK-F5l"/>
@@ -172,6 +172,27 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="bodyIdentifier" id="KPs-En-r3w">
+                                        <rect key="frame" x="0.0" y="85" width="320" height="57"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KPs-En-r3w" id="xqd-M1-FGz">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="57"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Raw Request Body" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aih-1y-Z4X">
+                                                    <rect key="frame" x="16" y="18" width="271" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="DXb-74-dUq" kind="push" identifier="requestBodySegue" id="VfI-i8-6En"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -316,6 +337,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T1t-MQ-c9w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2275" y="-346"/>
+        </scene>
+        <!--Request Body-->
+        <scene sceneID="GE9-Wu-xzv">
+            <objects>
+                <viewController id="DXb-74-dUq" customClass="RequestBodyViewController" customModule="Httper" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Blh-PL-LaY"/>
+                        <viewControllerLayoutGuide type="bottom" id="jwU-1u-4xE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KIZ-Qz-TpE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EV7-O7-nEV">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="292"/>
+                                <color key="backgroundColor" red="0.187466681" green="0.21148559450000001" blue="0.23234263059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.187466681" green="0.21148559450000001" blue="0.23234263059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="EV7-O7-nEV" secondAttribute="trailing" constant="-16" id="C5d-o0-70w"/>
+                            <constraint firstItem="EV7-O7-nEV" firstAttribute="leading" secondItem="KIZ-Qz-TpE" secondAttribute="leadingMargin" constant="-16" id="VLt-M1-jpk"/>
+                            <constraint firstItem="EV7-O7-nEV" firstAttribute="top" secondItem="Blh-PL-LaY" secondAttribute="bottom" constant="-64" id="e3U-wV-C3b"/>
+                            <constraint firstItem="jwU-1u-4xE" firstAttribute="top" secondItem="EV7-O7-nEV" secondAttribute="bottom" constant="276" id="lpM-QB-abW"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Request Body" id="lIb-yG-fE4">
+                        <barButtonItem key="rightBarButtonItem" image="clear" id="hUF-du-8f4">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="cleatRequestBody:" destination="DXb-74-dUq" id="MAi-zu-yYc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="rawBodyTextView" destination="EV7-O7-nEV" id="MRy-24-zPP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bC9-0M-8Xu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1761" y="-1387"/>
         </scene>
         <!--Request Methods-->
         <scene sceneID="aEs-L5-oas">
@@ -556,6 +621,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="clear" width="30" height="30"/>
         <image name="delete_value" width="30" height="30"/>
         <image name="tab_history" width="30" height="30"/>
         <image name="tab_request" width="30" height="30"/>

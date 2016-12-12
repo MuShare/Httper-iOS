@@ -39,7 +39,7 @@ class RequestMethodsTableViewController: UITableViewController {
         let length = self.navigationController?.viewControllers.count
         let controller = self.navigationController?.viewControllers[length! - 2]
         controller?.setValue(methods[indexPath.row], forKey: "method")
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
 
 }

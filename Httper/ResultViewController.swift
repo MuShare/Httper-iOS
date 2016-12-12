@@ -10,6 +10,16 @@ import UIKit
 import Alamofire
 import M80AttributedLabel
 
+extension String: ParameterEncoding {
+    
+    public func encode(_ urlRequest: URLRequestConvertible, with parameters: Parameters?) throws -> URLRequest {
+        var request = try urlRequest.asURLRequest()
+        request.httpBody = data(using: .utf8, allowLossyConversion: false)
+        return request
+    }
+    
+}
+
 class ResultViewController: UIViewController, UIPageViewControllerDataSource {
     
     @IBOutlet weak var styleSegmentedControl: UISegmentedControl!
@@ -37,7 +47,7 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
         Alamofire.request(url,
                           method: getHTTPMethod(method: method),
                           parameters: parameters,
-                          encoding: URLEncoding.default,
+                          encoding: "",
                           headers: headers)
             .response { response in
                 

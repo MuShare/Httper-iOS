@@ -40,15 +40,10 @@ class PrettyViewController: UIViewController {
         let height = self.view.frame.size.height
         
         let contentType = headers["Content-Type"] as? String
-        if contentType == nil  {
-//            let attributedText = NSMutableAttributedString(string: text)
-//            attributedText.m80_setTextColor(RGB(PrettyColor.normal.rawValue))
-//            attributedText.m80_setFont(UIFont(name: "Menlo", size: 12)!)
-//            self.prettyLabel.appendAttributedText(attributedText)
-            
-            formatHTML()
+        if contentType == nil {
+            loadOriginal()
         } else if contentType!.contains("text/html") {
-            formatHTML()
+            loadOriginal()
         } else if contentType!.contains("application/json") {
             formatJSON()
         }
@@ -75,6 +70,13 @@ class PrettyViewController: UIViewController {
     }
     
     //MARK: - Service
+    func loadOriginal() {
+        let attributedText = NSMutableAttributedString(string: text)
+        attributedText.m80_setTextColor(RGB(PrettyColor.normal.rawValue))
+        attributedText.m80_setFont(UIFont(name: "Menlo", size: 12)!)
+        self.prettyLabel.appendAttributedText(attributedText)
+    }
+    
     func formatJSON() {
         var space = String()
         var color = RGB(PrettyColor.normal.rawValue)
@@ -112,8 +114,5 @@ class PrettyViewController: UIViewController {
             self.prettyLabel.appendAttributedText(attributedText)
         }
     }
-    
-    func formatHTML() {
 
-    }
 }
