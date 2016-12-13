@@ -9,9 +9,15 @@
 import UIKit
 import Alamofire
 
+enum DesignColor: Int {
+    case background = 0x30363b
+    case nagivation = 0x3d4143
+}
+
+let urlKeyboardCharacters = [":", "/", "?", "&", ".", "="]
+
 let protocols = ["http", "https"]
-let backgroudColor = 0x30363b, accessoryBackgroudColot = 0x1e2121
-let keyboardHeight: CGFloat = 280.0
+let keyboardHeight: CGFloat = 320.0
 
 class RequestViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
@@ -21,11 +27,13 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var valueTableView: UITableView!
     @IBOutlet weak var sendButton: UIButton!
     
+    var editingTextField: UITextField!
+    
     var headerCount = 1, parameterCount = 1
     var method: String = "GET"
     var headers: HTTPHeaders!
     var parameters: Parameters!
-    var body: String! = "{\n    \"mail\":\"lm2343635@126.com\",\n    \"password\":\"123\"\n}"
+    var body: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +76,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView: UIView = {
             let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
-            view.backgroundColor = RGB(backgroudColor)
+            view.backgroundColor = RGB(DesignColor.background.rawValue)
             return view
         }()
         
@@ -134,6 +142,10 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     //MARK: - UITextViewDelegate
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        editingTextField = textField
+        if textField == urlTextField {
+            return
+        }
         let cell = textField.superview?.superview
         let rect = cell?.convert((cell?.bounds)!, to: self.view)
         let y = (rect?.origin.y)!
@@ -236,10 +248,26 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         let topView: UIToolbar = {
             let view = UIToolbar.init(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 35))
             view.barStyle = .black;
+            let clearButtonItem = UIBarButtonItem(title: NSLocalizedString("clear_name", comment: ""),
+                                                  style: UIBarButtonItemStyle.plain,
+                                                  target: self,
+                                                  action: #selector(clearTextFeild))
+            clearButtonItem.tintColor = UIColor.white
             let spaceButtonItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
             let doneButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(editFinish))
             doneButtonItem.tintColor = UIColor.white
-            view.setItems([spaceButtonItem, doneButtonItem], animated: false)
+            
+            var items = [clearButtonItem, spaceButtonItem]
+            for character in urlKeyboardCharacters {
+                items.append(createCharacterBarButtonItem(character: character,
+                                                          target: self,
+                                                          action: #selector(addCharacter(_:)),
+                                                          width: 26))
+            }
+            items.append(spaceButtonItem)
+            items.append(doneButtonItem)
+            view.setItems(items, animated: false)
+            
             return view
         }()
         
@@ -247,28 +275,25 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func editFinish() {
-        if urlTextField.isFirstResponder {
-            urlTextField.resignFirstResponder()
-            return
+        if editingTextField.isFirstResponder {
+            editingTextField.resignFirstResponder()
         }
-        for section in 0 ..< valueTableView.numberOfSections {
-            for row in 0 ..< valueTableView.numberOfRows(inSection: section) {
-                let cell: UITableViewCell = valueTableView.cellForRow(at: IndexPath(row: row, section: section))!
-                let keyTextField = cell.viewWithTag(1) as! UITextField
-                let valueTextField = cell.viewWithTag(2) as! UITextField
-                if keyTextField.isFirstResponder {
-                    keyTextField.resignFirstResponder()
-                    return
-                }
-                if valueTextField.isFirstResponder {
-                    valueTextField.resignFirstResponder()
-                    return
-                }
-            }
+    }
+    
+    func clearTextFeild() {
+        if editingTextField.isFirstResponder {
+            editingTextField.text = ""
+        }
+    }
+    
+    func addCharacter(_ sender: UIButton) {
+        if editingTextField.isFirstResponder {
+            editingTextField.text = editingTextField.text! + (sender.titleLabel?.text)!
         }
     }
     
     func bodyChanged(notification: Notification) {
         body = notification.object as! String
     }
+
 }

@@ -43,3 +43,19 @@ func replaceBaeButtonItemWithView(controller: UIViewController, view: UIView) {
     let barButton = UIBarButtonItem(customView: view)
     controller.navigationItem.rightBarButtonItem = barButton
 }
+
+func createCharacterBarButtonItem(character: String, target: UIViewController, action: Selector, width: CGFloat) -> UIBarButtonItem {
+    let characterButton: UIButton = {
+        let button = UIButton(frame: CGRect(x: 2, y: 2, width: width, height: 26))
+        button.layer.cornerRadius = 5
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.white.cgColor
+        button.setTitle(character, for: .normal)
+        button.tintColor = UIColor.white
+        button.backgroundColor = RGB(DesignColor.nagivation.rawValue)
+        button.addTarget(target, action: action, for: .touchUpInside)
+        return button
+    }()
+    let characterButtonItem = UIBarButtonItem(customView: characterButton)
+    return characterButtonItem
+}

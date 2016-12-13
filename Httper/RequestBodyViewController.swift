@@ -8,6 +8,8 @@
 
 import UIKit
 
+let bodyKeyboardCharacters = [":", "\"", ",", "{", "}", "[", "]"]
+
 class RequestBodyViewController: UIViewController {
 
     var body: String!
@@ -17,6 +19,7 @@ class RequestBodyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         rawBodyTextView.text = body
+        self.setKeyboardAccessoryForSender(sender: rawBodyTextView)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -42,4 +45,44 @@ class RequestBodyViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    // MARK: - Service
+    func setKeyboardAccessoryForSender(sender: UITextView) {
+        let topView: UIToolbar = {
+            let view = UIToolbar.init(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 35))
+            view.barStyle = .black;
+            let spaceButtonItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+            var items = [spaceButtonItem]
+            for character in bodyKeyboardCharacters {
+                items.append(createCharacterBarButtonItem(character: character,
+                                                          target: self,
+                                                          action: #selector(addCharacter(_:)),
+                                                          width: 26))
+            }
+            items.append(spaceButtonItem)
+            
+            let tabButtonItem = createCharacterBarButtonItem(character: NSLocalizedString("tab_name", comment: ""),
+                                                             target: self,
+                                                             action: #selector(addTab),
+                                                             width: 40)
+
+            tabButtonItem.tintColor = UIColor.white
+            items.append(tabButtonItem)
+            view.setItems(items, animated: false)
+            return view
+        }()
+        
+        sender.inputAccessoryView = topView
+    }
+    
+    func addCharacter(_ sender: UIButton) {
+        if rawBodyTextView.isFirstResponder {
+            rawBodyTextView.text = rawBodyTextView.text! + (sender.titleLabel?.text)!
+        }
+    }
+
+    func addTab() {
+        if rawBodyTextView.isFirstResponder {
+            rawBodyTextView.text = rawBodyTextView.text! + "  "
+        }
+    }
 }
