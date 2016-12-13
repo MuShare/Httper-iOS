@@ -159,6 +159,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
             segue.destination.setValue("\(protocolLabel.text!)\(urlTextField.text!)", forKey: "url")
             segue.destination.setValue(headers, forKey: "headers")
             segue.destination.setValue(parameters, forKey: "parameters")
+            segue.destination.setValue(body, forKey: "body")
         } else if segue.identifier == "requestBodySegue" {
             segue.destination.setValue(body, forKey: "body")
         }

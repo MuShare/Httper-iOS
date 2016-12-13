@@ -6,12 +6,6 @@
   Copyright © 2016 limeng. All rights reserved.
 */
 
-tip_name = "Tip";
-cancel_name = "Cancel";
-
-url_empty = "Request URL cannot be empty!";
-value_max = "Cannot add more parameters and headers due to max limits 7.";
-
 GET = "The GET method is used to retrieve information from the given server using a given URI.";
 HEAD = "Same as GET, but transfers the status line and header section only.";
 POST = "POST request is used to send data to the server, for example, customer information, file upload, etc. using HTML forms.";
@@ -21,3 +15,14 @@ CONNECT = "Establishes a tunnel to the server identified by a given URI.";
 OPTIONS = "Describes the communication options for the target resource.";
 TRACE = "Performs a message loop-back test along the path to the target resource.";
 PATCH = "PATCH can be used to update partial resources when you only need to update one field of the resource.";
+
+
+tip_name = "Tip";
+cancel_name = "Cancel";
+yes_name = "Yes";
+ok_name = "OK";
+
+url_empty = "Request URL cannot be empty!";
+value_max = "Cannot add more parameters and headers due to max limits 7.";
+
+clear_request_body = "Are you sure to clear request body?";

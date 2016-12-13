@@ -29,7 +29,7 @@ func showAlert(title: String, content: String, controller: UIViewController) {
     let alertController = UIAlertController(title: title,
                                             message: content,
                                             preferredStyle: .alert)
-    alertController.addAction(UIAlertAction.init(title: NSLocalizedString("cancel_name", comment: ""), style: .cancel, handler: nil))
+    alertController.addAction(UIAlertAction.init(title: NSLocalizedString("ok_name", comment: ""), style: .cancel, handler: nil))
     controller.present(alertController, animated: true, completion: nil)
 }
 

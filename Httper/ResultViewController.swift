@@ -33,6 +33,7 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
     var method: String!, url: String!
     var headers: HTTPHeaders!
     var parameters: Parameters!
+    var body: String!
     
     var httpURLResponse: HTTPURLResponse!
     
@@ -47,7 +48,7 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
         Alamofire.request(url,
                           method: getHTTPMethod(method: method),
                           parameters: parameters,
-                          encoding: "",
+                          encoding: body,
                           headers: headers)
             .response { response in
                 

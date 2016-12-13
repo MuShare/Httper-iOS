@@ -26,6 +26,7 @@
 		E48D41701D444F3F0028B84F /* HttperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48D416F1D444F3F0028B84F /* HttperTests.swift */; };
 		E48D417B1D444F3F0028B84F /* HttperUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48D417A1D444F3F0028B84F /* HttperUITests.swift */; };
 		E4D1CAE51DF5C028008DC4F9 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */; };
+		E4E297B11E00021500AD484E /* ResponseHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E297B01E00021500AD484E /* ResponseHeaderViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		E48D417A1D444F3F0028B84F /* HttperUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttperUITests.swift; sourceTree = "<group>"; };
 		E48D417C1D444F3F0028B84F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
+		E4E297B01E00021500AD484E /* ResponseHeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseHeaderViewController.swift; sourceTree = "<group>"; };
 		EF3A954FCEE5E084F25916CA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -208,6 +210,7 @@
 				E4007EB81DFEE7B7002A87FA /* RequestBodyViewController.swift */,
 				E431C4A81DF7179D006BB2D6 /* RequestMethodsTableViewController.swift */,
 				E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */,
+				E4E297B01E00021500AD484E /* ResponseHeaderViewController.swift */,
 				E42DDC831DFA8CB200FAD174 /* ResponseInfoTableViewController.swift */,
 				E447287A1DF7CE80007D2C8B /* ResultViewController.swift */,
 			);
@@ -401,6 +404,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4E297B11E00021500AD484E /* ResponseHeaderViewController.swift in Sources */,
 				E48D41601D444F3F0028B84F /* Httper.xcdatamodeld in Sources */,
 				E42DDC841DFA8CB200FAD174 /* ResponseInfoTableViewController.swift in Sources */,
 				E41642D31DF970CE00F0339E /* CommonTool.swift in Sources */,

@@ -13,6 +13,8 @@ class ResponseInfoTableViewController: UITableViewController {
     
     var response: HTTPURLResponse!
     var headerKeys = Array<String>(), headerValues = Array<String>()
+    
+    var selectedKey: String!, selectedValue: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +22,14 @@ class ResponseInfoTableViewController: UITableViewController {
         for (key, value) in response.allHeaderFields {
             headerKeys.append(key.description)
             headerValues.append(value as! String)
+        }
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "responseHeaderSegue" {
+            segue.destination.setValue(selectedKey, forKey: "headerKey")
+            segue.destination.setValue(selectedValue, forKey: "headerValue")
         }
     }
 
@@ -114,6 +124,15 @@ class ResponseInfoTableViewController: UITableViewController {
             }
         }
         return cell
+    }
+    
+    // MARK: - UITableViewDelegate
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 2 {
+            selectedKey = headerKeys[indexPath.row]
+            selectedValue = headerValues[indexPath.row]
+            self.performSegue(withIdentifier: "responseHeaderSegue", sender: self);
+        }
     }
 
 }
