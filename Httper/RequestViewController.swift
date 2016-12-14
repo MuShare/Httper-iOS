@@ -230,6 +230,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }
             }
         }
+    
         self.performSegue(withIdentifier: "resultSegue", sender: self)
     }
     

@@ -26,6 +26,9 @@
 		E48D41651D444F3F0028B84F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E48D41631D444F3F0028B84F /* LaunchScreen.storyboard */; };
 		E48D41701D444F3F0028B84F /* HttperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48D416F1D444F3F0028B84F /* HttperTests.swift */; };
 		E48D417B1D444F3F0028B84F /* HttperUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48D417A1D444F3F0028B84F /* HttperUITests.swift */; };
+		E4A37A9A1E018C7300586BA1 /* Request+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A37A981E018C7300586BA1 /* Request+CoreDataClass.swift */; };
+		E4A37A9B1E018C7300586BA1 /* Request+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A37A991E018C7300586BA1 /* Request+CoreDataProperties.swift */; };
+		E4A37A9D1E018D7500586BA1 /* RequestDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A37A9C1E018D7500586BA1 /* RequestDao.swift */; };
 		E4D1CAE51DF5C028008DC4F9 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */; };
 		E4E297B11E00021500AD484E /* ResponseHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E297B01E00021500AD484E /* ResponseHeaderViewController.swift */; };
 /* End PBXBuildFile section */
@@ -78,6 +81,9 @@
 		E48D41761D444F3F0028B84F /* HttperUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HttperUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E48D417A1D444F3F0028B84F /* HttperUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttperUITests.swift; sourceTree = "<group>"; };
 		E48D417C1D444F3F0028B84F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4A37A981E018C7300586BA1 /* Request+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Request+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E4A37A991E018C7300586BA1 /* Request+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Request+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E4A37A9C1E018D7500586BA1 /* RequestDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestDao.swift; sourceTree = "<group>"; };
 		E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		E4E297B01E00021500AD484E /* ResponseHeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseHeaderViewController.swift; sourceTree = "<group>"; };
 		EF3A954FCEE5E084F25916CA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -178,6 +184,7 @@
 		E48D41561D444F3F0028B84F /* Httper */ = {
 			isa = PBXGroup;
 			children = (
+				E4A37A8B1E0184ED00586BA1 /* Data */,
 				E40F66A61E01140800C6013E /* History */,
 				E4D1CAE01DF5BFCF008DC4F9 /* Request */,
 				E447287C1DF7D615007D2C8B /* Tool */,
@@ -185,7 +192,6 @@
 				E48D41571D444F3F0028B84F /* AppDelegate.swift */,
 				E48D41611D444F3F0028B84F /* Assets.xcassets */,
 				E455B3EE1D4CFA7C007C14B8 /* Header.h */,
-				E48D415E1D444F3F0028B84F /* Httper.xcdatamodeld */,
 				E48D41661D444F3F0028B84F /* Info.plist */,
 				E48D41631D444F3F0028B84F /* LaunchScreen.storyboard */,
 				E48D415B1D444F3F0028B84F /* Main.storyboard */,
@@ -209,6 +215,17 @@
 				E48D417C1D444F3F0028B84F /* Info.plist */,
 			);
 			path = HttperUITests;
+			sourceTree = "<group>";
+		};
+		E4A37A8B1E0184ED00586BA1 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				E4A37A981E018C7300586BA1 /* Request+CoreDataClass.swift */,
+				E4A37A991E018C7300586BA1 /* Request+CoreDataProperties.swift */,
+				E48D415E1D444F3F0028B84F /* Httper.xcdatamodeld */,
+				E4A37A9C1E018D7500586BA1 /* RequestDao.swift */,
+			);
+			name = Data;
 			sourceTree = "<group>";
 		};
 		E4D1CAE01DF5BFCF008DC4F9 /* Request */ = {
@@ -416,18 +433,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4E297B11E00021500AD484E /* ResponseHeaderViewController.swift in Sources */,
+				E4A37A9D1E018D7500586BA1 /* RequestDao.swift in Sources */,
 				E48D41601D444F3F0028B84F /* Httper.xcdatamodeld in Sources */,
 				E42DDC841DFA8CB200FAD174 /* ResponseInfoTableViewController.swift in Sources */,
 				E41642D31DF970CE00F0339E /* CommonTool.swift in Sources */,
 				E40F66A81E01142900C6013E /* HistoryTableViewController.swift in Sources */,
 				E4D1CAE51DF5C028008DC4F9 /* RequestViewController.swift in Sources */,
 				E48553361DF9B2CF00A1DB60 /* PreviewViewController.swift in Sources */,
+				E4A37A9A1E018C7300586BA1 /* Request+CoreDataClass.swift in Sources */,
 				E48D41581D444F3F0028B84F /* AppDelegate.swift in Sources */,
 				E48553341DF9B2BF00A1DB60 /* RawViewController.swift in Sources */,
 				E48553321DF9B2AF00A1DB60 /* PrettyViewController.swift in Sources */,
 				E4007EB91DFEE7B7002A87FA /* RequestBodyViewController.swift in Sources */,
 				E40B257E1DF44BD20039CA8D /* MainViewController.swift in Sources */,
 				E431C4A91DF7179D006BB2D6 /* RequestMethodsTableViewController.swift in Sources */,
+				E4A37A9B1E018C7300586BA1 /* Request+CoreDataProperties.swift in Sources */,
 				E447287B1DF7CE80007D2C8B /* ResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
