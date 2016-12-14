@@ -48,7 +48,7 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
         Alamofire.request(url,
                           method: getHTTPMethod(method: method),
                           parameters: parameters,
-                          encoding: body,
+                          encoding: (body == nil) ? URLEncoding.default : body,
                           headers: headers)
             .response { response in
                 
