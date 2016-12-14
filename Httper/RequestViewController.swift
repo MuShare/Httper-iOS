@@ -174,6 +174,13 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
             segue.destination.setValue(body, forKey: "body")
         } else if segue.identifier == "requestBodySegue" {
             segue.destination.setValue(body, forKey: "body")
+        } else if segue.identifier == "requestMethodSegue" {
+            if editingTextField == nil {
+                return
+            }
+            if editingTextField.isFirstResponder {
+                editingTextField.resignFirstResponder()
+            }
         }
     }
     
