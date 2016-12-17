@@ -31,5 +31,10 @@ class RequestDao: NSObject {
         delegate.saveContext()
         return request
     }
+    
+    func findAll() -> [Request] {
+        let fetchRequest = NSFetchRequest<Request>(entityName: NSStringFromClass(Request.self))
+        return try! delegate.managedObjectContext.fetch(fetchRequest)
+    }
 
 }

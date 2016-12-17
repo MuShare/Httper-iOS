@@ -145,6 +145,7 @@
 		E431C4AA1DF7215A006BB2D6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E455B3EE1D4CFA7C007C14B8 /* Header.h */,
 				E431C4AB1DF72172006BB2D6 /* Localizable.strings */,
 				E41642D11DF96F6800F0339E /* Httper-Bridging-Header.h */,
 			);
@@ -191,7 +192,6 @@
 				E431C4AA1DF7215A006BB2D6 /* Supporting Files */,
 				E48D41571D444F3F0028B84F /* AppDelegate.swift */,
 				E48D41611D444F3F0028B84F /* Assets.xcassets */,
-				E455B3EE1D4CFA7C007C14B8 /* Header.h */,
 				E48D41661D444F3F0028B84F /* Info.plist */,
 				E48D41631D444F3F0028B84F /* LaunchScreen.storyboard */,
 				E48D415B1D444F3F0028B84F /* Main.storyboard */,
