@@ -37,6 +37,8 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
     
     var httpURLResponse: HTTPURLResponse!
     
+    let requestDao = RequestDao()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -67,6 +69,10 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
         }
 
         NotificationCenter.default.addObserver(self, selector: #selector(currentPageChanged(notification:)), name: NSNotification.Name(rawValue: "currentPageChanged"), object: nil)
+        
+        //Save request
+        let bodyData = (body == nil) ? nil : NSData.init(data: body.data(using: .utf8)!)
+        _ = requestDao.saveOrUpdate(method: method, url: url, headers: headers, parameters: parameters, bodytype: "raw", body: bodyData)
     }
 
     //MARK: - UIPageViewControllerDataSource
@@ -142,4 +148,5 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
     func showRequestInfo() {
         self.performSegue(withIdentifier: "requestInfoSegue", sender: self)
     }
+    
 }

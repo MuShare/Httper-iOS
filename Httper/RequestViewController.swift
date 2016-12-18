@@ -26,6 +26,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var urlTextField: UITextField!
     @IBOutlet weak var valueTableView: UITableView!
     @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var protocolsSegmentedControl: UISegmentedControl!
     
     var editingTextField: UITextField!
     
@@ -34,6 +35,8 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     var headers: HTTPHeaders!
     var parameters: Parameters!
     var body: String!
+    
+    var request: Request?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +50,31 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         requestMethodButton.setTitle(method, for: .normal)
+        
+        if request != nil {
+            method = request!.method!
+            headers = NSKeyedUnarchiver.unarchiveObject(with: request!.headers! as Data) as! HTTPHeaders
+            parameters = NSKeyedUnarchiver.unarchiveObject(with: request!.parameters! as Data) as! Parameters
+            body = (request!.body == nil) ? nil: String(data: request!.body! as Data, encoding: .utf8)
+            
+            //Set request method
+            requestMethodButton.setTitle(method, for: .normal)
+            //Set url
+            var url = (request?.url)!
+            if url.substring(to: url.index(url.startIndex, offsetBy: protocols[1].characters.count + 3)) == "\(protocols[1])://" {
+                url = url.substring(from: url.index(url.startIndex, offsetBy: 8))
+                protocolsSegmentedControl.selectedSegmentIndex = 1
+                protocolLabel.text = "\(protocols[1])://"
+            } else {
+                url = url.substring(from: url.index(url.startIndex, offsetBy: 7))
+                protocolsSegmentedControl.selectedSegmentIndex = 0
+                protocolLabel.text = "\(protocols[0])://"
+            }
+            urlTextField.text = url
+            
+            valueTableView.reloadData()
+            request = nil
+        }
     }
     
     //MARK: - UITableViewDataSource
@@ -123,19 +151,33 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell!
-        switch indexPath.section {
-        case 0:
-            fallthrough
-        case 1:
-            cell = tableView.dequeueReusableCell(withIdentifier: "parameterIdentifier", for: indexPath as IndexPath)
-            let keyTextField = cell.viewWithTag(1) as! UITextField
-            let valueTextField = cell.viewWithTag(2) as! UITextField
-            setCloseKeyboardAccessoryForSender(sender: keyTextField)
-            setCloseKeyboardAccessoryForSender(sender: valueTextField)
-        case 2:
+        //Cell is body
+        if indexPath.section == 2 {
             cell = tableView.dequeueReusableCell(withIdentifier: "bodyIdentifier", for: indexPath)
-        default:
-            cell = nil
+            return cell
+        }
+        
+        //Cell is headers or parameters
+        cell = tableView.dequeueReusableCell(withIdentifier: "parameterIdentifier", for: indexPath as IndexPath)
+        let keyTextField = cell.viewWithTag(1) as! UITextField
+        let valueTextField = cell.viewWithTag(2) as! UITextField
+        setCloseKeyboardAccessoryForSender(sender: keyTextField)
+        setCloseKeyboardAccessoryForSender(sender: valueTextField)
+        
+        //Set headers if it is not null
+        if headers != nil && indexPath.section == 0 {
+            for (key, value) in headers {
+                keyTextField.text = key
+                valueTextField.text = value
+            }
+        }
+        
+        //Set parameters if it is not null {
+        if parameters != nil && indexPath.section == 1 {
+            for (key, value) in parameters {
+                keyTextField.text = key
+                valueTextField.text = "\(value)"
+            }
         }
         return cell
     }
@@ -174,6 +216,13 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
             segue.destination.setValue(body, forKey: "body")
         } else if segue.identifier == "requestBodySegue" {
             segue.destination.setValue(body, forKey: "body")
+        } else if segue.identifier == "requestMethodSegue" {
+            if editingTextField == nil {
+                return
+            }
+            if editingTextField.isFirstResponder {
+                editingTextField.resignFirstResponder()
+            }
         }
     }
     
@@ -223,6 +272,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }
             }
         }
+    
         self.performSegue(withIdentifier: "resultSegue", sender: self)
     }
     

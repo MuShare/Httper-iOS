@@ -31,7 +31,7 @@ class RequestBodyViewController: UIViewController {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "bodyChanged"), object: rawBodyTextView.text)
     }
 
-    //MARK: - Action
+    // MARK: - Action
     @IBAction func cleatRequestBody(_ sender: Any) {
         let alertController = UIAlertController(title: NSLocalizedString("tip_name", comment: ""),
                                                 message: NSLocalizedString("clear_request_body", comment: ""),
@@ -58,8 +58,7 @@ class RequestBodyViewController: UIViewController {
                                                           action: #selector(addCharacter(_:)),
                                                           width: 26))
             }
-            items.append(spaceButtonItem)
-            
+
             let tabButtonItem = createCharacterBarButtonItem(character: NSLocalizedString("tab_name", comment: ""),
                                                              target: self,
                                                              action: #selector(addTab),
@@ -67,6 +66,8 @@ class RequestBodyViewController: UIViewController {
 
             tabButtonItem.tintColor = UIColor.white
             items.append(tabButtonItem)
+            items.append(spaceButtonItem)
+            
             view.setItems(items, animated: false)
             return view
         }()
