@@ -34,6 +34,7 @@ class RequestDao: NSObject {
     
     func findAll() -> [Request] {
         let fetchRequest = NSFetchRequest<Request>(entityName: NSStringFromClass(Request.self))
+        fetchRequest.sortDescriptors = [NSSortDescriptor.init(key: "update", ascending: false)]
         return try! delegate.managedObjectContext.fetch(fetchRequest)
     }
 

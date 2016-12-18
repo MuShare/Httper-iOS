@@ -45,5 +45,12 @@ class HistoryTableViewController: UITableViewController {
         return cell
     }
 
+    // MARK: - UITableViewDelegate
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let length = self.navigationController?.viewControllers.count
+        let controller = self.navigationController?.viewControllers[length! - 2]
+        controller?.setValue(requests[indexPath.row], forKey: "request")
+        _ = self.navigationController?.popViewController(animated: true)
+    }
 
 }
