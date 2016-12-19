@@ -38,4 +38,8 @@ class RequestDao: NSObject {
         return try! delegate.managedObjectContext.fetch(fetchRequest)
     }
 
+    func delete(_ deleteRequest: Request) {
+        delegate.managedObjectContext.delete(deleteRequest)
+        delegate.saveContext()
+    }
 }

@@ -23,6 +23,7 @@ yes_name = "Yes";
 ok_name = "OK";
 clear_name = "Clear";
 tab_name = "Tab";
+delete_name = "Delete";
 
 url_empty = "Request URL cannot be empty!";
 value_max = "Cannot add more parameters and headers due to max limits 7.";
