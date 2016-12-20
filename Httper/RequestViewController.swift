@@ -176,6 +176,8 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell = tableView.dequeueReusableCell(withIdentifier: "parameterIdentifier", for: indexPath as IndexPath)
         let keyTextField = cell.viewWithTag(1) as! UITextField
         let valueTextField = cell.viewWithTag(2) as! UITextField
+        keyTextField.text = ""
+        valueTextField.text = ""
         setCloseKeyboardAccessoryForSender(sender: keyTextField)
         setCloseKeyboardAccessoryForSender(sender: valueTextField)
         
@@ -240,17 +242,22 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     //MARK: - Action
     @IBAction func deleteValue(_ sender: Any) {
         let cell: UITableViewCell = (sender as! UIView).superview?.superview as! UITableViewCell
-        let indexPath = valueTableView.indexPath(for: cell)
-        if indexPath?.section == 0 {
-            if headerCount > 1 {
-                headerCount -= 1
-                valueTableView.deleteRows(at: [indexPath!], with: .automatic)
-            }
-        } else if indexPath?.section == 1 {
-            if parameterCount > 1 {
-                parameterCount -= 1
-                valueTableView.deleteRows(at: [indexPath!], with: .automatic)
-            }
+        let indexPath = valueTableView.indexPath(for: cell)!
+        if indexPath.section == 0 && headerCount > 1{
+            headerCount -= 1
+            valueTableView.deleteRows(at: [indexPath], with: .automatic)
+            headerKeys.remove(at: indexPath.row)
+            headerValues.remove(at: indexPath.row)
+        } else if indexPath.section == 1 && parameterCount > 1 {
+            parameterCount -= 1
+            valueTableView.deleteRows(at: [indexPath], with: .automatic)
+            parameterKeys.remove(at: indexPath.row)
+            parameterValues.remove(at: indexPath.row)
+        } else {
+            let keyTextField = cell.viewWithTag(1) as! UITextField
+            let valueTextField = cell.viewWithTag(2) as! UITextField
+            keyTextField.text = ""
+            valueTextField.text = ""
         }
     }
     
@@ -285,6 +292,31 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     
         self.performSegue(withIdentifier: "resultSegue", sender: self)
+    }
+    
+    @IBAction func celarRequest(_ sender: Any) {
+        let alertController = UIAlertController(title: NSLocalizedString("tip_name", comment: ""),
+                                                message: NSLocalizedString("clear_request", comment: ""),
+                                                preferredStyle: .alert);
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("cancel_name", comment: ""),
+                                                style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("yes_name", comment: ""),
+                                                style: .destructive) { action in
+            if self.editingTextField != nil {
+                if self.editingTextField.isFirstResponder {
+                    self.editingTextField.resignFirstResponder()
+                }
+            }
+            self.urlTextField.text = ""
+            self.headerCount = 1
+            self.parameterCount = 1
+            self.headerKeys = []
+            self.headerValues = []
+            self.parameterKeys = []
+            self.parameterValues = []
+            self.valueTableView.reloadData()
+        })
+        self.present(alertController, animated: true, completion: nil)
     }
     
     //MARK: - Service

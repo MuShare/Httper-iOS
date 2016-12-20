@@ -37,4 +37,5 @@ response_headers = "Response Headers";
 url_empty = "Request URL cannot be empty!";
 value_max = "Cannot add more parameters and headers due to max limits 7.";
 
+clear_request = "Are you sure to clear and reset request?";
 clear_request_body = "Are you sure to clear request body?";
