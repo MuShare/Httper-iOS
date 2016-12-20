@@ -36,7 +36,10 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     var parameters: Parameters!
     var body: String!
     
+    //Variables for loading request history.
     var request: Request?
+    var headerKeys: Array<String> = [], headerValues: Array<String> = []
+    var parameterKeys: Array<String> = [], parameterValues: Array<String> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,8 +56,20 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         if request != nil {
             method = request!.method!
-            headers = NSKeyedUnarchiver.unarchiveObject(with: request!.headers! as Data) as! HTTPHeaders
-            parameters = NSKeyedUnarchiver.unarchiveObject(with: request!.parameters! as Data) as! Parameters
+            headerKeys = Array()
+            headerValues = Array()
+            for (key, value) in NSKeyedUnarchiver.unarchiveObject(with: request!.headers! as Data) as! HTTPHeaders {
+                headerKeys.append(key)
+                headerValues.append(value)
+            }
+            parameterKeys = Array()
+            parameterValues = Array()
+            for (key, value) in NSKeyedUnarchiver.unarchiveObject(with: request!.parameters! as Data) as! Parameters {
+                parameterKeys.append(key)
+                parameterValues.append(value as! String)
+            }
+            headerCount = headerKeys.count == 0 ? 1: headerKeys.count
+            parameterCount = parameterKeys.count == 0 ? 1: parameterKeys.count
             body = (request!.body == nil) ? nil: String(data: request!.body! as Data, encoding: .utf8)
             
             //Set request method
@@ -165,19 +180,15 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         setCloseKeyboardAccessoryForSender(sender: valueTextField)
         
         //Set headers if it is not null
-        if headers != nil && indexPath.section == 0 {
-            for (key, value) in headers {
-                keyTextField.text = key
-                valueTextField.text = value
-            }
+        if headerKeys.count > indexPath.row && indexPath.section == 0 {
+            keyTextField.text = headerKeys[indexPath.row]
+            valueTextField.text = headerValues[indexPath.row]
         }
         
-        //Set parameters if it is not null {
-        if parameters != nil && indexPath.section == 1 {
-            for (key, value) in parameters {
-                keyTextField.text = key
-                valueTextField.text = "\(value)"
-            }
+        //Set parameters if it is not null
+        if parameterKeys.count > indexPath.row && indexPath.section == 1 {
+            keyTextField.text = parameterKeys[indexPath.row]
+            valueTextField.text = parameterValues[indexPath.row]
         }
         return cell
     }
