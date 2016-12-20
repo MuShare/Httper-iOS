@@ -22,7 +22,6 @@ class HistoryTableViewController: UITableViewController {
         requests = requestDao.findAll()
     }
 
-
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -44,6 +43,18 @@ class HistoryTableViewController: UITableViewController {
         updateLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(reuqest.update)))
         return cell
     }
+    
+    /**
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteButton = UITableViewRowAction(style: .default,
+                                                title: NSLocalizedString("delete_name", comment: ""),
+                                                handler: { (action, indexPath) in
+            self.tableView.dataSource?.tableView!(self.tableView, commit: .delete, forRowAt: indexPath)
+        })
+        deleteButton.backgroundColor = RGB(PrettyColor.key.rawValue)
+        return [deleteButton]
+    }
+    */
 
     // MARK: - UITableViewDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -52,5 +63,13 @@ class HistoryTableViewController: UITableViewController {
         controller?.setValue(requests[indexPath.row], forKey: "request")
         _ = self.navigationController?.popViewController(animated: true)
     }
-
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete the row from the data source
+            requestDao.delete(requests[indexPath.row])
+            requests.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } 
+    }
 }

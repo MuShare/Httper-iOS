@@ -114,11 +114,11 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
             label.textColor = UIColor.white
             switch section {
             case 0:
-                label.text = "Headers"
+                label.text = NSLocalizedString("headers", comment: "")
             case 1:
-                label.text = "Parameters"
+                label.text = NSLocalizedString("parameters", comment: "")
             case 2:
-                label.text = "Body"
+                label.text = NSLocalizedString("body", comment: "")
             default:
                 break
             }
