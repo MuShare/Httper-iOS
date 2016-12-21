@@ -176,8 +176,10 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell = tableView.dequeueReusableCell(withIdentifier: "parameterIdentifier", for: indexPath as IndexPath)
         let keyTextField = cell.viewWithTag(1) as! UITextField
         let valueTextField = cell.viewWithTag(2) as! UITextField
+        let deleteButton = cell.viewWithTag(3) as! UIButton
         keyTextField.text = ""
         valueTextField.text = ""
+        deleteButton.isEnabled = true
         setCloseKeyboardAccessoryForSender(sender: keyTextField)
         setCloseKeyboardAccessoryForSender(sender: valueTextField)
         
@@ -240,24 +242,30 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     //MARK: - Action
-    @IBAction func deleteValue(_ sender: Any) {
-        let cell: UITableViewCell = (sender as! UIView).superview?.superview as! UITableViewCell
+    @IBAction func deleteValue(_ sender: UIButton) {
+        sender.isEnabled = false;
+        let cell: UITableViewCell = (sender as UIView).superview?.superview as! UITableViewCell
         let indexPath = valueTableView.indexPath(for: cell)!
         if indexPath.section == 0 && headerCount > 1{
             headerCount -= 1
             valueTableView.deleteRows(at: [indexPath], with: .automatic)
-            headerKeys.remove(at: indexPath.row)
-            headerValues.remove(at: indexPath.row)
+            if headerKeys.count > indexPath.row {
+                headerKeys.remove(at: indexPath.row)
+                headerValues.remove(at: indexPath.row)
+            }
         } else if indexPath.section == 1 && parameterCount > 1 {
             parameterCount -= 1
             valueTableView.deleteRows(at: [indexPath], with: .automatic)
-            parameterKeys.remove(at: indexPath.row)
-            parameterValues.remove(at: indexPath.row)
+            if parameterKeys.count > indexPath.row {
+                parameterKeys.remove(at: indexPath.row)
+                parameterValues.remove(at: indexPath.row)
+            }
         } else {
             let keyTextField = cell.viewWithTag(1) as! UITextField
             let valueTextField = cell.viewWithTag(2) as! UITextField
             keyTextField.text = ""
             valueTextField.text = ""
+            sender.isEnabled = true
         }
     }
     
