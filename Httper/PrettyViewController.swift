@@ -55,7 +55,7 @@ class PrettyViewController: UIViewController {
         prettyLabel.backgroundColor = UIColor.clear
         
         let prettyScrollView: UIScrollView = {
-            let view = UIScrollView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+            let view = UIScrollView(frame: CGRect(x: 0, y: 0, width: width, height: height - 50))
             view.contentSize = CGSize.init(width: width, height: prettySize.height + 70)
             view.addSubview(prettyLabel)
             return view

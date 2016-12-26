@@ -50,7 +50,7 @@ class RawViewController: UIViewController {
         rowLabel.frame = CGRect.init(x: 5, y: 5, width: rowSize.width, height: rowSize.height)
         
         let rowScrollView: UIScrollView = {
-            let view = UITextView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+            let view = UITextView(frame: CGRect(x: 0, y: 0, width: width, height: height - 50))
             view.backgroundColor = UIColor.clear
             view.contentSize = CGSize.init(width: width, height: rowSize.height + 70)
             view.addSubview(rowLabel)

@@ -105,11 +105,20 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
     @IBAction func selectStyle(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case Style.pretty.rawValue:
-            self.pageViewController.setViewControllers([self.prettyViewController], direction: .forward, animated: true, completion: nil)
+            self.pageViewController.setViewControllers([self.prettyViewController],
+                                                       direction: .forward,
+                                                       animated: true,
+                                                       completion: nil)
         case Style.raw.rawValue:
-            self.pageViewController.setViewControllers([self.rawViewController], direction: .forward, animated: true, completion: nil)
+            self.pageViewController.setViewControllers([self.rawViewController],
+                                                       direction: .forward,
+                                                       animated: true,
+                                                       completion: nil)
         case Style.preview.rawValue:
-            self.pageViewController.setViewControllers([self.previewViewController], direction: .forward, animated: true, completion: nil)
+            self.pageViewController.setViewControllers([self.previewViewController],
+                                                       direction: .forward,
+                                                       animated: true,
+                                                       completion: nil)
         default:
             break
         }
