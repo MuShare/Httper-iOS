@@ -23,7 +23,7 @@ class RequestBodyViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewDidAppear(true)
         rawBodyTextView.becomeFirstResponder()
     }
     

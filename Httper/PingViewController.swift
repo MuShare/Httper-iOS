@@ -8,13 +8,12 @@
 
 import UIKit
 
-class PingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class PingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var controlBarButtonItem: UIBarButtonItem!
 
-    var pinging = false
     var pingService: STDPingServices?
     var items: Array<STDPingItem>!
     
@@ -22,13 +21,17 @@ class PingViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        addressTextField.becomeFirstResponder()
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         //Stop ping service
         if pingService != nil {
             pingService?.cancel()
         }
-        
     }
     
     // MARK: - Table view data source
@@ -37,41 +40,58 @@ class PingViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items == nil ? 0 : items.count
+        if items == nil {
+            return 0
+        }
+        return (pingService == nil) ? items.count + 1 : items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "pingResultIdentifier", for: indexPath)
-        let bytesLabel = cell.viewWithTag(1) as! UILabel
-        let reqttlLabel = cell.viewWithTag(2) as! UILabel
-        let timeLabel = cell.viewWithTag(3) as! UILabel
-        let item = items[indexPath.row]
-        let address = (item.ipAddress == nil) ? "unknown" : item.ipAddress as String
-        bytesLabel.text = "\(item.dateBytesLength) bytes from \(address)"
-        reqttlLabel.text = "icmp_req = \(item.icmpSequence), ttl = \(item.timeToLive)"
-        timeLabel.text = "\(String(format: "%.2f", item.timeMilliseconds))ms"
-        
+        let cell: UITableViewCell!
+        if indexPath.row < items.count {
+            cell = tableView.dequeueReusableCell(withIdentifier: "pingResultIdentifier", for: indexPath)
+            let bytesLabel = cell.viewWithTag(1) as! UILabel
+            let reqttlLabel = cell.viewWithTag(2) as! UILabel
+            let timeLabel = cell.viewWithTag(3) as! UILabel
+            let item = items[indexPath.row]
+            let address = (item.ipAddress == nil) ? "unknown" : item.ipAddress as String
+            bytesLabel.text = "\(item.dateBytesLength) bytes from \(address)"
+            reqttlLabel.text = "icmp_req = \(item.icmpSequence), ttl = \(item.timeToLive)"
+            timeLabel.text = "\(String(format: "%.2f", item.timeMilliseconds))ms"
+        } else {
+            cell = tableView.dequeueReusableCell(withIdentifier: "pingStatisticsIdentifier", for: indexPath)
+            let statisticsLabel = cell.viewWithTag(1) as! UILabel
+            statisticsLabel.text = STDPingItem.statistics(withPingItems: items)
+        }
         return cell
+    }
+    
+    // MARK: - UITextFieldDelegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == addressTextField {
+            startPing(controlBarButtonItem)
+        }
+        return true
     }
     
     // MARK: - Action
     @IBAction func startPing(_ sender: Any) {
+        if addressTextField.isFirstResponder {
+            addressTextField.resignFirstResponder()
+        }
         if addressTextField.text == "" {
             showAlert(title: NSLocalizedString("tip_name", comment: ""),
                       content: NSLocalizedString("address_empty", comment: ""),
                       controller: self)
             return
         }
-        if pinging {
-            controlBarButtonItem.image = UIImage.init(named: "start")
-            pingService?.cancel()
-        } else {
+        if pingService == nil {
             if items != nil {
                 items = nil
                 tableView.reloadData()
             }
             controlBarButtonItem.image = UIImage.init(named: "stop")
-            pingService = STDPingServices.startPingAddress("fczm.pw", callbackHandler: { pingItem, pingItems in
+            pingService = STDPingServices.startPingAddress(addressTextField.text!, callbackHandler: { pingItem, pingItems in
                 if pingItem?.status != STDPingStatus.finished {
                     self.items = pingItems as! Array<STDPingItem>!
                     if self.items != nil {
@@ -80,12 +100,18 @@ class PingViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
                     }
                 } else {
-                    print(STDPingItem.statistics(withPingItems: pingItems))
                     self.pingService = nil
+                    if self.items != nil {
+                        let indexPath = IndexPath(row: self.items.count, section: 0)
+                        self.tableView.insertRows(at: [indexPath], with: .automatic)
+                        self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                    }
                 }
             })
+        } else {
+            controlBarButtonItem.image = UIImage.init(named: "start")
+            pingService?.cancel()
         }
-        pinging = !pinging
     }
 
 }

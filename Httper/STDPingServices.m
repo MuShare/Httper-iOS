@@ -36,7 +36,7 @@
     //    --- ping statistics ---
     //    5 packets transmitted, 5 packets received, 0.0% packet loss
     //    round-trip min/avg/max/stddev = 4.445/9.496/12.210/2.832 ms
-    NSString *address = [pingItems.firstObject originalAddress];
+
     __block NSInteger receivedCount = 0, allCount = 0;
     [pingItems enumerateObjectsUsingBlock:^(STDPingItem *obj, NSUInteger idx, BOOL *stop) {
         if (obj.status != STDPingStatusFinished && obj.status != STDPingStatusError) {
@@ -48,7 +48,7 @@
     }];
     
     NSMutableString *description = [NSMutableString stringWithCapacity:50];
-    [description appendFormat:@"--- %@ ping statistics ---\n", address];
+//    [description appendFormat:@"--- %@ ping statistics ---\n", [pingItems.firstObject originalAddress]];
     
     CGFloat lossPercent = (CGFloat)(allCount - receivedCount) / MAX(1.0, allCount) * 100;
     [description appendFormat:@"%ld packets transmitted, %ld packets received, %.1f%% packet loss\n", (long)allCount, (long)receivedCount, lossPercent];
