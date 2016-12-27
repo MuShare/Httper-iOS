@@ -15,7 +15,7 @@ class PingViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var controlBarButtonItem: UIBarButtonItem!
 
     var pinging = false
-    var pingService: STDPingServices!
+    var pingService: STDPingServices?
     var items: Array<STDPingItem>!
     
     override func viewDidLoad() {
@@ -25,9 +25,8 @@ class PingViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         //Stop ping service
-        items = nil
         if pingService != nil {
-            pingService.cancel()
+            pingService?.cancel()
         }
         
     }
@@ -64,14 +63,14 @@ class PingViewController: UIViewController, UITableViewDataSource, UITableViewDe
             return
         }
         if pinging {
-            controlBarButtonItem.setBackgroundImage(UIImage.init(named: "start"), for: .normal, barMetrics: .defaultPrompt)
-            pingService.cancel()
+            controlBarButtonItem.image = UIImage.init(named: "start")
+            pingService?.cancel()
         } else {
             if items != nil {
                 items = nil
                 tableView.reloadData()
             }
-            controlBarButtonItem.setBackgroundImage(UIImage.init(named: "stop"), for: .normal, barMetrics: .defaultPrompt)
+            controlBarButtonItem.image = UIImage.init(named: "stop")
             pingService = STDPingServices.startPingAddress("fczm.pw", callbackHandler: { pingItem, pingItems in
                 if pingItem?.status != STDPingStatus.finished {
                     self.items = pingItems as! Array<STDPingItem>!
@@ -82,6 +81,7 @@ class PingViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     }
                 } else {
                     print(STDPingItem.statistics(withPingItems: pingItems))
+                    self.pingService = nil
                 }
             })
         }

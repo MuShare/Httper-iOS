@@ -807,7 +807,7 @@
                                     <constraint firstAttribute="height" constant="1" id="7hw-XT-DUP"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Domain Name / IP Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A2X-v3-D1T">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="fczm.pw" placeholder="Domain Name / IP Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A2X-v3-D1T">
                                 <rect key="frame" x="54" y="72" width="250" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="2tw-gA-RJ7"/>
