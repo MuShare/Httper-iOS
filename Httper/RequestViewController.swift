@@ -12,6 +12,7 @@ import Alamofire
 enum DesignColor: Int {
     case background = 0x30363b
     case nagivation = 0x3d4143
+    case tableLine = 0xbcbbc1
 }
 
 let urlKeyboardCharacters = [":", "/", "?", "&", ".", "="]
