@@ -30,10 +30,12 @@
 		E4A37A9A1E018C7300586BA1 /* Request+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A37A981E018C7300586BA1 /* Request+CoreDataClass.swift */; };
 		E4A37A9B1E018C7300586BA1 /* Request+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A37A991E018C7300586BA1 /* Request+CoreDataProperties.swift */; };
 		E4A37A9D1E018D7500586BA1 /* RequestDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A37A9C1E018D7500586BA1 /* RequestDao.swift */; };
-		E4C317851E126A4D00941809 /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C317841E126A4D00941809 /* SimplePing.m */; };
 		E4D1CAE51DF5C028008DC4F9 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */; };
 		E4E297B11E00021500AD484E /* ResponseHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E297B01E00021500AD484E /* ResponseHeaderViewController.swift */; };
 		E4EC89C21E1159A80072ACF3 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EC89C11E1159A80072ACF3 /* SettingsTableViewController.swift */; };
+		E4EC89D21E129FA10072ACF3 /* STDPingServices.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EC89D01E129FA10072ACF3 /* STDPingServices.m */; };
+		E4EC89D41E12A00C0072ACF3 /* IPAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EC89D31E12A00C0072ACF3 /* IPAddressViewController.swift */; };
+		E4EC89D71E12A4C70072ACF3 /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EC89D61E12A4C70072ACF3 /* SimplePing.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,11 +90,14 @@
 		E4A37A981E018C7300586BA1 /* Request+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Request+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E4A37A991E018C7300586BA1 /* Request+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Request+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E4A37A9C1E018D7500586BA1 /* RequestDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestDao.swift; sourceTree = "<group>"; };
-		E4C317831E126A4D00941809 /* SimplePing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePing.h; sourceTree = "<group>"; };
-		E4C317841E126A4D00941809 /* SimplePing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePing.m; sourceTree = "<group>"; };
 		E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		E4E297B01E00021500AD484E /* ResponseHeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseHeaderViewController.swift; sourceTree = "<group>"; };
 		E4EC89C11E1159A80072ACF3 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		E4EC89CF1E129FA10072ACF3 /* STDPingServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STDPingServices.h; sourceTree = "<group>"; };
+		E4EC89D01E129FA10072ACF3 /* STDPingServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STDPingServices.m; sourceTree = "<group>"; };
+		E4EC89D31E12A00C0072ACF3 /* IPAddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPAddressViewController.swift; sourceTree = "<group>"; };
+		E4EC89D51E12A4C70072ACF3 /* SimplePing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePing.h; sourceTree = "<group>"; };
+		E4EC89D61E12A4C70072ACF3 /* SimplePing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePing.m; sourceTree = "<group>"; };
 		EF3A954FCEE5E084F25916CA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -163,8 +168,10 @@
 			isa = PBXGroup;
 			children = (
 				E41642D21DF970CE00F0339E /* CommonTool.swift */,
-				E4C317831E126A4D00941809 /* SimplePing.h */,
-				E4C317841E126A4D00941809 /* SimplePing.m */,
+				E4EC89D51E12A4C70072ACF3 /* SimplePing.h */,
+				E4EC89D61E12A4C70072ACF3 /* SimplePing.m */,
+				E4EC89CF1E129FA10072ACF3 /* STDPingServices.h */,
+				E4EC89D01E129FA10072ACF3 /* STDPingServices.m */,
 			);
 			name = Tool;
 			sourceTree = "<group>";
@@ -260,6 +267,7 @@
 			children = (
 				E4EC89C11E1159A80072ACF3 /* SettingsTableViewController.swift */,
 				E46077601E126948002DE839 /* PingViewController.swift */,
+				E4EC89D31E12A00C0072ACF3 /* IPAddressViewController.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -454,7 +462,6 @@
 				E4E297B11E00021500AD484E /* ResponseHeaderViewController.swift in Sources */,
 				E4A37A9D1E018D7500586BA1 /* RequestDao.swift in Sources */,
 				E48D41601D444F3F0028B84F /* Httper.xcdatamodeld in Sources */,
-				E4C317851E126A4D00941809 /* SimplePing.m in Sources */,
 				E42DDC841DFA8CB200FAD174 /* ResponseInfoTableViewController.swift in Sources */,
 				E41642D31DF970CE00F0339E /* CommonTool.swift in Sources */,
 				E40F66A81E01142900C6013E /* HistoryTableViewController.swift in Sources */,
@@ -462,11 +469,14 @@
 				E48553361DF9B2CF00A1DB60 /* PreviewViewController.swift in Sources */,
 				E4EC89C21E1159A80072ACF3 /* SettingsTableViewController.swift in Sources */,
 				E4A37A9A1E018C7300586BA1 /* Request+CoreDataClass.swift in Sources */,
+				E4EC89D71E12A4C70072ACF3 /* SimplePing.m in Sources */,
 				E48D41581D444F3F0028B84F /* AppDelegate.swift in Sources */,
 				E48553341DF9B2BF00A1DB60 /* RawViewController.swift in Sources */,
 				E48553321DF9B2AF00A1DB60 /* PrettyViewController.swift in Sources */,
 				E46077611E126948002DE839 /* PingViewController.swift in Sources */,
 				E4007EB91DFEE7B7002A87FA /* RequestBodyViewController.swift in Sources */,
+				E4EC89D21E129FA10072ACF3 /* STDPingServices.m in Sources */,
+				E4EC89D41E12A00C0072ACF3 /* IPAddressViewController.swift in Sources */,
 				E40B257E1DF44BD20039CA8D /* MainViewController.swift in Sources */,
 				E431C4A91DF7179D006BB2D6 /* RequestMethodsTableViewController.swift in Sources */,
 				E4A37A9B1E018C7300586BA1 /* Request+CoreDataProperties.swift in Sources */,

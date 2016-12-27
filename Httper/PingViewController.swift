@@ -8,119 +8,84 @@
 
 import UIKit
 
-class PingViewController: UIViewController, SimplePingDelegate, UITableViewDataSource, UITableViewDelegate {
-
-    let hostName = "www.apple.com"
+class PingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var pinger: SimplePing?
-    var sendTimer: Timer?
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var addressTextField: UITextField!
+    @IBOutlet weak var controlBarButtonItem: UIBarButtonItem!
+
+    var pinging = false
+    var pingService: STDPingServices!
+    var items: Array<STDPingItem>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 
-    // MARK: - SimplePingDelegate
-    func simplePing(_ pinger: SimplePing, didStartWithAddress address: Data) {
-        NSLog("pinging %@", hostName)
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        //Stop ping service
+        items = nil
+        if pingService != nil {
+            pingService.cancel()
+        }
         
-        // Send the first ping straight away.
-        
-        self.sendPing()
-        
-        // And start a timer to send the subsequent pings.
-        
-        assert(self.sendTimer == nil)
-        
-        self.sendTimer = Timer.scheduledTimer(timeInterval: 1.0,
-                                              target: self,
-                                              selector: #selector(sendPing),
-                                              userInfo: nil,
-                                              repeats: true)
     }
-
-    func simplePing(_ pinger: SimplePing, didFailWithError error: Error) {
-        NSLog("failed: ")
-        
-        self.stop()
-    }
-    
-    func simplePing(_ pinger: SimplePing, didSendPacket packet: Data, sequenceNumber: UInt16) {
-         NSLog("#%u sent", sequenceNumber)
-    }
-    
-    func simplePing(_ pinger: SimplePing, didFailToSendPacket packet: Data, sequenceNumber: UInt16, error: Error) {
-        NSLog("#%u send failed: ", sequenceNumber)
-    }
-    
-    func simplePing(_ pinger: SimplePing, didReceivePingResponsePacket packet: Data, sequenceNumber: UInt16) {
-        NSLog("#%u received, size=%zu", sequenceNumber, packet.count)
-    }
-
-    func simplePing(_ pinger: SimplePing, didReceiveUnexpectedPacket packet: Data) {
-        NSLog("unexpected packet, size=%zu", packet.count)
-    }
-    
     
     // MARK: - Table view data source
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.01
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return items == nil ? 0 : items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "cell");
+        let cell = tableView.dequeueReusableCell(withIdentifier: "pingResultIdentifier", for: indexPath)
+        let bytesLabel = cell.viewWithTag(1) as! UILabel
+        let reqttlLabel = cell.viewWithTag(2) as! UILabel
+        let timeLabel = cell.viewWithTag(3) as! UILabel
+        let item = items[indexPath.row]
+        let address = (item.ipAddress == nil) ? "unknown" : item.ipAddress as String
+        bytesLabel.text = "\(item.dateBytesLength) bytes from \(address)"
+        reqttlLabel.text = "icmp_req = \(item.icmpSequence), ttl = \(item.timeToLive)"
+        timeLabel.text = "\(String(format: "%.2f", item.timeMilliseconds))ms"
+        
         return cell
     }
     
     // MARK: - Action
     @IBAction func startPing(_ sender: Any) {
-        self.start(forceIPv4: false, forceIPv6: false)
-    }
-    
-    
-    func start(forceIPv4: Bool, forceIPv6: Bool) {
-        self.pingerWillStart()
-        
-        NSLog("start")
-        
-        let pinger = SimplePing(hostName: self.hostName)
-        self.pinger = pinger
-        
-        // By default we use the first IP address we get back from host resolution (.Any)
-        // but these flags let the user override that.
-        
-        if (forceIPv4 && !forceIPv6) {
-            pinger.addressStyle = .icmPv4
-        } else if (forceIPv6 && !forceIPv4) {
-            pinger.addressStyle = .icmPv6
+        if addressTextField.text == "" {
+            showAlert(title: NSLocalizedString("tip_name", comment: ""),
+                      content: NSLocalizedString("address_empty", comment: ""),
+                      controller: self)
+            return
         }
-        
-        pinger.delegate = self
-        pinger.start()
+        if pinging {
+            controlBarButtonItem.setBackgroundImage(UIImage.init(named: "start"), for: .normal, barMetrics: .defaultPrompt)
+            pingService.cancel()
+        } else {
+            if items != nil {
+                items = nil
+                tableView.reloadData()
+            }
+            controlBarButtonItem.setBackgroundImage(UIImage.init(named: "stop"), for: .normal, barMetrics: .defaultPrompt)
+            pingService = STDPingServices.startPingAddress("fczm.pw", callbackHandler: { pingItem, pingItems in
+                if pingItem?.status != STDPingStatus.finished {
+                    self.items = pingItems as! Array<STDPingItem>!
+                    if self.items != nil {
+                        let indexPath = IndexPath(row: self.items.count - 1, section: 0)
+                        self.tableView.insertRows(at: [indexPath], with: .automatic)
+                        self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                    }
+                } else {
+                    print(STDPingItem.statistics(withPingItems: pingItems))
+                }
+            })
+        }
+        pinging = !pinging
     }
-    
-    /// Called by the table view selection delegate callback to stop the ping.
-    
-    func stop() {
-        NSLog("stop")
-        self.pinger?.stop()
-        self.pinger = nil
-        
-        self.sendTimer?.invalidate()
-        self.sendTimer = nil
-        
-        self.pingerDidStop()
-    }
-    
-    func sendPing() {
-        self.pinger!.send(with: nil)
-    }
-    
-    func pingerWillStart() {
-        print("Start…")
-    }
-    
-    func pingerDidStop() {
-        print("Stop…")
-    }
+
 }
