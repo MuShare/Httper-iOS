@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class IPAddressViewController: UIViewController {
 
     var pingService: STDPingServices!
@@ -15,12 +16,14 @@ class IPAddressViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        print(InternetTool.deviceIPAdress())
         
+        let routeInfo = InternetTool.getRouterInfo()
+
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
     }
-
 }
