@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Alamofire
 
 class IPAddressTableViewController: UITableViewController {
     
@@ -20,6 +20,7 @@ class IPAddressTableViewController: UITableViewController {
     @IBOutlet weak var cellularNetmaskLabel: UILabel!
 
     var pingService: STDPingServices!
+    var ipInfo: Dictionary<String, Any>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +41,14 @@ class IPAddressTableViewController: UITableViewController {
             let cellular = cellularInfo as! NSDictionary
             cellularLocalLabel.text = cellular.value(forKey: "local")! as? String
             cellularNetmaskLabel.text = cellular.value(forKey: "netmask")! as? String
+        }
+        
+        Alamofire.request("https://ipapi.co/json/").responseJSON { response in
+            self.ipInfo = response.result.value as! Dictionary<String, Any>!
+            if (self.ipInfo["ip"] != nil) {
+                self.publicIPLabel.text = self.ipInfo["ip"]! as? String
+                self.publicIPLabel.isHidden = false
+            }
         }
     }
 
