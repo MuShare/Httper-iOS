@@ -1,5 +1,5 @@
 //
-//  IPAddressViewController.swift
+//  IPAddressTableViewController.swift
 //  Httper
 //
 //  Created by 李大爷的电脑 on 27/12/2016.
@@ -9,7 +9,7 @@
 import UIKit
 
 
-class IPAddressViewController: UIViewController {
+class IPAddressTableViewController: UITableViewController {
 
     var pingService: STDPingServices!
     
@@ -19,7 +19,12 @@ class IPAddressViewController: UIViewController {
         print(InternetTool.deviceIPAdress())
         
         let routeInfo = InternetTool.getRouterInfo()
+        let wifiInfo = routeInfo?.value(forKey: kTypeInfoKeyWifi)
+        let cellularInfo = routeInfo?.value(forKey: kTypeInfoKeyCellular)
 
+        print(routeInfo)
+        print(wifiInfo)
+        print(cellularInfo)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
