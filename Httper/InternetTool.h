@@ -18,7 +18,7 @@
  - when using cellular network, I'm only sure that the ip address is correct,
  and I can not confirm other informations
  */
-+(NSMutableDictionary *)getRouterInfo;
++ (NSMutableDictionary *)getRouterInfo;
 
 // Get device ip.
 + (NSString *)deviceIPAdress;
