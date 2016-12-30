@@ -1,0 +1,36 @@
+body {
+    background: #303539;
+    color: #fff !important;
+    font-family: sans-serif !important;
+    padding-left: 7px;
+}
+
+img {
+    background: #fff;
+}
+
+.df-block {
+
+    font-size: 15px;
+    padding: 10px;
+    border-bottom: 1px solid #a9a9a9;
+}
+
+.df-label {
+    float: left;
+    width: 30%;
+}
+
+.df-value {
+    float: left;
+    width: 70%;
+}
+
+.clear {
+    clear: both;
+}
+
+#registryData {
+    display: inline;
+    font-family: sans-serif !important;
+}

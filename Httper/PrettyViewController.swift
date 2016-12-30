@@ -55,7 +55,7 @@ class PrettyViewController: UIViewController {
         prettyLabel.backgroundColor = UIColor.clear
         
         let prettyScrollView: UIScrollView = {
-            let view = UIScrollView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+            let view = UIScrollView(frame: CGRect(x: 0, y: 0, width: width, height: height - 50))
             view.contentSize = CGSize.init(width: width, height: prettySize.height + 70)
             view.addSubview(prettyLabel)
             return view
@@ -80,9 +80,13 @@ class PrettyViewController: UIViewController {
     func formatJSON() {
         var space = String()
         var color = RGB(PrettyColor.normal.rawValue)
+        var isText = false
         for char in text.characters {
             let text: String
             switch char {
+            case "\"":
+                isText = !isText
+                text = "\(char)"
             case "{":
                 color = RGB(PrettyColor.key.rawValue)
                 fallthrough
@@ -103,7 +107,7 @@ class PrettyViewController: UIViewController {
             case "\n":
                 fallthrough
             case " ":
-                text = ""
+                text = isText ? " " : ""
             default:
                 text = "\(char)"
             }

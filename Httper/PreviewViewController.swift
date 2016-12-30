@@ -29,7 +29,7 @@ class PreviewViewController: UIViewController {
         super.viewDidLoad()
 
         previewWebView = {
-            let view = UIWebView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
+            let view = UIWebView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height - 50))
             return view
         }()
         

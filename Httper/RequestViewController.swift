@@ -12,6 +12,7 @@ import Alamofire
 enum DesignColor: Int {
     case background = 0x30363b
     case nagivation = 0x3d4143
+    case tableLine = 0xbcbbc1
 }
 
 let urlKeyboardCharacters = [":", "/", "?", "&", ".", "="]
@@ -36,7 +37,10 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     var parameters: Parameters!
     var body: String!
     
+    //Variables for loading request history.
     var request: Request?
+    var headerKeys: Array<String> = [], headerValues: Array<String> = []
+    var parameterKeys: Array<String> = [], parameterValues: Array<String> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,8 +57,20 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         if request != nil {
             method = request!.method!
-            headers = NSKeyedUnarchiver.unarchiveObject(with: request!.headers! as Data) as! HTTPHeaders
-            parameters = NSKeyedUnarchiver.unarchiveObject(with: request!.parameters! as Data) as! Parameters
+            headerKeys = Array()
+            headerValues = Array()
+            for (key, value) in NSKeyedUnarchiver.unarchiveObject(with: request!.headers! as Data) as! HTTPHeaders {
+                headerKeys.append(key)
+                headerValues.append(value)
+            }
+            parameterKeys = Array()
+            parameterValues = Array()
+            for (key, value) in NSKeyedUnarchiver.unarchiveObject(with: request!.parameters! as Data) as! Parameters {
+                parameterKeys.append(key)
+                parameterValues.append(value as! String)
+            }
+            headerCount = headerKeys.count == 0 ? 1: headerKeys.count
+            parameterCount = parameterKeys.count == 0 ? 1: parameterKeys.count
             body = (request!.body == nil) ? nil: String(data: request!.body! as Data, encoding: .utf8)
             
             //Set request method
@@ -161,23 +177,23 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell = tableView.dequeueReusableCell(withIdentifier: "parameterIdentifier", for: indexPath as IndexPath)
         let keyTextField = cell.viewWithTag(1) as! UITextField
         let valueTextField = cell.viewWithTag(2) as! UITextField
+        let deleteButton = cell.viewWithTag(3) as! UIButton
+        keyTextField.text = ""
+        valueTextField.text = ""
+        deleteButton.isEnabled = true
         setCloseKeyboardAccessoryForSender(sender: keyTextField)
         setCloseKeyboardAccessoryForSender(sender: valueTextField)
         
         //Set headers if it is not null
-        if headers != nil && indexPath.section == 0 {
-            for (key, value) in headers {
-                keyTextField.text = key
-                valueTextField.text = value
-            }
+        if headerKeys.count > indexPath.row && indexPath.section == 0 {
+            keyTextField.text = headerKeys[indexPath.row]
+            valueTextField.text = headerValues[indexPath.row]
         }
         
-        //Set parameters if it is not null {
-        if parameters != nil && indexPath.section == 1 {
-            for (key, value) in parameters {
-                keyTextField.text = key
-                valueTextField.text = "\(value)"
-            }
+        //Set parameters if it is not null
+        if parameterKeys.count > indexPath.row && indexPath.section == 1 {
+            keyTextField.text = parameterKeys[indexPath.row]
+            valueTextField.text = parameterValues[indexPath.row]
         }
         return cell
     }
@@ -227,19 +243,30 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     //MARK: - Action
-    @IBAction func deleteValue(_ sender: Any) {
-        let cell: UITableViewCell = (sender as! UIView).superview?.superview as! UITableViewCell
-        let indexPath = valueTableView.indexPath(for: cell)
-        if indexPath?.section == 0 {
-            if headerCount > 1 {
-                headerCount -= 1
-                valueTableView.deleteRows(at: [indexPath!], with: .automatic)
+    @IBAction func deleteValue(_ sender: UIButton) {
+        sender.isEnabled = false;
+        let cell: UITableViewCell = (sender as UIView).superview?.superview as! UITableViewCell
+        let indexPath = valueTableView.indexPath(for: cell)!
+        if indexPath.section == 0 && headerCount > 1{
+            headerCount -= 1
+            valueTableView.deleteRows(at: [indexPath], with: .automatic)
+            if headerKeys.count > indexPath.row {
+                headerKeys.remove(at: indexPath.row)
+                headerValues.remove(at: indexPath.row)
             }
-        } else if indexPath?.section == 1 {
-            if parameterCount > 1 {
-                parameterCount -= 1
-                valueTableView.deleteRows(at: [indexPath!], with: .automatic)
+        } else if indexPath.section == 1 && parameterCount > 1 {
+            parameterCount -= 1
+            valueTableView.deleteRows(at: [indexPath], with: .automatic)
+            if parameterKeys.count > indexPath.row {
+                parameterKeys.remove(at: indexPath.row)
+                parameterValues.remove(at: indexPath.row)
             }
+        } else {
+            let keyTextField = cell.viewWithTag(1) as! UITextField
+            let valueTextField = cell.viewWithTag(2) as! UITextField
+            keyTextField.text = ""
+            valueTextField.text = ""
+            sender.isEnabled = true
         }
     }
     
@@ -255,6 +282,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
                       controller: self)
             return
         }
+        
         headers = HTTPHeaders()
         parameters = Parameters()
         for section in 0 ..< 2 {
@@ -274,6 +302,31 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     
         self.performSegue(withIdentifier: "resultSegue", sender: self)
+    }
+    
+    @IBAction func celarRequest(_ sender: Any) {
+        let alertController = UIAlertController(title: NSLocalizedString("tip_name", comment: ""),
+                                                message: NSLocalizedString("clear_request", comment: ""),
+                                                preferredStyle: .alert);
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("cancel_name", comment: ""),
+                                                style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("yes_name", comment: ""),
+                                                style: .destructive) { action in
+            if self.editingTextField != nil {
+                if self.editingTextField.isFirstResponder {
+                    self.editingTextField.resignFirstResponder()
+                }
+            }
+            self.urlTextField.text = ""
+            self.headerCount = 1
+            self.parameterCount = 1
+            self.headerKeys = []
+            self.headerValues = []
+            self.parameterKeys = []
+            self.parameterValues = []
+            self.valueTableView.reloadData()
+        })
+        self.present(alertController, animated: true, completion: nil)
     }
     
     //MARK: - Service

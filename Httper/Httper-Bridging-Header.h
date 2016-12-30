@@ -7,3 +7,6 @@
 //
 
 #import <M80AttributedLabel/M80AttributedLabel.h>
+#import "STDPingServices.h"
+#import "InternetTool.h"
+#include <ifaddrs.h>
