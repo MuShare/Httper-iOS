@@ -29,4 +29,16 @@ class SettingsTableViewController: UITableViewController {
         return 0.01
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)!
+        let identifier = cell.reuseIdentifier!
+        if identifier == "appstore" {
+            UIApplication.shared.openURL(URL.init(string: "itms-apps://itunes.apple.com/app/httper/id1166884043")!)
+        } else if identifier == "github" {
+            UIApplication.shared.openURL(URL.init(string: "https://github.com/lm2343635/Httper")!)
+        } else if identifier == "about" {
+            UIApplication.shared.openURL(URL.init(string: "http://httper.fczm.pw")!)
+        }
+        
+    }
 }
