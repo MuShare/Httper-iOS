@@ -31,6 +31,9 @@ class SettingsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)!
+        if cell.reuseIdentifier == nil {
+            return
+        }
         let identifier = cell.reuseIdentifier!
         if identifier == "appstore" {
             UIApplication.shared.openURL(URL.init(string: "itms-apps://itunes.apple.com/app/httper/id1166884043")!)
