@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import Kanna
+import ReachabilitySwift
 
 let baseURL = "https://www.whois.com"
 
@@ -19,6 +20,7 @@ class WhoisViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loadingActivityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var searchBarButtonItem: UIBarButtonItem!
     
+    let reachability = Reachability()!
     var css = "<style>"
     
     override func viewDidLoad() {
@@ -50,6 +52,16 @@ class WhoisViewController: UIViewController, UITextFieldDelegate {
         if domainTextField.isFirstResponder {
             domainTextField.resignFirstResponder()
         }
+        
+        //Check Internet state
+        if reachability.currentReachabilityStatus == .notReachable {
+            showAlert(title: NSLocalizedString("tip", comment: ""),
+                      content: NSLocalizedString("not_internet_connection", comment: ""),
+                      controller: self)
+            return
+        }
+        
+        //Get domain info.
         searchBarButtonItem.isEnabled = false
         loadingActivityIndicatorView.startAnimating()
         Alamofire.request(baseURL + "/whois/" + domainTextField.text!).responseString { response in

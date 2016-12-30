@@ -39,5 +39,8 @@ value_max = "Cannot add more parameters and headers due to max limits 7.";
 
 clear_request = "Are you sure to clear and reset request?";
 clear_request_body = "Are you sure to clear request body?";
+cannot_access = "Cannot access to the URL, check your connection and service provider!";
 
 address_empty = "Input a domain name or IP address!";
+
+not_internet_connection = "No Internet connection!";

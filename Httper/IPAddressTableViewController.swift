@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import ReachabilitySwift
 
 class IPAddressTableViewController: UITableViewController {
     
@@ -22,6 +23,8 @@ class IPAddressTableViewController: UITableViewController {
 
     var pingService: STDPingServices!
     var ipInfo: Dictionary<String, Any>!
+    
+    let reachability = Reachability()!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,15 +47,23 @@ class IPAddressTableViewController: UITableViewController {
             cellularNetmaskLabel.text = cellular.value(forKey: "netmask")! as? String
         }
         
-        Alamofire.request("https://ipapi.co/json/").responseJSON { response in
-            self.ipInfo = response.result.value as! Dictionary<String, Any>!
-            
-            if (self.ipInfo["ip"] != nil) {
-                self.publicIPLabel.text = self.ipInfo["ip"]! as? String
-            }
+        //Check Internet state
+        if reachability.currentReachabilityStatus == .notReachable {
+            self.publicIPLabel.text = NSLocalizedString("not_internet_connection", comment: "")
             self.publicIPLabel.isHidden = false
             self.loadingActivityIndicatorView.stopAnimating()
+        } else {
+            Alamofire.request("https://ipapi.co/json/").responseJSON { response in
+                self.ipInfo = response.result.value as! Dictionary<String, Any>!
+                
+                if (self.ipInfo["ip"] != nil) {
+                    self.publicIPLabel.text = self.ipInfo["ip"]! as? String
+                }
+                self.publicIPLabel.isHidden = false
+                self.loadingActivityIndicatorView.stopAnimating()
+            }
         }
+        
     }
 
     override func viewWillDisappear(_ animated: Bool) {

@@ -282,6 +282,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
                       controller: self)
             return
         }
+        
         headers = HTTPHeaders()
         parameters = Parameters()
         for section in 0 ..< 2 {

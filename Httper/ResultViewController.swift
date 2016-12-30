@@ -53,7 +53,12 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
                           encoding: (body == nil) ? URLEncoding.default : body,
                           headers: headers)
             .response { response in
-                
+                if response.response == nil {
+                    showAlert(title: NSLocalizedString("tip", comment: ""),
+                              content: NSLocalizedString("cannot_access", comment: ""),
+                              controller: self)
+                    return
+                }
                 self.httpURLResponse = response.response
                 let infoBarButtonItem = UIBarButtonItem(image: UIImage.init(named: "info"),
                                                         style: UIBarButtonItemStyle.plain,

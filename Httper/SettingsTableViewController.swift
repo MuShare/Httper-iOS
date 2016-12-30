@@ -25,34 +25,8 @@ class SettingsTableViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 20;
-    }
-    
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 20))
-        view.backgroundColor = UIColor.clear
-        if section > 0 {
-            let line = UIView(frame: CGRect(x: 0, y: 19, width: tableView.frame.size.width, height: 1))
-            line.backgroundColor = RGB(DesignColor.tableLine.rawValue)
-            view.addSubview(line)
-        }
-        return view
-    }
-   
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 20
-    }
-
-    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 20))
-        view.backgroundColor = UIColor.clear
-        if section > 0 {
-            let line = UIView(frame: CGRect(x: 0, y: 1, width: tableView.frame.size.width, height: 1))
-            line.backgroundColor = RGB(DesignColor.tableLine.rawValue)
-            view.addSubview(line)
-        }
-        return view
+        return 0.01
     }
 
 }
