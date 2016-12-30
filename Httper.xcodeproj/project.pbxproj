@@ -39,6 +39,7 @@
 		E4EC89D71E12A4C70072ACF3 /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EC89D61E12A4C70072ACF3 /* SimplePing.m */; };
 		E4F95CD61E15685A005A0004 /* WhoisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F95CD51E15685A005A0004 /* WhoisViewController.swift */; };
 		E4F95CD81E1572FD005A0004 /* whois.css in Resources */ = {isa = PBXBuildFile; fileRef = E4F95CD71E1572FD005A0004 /* whois.css */; };
+		E4F95CDA1E16A7D3005A0004 /* DetailIPInformationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F95CD91E16A7D3005A0004 /* DetailIPInformationTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 		E4EC89D61E12A4C70072ACF3 /* SimplePing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePing.m; sourceTree = "<group>"; };
 		E4F95CD51E15685A005A0004 /* WhoisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhoisViewController.swift; sourceTree = "<group>"; };
 		E4F95CD71E1572FD005A0004 /* whois.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = whois.css; sourceTree = "<group>"; };
+		E4F95CD91E16A7D3005A0004 /* DetailIPInformationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailIPInformationTableViewController.swift; sourceTree = "<group>"; };
 		EF3A954FCEE5E084F25916CA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -276,11 +278,12 @@
 		E4EC89C01E1159560072ACF3 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				E4EC89C11E1159A80072ACF3 /* SettingsTableViewController.swift */,
-				E46077601E126948002DE839 /* PingViewController.swift */,
+				E4F95CD91E16A7D3005A0004 /* DetailIPInformationTableViewController.swift */,
 				E4EC89D31E12A00C0072ACF3 /* IPAddressTableViewController.swift */,
-				E4F95CD51E15685A005A0004 /* WhoisViewController.swift */,
+				E46077601E126948002DE839 /* PingViewController.swift */,
+				E4EC89C11E1159A80072ACF3 /* SettingsTableViewController.swift */,
 				E4F95CD71E1572FD005A0004 /* whois.css */,
+				E4F95CD51E15685A005A0004 /* WhoisViewController.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -485,6 +488,7 @@
 				E4EC89C21E1159A80072ACF3 /* SettingsTableViewController.swift in Sources */,
 				E4A37A9A1E018C7300586BA1 /* Request+CoreDataClass.swift in Sources */,
 				E4EC89D71E12A4C70072ACF3 /* SimplePing.m in Sources */,
+				E4F95CDA1E16A7D3005A0004 /* DetailIPInformationTableViewController.swift in Sources */,
 				E48D41581D444F3F0028B84F /* AppDelegate.swift in Sources */,
 				E4F95CD61E15685A005A0004 /* WhoisViewController.swift in Sources */,
 				E48553341DF9B2BF00A1DB60 /* RawViewController.swift in Sources */,

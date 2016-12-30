@@ -18,6 +18,7 @@ class IPAddressTableViewController: UITableViewController {
     @IBOutlet weak var wifiNetmaskLabel: UILabel!
     @IBOutlet weak var cellularLocalLabel: UILabel!
     @IBOutlet weak var cellularNetmaskLabel: UILabel!
+    @IBOutlet weak var loadingActivityIndicatorView: UIActivityIndicatorView!
 
     var pingService: STDPingServices!
     var ipInfo: Dictionary<String, Any>!
@@ -45,10 +46,12 @@ class IPAddressTableViewController: UITableViewController {
         
         Alamofire.request("https://ipapi.co/json/").responseJSON { response in
             self.ipInfo = response.result.value as! Dictionary<String, Any>!
+            
             if (self.ipInfo["ip"] != nil) {
                 self.publicIPLabel.text = self.ipInfo["ip"]! as? String
-                self.publicIPLabel.isHidden = false
             }
+            self.publicIPLabel.isHidden = false
+            self.loadingActivityIndicatorView.stopAnimating()
         }
     }
 
@@ -60,6 +63,13 @@ class IPAddressTableViewController: UITableViewController {
     // MARK: - UITableViewDataSource
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.01
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detailIPInfoSegue" {
+            segue.destination.setValue(ipInfo, forKey: "ipInfo")
+        }
     }
     
 }
