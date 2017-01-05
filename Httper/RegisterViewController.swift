@@ -16,24 +16,18 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
 
         registerButton.layer.borderColor = UIColor.lightGray.cgColor
+        
+        //Set background image
+        let backgroundImageView: UIImageView = {
+            let view = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
+            let ratio = view.frame.size.height / view.frame.size.width
+            view.image = UIImage(named: ratio == 4 / 3 ? "register-bg-iPad.jpg" : "register-bg.jpg")
+            return view
+        }()
+        self.view.insertSubview(backgroundImageView, at: 0)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    // MARK: - Action
     @IBAction func back(_ sender: Any) {
         _ = self.navigationController?.popViewController(animated: true)
     }

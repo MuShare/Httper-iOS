@@ -1209,9 +1209,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login-bg.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="HK6-n9-vpQ">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XHZ-OL-q6n">
                                 <rect key="frame" x="0.0" y="207" width="320" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="0.39887764084507049" colorSpace="calibratedWhite"/>
@@ -1290,19 +1287,15 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.18746668100357056" green="0.2114855945110321" blue="0.23234263062477112" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="pZe-eB-yWz" firstAttribute="top" secondItem="FeT-Pq-GJo" secondAttribute="bottom" constant="110" id="4Aa-nZ-JDi"/>
                             <constraint firstItem="TaR-V9-ewv" firstAttribute="top" secondItem="7kl-zs-1q1" secondAttribute="bottom" constant="20" id="4q8-vG-9FH"/>
-                            <constraint firstItem="HK6-n9-vpQ" firstAttribute="top" secondItem="Yhn-jf-1sv" secondAttribute="bottom" constant="-20" id="5hu-DN-vK1"/>
-                            <constraint firstItem="TaR-V9-ewv" firstAttribute="top" secondItem="HK6-n9-vpQ" secondAttribute="bottom" id="Bcr-tP-L4v"/>
                             <constraint firstItem="pZe-eB-yWz" firstAttribute="top" secondItem="XHZ-OL-q6n" secondAttribute="bottom" constant="2" id="CKG-SH-rDm"/>
                             <constraint firstItem="XHZ-OL-q6n" firstAttribute="leading" secondItem="N2d-Zl-pvl" secondAttribute="leadingMargin" constant="-16" id="G9K-Sf-8NU"/>
-                            <constraint firstItem="HK6-n9-vpQ" firstAttribute="leading" secondItem="N2d-Zl-pvl" secondAttribute="leadingMargin" constant="-16" id="IMC-91-Lgr"/>
                             <constraint firstItem="7kl-zs-1q1" firstAttribute="centerX" secondItem="N2d-Zl-pvl" secondAttribute="centerX" id="Ixc-Ks-b3P"/>
                             <constraint firstItem="pZe-eB-yWz" firstAttribute="centerX" secondItem="N2d-Zl-pvl" secondAttribute="centerX" id="NAB-Yz-6eh"/>
                             <constraint firstItem="pZe-eB-yWz" firstAttribute="leading" secondItem="N2d-Zl-pvl" secondAttribute="leadingMargin" constant="-16" id="QjS-Xe-ZWc"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="HK6-n9-vpQ" secondAttribute="trailing" constant="-16" id="YUn-MM-wCe"/>
                             <constraint firstItem="ogr-WD-H93" firstAttribute="top" secondItem="pZe-eB-yWz" secondAttribute="bottom" constant="16" id="ZZ7-eA-AIv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="XHZ-OL-q6n" secondAttribute="trailing" constant="-16" id="Zsm-VT-nZO"/>
                             <constraint firstAttribute="leadingMargin" secondItem="ogr-WD-H93" secondAttribute="leading" id="dib-6c-5b0"/>
@@ -1314,7 +1307,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="due-3m-ufC"/>
                     <connections>
-                        <outlet property="backgroundImageView" destination="HK6-n9-vpQ" id="9hd-By-AH2"/>
                         <outlet property="loginButton" destination="ogr-WD-H93" id="ekd-vW-6pP"/>
                     </connections>
                 </viewController>
@@ -1334,9 +1326,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="register-bg.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="XO6-aw-Ygk">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HcZ-l3-vuz">
                                 <rect key="frame" x="46" y="128" width="228" height="24"/>
                                 <constraints>
@@ -1420,22 +1409,18 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.18746668100357056" green="0.2114855945110321" blue="0.23234263062477112" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="2is-xC-x36" firstAttribute="top" secondItem="TQb-Ce-DQk" secondAttribute="bottom" constant="2" id="00M-Ve-eaQ"/>
                             <constraint firstItem="TQb-Ce-DQk" firstAttribute="centerX" secondItem="Q3N-BL-Xaa" secondAttribute="centerX" id="2dv-h1-oDH"/>
                             <constraint firstItem="TQb-Ce-DQk" firstAttribute="top" secondItem="HrX-d3-n2F" secondAttribute="bottom" constant="2" id="7gX-Bv-eZy"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="XO6-aw-Ygk" secondAttribute="trailing" constant="-16" id="Asx-AK-KYD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="axZ-qa-JQ6" secondAttribute="trailing" id="Jss-Af-VAT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TQb-Ce-DQk" secondAttribute="trailing" constant="-16" id="KF0-5t-5Qn"/>
-                            <constraint firstItem="bXP-5g-SYU" firstAttribute="top" secondItem="XO6-aw-Ygk" secondAttribute="bottom" id="Kw8-ph-hDh"/>
-                            <constraint firstItem="XO6-aw-Ygk" firstAttribute="leading" secondItem="Q3N-BL-Xaa" secondAttribute="leadingMargin" constant="-16" id="LIj-1A-RpT"/>
                             <constraint firstItem="HrX-d3-n2F" firstAttribute="leading" secondItem="Q3N-BL-Xaa" secondAttribute="leadingMargin" constant="-16" id="LKy-H6-LfQ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2is-xC-x36" secondAttribute="trailing" constant="-16" id="MdA-Tz-0og"/>
                             <constraint firstItem="TQb-Ce-DQk" firstAttribute="leading" secondItem="Q3N-BL-Xaa" secondAttribute="leadingMargin" constant="-16" id="RCz-TN-avv"/>
                             <constraint firstItem="TQb-Ce-DQk" firstAttribute="top" secondItem="HcZ-l3-vuz" secondAttribute="bottom" constant="107" id="Tql-Am-9Rl"/>
                             <constraint firstItem="axZ-qa-JQ6" firstAttribute="top" secondItem="TQb-Ce-DQk" secondAttribute="bottom" constant="68" id="Yk3-Ee-oci"/>
-                            <constraint firstItem="XO6-aw-Ygk" firstAttribute="top" secondItem="P4v-yG-9Do" secondAttribute="bottom" constant="-20" id="YzX-sW-6Dc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="HrX-d3-n2F" secondAttribute="trailing" constant="-16" id="gxd-3t-JS8"/>
                             <constraint firstItem="2is-xC-x36" firstAttribute="leading" secondItem="Q3N-BL-Xaa" secondAttribute="leadingMargin" constant="-16" id="hrZ-3Q-AM9"/>
                             <constraint firstItem="TQb-Ce-DQk" firstAttribute="centerY" secondItem="Q3N-BL-Xaa" secondAttribute="centerY" id="iqr-9p-Jcq"/>
@@ -2136,9 +2121,7 @@
         <image name="history" width="30" height="30"/>
         <image name="internet" width="30" height="30"/>
         <image name="ip" width="30" height="30"/>
-        <image name="login-bg.jpg" width="900" height="1600"/>
         <image name="ping" width="30" height="30"/>
-        <image name="register-bg.jpg" width="900" height="1600"/>
         <image name="signin" width="70" height="70"/>
         <image name="start" width="30" height="30"/>
         <image name="tab_request" width="30" height="30"/>
