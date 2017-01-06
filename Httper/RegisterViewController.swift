@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import Alamofire
 
 class RegisterViewController: UIViewController {
 
     @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,5 +34,26 @@ class RegisterViewController: UIViewController {
     // MARK: - Action
     @IBAction func back(_ sender: Any) {
         _ = self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func register(_ sender: Any) {
+        if emailTextField.text == "" || usernameTextField.text == "" || passwordTextField.text == "" {
+            showAlert(title: NSLocalizedString("tip_name", comment: ""),
+                      content: NSLocalizedString("register_not_validate", comment: ""),
+                      controller: self)
+        }
+        let parameters: Parameters = [
+            "email": emailTextField.text!,
+            "name": usernameTextField.text!,
+            "password": passwordTextField.text!
+        ]
+        Alamofire.request(createUrl("api/user/register"),
+                          method: HTTPMethod.post,
+                          parameters: parameters,
+                          encoding: URLEncoding.default,
+                          headers: nil)
+            .responseJSON { response in
+                print(response)
+        }
     }
 }

@@ -44,3 +44,5 @@ cannot_access = "Cannot access to the URL, check your connection and service pro
 address_empty = "Input a domain name or IP address!";
 
 not_internet_connection = "No Internet connection!";
+
+register_not_validate = "Email, username and password cannot be empty!";

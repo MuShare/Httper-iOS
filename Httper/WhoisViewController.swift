@@ -11,7 +11,7 @@ import Alamofire
 import Kanna
 import ReachabilitySwift
 
-let baseURL = "https://www.whois.com"
+let whoisUrl = "https://www.whois.com"
 
 class WhoisViewController: UIViewController, UITextFieldDelegate {
 
@@ -64,13 +64,13 @@ class WhoisViewController: UIViewController, UITextFieldDelegate {
         //Get domain info.
         searchBarButtonItem.isEnabled = false
         loadingActivityIndicatorView.startAnimating()
-        Alamofire.request(baseURL + "/whois/" + domainTextField.text!).responseString { response in
+        Alamofire.request(whoisUrl + "/whois/" + domainTextField.text!).responseString { response in
             var html = "<meta name='format-detection' content='telephone=no'/>" + self.css
             if let doc = HTML(html: response.result.value!, encoding: .utf8) {
                 for link in doc.css(".df-block") {
                     html += link.toHTML!
                 }
-                self.resultWebView.loadHTMLString(html, baseURL: URL.init(string: baseURL))
+                self.resultWebView.loadHTMLString(html, baseURL: URL.init(string: whoisUrl))
                 self.resultWebView.isHidden = false
                 self.searchBarButtonItem.isEnabled = true
                 self.loadingActivityIndicatorView.stopAnimating()
