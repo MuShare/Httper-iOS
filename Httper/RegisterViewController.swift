@@ -15,6 +15,10 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var registerSuccessImageView: UIImageView!
+    @IBOutlet weak var loadingActivityIndicatorView: UIActivityIndicatorView!
+    
+    var registered = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,25 +41,45 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func register(_ sender: Any) {
+        if registered {
+            _ = self.navigationController?.popViewController(animated: true)
+            return
+        }
         if emailTextField.text == "" || usernameTextField.text == "" || passwordTextField.text == "" {
             showAlert(title: NSLocalizedString("tip_name", comment: ""),
                       content: NSLocalizedString("register_not_validate", comment: ""),
                       controller: self)
+            return
+        }
+        if !isEmailAddress(emailTextField.text!) {
+            showAlert(title: NSLocalizedString("tip_name", comment: ""),
+                      content: NSLocalizedString("email_invalidate", comment: ""),
+                      controller: self)
+            return
         }
         let parameters: Parameters = [
             "email": emailTextField.text!,
             "name": usernameTextField.text!,
             "password": passwordTextField.text!
         ]
+        registerButton.isEnabled = false
+        loadingActivityIndicatorView.startAnimating()
         Alamofire.request(createUrl("api/user/register"),
                           method: HTTPMethod.post,
                           parameters: parameters,
                           encoding: URLEncoding.default,
                           headers: nil)
             .responseJSON { response in
+                self.registerButton.isEnabled = true
+                self.loadingActivityIndicatorView.stopAnimating()
                 let res = InternetResponse(response)
                 if res.statusOK() {
-                    
+                    self.registered = true
+                    self.emailTextField.isHidden = true
+                    self.passwordTextField.isHidden = true
+                    self.usernameTextField.isHidden = true
+                    self.registerSuccessImageView.isHidden = false
+                    self.registerButton.setTitle(NSLocalizedString("back_to_login", comment: ""), for: .normal)
                 }
         }
     }
