@@ -53,7 +53,10 @@ class RegisterViewController: UIViewController {
                           encoding: URLEncoding.default,
                           headers: nil)
             .responseJSON { response in
-                print(response)
+                let res = InternetResponse(response)
+                if res.statusOK() {
+                    
+                }
         }
     }
 }

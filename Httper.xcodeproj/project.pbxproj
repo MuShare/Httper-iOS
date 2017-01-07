@@ -16,6 +16,7 @@
 		E431C4A91DF7179D006BB2D6 /* RequestMethodsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E431C4A81DF7179D006BB2D6 /* RequestMethodsTableViewController.swift */; };
 		E431C4AC1DF72172006BB2D6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E431C4AB1DF72172006BB2D6 /* Localizable.strings */; };
 		E447287B1DF7CE80007D2C8B /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E447287A1DF7CE80007D2C8B /* ResultViewController.swift */; };
+		E45D3E861E21296F0002E1F2 /* InternetResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45D3E851E21296F0002E1F2 /* InternetResponse.swift */; };
 		E46077611E126948002DE839 /* PingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46077601E126948002DE839 /* PingViewController.swift */; };
 		E46ABF521E140F2E00E0C092 /* InternetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E46ABF511E140F2E00E0C092 /* InternetTool.m */; };
 		E48553321DF9B2AF00A1DB60 /* PrettyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48553311DF9B2AF00A1DB60 /* PrettyViewController.swift */; };
@@ -80,6 +81,7 @@
 		E431C4AB1DF72172006BB2D6 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		E447287A1DF7CE80007D2C8B /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		E455B3EE1D4CFA7C007C14B8 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		E45D3E851E21296F0002E1F2 /* InternetResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternetResponse.swift; sourceTree = "<group>"; };
 		E46077601E126948002DE839 /* PingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PingViewController.swift; sourceTree = "<group>"; };
 		E46ABF4F1E140C6700E0C092 /* route.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = route.h; sourceTree = "<group>"; };
 		E46ABF501E140F2E00E0C092 /* InternetTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InternetTool.h; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				E41642D21DF970CE00F0339E /* CommonTool.swift */,
+				E45D3E851E21296F0002E1F2 /* InternetResponse.swift */,
 				E46ABF501E140F2E00E0C092 /* InternetTool.h */,
 				E46ABF511E140F2E00E0C092 /* InternetTool.m */,
 				E46ABF4F1E140C6700E0C092 /* route.h */,
@@ -499,6 +502,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4DE76991E1D3DF5002A8385 /* RegisterViewController.swift in Sources */,
+				E45D3E861E21296F0002E1F2 /* InternetResponse.swift in Sources */,
 				E46ABF521E140F2E00E0C092 /* InternetTool.m in Sources */,
 				E4E297B11E00021500AD484E /* ResponseHeaderViewController.swift in Sources */,
 				E4A37A9D1E018D7500586BA1 /* RequestDao.swift in Sources */,

@@ -8,8 +8,6 @@
 
 import UIKit
 
-let baseUrl = "http://httper.fczm.pw/"
-
 func RGB(_ value : Int) -> UIColor {
     let r = CGFloat((value & 0xFF0000) >> 16) / 255.0
     let g = CGFloat((value & 0x00FF00) >> 8 ) / 255.0
@@ -60,8 +58,4 @@ func createCharacterBarButtonItem(character: String, target: UIViewController, a
     }()
     let characterButtonItem = UIBarButtonItem(customView: characterButton)
     return characterButtonItem
-}
-
-func createUrl(_ relative: String) -> String {
-    return baseUrl + relative
 }
