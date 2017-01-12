@@ -80,7 +80,6 @@
 		E431C4A81DF7179D006BB2D6 /* RequestMethodsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestMethodsTableViewController.swift; sourceTree = "<group>"; };
 		E431C4AB1DF72172006BB2D6 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		E447287A1DF7CE80007D2C8B /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
-		E455B3EE1D4CFA7C007C14B8 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		E45D3E851E21296F0002E1F2 /* InternetResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternetResponse.swift; sourceTree = "<group>"; };
 		E46077601E126948002DE839 /* PingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PingViewController.swift; sourceTree = "<group>"; };
 		E46ABF4F1E140C6700E0C092 /* route.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = route.h; sourceTree = "<group>"; };
@@ -181,7 +180,6 @@
 		E431C4AA1DF7215A006BB2D6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E455B3EE1D4CFA7C007C14B8 /* Header.h */,
 				E41642D11DF96F6800F0339E /* Httper-Bridging-Header.h */,
 				E431C4AB1DF72172006BB2D6 /* Localizable.strings */,
 				E4DE76921E1D2AB0002A8385 /* login-bg-iPad.jpg */,

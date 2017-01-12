@@ -31,11 +31,29 @@ class DetailIPInformationTableViewController: UITableViewController {
         
         //Set detail IP information.
         self.title = ipInfo["ip"]! as? String
-        cityLabel.text = ipInfo["city"]! as? String
-        regionLabel.text = ipInfo["region"]! as? String
-        coutryLabel.text = ipInfo["country"]! as? String
-        postCodeLabel.text = ipInfo["postal"]! as? String
-        timeZoneLabel.text = ipInfo["timezone"]! as? String
+        
+        let city = ipInfo["city"]! as? String
+        let region = ipInfo["region"]! as? String
+        let country = ipInfo["country"]! as? String
+        let postCode = ipInfo["postal"]! as? String
+        let timezone = ipInfo["timezone"]! as? String
+        
+        if city != "" && city != nil {
+            cityLabel.text = city
+        }
+        if region != "" && region != nil {
+            regionLabel.text = region
+        }
+        if country != "" && country != nil {
+            coutryLabel.text = country
+        }
+        if postCode != "" && postCode != nil {
+            postCodeLabel.text = postCode
+        }
+        if timezone != "" && timezone != nil {
+            timeZoneLabel.text = timezone
+        }
+        
         latitudeLabel.text = "\(ipInfo["latitude"]!)"
         longitudeLabel.text = "\(ipInfo["longitude"]!)"
         
