@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class RegisterViewController: UIViewController, UITextFieldDelegate {
+class RegisterViewController: EditingViewController {
 
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
@@ -24,6 +24,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         registerButton.layer.borderColor = UIColor.lightGray.cgColor
+        self.shownHeight = registerButton.frame.maxY
         
         //Set background image
         let backgroundImageView: UIImageView = {
@@ -35,30 +36,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         self.view.insertSubview(backgroundImageView, at: 0)
     }
     
-    // MARK: - UITextViewDelegate
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        let offset = keyboardHeight - (self.view.frame.size.height - registerButton.frame.maxY)
-        if offset > 0 {
-            UIView.animate(withDuration: 0.5, animations: {
-                self.view.frame = CGRect(x: 0, y: -offset, width: self.view.frame.size.width, height: self.view.frame.size.height)
-            })
-        }
-        
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        UIView.animate(withDuration: 0.5, animations: {
-            self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
-        })
-    }
-
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField.isFirstResponder {
-            textField.resignFirstResponder()
-        }
-        return true;
-    }
-
     // MARK: - Action
     @IBAction func back(_ sender: Any) {
         _ = self.navigationController?.popViewController(animated: true)
@@ -96,6 +73,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             .responseJSON { response in
                 self.registerButton.isEnabled = true
                 self.loadingActivityIndicatorView.stopAnimating()
+                self.finishEdit()
                 let res = InternetResponse(response)
                 if res.statusOK() {
                     self.registered = true

@@ -39,7 +39,7 @@ class InternetResponse: NSObject {
     }
     
     func errorCode() -> Int {
-        return data["error_code"] as! Int
+        return data["errorCode"] as! Int
     }
     
 }

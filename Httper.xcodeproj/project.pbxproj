@@ -19,6 +19,7 @@
 		E45D3E861E21296F0002E1F2 /* InternetResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45D3E851E21296F0002E1F2 /* InternetResponse.swift */; };
 		E46077611E126948002DE839 /* PingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46077601E126948002DE839 /* PingViewController.swift */; };
 		E46ABF521E140F2E00E0C092 /* InternetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E46ABF511E140F2E00E0C092 /* InternetTool.m */; };
+		E4798BDF1E2BC92600DCD4E2 /* EditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4798BDE1E2BC92600DCD4E2 /* EditingViewController.swift */; };
 		E48553321DF9B2AF00A1DB60 /* PrettyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48553311DF9B2AF00A1DB60 /* PrettyViewController.swift */; };
 		E48553341DF9B2BF00A1DB60 /* RawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48553331DF9B2BF00A1DB60 /* RawViewController.swift */; };
 		E48553361DF9B2CF00A1DB60 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48553351DF9B2CF00A1DB60 /* PreviewViewController.swift */; };
@@ -85,6 +86,7 @@
 		E46ABF4F1E140C6700E0C092 /* route.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = route.h; sourceTree = "<group>"; };
 		E46ABF501E140F2E00E0C092 /* InternetTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InternetTool.h; sourceTree = "<group>"; };
 		E46ABF511E140F2E00E0C092 /* InternetTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InternetTool.m; sourceTree = "<group>"; };
+		E4798BDE1E2BC92600DCD4E2 /* EditingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditingViewController.swift; sourceTree = "<group>"; };
 		E48553311DF9B2AF00A1DB60 /* PrettyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrettyViewController.swift; sourceTree = "<group>"; };
 		E48553331DF9B2BF00A1DB60 /* RawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawViewController.swift; sourceTree = "<group>"; };
 		E48553351DF9B2CF00A1DB60 /* PreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				E4EC89D61E12A4C70072ACF3 /* SimplePing.m */,
 				E4EC89CF1E129FA10072ACF3 /* STDPingServices.h */,
 				E4EC89D01E129FA10072ACF3 /* STDPingServices.m */,
+				E4798BDE1E2BC92600DCD4E2 /* EditingViewController.swift */,
 			);
 			name = Tool;
 			sourceTree = "<group>";
@@ -519,6 +522,7 @@
 				E48553341DF9B2BF00A1DB60 /* RawViewController.swift in Sources */,
 				E48553321DF9B2AF00A1DB60 /* PrettyViewController.swift in Sources */,
 				E46077611E126948002DE839 /* PingViewController.swift in Sources */,
+				E4798BDF1E2BC92600DCD4E2 /* EditingViewController.swift in Sources */,
 				E4007EB91DFEE7B7002A87FA /* RequestBodyViewController.swift in Sources */,
 				E4EC89D21E129FA10072ACF3 /* STDPingServices.m in Sources */,
 				E4EC89D41E12A00C0072ACF3 /* IPAddressTableViewController.swift in Sources */,

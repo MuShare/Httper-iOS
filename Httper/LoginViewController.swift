@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: EditingViewController {
 
     @IBOutlet weak var loginButton: UIButton!
     
@@ -16,6 +16,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         loginButton.layer.borderColor = UIColor.lightGray.cgColor
+        self.shownHeight = loginButton.frame.maxY
         
         //Set background image
         let backgroundImageView: UIImageView = {
