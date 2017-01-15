@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
@@ -19,7 +19,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var loadingActivityIndicatorView: UIActivityIndicatorView!
     
     var registered = false
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,6 +33,30 @@ class RegisterViewController: UIViewController {
             return view
         }()
         self.view.insertSubview(backgroundImageView, at: 0)
+    }
+    
+    // MARK: - UITextViewDelegate
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        let offset = keyboardHeight - (self.view.frame.size.height - registerButton.frame.maxY)
+        if offset > 0 {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.view.frame = CGRect(x: 0, y: -offset, width: self.view.frame.size.width, height: self.view.frame.size.height)
+            })
+        }
+        
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+        })
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField.isFirstResponder {
+            textField.resignFirstResponder()
+        }
+        return true;
     }
 
     // MARK: - Action
@@ -80,7 +104,18 @@ class RegisterViewController: UIViewController {
                     self.usernameTextField.isHidden = true
                     self.registerSuccessImageView.isHidden = false
                     self.registerButton.setTitle(NSLocalizedString("back_to_login", comment: ""), for: .normal)
+                } else {
+                    switch res.errorCode() {
+                    case ErrorCode.emailRegistered.rawValue:
+                        showAlert(title: NSLocalizedString("tip", comment: ""),
+                                  content: NSLocalizedString("email_registered", comment: ""),
+                                  controller: self)
+                    default:
+                        break
+                    }
                 }
+                
         }
     }
+
 }

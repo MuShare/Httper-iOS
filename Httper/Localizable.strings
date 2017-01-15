@@ -48,3 +48,4 @@ not_internet_connection = "No Internet connection!";
 register_not_validate = "Email, username and password cannot be empty!";
 email_invalidate = "Input a correct email!";
 back_to_login = "Back to sign in";
+email_registered = "This email has been registered.";

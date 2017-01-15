@@ -8,6 +8,10 @@
 
 import Alamofire
 
+enum ErrorCode: Int {
+    case emailRegistered = 1011
+}
+
 let baseUrl = "http://httper.fczm.pw/"
 //let baseUrl = "http://127.0.0.1:8080/"
 
