@@ -49,3 +49,7 @@ register_not_validate = "Email, username and password cannot be empty!";
 email_invalidate = "Input a correct email!";
 back_to_login = "Back to sign in";
 email_registered = "This email has been registered.";
+
+login_not_validate = "Input correct emaill and password!";
+email_not_exist = "This email is not existed.";
+password_wrong = "Your password is wrong, check and try again.";

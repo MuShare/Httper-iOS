@@ -6,5 +6,6 @@ target 'Httper' do
     pod 'UILabel+Copyable', '~> 1.0'
     pod 'Kanna', '~> 2.1.0'
     pod 'ReachabilitySwift', '~> 3'
+    pod 'SwiftyUserDefaults', '~> 3'
 end
 

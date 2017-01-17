@@ -9,12 +9,6 @@
 import UIKit
 import M80AttributedLabel
 
-enum PrettyColor: Int {
-    case normal = 0xEEEEEE
-    case key = 0xFF9999
-    case value = 0x33CCFF
-}
-
 let symbols = ["{", "}", "[", "]", ":", ","]
 
 

@@ -13,6 +13,7 @@
 		E40F66A81E01142900C6013E /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40F66A71E01142900C6013E /* HistoryTableViewController.swift */; };
 		E41642D31DF970CE00F0339E /* CommonTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41642D21DF970CE00F0339E /* CommonTool.swift */; };
 		E42DDC841DFA8CB200FAD174 /* ResponseInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42DDC831DFA8CB200FAD174 /* ResponseInfoTableViewController.swift */; };
+		E4305A381E2E5FF900010B52 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4305A371E2E5FF900010B52 /* Global.swift */; };
 		E431C4A91DF7179D006BB2D6 /* RequestMethodsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E431C4A81DF7179D006BB2D6 /* RequestMethodsTableViewController.swift */; };
 		E431C4AC1DF72172006BB2D6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E431C4AB1DF72172006BB2D6 /* Localizable.strings */; };
 		E447287B1DF7CE80007D2C8B /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E447287A1DF7CE80007D2C8B /* ResultViewController.swift */; };
@@ -78,6 +79,7 @@
 		E41642D11DF96F6800F0339E /* Httper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Httper-Bridging-Header.h"; sourceTree = "<group>"; };
 		E41642D21DF970CE00F0339E /* CommonTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonTool.swift; sourceTree = "<group>"; };
 		E42DDC831DFA8CB200FAD174 /* ResponseInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseInfoTableViewController.swift; sourceTree = "<group>"; };
+		E4305A371E2E5FF900010B52 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		E431C4A81DF7179D006BB2D6 /* RequestMethodsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestMethodsTableViewController.swift; sourceTree = "<group>"; };
 		E431C4AB1DF72172006BB2D6 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		E447287A1DF7CE80007D2C8B /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				E4EC89CF1E129FA10072ACF3 /* STDPingServices.h */,
 				E4EC89D01E129FA10072ACF3 /* STDPingServices.m */,
 				E4798BDE1E2BC92600DCD4E2 /* EditingViewController.swift */,
+				E4305A371E2E5FF900010B52 /* Global.swift */,
 			);
 			name = Tool;
 			sourceTree = "<group>";
@@ -510,6 +513,7 @@
 				E48D41601D444F3F0028B84F /* Httper.xcdatamodeld in Sources */,
 				E42DDC841DFA8CB200FAD174 /* ResponseInfoTableViewController.swift in Sources */,
 				E41642D31DF970CE00F0339E /* CommonTool.swift in Sources */,
+				E4305A381E2E5FF900010B52 /* Global.swift in Sources */,
 				E40F66A81E01142900C6013E /* HistoryTableViewController.swift in Sources */,
 				E4D1CAE51DF5C028008DC4F9 /* RequestViewController.swift in Sources */,
 				E48553361DF9B2CF00A1DB60 /* PreviewViewController.swift in Sources */,

@@ -7,10 +7,15 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyUserDefaults
 
 class LoginViewController: EditingViewController {
 
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loadingActivityIndicatorView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,5 +43,52 @@ class LoginViewController: EditingViewController {
     // MARK: - Action
     @IBAction func close(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+
+    @IBAction func login(_ sender: Any) {
+        if emailTextField.text == "" || !isEmailAddress(emailTextField.text!) || passwordTextField.text == "" {
+            showAlert(title: NSLocalizedString("tip_name", comment: ""),
+                      content: NSLocalizedString("login_not_validate", comment: ""),
+                      controller: self)
+            return
+        }
+
+        loginButton.isEnabled = false
+        loadingActivityIndicatorView.startAnimating()
+        let params = [
+            "email": emailTextField.text!,
+            "password": passwordTextField.text!,
+            "deviceIdentifier": UIDevice.current.identifierForVendor!.uuidString,
+            "deviceToken": Defaults[.deviceToken],
+            "os": "iOS",
+            "lan": "end"
+        ]
+        Alamofire.request(createUrl("api/user/login"),
+                          method: HTTPMethod.post,
+                          parameters: params,
+                          encoding: URLEncoding.default,
+                          headers: nil)
+            .responseJSON { (responseObject) in
+                self.loginButton.isEnabled = true
+                self.loadingActivityIndicatorView.stopAnimating()
+
+                let response = InternetResponse(responseObject)
+                if response.statusOK() {
+                    print("login success")
+                } else {
+                    switch response.errorCode() {
+                    case ErrorCode.emailNotExist.rawValue:
+                        showAlert(title: NSLocalizedString("tip_name", comment: ""),
+                                  content: NSLocalizedString("email_not_exist", comment: ""),
+                                  controller: self)
+                    case ErrorCode.passwordWrong.rawValue:
+                        showAlert(title: NSLocalizedString("tip_name", comment: ""),
+                                  content: NSLocalizedString("password_wrong", comment: ""),
+                                  controller: self)
+                    default:
+                        break
+                    }
+                }
+        }
     }
 }

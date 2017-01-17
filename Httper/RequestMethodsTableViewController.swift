@@ -8,7 +8,7 @@
 
 import UIKit
 
-let methods: NSArray = ["GET", "POST", "HEAD", "PUT", "DELETE", "CONNECT", "OPTIONS", "TRACE", "PATCH"]
+let methods = ["GET", "POST", "HEAD", "PUT", "DELETE", "CONNECT", "OPTIONS", "TRACE", "PATCH"]
 
 class RequestMethodsTableViewController: UITableViewController {
 
@@ -30,7 +30,7 @@ class RequestMethodsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "methodIdentifier", for: indexPath as IndexPath)
         let methodLabel: UILabel = cell.viewWithTag(1) as! UILabel
         let introductionLabel = cell.viewWithTag(2) as! UILabel
-        methodLabel.text = methods[indexPath.row] as? String
+        methodLabel.text = methods[indexPath.row] 
         introductionLabel.text = NSLocalizedString(methodLabel.text!, comment: "")
         return cell
     }
