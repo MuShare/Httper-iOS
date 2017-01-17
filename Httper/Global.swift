@@ -15,9 +15,10 @@ let ipInfoUrl = "https://ipapi.co/json/"
 
 extension DefaultsKeys {
     static let email = DefaultsKey<String?>("email")
-    static let username = DefaultsKey<String?>("username")
+    static let name = DefaultsKey<String?>("name")
     static let deviceToken = DefaultsKey<String?>("deviceToken")
     static let token = DefaultsKey<String?>("token")
+    static let login = DefaultsKey<Bool?>("login")
 }
 
 // JSON style

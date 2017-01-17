@@ -49,6 +49,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return .portrait;
     }
     
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        
+    }
+    
     // MARK: - Core Data stack
 
     lazy var applicationDocumentsDirectory: URL = {

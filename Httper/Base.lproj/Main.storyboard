@@ -1750,8 +1750,8 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1et-Hn-ZfK">
-                                                    <rect key="frame" x="138" y="117" width="45" height="30"/>
-                                                    <state key="normal" title="Httper">
+                                                    <rect key="frame" x="105" y="117" width="111" height="30"/>
+                                                    <state key="normal" title="Sign in / Sign up">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
@@ -1938,6 +1938,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Wu4-N5-1PC"/>
+                    <connections>
+                        <outlet property="avatarButton" destination="Lsx-Gg-5Bv" id="mtB-Or-e7E"/>
+                        <outlet property="loginOrUserinfoButton" destination="1et-Hn-ZfK" id="qfv-fY-fSq"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VTO-C5-7nC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -55,14 +55,16 @@ class LoginViewController: EditingViewController {
 
         loginButton.isEnabled = false
         loadingActivityIndicatorView.startAnimating()
-        let params = [
+        
+        let params: Parameters = [
             "email": emailTextField.text!,
             "password": passwordTextField.text!,
             "deviceIdentifier": UIDevice.current.identifierForVendor!.uuidString,
-            "deviceToken": Defaults[.deviceToken],
-            "os": "iOS",
-            "lan": "end"
+            "deviceToken": Defaults[.deviceToken] == nil ? "" : Defaults[.deviceToken]!,
+            "os": "iOS \(UIDevice.current.systemName) \(UIDevice.current.systemVersion)",
+            "lan": NSLocale.preferredLanguages[0]
         ]
+
         Alamofire.request(createUrl("api/user/login"),
                           method: HTTPMethod.post,
                           parameters: params,
@@ -74,7 +76,11 @@ class LoginViewController: EditingViewController {
 
                 let response = InternetResponse(responseObject)
                 if response.statusOK() {
-                    print("login success")
+                    let result = response.getResult()
+                    Defaults[.token] = result?["token"] as? String
+                    Defaults[.name] = result?["name"] as? String
+                    Defaults[.login] = true
+                    self.dismiss(animated: true, completion: nil)
                 } else {
                     switch response.errorCode() {
                     case ErrorCode.emailNotExist.rawValue:

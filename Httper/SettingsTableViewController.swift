@@ -10,6 +10,9 @@ import UIKit
 
 class SettingsTableViewController: UITableViewController {
 
+    @IBOutlet weak var avatarButton: UIButton!
+    @IBOutlet weak var loginOrUserinfoButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
