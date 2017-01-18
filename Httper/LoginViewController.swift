@@ -61,7 +61,7 @@ class LoginViewController: EditingViewController {
             "password": passwordTextField.text!,
             "deviceIdentifier": UIDevice.current.identifierForVendor!.uuidString,
             "deviceToken": Defaults[.deviceToken] == nil ? "" : Defaults[.deviceToken]!,
-            "os": "iOS \(UIDevice.current.systemName) \(UIDevice.current.systemVersion)",
+            "os": "\(UIDevice.current.systemName) \(UIDevice.current.systemVersion)",
             "lan": NSLocale.preferredLanguages[0]
         ]
 
@@ -77,6 +77,7 @@ class LoginViewController: EditingViewController {
                 let response = InternetResponse(responseObject)
                 if response.statusOK() {
                     let result = response.getResult()
+                    Defaults[.email] = self.emailTextField.text
                     Defaults[.token] = result?["token"] as? String
                     Defaults[.name] = result?["name"] as? String
                     Defaults[.login] = true

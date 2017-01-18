@@ -53,3 +53,5 @@ email_registered = "This email has been registered.";
 login_not_validate = "Input correct emaill and password!";
 email_not_exist = "This email is not existed.";
 password_wrong = "Your password is wrong, check and try again.";
+
+sign_in_sign_up = "Sign in / Sign up";

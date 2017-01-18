@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import SwiftyUserDefaults
 
 class SettingsTableViewController: UITableViewController {
 
     @IBOutlet weak var avatarButton: UIButton!
     @IBOutlet weak var loginOrUserinfoButton: UIButton!
+    @IBOutlet weak var emailLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +22,16 @@ class SettingsTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        if Defaults[.login]! {
+            loginOrUserinfoButton.setTitle(Defaults[.name], for: .normal)
+            emailLabel.text = Defaults[.email]
+            emailLabel.isHidden = false
+        } else {
+            loginOrUserinfoButton.setTitle(NSLocalizedString("sign_in_sign_up", comment: ""),
+                                           for: .normal)
+            emailLabel.isHidden = true
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -46,5 +58,22 @@ class SettingsTableViewController: UITableViewController {
             UIApplication.shared.openURL(URL.init(string: "http://httper.fczm.pw")!)
         }
         
+    }
+    
+    // MARK: - Action
+    @IBAction func showAvatar(_ sender: Any) {
+        if Defaults[.login]! {
+            self.performSegue(withIdentifier: "profileSegue", sender: self)
+        } else {
+            self.performSegue(withIdentifier: "loginSegue", sender: self)
+        }
+    }
+    
+    @IBAction func showUserInfo(_ sender: Any) {
+        if Defaults[.login]! {
+            self.performSegue(withIdentifier: "profileSegue", sender: self)
+        } else {
+            self.performSegue(withIdentifier: "loginSegue", sender: self)
+        }
     }
 }
