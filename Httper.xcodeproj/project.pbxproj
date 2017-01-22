@@ -16,6 +16,8 @@
 		E4305A381E2E5FF900010B52 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4305A371E2E5FF900010B52 /* Global.swift */; };
 		E4305A3A1E2F11EB00010B52 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4305A391E2F11EB00010B52 /* ProfileTableViewController.swift */; };
 		E4305A3C1E2F302C00010B52 /* Screenshoot in Resources */ = {isa = PBXBuildFile; fileRef = E4305A3B1E2F302C00010B52 /* Screenshoot */; };
+		E4305A471E34F65000010B52 /* DaoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4305A461E34F65000010B52 /* DaoManager.swift */; };
+		E4305A491E34F8E100010B52 /* DaoTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4305A481E34F8E100010B52 /* DaoTemplate.swift */; };
 		E431C4A91DF7179D006BB2D6 /* RequestMethodsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E431C4A81DF7179D006BB2D6 /* RequestMethodsTableViewController.swift */; };
 		E431C4AC1DF72172006BB2D6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E431C4AB1DF72172006BB2D6 /* Localizable.strings */; };
 		E447287B1DF7CE80007D2C8B /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E447287A1DF7CE80007D2C8B /* ResultViewController.swift */; };
@@ -84,6 +86,8 @@
 		E4305A371E2E5FF900010B52 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		E4305A391E2F11EB00010B52 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		E4305A3B1E2F302C00010B52 /* Screenshoot */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Screenshoot; sourceTree = "<group>"; };
+		E4305A461E34F65000010B52 /* DaoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaoManager.swift; sourceTree = "<group>"; };
+		E4305A481E34F8E100010B52 /* DaoTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaoTemplate.swift; sourceTree = "<group>"; };
 		E431C4A81DF7179D006BB2D6 /* RequestMethodsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestMethodsTableViewController.swift; sourceTree = "<group>"; };
 		E431C4AB1DF72172006BB2D6 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		E447287A1DF7CE80007D2C8B /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
@@ -185,6 +189,16 @@
 			name = History;
 			sourceTree = "<group>";
 		};
+		E4305A451E34F62F00010B52 /* Dao */ = {
+			isa = PBXGroup;
+			children = (
+				E4A37A9C1E018D7500586BA1 /* RequestDao.swift */,
+				E4305A461E34F65000010B52 /* DaoManager.swift */,
+				E4305A481E34F8E100010B52 /* DaoTemplate.swift */,
+			);
+			name = Dao;
+			sourceTree = "<group>";
+		};
 		E431C4AA1DF7215A006BB2D6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,7 +256,8 @@
 		E48D41561D444F3F0028B84F /* Httper */ = {
 			isa = PBXGroup;
 			children = (
-				E4A37A8B1E0184ED00586BA1 /* Data */,
+				E4A37A8B1E0184ED00586BA1 /* Model */,
+				E4305A451E34F62F00010B52 /* Dao */,
 				E40F66A61E01140800C6013E /* History */,
 				E4D1CAE01DF5BFCF008DC4F9 /* Request */,
 				E4EC89C01E1159560072ACF3 /* Settings */,
@@ -275,15 +290,14 @@
 			path = HttperUITests;
 			sourceTree = "<group>";
 		};
-		E4A37A8B1E0184ED00586BA1 /* Data */ = {
+		E4A37A8B1E0184ED00586BA1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				E4A37A981E018C7300586BA1 /* Request+CoreDataClass.swift */,
 				E4A37A991E018C7300586BA1 /* Request+CoreDataProperties.swift */,
 				E48D415E1D444F3F0028B84F /* Httper.xcdatamodeld */,
-				E4A37A9C1E018D7500586BA1 /* RequestDao.swift */,
 			);
-			name = Data;
+			name = Model;
 			sourceTree = "<group>";
 		};
 		E4D1CAE01DF5BFCF008DC4F9 /* Request */ = {
@@ -528,6 +542,7 @@
 				E4A37A9A1E018C7300586BA1 /* Request+CoreDataClass.swift in Sources */,
 				E4EC89D71E12A4C70072ACF3 /* SimplePing.m in Sources */,
 				E4F95CDA1E16A7D3005A0004 /* DetailIPInformationTableViewController.swift in Sources */,
+				E4305A491E34F8E100010B52 /* DaoTemplate.swift in Sources */,
 				E48D41581D444F3F0028B84F /* AppDelegate.swift in Sources */,
 				E4305A3A1E2F11EB00010B52 /* ProfileTableViewController.swift in Sources */,
 				E4F95CD61E15685A005A0004 /* WhoisViewController.swift in Sources */,
@@ -538,6 +553,7 @@
 				E4007EB91DFEE7B7002A87FA /* RequestBodyViewController.swift in Sources */,
 				E4EC89D21E129FA10072ACF3 /* STDPingServices.m in Sources */,
 				E4EC89D41E12A00C0072ACF3 /* IPAddressTableViewController.swift in Sources */,
+				E4305A471E34F65000010B52 /* DaoManager.swift in Sources */,
 				E40B257E1DF44BD20039CA8D /* MainViewController.swift in Sources */,
 				E431C4A91DF7179D006BB2D6 /* RequestMethodsTableViewController.swift in Sources */,
 				E4A37A9B1E018C7300586BA1 /* Request+CoreDataProperties.swift in Sources */,

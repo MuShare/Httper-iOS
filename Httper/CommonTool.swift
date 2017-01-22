@@ -25,6 +25,26 @@ func ClassByName(name : String) ->  AnyClass? {
     return result
 }
 
+// MARK: - JSON String
+func JSONStringFromDictionary(_ dictionary: Dictionary<String, Any>) -> String? {
+    do {
+        let jsonData = try JSONSerialization.data(withJSONObject: dictionary, options: .prettyPrinted)
+        // here "jsonData" is the dictionary encoded in JSON data
+        
+        let decoded = try JSONSerialization.jsonObject(with: jsonData, options: [])
+        // here "decoded" is of type `Any`, decoded from JSON data
+        
+        // you can now cast it with the right type
+        if let dictFromJSON = decoded as? [String:String] {
+            return dictFromJSON.description
+        }
+    } catch {
+        print(error.localizedDescription)
+        return nil
+    }
+    return nil
+}
+
 // MARK: - UI Tool
 func showAlert(title: String, content: String, controller: UIViewController) {
     let alertController = UIAlertController(title: title,

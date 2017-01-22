@@ -10,7 +10,7 @@ import UIKit
 
 class HistoryTableViewController: UITableViewController {
     
-    private let requestDao = RequestDao()
+    private let dao = DaoManager.sharedInstance
     private var dateFormatter = DateFormatter()
     private var requests :[Request]!
 
@@ -19,7 +19,7 @@ class HistoryTableViewController: UITableViewController {
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .medium
         dateFormatter.locale = Locale.current
-        requests = requestDao.findAll()
+        requests = dao.requestDao.findAll()
     }
 
     // MARK: - Table view data source
@@ -67,7 +67,7 @@ class HistoryTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            requestDao.delete(requests[indexPath.row])
+            dao.requestDao.delete(requests[indexPath.row])
             requests.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } 

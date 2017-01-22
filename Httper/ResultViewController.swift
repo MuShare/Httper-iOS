@@ -37,7 +37,7 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
     
     var httpURLResponse: HTTPURLResponse!
     
-    let requestDao = RequestDao()
+    let dao = DaoManager.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +59,11 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
                               controller: self)
                     return
                 }
+                
+                // Request successfully, save and upload this new request to server.
+                self.saveAndPushRequest()
+                
+                // Show response.
                 self.httpURLResponse = response.response
                 let infoBarButtonItem = UIBarButtonItem(image: UIImage.init(named: "info"),
                                                         style: UIBarButtonItemStyle.plain,
@@ -75,9 +80,6 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
 
         NotificationCenter.default.addObserver(self, selector: #selector(currentPageChanged(notification:)), name: NSNotification.Name(rawValue: "currentPageChanged"), object: nil)
         
-        //Save request
-        let bodyData = (body == nil) ? nil : NSData.init(data: body.data(using: .utf8)!)
-        _ = requestDao.saveOrUpdate(method: method, url: url, headers: headers, parameters: parameters, bodytype: "raw", body: bodyData)
     }
 
     //MARK: - UIPageViewControllerDataSource
@@ -161,6 +163,47 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
     
     func showRequestInfo() {
         self.performSegue(withIdentifier: "requestInfoSegue", sender: self)
+    }
+    
+    //Save request
+    func saveAndPushRequest() {
+        let bodyType = "raw"
+        let bodyData = (body == nil) ? nil : NSData.init(data: body.data(using: .utf8)!)
+        let request = dao.requestDao.saveOrUpdate(method: method, url: url, headers: headers, parameters: parameters, bodytype: bodyType, body: bodyData)
+
+        let params: Parameters = [
+            "url": url,
+            "method": method,
+            "updateAt": request.update,
+            "headers": JSONStringFromDictionary(headers)!,
+            "parameters": JSONStringFromDictionary(parameters)!,
+            "bodyType": bodyType,
+            "body": body == nil ? "": body!
+        ]
+        print(params)
+        Alamofire.request(createUrl("api/request/push"),
+                          method: HTTPMethod.post,
+                          parameters: params,
+                          encoding: URLEncoding.default,
+                          headers: tokenHeader())
+            .responseJSON { (responseObject) in
+                let response = InternetResponse(responseObject)
+                if response.statusOK() {
+                    let result = response.getResult()
+                    updateRequestRevision(result?["revision"] as! Int)
+                    request.rid = result?["rid"] as? String
+                    self.dao.saveContext()
+                } else {
+                    switch response.errorCode() {
+                    case ErrorCode.tokenError.rawValue:
+                        break
+                    case ErrorCode.addRequest.rawValue:
+                        break
+                    default:
+                        break
+                    }
+                }
+        }
     }
     
 }

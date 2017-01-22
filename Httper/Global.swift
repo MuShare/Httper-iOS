@@ -8,9 +8,12 @@
 
 import Foundation
 import SwiftyUserDefaults
+import Alamofire
 
 // Server base url
-let baseUrl = "http://httper.fczm.pw/"
+//let baseUrl = "http://httper.fczm.pw/"
+let baseUrl = "http://127.0.0.1:8080/"
+
 let ipInfoUrl = "https://ipapi.co/json/"
 
 extension DefaultsKeys {
@@ -19,6 +22,7 @@ extension DefaultsKeys {
     static let deviceToken = DefaultsKey<String?>("deviceToken")
     static let token = DefaultsKey<String?>("token")
     static let login = DefaultsKey<Bool?>("login")
+    static let requestRevision = DefaultsKey<Int?>("requestRevision")
 }
 
 // JSON style
@@ -37,7 +41,25 @@ enum PrettyColor: Int {
 
 enum ErrorCode: Int {
     case badRequest = -99999
+    case tokenError = 901
     case emailRegistered = 1011
     case emailNotExist = 1021
     case passwordWrong = 1022
+    case addRequest = 2011
+}
+
+func tokenHeader() -> HTTPHeaders? {
+    let token = Defaults[.token]
+    print(token)
+    if token == nil {
+        return nil;
+    }
+    let headers: HTTPHeaders = [
+        "token": token!
+    ]
+    return headers
+}
+
+func updateRequestRevision(_ revision: Int) {
+    Defaults[.requestRevision] = revision
 }

@@ -70,12 +70,12 @@ class RegisterViewController: EditingViewController {
                           parameters: parameters,
                           encoding: URLEncoding.default,
                           headers: nil)
-            .responseJSON { response in
+            .responseJSON { responseObject in
                 self.registerButton.isEnabled = true
                 self.loadingActivityIndicatorView.stopAnimating()
                 self.finishEdit()
-                let res = InternetResponse(response)
-                if res.statusOK() {
+                let response = InternetResponse(responseObject)
+                if response.statusOK() {
                     self.registered = true
                     self.emailTextField.isHidden = true
                     self.passwordTextField.isHidden = true
@@ -83,7 +83,7 @@ class RegisterViewController: EditingViewController {
                     self.registerSuccessImageView.isHidden = false
                     self.registerButton.setTitle(NSLocalizedString("back_to_login", comment: ""), for: .normal)
                 } else {
-                    switch res.errorCode() {
+                    switch response.errorCode() {
                     case ErrorCode.emailRegistered.rawValue:
                         showAlert(title: NSLocalizedString("tip", comment: ""),
                                   content: NSLocalizedString("email_registered", comment: ""),
