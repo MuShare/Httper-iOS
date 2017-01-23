@@ -180,8 +180,7 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
             "bodyType": bodyType,
             "body": body == nil ? "": body!
         ]
-        print(params)
-        Alamofire.request(createUrl("api/request/push"),
+        Alamofire.request(createUrl("api/request/add"),
                           method: HTTPMethod.post,
                           parameters: params,
                           encoding: URLEncoding.default,

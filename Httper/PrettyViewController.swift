@@ -10,6 +10,8 @@ import UIKit
 import M80AttributedLabel
 import Alamofire
 
+let symbols = ["{", "}", "[", "]", ":", ","]
+
 class PrettyViewController: UIViewController {
     
     var text: String!
@@ -43,11 +45,9 @@ class PrettyViewController: UIViewController {
         }
 
         //Set pretty scroll view
-        
         let prettySize = prettyLabel.sizeThatFits(CGSize.init(width: width - 10, height: CGFloat.greatestFiniteMagnitude))
         prettyLabel.frame = CGRect.init(x: 5, y: 5, width: prettySize.width, height: prettySize.height)
         prettyLabel.backgroundColor = UIColor.clear
-        
         let prettyScrollView: UIScrollView = {
             let view = UIScrollView(frame: CGRect(x: 0, y: 0, width: width, height: height - 50))
             view.contentSize = CGSize.init(width: width, height: prettySize.height + 70)

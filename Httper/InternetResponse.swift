@@ -18,10 +18,13 @@ class InternetResponse: NSObject {
     var data: [String: Any]!
     
     init(_ response: DataResponse<Any>) {
+        if response.response != nil {
+            print("Reponse status:\n\(response.response!)")
+        }
+        if response.data != nil {
+            print("Response body:\n\(String.init(data: response.data!, encoding: .utf8)!)")
+        }
         data = response.result.value as! Dictionary<String, Any>!
-        print("Reponse status: \(response.response!)")
-        print("Response body: \(String.init(data: response.data!, encoding: .utf8))")
-        
         if data != nil {
             print("Response with JSON: \(data!)")
         }

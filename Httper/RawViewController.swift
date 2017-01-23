@@ -9,9 +9,6 @@
 import UIKit
 import M80AttributedLabel
 
-let symbols = ["{", "}", "[", "]", ":", ","]
-
-
 class RawViewController: UIViewController {
     
     var text: String!
