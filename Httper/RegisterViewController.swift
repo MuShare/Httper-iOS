@@ -70,29 +70,28 @@ class RegisterViewController: EditingViewController {
                           parameters: parameters,
                           encoding: URLEncoding.default,
                           headers: nil)
-            .responseJSON { responseObject in
-                self.registerButton.isEnabled = true
-                self.loadingActivityIndicatorView.stopAnimating()
-                self.finishEdit()
-                let response = InternetResponse(responseObject)
-                if response.statusOK() {
-                    self.registered = true
-                    self.emailTextField.isHidden = true
-                    self.passwordTextField.isHidden = true
-                    self.usernameTextField.isHidden = true
-                    self.registerSuccessImageView.isHidden = false
-                    self.registerButton.setTitle(NSLocalizedString("back_to_login", comment: ""), for: .normal)
-                } else {
-                    switch response.errorCode() {
-                    case ErrorCode.emailRegistered.rawValue:
-                        showAlert(title: NSLocalizedString("tip", comment: ""),
-                                  content: NSLocalizedString("email_registered", comment: ""),
-                                  controller: self)
-                    default:
-                        break
-                    }
+        .responseJSON { responseObject in
+            self.registerButton.isEnabled = true
+            self.loadingActivityIndicatorView.stopAnimating()
+            self.finishEdit()
+            let response = InternetResponse(responseObject)
+            if response.statusOK() {
+                self.registered = true
+                self.emailTextField.isHidden = true
+                self.passwordTextField.isHidden = true
+                self.usernameTextField.isHidden = true
+                self.registerSuccessImageView.isHidden = false
+                self.registerButton.setTitle(NSLocalizedString("back_to_login", comment: ""), for: .normal)
+            } else {
+                switch response.errorCode() {
+                case ErrorCode.emailRegistered.rawValue:
+                    showAlert(title: NSLocalizedString("tip", comment: ""),
+                              content: NSLocalizedString("email_registered", comment: ""),
+                              controller: self)
+                default:
+                    break
                 }
-                
+            }
         }
     }
 

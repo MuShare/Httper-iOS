@@ -70,32 +70,32 @@ class LoginViewController: EditingViewController {
                           parameters: params,
                           encoding: URLEncoding.default,
                           headers: nil)
-            .responseJSON { (responseObject) in
-                self.loginButton.isEnabled = true
-                self.loadingActivityIndicatorView.stopAnimating()
-
-                let response = InternetResponse(responseObject)
-                if response.statusOK() {
-                    let result = response.getResult()
-                    Defaults[.email] = self.emailTextField.text
-                    Defaults[.token] = result?["token"] as? String
-                    Defaults[.name] = result?["name"] as? String
-                    Defaults[.login] = true
-                    self.dismiss(animated: true, completion: nil)
-                } else {
-                    switch response.errorCode() {
-                    case ErrorCode.emailNotExist.rawValue:
-                        showAlert(title: NSLocalizedString("tip_name", comment: ""),
-                                  content: NSLocalizedString("email_not_exist", comment: ""),
-                                  controller: self)
-                    case ErrorCode.passwordWrong.rawValue:
-                        showAlert(title: NSLocalizedString("tip_name", comment: ""),
-                                  content: NSLocalizedString("password_wrong", comment: ""),
-                                  controller: self)
-                    default:
-                        break
-                    }
+        .responseJSON { (responseObject) in
+            self.loginButton.isEnabled = true
+            self.loadingActivityIndicatorView.stopAnimating()
+            
+            let response = InternetResponse(responseObject)
+            if response.statusOK() {
+                let result = response.getResult()
+                Defaults[.email] = self.emailTextField.text
+                Defaults[.token] = result?["token"] as? String
+                Defaults[.name] = result?["name"] as? String
+                Defaults[.login] = true
+                self.dismiss(animated: true, completion: nil)
+            } else {
+                switch response.errorCode() {
+                case ErrorCode.emailNotExist.rawValue:
+                    showAlert(title: NSLocalizedString("tip_name", comment: ""),
+                              content: NSLocalizedString("email_not_exist", comment: ""),
+                              controller: self)
+                case ErrorCode.passwordWrong.rawValue:
+                    showAlert(title: NSLocalizedString("tip_name", comment: ""),
+                              content: NSLocalizedString("password_wrong", comment: ""),
+                              controller: self)
+                default:
+                    break
                 }
+            }
         }
     }
 }

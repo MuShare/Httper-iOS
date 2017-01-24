@@ -52,30 +52,30 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
                           parameters: parameters,
                           encoding: (body == nil) ? URLEncoding.default : body,
                           headers: headers)
-            .response { response in
-                if response.response == nil {
-                    showAlert(title: NSLocalizedString("tip", comment: ""),
-                              content: NSLocalizedString("cannot_access", comment: ""),
-                              controller: self)
-                    return
-                }
-                
-                // Request successfully, save and upload this new request to server.
-                self.saveAndPushRequest()
-                
-                // Show response.
-                self.httpURLResponse = response.response
-                let infoBarButtonItem = UIBarButtonItem(image: UIImage.init(named: "info"),
-                                                        style: UIBarButtonItemStyle.plain,
-                                                        target: self,
-                                                        action: #selector(self.showRequestInfo))
-                self.navigationItem.rightBarButtonItem = infoBarButtonItem
-                
-                let utf8Text = String(data: response.data!, encoding: .utf8)
-                self.prettyViewController = PrettyViewController(text: utf8Text!, headers: (response.response?.allHeaderFields)!)
-                self.rawViewController = RawViewController(text: utf8Text!)
-                self.previewViewController = PreviewViewController(text: utf8Text!, url: (response.response?.url)!)
-                self.pageViewController.setViewControllers([self.prettyViewController], direction: .forward, animated: true, completion: nil)
+        .response { response in
+            if response.response == nil {
+                showAlert(title: NSLocalizedString("tip", comment: ""),
+                          content: NSLocalizedString("cannot_access", comment: ""),
+                          controller: self)
+                return
+            }
+            
+            // Request successfully, save and upload this new request to server.
+            self.saveAndPushRequest()
+            
+            // Show response.
+            self.httpURLResponse = response.response
+            let infoBarButtonItem = UIBarButtonItem(image: UIImage.init(named: "info"),
+                                                    style: UIBarButtonItemStyle.plain,
+                                                    target: self,
+                                                    action: #selector(self.showRequestInfo))
+            self.navigationItem.rightBarButtonItem = infoBarButtonItem
+            
+            let utf8Text = String(data: response.data!, encoding: .utf8)
+            self.prettyViewController = PrettyViewController(text: utf8Text!, headers: (response.response?.allHeaderFields)!)
+            self.rawViewController = RawViewController(text: utf8Text!)
+            self.previewViewController = PreviewViewController(text: utf8Text!, url: (response.response?.url)!)
+            self.pageViewController.setViewControllers([self.prettyViewController], direction: .forward, animated: true, completion: nil)
         }
 
         NotificationCenter.default.addObserver(self, selector: #selector(currentPageChanged(notification:)), name: NSNotification.Name(rawValue: "currentPageChanged"), object: nil)
@@ -180,28 +180,28 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
             "bodyType": bodyType,
             "body": body == nil ? "": body!
         ]
-        Alamofire.request(createUrl("api/request/add"),
+        Alamofire.request(createUrl("api/request/push"),
                           method: HTTPMethod.post,
                           parameters: params,
                           encoding: URLEncoding.default,
                           headers: tokenHeader())
-            .responseJSON { (responseObject) in
-                let response = InternetResponse(responseObject)
-                if response.statusOK() {
-                    let result = response.getResult()
-                    updateRequestRevision(result?["revision"] as! Int)
-                    request.rid = result?["rid"] as? String
-                    self.dao.saveContext()
-                } else {
-                    switch response.errorCode() {
-                    case ErrorCode.tokenError.rawValue:
-                        break
-                    case ErrorCode.addRequest.rawValue:
-                        break
-                    default:
-                        break
-                    }
+        .responseJSON { (responseObject) in
+            let response = InternetResponse(responseObject)
+            if response.statusOK() {
+                let result = response.getResult()
+                updateRequestRevision(result?["revision"] as! Int)
+                request.rid = result?["rid"] as? String
+                self.dao.saveContext()
+            } else {
+                switch response.errorCode() {
+                case ErrorCode.tokenError.rawValue:
+                    break
+                case ErrorCode.addRequest.rawValue:
+                    break
+                default:
+                    break
                 }
+            }
         }
     }
     

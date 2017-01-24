@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class HistoryTableViewController: UITableViewController {
     
@@ -20,6 +21,8 @@ class HistoryTableViewController: UITableViewController {
         dateFormatter.timeStyle = .medium
         dateFormatter.locale = Locale.current
         requests = dao.requestDao.findAll()
+        // Pull new updated request from server.
+        pullUpdatedRequest()
     }
 
     // MARK: - Table view data source
@@ -72,4 +75,25 @@ class HistoryTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         } 
     }
+    
+    // MARK: - Service
+    func pullUpdatedRequest() {
+        let params: Parameters = [
+            "revision": requestRevision()
+        ]
+        Alamofire.request(createUrl("api/request/pull"),
+                          method: HTTPMethod.get,
+                          parameters: params,
+                          encoding: URLEncoding.default,
+                          headers: tokenHeader())
+        .responseJSON { (responseObject) in
+            let response = InternetResponse(responseObject)
+            if response.statusOK() {
+                
+            } else {
+                
+            }
+        }
+    }
+    
 }

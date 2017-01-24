@@ -50,7 +50,6 @@ enum ErrorCode: Int {
 
 func tokenHeader() -> HTTPHeaders? {
     let token = Defaults[.token]
-    print(token)
     if token == nil {
         return nil;
     }
@@ -62,4 +61,12 @@ func tokenHeader() -> HTTPHeaders? {
 
 func updateRequestRevision(_ revision: Int) {
     Defaults[.requestRevision] = revision
+}
+
+func requestRevision() -> Int {
+    let requestRevision = Defaults[.requestRevision]
+    if requestRevision == nil {
+        return 0
+    }
+    return requestRevision!
 }
