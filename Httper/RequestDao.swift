@@ -38,7 +38,7 @@ class RequestDao: DaoTemplate {
         request.bodytype = requestObject["bodyType"] as? String
         let body = requestObject["body"] as! String
         request.body = NSData.init(data: body.data(using: .utf8)!)
-        request.update = Int64(NSDate().timeIntervalSince1970)
+        request.update = requestObject["updateAt"] as! Int64
         self.saveContext()
     }
     

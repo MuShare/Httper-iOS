@@ -7,5 +7,6 @@ target 'Httper' do
     pod 'Kanna', '~> 2.1.0'
     pod 'ReachabilitySwift', '~> 3'
     pod 'SwiftyUserDefaults', '~> 3'
+    pod 'UIImageView+Extension', '~> 0.2'
 end
 
