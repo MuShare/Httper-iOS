@@ -78,8 +78,9 @@ class HistoryTableViewController: UITableViewController {
     
     // MARK: - Service
     func pullUpdatedRequest() {
+        let localRevision = requestRevision()
         let params: Parameters = [
-            "revision": requestRevision()
+            "revision": localRevision
         ]
         Alamofire.request(createUrl("api/request/pull"),
                           method: HTTPMethod.get,
@@ -89,9 +90,22 @@ class HistoryTableViewController: UITableViewController {
         .responseJSON { (responseObject) in
             let response = InternetResponse(responseObject)
             if response.statusOK() {
-                
-            } else {
-                
+                let result = response.getResult()
+                let revision = result?["revision"] as! Int
+                if revision > localRevision {
+                    let requests = result?["requests"] as! [[String: Any]]
+                    // Save updated requests to persistent store
+                    for request in requests {
+                        self.dao.requestDao.syncUpdated(request)
+                    }
+                    
+                    // Update local request revision
+                    updateRequestRevision(revision)
+                    
+                    // Refresh table view
+                    self.requests = self.dao.requestDao.findAll()
+                    self.tableView.reloadData()
+                }
             }
         }
     }

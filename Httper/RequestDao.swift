@@ -26,6 +26,22 @@ class RequestDao: DaoTemplate {
         return request
     }
     
+    func syncUpdated(_ requestObject: [String: Any]) {
+        let request = NSEntityDescription.insertNewObject(forEntityName: NSStringFromClass(Request.self),
+                                                          into: context) as! Request
+        request.method = requestObject["method"] as? String
+        request.url = requestObject["url"] as? String
+        let headers = serializeJSON(requestObject["headers"] as! String) as! HTTPHeaders
+        let parameters = serializeJSON(requestObject["parameters"] as! String)! as Parameters
+        request.headers = NSKeyedArchiver.archivedData(withRootObject: headers) as NSData?
+        request.parameters = NSKeyedArchiver.archivedData(withRootObject: parameters) as NSData?
+        request.bodytype = requestObject["bodyType"] as? String
+        let body = requestObject["body"] as! String
+        request.body = NSData.init(data: body.data(using: .utf8)!)
+        request.update = Int64(NSDate().timeIntervalSince1970)
+        self.saveContext()
+    }
+    
     func findAll() -> [Request] {
         let fetchRequest = NSFetchRequest<Request>(entityName: NSStringFromClass(Request.self))
         fetchRequest.sortDescriptors = [NSSortDescriptor.init(key: "update", ascending: false)]

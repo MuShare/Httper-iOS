@@ -36,6 +36,18 @@ func JSONStringFromDictionary(_ dictionary: Dictionary<String, Any>) -> String? 
     }
 }
 
+//Transfer JSON string to dictionary
+func serializeJSON(_ string: String) -> [String: Any]? {
+    if let data = string.data(using: .utf8) {
+        do {
+            return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    return nil
+}
+
 // MARK: - UI Tool
 func showAlert(title: String, content: String, controller: UIViewController) {
     let alertController = UIAlertController(title: title,
