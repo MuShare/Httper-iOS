@@ -55,3 +55,6 @@ email_not_exist = "This email is not existed.";
 password_wrong = "Your password is wrong, check and try again.";
 
 sign_in_sign_up = "Sign in / Sign up";
+
+sign_out_title = "Sign out";
+sign_out_message = "Are you sure to sign out now?";

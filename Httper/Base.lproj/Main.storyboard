@@ -1065,6 +1065,40 @@
                                             <constraint firstAttribute="trailing" secondItem="bAD-vb-6yq" secondAttribute="trailing" constant="41" id="WtG-Mo-xdR"/>
                                         </constraints>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="20" id="nze-Aj-r4P">
+                                        <rect key="frame" x="0.0" y="311" width="320" height="20"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nze-Aj-r4P" id="nV6-Ac-3Zh">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="19"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="logout" rowHeight="50" id="a9W-mv-eb5">
+                                        <rect key="frame" x="0.0" y="331" width="320" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a9W-mv-eb5" id="GhH-Yg-O1A">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign out" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="556-DC-ag3">
+                                                    <rect key="frame" x="127" y="15" width="66" height="18"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="66" id="a7h-v3-Y9v"/>
+                                                        <constraint firstAttribute="height" constant="18" id="rZ3-pR-s5x"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.98523548018508755" green="0.37383588157115655" blue="0.33691869007768921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="556-DC-ag3" firstAttribute="centerY" secondItem="GhH-Yg-O1A" secondAttribute="centerY" id="Qkr-Dl-hUY"/>
+                                                <constraint firstItem="556-DC-ag3" firstAttribute="centerX" secondItem="GhH-Yg-O1A" secondAttribute="centerX" id="clu-KB-tWs"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.2581908107" green="0.27822533249999998" blue="0.2949104011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -1079,6 +1113,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Profile" id="DXO-ql-9lQ"/>
+                    <connections>
+                        <outlet property="emailLabel" destination="bUT-0F-eLj" id="f3M-xN-4uA"/>
+                        <outlet property="nameLabel" destination="gh7-fV-ig7" id="yu3-HS-S1M"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W60-gm-Ebk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

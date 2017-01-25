@@ -47,6 +47,8 @@ class RequestDao: DaoTemplate {
             request.update = requestObject["updateAt"] as! Int64
             // Save physical id from server.
             request.rid = requestObject["rid"] as? String
+            // Save revision
+            request.revision = requestObject["revision"] as! Int16
         }
         self.saveContext()
     }

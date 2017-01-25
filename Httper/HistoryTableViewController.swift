@@ -47,6 +47,7 @@ class HistoryTableViewController: UITableViewController {
         let methodLabel = cell.viewWithTag(2) as! UILabel
         let updateLabel = cell.viewWithTag(3) as! UILabel
         let request = requests[indexPath.row]
+        print("\(request.url!) revision = \(request.revision)")
         urlLabel.text = request.url
         methodLabel.text = request.method
         updateLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(request.update)))
