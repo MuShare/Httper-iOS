@@ -70,9 +70,28 @@ class HistoryTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            dao.requestDao.delete(requests[indexPath.row])
+            let request = requests[indexPath.row]
+            dao.requestDao.delete(request)
             requests.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            // Delete this request in server
+            let params: Parameters = [
+                "rid": request.rid!
+            ]
+            Alamofire.request(createUrl("api/request/push"),
+                              method: HTTPMethod.delete,
+                              parameters: params,
+                              encoding: URLEncoding.default,
+                              headers: tokenHeader())
+            .responseJSON(completionHandler: { (responseObject) in
+                let response = InternetResponse(responseObject)
+                if response.statusOK() {
+                    // Update local request revision by the revision from server.
+                    let revision = response.getResult()["revision"] as! Int
+                    updateRequestRevision(revision)
+                }
+            })
         } 
     }
     

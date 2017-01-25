@@ -16,12 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        
+
         if Defaults[.login] == nil {
             Defaults[.login] = false
+        }
+        
+        if App.version.olderThan("1.2") {
+            version_1_3()
         }
         
         return true
