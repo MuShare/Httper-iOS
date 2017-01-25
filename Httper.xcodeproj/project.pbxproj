@@ -26,7 +26,7 @@
 		E46ABF521E140F2E00E0C092 /* InternetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E46ABF511E140F2E00E0C092 /* InternetTool.m */; };
 		E4798BDF1E2BC92600DCD4E2 /* EditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4798BDE1E2BC92600DCD4E2 /* EditingViewController.swift */; };
 		E47FDC601E3861AF00251EEC /* Versions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FDC5F1E3861AF00251EEC /* Versions.swift */; };
-		E47FDC621E38637100251EEC /* VersionUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FDC611E38637100251EEC /* VersionUpdate.swift */; };
+		E47FDC651E38697600251EEC /* SyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FDC641E38697600251EEC /* SyncManager.swift */; };
 		E48553321DF9B2AF00A1DB60 /* PrettyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48553311DF9B2AF00A1DB60 /* PrettyViewController.swift */; };
 		E48553341DF9B2BF00A1DB60 /* RawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48553331DF9B2BF00A1DB60 /* RawViewController.swift */; };
 		E48553361DF9B2CF00A1DB60 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48553351DF9B2CF00A1DB60 /* PreviewViewController.swift */; };
@@ -100,7 +100,8 @@
 		E46ABF511E140F2E00E0C092 /* InternetTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InternetTool.m; sourceTree = "<group>"; };
 		E4798BDE1E2BC92600DCD4E2 /* EditingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditingViewController.swift; sourceTree = "<group>"; };
 		E47FDC5F1E3861AF00251EEC /* Versions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Versions.swift; sourceTree = "<group>"; };
-		E47FDC611E38637100251EEC /* VersionUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionUpdate.swift; sourceTree = "<group>"; };
+		E47FDC631E38674200251EEC /* Httper_1.2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Httper_1.2.xcdatamodel; sourceTree = "<group>"; };
+		E47FDC641E38697600251EEC /* SyncManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncManager.swift; sourceTree = "<group>"; };
 		E48553311DF9B2AF00A1DB60 /* PrettyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrettyViewController.swift; sourceTree = "<group>"; };
 		E48553331DF9B2BF00A1DB60 /* RawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawViewController.swift; sourceTree = "<group>"; };
 		E48553351DF9B2CF00A1DB60 /* PreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
@@ -220,6 +221,8 @@
 			isa = PBXGroup;
 			children = (
 				E41642D21DF970CE00F0339E /* CommonTool.swift */,
+				E4798BDE1E2BC92600DCD4E2 /* EditingViewController.swift */,
+				E4305A371E2E5FF900010B52 /* Global.swift */,
 				E45D3E851E21296F0002E1F2 /* InternetResponse.swift */,
 				E46ABF501E140F2E00E0C092 /* InternetTool.h */,
 				E46ABF511E140F2E00E0C092 /* InternetTool.m */,
@@ -228,10 +231,8 @@
 				E4EC89D61E12A4C70072ACF3 /* SimplePing.m */,
 				E4EC89CF1E129FA10072ACF3 /* STDPingServices.h */,
 				E4EC89D01E129FA10072ACF3 /* STDPingServices.m */,
-				E4798BDE1E2BC92600DCD4E2 /* EditingViewController.swift */,
-				E4305A371E2E5FF900010B52 /* Global.swift */,
+				E47FDC641E38697600251EEC /* SyncManager.swift */,
 				E47FDC5F1E3861AF00251EEC /* Versions.swift */,
-				E47FDC611E38637100251EEC /* VersionUpdate.swift */,
 			);
 			name = Tool;
 			sourceTree = "<group>";
@@ -540,7 +541,6 @@
 				E48D41601D444F3F0028B84F /* Httper.xcdatamodeld in Sources */,
 				E42DDC841DFA8CB200FAD174 /* ResponseInfoTableViewController.swift in Sources */,
 				E41642D31DF970CE00F0339E /* CommonTool.swift in Sources */,
-				E47FDC621E38637100251EEC /* VersionUpdate.swift in Sources */,
 				E4305A381E2E5FF900010B52 /* Global.swift in Sources */,
 				E40F66A81E01142900C6013E /* HistoryTableViewController.swift in Sources */,
 				E4D1CAE51DF5C028008DC4F9 /* RequestViewController.swift in Sources */,
@@ -552,6 +552,7 @@
 				E4305A491E34F8E100010B52 /* DaoTemplate.swift in Sources */,
 				E48D41581D444F3F0028B84F /* AppDelegate.swift in Sources */,
 				E4305A3A1E2F11EB00010B52 /* ProfileTableViewController.swift in Sources */,
+				E47FDC651E38697600251EEC /* SyncManager.swift in Sources */,
 				E4F95CD61E15685A005A0004 /* WhoisViewController.swift in Sources */,
 				E47FDC601E3861AF00251EEC /* Versions.swift in Sources */,
 				E48553341DF9B2BF00A1DB60 /* RawViewController.swift in Sources */,
@@ -837,9 +838,10 @@
 		E48D415E1D444F3F0028B84F /* Httper.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				E47FDC631E38674200251EEC /* Httper_1.2.xcdatamodel */,
 				E48D415F1D444F3F0028B84F /* Httper.xcdatamodel */,
 			);
-			currentVersion = E48D415F1D444F3F0028B84F /* Httper.xcdatamodel */;
+			currentVersion = E47FDC631E38674200251EEC /* Httper_1.2.xcdatamodel */;
 			path = Httper.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

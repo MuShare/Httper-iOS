@@ -11,9 +11,11 @@ import Alamofire
 
 class HistoryTableViewController: UITableViewController {
     
-    private let dao = DaoManager.sharedInstance
-    private var dateFormatter = DateFormatter()
-    private var requests :[Request]!
+    let dao = DaoManager.sharedInstance
+    let sync = SyncManager.sharedInstance
+    
+    var dateFormatter = DateFormatter()
+    var requests :[Request]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +24,11 @@ class HistoryTableViewController: UITableViewController {
         dateFormatter.locale = Locale.current
         requests = dao.requestDao.findAll()
         // Pull new updated request from server.
-        pullUpdatedRequest()
+        sync.pullUpdatedRequest { (revision) in
+            // Refresh table view
+            self.requests = self.dao.requestDao.findAll()
+            self.tableView.reloadData()
+        }
     }
 
     // MARK: - Table view data source
@@ -40,10 +46,10 @@ class HistoryTableViewController: UITableViewController {
         let urlLabel = cell.viewWithTag(1) as! UILabel
         let methodLabel = cell.viewWithTag(2) as! UILabel
         let updateLabel = cell.viewWithTag(3) as! UILabel
-        let reuqest = requests[indexPath.row]
-        urlLabel.text = reuqest.url
-        methodLabel.text = reuqest.method
-        updateLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(reuqest.update)))
+        let request = requests[indexPath.row]
+        urlLabel.text = request.url
+        methodLabel.text = request.method
+        updateLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(request.update)))
         return cell
     }
     
@@ -71,13 +77,17 @@ class HistoryTableViewController: UITableViewController {
         if editingStyle == .delete {
             // Delete the row from the data source
             let request = requests[indexPath.row]
+            let rid = request.rid
             dao.requestDao.delete(request)
             requests.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             
             // Delete this request in server
+            if rid == nil {
+                return
+            }
             let params: Parameters = [
-                "rid": request.rid!
+                "rid": rid!
             ]
             Alamofire.request(createUrl("api/request/push"),
                               method: HTTPMethod.delete,
@@ -93,40 +103,6 @@ class HistoryTableViewController: UITableViewController {
                 }
             })
         } 
-    }
-    
-    // MARK: - Service
-    func pullUpdatedRequest() {
-        let localRevision = requestRevision()
-        let params: Parameters = [
-            "revision": localRevision
-        ]
-        Alamofire.request(createUrl("api/request/pull"),
-                          method: HTTPMethod.get,
-                          parameters: params,
-                          encoding: URLEncoding.default,
-                          headers: tokenHeader())
-        .responseJSON { (responseObject) in
-            let response = InternetResponse(responseObject)
-            if response.statusOK() {
-                let result = response.getResult()
-                let revision = result?["revision"] as! Int
-                if revision > localRevision {
-                    let requests = result?["requests"] as! [[String: Any]]
-                    // Save updated requests to persistent store
-                    for request in requests {
-                        self.dao.requestDao.syncUpdated(request)
-                    }
-                    
-                    // Update local request revision
-                    updateRequestRevision(revision)
-                    
-                    // Refresh table view
-                    self.requests = self.dao.requestDao.findAll()
-                    self.tableView.reloadData()
-                }
-            }
-        }
     }
     
 }

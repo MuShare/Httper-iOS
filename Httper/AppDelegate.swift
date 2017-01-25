@@ -21,11 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if Defaults[.login] == nil {
             Defaults[.login] = false
         }
-        
-        if App.version.olderThan("1.2") {
-            version_1_3()
-        }
-        
+
         return true
     }
 
@@ -87,7 +83,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("SQLite file stores at \(url)")
         var failureReason = "There was an error creating or loading the application's saved data."
         do {
-            try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
+            // Use lightweight migration mode.
+            let options = [
+                NSMigratePersistentStoresAutomaticallyOption: true,
+                NSInferMappingModelAutomaticallyOption: true
+            ]
+            try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: options)
         } catch {
             // Report any error we got.
             var dict = [String: AnyObject]()

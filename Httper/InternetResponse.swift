@@ -18,6 +18,7 @@ class InternetResponse: NSObject {
     var data: [String: Any]!
     
     init(_ response: DataResponse<Any>) {
+        print("New response from server at \(Date.init())")
         if response.response != nil {
             print("Reponse status:\n\(response.response!)")
         }
@@ -52,3 +53,4 @@ class InternetResponse: NSObject {
     }
     
 }
+
