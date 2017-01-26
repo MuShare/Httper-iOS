@@ -175,8 +175,8 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
             "url": url,
             "method": method,
             "updateAt": request.update,
-            "headers": JSONStringFromDictionary(headers)!,
-            "parameters": JSONStringFromDictionary(parameters)!,
+            "headers": JSONStringWithObject(headers)!,
+            "parameters": JSONStringWithObject(parameters)!,
             "bodyType": bodyType,
             "body": body == nil ? "": body!
         ]
@@ -189,7 +189,10 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
             let response = InternetResponse(responseObject)
             if response.statusOK() {
                 let result = response.getResult()
-                updateRequestRevision(result?["revision"] as! Int)
+                let revision = result?["revision"] as! Int
+                updateRequestRevision(revision)
+                // Update user
+                request.revision = Int16(revision)
                 request.rid = result?["rid"] as? String
                 self.dao.saveContext()
             } else {

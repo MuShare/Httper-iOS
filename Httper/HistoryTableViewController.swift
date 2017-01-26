@@ -24,7 +24,7 @@ class HistoryTableViewController: UITableViewController {
         dateFormatter.locale = Locale.current
         requests = dao.requestDao.findAll()
         // Pull new updated request from server.
-        sync.pullUpdatedRequest { (revision) in
+        sync.pullUpdatedRequests { (revision) in
             // Refresh table view
             self.requests = self.dao.requestDao.findAll()
             self.tableView.reloadData()

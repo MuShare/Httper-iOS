@@ -86,7 +86,7 @@ class LoginViewController: EditingViewController {
                 Defaults[.login] = true
                 
                 // Sync request entities from server
-                self.sync.pullUpdatedRequest(nil)
+                self.sync.pullUpdatedRequests(nil)
                 
                 self.dismiss(animated: true, completion: nil)
             } else {

@@ -26,9 +26,9 @@ func ClassByName(name : String) ->  AnyClass? {
 }
 
 // MARK: - JSON String
-func JSONStringFromDictionary(_ dictionary: Dictionary<String, Any>) -> String? {
+func JSONStringWithObject(_ object: Any) -> String? {
     do {
-        let jsonData = try JSONSerialization.data(withJSONObject: dictionary, options: .init(rawValue: 0))
+        let jsonData = try JSONSerialization.data(withJSONObject: object, options: .init(rawValue: 0))
         return String.init(data: jsonData, encoding: .utf8)
     } catch {
         print(error.localizedDescription)

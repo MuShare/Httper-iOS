@@ -57,17 +57,23 @@ class RequestDao: DaoTemplate {
         fetchRequest.predicate = NSPredicate(format: "revision>%d", revision)
         return try! context.fetch(fetchRequest)
     }
-
-    func delete(_ deleteRequest: Request) {
-        context.delete(deleteRequest)
-        self.saveContext()
+    
+    func findByRevision(_ revision: Int) -> [Request] {
+        let fetchRequest = NSFetchRequest<Request>(entityName: NSStringFromClass(Request.self))
+        fetchRequest.predicate = NSPredicate(format: "revision=%d", revision)
+        return try! context.fetch(fetchRequest)
     }
     
     func findInRids(_ rids: [String]) -> [Request] {
         let fetchRequest = NSFetchRequest<Request>(entityName: NSStringFromClass(Request.self))
         fetchRequest.predicate = NSPredicate(format: "rid IN %@", rids);
-//        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest as! NSFetchRequest<NSFetchRequestResult>)
+        //        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest as! NSFetchRequest<NSFetchRequestResult>)
         return try! context.fetch(fetchRequest)
+    }
+
+    func delete(_ deleteRequest: Request) {
+        context.delete(deleteRequest)
+        self.saveContext()
     }
     
     func deleteAll() {
@@ -85,4 +91,5 @@ class RequestDao: DaoTemplate {
         }
         return requests[0]
     }
+    
 }
