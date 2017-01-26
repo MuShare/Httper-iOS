@@ -70,3 +70,11 @@ func requestRevision() -> Int {
     }
     return requestRevision!
 }
+
+func clearUserDefaults() {
+    Defaults[.email] = nil
+    Defaults[.name] = nil
+    Defaults[.token] = nil
+    Defaults[.login] = false
+    Defaults[.requestRevision] = 0
+}

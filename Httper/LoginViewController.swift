@@ -17,6 +17,8 @@ class LoginViewController: EditingViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loadingActivityIndicatorView: UIActivityIndicatorView!
     
+    let sync = SyncManager.sharedInstance
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -77,10 +79,15 @@ class LoginViewController: EditingViewController {
             let response = InternetResponse(responseObject)
             if response.statusOK() {
                 let result = response.getResult()
+                // Login success, save user information to NSUserDefaults.
                 Defaults[.email] = self.emailTextField.text
                 Defaults[.token] = result?["token"] as? String
                 Defaults[.name] = result?["name"] as? String
                 Defaults[.login] = true
+                
+                // Sync request entities from server
+                self.sync.pullUpdatedRequest(nil)
+                
                 self.dismiss(animated: true, completion: nil)
             } else {
                 switch response.errorCode() {

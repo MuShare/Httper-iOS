@@ -27,29 +27,22 @@ class RequestDao: DaoTemplate {
     }
     
     func syncUpdated(_ requestObject: [String: Any]) {
-        if requestObject["deleted"] as! Bool {
-            let request = getByRid((requestObject["rid"] as? String)!)
-            if request != nil {
-                context.delete(request!)
-            }
-        } else {
-            let request = NSEntityDescription.insertNewObject(forEntityName: NSStringFromClass(Request.self),
-                                                              into: context) as! Request
-            request.method = requestObject["method"] as? String
-            request.url = requestObject["url"] as? String
-            let headers = serializeJSON(requestObject["headers"] as! String) as! HTTPHeaders
-            let parameters = serializeJSON(requestObject["parameters"] as! String)! as Parameters
-            request.headers = NSKeyedArchiver.archivedData(withRootObject: headers) as NSData?
-            request.parameters = NSKeyedArchiver.archivedData(withRootObject: parameters) as NSData?
-            request.bodytype = requestObject["bodyType"] as? String
-            let body = requestObject["body"] as! String
-            request.body = NSData.init(data: body.data(using: .utf8)!)
-            request.update = requestObject["updateAt"] as! Int64
-            // Save physical id from server.
-            request.rid = requestObject["rid"] as? String
-            // Save revision
-            request.revision = requestObject["revision"] as! Int16
-        }
+        let request = NSEntityDescription.insertNewObject(forEntityName: NSStringFromClass(Request.self),
+                                                          into: context) as! Request
+        request.method = requestObject["method"] as? String
+        request.url = requestObject["url"] as? String
+        let headers = serializeJSON(requestObject["headers"] as! String) as! HTTPHeaders
+        let parameters = serializeJSON(requestObject["parameters"] as! String)! as Parameters
+        request.headers = NSKeyedArchiver.archivedData(withRootObject: headers) as NSData?
+        request.parameters = NSKeyedArchiver.archivedData(withRootObject: parameters) as NSData?
+        request.bodytype = requestObject["bodyType"] as? String
+        let body = requestObject["body"] as! String
+        request.body = NSData.init(data: body.data(using: .utf8)!)
+        request.update = requestObject["updateAt"] as! Int64
+        // Save physical id from server.
+        request.rid = requestObject["rid"] as? String
+        // Save revision
+        request.revision = requestObject["revision"] as! Int16
         self.saveContext()
     }
     
@@ -58,10 +51,23 @@ class RequestDao: DaoTemplate {
         fetchRequest.sortDescriptors = [NSSortDescriptor.init(key: "update", ascending: false)]
         return try! context.fetch(fetchRequest)
     }
+    
+    func findRevisionLargerThan(_ revision: Int) -> [Request] {
+        let fetchRequest = NSFetchRequest<Request>(entityName: NSStringFromClass(Request.self))
+        fetchRequest.predicate = NSPredicate(format: "revision>%d", revision)
+        return try! context.fetch(fetchRequest)
+    }
 
     func delete(_ deleteRequest: Request) {
         context.delete(deleteRequest)
         self.saveContext()
+    }
+    
+    func findInRids(_ rids: [String]) -> [Request] {
+        let fetchRequest = NSFetchRequest<Request>(entityName: NSStringFromClass(Request.self))
+        fetchRequest.predicate = NSPredicate(format: "rid IN %@", rids);
+//        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest as! NSFetchRequest<NSFetchRequestResult>)
+        return try! context.fetch(fetchRequest)
     }
     
     func deleteAll() {

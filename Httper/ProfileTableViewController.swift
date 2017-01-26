@@ -7,19 +7,24 @@
 //
 
 import UIKit
+import SwiftyUserDefaults
 
 class ProfileTableViewController: UITableViewController {
 
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     
+    let dao = DaoManager.sharedInstance
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.separatorStyle = .none
+        
+        emailLabel.text = Defaults[.email]
+        nameLabel.text = Defaults[.name]
     }
 
     // MARK: - Table view data source
-    
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.01
     }
@@ -37,7 +42,7 @@ class ProfileTableViewController: UITableViewController {
             let logout = UIAlertAction.init(title: NSLocalizedString("sign_out_title", comment: ""),
                                             style: .destructive,
                                             handler: { (action) in
-                                                
+                                                self.logout()
             })
             let cancel = UIAlertAction.init(title: NSLocalizedString("cancel_name", comment: ""),
                                             style: .cancel,
@@ -48,4 +53,16 @@ class ProfileTableViewController: UITableViewController {
         }
     }
 
+    // MARK: - Action
+    func logout() {
+        clearUserDefaults()
+        // Reset revision to 0 for those request entities whose revision is larger than 0.
+        for request in dao.requestDao.findRevisionLargerThan(0) {
+            request.revision = 0
+        }
+        dao.saveContext()
+        
+        _ = self.navigationController?.popViewController(animated: true)
+    }
+    
 }
