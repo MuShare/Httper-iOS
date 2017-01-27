@@ -12,9 +12,10 @@ import Alamofire
 
 // Server base url
 //let baseUrl = "http://httper.fczm.pw/"
-let baseUrl = "http://192.168.96.128:8080/"
+let baseUrl = "http://127.0.0.1:8080/"
 
 let ipInfoUrl = "https://ipapi.co/json/"
+let whoisUrl = "https://www.whois.com"
 
 extension DefaultsKeys {
     static let email = DefaultsKey<String?>("email")

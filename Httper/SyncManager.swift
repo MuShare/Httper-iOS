@@ -25,7 +25,8 @@ class SyncManager: NSObject {
     func pushLocalRequests(_ completionHandler: ((Int) -> Void)?) {
         var requests = [[String: Any]]()
         for request in dao.requestDao.findByRevision(0) {
-            var headers: HTTPHeaders? = nil, parameters: Parameters? = nil, body: String? = nil
+            var headers: HTTPHeaders? = nil, parameters: Parameters? = nil
+            var body = ""
             if request.headers != nil {
                 headers = NSKeyedUnarchiver.unarchiveObject(with: request.headers! as Data) as? HTTPHeaders
             }
@@ -33,9 +34,9 @@ class SyncManager: NSObject {
                 parameters = NSKeyedUnarchiver.unarchiveObject(with: request.parameters! as Data) as? Parameters
             }
             if request.body != nil {
-                body = String(data: request.body! as Data, encoding: .utf8)
+                body = String(data: request.body! as Data, encoding: .utf8)!
             }
-                
+            print(parameters!)
             requests.append([
                 "url": request.url!,
                 "method": request.method!,
@@ -43,22 +44,23 @@ class SyncManager: NSObject {
                 "headers": JSONStringWithObject(headers!)!,
                 "parameters": JSONStringWithObject(parameters!)!,
                 "bodyType": request.bodytype!,
-                "body": body!
+                "body": body
             ])
         }
-        let body = JSONStringWithObject(requests)!
-        print(body)
-//        Alamofire.request(createUrl("api/request/push/list"),
-//                          method: .post,
-//                          parameters: nil,
-//                          encoding: body,
-//                          headers: tokenHeader())
-//        .responseJSON { (responseObject) in
-//            let response = InternetResponse(responseObject)
-//            if response.statusOK() {
-//                
-//            }
-//        }
+        let params: Parameters = [
+            "requestsJSON": JSONStringWithObject(requests)!
+        ]
+        Alamofire.request(createUrl("api/request/push/list"),
+                          method: .post,
+                          parameters: params,
+                          encoding: URLEncoding.default,
+                          headers: tokenHeader())
+        .responseJSON { (responseObject) in
+            let response = InternetResponse(responseObject)
+            if response.statusOK() {
+                
+            }
+        }
     }
 
     func pullUpdatedRequests(_ completionHandler: ((Int) -> Void)?) {

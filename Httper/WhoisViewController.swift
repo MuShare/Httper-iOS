@@ -11,8 +11,6 @@ import Alamofire
 import Kanna
 import ReachabilitySwift
 
-let whoisUrl = "https://www.whois.com"
-
 class WhoisViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var domainTextField: UITextField!
