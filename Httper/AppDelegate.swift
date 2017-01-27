@@ -22,8 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Defaults[.login] = false
         }
 
-        let sync = SyncManager.sharedInstance
-        sync.pushLocalRequests(nil)
+        // Pull updated requests and push local requests(if exist)
+        SyncManager.sharedInstance.pullUpdatedRequests(nil)
+        
         return true
     }
 

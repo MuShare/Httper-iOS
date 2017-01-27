@@ -23,16 +23,18 @@ class HistoryTableViewController: UITableViewController {
         dateFormatter.timeStyle = .medium
         dateFormatter.locale = Locale.current
         requests = dao.requestDao.findAll()
+        
         // Pull new updated request from server.
         sync.pullUpdatedRequests { (revision) in
             // Refresh table view
             self.requests = self.dao.requestDao.findAll()
+            
             self.tableView.reloadData()
+            self.refreshControl?.endRefreshing()
         }
     }
 
     // MARK: - Table view data source
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return requests.count
     }
@@ -105,5 +107,5 @@ class HistoryTableViewController: UITableViewController {
             })
         } 
     }
-    
+
 }

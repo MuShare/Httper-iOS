@@ -22,47 +22,6 @@ class SyncManager: NSObject {
         dao = DaoManager.sharedInstance
     }
     
-    func pushLocalRequests(_ completionHandler: ((Int) -> Void)?) {
-        var requests = [[String: Any]]()
-        for request in dao.requestDao.findUnsynced() {
-            var headers: HTTPHeaders? = nil, parameters: Parameters? = nil
-            var body = ""
-            if request.headers != nil {
-                headers = NSKeyedUnarchiver.unarchiveObject(with: request.headers! as Data) as? HTTPHeaders
-            }
-            if request.parameters != nil {
-                parameters = NSKeyedUnarchiver.unarchiveObject(with: request.parameters! as Data) as? Parameters
-            }
-            if request.body != nil {
-                body = String(data: request.body! as Data, encoding: .utf8)!
-            }
-            print(parameters!)
-            requests.append([
-                "url": request.url!,
-                "method": request.method!,
-                "updateAt": request.update,
-                "headers": JSONStringWithObject(headers!)!,
-                "parameters": JSONStringWithObject(parameters!)!,
-                "bodyType": request.bodytype!,
-                "body": body,
-            ])
-        }
-        let params: Parameters = [
-            "requestsJSON": JSONStringWithObject(requests)!
-        ]
-        Alamofire.request(createUrl("api/request/push/list"),
-                          method: .post,
-                          parameters: params,
-                          encoding: URLEncoding.default,
-                          headers: tokenHeader())
-        .responseJSON { (responseObject) in
-            let response = InternetResponse(responseObject)
-            if response.statusOK() {
-                
-            }
-        }
-    }
-
     func pullUpdatedRequests(_ completionHandler: ((Int) -> Void)?) {
         let localRevision = requestRevision()
         let params: Parameters = [
@@ -78,7 +37,9 @@ class SyncManager: NSObject {
             if response.statusOK() {
                 let result = response.getResult()
                 let revision = result?["revision"] as! Int
+                print("revision = \(revision) localRevision = \(localRevision)")
                 if revision <= localRevision {
+                    completionHandler?(revision)
                     return
                 }
                 
@@ -99,8 +60,66 @@ class SyncManager: NSObject {
                 
                 // Completion hander
                 completionHandler?(revision)
+                self.pushLocalRequests()
+            } else {
+                completionHandler?(-1)
             }
         }
     }
     
+    func pushLocalRequests() {
+        let requests = dao.requestDao.findUnsynced()
+        if requests.count == 0 {
+            return
+        }
+        var requestArray = [[String: Any]]()
+        for request in requests {
+            var headers: HTTPHeaders? = nil, parameters: Parameters? = nil
+            var body = ""
+            if request.headers != nil {
+                headers = NSKeyedUnarchiver.unarchiveObject(with: request.headers! as Data) as? HTTPHeaders
+            }
+            if request.parameters != nil {
+                parameters = NSKeyedUnarchiver.unarchiveObject(with: request.parameters! as Data) as? Parameters
+            }
+            if request.body != nil {
+                body = String(data: request.body! as Data, encoding: .utf8)!
+            }
+            print(parameters!)
+            requestArray.append([
+                "url": request.url!,
+                "method": request.method!,
+                "updateAt": request.update,
+                "headers": JSONStringWithObject(headers!)!,
+                "parameters": JSONStringWithObject(parameters!)!,
+                "bodyType": request.bodytype!,
+                "body": body,
+                ])
+        }
+        let params: Parameters = [
+            "requestsJSONArray": JSONStringWithObject(requestArray)!
+        ]
+        Alamofire.request(createUrl("api/request/push/list"),
+                          method: .post,
+                          parameters: params,
+                          encoding: URLEncoding.default,
+                          headers: tokenHeader())
+        .responseJSON { (responseObject) in
+            let response = InternetResponse(responseObject)
+            if response.statusOK() {
+                let result = response.getResult()
+                let results = result?["results"] as! [[String: Any]]
+                for i in 0..<requests.count {
+                    let result = results[i]
+                    let request = requests[i]
+                    request.rid = result["rid"] as? String
+                    request.revision = Int16(result["revision"] as! Int)
+                }
+                self.dao.saveContext()
+                // Update local request revision
+                updateRequestRevision(result?["revision"] as! Int)
+            }
+        }
+    }
+
 }

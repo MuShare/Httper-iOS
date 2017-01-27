@@ -222,6 +222,13 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         })
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField.isFirstResponder {
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+    
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "resultSegue" {
