@@ -35,9 +35,15 @@ enum Style: Int {
 
 // Pretty color
 enum PrettyColor: Int {
-    case normal = 0xEEEEEE
-    case key = 0xFF9999
-    case value = 0x33CCFF
+    case normal = 0xeeeeee
+    case key = 0xff9999
+    case value = 0x33ccff
+}
+
+enum DesignColor: Int {
+    case background = 0x30363b
+    case nagivation = 0x3d4143
+    case tableLine = 0xbcbbc1
 }
 
 enum ErrorCode: Int {

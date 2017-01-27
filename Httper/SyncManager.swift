@@ -21,6 +21,7 @@ class SyncManager: NSObject {
     override init() {
         dao = DaoManager.sharedInstance
     }
+
     
     func pullUpdatedRequests(_ completionHandler: ((Int) -> Void)?) {
         let localRevision = requestRevision()

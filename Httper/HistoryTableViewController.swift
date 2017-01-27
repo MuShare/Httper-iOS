@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import DGElasticPullToRefresh
 
 class HistoryTableViewController: UITableViewController {
     
@@ -17,6 +18,10 @@ class HistoryTableViewController: UITableViewController {
     var dateFormatter = DateFormatter()
     var requests :[Request]!
 
+    deinit {
+        tableView.dg_removePullToRefresh()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         dateFormatter.dateStyle = .medium
@@ -24,14 +29,8 @@ class HistoryTableViewController: UITableViewController {
         dateFormatter.locale = Locale.current
         requests = dao.requestDao.findAll()
         
-        // Pull new updated request from server.
-        sync.pullUpdatedRequests { (revision) in
-            // Refresh table view
-            self.requests = self.dao.requestDao.findAll()
-            
-            self.tableView.reloadData()
-            self.refreshControl?.endRefreshing()
-        }
+        syncRequests()
+        initLoadingView()
     }
 
     // MARK: - Table view data source
@@ -106,6 +105,31 @@ class HistoryTableViewController: UITableViewController {
                 }
             })
         } 
+    }
+    
+    // MARK: - Service
+    func syncRequests() {
+        // Pull new updated request from server.
+        sync.pullUpdatedRequests { (revision) in
+            // Refresh table view
+            self.requests = self.dao.requestDao.findAll()
+            self.tableView.reloadData()
+            // Do not forget to call dg_stopLoading() at the end
+            self.tableView.dg_stopLoading()
+        }
+    }
+    
+    // Initialize loading view
+    func initLoadingView() {
+        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+        loadingView.tintColor = UIColor.lightGray
+        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+            // Add your logic here
+            self?.syncRequests()
+            }, loadingView: loadingView)
+        tableView.dg_setPullToRefreshFillColor(RGB(DesignColor.nagivation.rawValue))
+        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
+
     }
 
 }
