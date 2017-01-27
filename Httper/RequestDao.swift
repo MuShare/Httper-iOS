@@ -64,6 +64,12 @@ class RequestDao: DaoTemplate {
         return try! context.fetch(fetchRequest)
     }
     
+    func findUnsynced() -> [Request] {
+        let fetchRequest = NSFetchRequest<Request>(entityName: NSStringFromClass(Request.self))
+        fetchRequest.predicate = NSPredicate(format: "revision=0 and rid=nil")
+        return try! context.fetch(fetchRequest)
+    }
+    
     func findInRids(_ rids: [String]) -> [Request] {
         let fetchRequest = NSFetchRequest<Request>(entityName: NSStringFromClass(Request.self))
         fetchRequest.predicate = NSPredicate(format: "rid IN %@", rids);

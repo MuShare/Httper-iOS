@@ -24,7 +24,7 @@ class SyncManager: NSObject {
     
     func pushLocalRequests(_ completionHandler: ((Int) -> Void)?) {
         var requests = [[String: Any]]()
-        for request in dao.requestDao.findByRevision(0) {
+        for request in dao.requestDao.findUnsynced() {
             var headers: HTTPHeaders? = nil, parameters: Parameters? = nil
             var body = ""
             if request.headers != nil {
@@ -44,7 +44,7 @@ class SyncManager: NSObject {
                 "headers": JSONStringWithObject(headers!)!,
                 "parameters": JSONStringWithObject(parameters!)!,
                 "bodyType": request.bodytype!,
-                "body": body
+                "body": body,
             ])
         }
         let params: Parameters = [
