@@ -38,7 +38,7 @@ class SyncManager: NSObject {
             if response.statusOK() {
                 let result = response.getResult()
                 let revision = result?["revision"] as! Int
-                print("revision = \(revision) localRevision = \(localRevision)")
+//                print("revision = \(revision) localRevision = \(localRevision)")
                 if revision <= localRevision {
                     completionHandler?(revision)
                     return

@@ -8,7 +8,7 @@
 
 import UIKit
 
-let headerKeys = ["Accept", "Accept-Charset", "Accept-Encoding", "Accept-Language", "Accept-Datetime", "CONNECT"]
+let headerKeys = ["Accept", "Accept-Charset", "Accept-Encoding", "Accept-Language", "Accept-Datetime", "Authorization", "Cache-Control", "Connection", "Cookie", "Connection", "Content-Length", "Content-MD5", "Content-Type", "Date", "Expect", "Forwarded", "From", "Host", "If-Match", "If-Modified-Since", "If-None-Match", "If-Range", "If-Unmodified-Since", "Max-Forwards", "Origin", "Pragma", "Proxy-Authorization", "Range", "Referer", "User-Agent", "Upgrade", "Via", "Warning"]
 
 class HeaderKeysTableViewController: UITableViewController {
 

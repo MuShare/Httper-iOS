@@ -55,7 +55,7 @@ class SettingsTableViewController: UITableViewController {
         } else if identifier == "github" {
             UIApplication.shared.openURL(URL.init(string: "https://github.com/lm2343635/Httper")!)
         } else if identifier == "about" {
-            UIApplication.shared.openURL(URL.init(string: "http://httper.fczm.pw")!)
+            UIApplication.shared.openURL(URL.init(string: "http://httper.mushare.cn")!)
         }
         
     }

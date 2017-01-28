@@ -18,17 +18,17 @@ class InternetResponse: NSObject {
     var data: [String: Any]!
     
     init(_ response: DataResponse<Any>) {
-        print("New response from server at \(Date.init())")
-        if response.response != nil {
-            print("Reponse status:\n\(response.response!)")
-        }
-        if response.data != nil {
-            print("Response body:\n\(String.init(data: response.data!, encoding: .utf8)!)")
-        }
+//        print("New response from server at \(Date.init())")
+//        if response.response != nil {
+//            print("Reponse status:\n\(response.response!)")
+//        }
+//        if response.data != nil {
+//            print("Response body:\n\(String.init(data: response.data!, encoding: .utf8)!)")
+//        }
         data = response.result.value as! Dictionary<String, Any>!
-        if data != nil {
-            print("Response with JSON: \(data!)")
-        }
+//        if data != nil {
+//            print("Response with JSON: \(data!)")
+//        }
     }
     
     func statusOK() -> Bool {
