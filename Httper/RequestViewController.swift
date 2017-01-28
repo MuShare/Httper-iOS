@@ -31,7 +31,11 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     var parameters: Parameters!
     var body: String!
     
-    //Variables for loading request history.
+    // Variables for choose header key.
+    var choosingHeaderTextFeild: UITextField? = nil
+    var choosedheaderKey = ""
+    
+    // Variables for loading request history.
     var request: Request?
     var headerKeys: Array<String> = [], headerValues: Array<String> = []
     var parameterKeys: Array<String> = [], parameterValues: Array<String> = []
@@ -47,8 +51,16 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        // Set request method.
         requestMethodButton.setTitle(method, for: .normal)
+
+        // Set header key.
+        if choosingHeaderTextFeild != nil {
+            choosingHeaderTextFeild?.text = choosedheaderKey
+            choosingHeaderTextFeild = nil
+        }
         
+        // Reload request from history.
         if request != nil {
             method = request!.method!
             headerKeys = Array()
@@ -81,10 +93,10 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
                 protocolLabel.text = "\(protocols[0])://"
             }
             urlTextField.text = url
-            
-            valueTableView.reloadData()
             request = nil
+            valueTableView.reloadData()
         }
+        
     }
     
     //MARK: - UITableViewDataSource
@@ -160,34 +172,46 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell!
-        //Cell is body
-        if indexPath.section == 2 {
+        var cell: UITableViewCell!
+        // Header cell
+        if indexPath.section == 0 {
+            //Cell is headers or parameters
+            cell = tableView.dequeueReusableCell(withIdentifier: "headerIdentifier", for: indexPath)
+            let keyTextField = cell.viewWithTag(1) as! UITextField
+            let valueTextField = cell.viewWithTag(2) as! UITextField
+            let deleteButton = cell.viewWithTag(3) as! UIButton
+            keyTextField.text = ""
+            valueTextField.text = ""
+            deleteButton.isEnabled = true
+            setCloseKeyboardAccessoryForSender(sender: keyTextField)
+            setCloseKeyboardAccessoryForSender(sender: valueTextField)
+            //Set headers if it is not null
+            if headerKeys.count > indexPath.row {
+                keyTextField.text = headerKeys[indexPath.row]
+                valueTextField.text = headerValues[indexPath.row]
+            }
+        }
+        // Parameter cekk
+        else if indexPath.section == 1 {
+            //Cell is headers or parameters
+            cell = tableView.dequeueReusableCell(withIdentifier: "parameterIdentifier", for: indexPath)
+            let keyTextField = cell.viewWithTag(1) as! UITextField
+            let valueTextField = cell.viewWithTag(2) as! UITextField
+            let deleteButton = cell.viewWithTag(3) as! UIButton
+            keyTextField.text = ""
+            valueTextField.text = ""
+            deleteButton.isEnabled = true
+            setCloseKeyboardAccessoryForSender(sender: keyTextField)
+            setCloseKeyboardAccessoryForSender(sender: valueTextField)
+            //Set parameters if it is not null
+            if parameterKeys.count > indexPath.row {
+                keyTextField.text = parameterKeys[indexPath.row]
+                valueTextField.text = parameterValues[indexPath.row]
+            }
+        }
+        // Body cell
+        else if indexPath.section == 2 {
             cell = tableView.dequeueReusableCell(withIdentifier: "bodyIdentifier", for: indexPath)
-            return cell
-        }
-        
-        //Cell is headers or parameters
-        cell = tableView.dequeueReusableCell(withIdentifier: "parameterIdentifier", for: indexPath as IndexPath)
-        let keyTextField = cell.viewWithTag(1) as! UITextField
-        let valueTextField = cell.viewWithTag(2) as! UITextField
-        let deleteButton = cell.viewWithTag(3) as! UIButton
-        keyTextField.text = ""
-        valueTextField.text = ""
-        deleteButton.isEnabled = true
-        setCloseKeyboardAccessoryForSender(sender: keyTextField)
-        setCloseKeyboardAccessoryForSender(sender: valueTextField)
-        
-        //Set headers if it is not null
-        if headerKeys.count > indexPath.row && indexPath.section == 0 {
-            keyTextField.text = headerKeys[indexPath.row]
-            valueTextField.text = headerValues[indexPath.row]
-        }
-        
-        //Set parameters if it is not null
-        if parameterKeys.count > indexPath.row && indexPath.section == 1 {
-            keyTextField.text = parameterKeys[indexPath.row]
-            valueTextField.text = parameterValues[indexPath.row]
         }
         return cell
     }
@@ -248,7 +272,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         sender.isEnabled = false;
         let cell: UITableViewCell = (sender as UIView).superview?.superview as! UITableViewCell
         let indexPath = valueTableView.indexPath(for: cell)!
-        if indexPath.section == 0 && headerCount > 1{
+        if indexPath.section == 0 && headerCount > 1 {
             headerCount -= 1
             valueTableView.deleteRows(at: [indexPath], with: .automatic)
             if headerKeys.count > indexPath.row {
@@ -269,6 +293,13 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
             valueTextField.text = ""
             sender.isEnabled = true
         }
+    }
+    
+    @IBAction func chooseHeaderKey(_ sender: UIButton) {
+        let cell: UITableViewCell = (sender as UIView).superview?.superview as! UITableViewCell
+        let indexPath = valueTableView.indexPath(for: cell)!
+        choosingHeaderTextFeild = cell.viewWithTag(1) as? UITextField
+        self.performSegue(withIdentifier: "headerKeySegue", sender: self)
     }
     
     @IBAction func chooseProtocol(_ sender: UISegmentedControl) {

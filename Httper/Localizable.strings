@@ -16,6 +16,11 @@ OPTIONS = "Describes the communication options for the target resource.";
 TRACE = "Performs a message loop-back test along the path to the target resource.";
 PATCH = "PATCH can be used to update partial resources when you only need to update one field of the resource.";
 
+Accept = "Content-Types that are acceptable for the response.";
+Accept-Charset = "Character sets that are acceptable.";
+Accept-Encoding = "List of acceptable encodings.";
+Accept-Language = "List of acceptable human languages for response.";
+Accept-Datetime = "Acceptable version in time.";
 
 tip_name = "Tip";
 cancel_name = "Cancel";
@@ -54,7 +59,7 @@ login_not_validate = "Input correct emaill and password!";
 email_not_exist = "This email is not existed.";
 password_wrong = "Your password is wrong, check and try again.";
 
-sign_in_sign_up = "Sign in / Sign up";
+sign_in_sign_up = "Sign in to sync request history";
 
 sign_out_title = "Sign out";
 sign_out_message = "Are you sure to sign out now?";

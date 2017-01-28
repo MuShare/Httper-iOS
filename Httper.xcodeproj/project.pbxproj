@@ -40,6 +40,7 @@
 		E4A37A9A1E018C7300586BA1 /* Request+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A37A981E018C7300586BA1 /* Request+CoreDataClass.swift */; };
 		E4A37A9B1E018C7300586BA1 /* Request+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A37A991E018C7300586BA1 /* Request+CoreDataProperties.swift */; };
 		E4A37A9D1E018D7500586BA1 /* RequestDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A37A9C1E018D7500586BA1 /* RequestDao.swift */; };
+		E4CA760C1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CA760B1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift */; };
 		E4D1CAE51DF5C028008DC4F9 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */; };
 		E4DE76911E1D2645002A8385 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DE76901E1D2644002A8385 /* LoginViewController.swift */; };
 		E4DE76931E1D2AB0002A8385 /* login-bg-iPad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4DE76921E1D2AB0002A8385 /* login-bg-iPad.jpg */; };
@@ -121,6 +122,7 @@
 		E4A37A981E018C7300586BA1 /* Request+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Request+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E4A37A991E018C7300586BA1 /* Request+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Request+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E4A37A9C1E018D7500586BA1 /* RequestDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestDao.swift; sourceTree = "<group>"; };
+		E4CA760B1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderKeysTableViewController.swift; sourceTree = "<group>"; };
 		E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		E4DE76901E1D2644002A8385 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E4DE76921E1D2AB0002A8385 /* login-bg-iPad.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "login-bg-iPad.jpg"; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 				E4E297B01E00021500AD484E /* ResponseHeaderViewController.swift */,
 				E42DDC831DFA8CB200FAD174 /* ResponseInfoTableViewController.swift */,
 				E447287A1DF7CE80007D2C8B /* ResultViewController.swift */,
+				E4CA760B1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift */,
 			);
 			name = Request;
 			sourceTree = "<group>";
@@ -547,6 +550,7 @@
 				E48553361DF9B2CF00A1DB60 /* PreviewViewController.swift in Sources */,
 				E4EC89C21E1159A80072ACF3 /* SettingsTableViewController.swift in Sources */,
 				E4A37A9A1E018C7300586BA1 /* Request+CoreDataClass.swift in Sources */,
+				E4CA760C1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift in Sources */,
 				E4EC89D71E12A4C70072ACF3 /* SimplePing.m in Sources */,
 				E4F95CDA1E16A7D3005A0004 /* DetailIPInformationTableViewController.swift in Sources */,
 				E4305A491E34F8E100010B52 /* DaoTemplate.swift in Sources */,
