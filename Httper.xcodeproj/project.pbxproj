@@ -41,6 +41,8 @@
 		E4A37A9B1E018C7300586BA1 /* Request+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A37A991E018C7300586BA1 /* Request+CoreDataProperties.swift */; };
 		E4A37A9D1E018D7500586BA1 /* RequestDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A37A9C1E018D7500586BA1 /* RequestDao.swift */; };
 		E4CA760C1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CA760B1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift */; };
+		E4CA760F1E3F73E3008D7A52 /* ProjectsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CA760E1E3F73E3008D7A52 /* ProjectsTableViewController.swift */; };
+		E4CA76111E3F740D008D7A52 /* ProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CA76101E3F740D008D7A52 /* ProjectTableViewController.swift */; };
 		E4D1CAE51DF5C028008DC4F9 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */; };
 		E4DE76911E1D2645002A8385 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DE76901E1D2644002A8385 /* LoginViewController.swift */; };
 		E4DE76931E1D2AB0002A8385 /* login-bg-iPad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4DE76921E1D2AB0002A8385 /* login-bg-iPad.jpg */; };
@@ -123,6 +125,8 @@
 		E4A37A991E018C7300586BA1 /* Request+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Request+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E4A37A9C1E018D7500586BA1 /* RequestDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestDao.swift; sourceTree = "<group>"; };
 		E4CA760B1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderKeysTableViewController.swift; sourceTree = "<group>"; };
+		E4CA760E1E3F73E3008D7A52 /* ProjectsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsTableViewController.swift; sourceTree = "<group>"; };
+		E4CA76101E3F740D008D7A52 /* ProjectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTableViewController.swift; sourceTree = "<group>"; };
 		E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		E4DE76901E1D2644002A8385 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E4DE76921E1D2AB0002A8385 /* login-bg-iPad.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "login-bg-iPad.jpg"; sourceTree = "<group>"; };
@@ -267,8 +271,9 @@
 			children = (
 				E4A37A8B1E0184ED00586BA1 /* Model */,
 				E4305A451E34F62F00010B52 /* Dao */,
-				E40F66A61E01140800C6013E /* History */,
 				E4D1CAE01DF5BFCF008DC4F9 /* Request */,
+				E40F66A61E01140800C6013E /* History */,
+				E4CA760D1E3F7058008D7A52 /* Project */,
 				E4EC89C01E1159560072ACF3 /* Settings */,
 				E447287C1DF7D615007D2C8B /* Tool */,
 				E431C4AA1DF7215A006BB2D6 /* Supporting Files */,
@@ -307,6 +312,15 @@
 				E48D415E1D444F3F0028B84F /* Httper.xcdatamodeld */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		E4CA760D1E3F7058008D7A52 /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				E4CA760E1E3F73E3008D7A52 /* ProjectsTableViewController.swift */,
+				E4CA76101E3F740D008D7A52 /* ProjectTableViewController.swift */,
+			);
+			name = Project;
 			sourceTree = "<group>";
 		};
 		E4D1CAE01DF5BFCF008DC4F9 /* Request */ = {
@@ -564,6 +578,7 @@
 				E46077611E126948002DE839 /* PingViewController.swift in Sources */,
 				E4798BDF1E2BC92600DCD4E2 /* EditingViewController.swift in Sources */,
 				E4007EB91DFEE7B7002A87FA /* RequestBodyViewController.swift in Sources */,
+				E4CA760F1E3F73E3008D7A52 /* ProjectsTableViewController.swift in Sources */,
 				E4EC89D21E129FA10072ACF3 /* STDPingServices.m in Sources */,
 				E4EC89D41E12A00C0072ACF3 /* IPAddressTableViewController.swift in Sources */,
 				E4305A471E34F65000010B52 /* DaoManager.swift in Sources */,
@@ -571,6 +586,7 @@
 				E431C4A91DF7179D006BB2D6 /* RequestMethodsTableViewController.swift in Sources */,
 				E4A37A9B1E018C7300586BA1 /* Request+CoreDataProperties.swift in Sources */,
 				E4DE76911E1D2645002A8385 /* LoginViewController.swift in Sources */,
+				E4CA76111E3F740D008D7A52 /* ProjectTableViewController.swift in Sources */,
 				E447287B1DF7CE80007D2C8B /* ResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
