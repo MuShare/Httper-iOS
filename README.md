@@ -1,7 +1,12 @@
 # Httper
-Httper is a REST API test tool running on your iOS devices. It helps developers to test their REST API anywhere and anytime without desktops. Developers can submit a HTTP request with several headers, parameters and row request body by 9 different HTTP methods including GET, POST, HEAD, PUT, DELETE, CONNECT, OPTIONS, TRACE and PATCH. HTTP response can be shown as three styles including **pretty**, **row** and **preview**. Response status code and headers also supported in Httper.
 
-Some Internet tools in Httper:
+Httper is a REST API test tool running on your iOS devices. It helps developers to test their REST API anywhere and anytime without desktops.
+
+Some features of Httper: 
+
+1. Developers can submit a HTTP request with several headers, parameters and row request body by 9 different HTTP methods including GET, POST, HEAD, PUT, DELETE, CONNECT, OPTIONS, TRACE and PATCH. HTTP response can be shown as three styles including **pretty**, **row** and **preview**. Response status code and headers are also supported in Httper.
+2. Supports to synchronize request history between multiple devices with your account signing in. Your request history can be synchronized from cloud in a new device if you sign in your account.
+3. Some Internet tools are included in Httper:
 
 - Ping a domain or IP address.
 - Whois search.
