@@ -9,35 +9,39 @@
 import UIKit
 
 class ProjectsTableViewController: UITableViewController {
+    
+    let dao = DaoManager.sharedInstance
+    var projects: [Project] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        projects = dao.projectDao.findAll()
+        self.tableView.reloadData()
     }
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return projects.count
     }
 
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.01
     }
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let project = projects[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "projectIdentifier", for: indexPath)
+        let projectNameLabel = cell.viewWithTag(1) as! UILabel
+        projectNameLabel.text = project.pname
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

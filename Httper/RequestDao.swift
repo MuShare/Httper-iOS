@@ -6,7 +6,6 @@
 //  Copyright © 2016 limeng. All rights reserved.
 //
 
-import UIKit
 import CoreData
 import Alamofire
 

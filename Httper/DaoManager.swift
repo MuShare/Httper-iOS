@@ -6,7 +6,6 @@
 //  Copyright © 2017 limeng. All rights reserved.
 //
 
-import UIKit
 import CoreData
 
 class DaoManager: NSObject {
@@ -14,6 +13,7 @@ class DaoManager: NSObject {
     let delegate = UIApplication.shared.delegate as! AppDelegate
     let context: NSManagedObjectContext!
     let requestDao: RequestDao!
+    let projectDao: ProjectDao!
     
     static let sharedInstance : DaoManager = {
         let instance = DaoManager()
@@ -23,6 +23,7 @@ class DaoManager: NSObject {
     override init() {
         context = delegate.managedObjectContext
         requestDao = RequestDao(context)
+        projectDao = ProjectDao(context)
     }
     
     func saveContext() {

@@ -6,7 +6,6 @@
 //  Copyright © 2017 limeng. All rights reserved.
 //
 
-import UIKit
 import CoreData
 
 class DaoTemplate: NSObject {
