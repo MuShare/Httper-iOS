@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16C67" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Project" representedClassName="Project" syncable="YES">
+        <attribute name="introduction" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="privilege" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="requests" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Request" inverseName="project" inverseEntity="Request" syncable="YES"/>
+    </entity>
+    <entity name="Request" representedClassName="Request" syncable="YES" codeGenerationType="class">
+        <attribute name="body" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="bodytype" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="headers" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="method" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="parameters" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="revision" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="rid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="update" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="requests" inverseEntity="Project" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Project" positionX="-63" positionY="54" width="128" height="105"/>
+        <element name="Request" positionX="-315" positionY="-36" width="128" height="193"/>
+    </elements>
+</model>

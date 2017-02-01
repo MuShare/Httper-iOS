@@ -90,3 +90,5 @@ sign_in_sign_up = "Sign in to sync request history";
 
 sign_out_title = "Sign out";
 sign_out_message = "Are you sure to sign out now?";
+
+add_project_error = "Project name cannot be empty!";

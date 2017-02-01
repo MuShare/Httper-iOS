@@ -37,12 +37,12 @@
 		E48D41651D444F3F0028B84F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E48D41631D444F3F0028B84F /* LaunchScreen.storyboard */; };
 		E48D41701D444F3F0028B84F /* HttperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48D416F1D444F3F0028B84F /* HttperTests.swift */; };
 		E48D417B1D444F3F0028B84F /* HttperUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48D417A1D444F3F0028B84F /* HttperUITests.swift */; };
-		E4A37A9A1E018C7300586BA1 /* Request+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A37A981E018C7300586BA1 /* Request+CoreDataClass.swift */; };
-		E4A37A9B1E018C7300586BA1 /* Request+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A37A991E018C7300586BA1 /* Request+CoreDataProperties.swift */; };
+		E49BC09D1E421EEE00241004 /* Request+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49BC09B1E421EEE00241004 /* Request+CoreDataClass.swift */; };
+		E49BC09E1E421EEE00241004 /* Request+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49BC09C1E421EEE00241004 /* Request+CoreDataProperties.swift */; };
 		E4A37A9D1E018D7500586BA1 /* RequestDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A37A9C1E018D7500586BA1 /* RequestDao.swift */; };
 		E4CA760C1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CA760B1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift */; };
 		E4CA760F1E3F73E3008D7A52 /* ProjectsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CA760E1E3F73E3008D7A52 /* ProjectsTableViewController.swift */; };
-		E4CA76111E3F740D008D7A52 /* ProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CA76101E3F740D008D7A52 /* ProjectTableViewController.swift */; };
+		E4CA76131E3F7E1A008D7A52 /* ProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CA76121E3F7E1A008D7A52 /* ProjectTableViewController.swift */; };
 		E4D1CAE51DF5C028008DC4F9 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */; };
 		E4DE76911E1D2645002A8385 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DE76901E1D2644002A8385 /* LoginViewController.swift */; };
 		E4DE76931E1D2AB0002A8385 /* login-bg-iPad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4DE76921E1D2AB0002A8385 /* login-bg-iPad.jpg */; };
@@ -121,12 +121,13 @@
 		E48D41761D444F3F0028B84F /* HttperUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HttperUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E48D417A1D444F3F0028B84F /* HttperUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttperUITests.swift; sourceTree = "<group>"; };
 		E48D417C1D444F3F0028B84F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E4A37A981E018C7300586BA1 /* Request+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Request+CoreDataClass.swift"; sourceTree = "<group>"; };
-		E4A37A991E018C7300586BA1 /* Request+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Request+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E49BC09B1E421EEE00241004 /* Request+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Request+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E49BC09C1E421EEE00241004 /* Request+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Request+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E4A37A9C1E018D7500586BA1 /* RequestDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestDao.swift; sourceTree = "<group>"; };
 		E4CA760B1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderKeysTableViewController.swift; sourceTree = "<group>"; };
 		E4CA760E1E3F73E3008D7A52 /* ProjectsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsTableViewController.swift; sourceTree = "<group>"; };
-		E4CA76101E3F740D008D7A52 /* ProjectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTableViewController.swift; sourceTree = "<group>"; };
+		E4CA76121E3F7E1A008D7A52 /* ProjectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTableViewController.swift; sourceTree = "<group>"; };
+		E4CA76141E3F80B2008D7A52 /* Httper_1.3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Httper_1.3.xcdatamodel; sourceTree = "<group>"; };
 		E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		E4DE76901E1D2644002A8385 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E4DE76921E1D2AB0002A8385 /* login-bg-iPad.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "login-bg-iPad.jpg"; sourceTree = "<group>"; };
@@ -307,8 +308,8 @@
 		E4A37A8B1E0184ED00586BA1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E4A37A981E018C7300586BA1 /* Request+CoreDataClass.swift */,
-				E4A37A991E018C7300586BA1 /* Request+CoreDataProperties.swift */,
+				E49BC09B1E421EEE00241004 /* Request+CoreDataClass.swift */,
+				E49BC09C1E421EEE00241004 /* Request+CoreDataProperties.swift */,
 				E48D415E1D444F3F0028B84F /* Httper.xcdatamodeld */,
 			);
 			name = Model;
@@ -318,7 +319,7 @@
 			isa = PBXGroup;
 			children = (
 				E4CA760E1E3F73E3008D7A52 /* ProjectsTableViewController.swift */,
-				E4CA76101E3F740D008D7A52 /* ProjectTableViewController.swift */,
+				E4CA76121E3F7E1A008D7A52 /* ProjectTableViewController.swift */,
 			);
 			name = Project;
 			sourceTree = "<group>";
@@ -553,17 +554,18 @@
 				E4DE76991E1D3DF5002A8385 /* RegisterViewController.swift in Sources */,
 				E45D3E861E21296F0002E1F2 /* InternetResponse.swift in Sources */,
 				E46ABF521E140F2E00E0C092 /* InternetTool.m in Sources */,
+				E49BC09D1E421EEE00241004 /* Request+CoreDataClass.swift in Sources */,
 				E4E297B11E00021500AD484E /* ResponseHeaderViewController.swift in Sources */,
 				E4A37A9D1E018D7500586BA1 /* RequestDao.swift in Sources */,
 				E48D41601D444F3F0028B84F /* Httper.xcdatamodeld in Sources */,
 				E42DDC841DFA8CB200FAD174 /* ResponseInfoTableViewController.swift in Sources */,
 				E41642D31DF970CE00F0339E /* CommonTool.swift in Sources */,
 				E4305A381E2E5FF900010B52 /* Global.swift in Sources */,
+				E49BC09E1E421EEE00241004 /* Request+CoreDataProperties.swift in Sources */,
 				E40F66A81E01142900C6013E /* HistoryTableViewController.swift in Sources */,
 				E4D1CAE51DF5C028008DC4F9 /* RequestViewController.swift in Sources */,
 				E48553361DF9B2CF00A1DB60 /* PreviewViewController.swift in Sources */,
 				E4EC89C21E1159A80072ACF3 /* SettingsTableViewController.swift in Sources */,
-				E4A37A9A1E018C7300586BA1 /* Request+CoreDataClass.swift in Sources */,
 				E4CA760C1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift in Sources */,
 				E4EC89D71E12A4C70072ACF3 /* SimplePing.m in Sources */,
 				E4F95CDA1E16A7D3005A0004 /* DetailIPInformationTableViewController.swift in Sources */,
@@ -584,9 +586,8 @@
 				E4305A471E34F65000010B52 /* DaoManager.swift in Sources */,
 				E40B257E1DF44BD20039CA8D /* MainViewController.swift in Sources */,
 				E431C4A91DF7179D006BB2D6 /* RequestMethodsTableViewController.swift in Sources */,
-				E4A37A9B1E018C7300586BA1 /* Request+CoreDataProperties.swift in Sources */,
 				E4DE76911E1D2645002A8385 /* LoginViewController.swift in Sources */,
-				E4CA76111E3F740D008D7A52 /* ProjectTableViewController.swift in Sources */,
+				E4CA76131E3F7E1A008D7A52 /* ProjectTableViewController.swift in Sources */,
 				E447287B1DF7CE80007D2C8B /* ResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -858,6 +859,7 @@
 		E48D415E1D444F3F0028B84F /* Httper.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				E4CA76141E3F80B2008D7A52 /* Httper_1.3.xcdatamodel */,
 				E47FDC631E38674200251EEC /* Httper_1.2.xcdatamodel */,
 				E48D415F1D444F3F0028B84F /* Httper.xcdatamodel */,
 			);
