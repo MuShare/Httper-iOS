@@ -2,8 +2,10 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16C67" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Project" representedClassName="Project" syncable="YES">
         <attribute name="introduction" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pname" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="privilege" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="revision" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="update" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <entity name="Request" representedClassName="Request" syncable="YES">
@@ -16,9 +18,10 @@
         <attribute name="rid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="update" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Project" positionX="-63" positionY="54" width="128" height="105"/>
-        <element name="Request" positionX="-315" positionY="-36" width="128" height="180"/>
+        <element name="Project" positionX="-63" positionY="54" width="128" height="135"/>
+        <element name="Request" positionX="-315" positionY="-36" width="128" height="195"/>
     </elements>
 </model>

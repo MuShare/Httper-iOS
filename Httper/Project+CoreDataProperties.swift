@@ -2,7 +2,7 @@
 //  Project+CoreDataProperties.swift
 //  Httper
 //
-//  Created by 李大爷的电脑 on 02/02/2017.
+//  Created by lidaye on 02/02/2017.
 //  Copyright © 2017 limeng. All rights reserved.
 //
 
