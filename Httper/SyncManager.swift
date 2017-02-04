@@ -86,7 +86,7 @@ class SyncManager: NSObject {
             if request.body != nil {
                 body = String(data: request.body! as Data, encoding: .utf8)!
             }
-            print(parameters!)
+//            print(parameters!)
             requestArray.append([
                 "url": request.url!,
                 "method": request.method!,
@@ -95,7 +95,7 @@ class SyncManager: NSObject {
                 "parameters": JSONStringWithObject(parameters!)!,
                 "bodyType": request.bodytype!,
                 "body": body,
-                ])
+            ])
         }
         let params: Parameters = [
             "requestsJSONArray": JSONStringWithObject(requestArray)!
@@ -108,9 +108,9 @@ class SyncManager: NSObject {
         .responseJSON { (responseObject) in
             let response = InternetResponse(responseObject)
             if response.statusOK() {
-                let result = response.getResult()
-                let results = result?["results"] as! [[String: Any]]
-                for i in 0..<requests.count {
+                let dataResult = response.getResult()
+                let results = dataResult?["results"] as! [[String: Any]]
+                for i in 0 ..< requests.count {
                     let result = results[i]
                     let request = requests[i]
                     request.rid = result["rid"] as? String
@@ -118,9 +118,49 @@ class SyncManager: NSObject {
                 }
                 self.dao.saveContext()
                 // Update local request revision
-                updateRequestRevision(result?["revision"] as! Int)
+                updateRequestRevision(dataResult?["revision"] as! Int)
             }
         }
     }
 
+    func pushLocalProjects() {
+        let projects = dao.projectDao.findUnsynced()
+        if projects.count == 0 {
+            return
+        }
+        var projectArray: [[String: Any]] = []
+        for project in projects {
+            projectArray.append([
+                "pname": project.pname!,
+                "privilege": project.privilege!,
+                "introduction": project.introduction!,
+                "updateAt": project.update
+            ]);
+        }
+        let params: Parameters = [
+            "projectsJSONArray": JSONStringWithObject(projectArray)!
+        ]
+        Alamofire.request(createUrl("api/project/push"),
+                          method: .post,
+                          parameters: params,
+                          encoding: URLEncoding.default,
+                          headers: tokenHeader())
+        .responseJSON { (responseObject) in
+            let response = InternetResponse(responseObject)
+            if response.statusOK() {
+                let dataResult = response.getResult()
+                let results = dataResult?["results"] as! [[String: Any]]
+                for i in 0 ..< projects.count {
+                    let result = results[i]
+                    let project = projects[i]
+                    project.pid = result["pid"] as? String
+                    project.revision = Int16(result["revision"] as! Int)
+                }
+                self.dao.saveContext()
+                // Update local request revision
+                updateProjectRevision(dataResult?["revision"] as! Int)
+            }
+        }
+    }
+    
 }

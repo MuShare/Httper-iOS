@@ -11,8 +11,8 @@ import SwiftyUserDefaults
 import Alamofire
 
 // Server base url
-let baseUrl = "http://httper.mushare.cn/"
-//let baseUrl = "http://192.168.11.126:8080/"
+//let baseUrl = "http://httper.mushare.cn/"
+let baseUrl = "http://192.168.11.126:8080/"
 
 let ipInfoUrl = "https://ipapi.co/json/"
 let whoisUrl = "https://www.whois.com"
@@ -24,6 +24,7 @@ extension DefaultsKeys {
     static let token = DefaultsKey<String?>("token")
     static let login = DefaultsKey<Bool?>("login")
     static let requestRevision = DefaultsKey<Int?>("requestRevision")
+    static let projectRevision = DefaultsKey<Int?>("projectRevision")
 }
 
 // JSON style
@@ -76,6 +77,18 @@ func requestRevision() -> Int {
         return 0
     }
     return requestRevision!
+}
+
+func updateProjectRevision(_ revision: Int) {
+    Defaults[.projectRevision] = revision
+}
+
+func projectRevision() -> Int {
+    let projectRevision = Defaults[.projectRevision]
+    if projectRevision == nil {
+        return 0
+    }
+    return projectRevision!
 }
 
 func clearUserDefaults() {

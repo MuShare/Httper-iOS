@@ -28,4 +28,9 @@ class ProjectDao: DaoTemplate {
     }
 
     
+    func findUnsynced() -> [Project] {
+        let fetchRequest = NSFetchRequest<Project>(entityName: NSStringFromClass(Project.self))
+        fetchRequest.predicate = NSPredicate(format: "revision=0 and pid=nil")
+        return try! context.fetch(fetchRequest)
+    }
 }

@@ -12,6 +12,8 @@ class ProjectsTableViewController: UITableViewController {
     
     let dao = DaoManager.sharedInstance
     var projects: [Project] = []
+    
+    let sync = SyncManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +22,8 @@ class ProjectsTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
+        sync.pushLocalProjects()
         projects = dao.projectDao.findAll()
         self.tableView.reloadData()
     }
