@@ -126,10 +126,9 @@ class HistoryTableViewController: UITableViewController {
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
             // Add your logic here
             self?.syncRequests()
-            }, loadingView: loadingView)
+        }, loadingView: loadingView)
         tableView.dg_setPullToRefreshFillColor(RGB(DesignColor.nagivation.rawValue))
         tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
-
     }
 
 }

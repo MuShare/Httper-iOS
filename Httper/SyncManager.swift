@@ -45,7 +45,7 @@ class SyncManager: NSObject {
                 }
                 
                 let updatedRequests = result?["updated"] as! [[String: Any]]
-                // Save updated requests to persistent store
+                // Save updated requests to persistent store.
                 for request in updatedRequests {
                     self.dao.requestDao.syncUpdated(request)
                 }
@@ -86,7 +86,6 @@ class SyncManager: NSObject {
             if request.body != nil {
                 body = String(data: request.body! as Data, encoding: .utf8)!
             }
-//            print(parameters!)
             requestArray.append([
                 "url": request.url!,
                 "method": request.method!,
@@ -119,6 +118,44 @@ class SyncManager: NSObject {
                 self.dao.saveContext()
                 // Update local request revision
                 updateRequestRevision(dataResult?["revision"] as! Int)
+            }
+        }
+    }
+    
+    func pullUpdatedProjects(_ completionHandler: ((Int) -> Void)?) {
+        let localRevision = projectRevision()
+        let params: Parameters = [
+            "revision": localRevision
+        ]
+        Alamofire.request(createUrl("api/project/pull"),
+                          method: .get,
+                          parameters: params,
+                          encoding: URLEncoding.default,
+                          headers: tokenHeader())
+        .responseJSON { (responseObject) in
+            let response = InternetResponse(responseObject)
+            if response.statusOK() {
+                let result = response.getResult()
+                let revision = result?["revision"] as! Int
+                if revision <= localRevision {
+                    completionHandler?(revision)
+                    return
+                }
+                let updatedProjects = result?["updated"] as! [[String: Any]]
+                // Save updated projects to persistent store.
+                for project in updatedProjects {
+                    self.dao.projectDao.syncUpdated(project)
+                }
+                // Delete projects in deleted id list.
+                let deletedPids = result?["deleted"] as! [String]
+                for project in self.dao.projectDao.findInPids(deletedPids) {
+                    self.dao.projectDao.delete(project)
+                }
+                // Update local project revision
+                updateProjectRevision(revision)
+                // Complete
+                completionHandler?(revision)
+                self.pushLocalProjects()
             }
         }
     }
