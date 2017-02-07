@@ -13,6 +13,7 @@ class ProjectsTableViewController: UITableViewController {
     
     let dao = DaoManager.sharedInstance
     var projects: [Project] = []
+    var selectedProject: Project!
     
     let sync = SyncManager()
 
@@ -49,6 +50,12 @@ class ProjectsTableViewController: UITableViewController {
         return cell
     }
     
+    // MARK: - UITableViewDelegate
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedProject = projects[indexPath.row]
+        self.performSegue(withIdentifier: "projectSegue", sender: self)
+    }
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Remove project from table view.
@@ -56,6 +63,13 @@ class ProjectsTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
             // Remove it from persistent store and server.
             sync.deleteProject(projects[indexPath.row], completionHandler: nil)
+        }
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "projectSegue" {
+            segue.destination.setValue(selectedProject, forKey: "project")
         }
     }
     

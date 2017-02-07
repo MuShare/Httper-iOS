@@ -46,6 +46,7 @@
 		E4CA760C1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CA760B1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift */; };
 		E4CA760F1E3F73E3008D7A52 /* ProjectsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CA760E1E3F73E3008D7A52 /* ProjectsTableViewController.swift */; };
 		E4CA76131E3F7E1A008D7A52 /* AddProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CA76121E3F7E1A008D7A52 /* AddProjectViewController.swift */; };
+		E4D034491E4A0DB300580FAC /* ProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D034481E4A0DB300580FAC /* ProjectTableViewController.swift */; };
 		E4D1CAE51DF5C028008DC4F9 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */; };
 		E4DE76911E1D2645002A8385 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DE76901E1D2644002A8385 /* LoginViewController.swift */; };
 		E4DE76931E1D2AB0002A8385 /* login-bg-iPad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4DE76921E1D2AB0002A8385 /* login-bg-iPad.jpg */; };
@@ -134,6 +135,7 @@
 		E4CA760E1E3F73E3008D7A52 /* ProjectsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsTableViewController.swift; sourceTree = "<group>"; };
 		E4CA76121E3F7E1A008D7A52 /* AddProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProjectViewController.swift; sourceTree = "<group>"; };
 		E4CA76141E3F80B2008D7A52 /* Httper_1.3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Httper_1.3.xcdatamodel; sourceTree = "<group>"; };
+		E4D034481E4A0DB300580FAC /* ProjectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTableViewController.swift; sourceTree = "<group>"; };
 		E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		E4DE76901E1D2644002A8385 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E4DE76921E1D2AB0002A8385 /* login-bg-iPad.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "login-bg-iPad.jpg"; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 			children = (
 				E4CA760E1E3F73E3008D7A52 /* ProjectsTableViewController.swift */,
 				E4CA76121E3F7E1A008D7A52 /* AddProjectViewController.swift */,
+				E4D034481E4A0DB300580FAC /* ProjectTableViewController.swift */,
 			);
 			name = Project;
 			sourceTree = "<group>";
@@ -573,6 +576,7 @@
 				E40F66A81E01142900C6013E /* HistoryTableViewController.swift in Sources */,
 				E4D1CAE51DF5C028008DC4F9 /* RequestViewController.swift in Sources */,
 				E48553361DF9B2CF00A1DB60 /* PreviewViewController.swift in Sources */,
+				E4D034491E4A0DB300580FAC /* ProjectTableViewController.swift in Sources */,
 				E4EC89C21E1159A80072ACF3 /* SettingsTableViewController.swift in Sources */,
 				E4CA760C1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift in Sources */,
 				E4EC89D71E12A4C70072ACF3 /* SimplePing.m in Sources */,

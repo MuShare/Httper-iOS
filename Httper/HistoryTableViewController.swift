@@ -55,18 +55,6 @@ class HistoryTableViewController: UITableViewController {
         return cell
     }
     
-    /**
-    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let deleteButton = UITableViewRowAction(style: .default,
-                                                title: NSLocalizedString("delete_name", comment: ""),
-                                                handler: { (action, indexPath) in
-            self.tableView.dataSource?.tableView!(self.tableView, commit: .delete, forRowAt: indexPath)
-        })
-        deleteButton.backgroundColor = RGB(PrettyColor.key.rawValue)
-        return [deleteButton]
-    }
-    */
-
     // MARK: - UITableViewDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let length = self.navigationController?.viewControllers.count
