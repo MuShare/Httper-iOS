@@ -169,43 +169,16 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
     func saveAndPushRequest() {
         let bodyType = "raw"
         let bodyData = (body == nil) ? nil : NSData.init(data: body.data(using: .utf8)!)
-        let request = dao.requestDao.saveOrUpdate(method: method, url: url, headers: headers, parameters: parameters, bodytype: bodyType, body: bodyData)
-
-        let params: Parameters = [
-            "url": url,
-            "method": method,
-            "updateAt": request.update,
-            "headers": JSONStringWithObject(headers)!,
-            "parameters": JSONStringWithObject(parameters)!,
-            "bodyType": bodyType,
-            "body": body == nil ? "": body!
-        ]
-        Alamofire.request(createUrl("api/request/push"),
-                          method: HTTPMethod.post,
-                          parameters: params,
-                          encoding: URLEncoding.default,
-                          headers: tokenHeader())
-        .responseJSON { (responseObject) in
-            let response = InternetResponse(responseObject)
-            if response.statusOK() {
-                let result = response.getResult()
-                let revision = result?["revision"] as! Int
-                updateRequestRevision(revision)
-                // Update user
-                request.revision = Int16(revision)
-                request.rid = result?["rid"] as? String
-                self.dao.saveContext()
-            } else {
-                switch response.errorCode() {
-                case ErrorCode.tokenError.rawValue:
-                    break
-                case ErrorCode.addRequest.rawValue:
-                    break
-                default:
-                    break
-                }
-            }
-        }
+        _ = dao.requestDao.saveOrUpdate(rid: nil,
+                                        update: nil,
+                                        revision: nil,
+                                        method: method,
+                                        url: url,
+                                        headers: headers,
+                                        parameters: parameters,
+                                        bodytype: bodyType,
+                                        body: bodyData)
+        SyncManager.sharedInstance.pushLocalRequests(nil)
     }
     
 }

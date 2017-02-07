@@ -51,12 +51,11 @@ class ProjectsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let project = projects[indexPath.row]
             // Remove project from table view.
             projects.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             // Remove it from persistent store and server.
-            sync.deleteProject(project, completionHandler: nil)
+            sync.deleteProject(projects[indexPath.row], completionHandler: nil)
         }
     }
     

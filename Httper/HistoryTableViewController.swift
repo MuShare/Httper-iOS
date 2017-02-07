@@ -48,7 +48,7 @@ class HistoryTableViewController: UITableViewController {
         let methodLabel = cell.viewWithTag(2) as! UILabel
         let updateLabel = cell.viewWithTag(3) as! UILabel
         let request = requests[indexPath.row]
-//        print("\(request.url!) revision = \(request.revision), rid = \(request.rid)")
+        NSLog("\(request.url!) revision = \(request.revision), rid = \(request.rid)")
         urlLabel.text = request.url
         methodLabel.text = request.method
         updateLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(request.update)))
@@ -77,43 +77,26 @@ class HistoryTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            // Delete request entity.
+            sync.deleteRequest(requests[indexPath.row], completionHandler: nil)
             // Delete the row from the data source
-            let request = requests[indexPath.row]
-            let rid = request.rid
-            dao.requestDao.delete(request)
             requests.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            
-            // Delete this request in server
-            if rid == nil {
-                return
-            }
-            let params: Parameters = [
-                "rid": rid!
-            ]
-            Alamofire.request(createUrl("api/request/push"),
-                              method: HTTPMethod.delete,
-                              parameters: params,
-                              encoding: URLEncoding.default,
-                              headers: tokenHeader())
-            .responseJSON(completionHandler: { (responseObject) in
-                let response = InternetResponse(responseObject)
-                if response.statusOK() {
-                    // Update local request revision by the revision from server.
-                    let revision = response.getResult()["revision"] as! Int
-                    updateRequestRevision(revision)
-                }
-            })
-        } 
+        }
     }
     
     // MARK: - Service
     func syncRequests() {
-        // Pull new updated request from server.
+        // Pull new updated requests from server.
         sync.pullUpdatedRequests { (revision) in
-            // Refresh table view
-            self.requests = self.dao.requestDao.findAll()
-            self.tableView.reloadData()
+            if revision > 0 {
+                // Refresh table view
+                self.requests = self.dao.requestDao.findAll()
+                self.tableView.reloadData()
+                
+                // Push local requests to server.
+                self.sync.pushLocalRequests(nil)
+            }
             // Do not forget to call dg_stopLoading() at the end
             self.tableView.dg_stopLoading()
         }

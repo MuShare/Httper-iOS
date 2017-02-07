@@ -56,6 +56,10 @@ enum ErrorCode: Int {
     case addRequest = 2011
 }
 
+func token() -> String? {
+    return Defaults[.token]
+}
+
 func tokenHeader() -> HTTPHeaders? {
     let token = Defaults[.token]
     if token == nil {

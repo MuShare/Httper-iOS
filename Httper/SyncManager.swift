@@ -22,7 +22,6 @@ class SyncManager: NSObject {
         dao = DaoManager.sharedInstance
     }
 
-    
     func pullUpdatedRequests(_ completionHandler: ((Int) -> Void)?) {
         let localRevision = requestRevision()
         let params: Parameters = [
@@ -38,7 +37,6 @@ class SyncManager: NSObject {
             if response.statusOK() {
                 let result = response.getResult()
                 let revision = result?["revision"] as! Int
-//                print("revision = \(revision) localRevision = \(localRevision)")
                 if revision <= localRevision {
                     completionHandler?(revision)
                     return
@@ -58,17 +56,15 @@ class SyncManager: NSObject {
                 
                 // Update local request revision
                 updateRequestRevision(revision)
-                
                 // Completion hander
                 completionHandler?(revision)
-                self.pushLocalRequests()
             } else {
                 completionHandler?(-1)
             }
         }
     }
     
-    func pushLocalRequests() {
+    func pushLocalRequests(_ completionHandler: ((Int) -> Void)?) {
         let requests = dao.requestDao.findUnsynced()
         if requests.count == 0 {
             return
@@ -99,7 +95,7 @@ class SyncManager: NSObject {
         let params: Parameters = [
             "requestsJSONArray": JSONStringWithObject(requestArray)!
         ]
-        Alamofire.request(createUrl("api/request/push/list"),
+        Alamofire.request(createUrl("api/request/push"),
                           method: .post,
                           parameters: params,
                           encoding: URLEncoding.default,
@@ -116,10 +112,58 @@ class SyncManager: NSObject {
                     request.revision = Int16(result["revision"] as! Int)
                 }
                 self.dao.saveContext()
+                
+                let revision = dataResult?["revision"] as! Int
                 // Update local request revision
-                updateRequestRevision(dataResult?["revision"] as! Int)
+                updateRequestRevision(revision)
+                // Completion
+                completionHandler?(revision)
+            } else {
+                // If push failed, completion with -1.
+                completionHandler?(-1)
             }
         }
+    }
+    
+    func deleteRequest(_ request: Request, completionHandler: ((Int) -> Void)?) {
+        if request.rid == nil && token() == nil {
+            dao.requestDao.delete(request)
+            dao.saveContext()
+            return
+        }
+        let params: Parameters = [
+            "rid": request.rid!
+        ]
+        Alamofire.request(createUrl("api/request/push"),
+                          method: HTTPMethod.delete,
+                          parameters: params,
+                          encoding: URLEncoding.default,
+                          headers: tokenHeader())
+            .responseJSON(completionHandler: { (responseObject) in
+                let response = InternetResponse(responseObject)
+                if response.statusOK() {
+                    // Update local request revision by the revision from server.
+                    let revision = response.getResult()["revision"] as! Int
+                    updateRequestRevision(revision)
+                    // Delete local request entity.
+                    self.dao.requestDao.delete(request)
+                    self.dao.saveContext()
+                    // Completion
+                    completionHandler?(revision)
+                } else {
+                    switch response.errorCode() {
+                    case ErrorCode.tokenError.rawValue:
+                        // Delete local request entity if token is error,
+                        // that means this entity cannot map with any entity in server.
+                        self.dao.context.delete(request)
+                        self.dao.saveContext()
+                    default:
+                        break
+                    }
+                    completionHandler?(-1)
+                }
+            })
+
     }
     
     // Pull projects from server.
@@ -213,9 +257,10 @@ class SyncManager: NSObject {
         }
     }
     
+    // Delete project in persistent store and server.
     func deleteProject(_ project: Project, completionHandler: ((Int) -> Void)?) {
         // If this project entity is not sync with server, just delete it in local persistent store.
-        if project.pid == nil {
+        if project.pid == nil && token() == nil  {
             dao.context.delete(project)
             dao.saveContext()
             return
@@ -234,13 +279,22 @@ class SyncManager: NSObject {
                 // Update local project revision by the revision from server.
                 let revision = response.getResult()["revision"] as! Int
                 updateProjectRevision(revision)
-                
                 // Delete local project entity.
                 self.dao.context.delete(project)
                 self.dao.saveContext()
-                
                 // Completion
                 completionHandler?(revision)
+            } else {
+                switch response.errorCode() {
+                case ErrorCode.tokenError.rawValue:
+                    // Delete local project entity if token is error,
+                    // that means this entity cannot map with any entity in server.
+                    self.dao.context.delete(project)
+                    self.dao.saveContext()
+                default:
+                    break
+                }
+                completionHandler?(-1)
             }
         }
     }
