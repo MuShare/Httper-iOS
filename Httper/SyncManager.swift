@@ -122,6 +122,8 @@ class SyncManager: NSObject {
         }
     }
     
+    // Pull projects from server.
+    // Return newest revision in completionHandler
     func pullUpdatedProjects(_ completionHandler: ((Int) -> Void)?) {
         let localRevision = projectRevision()
         let params: Parameters = [
@@ -155,12 +157,16 @@ class SyncManager: NSObject {
                 updateProjectRevision(revision)
                 // Complete
                 completionHandler?(revision)
-                self.pushLocalProjects()
+            } else {
+                // Pull failed.
+                completionHandler?(-1)
             }
         }
     }
 
-    func pushLocalProjects() {
+    // Push local projects to server.
+    // Return newest revision in completionHandler
+    func pushLocalProjects(_ completionHandler: ((Int) -> Void)?) {
         let projects = dao.projectDao.findUnsynced()
         if projects.count == 0 {
             return
@@ -194,8 +200,47 @@ class SyncManager: NSObject {
                     project.revision = Int16(result["revision"] as! Int)
                 }
                 self.dao.saveContext()
+                
+                let revision = dataResult?["revision"] as! Int
                 // Update local request revision
-                updateProjectRevision(dataResult?["revision"] as! Int)
+                updateProjectRevision(revision)
+                // Completion
+                completionHandler?(revision)
+            } else {
+                // If push failed, completion with -1.
+                completionHandler?(-1)
+            }
+        }
+    }
+    
+    func deleteProject(_ project: Project, completionHandler: ((Int) -> Void)?) {
+        // If this project entity is not sync with server, just delete it in local persistent store.
+        if project.pid == nil {
+            dao.context.delete(project)
+            dao.saveContext()
+            return
+        }
+        let params: Parameters = [
+            "pid": project.pid!
+        ]
+        Alamofire.request(createUrl("api/project/push"),
+                          method: .delete,
+                          parameters: params,
+                          encoding: URLEncoding.default,
+                          headers: tokenHeader())
+        .responseJSON { (responseObject) in
+            let response = InternetResponse(responseObject)
+            if response.statusOK() {
+                // Update local project revision by the revision from server.
+                let revision = response.getResult()["revision"] as! Int
+                updateProjectRevision(revision)
+                
+                // Delete local project entity.
+                self.dao.context.delete(project)
+                self.dao.saveContext()
+                
+                // Completion
+                completionHandler?(revision)
             }
         }
     }

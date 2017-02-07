@@ -254,6 +254,7 @@
 		E48D414B1D444F3F0028B84F = {
 			isa = PBXGroup;
 			children = (
+				E4A37A8B1E0184ED00586BA1 /* Model */,
 				E4305A3B1E2F302C00010B52 /* Screenshoot */,
 				E48D41561D444F3F0028B84F /* Httper */,
 				E48D416E1D444F3F0028B84F /* HttperTests */,
@@ -277,7 +278,6 @@
 		E48D41561D444F3F0028B84F /* Httper */ = {
 			isa = PBXGroup;
 			children = (
-				E4A37A8B1E0184ED00586BA1 /* Model */,
 				E4305A451E34F62F00010B52 /* Dao */,
 				E4D1CAE01DF5BFCF008DC4F9 /* Request */,
 				E40F66A61E01140800C6013E /* History */,
@@ -322,6 +322,7 @@
 				E48D415E1D444F3F0028B84F /* Httper.xcdatamodeld */,
 			);
 			name = Model;
+			path = Httper;
 			sourceTree = "<group>";
 		};
 		E4CA760D1E3F7058008D7A52 /* Project */ = {
@@ -749,6 +750,7 @@
 				INFOPLIST_FILE = Httper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";
 				PRODUCT_BUNDLE_IDENTIFIER = pw.fczm.Httper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Httper/Httper-Bridging-Header.h";

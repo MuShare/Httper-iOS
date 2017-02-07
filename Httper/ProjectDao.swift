@@ -29,7 +29,7 @@ class ProjectDao: DaoTemplate {
         project.introduction = projectObject["introduction"] as? String
         project.update = projectObject["updateAt"] as! Int64
         // Save physical id from server.
-        project.pid = projectObject["rid"] as? String
+        project.pid = projectObject["pid"] as? String
         // Save revision
         project.revision = projectObject["revision"] as! Int16
         self.saveContext()

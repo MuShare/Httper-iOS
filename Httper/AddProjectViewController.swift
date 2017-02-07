@@ -32,7 +32,8 @@ class AddProjectViewController: UIViewController {
         _ = dao.projectDao.save(pname: projectNameTextField.text!,
                                 privilege: "private",
                                 introduction: introudctionTextView.text!)
-        _ = self.navigationController?.popViewController(animated: true)
-        
+        SyncManager.sharedInstance.pushLocalProjects { (revision) in
+            _ = self.navigationController?.popViewController(animated: true)
+        }
     }
 }

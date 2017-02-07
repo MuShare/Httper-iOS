@@ -18,13 +18,15 @@ class ProjectsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Syncrhonize projects, pull remote projects and push local projects.
+        syncProjects()
+        // Initialize loading view.
         initLoadingView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        sync.pushLocalProjects()
         projects = dao.projectDao.findAll()
         self.tableView.reloadData()
     }
@@ -40,17 +42,37 @@ class ProjectsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let project = projects[indexPath.row]
+        print("Project's physical id in server is \(project.pid)")
         let cell = tableView.dequeueReusableCell(withIdentifier: "projectIdentifier", for: indexPath)
         let projectNameLabel = cell.viewWithTag(1) as! UILabel
         projectNameLabel.text = project.pname
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let project = projects[indexPath.row]
+            // Remove project from table view.
+            projects.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            // Remove it from persistent store and server.
+            sync.deleteProject(project, completionHandler: nil)
+        }
+    }
+    
     // MARK: - Service
     func syncProjects() {
+        // Pull remote projects from server
         sync.pullUpdatedProjects { (revision) in
-            self.projects = self.dao.projectDao.findAll()
-            self.tableView.reloadData()
+            // Pull successfully.
+            if revision > 0 {
+                self.projects = self.dao.projectDao.findAll()
+                self.tableView.reloadData()
+                
+                // Push local projects to server in background.
+                self.sync.pushLocalProjects(nil)
+            }
+            // Stop loading.
             self.tableView.dg_stopLoading()
         }
     }
@@ -60,7 +82,7 @@ class ProjectsTableViewController: UITableViewController {
         loadingView.tintColor = UIColor.lightGray
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
             self?.syncProjects()
-            }, loadingView: loadingView)
+        }, loadingView: loadingView)
         tableView.dg_setPullToRefreshFillColor(RGB(DesignColor.nagivation.rawValue))
         tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
     }
