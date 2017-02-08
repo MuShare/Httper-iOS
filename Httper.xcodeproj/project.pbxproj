@@ -59,6 +59,7 @@
 		E4EC89D21E129FA10072ACF3 /* STDPingServices.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EC89D01E129FA10072ACF3 /* STDPingServices.m */; };
 		E4EC89D41E12A00C0072ACF3 /* IPAddressTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EC89D31E12A00C0072ACF3 /* IPAddressTableViewController.swift */; };
 		E4EC89D71E12A4C70072ACF3 /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EC89D61E12A4C70072ACF3 /* SimplePing.m */; };
+		E4F16F621E4B685F00C17DA4 /* ResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F16F611E4B685F00C17DA4 /* ResetViewController.swift */; };
 		E4F95CD61E15685A005A0004 /* WhoisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F95CD51E15685A005A0004 /* WhoisViewController.swift */; };
 		E4F95CD81E1572FD005A0004 /* whois.css in Resources */ = {isa = PBXBuildFile; fileRef = E4F95CD71E1572FD005A0004 /* whois.css */; };
 		E4F95CDA1E16A7D3005A0004 /* DetailIPInformationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F95CD91E16A7D3005A0004 /* DetailIPInformationTableViewController.swift */; };
@@ -150,6 +151,7 @@
 		E4EC89D31E12A00C0072ACF3 /* IPAddressTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPAddressTableViewController.swift; sourceTree = "<group>"; };
 		E4EC89D51E12A4C70072ACF3 /* SimplePing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePing.h; sourceTree = "<group>"; };
 		E4EC89D61E12A4C70072ACF3 /* SimplePing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePing.m; sourceTree = "<group>"; };
+		E4F16F611E4B685F00C17DA4 /* ResetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetViewController.swift; sourceTree = "<group>"; };
 		E4F95CD51E15685A005A0004 /* WhoisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhoisViewController.swift; sourceTree = "<group>"; };
 		E4F95CD71E1572FD005A0004 /* whois.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = whois.css; sourceTree = "<group>"; };
 		E4F95CD91E16A7D3005A0004 /* DetailIPInformationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailIPInformationTableViewController.swift; sourceTree = "<group>"; };
@@ -360,13 +362,14 @@
 			children = (
 				E4F95CD91E16A7D3005A0004 /* DetailIPInformationTableViewController.swift */,
 				E4EC89D31E12A00C0072ACF3 /* IPAddressTableViewController.swift */,
+				E4DE76901E1D2644002A8385 /* LoginViewController.swift */,
 				E46077601E126948002DE839 /* PingViewController.swift */,
+				E4305A391E2F11EB00010B52 /* ProfileTableViewController.swift */,
+				E4DE76981E1D3DF5002A8385 /* RegisterViewController.swift */,
+				E4F16F611E4B685F00C17DA4 /* ResetViewController.swift */,
 				E4EC89C11E1159A80072ACF3 /* SettingsTableViewController.swift */,
 				E4F95CD71E1572FD005A0004 /* whois.css */,
 				E4F95CD51E15685A005A0004 /* WhoisViewController.swift */,
-				E4DE76901E1D2644002A8385 /* LoginViewController.swift */,
-				E4DE76981E1D3DF5002A8385 /* RegisterViewController.swift */,
-				E4305A391E2F11EB00010B52 /* ProfileTableViewController.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -580,6 +583,7 @@
 				E4EC89C21E1159A80072ACF3 /* SettingsTableViewController.swift in Sources */,
 				E4CA760C1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift in Sources */,
 				E4EC89D71E12A4C70072ACF3 /* SimplePing.m in Sources */,
+				E4F16F621E4B685F00C17DA4 /* ResetViewController.swift in Sources */,
 				E4F95CDA1E16A7D3005A0004 /* DetailIPInformationTableViewController.swift in Sources */,
 				E4305A491E34F8E100010B52 /* DaoTemplate.swift in Sources */,
 				E48D41581D444F3F0028B84F /* AppDelegate.swift in Sources */,
