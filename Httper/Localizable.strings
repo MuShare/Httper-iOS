@@ -78,7 +78,7 @@ address_empty = "Input a domain name or IP address!";
 not_internet_connection = "No Internet connection!";
 
 register_not_validate = "Email, username and password cannot be empty!";
-email_invalidate = "Input a correct email!";
+email_invalidate = "Please input a correct email!";
 back_to_login = "Back to sign in";
 email_registered = "This email has been registered.";
 
@@ -90,5 +90,9 @@ sign_in_sign_up = "Sign in to sync request history";
 
 sign_out_title = "Sign out";
 sign_out_message = "Are you sure to sign out now?";
+
+reset_password_not_validate = "Please input a correct email!";
+reset_password_failed = "Send email failed, try again later.";
+reset_password_check_email = "Check Your Email";
 
 add_project_error = "Project name cannot be empty!";

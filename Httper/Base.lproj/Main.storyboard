@@ -2134,10 +2134,7 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QVC-QQ-u2q">
-                                <rect key="frame" x="23" y="128" width="274" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="274" id="QRv-cO-ztf"/>
-                                </constraints>
+                                <rect key="frame" x="16" y="128" width="288" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -2178,26 +2175,53 @@
                                     <action selector="close:" destination="fdi-Af-25p" eventType="touchUpInside" id="S39-0g-7VL"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BmE-za-IY3">
+                                <rect key="frame" x="16" y="165" width="288" height="86"/>
+                                <string key="text">Input your email address when you sign up your account. We will send a email to you which contains a link for resetting your password.</string>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="send_email" translatesAutoresizingMaskIntoConstraints="NO" id="i0I-82-t3e">
+                                <rect key="frame" x="110" y="196" width="100" height="88"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.18746668100357056" green="0.2114855945110321" blue="0.23234263062477112" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="21V-od-iE4" firstAttribute="leading" secondItem="jQc-Qr-XNZ" secondAttribute="trailing" constant="-27" id="2of-3n-KYD"/>
                             <constraint firstAttribute="leadingMargin" secondItem="jQc-Qr-XNZ" secondAttribute="leading" id="As4-WQ-v6s"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="BmE-za-IY3" secondAttribute="leading" id="FJF-uN-egf"/>
+                            <constraint firstItem="njf-57-CQ0" firstAttribute="top" secondItem="BmE-za-IY3" secondAttribute="bottom" constant="8" id="IJh-KJ-U4Y"/>
                             <constraint firstItem="njf-57-CQ0" firstAttribute="centerY" secondItem="kSH-ph-KDh" secondAttribute="centerY" id="RZ5-Cy-f7a"/>
                             <constraint firstItem="njf-57-CQ0" firstAttribute="leading" secondItem="kSH-ph-KDh" secondAttribute="leadingMargin" constant="-16" id="fko-gX-8Q5"/>
+                            <constraint firstItem="njf-57-CQ0" firstAttribute="top" secondItem="i0I-82-t3e" secondAttribute="bottom" constant="-25" id="gcN-Vb-b30"/>
                             <constraint firstItem="jQc-Qr-XNZ" firstAttribute="top" secondItem="njf-57-CQ0" secondAttribute="bottom" constant="16" id="gnv-OO-s2I"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jQc-Qr-XNZ" secondAttribute="trailing" id="jAu-Wu-FcW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QVC-QQ-u2q" secondAttribute="trailing" id="jka-He-3Ii"/>
                             <constraint firstItem="21V-od-iE4" firstAttribute="top" secondItem="jQc-Qr-XNZ" secondAttribute="bottom" constant="-30" id="l8g-2X-isz"/>
                             <constraint firstItem="njf-57-CQ0" firstAttribute="top" secondItem="QVC-QQ-u2q" secondAttribute="bottom" constant="102" id="ml6-1E-BdR"/>
+                            <constraint firstItem="i0I-82-t3e" firstAttribute="centerX" secondItem="kSH-ph-KDh" secondAttribute="centerX" id="nzt-lf-uD2"/>
                             <constraint firstItem="QVC-QQ-u2q" firstAttribute="centerX" secondItem="kSH-ph-KDh" secondAttribute="centerX" id="oAe-Sr-rYG"/>
                             <constraint firstItem="jQc-Qr-XNZ" firstAttribute="centerX" secondItem="kSH-ph-KDh" secondAttribute="centerX" id="qGh-Eg-1my"/>
+                            <constraint firstItem="BmE-za-IY3" firstAttribute="top" secondItem="QVC-QQ-u2q" secondAttribute="bottom" constant="8" id="sTF-8v-ySo"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="QVC-QQ-u2q" secondAttribute="leading" id="tMW-iW-HpB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="njf-57-CQ0" secondAttribute="trailing" constant="-16" id="wbD-05-LRF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BmE-za-IY3" secondAttribute="trailing" id="yOm-92-68m"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="C2W-Bs-B65"/>
                     <connections>
                         <outlet property="emailTextField" destination="njf-57-CQ0" id="84h-J4-xMw"/>
+                        <outlet property="loadingActivityIndicatorView" destination="21V-od-iE4" id="rqi-RB-Iob"/>
+                        <outlet property="sendEmailSuccessImageView" destination="i0I-82-t3e" id="aIW-R4-eA4"/>
                         <outlet property="submitButton" destination="jQc-Qr-XNZ" id="DD6-Kv-Z8e"/>
+                        <outlet property="tipTextView" destination="BmE-za-IY3" id="tIC-7K-agD"/>
+                        <outlet property="titleLabel" destination="QVC-QQ-u2q" id="W7r-xA-NSx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hpZ-iz-bBn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3142,6 +3166,7 @@
         <image name="privilege" width="30" height="30"/>
         <image name="register_success" width="100" height="100"/>
         <image name="select" width="30" height="30"/>
+        <image name="send_email" width="100" height="88"/>
         <image name="signin" width="70" height="70"/>
         <image name="start" width="30" height="30"/>
         <image name="tab_project" width="30" height="30"/>

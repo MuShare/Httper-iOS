@@ -53,7 +53,9 @@ enum ErrorCode: Int {
     case emailRegistered = 1011
     case emailNotExist = 1021
     case passwordWrong = 1022
-    case addRequest = 2011
+    case sendResetPasswordMail = 1031
+    case deleteRequest = 2011
+    case deleteProject = 3011
 }
 
 func token() -> String? {
