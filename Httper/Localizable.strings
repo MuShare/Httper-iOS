@@ -57,6 +57,8 @@ clear_name = "Clear";
 tab_name = "Tab";
 delete_name = "Delete";
 
+token_error = "User authorization is invalide. Please sign in again!";
+
 headers = "Headers";
 parameters = "Parameters";
 body = "Body";
@@ -79,7 +81,7 @@ not_internet_connection = "No Internet connection!";
 
 register_not_validate = "Email, username and password cannot be empty!";
 email_invalidate = "Please input a correct email!";
-back_to_login = "Back to sign in";
+back_to_login = "Back";
 email_registered = "This email has been registered.";
 
 login_not_validate = "Input correct emaill and password!";

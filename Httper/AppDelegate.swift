@@ -23,7 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         // Pull updated requests and push local requests(if exist)
-        SyncManager.sharedInstance.pullUpdatedRequests(nil)
+        let sync = SyncManager.sharedInstance
+        sync.pullUpdatedRequests(nil)
+        sync.pullUser(nil)
         
         return true
     }
@@ -83,7 +85,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Create the coordinator and store
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
         let url = self.applicationDocumentsDirectory.appendingPathComponent("SingleViewCoreData.sqlite")
-        print("SQLite file stores at \(url)")
+        if DEBUG {
+            NSLog("SQLite file stores at \(url)")
+        }
         var failureReason = "There was an error creating or loading the application's saved data."
         do {
             // Use lightweight migration mode.

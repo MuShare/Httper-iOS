@@ -36,6 +36,7 @@ class SettingsTableViewController: UITableViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        // Hide navigation bar.
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     

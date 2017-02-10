@@ -68,7 +68,7 @@ class LoginViewController: EditingViewController {
         ]
 
         Alamofire.request(createUrl("api/user/login"),
-                          method: HTTPMethod.post,
+                          method: .post,
                           parameters: params,
                           encoding: URLEncoding.default,
                           headers: nil)

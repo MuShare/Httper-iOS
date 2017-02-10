@@ -43,6 +43,7 @@
 		E49BC0AE1E4226F400241004 /* Request+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49BC0AA1E4226F400241004 /* Request+CoreDataProperties.swift */; };
 		E49BC0B01E4227BA00241004 /* ProjectDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49BC0AF1E4227BA00241004 /* ProjectDao.swift */; };
 		E4A37A9D1E018D7500586BA1 /* RequestDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A37A9C1E018D7500586BA1 /* RequestDao.swift */; };
+		E4BBC9931E4DCCBB002107DF /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BBC9921E4DCCBB002107DF /* NameViewController.swift */; };
 		E4CA760C1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CA760B1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift */; };
 		E4CA760F1E3F73E3008D7A52 /* ProjectsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CA760E1E3F73E3008D7A52 /* ProjectsTableViewController.swift */; };
 		E4CA76131E3F7E1A008D7A52 /* AddProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CA76121E3F7E1A008D7A52 /* AddProjectViewController.swift */; };
@@ -132,6 +133,7 @@
 		E49BC0AA1E4226F400241004 /* Request+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Request+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E49BC0AF1E4227BA00241004 /* ProjectDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDao.swift; sourceTree = "<group>"; };
 		E4A37A9C1E018D7500586BA1 /* RequestDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestDao.swift; sourceTree = "<group>"; };
+		E4BBC9921E4DCCBB002107DF /* NameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
 		E4CA760B1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderKeysTableViewController.swift; sourceTree = "<group>"; };
 		E4CA760E1E3F73E3008D7A52 /* ProjectsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsTableViewController.swift; sourceTree = "<group>"; };
 		E4CA76121E3F7E1A008D7A52 /* AddProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProjectViewController.swift; sourceTree = "<group>"; };
@@ -363,6 +365,7 @@
 				E4F95CD91E16A7D3005A0004 /* DetailIPInformationTableViewController.swift */,
 				E4EC89D31E12A00C0072ACF3 /* IPAddressTableViewController.swift */,
 				E4DE76901E1D2644002A8385 /* LoginViewController.swift */,
+				E4BBC9921E4DCCBB002107DF /* NameViewController.swift */,
 				E46077601E126948002DE839 /* PingViewController.swift */,
 				E4305A391E2F11EB00010B52 /* ProfileTableViewController.swift */,
 				E4DE76981E1D3DF5002A8385 /* RegisterViewController.swift */,
@@ -606,6 +609,7 @@
 				E40B257E1DF44BD20039CA8D /* MainViewController.swift in Sources */,
 				E49BC0AD1E4226F400241004 /* Request+CoreDataClass.swift in Sources */,
 				E431C4A91DF7179D006BB2D6 /* RequestMethodsTableViewController.swift in Sources */,
+				E4BBC9931E4DCCBB002107DF /* NameViewController.swift in Sources */,
 				E4DE76911E1D2645002A8385 /* LoginViewController.swift in Sources */,
 				E4CA76131E3F7E1A008D7A52 /* AddProjectViewController.swift in Sources */,
 				E49BC0AE1E4226F400241004 /* Request+CoreDataProperties.swift in Sources */,

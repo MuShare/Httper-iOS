@@ -163,7 +163,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         //Set line
         let lineView: UIView = {
             let view = UILabel(frame: CGRect(x: 15, y: 28, width: headerView.bounds.size.width - 15, height: 1))
-            view.backgroundColor = UIColor.lightGray
+            view.backgroundColor = UIColor.darkGray
             return view
         }()
         headerView.addSubview(lineView)

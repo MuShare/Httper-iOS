@@ -10,9 +10,11 @@ import Foundation
 import SwiftyUserDefaults
 import Alamofire
 
+let DEBUG = false
+
 // Server base url
-//let baseUrl = "http://httper.mushare.cn/"
-let baseUrl = "http://127.0.0.1:8080/"
+let baseUrl = "http://httper.mushare.cn/"
+//let baseUrl = "http://127.0.0.1:8080/"
 
 let ipInfoUrl = "https://ipapi.co/json/"
 let whoisUrl = "https://www.whois.com"

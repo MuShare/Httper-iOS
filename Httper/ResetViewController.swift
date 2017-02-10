@@ -34,6 +34,9 @@ class ResetViewController: EditingViewController {
             return view
         }()
         self.view.insertSubview(backgroundImageView, at: 0)
+        
+        self.navigationController?.navigationBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = true
     }
 
     // MARK: - Action

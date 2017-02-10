@@ -18,10 +18,15 @@ class ProfileTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.separatorStyle = .none
-        
         emailLabel.text = Defaults[.email]
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // Update user name.
         nameLabel.text = Defaults[.name]
+        // Hide nagivation bar and tab bar.
+        self.navigationController?.navigationBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = false
     }
 
     // MARK: - Table view data source

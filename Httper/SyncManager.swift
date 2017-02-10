@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import SwiftyUserDefaults
 
 class SyncManager: NSObject {
     
@@ -20,6 +21,24 @@ class SyncManager: NSObject {
     
     override init() {
         dao = DaoManager.sharedInstance
+    }
+    
+    func pullUser(_ completionHandler: ((Bool) -> Void)?) {
+        Alamofire.request(createUrl("api/user"),
+                          method: .get,
+                          parameters: nil,
+                          encoding: URLEncoding.default,
+                          headers: tokenHeader())
+        .responseJSON { (responseObject) in
+            let response = InternetResponse(responseObject)
+            if response.statusOK() {
+                let user = response.getResult()["user"] as! [String: Any]
+                Defaults[.name] = user["name"] as? String
+                completionHandler?(true)
+            } else {
+                completionHandler?(false)
+            }
+        }
     }
 
     func pullUpdatedRequests(_ completionHandler: ((Int) -> Void)?) {
