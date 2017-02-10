@@ -13,6 +13,7 @@ class ProfileTableViewController: UITableViewController {
 
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var signOutTableViewCell: UITableViewCell!
     
     let dao = DaoManager.sharedInstance
     
@@ -54,6 +55,8 @@ class ProfileTableViewController: UITableViewController {
                                             handler: nil)
             alertController.addAction(logout)
             alertController.addAction(cancel)
+            alertController.popoverPresentationController?.sourceView = signOutTableViewCell;
+            alertController.popoverPresentationController?.sourceRect = signOutTableViewCell.bounds;
             self.present(alertController, animated: true, completion: nil)
         }
     }
