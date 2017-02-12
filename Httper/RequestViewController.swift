@@ -37,8 +37,8 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     // Variables for loading request history.
     var request: Request?
-    var headerKeys: Array<String> = [], headerValues: Array<String> = []
-    var parameterKeys: Array<String> = [], parameterValues: Array<String> = []
+    var headerKeys: [String] = [], headerValues: [String] = []
+    var parameterKeys: [String] = [], parameterValues: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,14 +63,14 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Reload request from history.
         if request != nil {
             method = request!.method!
-            headerKeys = Array()
-            headerValues = Array()
+            headerKeys = []
+            headerValues = []
             for (key, value) in NSKeyedUnarchiver.unarchiveObject(with: request!.headers! as Data) as! HTTPHeaders {
                 headerKeys.append(key)
                 headerValues.append(value)
             }
-            parameterKeys = Array()
-            parameterValues = Array()
+            parameterKeys = []
+            parameterValues = []
             for (key, value) in NSKeyedUnarchiver.unarchiveObject(with: request!.parameters! as Data) as! Parameters {
                 parameterKeys.append(key)
                 parameterValues.append(value as! String)
