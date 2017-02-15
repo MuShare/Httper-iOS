@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DGElasticPullToRefresh
 
 let attributeImgaes = ["tab_project", "privilege"]
 
@@ -20,10 +21,16 @@ class ProjectTableViewController: UITableViewController {
     let dao = DaoManager.sharedInstance
     let sync = SyncManager.sharedInstance
 
+    deinit {
+        tableView.dg_removePullToRefresh()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = project.pname
         
+        syncRequests()
+        initLoadingView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -97,6 +104,14 @@ class ProjectTableViewController: UITableViewController {
         }
         return cell
     }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "projectHistorySegue" {
+            // Pop history view controller to this view controller.
+            segue.destination.setValue(false, forKey: "push")
+        }
+    }
 
     
     // MARK: - Service
@@ -112,4 +127,25 @@ class ProjectTableViewController: UITableViewController {
         // User SyncManger to push request
         sync.pushLocalRequests(nil)
     }
+    
+    func syncRequests() {
+        // Pull new updated requests from server.
+        sync.pullUpdatedRequests { (revision) in
+            self.tableView.reloadData()
+            self.tableView.dg_stopLoading()
+        }
+    }
+    
+    // Initialize loading view
+    func initLoadingView() {
+        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+        loadingView.tintColor = UIColor.lightGray
+        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+            // Add your logic here
+            self?.syncRequests()
+        }, loadingView: loadingView)
+        tableView.dg_setPullToRefreshFillColor(RGB(DesignColor.nagivation.rawValue))
+        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
+    }
+
 }

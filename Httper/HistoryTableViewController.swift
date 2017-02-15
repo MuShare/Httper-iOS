@@ -11,12 +11,17 @@ import Alamofire
 import DGElasticPullToRefresh
 
 class HistoryTableViewController: UITableViewController {
+    // Flag for this view controller.
+    // If push is true, when user click a cell, push nagivation view controller to request view controller.
+    // If push is false, pop nagivation view controller to project table view controller.
+    var push = true
     
     let dao = DaoManager.sharedInstance
     let sync = SyncManager.sharedInstance
     
     var dateFormatter = DateFormatter()
     var requests :[Request]!
+    var selectedRequest: Request!
 
     deinit {
         tableView.dg_removePullToRefresh()
@@ -58,10 +63,16 @@ class HistoryTableViewController: UITableViewController {
     
     // MARK: - UITableViewDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let length = self.navigationController?.viewControllers.count
-        let controller = self.navigationController?.viewControllers[length! - 2]
-        controller?.setValue(requests[indexPath.row], forKey: "request")
-        _ = self.navigationController?.popViewController(animated: true)
+        if push {
+            selectedRequest = requests[indexPath.row]
+            _ = self.performSegue(withIdentifier: "historyRequestSegue", sender: self)
+        } else {
+            let length = self.navigationController?.viewControllers.count
+            let controller = self.navigationController?.viewControllers[length! - 2]
+            controller?.setValue(requests[indexPath.row], forKey: "request")
+            _ = self.navigationController?.popViewController(animated: true)
+        }
+        
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -71,6 +82,13 @@ class HistoryTableViewController: UITableViewController {
             // Delete the row from the data source
             requests.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "historyRequestSegue" {
+            segue.destination.setValue(selectedRequest, forKey: "request")
         }
     }
     
