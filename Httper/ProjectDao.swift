@@ -53,6 +53,16 @@ class ProjectDao: DaoTemplate {
         return try! context.fetch(fetchRequest)
     }
     
+    func getByPid(_ pid: String) -> Project? {
+        let fetchRequest = NSFetchRequest<Project>(entityName: NSStringFromClass(Project.self))
+        fetchRequest.predicate = NSPredicate(format: "pid=%@", pid);
+        let projects = try! context.fetch(fetchRequest)
+        if projects.count == 0 {
+            return nil
+        }
+        return projects[0]
+    }
+    
     func delete(_ deleteProject: Project) {
         context.delete(deleteProject)
         self.saveContext()

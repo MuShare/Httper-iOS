@@ -63,8 +63,20 @@ class SyncManager: NSObject {
                 
                 let updatedRequests = result?["updated"] as! [[String: Any]]
                 // Save updated requests to persistent store.
-                for request in updatedRequests {
-                    self.dao.requestDao.syncUpdated(request)
+                for requestObject in updatedRequests {
+                    let request = self.dao.requestDao.syncUpdated(requestObject)
+                    // Check pid, if pid is not nil, try to find a project and add this request to the project.
+                    let pid = requestObject["pid"] as? String
+                    if pid == nil {
+                        continue
+                    }
+                    let project = self.dao.projectDao.getByPid(pid!)
+                    if (project == nil) {
+                        continue
+                    }
+                    // Add this request to project.
+                    project?.addToRequests(request)
+                    self.dao.saveContext()
                 }
                 
                 // Delete requests in deleted id list.
@@ -101,6 +113,8 @@ class SyncManager: NSObject {
             if request.body != nil {
                 body = String(data: request.body! as Data, encoding: .utf8)!
             }
+  
+            // Add request object to request array.
             requestArray.append([
                 "url": request.url!,
                 "method": request.method!,
@@ -109,6 +123,11 @@ class SyncManager: NSObject {
                 "parameters": JSONStringWithObject(parameters!)!,
                 "bodyType": request.bodytype!,
                 "body": body,
+                // If rid is not nil, that means this request entity has been synced with server before.
+                // This time, we are going to update this request entity, rather than create a new one.
+                "rid": request.rid ?? "",
+                // If pid is not nil, that menas this request has been added to a project.
+                "pid": request.project?.pid ?? ""
             ])
         }
         let params: Parameters = [
@@ -320,5 +339,6 @@ class SyncManager: NSObject {
             }
         }
     }
+
     
 }

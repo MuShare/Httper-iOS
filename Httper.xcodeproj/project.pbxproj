@@ -102,6 +102,7 @@
 		E431C4A81DF7179D006BB2D6 /* RequestMethodsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestMethodsTableViewController.swift; sourceTree = "<group>"; };
 		E431C4AB1DF72172006BB2D6 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		E447287A1DF7CE80007D2C8B /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		E45BB55D1E5410C90095F959 /* Httper_1.4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Httper_1.4.xcdatamodel; sourceTree = "<group>"; };
 		E45D3E851E21296F0002E1F2 /* InternetResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternetResponse.swift; sourceTree = "<group>"; };
 		E46077601E126948002DE839 /* PingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PingViewController.swift; sourceTree = "<group>"; };
 		E46ABF4F1E140C6700E0C092 /* route.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = route.h; sourceTree = "<group>"; };
@@ -260,7 +261,6 @@
 		E48D414B1D444F3F0028B84F = {
 			isa = PBXGroup;
 			children = (
-				E4A37A8B1E0184ED00586BA1 /* Model */,
 				E4305A3B1E2F302C00010B52 /* Screenshoot */,
 				E48D41561D444F3F0028B84F /* Httper */,
 				E48D416E1D444F3F0028B84F /* HttperTests */,
@@ -284,6 +284,7 @@
 		E48D41561D444F3F0028B84F /* Httper */ = {
 			isa = PBXGroup;
 			children = (
+				E4A37A8B1E0184ED00586BA1 /* Model */,
 				E4305A451E34F62F00010B52 /* Dao */,
 				E4D1CAE01DF5BFCF008DC4F9 /* Request */,
 				E40F66A61E01140800C6013E /* History */,
@@ -328,7 +329,6 @@
 				E48D415E1D444F3F0028B84F /* Httper.xcdatamodeld */,
 			);
 			name = Model;
-			path = Httper;
 			sourceTree = "<group>";
 		};
 		E4CA760D1E3F7058008D7A52 /* Project */ = {
@@ -892,11 +892,12 @@
 		E48D415E1D444F3F0028B84F /* Httper.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				E45BB55D1E5410C90095F959 /* Httper_1.4.xcdatamodel */,
 				E4CA76141E3F80B2008D7A52 /* Httper_1.3.xcdatamodel */,
 				E47FDC631E38674200251EEC /* Httper_1.2.xcdatamodel */,
 				E48D415F1D444F3F0028B84F /* Httper.xcdatamodel */,
 			);
-			currentVersion = E4CA76141E3F80B2008D7A52 /* Httper_1.3.xcdatamodel */;
+			currentVersion = E45BB55D1E5410C90095F959 /* Httper_1.4.xcdatamodel */;
 			path = Httper.xcdatamodeld;
 			sourceTree = "<group>";
 			usesTabs = 0;

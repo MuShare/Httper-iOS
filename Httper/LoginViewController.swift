@@ -85,8 +85,10 @@ class LoginViewController: EditingViewController {
                 Defaults[.name] = result?["name"] as? String
                 Defaults[.login] = true
                 
-                // Sync request entities from server
-                self.sync.pullUpdatedRequests(nil)
+                // Sync project and request entities from server
+                self.sync.pullUpdatedProjects { (revision) in
+                    self.sync.pullUpdatedRequests(nil)
+                }
                 
                 self.dismiss(animated: true, completion: nil)
             } else {

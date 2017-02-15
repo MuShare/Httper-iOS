@@ -36,9 +36,9 @@ class RequestDao: DaoTemplate {
         return request!
     }
     
-    func syncUpdated(_ requestObject: [String: Any]) {
+    func syncUpdated(_ requestObject: [String: Any]) -> Request {
         let body = requestObject["body"] as! String
-        _ = self.saveOrUpdate(rid: requestObject["rid"] as? String,
+        return self.saveOrUpdate(rid: requestObject["rid"] as? String,
                               update: requestObject["updateAt"] as? Int64,
                               revision: requestObject["revision"] as? Int16,
                               method: (requestObject["method"] as? String)!,
@@ -69,7 +69,7 @@ class RequestDao: DaoTemplate {
     
     func findUnsynced() -> [Request] {
         let fetchRequest = NSFetchRequest<Request>(entityName: NSStringFromClass(Request.self))
-        fetchRequest.predicate = NSPredicate(format: "revision=0 and rid=nil")
+        fetchRequest.predicate = NSPredicate(format: "revision=0")
         return try! context.fetch(fetchRequest)
     }
     

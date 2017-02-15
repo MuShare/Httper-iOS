@@ -13,22 +13,29 @@ let attributeImgaes = ["tab_project", "privilege"]
 class ProjectTableViewController: UITableViewController {
     
     var project: Project!
-    var requests: [Request] = []
     
     // The request will be added to the requests array.
     var request: Request!
+    
+    let dao = DaoManager.sharedInstance
+    let sync = SyncManager.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = project.pname
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if request != nil {
-            requests.append(request)
+            // Add request to this project.
+            addRequest(request)
+            
+            // Set request to nil.
             request = nil
             
+            // Update table view.
             tableView.reloadData()
         }
     }
@@ -58,7 +65,7 @@ class ProjectTableViewController: UITableViewController {
         case 0:
             return 2
         case 1:
-            return requests.count
+            return project.requests!.count
         default:
             return 0
         }
@@ -82,7 +89,7 @@ class ProjectTableViewController: UITableViewController {
             cell = tableView.dequeueReusableCell(withIdentifier: "requestIdentifier", for: indexPath)
             let urlLabel = cell.viewWithTag(1) as! UILabel
             let methodLabel = cell.viewWithTag(2) as! UILabel
-            let request = requests[indexPath.row]
+            let request = project.requests?[indexPath.row] as! Request
             urlLabel.text = request.url
             methodLabel.text = request.method
         default:
@@ -91,4 +98,18 @@ class ProjectTableViewController: UITableViewController {
         return cell
     }
 
+    
+    // MARK: - Service
+    func addRequest(_ request: Request) {
+        // Add request to project at local persistent store.
+        project.addToRequests(request)
+        
+        // Push this request to server.
+        // Set this request's revision to 0 at first, only request with revision 0 can be pushed to remote server.
+        request.revision = 0;
+        // Save persistent store context.
+        dao.saveContext()
+        // User SyncManger to push request
+        sync.pushLocalRequests(nil)
+    }
 }
