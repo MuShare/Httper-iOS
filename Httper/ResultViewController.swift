@@ -45,41 +45,17 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
         pageViewController = self.childViewControllers.first as! UIPageViewController
         pageViewController.dataSource = self
         
+        // Show loading activity idicator.
         replaceBarButtonItemWithActivityIndicator(controller: self)
         
-        Alamofire.request(url,
-                          method: getHTTPMethod(method: method),
-                          parameters: parameters,
-                          encoding: (body == nil) ? URLEncoding.default : body,
-                          headers: headers)
-        .response { response in
-            if response.response == nil {
-                showAlert(title: NSLocalizedString("tip", comment: ""),
-                          content: NSLocalizedString("cannot_access", comment: ""),
-                          controller: self)
-                return
-            }
-            
-            // Request successfully, save and upload this new request to server.
-            self.saveAndPushRequest()
-            
-            // Show response.
-            self.httpURLResponse = response.response
-            let infoBarButtonItem = UIBarButtonItem(image: UIImage.init(named: "info"),
-                                                    style: UIBarButtonItemStyle.plain,
-                                                    target: self,
-                                                    action: #selector(self.showRequestInfo))
-            self.navigationItem.rightBarButtonItem = infoBarButtonItem
-            
-            let utf8Text = String(data: response.data!, encoding: .utf8)
-            self.prettyViewController = PrettyViewController(text: utf8Text!, headers: (response.response?.allHeaderFields)!)
-            self.rawViewController = RawViewController(text: utf8Text!)
-            self.previewViewController = PreviewViewController(text: utf8Text!, url: (response.response?.url)!)
-            self.pageViewController.setViewControllers([self.prettyViewController], direction: .forward, animated: true, completion: nil)
-        }
-
-        NotificationCenter.default.addObserver(self, selector: #selector(currentPageChanged(notification:)), name: NSNotification.Name(rawValue: "currentPageChanged"), object: nil)
+        // Hide tab bar.
+        self.tabBarController?.tabBar.isHidden = true
         
+        sendRequest()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
     }
 
     //MARK: - UIPageViewControllerDataSource
@@ -181,4 +157,39 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
         SyncManager.sharedInstance.pushLocalRequests(nil)
     }
     
+    // Send request.
+    func sendRequest() {
+        Alamofire.request(url,
+                          method: getHTTPMethod(method: method),
+                          parameters: parameters,
+                          encoding: (body == nil) ? URLEncoding.default : body,
+                          headers: headers)
+            .response { response in
+                if response.response == nil {
+                    showAlert(title: NSLocalizedString("tip", comment: ""),
+                              content: NSLocalizedString("cannot_access", comment: ""),
+                              controller: self)
+                    return
+                }
+                
+                // Request successfully, save and upload this new request to server.
+                self.saveAndPushRequest()
+                
+                // Show response.
+                self.httpURLResponse = response.response
+                let infoBarButtonItem = UIBarButtonItem(image: UIImage.init(named: "info"),
+                                                        style: UIBarButtonItemStyle.plain,
+                                                        target: self,
+                                                        action: #selector(self.showRequestInfo))
+                self.navigationItem.rightBarButtonItem = infoBarButtonItem
+                
+                let utf8Text = String(data: response.data!, encoding: .utf8)
+                self.prettyViewController = PrettyViewController(text: utf8Text!, headers: (response.response?.allHeaderFields)!)
+                self.rawViewController = RawViewController(text: utf8Text!)
+                self.previewViewController = PreviewViewController(text: utf8Text!, url: (response.response?.url)!)
+                self.pageViewController.setViewControllers([self.prettyViewController], direction: .forward, animated: true, completion: nil)
+        }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(currentPageChanged(notification:)), name: NSNotification.Name(rawValue: "currentPageChanged"), object: nil)
+    }
 }

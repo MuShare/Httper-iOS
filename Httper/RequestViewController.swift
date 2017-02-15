@@ -43,14 +43,28 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // If this request view controller is not root view controller, hide the tab bar.
+        if self.navigationController?.viewControllers[0] != self {
+            self.tabBarController?.tabBar.isHidden = true
+        }
+        
         sendButton.layer.borderColor = UIColor.lightGray.cgColor
         setCloseKeyboardAccessoryForSender(sender: urlTextField)
         
         NotificationCenter.default.addObserver(self, selector: #selector(bodyChanged(notification:)), name: NSNotification.Name(rawValue: "bodyChanged"), object: nil)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // If this request view controller is root view controller, show tab bar.
+
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        
         // Set request method.
         requestMethodButton.setTitle(method, for: .normal)
 

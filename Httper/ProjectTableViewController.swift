@@ -47,6 +47,11 @@ class ProjectTableViewController: UITableViewController {
         }
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // Show tab bar.
+        self.tabBarController?.tabBar.isHidden = false
+    }
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -105,11 +110,22 @@ class ProjectTableViewController: UITableViewController {
         return cell
     }
     
+    // MARK: - UITableViewDelegate
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            request = project.requests?[indexPath.row] as! Request!
+            self.performSegue(withIdentifier: "projectRequestSegue", sender: self)
+        }
+    }
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "projectHistorySegue" {
             // Pop history view controller to this view controller.
             segue.destination.setValue(false, forKey: "push")
+        } else if segue.identifier == "projectRequestSegue" {
+            segue.destination.setValue(request, forKey: "request")
+            request = nil
         }
     }
 

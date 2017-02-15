@@ -38,6 +38,12 @@ class HistoryTableViewController: UITableViewController {
         initLoadingView()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // Show tab bar.
+        self.tabBarController?.tabBar.isHidden = false
+    }
+
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return requests.count
