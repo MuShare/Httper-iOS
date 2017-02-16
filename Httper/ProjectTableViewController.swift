@@ -75,7 +75,7 @@ class ProjectTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 2
+            return 3
         case 1:
             return project.requests!.count
         default:
@@ -95,6 +95,10 @@ class ProjectTableViewController: UITableViewController {
                 cell = tableView.dequeueReusableCell(withIdentifier: "privilegeIdentifier", for: indexPath)
                 let privilegeLabel = cell.viewWithTag(2) as! UILabel
                 privilegeLabel.text = project.privilege
+            } else if indexPath.row == 2 {
+                cell = tableView.dequeueReusableCell(withIdentifier: "introductionIdentifier", for: indexPath)
+                let introductionLabel = cell.viewWithTag(2) as! UILabel
+                introductionLabel.text = project.introduction
             }
             cell = UITableViewCell()
         case 1:
@@ -112,7 +116,18 @@ class ProjectTableViewController: UITableViewController {
     
     // MARK: - UITableViewDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 1 {
+        if indexPath.section == 0 {
+            switch indexPath.row {
+            case 0:
+                self.performSegue(withIdentifier: "projectNameSegue", sender: self)
+            case 1:
+                break
+            case 2:
+                self.performSegue(withIdentifier: "introductionSegue", sender: self)
+            default:
+                break
+            }
+        } else if indexPath.section == 1 {
             request = project.requests?[indexPath.row] as! Request!
             self.performSegue(withIdentifier: "projectRequestSegue", sender: self)
         }
@@ -126,6 +141,10 @@ class ProjectTableViewController: UITableViewController {
         } else if segue.identifier == "projectRequestSegue" {
             segue.destination.setValue(request, forKey: "request")
             request = nil
+        } else if segue.identifier == "projectNameSegue" {
+            segue.destination.setValue(project, forKey: "project")
+        } else if segue.identifier == "introductionSegue" {
+            segue.destination.setValue(project, forKey: "project")
         }
     }
 
