@@ -23,6 +23,17 @@ class SyncManager: NSObject {
         dao = DaoManager.sharedInstance
     }
     
+    func syncAll() {
+        // Pull projects at first, then pull request from server.
+        pullUpdatedProjects { (revision) in
+            self.pullUpdatedRequests(nil)
+        }
+        // Push local projects, then push local requests.
+        pushLocalProjects { (revision) in
+            self.pushLocalRequests(nil)
+        }
+    }
+    
     func pullUser(_ completionHandler: ((Bool) -> Void)?) {
         Alamofire.request(createUrl("api/user"),
                           method: .get,
@@ -262,7 +273,8 @@ class SyncManager: NSObject {
                 "pname": project.pname!,
                 "privilege": project.privilege!,
                 "introduction": project.introduction!,
-                "updateAt": project.update
+                "updateAt": project.update,
+                "pid": project.pid ?? ""
             ]);
         }
         let params: Parameters = [

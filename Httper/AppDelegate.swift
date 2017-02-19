@@ -24,10 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Pull updated requests and push local requests(if exist)
         let sync = SyncManager.sharedInstance
-        // Pull projects at first
-        sync.pullUpdatedProjects { (revision) in
-            sync.pullUpdatedRequests(nil)
-        }
+        sync.syncAll()
         
         sync.pullUser(nil)
         

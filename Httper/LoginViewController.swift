@@ -86,9 +86,7 @@ class LoginViewController: EditingViewController {
                 Defaults[.login] = true
                 
                 // Sync project and request entities from server
-                self.sync.pullUpdatedProjects { (revision) in
-                    self.sync.pullUpdatedRequests(nil)
-                }
+                self.sync.syncAll()
                 
                 self.dismiss(animated: true, completion: nil)
             } else {
@@ -107,4 +105,5 @@ class LoginViewController: EditingViewController {
             }
         }
     }
+    
 }

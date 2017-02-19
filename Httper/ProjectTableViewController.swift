@@ -27,7 +27,6 @@ class ProjectTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = project.pname
         
         syncRequests()
         initLoadingView()
@@ -35,16 +34,18 @@ class ProjectTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
         if request != nil {
             // Add request to this project.
             addRequest(request)
             
             // Set request to nil.
             request = nil
-            
-            // Update table view.
-            tableView.reloadData()
         }
+        
+        self.title = project.pname
+        // Update table view.
+        tableView.reloadData()
     }
 
     override func viewDidAppear(_ animated: Bool) {
