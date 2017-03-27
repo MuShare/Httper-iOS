@@ -15,7 +15,7 @@ Some features of Httper:
 Submit issues on https://github.com/lm2343635/Httper/issues or send email to me(lm2343635@126.com).
 Httper is an open source software. If you like my app, please give me a star on Github: https://github.com/lm2343635/Httper
 
-![Httper](https://github.com/lm2343635/Httper/raw/master/Screenshoot/httper.jpg)
+![Httper](https://github.com/lm2343635/Httper/raw/master/screenshot/httper.jpg)
 
 Submit issues on https://github.com/lm2343635/Httper/issues or send email to me.
 

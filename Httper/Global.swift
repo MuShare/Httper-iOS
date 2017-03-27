@@ -14,7 +14,7 @@ let DEBUG = true
 
 // Server base url
 //let baseUrl = "http://httper.mushare.cn/"
-let baseUrl = "http://192.168.11.116:8080/"
+let baseUrl = "http://127.0.0.1:8080/"
 
 let ipInfoUrl = "https://ipapi.co/json/"
 let whoisUrl = "https://www.whois.com"

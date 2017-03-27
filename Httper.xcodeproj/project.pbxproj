@@ -15,7 +15,6 @@
 		E42DDC841DFA8CB200FAD174 /* ResponseInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42DDC831DFA8CB200FAD174 /* ResponseInfoTableViewController.swift */; };
 		E4305A381E2E5FF900010B52 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4305A371E2E5FF900010B52 /* Global.swift */; };
 		E4305A3A1E2F11EB00010B52 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4305A391E2F11EB00010B52 /* ProfileTableViewController.swift */; };
-		E4305A3C1E2F302C00010B52 /* Screenshoot in Resources */ = {isa = PBXBuildFile; fileRef = E4305A3B1E2F302C00010B52 /* Screenshoot */; };
 		E4305A471E34F65000010B52 /* DaoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4305A461E34F65000010B52 /* DaoManager.swift */; };
 		E4305A491E34F8E100010B52 /* DaoTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4305A481E34F8E100010B52 /* DaoTemplate.swift */; };
 		E431C4A91DF7179D006BB2D6 /* RequestMethodsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E431C4A81DF7179D006BB2D6 /* RequestMethodsTableViewController.swift */; };
@@ -98,7 +97,6 @@
 		E42DDC831DFA8CB200FAD174 /* ResponseInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseInfoTableViewController.swift; sourceTree = "<group>"; };
 		E4305A371E2E5FF900010B52 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		E4305A391E2F11EB00010B52 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
-		E4305A3B1E2F302C00010B52 /* Screenshoot */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Screenshoot; sourceTree = "<group>"; };
 		E4305A461E34F65000010B52 /* DaoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaoManager.swift; sourceTree = "<group>"; };
 		E4305A481E34F8E100010B52 /* DaoTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaoTemplate.swift; sourceTree = "<group>"; };
 		E431C4A81DF7179D006BB2D6 /* RequestMethodsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestMethodsTableViewController.swift; sourceTree = "<group>"; };
@@ -265,7 +263,6 @@
 		E48D414B1D444F3F0028B84F = {
 			isa = PBXGroup;
 			children = (
-				E4305A3B1E2F302C00010B52 /* Screenshoot */,
 				E48D41561D444F3F0028B84F /* Httper */,
 				E48D416E1D444F3F0028B84F /* HttperTests */,
 				E48D41791D444F3F0028B84F /* HttperUITests */,
@@ -502,7 +499,6 @@
 				E4DE769B1E1E9FE2002A8385 /* register-bg-iPad.jpg in Resources */,
 				E4F95CD81E1572FD005A0004 /* whois.css in Resources */,
 				E48D41621D444F3F0028B84F /* Assets.xcassets in Resources */,
-				E4305A3C1E2F302C00010B52 /* Screenshoot in Resources */,
 				E48D415D1D444F3F0028B84F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
