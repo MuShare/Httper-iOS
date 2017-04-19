@@ -21,9 +21,12 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var urlTextField: UITextField!
     @IBOutlet weak var valueTableView: UITableView!
     @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var protocolsSegmentedControl: UISegmentedControl!
     
     var editingTextField: UITextField!
+    
+    let dao = DaoManager.sharedInstance
     
     var headerCount = 1, parameterCount = 1
     var method: String = "GET"
@@ -40,15 +43,14 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     var headerKeys: [String] = [], headerValues: [String] = []
     var parameterKeys: [String] = [], parameterValues: [String] = []
     
+    // Variables for saving request to project.
+    var saveToProject: Project?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // If this request view controller is not root view controller, hide the tab bar.
-        if self.navigationController?.viewControllers[0] != self {
-            self.tabBarController?.tabBar.isHidden = true
-        }
-        
         sendButton.layer.borderColor = UIColor.lightGray.cgColor
+        saveButton.layer.borderColor = UIColor.lightGray.cgColor
         setCloseKeyboardAccessoryForSender(sender: urlTextField)
         
         NotificationCenter.default.addObserver(self, selector: #selector(bodyChanged(notification:)), name: NSNotification.Name(rawValue: "bodyChanged"), object: nil)
@@ -56,14 +58,11 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        // If this request view controller is root view controller, show tab bar.
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         
         // Set request method.
         requestMethodButton.setTitle(method, for: .normal)
@@ -109,6 +108,27 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
             urlTextField.text = url
             request = nil
             valueTableView.reloadData()
+        }
+        
+        // Save to project.
+        if saveToProject != nil {
+            //Save request and sync to server.
+            let bodyType = "raw"
+            let bodyData = (body == nil) ? nil : NSData.init(data: body.data(using: .utf8)!)
+            let request = dao.requestDao.saveOrUpdate(rid: nil,
+                                            update: nil,
+                                            revision: nil,
+                                            method: method,
+                                            url: "\(protocolLabel.text!)\(urlTextField.text!)",
+                                            headers: headers,
+                                            parameters: parameters,
+                                            bodytype: bodyType,
+                                            body: bodyData)
+            request.project = saveToProject
+            dao.saveContext()
+            SyncManager.sharedInstance.pushLocalRequests(nil)
+            
+            saveToProject = nil;
         }
         
     }
@@ -311,7 +331,6 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBAction func chooseHeaderKey(_ sender: UIButton) {
         let cell: UITableViewCell = (sender as UIView).superview?.superview as! UITableViewCell
-        let indexPath = valueTableView.indexPath(for: cell)!
         choosingHeaderTextFeild = cell.viewWithTag(1) as? UITextField
         self.performSegue(withIdentifier: "headerKeySegue", sender: self)
     }
@@ -322,32 +341,9 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     @IBAction func sendRequest(_ sender: Any) {
-        if urlTextField.text == "" {
-            showAlert(title: NSLocalizedString("tip_name", comment: ""),
-                      content: NSLocalizedString("url_empty", comment: ""),
-                      controller: self)
-            return
+        if checkRequest() {
+            self.performSegue(withIdentifier: "resultSegue", sender: self)
         }
-        
-        headers = HTTPHeaders()
-        parameters = Parameters()
-        for section in 0 ..< 2 {
-            for row in 0 ..< valueTableView.numberOfRows(inSection: section) {
-                let cell: UITableViewCell = valueTableView.cellForRow(at: IndexPath(row: row, section: section))!
-                let keyTextField = cell.viewWithTag(1) as! UITextField
-                if keyTextField.text == "" {
-                    continue
-                }
-                let valueTextField = cell.viewWithTag(2) as! UITextField
-                if section == 0 {
-                    headers.updateValue(valueTextField.text!, forKey: keyTextField.text!)
-                } else if section == 1 {
-                    parameters.updateValue(valueTextField.text!, forKey: keyTextField.text!)
-                }
-            }
-        }
-    
-        self.performSegue(withIdentifier: "resultSegue", sender: self)
     }
     
     @IBAction func celarRequest(_ sender: Any) {
@@ -375,7 +371,41 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.present(alertController, animated: true, completion: nil)
     }
     
+    @IBAction func saveRequest(_ sender: Any) {
+        if checkRequest() {
+            self.performSegue(withIdentifier: "selectProjectSegue", sender: self)
+        }
+    }
+    
     //MARK: - Service
+    func checkRequest() -> Bool {
+        if urlTextField.text == "" {
+            showAlert(title: NSLocalizedString("tip_name", comment: ""),
+                      content: NSLocalizedString("url_empty", comment: ""),
+                      controller: self)
+            return false
+        }
+        
+        headers = HTTPHeaders()
+        parameters = Parameters()
+        for section in 0 ..< 2 {
+            for row in 0 ..< valueTableView.numberOfRows(inSection: section) {
+                let cell: UITableViewCell = valueTableView.cellForRow(at: IndexPath(row: row, section: section))!
+                let keyTextField = cell.viewWithTag(1) as! UITextField
+                if keyTextField.text == "" {
+                    continue
+                }
+                let valueTextField = cell.viewWithTag(2) as! UITextField
+                if section == 0 {
+                    headers.updateValue(valueTextField.text!, forKey: keyTextField.text!)
+                } else if section == 1 {
+                    parameters.updateValue(valueTextField.text!, forKey: keyTextField.text!)
+                }
+            }
+        }
+        return true
+    }
+    
     func addNewValue(_ sender: AnyObject?) {
         if headerCount + parameterCount == 7 {
             showAlert(title: NSLocalizedString("tip_name", comment: ""),

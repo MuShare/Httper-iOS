@@ -43,7 +43,7 @@ class ProjectsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let project = projects[indexPath.row]
-        print("Project's physical id in server is \(project.pid)")
+//        print("Project's physical id in server is \(project.pid)")
         let cell = tableView.dequeueReusableCell(withIdentifier: "projectIdentifier", for: indexPath)
         let projectNameLabel = cell.viewWithTag(1) as! UILabel
         projectNameLabel.text = project.pname

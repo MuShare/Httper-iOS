@@ -99,3 +99,5 @@ reset_password_check_email = "Check Your Email";
 
 add_project_error = "Project name cannot be empty!";
 project_name_empty = "Project name cannot be empty!";
+
+delete_request_confirm = "Are you sure to delete request ";

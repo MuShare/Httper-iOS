@@ -141,22 +141,6 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
         self.performSegue(withIdentifier: "requestInfoSegue", sender: self)
     }
     
-    //Save request
-    func saveAndPushRequest() {
-        let bodyType = "raw"
-        let bodyData = (body == nil) ? nil : NSData.init(data: body.data(using: .utf8)!)
-        _ = dao.requestDao.saveOrUpdate(rid: nil,
-                                        update: nil,
-                                        revision: nil,
-                                        method: method,
-                                        url: url,
-                                        headers: headers,
-                                        parameters: parameters,
-                                        bodytype: bodyType,
-                                        body: bodyData)
-        SyncManager.sharedInstance.pushLocalRequests(nil)
-    }
-    
     // Send request.
     func sendRequest() {
         Alamofire.request(url,
@@ -171,9 +155,6 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
                               controller: self)
                     return
                 }
-                
-                // Request successfully, save and upload this new request to server.
-                self.saveAndPushRequest()
                 
                 // Show response.
                 self.httpURLResponse = response.response

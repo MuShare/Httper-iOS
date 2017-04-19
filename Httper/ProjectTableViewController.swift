@@ -14,9 +14,7 @@ let attributeImgaes = ["tab_project", "privilege"]
 class ProjectTableViewController: UITableViewController {
     
     var project: Project!
-    
-    // The request will be added to the requests array.
-    var request: Request!
+    var selectedRequest: Request!
     
     let dao = DaoManager.sharedInstance
     let sync = SyncManager.sharedInstance
@@ -34,14 +32,6 @@ class ProjectTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        if request != nil {
-            // Add request to this project.
-            addRequest(request)
-            
-            // Set request to nil.
-            request = nil
-        }
         
         self.title = project.pname
         // Update table view.
@@ -129,9 +119,49 @@ class ProjectTableViewController: UITableViewController {
                 break
             }
         } else if indexPath.section == 1 {
-            request = project.requests?[indexPath.row] as! Request!
+            selectedRequest = project.requests?[indexPath.row] as! Request!
             self.performSegue(withIdentifier: "projectRequestSegue", sender: self)
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            if editingStyle == .delete {
+                let deletedRequest = project.requests?[indexPath.row] as! Request
+                // Remove it from persistent store and server.
+                sync.deleteRequest(deletedRequest, completionHandler: nil)
+                // Remove request from table view.
+                project.removeFromRequests(deletedRequest)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+        }
+        
+    }
+    
+    @IBAction func deleteRequestFromProject(_ sender: UIButton) {
+        let cell: UITableViewCell = (sender as UIView).superview?.superview as! UITableViewCell
+        let indexPath = self.tableView.indexPath(for: cell)!
+        let url = (cell.viewWithTag(1) as! UILabel).text!
+        let method = (cell.viewWithTag(2) as! UILabel).text!
+        let message = NSLocalizedString("delete_request_confirm", comment: "") + url + "(" + method + ")"
+        let alertController = UIAlertController(title: NSLocalizedString("tip_name", comment: ""),
+                                                message: message,
+                                                preferredStyle: .alert)
+        let cancel = UIAlertAction(title: NSLocalizedString("cancel_name", comment: ""),
+                                   style: .cancel,
+                                   handler: nil)
+        let confirm = UIAlertAction(title: NSLocalizedString("ok_name", comment: ""),
+                                    style: .destructive) { (action) in
+            let deletedRequest = self.project.requests?[indexPath.row] as! Request
+            // Remove it from persistent store and server.
+            self.sync.deleteRequest(deletedRequest, completionHandler: nil)
+            // Remove request from table view.
+            self.project.removeFromRequests(deletedRequest)
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+        alertController.addAction(cancel)
+        alertController.addAction(confirm)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     // MARK: - Navigation
@@ -140,8 +170,7 @@ class ProjectTableViewController: UITableViewController {
             // Pop history view controller to this view controller.
             segue.destination.setValue(false, forKey: "push")
         } else if segue.identifier == "projectRequestSegue" {
-            segue.destination.setValue(request, forKey: "request")
-            request = nil
+            segue.destination.setValue(selectedRequest, forKey: "request")
         } else if segue.identifier == "projectNameSegue" {
             segue.destination.setValue(project, forKey: "project")
         } else if segue.identifier == "introductionSegue" {
