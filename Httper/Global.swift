@@ -14,7 +14,7 @@ let DEBUG = true
 
 // Server base url
 let baseUrl = "http://httper.mushare.cn/"
-//let baseUrl = "http://127.0.0.1:8080/"
+//let baseUrl = "http://100.102.1.156:8080/"
 
 let ipInfoUrl = "https://ipapi.co/json/"
 let whoisUrl = "https://www.whois.com"
@@ -27,6 +27,7 @@ extension DefaultsKeys {
     static let login = DefaultsKey<Bool?>("login")
     static let requestRevision = DefaultsKey<Int?>("requestRevision")
     static let projectRevision = DefaultsKey<Int?>("projectRevision")
+    static let version = DefaultsKey<String?>("version")
 }
 
 // JSON style
@@ -105,4 +106,27 @@ func clearUserDefaults() {
     Defaults[.token] = nil
     Defaults[.login] = false
     Defaults[.requestRevision] = 0
+}
+
+// App update method, revoked only when app is updated.
+func appUpdate() {
+    if Defaults[.version] == nil {
+        Defaults[.version] = "1.0"
+    }
+    if Defaults[.version] == App.version {
+        return
+    }
+    switch App.version {
+    case "2.0":
+        let dao = DaoManager.sharedInstance
+        let sync = SyncManager.sharedInstance
+        for request in dao.requestDao.findWithNilPorject() {
+            sync.deleteRequest(request, completionHandler: nil)
+        }
+        if Defaults[.token] != nil {
+            Defaults[.version] = App.version
+        }
+    default:
+        break
+    }
 }

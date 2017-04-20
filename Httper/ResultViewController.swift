@@ -48,14 +48,7 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
         // Show loading activity idicator.
         replaceBarButtonItemWithActivityIndicator(controller: self)
         
-        // Hide tab bar.
-        self.tabBarController?.tabBar.isHidden = true
-        
         sendRequest()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = false
     }
 
     //MARK: - UIPageViewControllerDataSource

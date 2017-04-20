@@ -75,7 +75,6 @@ class SyncManager: NSObject {
                 let updatedRequests = result?["updated"] as! [[String: Any]]
                 // Save updated requests to persistent store.
                 for requestObject in updatedRequests {
-                    let request = self.dao.requestDao.syncUpdated(requestObject)
                     // Check pid, if pid is not nil, try to find a project and add this request to the project.
                     let pid = requestObject["pid"] as? String
                     if pid == nil {
@@ -86,8 +85,7 @@ class SyncManager: NSObject {
                         continue
                     }
                     // Add this request to project.
-                    project?.addToRequests(request)
-                    self.dao.saveContext()
+                    _ = self.dao.requestDao.syncUpdated(requestObject, project: project!)
                 }
                 
                 // Delete requests in deleted id list.

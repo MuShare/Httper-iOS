@@ -13,11 +13,12 @@ let attributeImgaes = ["tab_project", "privilege"]
 
 class ProjectTableViewController: UITableViewController {
     
-    var project: Project!
-    var selectedRequest: Request!
-    
     let dao = DaoManager.sharedInstance
     let sync = SyncManager.sharedInstance
+    
+    var project: Project!
+    var selectedRequest: Request!
+    var requests: [Request]!
 
     deinit {
         tableView.dg_removePullToRefresh()
@@ -32,6 +33,8 @@ class ProjectTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        requests = project.requests?.array as! [Request]
         
         self.title = project.pname
         // Update table view.
@@ -68,7 +71,7 @@ class ProjectTableViewController: UITableViewController {
         case 0:
             return 3
         case 1:
-            return project.requests!.count
+            return requests.count
         default:
             return 0
         }
@@ -96,7 +99,7 @@ class ProjectTableViewController: UITableViewController {
             cell = tableView.dequeueReusableCell(withIdentifier: "requestIdentifier", for: indexPath)
             let urlLabel = cell.viewWithTag(1) as! UILabel
             let methodLabel = cell.viewWithTag(2) as! UILabel
-            let request = project.requests?[indexPath.row] as! Request
+            let request = requests[indexPath.row]
             urlLabel.text = request.url
             methodLabel.text = request.method
         default:
@@ -124,20 +127,7 @@ class ProjectTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if indexPath.section == 1 {
-            if editingStyle == .delete {
-                let deletedRequest = project.requests?[indexPath.row] as! Request
-                // Remove it from persistent store and server.
-                sync.deleteRequest(deletedRequest, completionHandler: nil)
-                // Remove request from table view.
-                project.removeFromRequests(deletedRequest)
-                tableView.deleteRows(at: [indexPath], with: .fade)
-            }
-        }
-        
-    }
-    
+    // MARK: - Action
     @IBAction func deleteRequestFromProject(_ sender: UIButton) {
         let cell: UITableViewCell = (sender as UIView).superview?.superview as! UITableViewCell
         let indexPath = self.tableView.indexPath(for: cell)!
@@ -152,12 +142,13 @@ class ProjectTableViewController: UITableViewController {
                                    handler: nil)
         let confirm = UIAlertAction(title: NSLocalizedString("ok_name", comment: ""),
                                     style: .destructive) { (action) in
-            let deletedRequest = self.project.requests?[indexPath.row] as! Request
-            // Remove it from persistent store and server.
-            self.sync.deleteRequest(deletedRequest, completionHandler: nil)
             // Remove request from table view.
-            self.project.removeFromRequests(deletedRequest)
+            self.requests.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .fade)
+            // Remove it from persistent store and server.
+            let deletedRequest = self.project.requests?[indexPath.row] as! Request
+            self.sync.deleteRequest(deletedRequest, completionHandler: nil)
+
         }
         alertController.addAction(cancel)
         alertController.addAction(confirm)
@@ -180,22 +171,10 @@ class ProjectTableViewController: UITableViewController {
 
     
     // MARK: - Service
-    func addRequest(_ request: Request) {
-        // Add request to project at local persistent store.
-        project.addToRequests(request)
-        
-        // Push this request to server.
-        // Set this request's revision to 0 at first, only request with revision 0 can be pushed to remote server.
-        request.revision = 0;
-        // Save persistent store context.
-        dao.saveContext()
-        // User SyncManger to push request
-        sync.pushLocalRequests(nil)
-    }
-    
     func syncRequests() {
         // Pull new updated requests from server.
         sync.pullUpdatedRequests { (revision) in
+            self.requests = self.project.requests?.array as! [Request]
             self.tableView.reloadData()
             self.tableView.dg_stopLoading()
         }

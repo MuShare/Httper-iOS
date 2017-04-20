@@ -115,7 +115,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
             //Save request and sync to server.
             let bodyType = "raw"
             let bodyData = (body == nil) ? nil : NSData.init(data: body.data(using: .utf8)!)
-            let request = dao.requestDao.saveOrUpdate(rid: nil,
+            _ = dao.requestDao.saveOrUpdate(rid: nil,
                                             update: nil,
                                             revision: nil,
                                             method: method,
@@ -123,9 +123,10 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
                                             headers: headers,
                                             parameters: parameters,
                                             bodytype: bodyType,
-                                            body: bodyData)
-            request.project = saveToProject
-            dao.saveContext()
+                                            body: bodyData,
+                                            project: saveToProject!)
+
+            // User SyncManger to push request
             SyncManager.sharedInstance.pushLocalRequests(nil)
             
             saveToProject = nil;

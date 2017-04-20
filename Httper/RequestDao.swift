@@ -11,7 +11,7 @@ import Alamofire
 
 class RequestDao: DaoTemplate {
     
-    func saveOrUpdate(rid: String?, update: Int64?, revision: Int16?, method: String, url: String, headers: HTTPHeaders, parameters: Parameters, bodytype: String, body: NSData?) -> Request {
+    func saveOrUpdate(rid: String?, update: Int64?, revision: Int16?, method: String, url: String, headers: HTTPHeaders, parameters: Parameters, bodytype: String, body: NSData?, project: Project) -> Request {
         var request: Request? = nil
         if rid != nil {
             request = self.getByRid(rid!)
@@ -32,11 +32,12 @@ class RequestDao: DaoTemplate {
         }
         request?.update = (update == nil) ? Int64(NSDate().timeIntervalSince1970) : update!
         request?.revision = (revision == nil) ? 0 : revision!
+        request?.project = project
         self.saveContext()
         return request!
     }
     
-    func syncUpdated(_ requestObject: [String: Any]) -> Request {
+    func syncUpdated(_ requestObject: [String: Any], project: Project) -> Request {
         let body = requestObject["body"] as! String
         return self.saveOrUpdate(rid: requestObject["rid"] as? String,
                               update: requestObject["updateAt"] as? Int64,
@@ -46,12 +47,19 @@ class RequestDao: DaoTemplate {
                               headers: serializeJSON(requestObject["headers"] as! String) as! HTTPHeaders,
                               parameters: serializeJSON(requestObject["parameters"] as! String)! as Parameters,
                               bodytype: (requestObject["bodyType"] as? String)!,
-                              body: NSData.init(data: body.data(using: .utf8)!))
+                              body: NSData.init(data: body.data(using: .utf8)!),
+                              project: project)
     }
     
     func findAll() -> [Request] {
         let fetchRequest = NSFetchRequest<Request>(entityName: NSStringFromClass(Request.self))
         fetchRequest.sortDescriptors = [NSSortDescriptor.init(key: "update", ascending: false)]
+        return try! context.fetch(fetchRequest)
+    }
+    
+    func findWithNilPorject() -> [Request] {
+        let fetchRequest = NSFetchRequest<Request>(entityName: NSStringFromClass(Request.self))
+        fetchRequest.predicate = NSPredicate(format: "project=nil")
         return try! context.fetch(fetchRequest)
     }
     
