@@ -10,7 +10,7 @@ import Foundation
 import SwiftyUserDefaults
 import Alamofire
 
-let DEBUG = true
+let DEBUG = false
 
 // Server base url
 let baseUrl = "http://httper.mushare.cn/"

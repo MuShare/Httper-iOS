@@ -423,7 +423,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bez-Qf-KXg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1765" y="-593"/>
+            <point key="canvasLocation" x="1250" y="-593"/>
         </scene>
         <!--Result View Controller-->
         <scene sceneID="3vY-ry-O6s">
@@ -475,7 +475,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KaP-ZN-tX2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2320" y="602"/>
+            <point key="canvasLocation" x="1765" y="602"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="0NG-sQ-c3H">
@@ -483,7 +483,7 @@
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="dpY-yy-Edy" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T1t-MQ-c9w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3005" y="922"/>
+            <point key="canvasLocation" x="2338" y="928"/>
         </scene>
         <!--Request Body-->
         <scene sceneID="GE9-Wu-xzv">
@@ -527,7 +527,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bC9-0M-8Xu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1250" y="602"/>
+            <point key="canvasLocation" x="743" y="602"/>
         </scene>
         <!--Projects-->
         <scene sceneID="oii-sW-obx">
@@ -723,6 +723,34 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.25954487919807434" green="0.27729591727256775" blue="0.2945818305015564" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="deleteIdentifier" id="9c8-fm-jXz">
+                                <rect key="frame" x="0.0" y="268" width="320" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9c8-fm-jXz" id="ptX-Ne-rdR">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UIL-h1-ske">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <state key="normal" title="Delete Project">
+                                                <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="deleteProject:" destination="1TY-Zo-K8R" eventType="touchUpInside" id="JDE-Cl-OtC"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="UIL-h1-ske" secondAttribute="bottom" constant="-8.5" id="1yg-4f-ZN6"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="UIL-h1-ske" secondAttribute="trailing" constant="-8" id="2CM-ZL-ebb"/>
+                                        <constraint firstItem="UIL-h1-ske" firstAttribute="top" secondItem="ptX-Ne-rdR" secondAttribute="topMargin" constant="-8" id="cZs-gn-HHm"/>
+                                        <constraint firstItem="UIL-h1-ske" firstAttribute="leading" secondItem="ptX-Ne-rdR" secondAttribute="leadingMargin" constant="-8" id="rvM-4M-Hbn"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.25954487920000002" green="0.27729591730000003" blue="0.29458183049999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="1TY-Zo-K8R" id="83X-cl-uCp"/>
@@ -738,7 +766,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FKT-xo-IFa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1765" y="-2311"/>
+            <point key="canvasLocation" x="1250" y="-1711"/>
         </scene>
         <!--Project Name View Controller-->
         <scene sceneID="jCP-Xf-ctH">
@@ -789,7 +817,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aDK-fS-3A2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2264" y="-2627"/>
+            <point key="canvasLocation" x="1899" y="-1711"/>
         </scene>
         <!--Project Introduction View Controller-->
         <scene sceneID="M6N-Lr-zxR">
@@ -826,7 +854,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lWy-Vz-9cG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2264" y="-1958"/>
+            <point key="canvasLocation" x="1899" y="-2426"/>
         </scene>
         <!--Add Project-->
         <scene sceneID="uyp-bW-bmr">
@@ -932,11 +960,12 @@
                         <outlet property="introudctionTextView" destination="gvc-WY-0JN" id="2Lp-k1-hun"/>
                         <outlet property="privilegeButton" destination="4ZQ-Kw-kQh" id="j58-4i-Cyh"/>
                         <outlet property="projectNameTextField" destination="AXr-Sz-Flt" id="UgD-NF-qSn"/>
+                        <outlet property="saveBarButtonItem" destination="xbE-WW-iBs" id="vjk-fY-1te"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OWj-bU-6fw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1765" y="-2959"/>
+            <point key="canvasLocation" x="2517" y="-2538"/>
         </scene>
         <!--Project-->
         <scene sceneID="EOA-oz-YW4">
@@ -1016,7 +1045,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PvN-6s-4PD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1765" y="602"/>
+            <point key="canvasLocation" x="1250" y="602"/>
         </scene>
         <!--Save to Project-->
         <scene sceneID="W6q-Ud-Rfr">
@@ -1051,11 +1080,18 @@
                             <outlet property="delegate" destination="6IY-1v-kx0" id="cBO-g9-BBG"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Save to Project" id="hLG-xy-Dwe"/>
+                    <navigationItem key="navigationItem" title="Save to Project" id="hLG-xy-Dwe">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="FYC-OQ-NrE">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="A31-Ii-Ozo" kind="push" id="GHl-qG-vPC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RZ2-Ho-swg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2322" y="-1275"/>
+            <point key="canvasLocation" x="1899" y="-980"/>
         </scene>
         <!--Request Methods-->
         <scene sceneID="aEs-L5-oas">
@@ -1108,7 +1144,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qUI-S4-Khx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2320" y="-593"/>
+            <point key="canvasLocation" x="1899" y="-271"/>
         </scene>
         <!--My IP Address-->
         <scene sceneID="pwP-Lz-MWH">
@@ -2639,7 +2675,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lPd-Ey-2LJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3005" y="316"/>
+            <point key="canvasLocation" x="2338" y="316"/>
         </scene>
         <!--Response Header-->
         <scene sceneID="o9W-lI-L7g">
@@ -2706,7 +2742,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zqy-HO-Vo3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3512" y="316"/>
+            <point key="canvasLocation" x="2812" y="316"/>
         </scene>
         <!--Settings Table View Controller-->
         <scene sceneID="vg5-E7-Ujf">
@@ -3196,7 +3232,8 @@
         <simulatedScreenMetrics key="destination" type="retina4_0.fullscreen"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="TGO-AX-uyd"/>
         <segue reference="WBw-b3-nZJ"/>
+        <segue reference="TGO-AX-uyd"/>
+        <segue reference="GHl-qG-vPC"/>
     </inferredMetricsTieBreakers>
 </document>

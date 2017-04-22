@@ -63,7 +63,7 @@ class ProjectTableViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -72,6 +72,8 @@ class ProjectTableViewController: UITableViewController {
             return 3
         case 1:
             return requests.count
+        case 2:
+            return 1
         default:
             return 0
         }
@@ -102,6 +104,8 @@ class ProjectTableViewController: UITableViewController {
             let request = requests[indexPath.row]
             urlLabel.text = request.url
             methodLabel.text = request.method
+        case 2:
+            cell = tableView.dequeueReusableCell(withIdentifier: "deleteIdentifier", for: indexPath)
         default:
             cell = UITableViewCell()
         }
@@ -152,6 +156,25 @@ class ProjectTableViewController: UITableViewController {
         }
         alertController.addAction(cancel)
         alertController.addAction(confirm)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    @IBAction func deleteProject(_ sender: Any) {
+        let alertController = UIAlertController(title: NSLocalizedString("delete_project", comment: ""),
+                                                message: NSLocalizedString("delete_project_message", comment: ""),
+                                                preferredStyle: .actionSheet)
+        let confirm = UIAlertAction(title: NSLocalizedString("yes_name", comment: ""),
+                                    style: .destructive) { (action) in
+            // Remove it from persistent store and server.
+            self.sync.deleteProject(self.project, completionHandler: { (revision) in
+                self.navigationController?.popViewController(animated: true)
+            })
+        }
+        let cancel = UIAlertAction(title: NSLocalizedString("cancel_name", comment: ""),
+                                   style: .cancel,
+                                   handler: nil)
+        alertController.addAction(confirm)
+        alertController.addAction(cancel)
         self.present(alertController, animated: true, completion: nil)
     }
     

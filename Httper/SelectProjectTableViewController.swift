@@ -17,7 +17,11 @@ class SelectProjectTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         projects = dao.projectDao.findAll()
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
