@@ -13,6 +13,7 @@ class AddProjectViewController: UIViewController {
     @IBOutlet weak var projectNameTextField: UITextField!
     @IBOutlet weak var privilegeButton: UIButton!
     @IBOutlet weak var introudctionTextView: UITextView!
+    @IBOutlet weak var saveBarButtonItem: UIBarButtonItem!
     
     let dao = DaoManager.sharedInstance
     
@@ -29,6 +30,8 @@ class AddProjectViewController: UIViewController {
                       controller: self)
             return
         }
+        
+        replaceBarButtonItemWithActivityIndicator(controller: self)
         _ = dao.projectDao.save(pname: projectNameTextField.text!,
                                 privilege: "private",
                                 introduction: introudctionTextView.text!)
