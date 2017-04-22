@@ -12,6 +12,8 @@ import DGElasticPullToRefresh
 let attributeImgaes = ["tab_project", "privilege"]
 
 class ProjectTableViewController: UITableViewController {
+
+    @IBOutlet weak var deleteProjectCell: UITableViewCell!
     
     let dao = DaoManager.sharedInstance
     let sync = SyncManager.sharedInstance
@@ -144,7 +146,7 @@ class ProjectTableViewController: UITableViewController {
         let cancel = UIAlertAction(title: NSLocalizedString("cancel_name", comment: ""),
                                    style: .cancel,
                                    handler: nil)
-        let confirm = UIAlertAction(title: NSLocalizedString("ok_name", comment: ""),
+        let confirm = UIAlertAction(title: NSLocalizedString("yes_name", comment: ""),
                                     style: .destructive) { (action) in
             // Remove request from table view.
             self.requests.remove(at: indexPath.row)
@@ -159,7 +161,7 @@ class ProjectTableViewController: UITableViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    @IBAction func deleteProject(_ sender: Any) {
+    @IBAction func deleteProject(_ sender: UIButton) {
         let alertController = UIAlertController(title: NSLocalizedString("delete_project", comment: ""),
                                                 message: NSLocalizedString("delete_project_message", comment: ""),
                                                 preferredStyle: .actionSheet)
@@ -175,6 +177,8 @@ class ProjectTableViewController: UITableViewController {
                                    handler: nil)
         alertController.addAction(confirm)
         alertController.addAction(cancel)
+        alertController.popoverPresentationController?.sourceView = sender;
+        alertController.popoverPresentationController?.sourceRect = sender.bounds;
         self.present(alertController, animated: true, completion: nil)
     }
     
