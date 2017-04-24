@@ -9,5 +9,6 @@ target 'Httper' do
     pod 'ReachabilitySwift', '~> 3'
     pod 'SwiftyUserDefaults', '~> 3'
     pod 'DGElasticPullToRefresh', '~> 1.1'
+    pod 'MGKeyboardAccessory', '~> 0.1'
 end
 
