@@ -6,13 +6,10 @@ podfile: Podfile
 before_install:
 - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
 - gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet
-- pod install --project-directory=Example
+- pod install --project-directory=./
 
 script:
 - set -o pipefail
 - xcodebuild -workspace "Httper.xcworkspace" -scheme "Httper" -configuration Debug clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO | xcpretty -c
 - xcodebuild -workspace "Httper.xcworkspace" -scheme "Httper" -configuration Release clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO | xcpretty -c
-- pod lib lint --no-clean
 
-after_success:
-- sleep 5
