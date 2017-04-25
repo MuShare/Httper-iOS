@@ -19,7 +19,7 @@ class RequestBodyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         rawBodyTextView.text = body
-        self.setKeyboardAccessoryForSender(sender: rawBodyTextView)
+//        self.setKeyboardAccessoryForSender(sender: rawBodyTextView)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -46,40 +46,56 @@ class RequestBodyViewController: UIViewController {
     }
     
     // MARK: - Service
-    func setKeyboardAccessoryForSender(sender: UITextView) {
-        let topView: UIToolbar = {
-            let view = UIToolbar.init(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 35))
-            view.barStyle = .black;
-            let spaceButtonItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-            var items = [spaceButtonItem]
-            for character in bodyKeyboardCharacters {
-                items.append(createCharacterBarButtonItem(character: character,
-                                                          target: self,
-                                                          action: #selector(addCharacter(_:)),
-                                                          width: 26))
-            }
-
-            let tabButtonItem = createCharacterBarButtonItem(character: NSLocalizedString("tab_name", comment: ""),
-                                                             target: self,
-                                                             action: #selector(addTab),
-                                                             width: 40)
-
-            tabButtonItem.tintColor = UIColor.white
-            items.append(tabButtonItem)
-            items.append(spaceButtonItem)
-            
-            view.setItems(items, animated: false)
-            return view
-        }()
-        
-        sender.inputAccessoryView = topView
-    }
-    
-    func addCharacter(_ sender: UIButton) {
-        if rawBodyTextView.isFirstResponder {
-            rawBodyTextView.text = rawBodyTextView.text! + (sender.titleLabel?.text)!
-        }
-    }
+//    func setKeyboardAccessoryForSender(sender: UITextView) {
+//        let topView: UIToolbar = {
+//            let view = UIToolbar.init(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 35))
+//            view.barStyle = .black;
+//            let spaceButtonItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+//            var items = [spaceButtonItem]
+//            for character in bodyKeyboardCharacters {
+//                items.append(createCharacterBarButtonItem(character: character,
+//                                                          target: self,
+//                                                          action: #selector(addCharacter(_:)),
+//                                                          width: 26))
+//            }
+//
+//            let tabButtonItem = createCharacterBarButtonItem(character: NSLocalizedString("tab_name", comment: ""),
+//                                                             target: self,
+//                                                             action: #selector(addTab),
+//                                                             width: 40)
+//
+//            tabButtonItem.tintColor = UIColor.white
+//            items.append(tabButtonItem)
+//            items.append(spaceButtonItem)
+//            
+//            view.setItems(items, animated: false)
+//            return view
+//        }()
+//        
+//        sender.inputAccessoryView = topView
+//    }
+//    
+//    func createCharacterBarButtonItem(character: String, target: UIViewController, action: Selector, width: CGFloat) -> UIBarButtonItem {
+//        let characterButton: UIButton = {
+//            let button = UIButton(frame: CGRect(x: 2, y: 2, width: width, height: 26))
+//            button.layer.cornerRadius = 5
+//            button.layer.borderWidth = 1
+//            button.layer.borderColor = UIColor.white.cgColor
+//            button.setTitle(character, for: .normal)
+//            button.tintColor = UIColor.white
+//            button.backgroundColor = RGB(DesignColor.nagivation.rawValue)
+//            button.addTarget(target, action: action, for: .touchUpInside)
+//            return button
+//        }()
+//        let characterButtonItem = UIBarButtonItem(customView: characterButton)
+//        return characterButtonItem
+//    }
+//    
+//    func addCharacter(_ sender: UIButton) {
+//        if rawBodyTextView.isFirstResponder {
+//            rawBodyTextView.text = rawBodyTextView.text! + (sender.titleLabel?.text)!
+//        }
+//    }
 
     func addTab() {
         if rawBodyTextView.isFirstResponder {

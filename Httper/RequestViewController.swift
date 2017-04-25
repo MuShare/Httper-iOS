@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import MGKeyboardAccessory
 
 let urlKeyboardCharacters = [":", "/", "?", "&", ".", "="]
 
@@ -51,7 +52,8 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         sendButton.layer.borderColor = UIColor.lightGray.cgColor
         saveButton.layer.borderColor = UIColor.lightGray.cgColor
-        setCloseKeyboardAccessoryForSender(sender: urlTextField)
+
+        urlTextField.setupKeyboardAccessory(urlKeyboardCharacters, barStyle: .black)
         
         NotificationCenter.default.addObserver(self, selector: #selector(bodyChanged(notification:)), name: NSNotification.Name(rawValue: "bodyChanged"), object: nil)
     }
@@ -218,8 +220,9 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
             keyTextField.text = ""
             valueTextField.text = ""
             deleteButton.isEnabled = true
-            setCloseKeyboardAccessoryForSender(sender: keyTextField)
-            setCloseKeyboardAccessoryForSender(sender: valueTextField)
+            // Setup MGKeyboardAccessory
+            keyTextField.setupKeyboardAccessory(urlKeyboardCharacters, barStyle: .black)
+            valueTextField.setupKeyboardAccessory(urlKeyboardCharacters, barStyle: .black)
             //Set headers if it is not null
             if headerKeys.count > indexPath.row {
                 keyTextField.text = headerKeys[indexPath.row]
@@ -236,8 +239,9 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
             keyTextField.text = ""
             valueTextField.text = ""
             deleteButton.isEnabled = true
-            setCloseKeyboardAccessoryForSender(sender: keyTextField)
-            setCloseKeyboardAccessoryForSender(sender: valueTextField)
+            // Setup MGKeyboardAccessory
+            keyTextField.setupKeyboardAccessory(urlKeyboardCharacters, barStyle: .black)
+            valueTextField.setupKeyboardAccessory(urlKeyboardCharacters, barStyle: .black)
             //Set parameters if it is not null
             if parameterKeys.count > indexPath.row {
                 keyTextField.text = parameterKeys[indexPath.row]
@@ -422,54 +426,6 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
             parameterCount += 1
         }
         valueTableView.insertRows(at: [indexPath], with: .automatic)
-    }
-    
-    func setCloseKeyboardAccessoryForSender(sender: UITextField) {
-        let topView: UIToolbar = {
-            let view = UIToolbar.init(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 35))
-            view.barStyle = .black;
-            let clearButtonItem = UIBarButtonItem(title: NSLocalizedString("clear_name", comment: ""),
-                                                  style: UIBarButtonItemStyle.plain,
-                                                  target: self,
-                                                  action: #selector(clearTextFeild))
-            clearButtonItem.tintColor = UIColor.white
-            let spaceButtonItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-            let doneButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(editFinish))
-            doneButtonItem.tintColor = UIColor.white
-            
-            var items = [clearButtonItem, spaceButtonItem]
-            for character in urlKeyboardCharacters {
-                items.append(createCharacterBarButtonItem(character: character,
-                                                          target: self,
-                                                          action: #selector(addCharacter(_:)),
-                                                          width: 26))
-            }
-            items.append(spaceButtonItem)
-            items.append(doneButtonItem)
-            view.setItems(items, animated: false)
-            
-            return view
-        }()
-        
-        sender.inputAccessoryView = topView
-    }
-    
-    func editFinish() {
-        if editingTextField.isFirstResponder {
-            editingTextField.resignFirstResponder()
-        }
-    }
-    
-    func clearTextFeild() {
-        if editingTextField.isFirstResponder {
-            editingTextField.text = ""
-        }
-    }
-    
-    func addCharacter(_ sender: UIButton) {
-        if editingTextField.isFirstResponder {
-            editingTextField.text = editingTextField.text! + (sender.titleLabel?.text)!
-        }
     }
     
     func bodyChanged(notification: Notification) {

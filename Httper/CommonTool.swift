@@ -68,22 +68,6 @@ func replaceBaeButtonItemWithView(controller: UIViewController, view: UIView) {
     controller.navigationItem.rightBarButtonItem = barButton
 }
 
-func createCharacterBarButtonItem(character: String, target: UIViewController, action: Selector, width: CGFloat) -> UIBarButtonItem {
-    let characterButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: 2, y: 2, width: width, height: 26))
-        button.layer.cornerRadius = 5
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.white.cgColor
-        button.setTitle(character, for: .normal)
-        button.tintColor = UIColor.white
-        button.backgroundColor = RGB(DesignColor.nagivation.rawValue)
-        button.addTarget(target, action: action, for: .touchUpInside)
-        return button
-    }()
-    let characterButtonItem = UIBarButtonItem(customView: characterButton)
-    return characterButtonItem
-}
-
 // MARK: - Validation
 func isEmailAddress(_ testStr:String) -> Bool {
     let emailRegEx = "^(?:(?:(?:(?: )*(?:(?:(?:\\t| )*\\r\\n)?(?:\\t| )+))+(?: )*)|(?: )+)?(?:(?:(?:[-A-Za-z0-9!#$%&’*+/=?^_'{|}~]+(?:\\.[-A-Za-z0-9!#$%&’*+/=?^_'{|}~]+)*)|(?:\"(?:(?:(?:(?: )*(?:(?:[!#-Z^-~]|\\[|\\])|(?:\\\\(?:\\t|[ -~]))))+(?: )*)|(?: )+)\"))(?:@)(?:(?:(?:[A-Za-z0-9](?:[-A-Za-z0-9]{0,61}[A-Za-z0-9])?)(?:\\.[A-Za-z0-9](?:[-A-Za-z0-9]{0,61}[A-Za-z0-9])?)*)|(?:\\[(?:(?:(?:(?:(?:[0-9]|(?:[1-9][0-9])|(?:1[0-9][0-9])|(?:2[0-4][0-9])|(?:25[0-5]))\\.){3}(?:[0-9]|(?:[1-9][0-9])|(?:1[0-9][0-9])|(?:2[0-4][0-9])|(?:25[0-5]))))|(?:(?:(?: )*[!-Z^-~])*(?: )*)|(?:[Vv][0-9A-Fa-f]+\\.[-A-Za-z0-9._~!$&'()*+,;=:]+))\\])))(?:(?:(?:(?: )*(?:(?:(?:\\t| )*\\r\\n)?(?:\\t| )+))+(?: )*)|(?: )+)?$"
