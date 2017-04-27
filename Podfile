@@ -10,5 +10,7 @@ target 'Httper' do
     pod 'SwiftyUserDefaults', '~> 3'
     pod 'DGElasticPullToRefresh', '~> 1.1'
     pod 'MGKeyboardAccessory', '~> 0.1'
+    pod 'FacebookCore'
+    pod 'FacebookLogin'
 end
 

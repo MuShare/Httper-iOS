@@ -9,6 +9,8 @@
 import UIKit
 import Alamofire
 import SwiftyUserDefaults
+import FacebookCore
+import FacebookLogin
 
 class LoginViewController: EditingViewController {
 
@@ -22,6 +24,11 @@ class LoginViewController: EditingViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let fbLoginButton = LoginButton(readPermissions: [.publicProfile])
+        fbLoginButton.center = view.center
+        
+        view.addSubview(loginButton)
+        
         loginButton.layer.borderColor = UIColor.lightGray.cgColor
         self.shownHeight = loginButton.frame.maxY
         
@@ -101,6 +108,35 @@ class LoginViewController: EditingViewController {
                               controller: self)
                 default:
                     break
+                }
+            }
+        }
+    }
+    
+    @IBAction func loginWithFacebook(_ sender: Any) {
+        let loginManager = LoginManager()
+        loginManager.logIn([ .publicProfile ], viewController: self) { loginResult in
+            switch loginResult {
+            case .failed(let error):
+                print(error)
+            case .cancelled:
+                print("User cancelled login.")
+            case .success(_, _, let accessToken):
+                print("Logged in!")
+                print(accessToken.expirationDate)
+                print(accessToken.userId!)
+                print(accessToken.authenticationToken)
+                
+                let request = GraphRequest(graphPath: "/me",
+                                           parameters: [ "fields" : "picture, email, name, gender" ],
+                                           httpMethod: .GET)
+                request.start { _, result in
+                    switch result {
+                    case .success(let response):
+                        print("Graph Request Succeeded: \(response)")
+                    case .failed(let error):
+                        print("Graph Request Failed: \(error)")
+                    }
                 }
             }
         }

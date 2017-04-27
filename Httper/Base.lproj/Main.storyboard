@@ -2131,6 +2131,19 @@
                                     <segue destination="qUW-y7-YTb" kind="push" id="bin-xc-HHu"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFE-uT-B6W">
+                                <rect key="frame" x="16" y="474" width="288" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="Iug-B9-jN2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Sign in with Facebook">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginWithFacebook:" destination="fdi-Af-25p" eventType="touchUpInside" id="cJY-g7-eBL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.18746668100357056" green="0.2114855945110321" blue="0.23234263062477112" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -2138,10 +2151,13 @@
                             <constraint firstItem="TaR-V9-ewv" firstAttribute="top" secondItem="7kl-zs-1q1" secondAttribute="bottom" constant="20" id="4q8-vG-9FH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="rkM-AR-GBz" secondAttribute="trailing" id="6n7-Eu-gJV"/>
                             <constraint firstItem="pZe-eB-yWz" firstAttribute="top" secondItem="XHZ-OL-q6n" secondAttribute="bottom" constant="2" id="CKG-SH-rDm"/>
+                            <constraint firstItem="TaR-V9-ewv" firstAttribute="top" secondItem="gFE-uT-B6W" secondAttribute="bottom" constant="61" id="Dru-YF-2xI"/>
                             <constraint firstItem="XHZ-OL-q6n" firstAttribute="leading" secondItem="N2d-Zl-pvl" secondAttribute="leadingMargin" constant="-16" id="G9K-Sf-8NU"/>
                             <constraint firstItem="7kl-zs-1q1" firstAttribute="centerX" secondItem="N2d-Zl-pvl" secondAttribute="centerX" id="Ixc-Ks-b3P"/>
                             <constraint firstItem="Km4-VR-HeQ" firstAttribute="leading" secondItem="ogr-WD-H93" secondAttribute="trailing" constant="-27" id="Joi-IV-gUT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gFE-uT-B6W" secondAttribute="trailing" id="MW1-Np-g55"/>
                             <constraint firstItem="pZe-eB-yWz" firstAttribute="centerX" secondItem="N2d-Zl-pvl" secondAttribute="centerX" id="NAB-Yz-6eh"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="gFE-uT-B6W" secondAttribute="leading" id="PR2-Lg-aCO"/>
                             <constraint firstItem="pZe-eB-yWz" firstAttribute="leading" secondItem="N2d-Zl-pvl" secondAttribute="leadingMargin" constant="-16" id="QjS-Xe-ZWc"/>
                             <constraint firstItem="ogr-WD-H93" firstAttribute="top" secondItem="pZe-eB-yWz" secondAttribute="bottom" constant="16" id="ZZ7-eA-AIv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="XHZ-OL-q6n" secondAttribute="trailing" constant="-16" id="Zsm-VT-nZO"/>
@@ -3232,8 +3248,8 @@
         <simulatedScreenMetrics key="destination" type="retina4_0.fullscreen"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="WBw-b3-nZJ"/>
         <segue reference="TGO-AX-uyd"/>
+        <segue reference="svJ-QM-EWD"/>
         <segue reference="GHl-qG-vPC"/>
     </inferredMetricsTieBreakers>
 </document>
