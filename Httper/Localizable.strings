@@ -87,6 +87,7 @@ email_registered = "This email has been registered.";
 login_not_validate = "Input correct emaill and password!";
 email_not_exist = "This email is not existed.";
 password_wrong = "Your password is wrong, check and try again.";
+facebook_oauth_error = "Facebook OAuth login failed, plasese try Again!";
 
 sign_in_sign_up = "Sign in to sync request history";
 

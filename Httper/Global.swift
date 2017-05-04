@@ -57,6 +57,7 @@ enum ErrorCode: Int {
     case emailNotExist = 1021
     case passwordWrong = 1022
     case sendResetPasswordMail = 1031
+    case accessTokenInvalid = 1041
     case deleteRequest = 2011
     case deleteProject = 3011
 }

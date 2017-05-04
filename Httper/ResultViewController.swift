@@ -157,10 +157,10 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
                                                         action: #selector(self.showRequestInfo))
                 self.navigationItem.rightBarButtonItem = infoBarButtonItem
                 
-                let utf8Text = String(data: response.data!, encoding: .utf8)
-                self.prettyViewController = PrettyViewController(text: utf8Text!, headers: (response.response?.allHeaderFields)!)
-                self.rawViewController = RawViewController(text: utf8Text!)
-                self.previewViewController = PreviewViewController(text: utf8Text!, url: (response.response?.url)!)
+                let utf8Text = String(data: response.data!, encoding: .utf8) ?? ""
+                self.prettyViewController = PrettyViewController(text: utf8Text, headers: (response.response?.allHeaderFields)!)
+                self.rawViewController = RawViewController(text: utf8Text)
+                self.previewViewController = PreviewViewController(text: utf8Text, url: (response.response?.url)!)
                 self.pageViewController.setViewControllers([self.prettyViewController], direction: .forward, animated: true, completion: nil)
         }
         

@@ -118,26 +118,54 @@ class LoginViewController: EditingViewController {
         loginManager.logIn([ .publicProfile ], viewController: self) { loginResult in
             switch loginResult {
             case .failed(let error):
-                print(error)
+                if DEBUG {
+                    print("Facebook OAuth login error: \(error)");
+                }
             case .cancelled:
-                print("User cancelled login.")
+                if DEBUG {
+                    print("User cancelled login.");
+                }
             case .success(_, _, let accessToken):
-                print("Logged in!")
-                print(accessToken.expirationDate)
-                print(accessToken.userId!)
                 print(accessToken.authenticationToken)
                 
-                let request = GraphRequest(graphPath: "/me",
-                                           parameters: [ "fields" : "picture, email, name, gender" ],
-                                           httpMethod: .GET)
-                request.start { _, result in
-                    switch result {
-                    case .success(let response):
-                        print("Graph Request Succeeded: \(response)")
-                    case .failed(let error):
-                        print("Graph Request Failed: \(error)")
+                let params: Parameters = [
+                    "accessToken":accessToken.authenticationToken,
+                    "deviceIdentifier": UIDevice.current.identifierForVendor!.uuidString,
+                    "deviceToken": Defaults[.deviceToken] == nil ? "" : Defaults[.deviceToken]!,
+                    "os": "\(UIDevice.current.systemName) \(UIDevice.current.systemVersion)",
+                    "lan": NSLocale.preferredLanguages[0]
+                ]
+
+                Alamofire.request(createUrl("/api/user/fblogin"),
+                                  method: .post,
+                                  parameters: params,
+                                  encoding: URLEncoding.default,
+                                  headers: nil)
+                .responseJSON(completionHandler: { (responseObject) in
+                    let response = InternetResponse(responseObject)
+                    if response.statusOK() {
+                        let result = response.getResult()
+                        // Login success, save user information to NSUserDefaults.
+                        Defaults[.token] = result?["token"] as? String
+                        Defaults[.name] = result?["name"] as? String
+                        Defaults[.login] = true
+                        
+                        // Sync project and request entities from server
+                        self.sync.syncAll()
+                        
+                        self.dismiss(animated: true, completion: nil)
+                    } else {
+                        switch response.errorCode() {
+                        case ErrorCode.accessTokenInvalid.rawValue:
+                            showAlert(title: NSLocalizedString("tip_name", comment: ""),
+                                      content: NSLocalizedString("facebook_oauth_error", comment: ""),
+                                      controller: self)
+                        default:
+                            break
+                        }
                     }
-                }
+
+                })
             }
         }
     }
