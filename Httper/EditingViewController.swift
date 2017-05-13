@@ -8,6 +8,8 @@
 
 import UIKit
 
+let keyboardHeight: CGFloat = 300.0
+
 class EditingViewController: UIViewController, UITextFieldDelegate {
 
     var editingTextField: UITextField!

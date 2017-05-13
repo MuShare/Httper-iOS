@@ -13,7 +13,6 @@ import MGKeyboardAccessory
 let urlKeyboardCharacters = [":", "/", "?", "&", ".", "="]
 
 let protocols = ["http", "https"]
-let keyboardHeight: CGFloat = 320.0
 
 class RequestViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     

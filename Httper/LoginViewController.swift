@@ -24,13 +24,12 @@ class LoginViewController: EditingViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let fbLoginButton = LoginButton(readPermissions: [.publicProfile])
-        fbLoginButton.center = view.center
-        
-        view.addSubview(loginButton)
+//        let fbLoginButton = LoginButton(readPermissions: [.publicProfile])
+//        fbLoginButton.center = view.center
+//        
+//        view.addSubview(loginButton)
         
         loginButton.layer.borderColor = UIColor.lightGray.cgColor
-        self.shownHeight = loginButton.frame.maxY
         
         //Set background image
         let backgroundImageView: UIImageView = {
@@ -40,6 +39,10 @@ class LoginViewController: EditingViewController {
             return view
         }()
         self.view.insertSubview(backgroundImageView, at: 0)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        self.shownHeight = loginButton.frame.minY
     }
 
     // MARK: - Navigation

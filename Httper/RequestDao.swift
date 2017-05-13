@@ -84,7 +84,6 @@ class RequestDao: DaoTemplate {
     func findInRids(_ rids: [String]) -> [Request] {
         let fetchRequest = NSFetchRequest<Request>(entityName: NSStringFromClass(Request.self))
         fetchRequest.predicate = NSPredicate(format: "rid IN %@", rids);
-        //        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest as! NSFetchRequest<NSFetchRequestResult>)
         return try! context.fetch(fetchRequest)
     }
 

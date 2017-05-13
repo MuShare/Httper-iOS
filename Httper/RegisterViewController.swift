@@ -24,7 +24,6 @@ class RegisterViewController: EditingViewController {
         super.viewDidLoad()
 
         registerButton.layer.borderColor = UIColor.lightGray.cgColor
-        self.shownHeight = registerButton.frame.maxY
         
         //Set background image
         let backgroundImageView: UIImageView = {
@@ -34,6 +33,10 @@ class RegisterViewController: EditingViewController {
             return view
         }()
         self.view.insertSubview(backgroundImageView, at: 0)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        self.shownHeight = registerButton.frame.minY
     }
     
     // MARK: - Action
