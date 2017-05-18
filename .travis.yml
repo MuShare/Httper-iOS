@@ -4,6 +4,12 @@ language: objective-c
 before_install:
   - pod repo update
 
+pods: remove_debug_pods
+pods:
+  rm -rf Pods
+  bundle install
+  bundle exec pod install
+  
 script:
   - set -o pipefail
   - xcodebuild -workspace "Httper.xcworkspace" -scheme "Httper" -configuration Debug clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO | xcpretty -c
