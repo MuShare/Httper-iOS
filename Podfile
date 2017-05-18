@@ -12,5 +12,6 @@ target 'Httper' do
     pod 'MGKeyboardAccessory', '~> 0.1'
     pod 'FacebookCore'
     pod 'FacebookLogin'
+    pod 'SwiftyStoreKit', '~> 0.10'
 end
 

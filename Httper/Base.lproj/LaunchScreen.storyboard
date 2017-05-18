@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,16 +21,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="H" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="spA-Cp-p4o">
-                                <rect key="frame" x="109" y="225" width="102" height="119"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="119" id="0q0-Il-BNT"/>
-                                    <constraint firstAttribute="width" constant="102" id="KY3-2K-YGP"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="150"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MuShare Group © 2015 - 2017. All Rights Reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jtp-ps-7Rb">
                                 <rect key="frame" x="16" y="527" width="288" height="21"/>
                                 <constraints>
@@ -40,14 +30,21 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="wOm-Eo-Lzu">
+                                <rect key="frame" x="85" y="209" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="uLx-du-qHj"/>
+                                    <constraint firstAttribute="width" constant="150" id="wYo-e9-k9F"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.2581908107" green="0.27822533249999998" blue="0.2949104011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="wOm-Eo-Lzu" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Sxn-AS-0Op"/>
                             <constraint firstAttribute="leadingMargin" secondItem="jtp-ps-7Rb" secondAttribute="leading" id="dGK-Wy-4O5"/>
+                            <constraint firstItem="wOm-Eo-Lzu" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="f24-BC-4dX"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="jtp-ps-7Rb" secondAttribute="bottom" constant="20" id="sdJ-e3-SMz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jtp-ps-7Rb" secondAttribute="trailing" id="tek-aP-I20"/>
-                            <constraint firstItem="spA-Cp-p4o" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="205" id="vvO-X6-CzW"/>
-                            <constraint firstItem="spA-Cp-p4o" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="wlS-ms-pRz"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -56,4 +53,7 @@
             <point key="canvasLocation" x="50.625" y="373.94366197183098"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo" width="150" height="150"/>
+    </resources>
 </document>
