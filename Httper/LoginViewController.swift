@@ -7,27 +7,21 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftyUserDefaults
 import FacebookCore
 import FacebookLogin
+import NVActivityIndicatorView
 
-class LoginViewController: EditingViewController {
+class LoginViewController: EditingViewController, NVActivityIndicatorViewable {
 
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var loadingActivityIndicatorView: UIActivityIndicatorView!
     
     let sync = SyncManager.sharedInstance
+    let user = UserManager.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        let fbLoginButton = LoginButton(readPermissions: [.publicProfile])
-//        fbLoginButton.center = view.center
-//        
-//        view.addSubview(loginButton)
         
         loginButton.layer.borderColor = UIColor.lightGray.cgColor
         
@@ -65,53 +59,20 @@ class LoginViewController: EditingViewController {
             return
         }
 
-        loginButton.isEnabled = false
-        loadingActivityIndicatorView.startAnimating()
+        finishEdit()
+        startAnimating()
         
-        let params: Parameters = [
-            "email": emailTextField.text!,
-            "password": passwordTextField.text!,
-            "deviceIdentifier": UIDevice.current.identifierForVendor!.uuidString,
-            "deviceToken": Defaults[.deviceToken] == nil ? "" : Defaults[.deviceToken]!,
-            "os": "\(UIDevice.current.systemName) \(UIDevice.current.systemVersion)",
-            "lan": NSLocale.preferredLanguages[0]
-        ]
-
-        Alamofire.request(createUrl("api/user/login"),
-                          method: .post,
-                          parameters: params,
-                          encoding: URLEncoding.default,
-                          headers: nil)
-        .responseJSON { (responseObject) in
-            self.loginButton.isEnabled = true
-            self.loadingActivityIndicatorView.stopAnimating()
-            
-            let response = InternetResponse(responseObject)
-            if response.statusOK() {
-                let result = response.getResult()
-                // Login success, save user information to NSUserDefaults.
-                Defaults[.email] = self.emailTextField.text
-                Defaults[.token] = result?["token"] as? String
-                Defaults[.name] = result?["name"] as? String
-                Defaults[.login] = true
-                
+        user.loginWithEmail(email: emailTextField.text!, password: passwordTextField.text!) { (success, tip) in
+            self.stopAnimating()
+            if success {
                 // Sync project and request entities from server
                 self.sync.syncAll()
-                
+    
                 self.dismiss(animated: true, completion: nil)
             } else {
-                switch response.errorCode() {
-                case ErrorCode.emailNotExist.rawValue:
-                    showAlert(title: NSLocalizedString("tip_name", comment: ""),
-                              content: NSLocalizedString("email_not_exist", comment: ""),
-                              controller: self)
-                case ErrorCode.passwordWrong.rawValue:
-                    showAlert(title: NSLocalizedString("tip_name", comment: ""),
-                              content: NSLocalizedString("password_wrong", comment: ""),
-                              controller: self)
-                default:
-                    break
-                }
+                showAlert(title: NSLocalizedString("tip_name", comment: ""),
+                          content: tip!,
+                          controller: self)
             }
         }
     }
@@ -129,45 +90,20 @@ class LoginViewController: EditingViewController {
                     print("User cancelled login.");
                 }
             case .success(_, _, let accessToken):
-                print(accessToken.authenticationToken)
+                self.startAnimating()
                 
-                let params: Parameters = [
-                    "accessToken":accessToken.authenticationToken,
-                    "deviceIdentifier": UIDevice.current.identifierForVendor!.uuidString,
-                    "deviceToken": Defaults[.deviceToken] == nil ? "" : Defaults[.deviceToken]!,
-                    "os": "\(UIDevice.current.systemName) \(UIDevice.current.systemVersion)",
-                    "lan": NSLocale.preferredLanguages[0]
-                ]
-
-                Alamofire.request(createUrl("/api/user/fblogin"),
-                                  method: .post,
-                                  parameters: params,
-                                  encoding: URLEncoding.default,
-                                  headers: nil)
-                .responseJSON(completionHandler: { (responseObject) in
-                    let response = InternetResponse(responseObject)
-                    if response.statusOK() {
-                        let result = response.getResult()
-                        // Login success, save user information to NSUserDefaults.
-                        Defaults[.token] = result?["token"] as? String
-                        Defaults[.name] = result?["name"] as? String
-                        Defaults[.login] = true
-                        
+                self.user.loginWithFacebook(accessToken.authenticationToken, completion: { (success, tip) in
+                    self.stopAnimating()
+                    if success {
                         // Sync project and request entities from server
                         self.sync.syncAll()
                         
                         self.dismiss(animated: true, completion: nil)
                     } else {
-                        switch response.errorCode() {
-                        case ErrorCode.accessTokenInvalid.rawValue:
-                            showAlert(title: NSLocalizedString("tip_name", comment: ""),
-                                      content: NSLocalizedString("facebook_oauth_error", comment: ""),
-                                      controller: self)
-                        default:
-                            break
-                        }
+                        showAlert(title: NSLocalizedString("tip_name", comment: ""),
+                                  content: tip!,
+                                  controller: self)
                     }
-
                 })
             }
         }

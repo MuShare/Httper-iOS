@@ -88,11 +88,11 @@ class ResetViewController: EditingViewController {
                 self.titleLabel.text = NSLocalizedString("reset_password_check_email", comment: "")
             } else {
                 switch response.errorCode() {
-                case ErrorCode.emailNotExist.rawValue:
+                case .emailNotExist:
                     showAlert(title: NSLocalizedString("tip_name", comment: ""),
                               content: NSLocalizedString("email_not_exist", comment: ""),
                               controller: self)
-                case ErrorCode.sendResetPasswordMail.rawValue:
+                case .sendResetPasswordMail:
                     showAlert(title: NSLocalizedString("tip_name", comment: ""),
                               content: NSLocalizedString("reset_password_failed", comment: ""),
                               controller: self)

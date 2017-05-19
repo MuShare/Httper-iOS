@@ -20,6 +20,7 @@ let ipInfoUrl = "https://ipapi.co/json/"
 let whoisUrl = "https://www.whois.com"
 
 extension DefaultsKeys {
+    static let type = DefaultsKey<String?>("type")
     static let email = DefaultsKey<String?>("email")
     static let name = DefaultsKey<String?>("name")
     static let deviceToken = DefaultsKey<String?>("deviceToken")

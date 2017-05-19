@@ -8,6 +8,7 @@
 
 import CoreData
 import Alamofire
+import SwiftyJSON
 
 class RequestDao: DaoTemplate {
     
@@ -37,16 +38,16 @@ class RequestDao: DaoTemplate {
         return request!
     }
     
-    func syncUpdated(_ requestObject: [String: Any], project: Project) -> Request {
-        let body = requestObject["body"] as! String
-        return self.saveOrUpdate(rid: requestObject["rid"] as? String,
-                              update: requestObject["updateAt"] as? Int64,
-                              revision: requestObject["revision"] as? Int16,
-                              method: (requestObject["method"] as? String)!,
-                              url: (requestObject["url"] as? String)!,
-                              headers: serializeJSON(requestObject["headers"] as! String) as! HTTPHeaders,
-                              parameters: serializeJSON(requestObject["parameters"] as! String)! as Parameters,
-                              bodytype: (requestObject["bodyType"] as? String)!,
+    func syncUpdated(_ requestObject: JSON, project: Project) -> Request {
+        let body = requestObject["body"].stringValue
+        return self.saveOrUpdate(rid: requestObject["rid"].stringValue,
+                              update: requestObject["updateAt"].int64Value,
+                              revision: requestObject["revision"].int16Value,
+                              method: requestObject["method"].stringValue,
+                              url: requestObject["url"].stringValue,
+                              headers: serializeJSON(requestObject["headers"].stringValue) as! HTTPHeaders,
+                              parameters: serializeJSON(requestObject["parameters"].stringValue) as! Parameters,
+                              bodytype: requestObject["bodyType"].stringValue,
                               body: NSData.init(data: body.data(using: .utf8)!),
                               project: project)
     }

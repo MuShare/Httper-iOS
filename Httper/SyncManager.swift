@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyUserDefaults
 
-class SyncManager: NSObject {
+class SyncManager {
     
     var dao: DaoManager!
     
@@ -19,7 +19,7 @@ class SyncManager: NSObject {
         return instance
     }()
     
-    override init() {
+    init() {
         dao = DaoManager.sharedInstance
     }
     
@@ -31,24 +31,6 @@ class SyncManager: NSObject {
         // Push local projects, then push local requests.
         pushLocalProjects { (revision) in
             self.pushLocalRequests(nil)
-        }
-    }
-    
-    func pullUser(_ completionHandler: ((Bool) -> Void)?) {
-        Alamofire.request(createUrl("api/user"),
-                          method: .get,
-                          parameters: nil,
-                          encoding: URLEncoding.default,
-                          headers: tokenHeader())
-        .responseJSON { (responseObject) in
-            let response = InternetResponse(responseObject)
-            if response.statusOK() {
-                let user = response.getResult()["user"] as! [String: Any]
-                Defaults[.name] = user["name"] as? String
-                completionHandler?(true)
-            } else {
-                completionHandler?(false)
-            }
         }
     }
 
@@ -66,17 +48,17 @@ class SyncManager: NSObject {
             let response = InternetResponse(responseObject)
             if response.statusOK() {
                 let result = response.getResult()
-                let revision = result?["revision"] as! Int
+                let revision = result["revision"].intValue
                 if revision <= localRevision {
                     completionHandler?(revision)
                     return
                 }
                 
-                let updatedRequests = result?["updated"] as! [[String: Any]]
+                let updatedRequests = result["updated"].arrayValue
                 // Save updated requests to persistent store.
                 for requestObject in updatedRequests {
                     // Check pid, if pid is not nil, try to find a project and add this request to the project.
-                    let pid = requestObject["pid"] as? String
+                    let pid = requestObject["pid"].string
                     if pid == nil {
                         continue
                     }
@@ -89,7 +71,10 @@ class SyncManager: NSObject {
                 }
                 
                 // Delete requests in deleted id list.
-                let deletedRids = result?["deleted"] as! [String]
+                var deletedRids: [String] = []
+                for object in result["deleted"].arrayValue {
+                    deletedRids.append(object.stringValue)
+                }
                 for request in self.dao.requestDao.findInRids(deletedRids) {
                     self.dao.requestDao.delete(request)
                 }
@@ -151,16 +136,16 @@ class SyncManager: NSObject {
             let response = InternetResponse(responseObject)
             if response.statusOK() {
                 let dataResult = response.getResult()
-                let results = dataResult?["results"] as! [[String: Any]]
+                let results = dataResult["results"]
                 for i in 0 ..< requests.count {
                     let result = results[i]
                     let request = requests[i]
-                    request.rid = result["rid"] as? String
-                    request.revision = Int16(result["revision"] as! Int)
+                    request.rid = result["rid"].stringValue
+                    request.revision = result["revision"].int16Value
                 }
                 self.dao.saveContext()
                 
-                let revision = dataResult?["revision"] as! Int
+                let revision = dataResult["revision"].intValue
                 // Update local request revision
                 updateRequestRevision(revision)
                 // Completion
@@ -193,7 +178,7 @@ class SyncManager: NSObject {
                 let response = InternetResponse(responseObject)
                 if response.statusOK() {
                     // Update local request revision by the revision from server.
-                    let revision = response.getResult()["revision"] as! Int
+                    let revision = response.getResult()["revision"].intValue
                     updateRequestRevision(revision)
                     // Delete local request entity.
                     self.dao.requestDao.delete(request)
@@ -202,7 +187,7 @@ class SyncManager: NSObject {
                     completionHandler?(revision)
                 } else {
                     switch response.errorCode() {
-                    case ErrorCode.tokenError.rawValue:
+                    case .tokenError:
                         // Delete local request entity if token is error,
                         // that means this entity cannot map with any entity in server.
                         self.dao.context.delete(request)
@@ -232,18 +217,21 @@ class SyncManager: NSObject {
             let response = InternetResponse(responseObject)
             if response.statusOK() {
                 let result = response.getResult()
-                let revision = result?["revision"] as! Int
+                let revision = result["revision"].intValue
                 if revision <= localRevision {
                     completionHandler?(revision)
                     return
                 }
-                let updatedProjects = result?["updated"] as! [[String: Any]]
+                let updatedProjects = result["updated"].arrayValue
                 // Save updated projects to persistent store.
                 for project in updatedProjects {
                     self.dao.projectDao.syncUpdated(project)
                 }
                 // Delete projects in deleted id list.
-                let deletedPids = result?["deleted"] as! [String]
+                var deletedPids: [String] = []
+                for object in result["deleted"].arrayValue {
+                    deletedPids.append(object.stringValue)
+                }
                 for project in self.dao.projectDao.findInPids(deletedPids) {
                     self.dao.projectDao.delete(project)
                 }
@@ -287,16 +275,16 @@ class SyncManager: NSObject {
             let response = InternetResponse(responseObject)
             if response.statusOK() {
                 let dataResult = response.getResult()
-                let results = dataResult?["results"] as! [[String: Any]]
+                let results = dataResult["results"]
                 for i in 0 ..< projects.count {
                     let result = results[i]
                     let project = projects[i]
-                    project.pid = result["pid"] as? String
-                    project.revision = Int16(result["revision"] as! Int)
+                    project.pid = result["pid"].stringValue
+                    project.revision = result["revision"].int16Value
                 }
                 self.dao.saveContext()
                 
-                let revision = dataResult?["revision"] as! Int
+                let revision = dataResult["revision"].intValue
                 // Update local request revision
                 updateProjectRevision(revision)
                 // Completion
@@ -328,7 +316,7 @@ class SyncManager: NSObject {
             let response = InternetResponse(responseObject)
             if response.statusOK() {
                 // Update local project revision by the revision from server.
-                let revision = response.getResult()["revision"] as! Int
+                let revision = response.getResult()["revision"].intValue
                 updateProjectRevision(revision)
                 // Delete local project entity.
                 self.dao.context.delete(project)
@@ -337,7 +325,7 @@ class SyncManager: NSObject {
                 completionHandler?(revision)
             } else {
                 switch response.errorCode() {
-                case ErrorCode.tokenError.rawValue:
+                case .tokenError:
                     // Delete local project entity if token is error,
                     // that means this entity cannot map with any entity in server.
                     self.dao.context.delete(project)

@@ -26,10 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appUpdate()
 
         // Pull updated requests and push local requests(if exist)
-        let sync = SyncManager.sharedInstance
-        sync.syncAll()
-        
-        sync.pullUser(nil)
+        SyncManager.sharedInstance.syncAll()
+        UserManager.sharedInstance.pullUser(nil)
         
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         

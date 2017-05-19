@@ -87,7 +87,7 @@ class RegisterViewController: EditingViewController {
                 self.registerButton.setTitle(NSLocalizedString("back_to_login", comment: ""), for: .normal)
             } else {
                 switch response.errorCode() {
-                case ErrorCode.emailRegistered.rawValue:
+                case .emailRegistered:
                     showAlert(title: NSLocalizedString("tip", comment: ""),
                               content: NSLocalizedString("email_registered", comment: ""),
                               controller: self)

@@ -7,6 +7,7 @@
 //
 
 import Alamofire
+import SwiftyJSON
 
 func createUrl(_ relative: String) -> String {
     let requestUrl = baseUrl + relative
@@ -39,18 +40,16 @@ class InternetResponse: NSObject {
         return data["status"] as! Int == 200
     }
     
-    func getResult() -> [String: Any]! {
-        if data == nil {
-            return nil
-        }
-        return data["result"] as! [String: Any]
+    func getResult() -> JSON {
+        return JSON(data["result"] as! [String: Any])
     }
     
-    func errorCode() -> Int {
+    func errorCode() -> ErrorCode {
         if data == nil {
-            return ErrorCode.badRequest.rawValue
+            return .badRequest
         }
-        return data["errorCode"] as! Int
+        let code = data["errorCode"] as! Int
+        return ErrorCode(rawValue: code) ?? .badRequest
     }
     
 }

@@ -7,6 +7,7 @@
 //
 
 import CoreData
+import SwiftyJSON
 
 class ProjectDao: DaoTemplate {
     
@@ -21,17 +22,17 @@ class ProjectDao: DaoTemplate {
         return project;
     }
     
-    func syncUpdated(_ projectObject: [String: Any]) {
+    func syncUpdated(_ projectObject: JSON) {
         let project = NSEntityDescription.insertNewObject(forEntityName: NSStringFromClass(Project.self),
                                                           into: context) as! Project
-        project.pname = projectObject["pname"] as? String
-        project.privilege = projectObject["privilege"] as? String
-        project.introduction = projectObject["introduction"] as? String
-        project.update = projectObject["updateAt"] as! Int64
+        project.pname = projectObject["pname"].stringValue
+        project.privilege = projectObject["privilege"].stringValue
+        project.introduction = projectObject["introduction"].stringValue
+        project.update = projectObject["updateAt"].int64Value
         // Save physical id from server.
-        project.pid = projectObject["pid"] as? String
+        project.pid = projectObject["pid"].stringValue
         // Save revision
-        project.revision = projectObject["revision"] as! Int16
+        project.revision = projectObject["revision"].int16Value
         self.saveContext()
     }
 

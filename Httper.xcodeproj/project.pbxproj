@@ -50,6 +50,7 @@
 		E4CA760F1E3F73E3008D7A52 /* ProjectsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CA760E1E3F73E3008D7A52 /* ProjectsTableViewController.swift */; };
 		E4CA76131E3F7E1A008D7A52 /* AddProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CA76121E3F7E1A008D7A52 /* AddProjectViewController.swift */; };
 		E4D034491E4A0DB300580FAC /* ProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D034481E4A0DB300580FAC /* ProjectTableViewController.swift */; };
+		E4D161F71ECEA16A009B1DD9 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D161F61ECEA16A009B1DD9 /* UserManager.swift */; };
 		E4D1CAE51DF5C028008DC4F9 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */; };
 		E4DE76911E1D2645002A8385 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DE76901E1D2644002A8385 /* LoginViewController.swift */; };
 		E4DE76931E1D2AB0002A8385 /* login-bg-iPad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4DE76921E1D2AB0002A8385 /* login-bg-iPad.jpg */; };
@@ -144,6 +145,7 @@
 		E4CA76121E3F7E1A008D7A52 /* AddProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProjectViewController.swift; sourceTree = "<group>"; };
 		E4CA76141E3F80B2008D7A52 /* Httper_1.3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Httper_1.3.xcdatamodel; sourceTree = "<group>"; };
 		E4D034481E4A0DB300580FAC /* ProjectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTableViewController.swift; sourceTree = "<group>"; };
+		E4D161F61ECEA16A009B1DD9 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		E4DE76901E1D2644002A8385 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E4DE76921E1D2AB0002A8385 /* login-bg-iPad.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "login-bg-iPad.jpg"; sourceTree = "<group>"; };
@@ -256,7 +258,6 @@
 				E4EC89D61E12A4C70072ACF3 /* SimplePing.m */,
 				E4EC89CF1E129FA10072ACF3 /* STDPingServices.h */,
 				E4EC89D01E129FA10072ACF3 /* STDPingServices.m */,
-				E47FDC641E38697600251EEC /* SyncManager.swift */,
 				E47FDC5F1E3861AF00251EEC /* Versions.swift */,
 			);
 			name = Tool;
@@ -288,6 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				E4A37A8B1E0184ED00586BA1 /* Model */,
+				E4D161F51ECEA147009B1DD9 /* Manager */,
 				E4305A451E34F62F00010B52 /* Dao */,
 				E4D1CAE01DF5BFCF008DC4F9 /* Request */,
 				E40F66A61E01140800C6013E /* History */,
@@ -344,6 +346,15 @@
 				E4712ED91E55FC81002FF8E1 /* ProjectIntroductionViewController.swift */,
 			);
 			name = Project;
+			sourceTree = "<group>";
+		};
+		E4D161F51ECEA147009B1DD9 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				E47FDC641E38697600251EEC /* SyncManager.swift */,
+				E4D161F61ECEA16A009B1DD9 /* UserManager.swift */,
+			);
+			name = Manager;
 			sourceTree = "<group>";
 		};
 		E4D1CAE01DF5BFCF008DC4F9 /* Request */ = {
@@ -581,6 +592,7 @@
 				E46ABF521E140F2E00E0C092 /* InternetTool.m in Sources */,
 				E4E297B11E00021500AD484E /* ResponseHeaderViewController.swift in Sources */,
 				E4A37A9D1E018D7500586BA1 /* RequestDao.swift in Sources */,
+				E4D161F71ECEA16A009B1DD9 /* UserManager.swift in Sources */,
 				E48D41601D444F3F0028B84F /* Httper.xcdatamodeld in Sources */,
 				E42DDC841DFA8CB200FAD174 /* ResponseInfoTableViewController.swift in Sources */,
 				E41642D31DF970CE00F0339E /* CommonTool.swift in Sources */,
