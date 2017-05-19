@@ -7,17 +7,17 @@
 //
 
 import UIKit
-import Alamofire
+import NVActivityIndicatorView
 
-class RegisterViewController: EditingViewController {
+class RegisterViewController: EditingViewController, NVActivityIndicatorViewable {
 
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var registerSuccessImageView: UIImageView!
-    @IBOutlet weak var loadingActivityIndicatorView: UIActivityIndicatorView!
     
+    let user = UserManager.sharedInstance
     var registered = false
 
     override func viewDidLoad() {
@@ -61,24 +61,15 @@ class RegisterViewController: EditingViewController {
                       controller: self)
             return
         }
-        let parameters: Parameters = [
-            "email": emailTextField.text!,
-            "name": usernameTextField.text!,
-            "password": passwordTextField.text!
-        ]
-        registerButton.isEnabled = false
-        loadingActivityIndicatorView.startAnimating()
-        Alamofire.request(createUrl("api/user/register"),
-                          method: HTTPMethod.post,
-                          parameters: parameters,
-                          encoding: URLEncoding.default,
-                          headers: nil)
-        .responseJSON { responseObject in
-            self.registerButton.isEnabled = true
-            self.loadingActivityIndicatorView.stopAnimating()
-            self.finishEdit()
-            let response = InternetResponse(responseObject)
-            if response.statusOK() {
+        
+        finishEdit()
+        startAnimating()
+        user.register(email: emailTextField.text!,
+                      name: usernameTextField.text!,
+                      password: passwordTextField.text!)
+        { (success, tip) in
+            self.stopAnimating()
+            if success {
                 self.registered = true
                 self.emailTextField.isHidden = true
                 self.passwordTextField.isHidden = true
@@ -86,14 +77,9 @@ class RegisterViewController: EditingViewController {
                 self.registerSuccessImageView.isHidden = false
                 self.registerButton.setTitle(NSLocalizedString("back_to_login", comment: ""), for: .normal)
             } else {
-                switch response.errorCode() {
-                case .emailRegistered:
-                    showAlert(title: NSLocalizedString("tip", comment: ""),
-                              content: NSLocalizedString("email_registered", comment: ""),
-                              controller: self)
-                default:
-                    break
-                }
+                showAlert(title: NSLocalizedString("tip", comment: ""),
+                          content: tip!,
+                          controller: self)
             }
         }
     }

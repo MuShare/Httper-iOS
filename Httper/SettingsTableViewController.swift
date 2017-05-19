@@ -7,13 +7,14 @@
 //
 
 import UIKit
-import SwiftyUserDefaults
 
 class SettingsTableViewController: UITableViewController {
 
     @IBOutlet weak var avatarButton: UIButton!
     @IBOutlet weak var loginOrUserinfoButton: UIButton!
     @IBOutlet weak var emailLabel: UILabel!
+    
+    let user = UserManager.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +24,12 @@ class SettingsTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         
-        if Defaults[.login]! {
-            loginOrUserinfoButton.setTitle(Defaults[.name], for: .normal)
-            emailLabel.text = Defaults[.email]
-            emailLabel.isHidden = false
+        if user.login {
+            loginOrUserinfoButton.setTitle(user.name, for: .normal)
+            if user.type == UserTypeEmail {
+                emailLabel.text = user.email
+                emailLabel.isHidden = false
+            }
         } else {
             loginOrUserinfoButton.setTitle(NSLocalizedString("sign_in_sign_up", comment: ""),
                                            for: .normal)
@@ -63,18 +66,11 @@ class SettingsTableViewController: UITableViewController {
     
     // MARK: - Action
     @IBAction func showAvatar(_ sender: Any) {
-        if Defaults[.login]! {
-            self.performSegue(withIdentifier: "profileSegue", sender: self)
-        } else {
-            self.performSegue(withIdentifier: "loginSegue", sender: self)
-        }
+        performSegue(withIdentifier: user.login ? "profileSegue" : "loginSegue", sender: self)
     }
     
     @IBAction func showUserInfo(_ sender: Any) {
-        if Defaults[.login]! {
-            self.performSegue(withIdentifier: "profileSegue", sender: self)
-        } else {
-            self.performSegue(withIdentifier: "loginSegue", sender: self)
-        }
+        performSegue(withIdentifier: user.login ? "profileSegue" : "loginSegue", sender: self)
     }
+    
 }

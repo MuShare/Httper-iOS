@@ -10,7 +10,6 @@
 		4F51F2CAB45DDC76A9F169B1 /* Pods_Httper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5637677047F4C4B6CA981D18 /* Pods_Httper.framework */; };
 		E4007EB91DFEE7B7002A87FA /* RequestBodyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4007EB81DFEE7B7002A87FA /* RequestBodyViewController.swift */; };
 		E40B257E1DF44BD20039CA8D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40B257D1DF44BD20039CA8D /* MainViewController.swift */; };
-		E40F66A81E01142900C6013E /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40F66A71E01142900C6013E /* HistoryTableViewController.swift */; };
 		E41642D31DF970CE00F0339E /* CommonTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41642D21DF970CE00F0339E /* CommonTool.swift */; };
 		E42DDC841DFA8CB200FAD174 /* ResponseInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42DDC831DFA8CB200FAD174 /* ResponseInfoTableViewController.swift */; };
 		E4305A381E2E5FF900010B52 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4305A371E2E5FF900010B52 /* Global.swift */; };
@@ -93,7 +92,6 @@
 		7EBC322CA510BFBBFF4AB72E /* Pods-Httper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Httper.release.xcconfig"; path = "Pods/Target Support Files/Pods-Httper/Pods-Httper.release.xcconfig"; sourceTree = "<group>"; };
 		E4007EB81DFEE7B7002A87FA /* RequestBodyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestBodyViewController.swift; sourceTree = "<group>"; };
 		E40B257D1DF44BD20039CA8D /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		E40F66A71E01142900C6013E /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		E41642D11DF96F6800F0339E /* Httper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Httper-Bridging-Header.h"; sourceTree = "<group>"; };
 		E41642D21DF970CE00F0339E /* CommonTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonTool.swift; sourceTree = "<group>"; };
 		E42DDC831DFA8CB200FAD174 /* ResponseInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseInfoTableViewController.swift; sourceTree = "<group>"; };
@@ -212,14 +210,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E40F66A61E01140800C6013E /* History */ = {
-			isa = PBXGroup;
-			children = (
-				E40F66A71E01142900C6013E /* HistoryTableViewController.swift */,
-			);
-			name = History;
-			sourceTree = "<group>";
-		};
 		E4305A451E34F62F00010B52 /* Dao */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,7 +282,6 @@
 				E4D161F51ECEA147009B1DD9 /* Manager */,
 				E4305A451E34F62F00010B52 /* Dao */,
 				E4D1CAE01DF5BFCF008DC4F9 /* Request */,
-				E40F66A61E01140800C6013E /* History */,
 				E4CA760D1E3F7058008D7A52 /* Project */,
 				E4EC89C01E1159560072ACF3 /* Settings */,
 				E447287C1DF7D615007D2C8B /* Tool */,
@@ -597,7 +586,6 @@
 				E42DDC841DFA8CB200FAD174 /* ResponseInfoTableViewController.swift in Sources */,
 				E41642D31DF970CE00F0339E /* CommonTool.swift in Sources */,
 				E4305A381E2E5FF900010B52 /* Global.swift in Sources */,
-				E40F66A81E01142900C6013E /* HistoryTableViewController.swift in Sources */,
 				E4D1CAE51DF5C028008DC4F9 /* RequestViewController.swift in Sources */,
 				E48553361DF9B2CF00A1DB60 /* PreviewViewController.swift in Sources */,
 				E4D034491E4A0DB300580FAC /* ProjectTableViewController.swift in Sources */,

@@ -7,14 +7,15 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftyUserDefaults
+import NVActivityIndicatorView
 
-class NameViewController: UIViewController, UITextFieldDelegate {
+class NameViewController: UIViewController, UITextFieldDelegate, NVActivityIndicatorViewable {
 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var saveBarButtonItem: UIBarButtonItem!
 
+    let user = UserManager.sharedInstance
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,26 +41,19 @@ class NameViewController: UIViewController, UITextFieldDelegate {
                       controller: self)
             return
         }
-        let params: Parameters = [
-            "name": nameTextField.text!
-        ]
-        replaceBarButtonItemWithActivityIndicator(controller: self)
-        Alamofire.request(createUrl("api/user/name"),
-                          method: .post,
-                          parameters: params,
-                          encoding: URLEncoding.default,
-                          headers: tokenHeader())
-        .responseJSON { (responseObject) in
-            let response = InternetResponse(responseObject)
-            if response.statusOK() {
-                Defaults[.name] = self.nameTextField.text!
+        
+        startAnimating()
+        user.modifyName(nameTextField.text!) { (success, tip) in
+            self.stopAnimating()
+            if success {
                 _ = self.navigationController?.popViewController(animated: true)
             } else {
                 showAlert(title: NSLocalizedString("tip_name", comment: ""),
-                          content: NSLocalizedString("token_error", comment: ""),
+                          content: tip!,
                           controller: self)
             }
         }
+
     }
     
 }

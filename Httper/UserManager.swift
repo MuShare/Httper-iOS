@@ -10,6 +10,9 @@ import Foundation
 import Alamofire
 import SwiftyUserDefaults
 
+let UserTypeEmail = "email"
+let UserTypeFacebook = "facebook"
+
 class UserManager {
     
     var login: Bool {
@@ -35,7 +38,7 @@ class UserManager {
             Defaults[.type] = newValue
         }
         get {
-            return Defaults[.type] ?? ""
+            return Defaults[.type] ?? UserTypeEmail
         }
     }
     
@@ -138,6 +141,7 @@ class UserManager {
                     self.email = email
                     self.token = result["token"].stringValue
                     self.name = result["name"].stringValue
+                    self.type = UserTypeEmail
                     self.login = true
                     completion?(true, nil)
                 } else {
@@ -174,6 +178,7 @@ class UserManager {
                 // Login success, save user information to NSUserDefaults.
                 self.token = result["token"].stringValue
                 self.name = result["name"].stringValue
+                self.type = UserTypeFacebook
                 self.login = true
                 
                 completion?(true, nil)
@@ -186,6 +191,59 @@ class UserManager {
                 }
             }
         })
+    }
+    
+    func reset(_ email: String, completion: ((Bool, String?) -> Void)?) {
+        let params: Parameters = [
+            "email": email
+        ]
+
+        Alamofire.request(createUrl("api/user/password/reset"),
+                          method: .get,
+                          parameters: params,
+                          encoding: URLEncoding.default,
+                          headers: tokenHeader())
+            .responseJSON { (responseObject) in
+                let response = InternetResponse(responseObject)
+                if response.statusOK() {
+                    completion?(true, nil)
+                } else {
+                    switch response.errorCode() {
+                    case .emailNotExist:
+                        completion?(false, NSLocalizedString("email_not_exist", comment: ""))
+                    case .sendResetPasswordMail:
+                        completion?(false, NSLocalizedString("reset_password_failed", comment: ""))
+                    default:
+                        completion?(false, NSLocalizedString("error_unknown", comment: ""))
+                    }
+                }
+        }
+    }
+    
+    func modifyName(_ name: String, completion: ((Bool, String?) -> Void)?) {
+        let params: Parameters = [
+            "name": name
+        ]
+
+        Alamofire.request(createUrl("api/user/name"),
+                          method: .post,
+                          parameters: params,
+                          encoding: URLEncoding.default,
+                          headers: tokenHeader())
+            .responseJSON { (responseObject) in
+                let response = InternetResponse(responseObject)
+                if response.statusOK() {
+                    self.name = name
+                    completion?(true, nil)
+                } else {
+                    switch response.errorCode() {
+                    case .tokenError:
+                        completion?(false, NSLocalizedString("token_error", comment: ""))
+                    default:
+                        completion?(false, NSLocalizedString("error_unknown", comment: ""))
+                    }
+                }
+        }
     }
     
 }

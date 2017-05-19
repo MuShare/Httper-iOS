@@ -58,6 +58,7 @@ tab_name = "Tab";
 delete_name = "Delete";
 
 token_error = "User authorization is invalide. Please sign in again!";
+error_unknown = "Unknown error.";
 
 headers = "Headers";
 parameters = "Parameters";
@@ -93,6 +94,7 @@ sign_in_sign_up = "Sign in to sync request history";
 
 sign_out_title = "Sign out";
 sign_out_message = "Are you sure to sign out now?";
+sign_in_facebook = "Sign in with Facebook";
 
 reset_password_not_validate = "Please input a correct email!";
 reset_password_failed = "Send email failed, try again later.";

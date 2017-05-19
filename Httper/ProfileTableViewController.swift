@@ -16,15 +16,20 @@ class ProfileTableViewController: UITableViewController {
     @IBOutlet weak var signOutTableViewCell: UITableViewCell!
     
     let dao = DaoManager.sharedInstance
+    let user = UserManager.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        emailLabel.text = Defaults[.email]
+        if user.type == UserTypeEmail {
+            emailLabel.text = user.email
+        } else {
+            emailLabel.text = NSLocalizedString("sign_in_facebook", comment: "")
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         // Update user name.
-        nameLabel.text = Defaults[.name]
+        nameLabel.text = user.name
         // Hide nagivation bar and tab bar.
         self.navigationController?.navigationBar.isHidden = false
         self.tabBarController?.tabBar.isHidden = false

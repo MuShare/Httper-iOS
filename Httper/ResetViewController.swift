@@ -7,18 +7,18 @@
 //
 
 import UIKit
-import Alamofire
+import NVActivityIndicatorView
 
-class ResetViewController: EditingViewController {
+class ResetViewController: EditingViewController, NVActivityIndicatorViewable {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var loadingActivityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var sendEmailSuccessImageView: UIImageView!
     @IBOutlet weak var tipTextView: UITextView!
     
     var submit = false
+    let user = UserManager.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,25 +58,13 @@ class ResetViewController: EditingViewController {
                       controller: self)
             return
         }
-        let params: Parameters = [
-            "email": emailTextField.text!
-        ]
-        self.finishEdit()
-        // Disable submit button, start loading...
-        submitButton.isEnabled = false
-        loadingActivityIndicatorView.startAnimating()
-        Alamofire.request(createUrl("api/user/password/reset"),
-                          method: .get,
-                          parameters: params,
-                          encoding: URLEncoding.default,
-                          headers: tokenHeader())
-        .responseJSON { (responseObject) in
-            // Enable submit button, stop loading.
-            self.submitButton.isEnabled = true
-            self.loadingActivityIndicatorView.stopAnimating()
+        
+        finishEdit()
+        startAnimating()
+        user.reset(emailTextField.text!) { (success, tip) in
+            self.stopAnimating()
             
-            let response = InternetResponse(responseObject)
-            if response.statusOK() {
+            if success {
                 // Set submit flag to true
                 self.submit = true
                 // Hide tip and email text field
@@ -87,18 +75,9 @@ class ResetViewController: EditingViewController {
                 self.submitButton.setTitle(NSLocalizedString("back_to_login", comment: ""), for: .normal)
                 self.titleLabel.text = NSLocalizedString("reset_password_check_email", comment: "")
             } else {
-                switch response.errorCode() {
-                case .emailNotExist:
-                    showAlert(title: NSLocalizedString("tip_name", comment: ""),
-                              content: NSLocalizedString("email_not_exist", comment: ""),
-                              controller: self)
-                case .sendResetPasswordMail:
-                    showAlert(title: NSLocalizedString("tip_name", comment: ""),
-                              content: NSLocalizedString("reset_password_failed", comment: ""),
-                              controller: self)
-                default:
-                    break
-                }
+                showAlert(title: NSLocalizedString("tip_name", comment: ""),
+                          content: tip!,
+                          controller: self)
             }
         }
     }

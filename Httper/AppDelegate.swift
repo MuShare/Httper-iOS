@@ -9,7 +9,6 @@
 import UIKit
 import CoreData
 import Alamofire
-import SwiftyUserDefaults
 import FacebookCore
 
 @UIApplicationMain
@@ -19,15 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        if Defaults[.login] == nil {
-            Defaults[.login] = false
-        }
-        
         appUpdate()
 
-        // Pull updated requests and push local requests(if exist)
-        SyncManager.sharedInstance.syncAll()
-        UserManager.sharedInstance.pullUser(nil)
+        // Pull updated requests and push local requests(if exist) when user login.
+        let user = UserManager.sharedInstance
+        if user.login {
+            SyncManager.sharedInstance.syncAll()
+            user.pullUser(nil)
+        }
         
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
