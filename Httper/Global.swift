@@ -10,7 +10,7 @@ import Foundation
 import SwiftyUserDefaults
 import Alamofire
 
-let DEBUG = true
+let DEBUG = false
 
 // Server base url
 let baseUrl = "http://httper.mushare.cn/"
@@ -19,10 +19,20 @@ let baseUrl = "http://httper.mushare.cn/"
 let ipInfoUrl = "https://ipapi.co/json/"
 let whoisUrl = "https://www.whois.com"
 
+func createUrl(_ relative: String) -> String {
+    let requestUrl = baseUrl + relative
+    return requestUrl
+}
+
+func imageURL(_ source: String) -> URL? {
+    return URL(string: createUrl(source))
+}
+
 extension DefaultsKeys {
     static let type = DefaultsKey<String?>("type")
     static let email = DefaultsKey<String?>("email")
     static let name = DefaultsKey<String?>("name")
+    static let avatar = DefaultsKey<String?>("avatar")
     static let deviceToken = DefaultsKey<String?>("deviceToken")
     static let token = DefaultsKey<String?>("token")
     static let login = DefaultsKey<Bool?>("login")
@@ -100,14 +110,6 @@ func projectRevision() -> Int {
         return 0
     }
     return projectRevision!
-}
-
-func clearUserDefaults() {
-    Defaults[.email] = nil
-    Defaults[.name] = nil
-    Defaults[.token] = nil
-    Defaults[.login] = false
-    Defaults[.requestRevision] = 0
 }
 
 // App update method, revoked only when app is updated.

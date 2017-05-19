@@ -15,6 +15,8 @@ let UserTypeFacebook = "facebook"
 
 class UserManager {
     
+    var dao: DaoManager!
+    
     var login: Bool {
         set {
             Defaults[.login] = newValue
@@ -60,13 +62,28 @@ class UserManager {
         }
     }
     
+    var avatar: String {
+        set {
+            Defaults[.avatar] = newValue
+        }
+        get {
+            return Defaults[.avatar] ?? ""
+        }
+    }
+    
+    var avatarURL: URL? {
+        get {
+            return login ? URL(string: createUrl(avatar)) : nil
+        }
+    }
+    
     static let sharedInstance: UserManager = {
         let instance = UserManager()
         return instance
     }()
     
     init() {
-
+        dao = DaoManager.sharedInstance
     }
     
     
@@ -81,6 +98,7 @@ class UserManager {
             if response.statusOK() {
                 let user = response.getResult()["user"]
                 self.name = user["name"].stringValue
+                self.avatar = user["avatar"].stringValue
                 completionHandler?(true)
             } else {
                 completionHandler?(false)
@@ -137,10 +155,12 @@ class UserManager {
                 let response = InternetResponse(responseObject)
                 if response.statusOK() {
                     let result = response.getResult()
+                    let user = result["user"]
                     // Login success, save user information to NSUserDefaults.
                     self.email = email
                     self.token = result["token"].stringValue
-                    self.name = result["name"].stringValue
+                    self.name = user["name"].stringValue
+                    self.avatar = user["avatar"].stringValue
                     self.type = UserTypeEmail
                     self.login = true
                     completion?(true, nil)
@@ -175,9 +195,11 @@ class UserManager {
             let response = InternetResponse(responseObject)
             if response.statusOK() {
                 let result = response.getResult()
+                let user = result["user"]
                 // Login success, save user information to NSUserDefaults.
                 self.token = result["token"].stringValue
-                self.name = result["name"].stringValue
+                self.name = user["name"].stringValue
+                self.avatar = user["avatar"].stringValue
                 self.type = UserTypeFacebook
                 self.login = true
                 
@@ -244,6 +266,22 @@ class UserManager {
                     }
                 }
         }
+    }
+    
+    func logout() {
+        self.type = ""
+        self.email = ""
+        self.name = ""
+        self.avatar = ""
+        self.token = ""
+        self.login = false
+        Defaults[.requestRevision] = 0
+        
+        // Reset revision to 0 for those request entities whose revision is larger than 0.
+        for request in dao.requestDao.findRevisionLargerThan(0) {
+            request.revision = 0
+        }
+        dao.saveContext()
     }
     
 }

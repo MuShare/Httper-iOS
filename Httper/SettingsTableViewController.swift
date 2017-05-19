@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import Kingfisher
 
 class SettingsTableViewController: UITableViewController {
 
+    @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var avatarButton: UIButton!
     @IBOutlet weak var loginOrUserinfoButton: UIButton!
     @IBOutlet weak var emailLabel: UILabel!
@@ -30,9 +32,13 @@ class SettingsTableViewController: UITableViewController {
                 emailLabel.text = user.email
                 emailLabel.isHidden = false
             }
+            if user.avatar != "" {
+                avatarImageView.kf.setImage(with: imageURL(user.avatar))
+            }
         } else {
             loginOrUserinfoButton.setTitle(NSLocalizedString("sign_in_sign_up", comment: ""),
                                            for: .normal)
+            avatarImageView.image = UIImage(named: "signin")
             emailLabel.isHidden = true
         }
     }

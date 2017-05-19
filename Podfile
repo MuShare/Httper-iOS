@@ -13,7 +13,8 @@ target 'Httper' do
     pod 'ReachabilitySwift', '~> 3'
     pod 'SwiftyUserDefaults', '~> 3'
     pod 'SwiftyJSON', '~> 3.1'
-    pod 'SwiftyStoreKit', '~> 0.10'
     pod 'NVActivityIndicatorView', '~> 3.6'
+    pod 'Kingfisher', '~> 3'
+    pod 'UIImageView+Extension', '~> 0.2'
 end
 

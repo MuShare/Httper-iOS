@@ -9,11 +9,6 @@
 import Alamofire
 import SwiftyJSON
 
-func createUrl(_ relative: String) -> String {
-    let requestUrl = baseUrl + relative
-    return requestUrl
-}
-
 class InternetResponse: NSObject {
     
     var data: [String: Any]!

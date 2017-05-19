@@ -15,7 +15,6 @@ class ProfileTableViewController: UITableViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var signOutTableViewCell: UITableViewCell!
     
-    let dao = DaoManager.sharedInstance
     let user = UserManager.sharedInstance
     
     override func viewDidLoad() {
@@ -52,8 +51,10 @@ class ProfileTableViewController: UITableViewController {
                                                          preferredStyle: .actionSheet)
             let logout = UIAlertAction.init(title: NSLocalizedString("sign_out_title", comment: ""),
                                             style: .destructive,
-                                            handler: { (action) in
-                                                self.logout()
+                                            handler:
+            { (action) in
+                self.user.logout()
+                _ = self.navigationController?.popViewController(animated: true)
             })
             let cancel = UIAlertAction.init(title: NSLocalizedString("cancel_name", comment: ""),
                                             style: .cancel,
@@ -64,18 +65,6 @@ class ProfileTableViewController: UITableViewController {
             alertController.popoverPresentationController?.sourceRect = signOutTableViewCell.bounds;
             self.present(alertController, animated: true, completion: nil)
         }
-    }
-
-    // MARK: - Action
-    func logout() {
-        clearUserDefaults()
-        // Reset revision to 0 for those request entities whose revision is larger than 0.
-        for request in dao.requestDao.findRevisionLargerThan(0) {
-            request.revision = 0
-        }
-        dao.saveContext()
-        
-        _ = self.navigationController?.popViewController(animated: true)
     }
     
 }

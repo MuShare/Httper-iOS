@@ -2716,9 +2716,22 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="179.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signin" translatesAutoresizingMaskIntoConstraints="NO" id="O5p-OW-3gf">
+                                                    <rect key="frame" x="125" y="39" width="70" height="70"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="70" id="Dkj-Qj-tQp"/>
+                                                        <constraint firstAttribute="height" constant="70" id="noS-2g-6sP"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="circle" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lsx-Gg-5Bv">
                                                     <rect key="frame" x="125" y="39" width="70" height="70"/>
-                                                    <state key="normal" image="signin"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="70" id="Bb3-05-vdr"/>
+                                                        <constraint firstAttribute="width" constant="70" id="HQX-tX-vUc"/>
+                                                    </constraints>
                                                     <connections>
                                                         <action selector="showAvatar:" destination="UCZ-NT-q1P" eventType="touchUpInside" id="1fP-De-AAL"/>
                                                     </connections>
@@ -2745,6 +2758,8 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Lsx-Gg-5Bv" firstAttribute="centerX" secondItem="kRi-jt-EUw" secondAttribute="centerX" id="1zQ-yq-KBr"/>
+                                                <constraint firstItem="O5p-OW-3gf" firstAttribute="top" secondItem="kRi-jt-EUw" secondAttribute="topMargin" constant="31" id="ExC-NZ-Eyu"/>
+                                                <constraint firstItem="O5p-OW-3gf" firstAttribute="centerX" secondItem="kRi-jt-EUw" secondAttribute="centerX" id="OsA-1f-qTC"/>
                                                 <constraint firstAttribute="leadingMargin" secondItem="bRP-NU-ALH" secondAttribute="leading" id="U6f-9n-tTI"/>
                                                 <constraint firstItem="Lsx-Gg-5Bv" firstAttribute="top" secondItem="kRi-jt-EUw" secondAttribute="topMargin" constant="31" id="h7b-OU-qWu"/>
                                                 <constraint firstItem="1et-Hn-ZfK" firstAttribute="top" secondItem="kRi-jt-EUw" secondAttribute="topMargin" constant="109" id="j23-s8-RKl"/>
@@ -2931,6 +2946,7 @@
                     <navigationItem key="navigationItem" id="Wu4-N5-1PC"/>
                     <connections>
                         <outlet property="avatarButton" destination="Lsx-Gg-5Bv" id="mtB-Or-e7E"/>
+                        <outlet property="avatarImageView" destination="O5p-OW-3gf" id="iw9-ej-Mq4"/>
                         <outlet property="emailLabel" destination="bRP-NU-ALH" id="vSi-Ey-Prt"/>
                         <outlet property="loginOrUserinfoButton" destination="1et-Hn-ZfK" id="qfv-fY-fSq"/>
                         <segue destination="V92-Dt-xpH" kind="modal" identifier="loginSegue" id="Xbp-EF-Yhs"/>
