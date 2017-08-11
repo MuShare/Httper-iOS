@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import MGKeyboardAccessory
 
-let urlKeyboardCharacters = [":", "/", "?", "&", ".", "="]
+let urlKeyboardCharacters = [":", "/", "?", "&", ".", "=", "%", "-", "_"]
 
 let protocols = ["http", "https"]
 

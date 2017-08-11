@@ -30,6 +30,7 @@
 		E48553321DF9B2AF00A1DB60 /* PrettyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48553311DF9B2AF00A1DB60 /* PrettyViewController.swift */; };
 		E48553341DF9B2BF00A1DB60 /* RawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48553331DF9B2BF00A1DB60 /* RawViewController.swift */; };
 		E48553361DF9B2CF00A1DB60 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48553351DF9B2CF00A1DB60 /* PreviewViewController.swift */; };
+		E48BF6551F3DAA0D00F567FC /* KeyboardAccessoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48BF6541F3DAA0D00F567FC /* KeyboardAccessoryCollectionViewController.swift */; };
 		E48D41581D444F3F0028B84F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48D41571D444F3F0028B84F /* AppDelegate.swift */; };
 		E48D415D1D444F3F0028B84F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E48D415B1D444F3F0028B84F /* Main.storyboard */; };
 		E48D41601D444F3F0028B84F /* Httper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E48D415E1D444F3F0028B84F /* Httper.xcdatamodeld */; };
@@ -117,6 +118,7 @@
 		E48553311DF9B2AF00A1DB60 /* PrettyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrettyViewController.swift; sourceTree = "<group>"; };
 		E48553331DF9B2BF00A1DB60 /* RawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawViewController.swift; sourceTree = "<group>"; };
 		E48553351DF9B2CF00A1DB60 /* PreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		E48BF6541F3DAA0D00F567FC /* KeyboardAccessoryCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAccessoryCollectionViewController.swift; sourceTree = "<group>"; };
 		E48D41541D444F3F0028B84F /* Httper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Httper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E48D41571D444F3F0028B84F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E48D415C1D444F3F0028B84F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -370,6 +372,7 @@
 			children = (
 				E4F95CD91E16A7D3005A0004 /* DetailIPInformationTableViewController.swift */,
 				E4EC89D31E12A00C0072ACF3 /* IPAddressTableViewController.swift */,
+				E48BF6541F3DAA0D00F567FC /* KeyboardAccessoryCollectionViewController.swift */,
 				E4DE76901E1D2644002A8385 /* LoginViewController.swift */,
 				E4BBC9921E4DCCBB002107DF /* NameViewController.swift */,
 				E46077601E126948002DE839 /* PingViewController.swift */,
@@ -565,7 +568,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -593,6 +596,7 @@
 				E4CA760C1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift in Sources */,
 				E4EC89D71E12A4C70072ACF3 /* SimplePing.m in Sources */,
 				E4F16F621E4B685F00C17DA4 /* ResetViewController.swift in Sources */,
+				E48BF6551F3DAA0D00F567FC /* KeyboardAccessoryCollectionViewController.swift in Sources */,
 				E4B5F9EA1EA78DA1000B8C6F /* SelectProjectTableViewController.swift in Sources */,
 				E4F95CDA1E16A7D3005A0004 /* DetailIPInformationTableViewController.swift in Sources */,
 				E4305A491E34F8E100010B52 /* DaoTemplate.swift in Sources */,
