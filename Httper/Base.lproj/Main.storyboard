@@ -2996,7 +2996,7 @@
         <scene sceneID="XTm-wx-5yv">
             <objects>
                 <collectionViewController id="XNa-Kv-x8r" customClass="KeyboardAccessoryCollectionViewController" customModule="Httper" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="BfV-dn-CZ6">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="BfV-dn-CZ6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.18954041600227356" green="0.21222150325775146" blue="0.2318551242351532" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3017,17 +3017,50 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u5A-WQ-VnA">
                                             <rect key="frame" x="1" y="1" width="78" height="78"/>
                                             <color key="backgroundColor" red="0.30401238799095154" green="0.32177293300628662" blue="0.33365178108215332" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qrz-EK-GKY">
+                                            <rect key="frame" x="56" y="4" width="20" height="22"/>
+                                            <state key="normal" image="minus"/>
+                                            <connections>
+                                                <action selector="removeCharacter:" destination="XNa-Kv-x8r" eventType="touchUpInside" id="Iy4-ad-fgs"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </view>
                                 <constraints>
                                     <constraint firstAttribute="bottomMargin" secondItem="u5A-WQ-VnA" secondAttribute="bottom" constant="-7" id="3FK-UT-Obq"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="u5A-WQ-VnA" secondAttribute="trailing" constant="-7" id="7WF-qR-tC6"/>
                                     <constraint firstItem="u5A-WQ-VnA" firstAttribute="top" secondItem="gZw-V8-F3A" secondAttribute="topMargin" constant="-7" id="Hls-hP-6Fj"/>
+                                    <constraint firstItem="Qrz-EK-GKY" firstAttribute="top" secondItem="gZw-V8-F3A" secondAttribute="topMargin" constant="-4" id="L5E-B7-ere"/>
                                     <constraint firstItem="u5A-WQ-VnA" firstAttribute="leading" secondItem="gZw-V8-F3A" secondAttribute="leadingMargin" constant="-7" id="W3b-UI-lBi"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="Qrz-EK-GKY" secondAttribute="trailing" constant="-4" id="ntZ-MV-7MV"/>
+                                </constraints>
+                            </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="addCharacterCell" id="LNO-t4-DmF">
+                                <rect key="frame" x="80" y="0.0" width="80" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jcc-3h-qwU">
+                                            <rect key="frame" x="1" y="1" width="78" height="78"/>
+                                            <color key="backgroundColor" red="0.30401238799095154" green="0.32177293300628662" blue="0.33365178108215332" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <state key="normal" image="plus"/>
+                                            <connections>
+                                                <action selector="addCharacter:" destination="XNa-Kv-x8r" eventType="touchUpInside" id="wBN-YA-Dbd"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="jcc-3h-qwU" firstAttribute="leading" secondItem="LNO-t4-DmF" secondAttribute="leadingMargin" constant="-7" id="1hG-yI-8wR"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="jcc-3h-qwU" secondAttribute="trailing" constant="-7" id="PPH-3H-5OB"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="jcc-3h-qwU" secondAttribute="bottom" constant="-7" id="QX8-fG-kbA"/>
+                                    <constraint firstItem="jcc-3h-qwU" firstAttribute="top" secondItem="LNO-t4-DmF" secondAttribute="topMargin" constant="-7" id="sfy-aZ-n7q"/>
                                 </constraints>
                             </collectionViewCell>
                         </cells>
@@ -3267,8 +3300,10 @@
         <image name="introduction" width="30" height="25"/>
         <image name="ip" width="30" height="30"/>
         <image name="keyboard" width="30" height="30"/>
+        <image name="minus" width="20" height="20"/>
         <image name="name" width="30" height="30"/>
         <image name="ping" width="30" height="30"/>
+        <image name="plus" width="30" height="30"/>
         <image name="privilege" width="30" height="30"/>
         <image name="register_success" width="100" height="100"/>
         <image name="select" width="30" height="30"/>

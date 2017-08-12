@@ -27,22 +27,32 @@ class KeyboardAccessoryCollectionViewController: UICollectionViewController, UIC
     
     // MARK: - UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.size.width / CGFloat(5)
+        let width = collectionView.frame.size.width / CGFloat(4)
         return CGSize(width: width, height: width)
     }
 
     // MARK: - UICollectionViewDataSource
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         return 10
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "characterCell", for: indexPath)
-    
-        // Configure the cell
-    
-        return cell
+
+        if indexPath.row == 9 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addCharacterCell", for: indexPath)
+            
+            // Configure the cell
+            
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "characterCell", for: indexPath)
+            
+            // Configure the cell
+            
+            return cell
+        }
     }
 
     // MARK: - UICollectionViewDelegate
@@ -75,5 +85,15 @@ class KeyboardAccessoryCollectionViewController: UICollectionViewController, UIC
     
     }
     */
+    
+    // MARK: - Action
+    
+    @IBAction func addCharacter(_ sender: Any) {
+        
+    }
 
+    @IBAction func removeCharacter(_ sender: Any) {
+        
+    }
+    
 }
