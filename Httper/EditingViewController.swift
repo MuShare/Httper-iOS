@@ -8,7 +8,7 @@
 
 import UIKit
 
-let keyboardHeight: CGFloat = 300.0
+let keyboardHeight: CGFloat = 340.0
 
 class EditingViewController: UIViewController, UITextFieldDelegate {
 
@@ -17,8 +17,6 @@ class EditingViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
     // MARK: - UITextViewDelegate
@@ -30,7 +28,6 @@ class EditingViewController: UIViewController, UITextFieldDelegate {
                 self.view.frame = CGRect(x: 0, y: -offset, width: self.view.frame.size.width, height: self.view.frame.size.height)
             })
         }
-        
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -52,4 +49,5 @@ class EditingViewController: UIViewController, UITextFieldDelegate {
             editingTextField.resignFirstResponder()
         }
     }
+    
 }

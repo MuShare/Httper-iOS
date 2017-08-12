@@ -84,7 +84,7 @@ class UserManager {
         get {
             var characters = Defaults[.characters]
             if characters == nil {
-                characters = [":", "/", "?", "&", ".", "=", "%"]
+                characters = [":", "/", "?", "&", ".", "=", "%", "[", "]", "{", "}"]
                 Defaults[.characters] = characters
             }
             return characters

@@ -10,8 +10,6 @@ import UIKit
 import Alamofire
 import MGKeyboardAccessory
 
-let urlKeyboardCharacters = [":", "/", "?", "&", ".", "=", "%", "-", "_"]
-
 let protocols = ["http", "https"]
 
 class RequestViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
@@ -27,6 +25,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     var editingTextField: UITextField!
     
     let dao = DaoManager.sharedInstance
+    let characters = UserManager.sharedInstance.characters!
     
     var headerCount = 1, parameterCount = 1
     var method: String = "GET"
@@ -52,7 +51,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         sendButton.layer.borderColor = UIColor.lightGray.cgColor
         saveButton.layer.borderColor = UIColor.lightGray.cgColor
 
-        urlTextField.setupKeyboardAccessory(urlKeyboardCharacters, barStyle: .black)
+        urlTextField.setupKeyboardAccessory(characters, barStyle: .black)
         
         NotificationCenter.default.addObserver(self, selector: #selector(bodyChanged(notification:)), name: NSNotification.Name(rawValue: "bodyChanged"), object: nil)
     }
@@ -220,8 +219,8 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
             valueTextField.text = ""
             deleteButton.isEnabled = true
             // Setup MGKeyboardAccessory
-            keyTextField.setupKeyboardAccessory(urlKeyboardCharacters, barStyle: .black)
-            valueTextField.setupKeyboardAccessory(urlKeyboardCharacters, barStyle: .black)
+            keyTextField.setupKeyboardAccessory(characters, barStyle: .black)
+            valueTextField.setupKeyboardAccessory(characters, barStyle: .black)
             //Set headers if it is not null
             if headerKeys.count > indexPath.row {
                 keyTextField.text = headerKeys[indexPath.row]
@@ -239,8 +238,8 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
             valueTextField.text = ""
             deleteButton.isEnabled = true
             // Setup MGKeyboardAccessory
-            keyTextField.setupKeyboardAccessory(urlKeyboardCharacters, barStyle: .black)
-            valueTextField.setupKeyboardAccessory(urlKeyboardCharacters, barStyle: .black)
+            keyTextField.setupKeyboardAccessory(characters, barStyle: .black)
+            valueTextField.setupKeyboardAccessory(characters, barStyle: .black)
             //Set parameters if it is not null
             if parameterKeys.count > indexPath.row {
                 keyTextField.text = parameterKeys[indexPath.row]
