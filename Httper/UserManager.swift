@@ -77,6 +77,20 @@ class UserManager {
         }
     }
     
+    var characters: [String]? {
+        set {
+            Defaults[.characters] = newValue
+        }
+        get {
+            var characters = Defaults[.characters]
+            if characters == nil {
+                characters = [":", "/", "?", "&", ".", "=", "%"]
+                Defaults[.characters] = characters
+            }
+            return characters
+        }
+    }
+    
     static let sharedInstance: UserManager = {
         let instance = UserManager()
         return instance

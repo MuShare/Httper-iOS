@@ -10,20 +10,11 @@ import UIKit
 
 class KeyboardAccessoryCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
+    let user = UserManager.sharedInstance
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     // MARK: - UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -34,66 +25,49 @@ class KeyboardAccessoryCollectionViewController: UICollectionViewController, UIC
     // MARK: - UICollectionViewDataSource
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 10
+        return (user.characters?.count)! + 1
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        if indexPath.row == 9 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addCharacterCell", for: indexPath)
-            
-            // Configure the cell
-            
-            return cell
-        } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "characterCell", for: indexPath)
-            
-            // Configure the cell
-            
-            return cell
+        if indexPath.row == user.characters?.count {
+            return collectionView.dequeueReusableCell(withReuseIdentifier: "addCharacterCell", for: indexPath)
         }
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "characterCell", for: indexPath)
+        let characterLabel = cell.viewWithTag(1) as! UILabel
+        characterLabel.text = user.characters?[indexPath.row]
+        return cell
+        
     }
-
-    // MARK: - UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
     
     // MARK: - Action
     
     @IBAction func addCharacter(_ sender: Any) {
-        
+        let alertController = UIAlertController(title: NSLocalizedString("add_character", comment: ""),
+                                                message: nil,
+                                                preferredStyle: .alert)
+        alertController.addTextField { (textField) in
+            textField.textAlignment = .center
+        }
+        let addAction = UIAlertAction(title: NSLocalizedString("ok_name", comment: ""), style: .default, handler: { (action) in
+            let character = (alertController.textFields?[0].text)!
+            if character != "" {
+                self.user.characters?.append(character)
+                self.collectionView?.reloadData()
+            }
+        })
+        let cancelAction = UIAlertAction(title: NSLocalizedString("cancel_name", comment: ""), style: .cancel, handler: nil)
+        alertController.addAction(addAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
     }
 
-    @IBAction func removeCharacter(_ sender: Any) {
-        
+    @IBAction func removeCharacter(_ sender: UIButton) {
+        let cell = sender.superview?.superview as! UICollectionViewCell
+        let indexPath = collectionView?.indexPath(for: cell)
+        user.characters?.remove(at: (indexPath?.row)!)
+        collectionView?.deleteItems(at: [indexPath!])
     }
     
 }

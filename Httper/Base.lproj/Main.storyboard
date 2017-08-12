@@ -2992,11 +2992,11 @@
             </objects>
             <point key="canvasLocation" x="141" y="2277"/>
         </scene>
-        <!--Keyboard Accessory-->
+        <!--Customized Keyboard Accessory-->
         <scene sceneID="XTm-wx-5yv">
             <objects>
                 <collectionViewController id="XNa-Kv-x8r" customClass="KeyboardAccessoryCollectionViewController" customModule="Httper" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="BfV-dn-CZ6">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="BfV-dn-CZ6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.18954041600227356" green="0.21222150325775146" blue="0.2318551242351532" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3014,7 +3014,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u5A-WQ-VnA">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="u5A-WQ-VnA">
                                             <rect key="frame" x="1" y="1" width="78" height="78"/>
                                             <color key="backgroundColor" red="0.30401238799095154" green="0.32177293300628662" blue="0.33365178108215332" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
@@ -3069,7 +3069,7 @@
                             <outlet property="delegate" destination="XNa-Kv-x8r" id="C41-vv-J0T"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Keyboard Accessory" id="1hg-xI-lK1"/>
+                    <navigationItem key="navigationItem" title="Customized Keyboard Accessory" id="1hg-xI-lK1"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vXu-1S-rx8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

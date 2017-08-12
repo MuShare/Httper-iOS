@@ -105,3 +105,5 @@ project_name_empty = "Project name cannot be empty!";
 delete_project = "Delete Project";
 delete_project_message = "Are you sure to delete project ";
 delete_request_confirm = "Are you sure to delete request ";
+
+add_character = "Add Customized Character";
