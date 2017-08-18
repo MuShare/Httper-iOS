@@ -25,7 +25,8 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     var editingTextField: UITextField!
     
     let dao = DaoManager.sharedInstance
-    let characters = UserManager.sharedInstance.characters!
+    // Customized characters of keyboard accessory.
+    var characters: [String]!
     
     var headerCount = 1, parameterCount = 1
     var method: String = "GET"
@@ -51,18 +52,28 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         sendButton.layer.borderColor = UIColor.lightGray.cgColor
         saveButton.layer.borderColor = UIColor.lightGray.cgColor
 
-        urlTextField.setupKeyboardAccessory(characters, barStyle: .black)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(bodyChanged(notification:)), name: NSNotification.Name(rawValue: "bodyChanged"), object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        characters = UserManager.sharedInstance.characters!
+        // Setup keyboard accessory.
+        urlTextField.setupKeyboardAccessory(characters, barStyle: .black)
+        for cell in valueTableView.visibleCells {
+            if cell.reuseIdentifier == "headerIdentifier" || cell.reuseIdentifier == "parameterIdentifier" {
+                let keyTextField = cell.viewWithTag(1) as! UITextField
+                let valueTextField = cell.viewWithTag(2) as! UITextField
+                keyTextField.setupKeyboardAccessory(characters, barStyle: .black)
+                valueTextField.setupKeyboardAccessory(characters, barStyle: .black)
+            }
+        }
         
         // Set request method.
         requestMethodButton.setTitle(method, for: .normal)

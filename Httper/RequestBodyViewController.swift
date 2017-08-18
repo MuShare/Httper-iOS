@@ -11,7 +11,7 @@ import MGKeyboardAccessory
 
 class RequestBodyViewController: UIViewController {
 
-    let characters = UserManager.sharedInstance.characters!
+    var characters: [String]!
     
     var body: String!
     
@@ -20,11 +20,16 @@ class RequestBodyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         rawBodyTextView.text = body
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         rawBodyTextView.setupKeyboardAccessory(characters, barStyle: .black)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        characters = UserManager.sharedInstance.characters!
         rawBodyTextView.becomeFirstResponder()
     }
     
