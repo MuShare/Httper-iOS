@@ -19,12 +19,16 @@ class RequestBodyViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        rawBodyTextView.text = body
+        if body != nil {
+            rawBodyTextView.text = body
+        } else {
+            rawBodyTextView.text = ""
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        rawBodyTextView.setupKeyboardAccessory(characters, barStyle: .black)
+        rawBodyTextView.setupKeyboardAccessory(UserManager.sharedInstance.characters!, barStyle: .black)
     }
     
     override func viewDidAppear(_ animated: Bool) {
