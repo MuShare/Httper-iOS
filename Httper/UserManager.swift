@@ -128,7 +128,7 @@ class UserManager {
         ]
 
         Alamofire.request(createUrl("api/user/register"),
-                          method: HTTPMethod.post,
+                          method: .post,
                           parameters: parameters,
                           encoding: URLEncoding.default,
                           headers: nil)
