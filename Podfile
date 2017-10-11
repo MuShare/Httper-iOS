@@ -16,5 +16,6 @@ target 'Httper' do
     pod 'NVActivityIndicatorView', '~> 3.6'
     pod 'Kingfisher', '~> 3'
     pod 'UIImageView+Extension', '~> 0.2'
+    pod 'Sentry', :git => 'https://github.com/getsentry/sentry-cocoa.git', :tag => '3.8.3'
 end
 
