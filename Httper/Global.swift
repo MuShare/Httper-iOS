@@ -13,8 +13,8 @@ import Alamofire
 let DEBUG = false
 
 // Server base url
-let baseUrl = "http://httper.mushare.cn/"
-//let baseUrl = "http://100.102.1.156:8080/"
+let baseUrl = "https://httper.mushare.cn/"
+//let baseUrl = "http://192.168.96.128:8080/"
 
 let ipInfoUrl = "https://ipapi.co/json/"
 let whoisUrl = "https://www.whois.com"
