@@ -12,7 +12,7 @@ import Alamofire
 
 let symbols = ["{", "}", "[", "]", ":", ","]
 
-class PrettyViewController: UIViewController {
+class PrettyViewController: UIViewController , UIGestureRecognizerDelegate {
     
     var text: String!
     var headers: [AnyHashable : Any]!
@@ -56,11 +56,31 @@ class PrettyViewController: UIViewController {
         }()
 
         self.view.addSubview(prettyScrollView)
+        
+        //longPressGesture for copy response
+        let longPressCopyGesture:UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        longPressCopyGesture.minimumPressDuration = 0.3
+        longPressCopyGesture.delegate = self
+        prettyScrollView.addGestureRecognizer(longPressCopyGesture)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "currentPageChanged"), object: Style.pretty.rawValue)
+    }
+    
+    
+    //MARK: - copy response
+    func handleLongPress(longPressGesture:UILongPressGestureRecognizer) {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Copy", style: UIAlertActionStyle.default, handler: copyText))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: { (alert) in
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func copyText(_ alert: UIAlertAction!) {
+        UIPasteboard.general.string = prettyLabel.text
     }
     
     //MARK: - Service
