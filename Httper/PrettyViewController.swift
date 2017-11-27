@@ -18,6 +18,8 @@ class PrettyViewController: UIViewController , UIGestureRecognizerDelegate {
     var headers: [AnyHashable : Any]!
     
     let prettyLabel = M80AttributedLabel()
+    let editView = UIView()
+    let textView = UITextView()
     
     init?(text: String, headers: [AnyHashable : Any]) {
         self.text = text
@@ -57,11 +59,25 @@ class PrettyViewController: UIViewController , UIGestureRecognizerDelegate {
 
         self.view.addSubview(prettyScrollView)
         
+        self.editView.backgroundColor = RGB(DesignColor.background.rawValue)
+        self.editView.frame = CGRect.init(x: 0, y: 0, width: width, height: height)
+        self.editView.isHidden = true
+        self.view.addSubview(self.editView)
+        
+        self.textView.font = UIFont(name: "Menlo", size: 13)!
+        self.textView.frame = CGRect.init(x: 0, y: 0, width: width, height: height - 110)
+        self.textView.delegate = self
+        self.textView.returnKeyType = .done
+        self.textView.isEditable = true
+        self.textView.textColor = .white
+        self.textView.backgroundColor =  RGB(DesignColor.background.rawValue)
+        self.editView.addSubview(self.textView)
+        
         //longPressGesture for copy response
         let longPressCopyGesture:UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
         longPressCopyGesture.minimumPressDuration = 0.3
         longPressCopyGesture.delegate = self
-        prettyScrollView.addGestureRecognizer(longPressCopyGesture)
+        self.view.addGestureRecognizer(longPressCopyGesture)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,16 +88,14 @@ class PrettyViewController: UIViewController , UIGestureRecognizerDelegate {
     
     //MARK: - copy response
     func handleLongPress(longPressGesture:UILongPressGestureRecognizer) {
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Copy", style: UIAlertActionStyle.default, handler: copyText))
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: { (alert) in
-        }))
-        self.present(alert, animated: true, completion: nil)
+        self.textView.text = self.prettyLabel.text
+        self.editView.isHidden = false
+        self.prettyLabel.isHidden = true
     }
     
-    func copyText(_ alert: UIAlertAction!) {
-        UIPasteboard.general.string = prettyLabel.text
-    }
+//    func copyText(_ alert: UIAlertAction!) {
+//        UIPasteboard.general.string = prettyLabel.text
+//    }
     
     //MARK: - Service
     func loadOriginal() {
@@ -133,4 +147,20 @@ class PrettyViewController: UIViewController , UIGestureRecognizerDelegate {
         }
     }
 
+}
+
+extension PrettyViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if (text == "\n") {
+            textView.resignFirstResponder()
+            self.editView.isHidden = true
+            self.prettyLabel.isHidden = false
+            return false
+        }
+        return true
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.textView.endEditing(true)
+    }
 }
