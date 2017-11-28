@@ -421,12 +421,15 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func addNewValue(_ sender: AnyObject?) {
+        /**
+        Remove the limitation of header count and parameter count.
         if headerCount + parameterCount == 7 {
             showAlert(title: NSLocalizedString("tip_name", comment: ""),
                       content: NSLocalizedString("value_max", comment: ""),
                       controller: self)
             return
         }
+        */
         let section: Int! = sender?.tag
         let indexPath = IndexPath(row: (section == 0) ? headerCount: parameterCount, section: section)
         if section == 0 {
