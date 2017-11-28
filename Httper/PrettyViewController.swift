@@ -17,8 +17,7 @@ class PrettyViewController: UIViewController , UIGestureRecognizerDelegate {
     var text: String!
     var headers: [AnyHashable : Any]!
     
-    let prettyLabel = M80AttributedLabel()
-    let editView = UIView()
+    let defaultFont = UIFont(name: "Menlo", size: 12)!
     let textView = UITextView()
     
     init?(text: String, headers: [AnyHashable : Any]) {
@@ -46,66 +45,32 @@ class PrettyViewController: UIViewController , UIGestureRecognizerDelegate {
             formatJSON()
         }
 
-        //Set pretty scroll view
-        let prettySize = prettyLabel.sizeThatFits(CGSize.init(width: width - 10, height: CGFloat.greatestFiniteMagnitude))
-        prettyLabel.frame = CGRect.init(x: 5, y: 5, width: prettySize.width, height: prettySize.height)
-        prettyLabel.backgroundColor = UIColor.clear
-        let prettyScrollView: UIScrollView = {
-            let view = UIScrollView(frame: CGRect(x: 0, y: 0, width: width, height: height - 50))
-            view.contentSize = CGSize.init(width: width, height: prettySize.height + 70)
-            view.addSubview(prettyLabel)
-            return view
-        }()
-
-        self.view.addSubview(prettyScrollView)
-        
-        self.editView.backgroundColor = RGB(DesignColor.background.rawValue)
-        self.editView.frame = CGRect.init(x: 0, y: 0, width: width, height: height)
-        self.editView.isHidden = true
-        self.view.addSubview(self.editView)
-        
-        self.textView.font = UIFont(name: "Menlo", size: 13)!
-        self.textView.frame = CGRect.init(x: 0, y: 0, width: width, height: height - 110)
+        self.textView.frame = CGRect(x: 0, y: 0, width: width, height: height - 110)
         self.textView.delegate = self
         self.textView.returnKeyType = .done
         self.textView.isEditable = true
-        self.textView.textColor = .white
         self.textView.backgroundColor =  RGB(DesignColor.background.rawValue)
-        self.editView.addSubview(self.textView)
-        
-        //longPressGesture for copy response
-        let longPressCopyGesture:UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
-        longPressCopyGesture.minimumPressDuration = 0.3
-        longPressCopyGesture.delegate = self
-        self.view.addGestureRecognizer(longPressCopyGesture)
+        self.view.addSubview(self.textView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "currentPageChanged"), object: Style.pretty.rawValue)
     }
-    
-    
-    //MARK: - copy response
-    func handleLongPress(longPressGesture:UILongPressGestureRecognizer) {
-        self.textView.text = self.prettyLabel.text
-        self.editView.isHidden = false
-        self.prettyLabel.isHidden = true
-    }
-    
-//    func copyText(_ alert: UIAlertAction!) {
-//        UIPasteboard.general.string = prettyLabel.text
-//    }
-    
+
     //MARK: - Service
     func loadOriginal() {
+        let mutableAttribute = NSMutableAttributedString()
         let attributedText = NSMutableAttributedString(string: text)
-        attributedText.m80_setTextColor(RGB(PrettyColor.normal.rawValue))
-        attributedText.m80_setFont(UIFont(name: "Menlo", size: 12)!)
-        self.prettyLabel.appendAttributedText(attributedText)
+        let range = (text as NSString).range(of: text)
+        attributedText.addAttribute(NSForegroundColorAttributeName, value: RGB(PrettyColor.normal.rawValue) , range: range)
+        attributedText.addAttribute(NSFontAttributeName, value: self.defaultFont , range: range)
+        mutableAttribute.append(attributedText)
+        self.textView.attributedText = mutableAttribute
     }
     
     func formatJSON() {
+        let mutableAttribute = NSMutableAttributedString()
         var space = String()
         var color = RGB(PrettyColor.normal.rawValue)
         var isText = false
@@ -141,10 +106,12 @@ class PrettyViewController: UIViewController , UIGestureRecognizerDelegate {
             }
             
             let attributedText = NSMutableAttributedString(string: text)
-            attributedText.m80_setTextColor(symbols.contains("\(char)") ? RGB(PrettyColor.normal.rawValue) : color)
-            attributedText.m80_setFont(UIFont(name: "Menlo", size: 12)!)
-            self.prettyLabel.appendAttributedText(attributedText)
+            let range = (text as NSString).range(of: "\(char)")
+            attributedText.addAttribute(NSForegroundColorAttributeName, value: symbols.contains("\(char)") ? RGB(PrettyColor.normal.rawValue) : color , range: range)
+            attributedText.addAttribute(NSFontAttributeName, value: self.defaultFont , range: range)
+            mutableAttribute.append(attributedText)
         }
+        self.textView.attributedText = mutableAttribute
     }
 
 }
@@ -153,8 +120,6 @@ extension PrettyViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if (text == "\n") {
             textView.resignFirstResponder()
-            self.editView.isHidden = true
-            self.prettyLabel.isHidden = false
             return false
         }
         return true
