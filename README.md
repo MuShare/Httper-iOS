@@ -1,6 +1,6 @@
 # Httper
 
-Httper is a REST API test tool running on your iOS devices. It helps developers to test their REST API anywhere and anytime without desktops.
+Httper is a REST API test tool running on your iOS devices. It helps developers to test their REST APIs anywhere and anytime without PC.
 
 ### Features 
 
@@ -24,7 +24,7 @@ Download this app from App Store: https://itunes.apple.com/app/httper/id11668840
 
 ### Dependency
 
-Httper is relied on the following frameworks, give a star to them if you also like them.
+Httper is relied on the following frameworks, I am very pleasure if you can give a star to them.
 
 - MGKeyboardAccessory(https://github.com/lm2343635/MGKeyboardAccessory)
 - MGFormatter(https://github.com/lm2343635/MGFormatter)
