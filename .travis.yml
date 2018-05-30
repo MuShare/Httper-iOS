@@ -1,5 +1,5 @@
 language: objective-c
-osx_image: xcode8.3
+osx_image: xcode9.3
 
 before_install:
   - pod repo update
@@ -10,5 +10,5 @@ pods:
   bundle install
   bundle exec pod install
 
-build:
-  set -o pipefail && xctool test -workspace "Httper.xcworkspace" -scheme "Httper" -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty -c
+script:
+  - set -o pipefail && xctool test -workspace "Httper.xcworkspace" -scheme "Httper" -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty -c
