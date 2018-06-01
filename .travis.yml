@@ -11,4 +11,4 @@ pods:
   bundle exec pod install
 
 script:
-  - set -o pipefail && xctool test -workspace "Httper.xcworkspace" -scheme "Httper" -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty -c
+  - set -o pipefail && xcodebuild -workspace Httper.xcworkspace -scheme Httper -sdk iphonesimulator build CODE_SIGNING_REQUIRED=NO | xcpretty -c 
