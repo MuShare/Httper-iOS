@@ -59,7 +59,7 @@ class ResponseInfoTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView: UIView = {
             let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
-            view.backgroundColor = UIColor.init(colorLiteralRed: 48.0 / 255, green: 54.0 / 255, blue: 59.0 / 255, alpha: 1.0)
+            view.backgroundColor = UIColor(red: 48.0 / 255, green: 54.0 / 255, blue: 59.0 / 255, alpha: 1.0)
             return view
         }()
         

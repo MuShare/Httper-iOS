@@ -63,8 +63,8 @@ class PrettyViewController: UIViewController , UIGestureRecognizerDelegate {
         let mutableAttribute = NSMutableAttributedString()
         let attributedText = NSMutableAttributedString(string: text)
         let range = (text as NSString).range(of: text)
-        attributedText.addAttribute(NSForegroundColorAttributeName, value: RGB(PrettyColor.normal.rawValue) , range: range)
-        attributedText.addAttribute(NSFontAttributeName, value: self.defaultFont , range: range)
+        attributedText.addAttribute(NSAttributedStringKey.foregroundColor, value: RGB(PrettyColor.normal.rawValue) , range: range)
+        attributedText.addAttribute(NSAttributedStringKey.font, value: self.defaultFont , range: range)
         mutableAttribute.append(attributedText)
         self.textView.attributedText = mutableAttribute
     }
@@ -107,8 +107,8 @@ class PrettyViewController: UIViewController , UIGestureRecognizerDelegate {
             
             let attributedText = NSMutableAttributedString(string: text)
             let range = (text as NSString).range(of: "\(char)")
-            attributedText.addAttribute(NSForegroundColorAttributeName, value: symbols.contains("\(char)") ? RGB(PrettyColor.normal.rawValue) : color , range: range)
-            attributedText.addAttribute(NSFontAttributeName, value: self.defaultFont , range: range)
+            attributedText.addAttribute(NSAttributedStringKey.foregroundColor, value: symbols.contains("\(char)") ? RGB(PrettyColor.normal.rawValue) : color , range: range)
+            attributedText.addAttribute(NSAttributedStringKey.font, value: self.defaultFont , range: range)
             mutableAttribute.append(attributedText)
         }
         self.textView.attributedText = mutableAttribute

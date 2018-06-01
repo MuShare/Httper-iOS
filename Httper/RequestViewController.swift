@@ -420,7 +420,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         return true
     }
     
-    func addNewValue(_ sender: AnyObject?) {
+    @objc func addNewValue(_ sender: AnyObject?) {
         /**
         Remove the limitation of header count and parameter count.
         if headerCount + parameterCount == 7 {
@@ -440,7 +440,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         valueTableView.insertRows(at: [indexPath], with: .automatic)
     }
     
-    func bodyChanged(notification: Notification) {
+    @objc func bodyChanged(notification: Notification) {
         body = notification.object as! String
     }
 

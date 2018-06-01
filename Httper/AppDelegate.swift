@@ -10,7 +10,6 @@ import UIKit
 import CoreData
 import Alamofire
 import FacebookCore
-import Sentry
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,27 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         appUpdate()
-        
-        // MARK: Sentry Logging
-        // Create a Sentry client and start crash handler
-        do {
-            Client.shared = try Client(dsn: "")
-            try Client.shared?.startCrashHandler()
-        } catch let error {
-            print("\(error)")
-            // Wrong DSN or KSCrash not installed
-        }
-        
-        // Sentry Checking: Forced crash to get the crash in sentry dashboard
-//        Client.shared?.crash()
-        
-        // Sentry Checking: Message as event to check in sentry dashboard
-//        let event = Event(level: .debug)
-//        event.message = "Test Message"
-//        event.environment = "staging ios app"
-//        event.extra = ["ios": true]
-//        Client.shared?.send(event: event)
-
         
         // Pull updated requests and push local requests(if exist) when user login.
         let user = UserManager.sharedInstance

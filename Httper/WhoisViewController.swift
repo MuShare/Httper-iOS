@@ -64,7 +64,8 @@ class WhoisViewController: UIViewController, UITextFieldDelegate {
         loadingActivityIndicatorView.startAnimating()
         Alamofire.request(whoisUrl + "/whois/" + domainTextField.text!).responseString { response in
             var html = "<meta name='format-detection' content='telephone=no'/>" + self.css
-            if let doc = HTML(html: response.result.value!, encoding: .utf8) {
+            let doc = try? HTML(html: response.result.value!, encoding: .utf8)
+            if let doc = doc {
                 for link in doc.css(".df-block") {
                     html += link.toHTML!
                 }

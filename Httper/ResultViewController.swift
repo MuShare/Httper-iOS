@@ -134,11 +134,11 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
         }
     }
     
-    func currentPageChanged(notification: Notification) {
+    @objc func currentPageChanged(notification: Notification) {
         styleSegmentedControl.selectedSegmentIndex = notification.object as! Int
     }
     
-    func showRequestInfo() {
+    @objc func showRequestInfo() {
         self.performSegue(withIdentifier: "requestInfoSegue", sender: self)
     }
     
