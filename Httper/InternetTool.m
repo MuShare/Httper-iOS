@@ -29,7 +29,7 @@
 #import  <sys/sysctl.h>
 
 #if TARGET_IPHONE_SIMULATOR
-#include <net/route.h>
+#include "route_simulator.h"
 #else
 #include "route.h"  /*the very same from google-code*/
 #endif
