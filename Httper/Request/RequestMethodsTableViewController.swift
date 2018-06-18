@@ -38,9 +38,11 @@ class RequestMethodsTableViewController: UITableViewController {
     // MARK: - UITableViewDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let length = self.navigationController?.viewControllers.count
-        let controller = self.navigationController?.viewControllers[length! - 2]
-        controller?.setValue(methods[indexPath.row], forKey: "method")
-        _ = self.navigationController?.popViewController(animated: true)
+        if let controller = self.navigationController?.viewControllers[length! - 2] {
+            let requestViewController = controller as! RequestViewController
+            requestViewController.method = methods[indexPath.row]
+            navigationController?.popViewController(animated: true)
+        }
     }
 
 }

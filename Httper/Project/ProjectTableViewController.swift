@@ -187,12 +187,19 @@ class ProjectTableViewController: UITableViewController {
         if segue.identifier == "projectHistorySegue" {
             // Pop history view controller to this view controller.
             segue.destination.setValue(false, forKey: "push")
-        } else if segue.identifier == "projectRequestSegue" {
-            segue.destination.setValue(selectedRequest, forKey: "request")
-        } else if segue.identifier == "projectNameSegue" {
-            segue.destination.setValue(project, forKey: "project")
-        } else if segue.identifier == "introductionSegue" {
-            segue.destination.setValue(project, forKey: "project")
+        } 
+        switch segue.identifier {
+        case R.segue.projectTableViewController.projectRequestSegue.identifier:
+            let destination = segue.destination as! RequestViewController
+            destination.request = selectedRequest
+        case R.segue.projectTableViewController.projectNameSegue.identifier:
+            let destination = segue.destination as! ProjectNameViewController
+            destination.project = project
+        case R.segue.projectTableViewController.introductionSegue.identifier:
+            let destination = segue.destination as! ProjectIntroductionViewController
+            destination.project = project
+        default:
+            break
         }
     }
 

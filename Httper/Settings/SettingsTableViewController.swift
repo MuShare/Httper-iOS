@@ -38,7 +38,7 @@ class SettingsTableViewController: UITableViewController {
         } else {
             loginOrUserinfoButton.setTitle(R.string.localizable.sign_in_sign_up(),
                                            for: .normal)
-            avatarImageView.image = UIImage(named: "signin")
+            avatarImageView.image = R.image.signin()
             emailLabel.isHidden = true
         }
     }
@@ -55,19 +55,19 @@ class SettingsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)!
-        if cell.reuseIdentifier == nil {
+        guard let cell = tableView.cellForRow(at: indexPath) else {
             return
         }
-        let identifier = cell.reuseIdentifier!
-        if identifier == "appstore" {
+        switch cell.reuseIdentifier {
+        case R.reuseIdentifier.appstore.identifier:
             UIApplication.shared.openURL(URL.init(string: "itms-apps://itunes.apple.com/app/httper/id1166884043")!)
-        } else if identifier == "github" {
+        case R.reuseIdentifier.github.identifier:
             UIApplication.shared.openURL(URL.init(string: "https://github.com/lm2343635/Httper")!)
-        } else if identifier == "about" {
+        case R.reuseIdentifier.about.identifier:
             UIApplication.shared.openURL(URL.init(string: "http://httper.mushare.cn")!)
+        default:
+            break
         }
-        
     }
     
     // MARK: - Action

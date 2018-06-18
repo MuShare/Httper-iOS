@@ -13,11 +13,12 @@ target 'Httper' do
     pod 'FacebookLogin', '~> 0.2'
     pod 'ReachabilitySwift', '~> 3'
     pod 'SwiftyUserDefaults', '~> 3'
-    pod 'SwiftyJSON', '~> 3.1'
+    pod 'SwiftyJSON', '~> 4'
     pod 'NVActivityIndicatorView', '~> 4'
     pod 'Kingfisher', '~> 4'
     pod 'UIImageView+Extension', '~> 0.2'
     pod 'R.swift', '~> 4.0'
+    pod 'MGFormatter', '~> 0.1'
 end
 
 post_install do |installer|

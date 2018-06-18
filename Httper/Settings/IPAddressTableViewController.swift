@@ -54,7 +54,7 @@ class IPAddressTableViewController: UITableViewController {
             self.loadingActivityIndicatorView.stopAnimating()
         } else {
             Alamofire.request(ipInfoUrl).responseJSON { response in
-                self.ipInfo = response.result.value as! Dictionary<String, Any>!
+                self.ipInfo = response.result.value as! Dictionary<String, Any>?
                 
                 if (self.ipInfo["ip"] != nil) {
                     self.publicIPLabel.text = self.ipInfo["ip"]! as? String
@@ -78,8 +78,12 @@ class IPAddressTableViewController: UITableViewController {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "detailIPInfoSegue" {
-            segue.destination.setValue(ipInfo, forKey: "ipInfo")
+        switch segue.identifier {
+        case R.segue.ipAddressTableViewController.detailIPInfoSegue.identifier:
+            let destination = segue.destination as! DetailIPInformationTableViewController
+            destination.ipInfo = ipInfo
+        default:
+            break
         }
     }
     

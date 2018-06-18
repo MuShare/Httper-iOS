@@ -38,13 +38,6 @@ class LoginViewController: EditingViewController, NVActivityIndicatorViewable {
     override func viewDidLayoutSubviews() {
         self.shownHeight = loginButton.frame.minY
     }
-
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
     
     // MARK: - Action
     @IBAction func close(_ sender: Any) {

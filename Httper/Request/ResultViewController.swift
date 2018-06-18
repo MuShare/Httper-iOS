@@ -72,8 +72,12 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
     
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "requestInfoSegue" {
-            segue.destination.setValue(httpURLResponse, forKey: "response")
+        switch segue.identifier {
+        case R.segue.resultViewController.requestInfoSegue.identifier:
+            let destination = segue.destination as! ResponseInfoTableViewController
+            destination.response = httpURLResponse
+        default:
+            break
         }
     }
     

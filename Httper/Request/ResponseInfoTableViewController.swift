@@ -27,9 +27,13 @@ class ResponseInfoTableViewController: UITableViewController {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "responseHeaderSegue" {
-            segue.destination.setValue(selectedKey, forKey: "headerKey")
-            segue.destination.setValue(selectedValue, forKey: "headerValue")
+        switch segue.identifier {
+        case R.segue.responseInfoTableViewController.responseHeaderSegue.identifier:
+            let destination = segue.destination as! ResponseHeaderViewController
+            destination.headerKey = selectedKey
+            destination.headerValue = selectedValue
+        default:
+            break
         }
     }
 

@@ -297,21 +297,26 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "resultSegue" {
-            segue.destination.setValue(method, forKey: "method")
-            segue.destination.setValue("\(protocolLabel.text!)\(urlTextField.text!)", forKey: "url")
-            segue.destination.setValue(headers, forKey: "headers")
-            segue.destination.setValue(parameters, forKey: "parameters")
-            segue.destination.setValue(body, forKey: "body")
-        } else if segue.identifier == "requestBodySegue" {
-            segue.destination.setValue(body, forKey: "body")
-        } else if segue.identifier == "requestMethodSegue" {
+        switch segue.identifier {
+        case R.segue.requestViewController.resultSegue.identifier:
+            let destination = segue.destination as! ResultViewController
+            destination.method = method
+            destination.url = "\(protocolLabel.text!)\(urlTextField.text!)"
+            destination.headers = headers
+            destination.parameters = parameters
+            destination.body = body
+        case R.segue.requestViewController.requestBodySegue.identifier:
+            let destination = segue.destination as! RequestBodyViewController
+            destination.body = body
+        case R.segue.requestViewController.requestMethodSegue.identifier:
             if editingTextField == nil {
                 return
             }
             if editingTextField.isFirstResponder {
                 editingTextField.resignFirstResponder()
             }
+        default:
+            break
         }
     }
     

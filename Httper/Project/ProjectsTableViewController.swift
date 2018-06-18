@@ -53,7 +53,7 @@ class ProjectsTableViewController: UITableViewController {
     // MARK: - UITableViewDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedProject = projects[indexPath.row]
-        self.performSegue(withIdentifier: "projectSegue", sender: self)
+        self.performSegue(withIdentifier: R.segue.projectsTableViewController.projectSegue, sender: self)
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -68,8 +68,12 @@ class ProjectsTableViewController: UITableViewController {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "projectSegue" {
-            segue.destination.setValue(selectedProject, forKey: "project")
+        switch segue.identifier {
+        case R.segue.projectsTableViewController.projectSegue.identifier:
+            let destination = segue.destination as! ProjectTableViewController
+            destination.project = selectedProject
+        default:
+            break
         }
     }
     
