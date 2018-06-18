@@ -36,9 +36,8 @@ class NameViewController: UIViewController, UITextFieldDelegate, NVActivityIndic
     // MARK: - Action
     @IBAction func save(_ sender: Any) {
         if nameTextField.text == "" {
-            showAlert(title: NSLocalizedString("tip_name", comment: ""),
-                      content: NSLocalizedString("name_not_empty", comment: ""),
-                      controller: self)
+            showAlert(title: R.string.localizable.tip_name(),
+                      content: R.string.localizable.name_not_empty())
             return
         }
         
@@ -48,9 +47,7 @@ class NameViewController: UIViewController, UITextFieldDelegate, NVActivityIndic
             if success {
                 _ = self.navigationController?.popViewController(animated: true)
             } else {
-                showAlert(title: NSLocalizedString("tip_name", comment: ""),
-                          content: tip!,
-                          controller: self)
+                self.showAlert(title: R.string.localizable.tip_name(), content: tip!)
             }
         }
 

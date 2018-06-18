@@ -107,3 +107,5 @@ delete_project_message = "Are you sure to delete project ";
 delete_request_confirm = "Are you sure to delete request ";
 
 add_character = "Add Customized Character";
+
+name_not_empty = "Name is empty!";

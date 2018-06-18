@@ -50,15 +50,13 @@ class RegisterViewController: EditingViewController, NVActivityIndicatorViewable
             return
         }
         if emailTextField.text == "" || usernameTextField.text == "" || passwordTextField.text == "" {
-            showAlert(title: NSLocalizedString("tip_name", comment: ""),
-                      content: NSLocalizedString("register_not_validate", comment: ""),
-                      controller: self)
+            showAlert(title: R.string.localizable.tip_name(),
+                      content: R.string.localizable.register_not_validate())
             return
         }
         if !isEmailAddress(emailTextField.text!) {
-            showAlert(title: NSLocalizedString("tip_name", comment: ""),
-                      content: NSLocalizedString("email_invalidate", comment: ""),
-                      controller: self)
+            showAlert(title: R.string.localizable.tip_name(),
+                      content: R.string.localizable.email_invalidate())
             return
         }
         
@@ -75,11 +73,9 @@ class RegisterViewController: EditingViewController, NVActivityIndicatorViewable
                 self.passwordTextField.isHidden = true
                 self.usernameTextField.isHidden = true
                 self.registerSuccessImageView.isHidden = false
-                self.registerButton.setTitle(NSLocalizedString("back_to_login", comment: ""), for: .normal)
+                self.registerButton.setTitle(R.string.localizable.back_to_login(), for: .normal)
             } else {
-                showAlert(title: NSLocalizedString("tip", comment: ""),
-                          content: tip!,
-                          controller: self)
+                self.showAlert(title: R.string.localizable.tip_name(), content: tip!)
             }
         }
     }

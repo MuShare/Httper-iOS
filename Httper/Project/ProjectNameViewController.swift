@@ -25,9 +25,9 @@ class ProjectNameViewController: UIViewController {
 
     @IBAction func saveProjectName(_ sender: Any) {
         if projectNameTextField.text == "" {
-            showAlert(title: NSLocalizedString("tip_name", comment: ""),
-                      content: NSLocalizedString("project_name_empty", comment: ""),
-                      controller: self)
+            showAlert(title: R.string.localizable.tip_name(),
+                      content: R.string.localizable.project_name_empty())
+
         }
         // Save project name to persistent store, and set project revision to 0.
         project.pname = projectNameTextField.text

@@ -140,9 +140,9 @@ class UserManager {
                 } else {
                     switch response.errorCode() {
                     case .emailRegistered:
-                        completion?(false, NSLocalizedString("email_registered", comment: ""))
+                        completion?(false, R.string.localizable.email_registered())
                     default:
-                        completion?(false, NSLocalizedString("error_unknown", comment: ""))
+                        completion?(false, R.string.localizable.error_unknown())
                     }
                 }
         }
@@ -181,11 +181,11 @@ class UserManager {
                 } else {
                     switch response.errorCode() {
                     case .emailNotExist:
-                        completion?(false, NSLocalizedString("email_not_exist", comment: ""))
+                        completion?(false, R.string.localizable.email_not_exist())
                     case .passwordWrong:
-                        completion?(false, NSLocalizedString("password_wrong", comment: ""))
+                        completion?(false, R.string.localizable.password_wrong())
                     default:
-                        completion?(false, NSLocalizedString("error_unknown", comment: ""))
+                        completion?(false, R.string.localizable.error_unknown())
                     }
                 }
         }
@@ -221,9 +221,9 @@ class UserManager {
             } else {
                 switch response.errorCode() {
                 case .accessTokenInvalid:
-                    completion?(false, NSLocalizedString("facebook_oauth_error", comment: ""))
+                    completion?(false, R.string.localizable.facebook_oauth_error())
                 default:
-                    completion?(false, NSLocalizedString("error_unknown", comment: ""))
+                    completion?(false, R.string.localizable.error_unknown())
                 }
             }
         })
@@ -246,11 +246,11 @@ class UserManager {
                 } else {
                     switch response.errorCode() {
                     case .emailNotExist:
-                        completion?(false, NSLocalizedString("email_not_exist", comment: ""))
+                        completion?(false, R.string.localizable.email_not_exist())
                     case .sendResetPasswordMail:
-                        completion?(false, NSLocalizedString("reset_password_failed", comment: ""))
+                        completion?(false, R.string.localizable.reset_password_failed())
                     default:
-                        completion?(false, NSLocalizedString("error_unknown", comment: ""))
+                        completion?(false, R.string.localizable.error_unknown())
                     }
                 }
         }
@@ -274,9 +274,9 @@ class UserManager {
                 } else {
                     switch response.errorCode() {
                     case .tokenError:
-                        completion?(false, NSLocalizedString("token_error", comment: ""))
+                        completion?(false, R.string.localizable.token_error())
                     default:
-                        completion?(false, NSLocalizedString("error_unknown", comment: ""))
+                        completion?(false, R.string.localizable.error_unknown())
                     }
                 }
         }

@@ -46,7 +46,7 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
         pageViewController.dataSource = self
         
         // Show loading activity idicator.
-        replaceBarButtonItemWithActivityIndicator(controller: self)
+        replaceBarButtonItemWithActivityIndicator()
         
         sendRequest()
     }
@@ -151,9 +151,7 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
                           headers: headers)
             .response { response in
                 if response.response == nil {
-                    showAlert(title: NSLocalizedString("tip", comment: ""),
-                              content: NSLocalizedString("cannot_access", comment: ""),
-                              controller: self)
+                    self.showAlert(title: R.string.localizable.tip_name(), content: R.string.localizable.cannot_access())
                     return
                 }
                 

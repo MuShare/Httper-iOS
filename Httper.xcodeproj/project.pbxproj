@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4F51F2CAB45DDC76A9F169B1 /* Pods_Httper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5637677047F4C4B6CA981D18 /* Pods_Httper.framework */; };
+		774C75EE20D7940200DBD9EC /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774C75ED20D7940200DBD9EC /* UIViewController+Extension.swift */; };
+		774C75F020D795EE00DBD9EC /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774C75EF20D795EE00DBD9EC /* R.generated.swift */; };
 		E4007EB91DFEE7B7002A87FA /* RequestBodyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4007EB81DFEE7B7002A87FA /* RequestBodyViewController.swift */; };
 		E40B257E1DF44BD20039CA8D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40B257D1DF44BD20039CA8D /* MainViewController.swift */; };
 		E41642D31DF970CE00F0339E /* CommonTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41642D21DF970CE00F0339E /* CommonTool.swift */; };
@@ -90,6 +92,8 @@
 		4787A86C21239A8AA4ADE88E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		4F2FE7831EA2CA12EBD27AA5 /* Pods-Httper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Httper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Httper/Pods-Httper.debug.xcconfig"; sourceTree = "<group>"; };
 		5637677047F4C4B6CA981D18 /* Pods_Httper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Httper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		774C75ED20D7940200DBD9EC /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		774C75EF20D795EE00DBD9EC /* R.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		7EBC322CA510BFBBFF4AB72E /* Pods-Httper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Httper.release.xcconfig"; path = "Pods/Target Support Files/Pods-Httper/Pods-Httper.release.xcconfig"; sourceTree = "<group>"; };
 		E4007EB81DFEE7B7002A87FA /* RequestBodyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestBodyViewController.swift; sourceTree = "<group>"; };
 		E400D3C220C1BEF100B2BC7F /* route_simulator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = route_simulator.h; sourceTree = "<group>"; };
@@ -249,6 +253,7 @@
 		774C75E620D791E400DBD9EC /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				774C75EC20D793D000DBD9EC /* Extension */,
 				E41642D21DF970CE00F0339E /* CommonTool.swift */,
 				E4798BDE1E2BC92600DCD4E2 /* EditingViewController.swift */,
 				E4305A371E2E5FF900010B52 /* Global.swift */,
@@ -282,7 +287,6 @@
 		774C75E920D7923B00DBD9EC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E41642D11DF96F6800F0339E /* Httper-Bridging-Header.h */,
 				E431C4AB1DF72172006BB2D6 /* Localizable.strings */,
 				E4DE76921E1D2AB0002A8385 /* login-bg-iPad.jpg */,
 				E4DE76951E1D3DAE002A8385 /* login-bg.jpg */,
@@ -318,6 +322,14 @@
 				E48D415B1D444F3F0028B84F /* Main.storyboard */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		774C75EC20D793D000DBD9EC /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				774C75ED20D7940200DBD9EC /* UIViewController+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		A8EB941CC2B91E61E832B80C /* Pods */ = {
@@ -373,7 +385,9 @@
 				774C75EA20D7927F00DBD9EC /* Settings */,
 				774C75EB20D7929E00DBD9EC /* Storyboard */,
 				774C75E920D7923B00DBD9EC /* Supporting Files */,
+				E41642D11DF96F6800F0339E /* Httper-Bridging-Header.h */,
 				E48D41571D444F3F0028B84F /* AppDelegate.swift */,
+				774C75EF20D795EE00DBD9EC /* R.generated.swift */,
 				E48D41611D444F3F0028B84F /* Assets.xcassets */,
 				E48D41661D444F3F0028B84F /* Info.plist */,
 			);
@@ -406,11 +420,11 @@
 			buildConfigurationList = E48D417F1D444F3F0028B84F /* Build configuration list for PBXNativeTarget "Httper" */;
 			buildPhases = (
 				B34714CFC077D59594A73EA9 /* [CP] Check Pods Manifest.lock */,
+				3698EC3B1F879B5B0017C7D9 /* ShellScript */,
 				E48D41501D444F3F0028B84F /* Sources */,
 				E48D41511D444F3F0028B84F /* Frameworks */,
 				E48D41521D444F3F0028B84F /* Resources */,
 				5FBDFA7A01C00541D71051CF /* [CP] Embed Pods Frameworks */,
-				3698EC3B1F879B5B0017C7D9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -550,7 +564,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "";
+			shellScript = "$PODS_ROOT/R.swift/rswift generate ${SRCROOT}/${TARGET_NAME}";
 		};
 		5FBDFA7A01C00541D71051CF /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -571,6 +585,7 @@
 				"${BUILT_PRODUCTS_DIR}/M80AttributedLabel/M80AttributedLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/MGKeyboardAccessory/MGKeyboardAccessory.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/ReachabilitySwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyUserDefaults/SwiftyUserDefaults.framework",
@@ -592,6 +607,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/M80AttributedLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MGKeyboardAccessory.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReachabilitySwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyUserDefaults.framework",
@@ -656,6 +672,7 @@
 				E4305A3A1E2F11EB00010B52 /* ProfileTableViewController.swift in Sources */,
 				E47FDC651E38697600251EEC /* SyncManager.swift in Sources */,
 				E4F95CD61E15685A005A0004 /* WhoisViewController.swift in Sources */,
+				774C75F020D795EE00DBD9EC /* R.generated.swift in Sources */,
 				E47FDC601E3861AF00251EEC /* Versions.swift in Sources */,
 				E49BC0AC1E4226F400241004 /* Project+CoreDataProperties.swift in Sources */,
 				E48553341DF9B2BF00A1DB60 /* RawViewController.swift in Sources */,
@@ -675,6 +692,7 @@
 				E4BBC9931E4DCCBB002107DF /* NameViewController.swift in Sources */,
 				E4DE76911E1D2645002A8385 /* LoginViewController.swift in Sources */,
 				E4CA76131E3F7E1A008D7A52 /* AddProjectViewController.swift in Sources */,
+				774C75EE20D7940200DBD9EC /* UIViewController+Extension.swift in Sources */,
 				E49BC0AE1E4226F400241004 /* Request+CoreDataProperties.swift in Sources */,
 				E447287B1DF7CE80007D2C8B /* ResultViewController.swift in Sources */,
 			);
@@ -826,6 +844,7 @@
 			baseConfigurationReference = 4F2FE7831EA2CA12EBD27AA5 /* Pods-Httper.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -849,6 +868,7 @@
 			baseConfigurationReference = 7EBC322CA510BFBBFF4AB72E /* Pods-Httper.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

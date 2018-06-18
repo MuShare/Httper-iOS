@@ -17,6 +17,7 @@ target 'Httper' do
     pod 'NVActivityIndicatorView', '~> 4'
     pod 'Kingfisher', '~> 4'
     pod 'UIImageView+Extension', '~> 0.2'
+    pod 'R.swift', '~> 4.0'
 end
 
 post_install do |installer|

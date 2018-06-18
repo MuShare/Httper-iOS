@@ -43,12 +43,12 @@ class RequestBodyViewController: UIViewController {
 
     // MARK: - Action
     @IBAction func cleatRequestBody(_ sender: Any) {
-        let alertController = UIAlertController(title: NSLocalizedString("tip_name", comment: ""),
-                                                message: NSLocalizedString("clear_request_body", comment: ""),
+        let alertController = UIAlertController(title: R.string.localizable.tip_name(),
+                                                message: R.string.localizable.clear_request_body(),
                                                 preferredStyle: .alert);
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("cancel_name", comment: ""),
+        alertController.addAction(UIAlertAction(title: R.string.localizable.cancel_name(),
                                                 style: .cancel, handler: nil))
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("yes_name", comment: ""),
+        alertController.addAction(UIAlertAction(title: R.string.localizable.yes_name(),
                                                 style: .destructive) { action in
             self.rawBodyTextView.text = ""
         })

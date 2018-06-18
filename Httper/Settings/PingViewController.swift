@@ -85,16 +85,14 @@ class PingViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         //Check Internet state.
         if reachability.currentReachabilityStatus == .notReachable {
-            showAlert(title: NSLocalizedString("tip", comment: ""),
-                      content: NSLocalizedString("not_internet_connection", comment: ""),
-                      controller: self)
+            showAlert(title: R.string.localizable.tip_name(),
+                      content: R.string.localizable.not_internet_connection())
             return
         }
         
         if addressTextField.text == "" {
-            showAlert(title: NSLocalizedString("tip_name", comment: ""),
-                      content: NSLocalizedString("address_empty", comment: ""),
-                      controller: self)
+            showAlert(title: R.string.localizable.tip_name(),
+                      content: R.string.localizable.address_empty())
             return
         }
         if pingService == nil {

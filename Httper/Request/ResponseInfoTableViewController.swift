@@ -68,11 +68,11 @@ class ResponseInfoTableViewController: UITableViewController {
             let label = UILabel(frame: CGRect(x: 15, y: 0, width: headerView.bounds.size.width - headerView.bounds.size.height, height: headerView.bounds.size.height))
             label.textColor = UIColor.white
             if section == 0 {
-                label.text = NSLocalizedString("request_url", comment: "")
+                label.text = R.string.localizable.request_url()
             } else if section == 1 {
-                label.text = NSLocalizedString("status", comment: "")
+                label.text = R.string.localizable.status()
             } else if section == 2 {
-                label.text = NSLocalizedString("response_headers", comment: "")
+                label.text = R.string.localizable.response_headers()
             }
             return label
         }()
@@ -116,7 +116,7 @@ class ResponseInfoTableViewController: UITableViewController {
             let keyLabel: UILabel = cell.viewWithTag(1) as! UILabel
             let valueLabel: UILabel = cell.viewWithTag(2) as! UILabel
             if indexPath.section == 1 {
-                keyLabel.text = NSLocalizedString("status_code", comment: "")
+                keyLabel.text = R.string.localizable.status_code()
                 valueLabel.text = response.statusCode.description
             } else if indexPath.section == 2 {
                 keyLabel.text = headerKeys[indexPath.row]

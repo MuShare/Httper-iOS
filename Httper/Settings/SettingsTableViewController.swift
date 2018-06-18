@@ -36,7 +36,7 @@ class SettingsTableViewController: UITableViewController {
                 avatarImageView.kf.setImage(with: imageURL(user.avatar))
             }
         } else {
-            loginOrUserinfoButton.setTitle(NSLocalizedString("sign_in_sign_up", comment: ""),
+            loginOrUserinfoButton.setTitle(R.string.localizable.sign_in_sign_up(),
                                            for: .normal)
             avatarImageView.image = UIImage(named: "signin")
             emailLabel.isHidden = true

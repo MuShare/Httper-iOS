@@ -22,7 +22,7 @@ class ProfileTableViewController: UITableViewController {
         if user.type == UserTypeEmail {
             emailLabel.text = user.email
         } else {
-            emailLabel.text = NSLocalizedString("sign_in_facebook", comment: "")
+            emailLabel.text = R.string.localizable.sign_in_facebook()
         }
     }
     
@@ -46,17 +46,17 @@ class ProfileTableViewController: UITableViewController {
         }
         let identifier = cell.reuseIdentifier!
         if identifier == "logout" {
-            let alertController = UIAlertController.init(title: NSLocalizedString("sign_out_title", comment: ""),
-                                                         message: NSLocalizedString("sign_out_message", comment: ""),
+            let alertController = UIAlertController.init(title: R.string.localizable.sign_out_title(),
+                                                         message: R.string.localizable.sign_out_message(),
                                                          preferredStyle: .actionSheet)
-            let logout = UIAlertAction.init(title: NSLocalizedString("sign_out_title", comment: ""),
+            let logout = UIAlertAction.init(title: R.string.localizable.sign_out_title(),
                                             style: .destructive,
                                             handler:
             { (action) in
                 self.user.logout()
                 _ = self.navigationController?.popViewController(animated: true)
             })
-            let cancel = UIAlertAction.init(title: NSLocalizedString("cancel_name", comment: ""),
+            let cancel = UIAlertAction.init(title: R.string.localizable.cancel_name(),
                                             style: .cancel,
                                             handler: nil)
             alertController.addAction(logout)

@@ -25,13 +25,12 @@ class AddProjectViewController: UIViewController {
     // MARK: - Action
     @IBAction func saveProject(_ sender: Any) {
         if projectNameTextField.text == "" {
-            showAlert(title: NSLocalizedString("tip_name", comment: ""),
-                      content: NSLocalizedString("add_project_error", comment: ""),
-                      controller: self)
+            showAlert(title: R.string.localizable.tip_name(),
+                      content: R.string.localizable.add_project_error())
             return
         }
         
-        replaceBarButtonItemWithActivityIndicator(controller: self)
+        replaceBarButtonItemWithActivityIndicator()
         _ = dao.projectDao.save(pname: projectNameTextField.text!,
                                 privilege: "private",
                                 introduction: introudctionTextView.text!)

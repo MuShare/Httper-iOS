@@ -44,20 +44,20 @@ class KeyboardAccessoryCollectionViewController: UICollectionViewController, UIC
     // MARK: - Action
     
     @IBAction func addCharacter(_ sender: Any) {
-        let alertController = UIAlertController(title: NSLocalizedString("add_character", comment: ""),
+        let alertController = UIAlertController(title: R.string.localizable.add_character(),
                                                 message: nil,
                                                 preferredStyle: .alert)
         alertController.addTextField { (textField) in
             textField.textAlignment = .center
         }
-        let addAction = UIAlertAction(title: NSLocalizedString("ok_name", comment: ""), style: .default, handler: { (action) in
+        let addAction = UIAlertAction(title: R.string.localizable.ok_name(), style: .default, handler: { (action) in
             let character = (alertController.textFields?[0].text)!
             if character != "" {
                 self.user.characters?.append(character)
                 self.collectionView?.reloadData()
             }
         })
-        let cancelAction = UIAlertAction(title: NSLocalizedString("cancel_name", comment: ""), style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: R.string.localizable.cancel_name(), style: .cancel, handler: nil)
         alertController.addAction(addAction)
         alertController.addAction(cancelAction)
         present(alertController, animated: true, completion: nil)

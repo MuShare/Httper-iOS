@@ -139,14 +139,14 @@ class ProjectTableViewController: UITableViewController {
         let indexPath = self.tableView.indexPath(for: cell)!
         let url = (cell.viewWithTag(1) as! UILabel).text!
         let method = (cell.viewWithTag(2) as! UILabel).text!
-        let message = NSLocalizedString("delete_request_confirm", comment: "") + url + "(" + method + ")"
-        let alertController = UIAlertController(title: NSLocalizedString("tip_name", comment: ""),
+        let message = R.string.localizable.delete_request_confirm() + url + "(" + method + ")"
+        let alertController = UIAlertController(title: R.string.localizable.tip_name(),
                                                 message: message,
                                                 preferredStyle: .alert)
-        let cancel = UIAlertAction(title: NSLocalizedString("cancel_name", comment: ""),
+        let cancel = UIAlertAction(title: R.string.localizable.cancel_name(),
                                    style: .cancel,
                                    handler: nil)
-        let confirm = UIAlertAction(title: NSLocalizedString("yes_name", comment: ""),
+        let confirm = UIAlertAction(title: R.string.localizable.yes_name(),
                                     style: .destructive) { (action) in
             // Remove request from table view.
             self.requests.remove(at: indexPath.row)
@@ -162,17 +162,17 @@ class ProjectTableViewController: UITableViewController {
     }
     
     @IBAction func deleteProject(_ sender: UIButton) {
-        let alertController = UIAlertController(title: NSLocalizedString("delete_project", comment: ""),
-                                                message: NSLocalizedString("delete_project_message", comment: ""),
+        let alertController = UIAlertController(title: R.string.localizable.delete_project(),
+                                                message: R.string.localizable.delete_project_message(),
                                                 preferredStyle: .actionSheet)
-        let confirm = UIAlertAction(title: NSLocalizedString("yes_name", comment: ""),
+        let confirm = UIAlertAction(title: R.string.localizable.yes_name(),
                                     style: .destructive) { (action) in
             // Remove it from persistent store and server.
             self.sync.deleteProject(self.project, completionHandler: { (revision) in
                 self.navigationController?.popViewController(animated: true)
             })
         }
-        let cancel = UIAlertAction(title: NSLocalizedString("cancel_name", comment: ""),
+        let cancel = UIAlertAction(title: R.string.localizable.cancel_name(),
                                    style: .cancel,
                                    handler: nil)
         alertController.addAction(confirm)

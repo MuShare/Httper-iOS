@@ -49,7 +49,7 @@ class IPAddressTableViewController: UITableViewController {
         
         //Check Internet state
         if reachability.currentReachabilityStatus == .notReachable {
-            self.publicIPLabel.text = NSLocalizedString("not_internet_connection", comment: "")
+            self.publicIPLabel.text = R.string.localizable.not_internet_connection()
             self.publicIPLabel.isHidden = false
             self.loadingActivityIndicatorView.stopAnimating()
         } else {

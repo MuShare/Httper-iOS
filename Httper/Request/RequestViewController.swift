@@ -182,11 +182,11 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
             label.textColor = UIColor.white
             switch section {
             case 0:
-                label.text = NSLocalizedString("headers", comment: "")
+                label.text = R.string.localizable.headers()
             case 1:
-                label.text = NSLocalizedString("parameters", comment: "")
+                label.text = R.string.localizable.parameters()
             case 2:
-                label.text = NSLocalizedString("body", comment: "")
+                label.text = R.string.localizable.body()
             default:
                 break
             }
@@ -361,12 +361,12 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     @IBAction func celarRequest(_ sender: Any) {
-        let alertController = UIAlertController(title: NSLocalizedString("tip_name", comment: ""),
-                                                message: NSLocalizedString("clear_request", comment: ""),
+        let alertController = UIAlertController(title: R.string.localizable.tip_name(),
+                                                message: R.string.localizable.clear_request(),
                                                 preferredStyle: .alert);
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("cancel_name", comment: ""),
+        alertController.addAction(UIAlertAction(title: R.string.localizable.cancel_name(),
                                                 style: .cancel, handler: nil))
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("yes_name", comment: ""),
+        alertController.addAction(UIAlertAction(title: R.string.localizable.yes_name(),
                                                 style: .destructive) { action in
             if self.editingTextField != nil {
                 if self.editingTextField.isFirstResponder {
@@ -394,9 +394,8 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     //MARK: - Service
     func checkRequest() -> Bool {
         if urlTextField.text == "" {
-            showAlert(title: NSLocalizedString("tip_name", comment: ""),
-                      content: NSLocalizedString("url_empty", comment: ""),
-                      controller: self)
+            showAlert(title: R.string.localizable.tip_name(),
+                      content: R.string.localizable.url_empty())
             return false
         }
         
@@ -424,8 +423,8 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         /**
         Remove the limitation of header count and parameter count.
         if headerCount + parameterCount == 7 {
-            showAlert(title: NSLocalizedString("tip_name", comment: ""),
-                      content: NSLocalizedString("value_max", comment: ""),
+            showAlert(title: R.string.localizable.tip_name(),
+                      content: R.string.localizable.value_max(),
                       controller: self)
             return
         }
