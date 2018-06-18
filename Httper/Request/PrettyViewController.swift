@@ -33,10 +33,10 @@ class PrettyViewController: UIViewController, UIGestureRecognizerDelegate {
         
         view.addSubview(formatterView)
         formatterView.snp.makeConstraints {
-            $0.left.equalToSuperview()
-            $0.right.equalToSuperview()
+            $0.left.equalToSuperview().offset(5)
+            $0.right.equalToSuperview().offset(-5)
             $0.top.equalToSuperview()
-            $0.bottom.equalToSuperview().offset(-110)
+            $0.bottom.equalToSuperview()
         }
         
         let contentType = headers["Content-Type"] as? String

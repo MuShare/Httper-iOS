@@ -30,21 +30,21 @@ class IPAddressTableViewController: UITableViewController {
         super.viewDidLoad()
 
         let routeInfo = InternetTool.getRouterInfo()
-        let wifiInfo = routeInfo?.value(forKey: kTypeInfoKeyWifi)
-        let cellularInfo = routeInfo?.value(forKey: kTypeInfoKeyCellular)
 
-        if wifiInfo != nil {
-            let wifi = wifiInfo as! NSDictionary
-            wifiLocalLabel.text = wifi.value(forKey: "local")! as? String
-            wifiBroadcastLabel.text = wifi.value(forKey: "broadcast")! as? String
-            wifiGatewayLabel.text = wifi.value(forKey: "gateway")! as? String
-            wifiNetmaskLabel.text = wifi.value(forKey: "netmask")! as? String
+        
+
+        if let wifiInfo = routeInfo?.value(forKey: kTypeInfoKeyWifi) {
+            let wifi = wifiInfo as! [String: String]
+            wifiLocalLabel.text = wifi["local"]
+            wifiBroadcastLabel.text = wifi["broadcast"]
+            wifiGatewayLabel.text = wifi["gateway"]
+            wifiNetmaskLabel.text = wifi["netmask"]
         }
         
-        if cellularInfo != nil {
-            let cellular = cellularInfo as! NSDictionary
-            cellularLocalLabel.text = cellular.value(forKey: "local")! as? String
-            cellularNetmaskLabel.text = cellular.value(forKey: "netmask")! as? String
+        if let cellularInfo = routeInfo?.value(forKey: kTypeInfoKeyCellular) {
+            let cellular = cellularInfo as! [String: String]
+            cellularLocalLabel.text = cellular["local"]
+            cellularNetmaskLabel.text = cellular["netmask"]
         }
         
         //Check Internet state
