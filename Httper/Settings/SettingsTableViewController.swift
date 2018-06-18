@@ -72,11 +72,21 @@ class SettingsTableViewController: UITableViewController {
     
     // MARK: - Action
     @IBAction func showAvatar(_ sender: Any) {
-        performSegue(withIdentifier: user.login ? "profileSegue" : "loginSegue", sender: self)
+        showProfile()
+        
     }
     
     @IBAction func showUserInfo(_ sender: Any) {
-        performSegue(withIdentifier: user.login ? "profileSegue" : "loginSegue", sender: self)
+        showProfile()
     }
     
+    private func showProfile() {
+        if user.login {
+            performSegue(withIdentifier: R.segue.settingsTableViewController.profileSegue, sender: self)
+        } else {
+            if let loginViewController = R.storyboard.login().instantiateInitialViewController() {
+                present(loginViewController, animated: true)
+            }
+        }
+    }
 }
