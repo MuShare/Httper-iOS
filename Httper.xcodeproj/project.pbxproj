@@ -156,7 +156,7 @@
 		E4DE76981E1D3DF5002A8385 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		E4DE769A1E1E9FE2002A8385 /* register-bg-iPad.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "register-bg-iPad.jpg"; sourceTree = "<group>"; };
 		E4E297B01E00021500AD484E /* ResponseHeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseHeaderViewController.swift; sourceTree = "<group>"; };
-		E4EC89C11E1159A80072ACF3 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		E4EC89C11E1159A80072ACF3 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableViewController.swift; path = Httper/Settings/SettingsTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		E4EC89CF1E129FA10072ACF3 /* STDPingServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STDPingServices.h; sourceTree = "<group>"; };
 		E4EC89D01E129FA10072ACF3 /* STDPingServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STDPingServices.m; sourceTree = "<group>"; };
 		E4EC89D31E12A00C0072ACF3 /* IPAddressTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPAddressTableViewController.swift; sourceTree = "<group>"; };
@@ -195,26 +195,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A8EB941CC2B91E61E832B80C /* Pods */ = {
+		774C75DC20D790F300DBD9EC /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4787A86C21239A8AA4ADE88E /* Pods.debug.xcconfig */,
-				EF3A954FCEE5E084F25916CA /* Pods.release.xcconfig */,
-				4F2FE7831EA2CA12EBD27AA5 /* Pods-Httper.debug.xcconfig */,
-				7EBC322CA510BFBBFF4AB72E /* Pods-Httper.release.xcconfig */,
+				E49BC0A71E4226F400241004 /* Project+CoreDataClass.swift */,
+				E49BC0A81E4226F400241004 /* Project+CoreDataProperties.swift */,
+				E49BC0A91E4226F400241004 /* Request+CoreDataClass.swift */,
+				E49BC0AA1E4226F400241004 /* Request+CoreDataProperties.swift */,
+				E48D415E1D444F3F0028B84F /* Httper.xcdatamodeld */,
 			);
-			name = Pods;
+			path = Model;
 			sourceTree = "<group>";
 		};
-		D8CD94EBE26387F8C13A7757 /* Frameworks */ = {
+		774C75DD20D7911B00DBD9EC /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				5637677047F4C4B6CA981D18 /* Pods_Httper.framework */,
+				E47FDC641E38697600251EEC /* SyncManager.swift */,
+				E4D161F61ECEA16A009B1DD9 /* UserManager.swift */,
 			);
-			name = Frameworks;
+			path = Manager;
 			sourceTree = "<group>";
 		};
-		E4305A451E34F62F00010B52 /* Dao */ = {
+		774C75DE20D7912A00DBD9EC /* Dao */ = {
 			isa = PBXGroup;
 			children = (
 				E4A37A9C1E018D7500586BA1 /* RequestDao.swift */,
@@ -222,23 +224,29 @@
 				E4305A461E34F65000010B52 /* DaoManager.swift */,
 				E4305A481E34F8E100010B52 /* DaoTemplate.swift */,
 			);
-			name = Dao;
+			path = Dao;
 			sourceTree = "<group>";
 		};
-		E431C4AA1DF7215A006BB2D6 /* Supporting Files */ = {
+		774C75DF20D7915100DBD9EC /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				E41642D11DF96F6800F0339E /* Httper-Bridging-Header.h */,
-				E431C4AB1DF72172006BB2D6 /* Localizable.strings */,
-				E4DE76921E1D2AB0002A8385 /* login-bg-iPad.jpg */,
-				E4DE76951E1D3DAE002A8385 /* login-bg.jpg */,
-				E4DE769A1E1E9FE2002A8385 /* register-bg-iPad.jpg */,
-				E4DE76941E1D3DAE002A8385 /* register-bg.jpg */,
+				E40B257D1DF44BD20039CA8D /* MainViewController.swift */,
+				E48553311DF9B2AF00A1DB60 /* PrettyViewController.swift */,
+				E48553351DF9B2CF00A1DB60 /* PreviewViewController.swift */,
+				E48553331DF9B2BF00A1DB60 /* RawViewController.swift */,
+				E4007EB81DFEE7B7002A87FA /* RequestBodyViewController.swift */,
+				E431C4A81DF7179D006BB2D6 /* RequestMethodsTableViewController.swift */,
+				E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */,
+				E4E297B01E00021500AD484E /* ResponseHeaderViewController.swift */,
+				E42DDC831DFA8CB200FAD174 /* ResponseInfoTableViewController.swift */,
+				E447287A1DF7CE80007D2C8B /* ResultViewController.swift */,
+				E4CA760B1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift */,
+				E4B5F9E91EA78DA1000B8C6F /* SelectProjectTableViewController.swift */,
 			);
-			name = "Supporting Files";
+			path = Request;
 			sourceTree = "<group>";
 		};
-		E447287C1DF7D615007D2C8B /* Tool */ = {
+		774C75E620D791E400DBD9EC /* Library */ = {
 			isa = PBXGroup;
 			children = (
 				E41642D21DF970CE00F0339E /* CommonTool.swift */,
@@ -256,7 +264,79 @@
 				E4EC89D01E129FA10072ACF3 /* STDPingServices.m */,
 				E47FDC5F1E3861AF00251EEC /* Versions.swift */,
 			);
-			name = Tool;
+			path = Library;
+			sourceTree = "<group>";
+		};
+		774C75E820D7921500DBD9EC /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				E4CA760E1E3F73E3008D7A52 /* ProjectsTableViewController.swift */,
+				E4CA76121E3F7E1A008D7A52 /* AddProjectViewController.swift */,
+				E4D034481E4A0DB300580FAC /* ProjectTableViewController.swift */,
+				E4712ED71E55FC71002FF8E1 /* ProjectNameViewController.swift */,
+				E4712ED91E55FC81002FF8E1 /* ProjectIntroductionViewController.swift */,
+			);
+			path = Project;
+			sourceTree = "<group>";
+		};
+		774C75E920D7923B00DBD9EC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E41642D11DF96F6800F0339E /* Httper-Bridging-Header.h */,
+				E431C4AB1DF72172006BB2D6 /* Localizable.strings */,
+				E4DE76921E1D2AB0002A8385 /* login-bg-iPad.jpg */,
+				E4DE76951E1D3DAE002A8385 /* login-bg.jpg */,
+				E4DE769A1E1E9FE2002A8385 /* register-bg-iPad.jpg */,
+				E4DE76941E1D3DAE002A8385 /* register-bg.jpg */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		774C75EA20D7927F00DBD9EC /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E4F95CD91E16A7D3005A0004 /* DetailIPInformationTableViewController.swift */,
+				E4EC89D31E12A00C0072ACF3 /* IPAddressTableViewController.swift */,
+				E48BF6541F3DAA0D00F567FC /* KeyboardAccessoryCollectionViewController.swift */,
+				E4DE76901E1D2644002A8385 /* LoginViewController.swift */,
+				E4BBC9921E4DCCBB002107DF /* NameViewController.swift */,
+				E46077601E126948002DE839 /* PingViewController.swift */,
+				E4305A391E2F11EB00010B52 /* ProfileTableViewController.swift */,
+				E4DE76981E1D3DF5002A8385 /* RegisterViewController.swift */,
+				E4F16F611E4B685F00C17DA4 /* ResetViewController.swift */,
+				E4EC89C11E1159A80072ACF3 /* SettingsTableViewController.swift */,
+				E4F95CD71E1572FD005A0004 /* whois.css */,
+				E4F95CD51E15685A005A0004 /* WhoisViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		774C75EB20D7929E00DBD9EC /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				E48D41631D444F3F0028B84F /* LaunchScreen.storyboard */,
+				E48D415B1D444F3F0028B84F /* Main.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		A8EB941CC2B91E61E832B80C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4787A86C21239A8AA4ADE88E /* Pods.debug.xcconfig */,
+				EF3A954FCEE5E084F25916CA /* Pods.release.xcconfig */,
+				4F2FE7831EA2CA12EBD27AA5 /* Pods-Httper.debug.xcconfig */,
+				7EBC322CA510BFBBFF4AB72E /* Pods-Httper.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D8CD94EBE26387F8C13A7757 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5637677047F4C4B6CA981D18 /* Pods_Httper.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		E48D414B1D444F3F0028B84F = {
@@ -284,19 +364,18 @@
 		E48D41561D444F3F0028B84F /* Httper */ = {
 			isa = PBXGroup;
 			children = (
-				E4A37A8B1E0184ED00586BA1 /* Model */,
-				E4D161F51ECEA147009B1DD9 /* Manager */,
-				E4305A451E34F62F00010B52 /* Dao */,
-				E4D1CAE01DF5BFCF008DC4F9 /* Request */,
-				E4CA760D1E3F7058008D7A52 /* Project */,
-				E4EC89C01E1159560072ACF3 /* Settings */,
-				E447287C1DF7D615007D2C8B /* Tool */,
-				E431C4AA1DF7215A006BB2D6 /* Supporting Files */,
+				774C75DE20D7912A00DBD9EC /* Dao */,
+				774C75E620D791E400DBD9EC /* Library */,
+				774C75DD20D7911B00DBD9EC /* Manager */,
+				774C75DC20D790F300DBD9EC /* Model */,
+				774C75E820D7921500DBD9EC /* Project */,
+				774C75DF20D7915100DBD9EC /* Request */,
+				774C75EA20D7927F00DBD9EC /* Settings */,
+				774C75EB20D7929E00DBD9EC /* Storyboard */,
+				774C75E920D7923B00DBD9EC /* Supporting Files */,
 				E48D41571D444F3F0028B84F /* AppDelegate.swift */,
 				E48D41611D444F3F0028B84F /* Assets.xcassets */,
 				E48D41661D444F3F0028B84F /* Info.plist */,
-				E48D41631D444F3F0028B84F /* LaunchScreen.storyboard */,
-				E48D415B1D444F3F0028B84F /* Main.storyboard */,
 			);
 			path = Httper;
 			sourceTree = "<group>";
@@ -317,77 +396,6 @@
 				E48D417C1D444F3F0028B84F /* Info.plist */,
 			);
 			path = HttperUITests;
-			sourceTree = "<group>";
-		};
-		E4A37A8B1E0184ED00586BA1 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				E49BC0A71E4226F400241004 /* Project+CoreDataClass.swift */,
-				E49BC0A81E4226F400241004 /* Project+CoreDataProperties.swift */,
-				E49BC0A91E4226F400241004 /* Request+CoreDataClass.swift */,
-				E49BC0AA1E4226F400241004 /* Request+CoreDataProperties.swift */,
-				E48D415E1D444F3F0028B84F /* Httper.xcdatamodeld */,
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
-		E4CA760D1E3F7058008D7A52 /* Project */ = {
-			isa = PBXGroup;
-			children = (
-				E4CA760E1E3F73E3008D7A52 /* ProjectsTableViewController.swift */,
-				E4CA76121E3F7E1A008D7A52 /* AddProjectViewController.swift */,
-				E4D034481E4A0DB300580FAC /* ProjectTableViewController.swift */,
-				E4712ED71E55FC71002FF8E1 /* ProjectNameViewController.swift */,
-				E4712ED91E55FC81002FF8E1 /* ProjectIntroductionViewController.swift */,
-			);
-			name = Project;
-			sourceTree = "<group>";
-		};
-		E4D161F51ECEA147009B1DD9 /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				E47FDC641E38697600251EEC /* SyncManager.swift */,
-				E4D161F61ECEA16A009B1DD9 /* UserManager.swift */,
-			);
-			name = Manager;
-			sourceTree = "<group>";
-		};
-		E4D1CAE01DF5BFCF008DC4F9 /* Request */ = {
-			isa = PBXGroup;
-			children = (
-				E40B257D1DF44BD20039CA8D /* MainViewController.swift */,
-				E48553311DF9B2AF00A1DB60 /* PrettyViewController.swift */,
-				E48553351DF9B2CF00A1DB60 /* PreviewViewController.swift */,
-				E48553331DF9B2BF00A1DB60 /* RawViewController.swift */,
-				E4007EB81DFEE7B7002A87FA /* RequestBodyViewController.swift */,
-				E431C4A81DF7179D006BB2D6 /* RequestMethodsTableViewController.swift */,
-				E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */,
-				E4E297B01E00021500AD484E /* ResponseHeaderViewController.swift */,
-				E42DDC831DFA8CB200FAD174 /* ResponseInfoTableViewController.swift */,
-				E447287A1DF7CE80007D2C8B /* ResultViewController.swift */,
-				E4CA760B1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift */,
-				E4B5F9E91EA78DA1000B8C6F /* SelectProjectTableViewController.swift */,
-			);
-			name = Request;
-			sourceTree = "<group>";
-		};
-		E4EC89C01E1159560072ACF3 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				E4F95CD91E16A7D3005A0004 /* DetailIPInformationTableViewController.swift */,
-				E4EC89D31E12A00C0072ACF3 /* IPAddressTableViewController.swift */,
-				E48BF6541F3DAA0D00F567FC /* KeyboardAccessoryCollectionViewController.swift */,
-				E4DE76901E1D2644002A8385 /* LoginViewController.swift */,
-				E4BBC9921E4DCCBB002107DF /* NameViewController.swift */,
-				E46077601E126948002DE839 /* PingViewController.swift */,
-				E4305A391E2F11EB00010B52 /* ProfileTableViewController.swift */,
-				E4DE76981E1D3DF5002A8385 /* RegisterViewController.swift */,
-				E4F16F611E4B685F00C17DA4 /* ResetViewController.swift */,
-				E4EC89C11E1159A80072ACF3 /* SettingsTableViewController.swift */,
-				E4F95CD71E1572FD005A0004 /* whois.css */,
-				E4F95CD51E15685A005A0004 /* WhoisViewController.swift */,
-			);
-			name = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
