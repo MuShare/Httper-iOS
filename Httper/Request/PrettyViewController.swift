@@ -11,7 +11,7 @@ import M80AttributedLabel
 import Alamofire
 import MGFormatter
 
-class PrettyViewController: UIViewController, UIGestureRecognizerDelegate {
+class PrettyViewController: UIViewController {
     
     private lazy var formatterView = FormatterView()
     
@@ -38,21 +38,28 @@ class PrettyViewController: UIViewController, UIGestureRecognizerDelegate {
             $0.top.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
-        
-        let contentType = headers["Content-Type"] as? String
-        if contentType == nil {
-            formatterView.format(string: text, style: .dark)
-        } else if contentType!.contains("text/html") {
-            formatterView.format(string: text, style: .dark)
-        } else if contentType!.contains("application/json") {
-            formatterView.format(string: text, style: .dark)
-        }
 
+        format()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "currentPageChanged"), object: Style.pretty.rawValue)
+    }
+    
+    private func format() {
+        if let contentType = headers["Content-Type"] as? String {
+            if contentType.contains("text/html") {
+                formatterView.format(string: text, style: .htmlDark)
+                return
+            } else if contentType.contains("application/json") {
+                formatterView.format(string: text, style: .jsonDark)
+                return
+            }
+        }
+        
+        let style = FormatterStyle(font: UIFont.systemFont(ofSize: 12), lineSpacing: 5, type: .none(.white))
+        formatterView.format(string: text, style: style)
     }
     
 }

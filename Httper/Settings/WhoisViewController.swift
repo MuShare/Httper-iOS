@@ -24,8 +24,9 @@ class WhoisViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         do {
-            let cssPath = Bundle.main.path(forResource: "whois", ofType: "css")
-            css += try String(contentsOfFile: cssPath!, encoding: .utf8)
+            if let cssURL = R.file.whoisCss() {
+                css += try String(contentsOf: cssURL, encoding: .utf8)
+            }
         } catch let error {
             print("Failed reading, Error: " + error.localizedDescription)
         }

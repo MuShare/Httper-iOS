@@ -18,7 +18,7 @@ target 'Httper' do
     pod 'Kingfisher', '~> 4'
     pod 'UIImageView+Extension', '~> 0.2'
     pod 'R.swift', '~> 4.0'
-    pod 'MGFormatter', '~> 0.1'
+    pod 'MGFormatter', '~> 0.2'
 end
 
 post_install do |installer|
