@@ -364,7 +364,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
-    @IBAction func celarRequest(_ sender: Any) {
+    func clearRequest() {
         let alertController = UIAlertController(title: R.string.localizable.tip_name(),
                                                 message: R.string.localizable.clear_request(),
                                                 preferredStyle: .alert);

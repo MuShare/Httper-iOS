@@ -29,9 +29,9 @@ class MainViewController: UITabBarController {
                                                         image: R.image.tab_request(),
                                                         tag: 0)
         
-        let projectsTableViewController = R.storyboard.main.projectsTableViewController()!
-        projectsTableViewController.tabBarItem = UITabBarItem(title: R.string.localizable.tab_project(),
-                                                              image: R.image.tab_request(),
+        let projectsViewController = R.storyboard.main.projectsViewController()!
+        projectsViewController.tabBarItem = UITabBarItem(title: R.string.localizable.tab_project(),
+                                                              image: R.image.tab_project(),
                                                               tag: 1)
         
         let settingsTableViewController = R.storyboard.settings.settingsTableViewController()!
@@ -39,19 +39,36 @@ class MainViewController: UITabBarController {
                                                               image: R.image.tab_settings(),
                                                               tag: 2)
         
-        viewControllers = [requestViewController, projectsTableViewController, settingsTableViewController]
+        viewControllers = [requestViewController, projectsViewController, settingsTableViewController]
         updateNavigationBar(with: .request)
     }
     
     private func updateNavigationBar(with type: MainTabType) {
         switch type {
         case .request:
-            title = R.string.localizable.tab_request()
+            title = R.string.localizable.tab_request_title()
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(clearRequest))
         case .project:
-            title = R.string.localizable.tab_project()
+            title = R.string.localizable.tab_project_title()
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewProject))
         case .settings:
             title = ""
         }
+    }
+    
+    @objc private func addNewProject() {
+        guard let controller = selectedViewController, controller.isKind(of: ProjectsViewController.self) else {
+            return
+        }
+        controller.performSegue(withIdentifier: R.segue.projectsViewController.addProjectSegue.identifier, sender: controller)
+    }
+    
+    @objc private func clearRequest() {
+        guard let controller = selectedViewController, controller.isKind(of: RequestViewController.self) else {
+            return
+        }
+        let requestViewController = controller as! RequestViewController
+        requestViewController.clearRequest()
     }
     
 }
@@ -61,7 +78,7 @@ extension MainViewController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if viewController.isKind(of: RequestViewController.self) {
             updateNavigationBar(with: .request)
-        } else if viewController.isKind(of: ProjectsTableViewController.self) {
+        } else if viewController.isKind(of: ProjectsViewController.self) {
             updateNavigationBar(with: .project)
         } else if viewController.isKind(of: SettingsTableViewController.self) {
             updateNavigationBar(with: .settings)

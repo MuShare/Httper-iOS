@@ -128,7 +128,7 @@ class ProjectTableViewController: UITableViewController {
                 break
             }
         } else if indexPath.section == 1 {
-            selectedRequest = project.requests?[indexPath.row] as! Request!
+            selectedRequest = project.requests?[indexPath.row] as! Request?
             self.performSegue(withIdentifier: "projectRequestSegue", sender: self)
         }
     }
