@@ -91,15 +91,11 @@ class UserManager {
         }
     }
     
-    static let sharedInstance: UserManager = {
-        let instance = UserManager()
-        return instance
-    }()
+    static let sharedInstance = UserManager()
     
     init() {
         dao = DaoManager.sharedInstance
     }
-    
     
     func pullUser(_ completionHandler: ((Bool) -> Void)?) {
         Alamofire.request(createUrl("api/user"),

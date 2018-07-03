@@ -49,6 +49,10 @@ Upgrade = "Ask the server to upgrade to another protocol.";
 Via = "Informs the server of proxies through which the request was sent.";
 Warning = "A general warning about possible problems with the entity body.";
 
+tab_request = "Request";
+tab_project = "Project";
+tab_settings = "Settings";
+
 tip_name = "Tip";
 cancel_name = "Cancel";
 yes_name = "Yes";

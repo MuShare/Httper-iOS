@@ -190,7 +190,7 @@ class SyncManager {
                     case .tokenError:
                         // Delete local request entity if token is error,
                         // that means this entity cannot map with any entity in server.
-                        self.dao.context.delete(request)
+                        self.dao.managedObjectContext.delete(request)
                         self.dao.saveContext()
                     default:
                         break
@@ -300,7 +300,7 @@ class SyncManager {
     func deleteProject(_ project: Project, completionHandler: ((Int) -> Void)?) {
         // If this project entity is not sync with server, just delete it in local persistent store.
         if project.pid == nil && token() == nil  {
-            dao.context.delete(project)
+            dao.managedObjectContext.delete(project)
             dao.saveContext()
             return
         }
@@ -319,7 +319,7 @@ class SyncManager {
                 let revision = response.getResult()["revision"].intValue
                 updateProjectRevision(revision)
                 // Delete local project entity.
-                self.dao.context.delete(project)
+                self.dao.managedObjectContext.delete(project)
                 self.dao.saveContext()
                 // Completion
                 completionHandler?(revision)
@@ -328,7 +328,7 @@ class SyncManager {
                 case .tokenError:
                     // Delete local project entity if token is error,
                     // that means this entity cannot map with any entity in server.
-                    self.dao.context.delete(project)
+                    self.dao.managedObjectContext.delete(project)
                     self.dao.saveContext()
                 default:
                     break

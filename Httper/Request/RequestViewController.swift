@@ -26,7 +26,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     let dao = DaoManager.sharedInstance
     // Customized characters of keyboard accessory.
-    var characters: [String]!
+    let characters = UserManager.sharedInstance.characters!
     
     var headerCount = 1, parameterCount = 1
     var method: String = "GET"
@@ -62,8 +62,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        characters = UserManager.sharedInstance.characters!
+
         // Setup keyboard accessory.
         urlTextField.setupKeyboardAccessory(characters, barStyle: .black)
         for cell in valueTableView.visibleCells {
@@ -198,7 +197,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
             //Set button
             let addButton: UIButton = {
                 let button = UIButton(frame: CGRect(x: tableView.bounds.size.width - 35, y: 0, width: headerView.bounds.size.height, height: headerView.bounds.size.height))
-                button.setImage(UIImage.init(named: "add_value"), for: UIControlState.normal)
+                button.setImage(R.image.add_value(), for: UIControlState.normal)
                 button.tag = section
                 button.addTarget(self, action: #selector(addNewValue(_:)), for: .touchUpInside)
                 return button
