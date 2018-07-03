@@ -10,7 +10,7 @@ import UIKit
 
 class SelectProjectTableViewController: UITableViewController {
 
-    let dao = DaoManager.sharedInstance
+    let dao = DaoManager.shared
     var projects: [Project] = []
     var selectedProject: Project!
     

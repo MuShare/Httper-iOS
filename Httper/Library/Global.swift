@@ -123,8 +123,8 @@ func appUpdate() {
     }
     switch App.version {
     case "2.0":
-        let dao = DaoManager.sharedInstance
-        let sync = SyncManager.sharedInstance
+        let dao = DaoManager.shared
+        let sync = SyncManager.shared
         for request in dao.requestDao.findWithNilPorject() {
             sync.deleteRequest(request, completionHandler: nil)
         }

@@ -14,13 +14,10 @@ class SyncManager {
     
     var dao: DaoManager!
     
-    static let sharedInstance : SyncManager = {
-        let instance = SyncManager()
-        return instance
-    }()
+    static let shared = SyncManager()
     
     init() {
-        dao = DaoManager.sharedInstance
+        dao = DaoManager.shared
     }
     
     func syncAll() {

@@ -11,7 +11,7 @@ import DGElasticPullToRefresh
 
 class ProjectsTableViewController: UITableViewController {
     
-    let dao = DaoManager.sharedInstance
+    let dao = DaoManager.shared
     var projects: [Project] = []
     var selectedProject: Project!
     

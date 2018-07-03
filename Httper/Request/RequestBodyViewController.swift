@@ -28,12 +28,12 @@ class RequestBodyViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        rawBodyTextView.setupKeyboardAccessory(UserManager.sharedInstance.characters!, barStyle: .black)
+        rawBodyTextView.setupKeyboardAccessory(UserManager.shared.characters!, barStyle: .black)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        characters = UserManager.sharedInstance.characters!
+        characters = UserManager.shared.characters!
         rawBodyTextView.becomeFirstResponder()
     }
     

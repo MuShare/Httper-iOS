@@ -13,8 +13,8 @@ class ProjectNameViewController: UIViewController {
     @IBOutlet weak var projectNameTextField: UITextField!
     
     var project: Project!
-    let dao = DaoManager.sharedInstance
-    let sync = SyncManager.sharedInstance
+    let dao = DaoManager.shared
+    let sync = SyncManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -91,10 +91,10 @@ class UserManager {
         }
     }
     
-    static let sharedInstance = UserManager()
+    static let shared = UserManager()
     
     init() {
-        dao = DaoManager.sharedInstance
+        dao = DaoManager.shared
     }
     
     func pullUser(_ completionHandler: ((Bool) -> Void)?) {

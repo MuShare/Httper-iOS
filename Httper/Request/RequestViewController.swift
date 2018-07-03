@@ -24,9 +24,9 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var editingTextField: UITextField!
     
-    let dao = DaoManager.sharedInstance
+    let dao = DaoManager.shared
     // Customized characters of keyboard accessory.
-    let characters = UserManager.sharedInstance.characters!
+    let characters = UserManager.shared.characters ?? []
     
     var headerCount = 1, parameterCount = 1
     var method: String = "GET"
@@ -137,7 +137,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
                                             project: saveToProject!)
 
             // User SyncManger to push request
-            SyncManager.sharedInstance.pushLocalRequests(nil)
+            SyncManager.shared.pushLocalRequests(nil)
             
             saveToProject = nil;
         }

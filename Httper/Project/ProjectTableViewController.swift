@@ -15,8 +15,8 @@ class ProjectTableViewController: UITableViewController {
 
     @IBOutlet weak var deleteProjectCell: UITableViewCell!
     
-    let dao = DaoManager.sharedInstance
-    let sync = SyncManager.sharedInstance
+    let dao = DaoManager.shared
+    let sync = SyncManager.shared
     
     var project: Project!
     var selectedRequest: Request!

@@ -13,7 +13,7 @@ class DaoManager: NSObject {
     var requestDao: RequestDao!
     var projectDao: ProjectDao!
     
-    static let sharedInstance = DaoManager()
+    static let shared = DaoManager()
     
     override init() {
         super.init()

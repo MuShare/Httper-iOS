@@ -14,7 +14,7 @@ class NameViewController: UIViewController, UITextFieldDelegate, NVActivityIndic
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var saveBarButtonItem: UIBarButtonItem!
 
-    let user = UserManager.sharedInstance
+    let user = UserManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
