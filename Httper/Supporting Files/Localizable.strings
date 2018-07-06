@@ -56,6 +56,8 @@ tab_request = "Request";
 tab_project = "Project";
 tab_settings = "Settings";
 
+tab_request_clear = "Clear";
+
 tip_name = "Tip";
 cancel_name = "Cancel";
 yes_name = "Yes";

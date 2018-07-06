@@ -65,7 +65,8 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Setup keyboard accessory.
         urlTextField.setupKeyboardAccessory(characters, barStyle: .black)
         for cell in valueTableView.visibleCells {
-            if cell.reuseIdentifier == "headerIdentifier" || cell.reuseIdentifier == "parameterIdentifier" {
+            if cell.reuseIdentifier == R.reuseIdentifier.headerIdentifier.identifier ||
+                cell.reuseIdentifier == R.reuseIdentifier.parameterIdentifier.identifier {
                 let keyTextField = cell.viewWithTag(1) as! UITextField
                 let valueTextField = cell.viewWithTag(2) as! UITextField
                 keyTextField.setupKeyboardAccessory(characters, barStyle: .black)
@@ -382,9 +383,11 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     @IBAction func saveRequest(_ sender: Any) {
-        if checkRequest() {
-            self.performSegue(withIdentifier: "selectProjectSegue", sender: self)
+        if !checkRequest() {
+            return
         }
+ 
+        performSegue(withIdentifier: "selectProjectSegue", sender: self)
     }
     
     //MARK: - Service
