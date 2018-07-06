@@ -37,7 +37,7 @@
             </objects>
             <point key="canvasLocation" x="743" y="-593"/>
         </scene>
-        <!--Request View Controller-->
+        <!--Request-->
         <scene sceneID="p5p-hD-aRI">
             <objects>
                 <viewController storyboardIdentifier="RequestViewController" id="J2A-Wk-9m9" customClass="RequestViewController" customModule="Httper" customModuleProvider="target" sceneMemberID="viewController">
@@ -79,12 +79,12 @@
                                 </constraints>
                             </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="request URL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1NK-Ds-epT">
-                                <rect key="frame" x="72" y="130" width="232" height="40"/>
+                                <rect key="frame" x="107" y="130" width="197" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="xuq-PK-F5l"/>
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
@@ -103,16 +103,6 @@
                                     <constraint firstAttribute="height" constant="1" id="HxQ-D6-h8S"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="http://" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLh-Rx-jbi">
-                                <rect key="frame" x="16" y="129" width="56" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="cVh-7o-ioc"/>
-                                    <constraint firstAttribute="width" constant="56" id="hz9-qh-EID"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0VV-qc-MoB">
                                 <rect key="frame" x="16" y="520" width="136" height="40"/>
                                 <constraints>
@@ -365,14 +355,35 @@
                                     <outlet property="delegate" destination="J2A-Wk-9m9" id="iUZ-tF-Dhd"/>
                                 </connections>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="26J-YB-JPH">
+                                <rect key="frame" x="15" y="135" width="73" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="73" id="4Hl-Rq-iMW"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="http"/>
+                                    <segment title="https"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="://" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLh-Rx-jbi">
+                                <rect key="frame" x="91" y="129" width="14" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="cVh-7o-ioc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.18746668100357056" green="0.2114855945110321" blue="0.23234263062477112" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="26J-YB-JPH" firstAttribute="leading" secondItem="dLb-Mz-zd3" secondAttribute="leading" constant="15" id="2Cf-QB-Ft4"/>
                             <constraint firstItem="DJS-kZ-XHR" firstAttribute="top" secondItem="DzG-jS-f9d" secondAttribute="bottom" constant="56" id="88F-od-E5a"/>
-                            <constraint firstItem="1NK-Ds-epT" firstAttribute="leading" secondItem="dLb-Mz-zd3" secondAttribute="leadingMargin" constant="56" id="8qi-T2-qiD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Sne-eO-Yb6" secondAttribute="trailing" id="ExK-ZO-KnJ"/>
                             <constraint firstItem="DJS-kZ-XHR" firstAttribute="top" secondItem="0VV-qc-MoB" secondAttribute="bottom" constant="8" id="Fmq-5u-qZz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Nk8-cS-tHi" secondAttribute="trailing" constant="-2" id="GRA-71-zA1"/>
+                            <constraint firstItem="1NK-Ds-epT" firstAttribute="leading" secondItem="dLb-Mz-zd3" secondAttribute="leading" constant="107" id="MwR-90-n5T"/>
                             <constraint firstItem="DzG-jS-f9d" firstAttribute="leading" secondItem="dLb-Mz-zd3" secondAttribute="leadingMargin" constant="-16" id="OXD-pB-18e"/>
                             <constraint firstAttribute="trailingMargin" secondItem="1NK-Ds-epT" secondAttribute="trailing" id="Qei-eS-XW9"/>
                             <constraint firstItem="fLh-Rx-jbi" firstAttribute="top" secondItem="F0M-7C-dq0" secondAttribute="bottom" constant="65" id="T6w-qY-X4G"/>
@@ -381,10 +392,12 @@
                             <constraint firstItem="1NK-Ds-epT" firstAttribute="top" secondItem="F0M-7C-dq0" secondAttribute="bottom" constant="66" id="TgS-91-RaP"/>
                             <constraint firstItem="Q0F-rA-54u" firstAttribute="leading" secondItem="dLb-Mz-zd3" secondAttribute="leadingMargin" constant="-1" id="WlQ-9E-LQZ"/>
                             <constraint firstItem="Q0F-rA-54u" firstAttribute="top" secondItem="F0M-7C-dq0" secondAttribute="bottom" constant="113" id="YAB-pn-vEC"/>
+                            <constraint firstItem="fLh-Rx-jbi" firstAttribute="leading" secondItem="dLb-Mz-zd3" secondAttribute="leading" constant="91" id="YVG-1T-4lm"/>
                             <constraint firstItem="Nk8-cS-tHi" firstAttribute="leading" secondItem="KFr-LQ-OoF" secondAttribute="trailing" constant="9" id="aRu-pz-Dgd"/>
                             <constraint firstItem="Sne-eO-Yb6" firstAttribute="top" secondItem="F0M-7C-dq0" secondAttribute="bottom" constant="15" id="cS1-qu-Gs2"/>
                             <constraint firstItem="DJS-kZ-XHR" firstAttribute="top" secondItem="KFr-LQ-OoF" secondAttribute="bottom" constant="8" id="dIO-yo-LuA"/>
                             <constraint firstItem="Iyi-f6-e6M" firstAttribute="leading" secondItem="dLb-Mz-zd3" secondAttribute="leading" constant="16" id="hmj-rt-OGp"/>
+                            <constraint firstItem="26J-YB-JPH" firstAttribute="top" secondItem="F0M-7C-dq0" secondAttribute="bottom" constant="71" id="k7H-rn-dYb"/>
                             <constraint firstAttribute="trailing" secondItem="Iyi-f6-e6M" secondAttribute="trailing" constant="115" id="kB5-Eg-6MV"/>
                             <constraint firstItem="DzG-jS-f9d" firstAttribute="top" secondItem="F0M-7C-dq0" secondAttribute="bottom" constant="122" id="lZU-K2-G5d"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ogK-0n-ujD" secondAttribute="trailing" constant="-16" id="mfr-56-CQH"/>
@@ -392,29 +405,20 @@
                             <constraint firstItem="KFr-LQ-OoF" firstAttribute="centerX" secondItem="dLb-Mz-zd3" secondAttribute="centerX" id="rqg-4X-Th0"/>
                             <constraint firstItem="KFr-LQ-OoF" firstAttribute="leading" secondItem="0VV-qc-MoB" secondAttribute="trailing" constant="7" id="ttQ-xJ-xIB"/>
                             <constraint firstItem="Iyi-f6-e6M" firstAttribute="top" secondItem="F0M-7C-dq0" secondAttribute="bottom" constant="11" id="vak-Gm-epA"/>
-                            <constraint firstItem="fLh-Rx-jbi" firstAttribute="leading" secondItem="dLb-Mz-zd3" secondAttribute="leading" constant="16" id="wd9-qd-9XR"/>
                             <constraint firstAttribute="leadingMargin" secondItem="0VV-qc-MoB" secondAttribute="leading" id="xAb-LD-YDM"/>
                             <constraint firstItem="DJS-kZ-XHR" firstAttribute="top" secondItem="Nk8-cS-tHi" secondAttribute="bottom" constant="8" id="xb6-IW-zXX"/>
                             <constraint firstItem="ogK-0n-ujD" firstAttribute="leading" secondItem="dLb-Mz-zd3" secondAttribute="leadingMargin" constant="-1" id="ypN-xX-40P"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="K3M-vp-ejE">
-                        <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="26J-YB-JPH">
-                            <rect key="frame" x="96" y="7" width="128" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <segments>
-                                <segment title="HTTP"/>
-                                <segment title="HTTPS"/>
-                            </segments>
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <navigationItem key="navigationItem" title="Request" id="K3M-vp-ejE">
+                        <barButtonItem key="rightBarButtonItem" title="Clear" id="Ctd-gO-IjW">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="chooseProtocol:" destination="J2A-Wk-9m9" eventType="valueChanged" id="AX5-fZ-0p5"/>
+                                <action selector="clearRequest:" destination="J2A-Wk-9m9" id="Iqf-vN-dVv"/>
                             </connections>
-                        </segmentedControl>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="protocolLabel" destination="fLh-Rx-jbi" id="PfB-z8-74Y"/>
                         <outlet property="protocolsSegmentedControl" destination="26J-YB-JPH" id="xBT-uW-Jjr"/>
                         <outlet property="requestMethodButton" destination="Sne-eO-Yb6" id="k9q-zz-j9A"/>
                         <outlet property="saveButton" destination="0VV-qc-MoB" id="E3R-6E-Wml"/>

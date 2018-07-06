@@ -47,7 +47,7 @@ class MainViewController: UITabBarController {
         switch type {
         case .request:
             title = R.string.localizable.tab_request_title()
-            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(clearRequest))
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Clear", style: .plain, target: self, action: #selector(clearRequest))
         case .project:
             title = R.string.localizable.tab_project_title()
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewProject))
@@ -68,7 +68,7 @@ class MainViewController: UITabBarController {
             return
         }
         let requestViewController = controller as! RequestViewController
-        requestViewController.clearRequest()
+        requestViewController.clearRequest(navigationItem.rightBarButtonItem!)
     }
     
 }

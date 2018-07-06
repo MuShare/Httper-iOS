@@ -15,7 +15,6 @@ let protocols = ["http", "https"]
 class RequestViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     @IBOutlet weak var requestMethodButton: UIButton!
-    @IBOutlet weak var protocolLabel: UILabel!
     @IBOutlet weak var urlTextField: UITextField!
     @IBOutlet weak var valueTableView: UITableView!
     @IBOutlet weak var sendButton: UIButton!
@@ -109,11 +108,9 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
             if url.substring(to: url.index(url.startIndex, offsetBy: protocols[1].characters.count + 3)) == "\(protocols[1])://" {
                 url = url.substring(from: url.index(url.startIndex, offsetBy: 8))
                 protocolsSegmentedControl.selectedSegmentIndex = 1
-                protocolLabel.text = "\(protocols[1])://"
             } else {
                 url = url.substring(from: url.index(url.startIndex, offsetBy: 7))
                 protocolsSegmentedControl.selectedSegmentIndex = 0
-                protocolLabel.text = "\(protocols[0])://"
             }
             urlTextField.text = url
             request = nil
@@ -129,7 +126,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
                                             update: nil,
                                             revision: nil,
                                             method: method,
-                                            url: "\(protocolLabel.text!)\(urlTextField.text!)",
+                                            url: generateRequestUrl(),
                                             headers: headers,
                                             parameters: parameters,
                                             bodytype: bodyType,
@@ -300,7 +297,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         case R.segue.requestViewController.resultSegue.identifier:
             let destination = segue.destination as! ResultViewController
             destination.method = method
-            destination.url = "\(protocolLabel.text!)\(urlTextField.text!)"
+            destination.url = generateRequestUrl()
             destination.headers = headers
             destination.parameters = parameters
             destination.body = body
@@ -353,18 +350,13 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.performSegue(withIdentifier: "headerKeySegue", sender: self)
     }
     
-    @IBAction func chooseProtocol(_ sender: UISegmentedControl) {
-        let protocolName = protocols[sender.selectedSegmentIndex]
-        protocolLabel.text = "\(protocolName)://"
-    }
-    
     @IBAction func sendRequest(_ sender: Any) {
         if checkRequest() {
             self.performSegue(withIdentifier: "resultSegue", sender: self)
         }
     }
     
-    func clearRequest() {
+    @IBAction func clearRequest(_ sender: Any) {
         let alertController = UIAlertController(title: R.string.localizable.tip_name(),
                                                 message: R.string.localizable.clear_request(),
                                                 preferredStyle: .alert);
@@ -396,6 +388,10 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     //MARK: - Service
+    func generateRequestUrl() -> String {
+        return protocols[protocolsSegmentedControl.selectedSegmentIndex] + "://" + urlTextField.text!
+    }
+    
     func checkRequest() -> Bool {
         if urlTextField.text == "" {
             showAlert(title: R.string.localizable.tip_name(),
