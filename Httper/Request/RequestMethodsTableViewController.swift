@@ -15,6 +15,7 @@ class RequestMethodsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.hideFooterView()
     }
 
     // MARK: - Table view data source
@@ -22,10 +23,6 @@ class RequestMethodsTableViewController: UITableViewController {
         return methods.count
     }
     
-    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0.1
-    }
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "methodIdentifier", for: indexPath as IndexPath)
         let methodLabel: UILabel = cell.viewWithTag(1) as! UILabel
@@ -37,8 +34,8 @@ class RequestMethodsTableViewController: UITableViewController {
     
     // MARK: - UITableViewDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let length = self.navigationController?.viewControllers.count
-        if let controller = self.navigationController?.viewControllers[length! - 2] {
+        let mainController = self.navigationController?.viewControllers[0] as! MainViewController
+        if let controller = mainController.selectedViewController, controller.isKind(of: RequestViewController.self) {
             let requestViewController = controller as! RequestViewController
             requestViewController.method = methods[indexPath.row]
             navigationController?.popViewController(animated: true)
