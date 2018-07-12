@@ -19,6 +19,7 @@ target 'Httper' do
     pod 'UIImageView+Extension', '~> 0.2'
     pod 'R.swift', '~> 4.0'
     pod 'MGFormatter', '~> 0.2'
+    pod 'BiometricAuthentication', '~> 2.0'
 end
 
 post_install do |installer|
