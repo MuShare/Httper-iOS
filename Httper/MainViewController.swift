@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BiometricAuthentication
 
 enum MainTabType {
     case request
@@ -21,9 +22,34 @@ class MainViewController: UITabBarController {
         
         delegate = self
 
+        view.backgroundColor = UIColor(hex: 0x42474b)
         tabBar.barTintColor = UIColor(hex: 0x42474b)
         tabBar.tintColor = UIColor(hex: 0xffffff)
+
         
+        BioMetricAuthenticator.authenticateWithBioMetrics(reason: "", success: {
+            // authentication successful
+            self.loadTabs()
+        }, failure: { [weak self] (error) in
+            switch error {
+            case .biometryLockedout:
+                self?.showPasscodeAuthentication(message: error.message())
+            default:
+                break
+            }
+        })
+
+    }
+    
+    private func showPasscodeAuthentication(message: String) {
+        BioMetricAuthenticator.authenticateWithPasscode(reason: "", success: {
+            self.loadTabs()
+        }, failure: { (error) in
+            
+        })
+    }
+    
+    private func loadTabs() {
         let requestViewController = R.storyboard.main.requestViewController()!
         requestViewController.tabBarItem = UITabBarItem(title: R.string.localizable.tab_request(),
                                                         image: R.image.tab_request(),
@@ -31,14 +57,14 @@ class MainViewController: UITabBarController {
         
         let projectsViewController = R.storyboard.main.projectsViewController()!
         projectsViewController.tabBarItem = UITabBarItem(title: R.string.localizable.tab_project(),
-                                                              image: R.image.tab_project(),
-                                                              tag: 1)
+                                                         image: R.image.tab_project(),
+                                                         tag: 1)
         
         let settingsTableViewController = R.storyboard.settings.settingsTableViewController()!
         settingsTableViewController.tabBarItem = UITabBarItem(title: R.string.localizable.tab_settings(),
                                                               image: R.image.tab_settings(),
                                                               tag: 2)
-        
+    
         viewControllers = [requestViewController, projectsViewController, settingsTableViewController]
         updateNavigationBar(with: .request)
     }

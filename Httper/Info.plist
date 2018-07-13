@@ -74,5 +74,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+    <key>NSFaceIDUsageDescription</key>
+    <string>This app requires Face ID permission to authenticate using Face recognition.</string>
 </dict>
 </plist>
