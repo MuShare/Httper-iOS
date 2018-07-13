@@ -10,7 +10,7 @@ import UIKit
 
 class KeyboardAccessoryCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
-    let user = UserManager.sharedInstance
+    let user = UserManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()

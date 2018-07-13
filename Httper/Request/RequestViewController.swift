@@ -15,7 +15,6 @@ let protocols = ["http", "https"]
 class RequestViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     @IBOutlet weak var requestMethodButton: UIButton!
-    @IBOutlet weak var protocolLabel: UILabel!
     @IBOutlet weak var urlTextField: UITextField!
     @IBOutlet weak var valueTableView: UITableView!
     @IBOutlet weak var sendButton: UIButton!
@@ -24,9 +23,9 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var editingTextField: UITextField!
     
-    let dao = DaoManager.sharedInstance
+    let dao = DaoManager.shared
     // Customized characters of keyboard accessory.
-    var characters: [String]!
+    let characters = UserManager.shared.characters ?? []
     
     var headerCount = 1, parameterCount = 1
     var method: String = "GET"
@@ -62,12 +61,12 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        characters = UserManager.sharedInstance.characters!
+
         // Setup keyboard accessory.
         urlTextField.setupKeyboardAccessory(characters, barStyle: .black)
         for cell in valueTableView.visibleCells {
-            if cell.reuseIdentifier == "headerIdentifier" || cell.reuseIdentifier == "parameterIdentifier" {
+            if cell.reuseIdentifier == R.reuseIdentifier.headerIdentifier.identifier ||
+                cell.reuseIdentifier == R.reuseIdentifier.parameterIdentifier.identifier {
                 let keyTextField = cell.viewWithTag(1) as! UITextField
                 let valueTextField = cell.viewWithTag(2) as! UITextField
                 keyTextField.setupKeyboardAccessory(characters, barStyle: .black)
@@ -110,11 +109,9 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
             if url.substring(to: url.index(url.startIndex, offsetBy: protocols[1].characters.count + 3)) == "\(protocols[1])://" {
                 url = url.substring(from: url.index(url.startIndex, offsetBy: 8))
                 protocolsSegmentedControl.selectedSegmentIndex = 1
-                protocolLabel.text = "\(protocols[1])://"
             } else {
                 url = url.substring(from: url.index(url.startIndex, offsetBy: 7))
                 protocolsSegmentedControl.selectedSegmentIndex = 0
-                protocolLabel.text = "\(protocols[0])://"
             }
             urlTextField.text = url
             request = nil
@@ -130,7 +127,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
                                             update: nil,
                                             revision: nil,
                                             method: method,
-                                            url: "\(protocolLabel.text!)\(urlTextField.text!)",
+                                            url: generateRequestUrl(),
                                             headers: headers,
                                             parameters: parameters,
                                             bodytype: bodyType,
@@ -138,7 +135,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
                                             project: saveToProject!)
 
             // User SyncManger to push request
-            SyncManager.sharedInstance.pushLocalRequests(nil)
+            SyncManager.shared.pushLocalRequests(nil)
             
             saveToProject = nil;
         }
@@ -198,7 +195,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
             //Set button
             let addButton: UIButton = {
                 let button = UIButton(frame: CGRect(x: tableView.bounds.size.width - 35, y: 0, width: headerView.bounds.size.height, height: headerView.bounds.size.height))
-                button.setImage(UIImage.init(named: "add_value"), for: UIControlState.normal)
+                button.setImage(R.image.add_value(), for: UIControlState.normal)
                 button.tag = section
                 button.addTarget(self, action: #selector(addNewValue(_:)), for: .touchUpInside)
                 return button
@@ -301,7 +298,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         case R.segue.requestViewController.resultSegue.identifier:
             let destination = segue.destination as! ResultViewController
             destination.method = method
-            destination.url = "\(protocolLabel.text!)\(urlTextField.text!)"
+            destination.url = generateRequestUrl()
             destination.headers = headers
             destination.parameters = parameters
             destination.body = body
@@ -354,18 +351,13 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.performSegue(withIdentifier: "headerKeySegue", sender: self)
     }
     
-    @IBAction func chooseProtocol(_ sender: UISegmentedControl) {
-        let protocolName = protocols[sender.selectedSegmentIndex]
-        protocolLabel.text = "\(protocolName)://"
-    }
-    
     @IBAction func sendRequest(_ sender: Any) {
         if checkRequest() {
             self.performSegue(withIdentifier: "resultSegue", sender: self)
         }
     }
     
-    @IBAction func celarRequest(_ sender: Any) {
+    @IBAction func clearRequest(_ sender: Any) {
         let alertController = UIAlertController(title: R.string.localizable.tip_name(),
                                                 message: R.string.localizable.clear_request(),
                                                 preferredStyle: .alert);
@@ -391,12 +383,18 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     @IBAction func saveRequest(_ sender: Any) {
-        if checkRequest() {
-            self.performSegue(withIdentifier: "selectProjectSegue", sender: self)
+        if !checkRequest() {
+            return
         }
+ 
+        performSegue(withIdentifier: "selectProjectSegue", sender: self)
     }
     
     //MARK: - Service
+    func generateRequestUrl() -> String {
+        return protocols[protocolsSegmentedControl.selectedSegmentIndex] + "://" + urlTextField.text!
+    }
+    
     func checkRequest() -> Bool {
         if urlTextField.text == "" {
             showAlert(title: R.string.localizable.tip_name(),

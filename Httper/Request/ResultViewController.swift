@@ -37,7 +37,7 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
     
     var httpURLResponse: HTTPURLResponse!
     
-    let dao = DaoManager.sharedInstance
+    let dao = DaoManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()

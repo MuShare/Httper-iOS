@@ -16,7 +16,7 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var loginOrUserinfoButton: UIButton!
     @IBOutlet weak var emailLabel: UILabel!
     
-    let user = UserManager.sharedInstance
+    let user = UserManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +46,7 @@ class SettingsTableViewController: UITableViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         // Hide navigation bar.
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     // MARK: - Table view data source
