@@ -18,7 +18,7 @@ class ResetViewController: EditingViewController, NVActivityIndicatorViewable {
     @IBOutlet weak var tipTextView: UITextView!
     
     var submit = false
-    let user = UserManager.sharedInstance
+    let user = UserManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()

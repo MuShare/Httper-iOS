@@ -17,8 +17,8 @@ class LoginViewController: EditingViewController, NVActivityIndicatorViewable {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    let sync = SyncManager.sharedInstance
-    let user = UserManager.sharedInstance
+    let sync = SyncManager.shared
+    let user = UserManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()

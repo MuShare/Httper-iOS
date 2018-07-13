@@ -15,7 +15,7 @@ class AddProjectViewController: UIViewController {
     @IBOutlet weak var introudctionTextView: UITextView!
     @IBOutlet weak var saveBarButtonItem: UIBarButtonItem!
     
-    let dao = DaoManager.sharedInstance
+    let dao = DaoManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,7 @@ class AddProjectViewController: UIViewController {
         _ = dao.projectDao.save(pname: projectNameTextField.text!,
                                 privilege: "private",
                                 introduction: introudctionTextView.text!)
-        SyncManager.sharedInstance.pushLocalProjects { (revision) in
+        SyncManager.shared.pushLocalProjects { (revision) in
             _ = self.navigationController?.popViewController(animated: true)
         }
     }

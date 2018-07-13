@@ -17,7 +17,7 @@ class RegisterViewController: EditingViewController, NVActivityIndicatorViewable
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var registerSuccessImageView: UIImageView!
     
-    let user = UserManager.sharedInstance
+    let user = UserManager.shared
     var registered = false
 
     override func viewDidLoad() {
