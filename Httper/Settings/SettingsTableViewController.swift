@@ -15,6 +15,7 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var avatarButton: UIButton!
     @IBOutlet weak var loginOrUserinfoButton: UIButton!
     @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var protectionSwitch: UISwitch!
     
     let user = UserManager.shared
     
@@ -49,27 +50,6 @@ class SettingsTableViewController: UITableViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
-    // MARK: - Table view data source
-    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0.01
-    }
-
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) else {
-            return
-        }
-        switch cell.reuseIdentifier {
-        case R.reuseIdentifier.appstore.identifier:
-            UIApplication.shared.openURL(URL.init(string: "itms-apps://itunes.apple.com/app/httper/id1166884043")!)
-        case R.reuseIdentifier.github.identifier:
-            UIApplication.shared.openURL(URL.init(string: "https://github.com/lm2343635/Httper")!)
-        case R.reuseIdentifier.about.identifier:
-            UIApplication.shared.openURL(URL.init(string: "http://httper.mushare.cn")!)
-        default:
-            break
-        }
-    }
-    
     // MARK: - Action
     @IBAction func showAvatar(_ sender: Any) {
         showProfile()
@@ -87,6 +67,28 @@ class SettingsTableViewController: UITableViewController {
             if let loginViewController = R.storyboard.login().instantiateInitialViewController() {
                 present(loginViewController, animated: true)
             }
+        }
+    }
+}
+
+extension SettingsTableViewController {
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.01
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) else {
+            return
+        }
+        switch cell.reuseIdentifier {
+        case R.reuseIdentifier.appstore.identifier:
+            UIApplication.shared.openURL(URL.init(string: "itms-apps://itunes.apple.com/app/httper/id1166884043")!)
+        case R.reuseIdentifier.github.identifier:
+            UIApplication.shared.openURL(URL.init(string: "https://github.com/lm2343635/Httper")!)
+        case R.reuseIdentifier.about.identifier:
+            UIApplication.shared.openURL(URL.init(string: "http://httper.mushare.cn")!)
+        default:
+            break
         }
     }
 }
