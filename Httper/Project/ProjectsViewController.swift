@@ -68,7 +68,7 @@ class ProjectsViewController: UIViewController {
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
             self?.syncProjects()
             }, loadingView: loadingView)
-        tableView.dg_setPullToRefreshFillColor(RGB(DesignColor.nagivation.rawValue))
+        tableView.dg_setPullToRefreshFillColor(UIColor(hex: DesignColor.nagivation.rawValue))
         tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
     }
 
