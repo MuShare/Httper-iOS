@@ -29,13 +29,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        window = UIWindow(frame: UIScreen.main.bounds)
+        window = window ?? UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
         window?.rootViewController = {
             let navigationController = UINavigationController(rootViewController: MainViewController())
-            navigationController.navigationBar.tintColor = UIColor(hex: 0xffffff)
+            navigationController.navigationBar.tintColor = .white
             navigationController.navigationBar.titleTextAttributes = [
-                NSAttributedStringKey.foregroundColor: UIColor(hex: 0xffffff)
+                NSAttributedStringKey.foregroundColor: UIColor.white
             ]
             navigationController.navigationBar.barTintColor = UIColor(hex: 0x4e5255)
             return navigationController

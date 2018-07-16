@@ -34,6 +34,7 @@ extension DefaultsKeys {
     static let name = DefaultsKey<String?>("name")
     static let avatar = DefaultsKey<String?>("avatar")
     static let characters = DefaultsKey<[String]?>("characters")
+    static let protection = DefaultsKey<Bool?>("protection")
     static let deviceToken = DefaultsKey<String?>("deviceToken")
     static let token = DefaultsKey<String?>("token")
     static let login = DefaultsKey<Bool?>("login")

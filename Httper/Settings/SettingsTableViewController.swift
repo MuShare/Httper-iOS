@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import SwiftyUserDefaults
 
 class SettingsTableViewController: UITableViewController {
 
@@ -25,10 +26,12 @@ class SettingsTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        protectionSwitch.isOn = Defaults[.protection] ?? false
         
         if user.login {
             loginOrUserinfoButton.setTitle(user.name, for: .normal)
+            
             if user.type == UserTypeEmail {
                 emailLabel.text = user.email
                 emailLabel.isHidden = false
@@ -47,7 +50,7 @@ class SettingsTableViewController: UITableViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         // Hide navigation bar.
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     // MARK: - Action
@@ -58,6 +61,10 @@ class SettingsTableViewController: UITableViewController {
     
     @IBAction func showUserInfo(_ sender: Any) {
         showProfile()
+    }
+    
+    @IBAction func changeProtection(_ sender: UISwitch) {
+        Defaults[.protection] = sender.isOn
     }
     
     private func showProfile() {

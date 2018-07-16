@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyUserDefaults
 import BiometricAuthentication
 
 enum MainTabType {
@@ -26,19 +27,20 @@ class MainViewController: UITabBarController {
         tabBar.barTintColor = UIColor(hex: 0x42474b)
         tabBar.tintColor = UIColor(hex: 0xffffff)
 
-        
+        if Defaults[.protection] ?? false {
+            authenticateWithBioMetrics()
+        } else {
+            loadTabs()
+        }
+    }
+    
+    private func authenticateWithBioMetrics() {
         BioMetricAuthenticator.authenticateWithBioMetrics(reason: "", success: {
             // authentication successful
             self.loadTabs()
         }, failure: { [weak self] (error) in
-            switch error {
-            case .biometryLockedout:
-                self?.showPasscodeAuthentication(message: error.message())
-            default:
-                break
-            }
+            self?.showPasscodeAuthentication(message: error.message())
         })
-
     }
     
     private func showPasscodeAuthentication(message: String) {
