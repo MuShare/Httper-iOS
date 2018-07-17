@@ -12,7 +12,7 @@ import MGKeyboardAccessory
 
 let protocols = ["http", "https"]
 
-class RequestViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class RequestViewController: UIViewController {
     
     @IBOutlet weak var requestMethodButton: UIButton!
     @IBOutlet weak var urlTextField: UITextField!
@@ -47,6 +47,8 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        valueTableView.hideFooterView()
         
         sendButton.layer.borderColor = UIColor.lightGray.cgColor
         saveButton.layer.borderColor = UIColor.lightGray.cgColor
@@ -140,156 +142,6 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
             saveToProject = nil;
         }
         
-    }
-    
-    //MARK: - UITableViewDataSource
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return headerCount
-        case 1:
-            return parameterCount
-        default:
-            return 1
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0.01
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return " "
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView: UIView = {
-            let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
-            view.backgroundColor = RGB(DesignColor.background.rawValue)
-            return view
-        }()
-        
-        //Set name
-        let nameLabel: UILabel = {
-            let label = UILabel(frame: CGRect(x: 15, y: 0, width: headerView.bounds.size.width - headerView.bounds.size.height, height: headerView.bounds.size.height))
-            label.textColor = UIColor.white
-            switch section {
-            case 0:
-                label.text = R.string.localizable.headers()
-            case 1:
-                label.text = R.string.localizable.parameters()
-            case 2:
-                label.text = R.string.localizable.body()
-            default:
-                break
-            }
-            return label
-        }()
-        headerView.addSubview(nameLabel)
-        
-        if section < 2 {
-            //Set button
-            let addButton: UIButton = {
-                let button = UIButton(frame: CGRect(x: tableView.bounds.size.width - 35, y: 0, width: headerView.bounds.size.height, height: headerView.bounds.size.height))
-                button.setImage(R.image.add_value(), for: UIControlState.normal)
-                button.tag = section
-                button.addTarget(self, action: #selector(addNewValue(_:)), for: .touchUpInside)
-                return button
-            }()
-            headerView.addSubview(addButton)
-        }
-
-        //Set line
-        let lineView: UIView = {
-            let view = UILabel(frame: CGRect(x: 15, y: 28, width: headerView.bounds.size.width - 15, height: 1))
-            view.backgroundColor = UIColor.darkGray
-            return view
-        }()
-        headerView.addSubview(lineView)
-        
-        return headerView
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell: UITableViewCell!
-        // Header cell
-        if indexPath.section == 0 {
-            //Cell is headers or parameters
-            cell = tableView.dequeueReusableCell(withIdentifier: "headerIdentifier", for: indexPath)
-            let keyTextField = cell.viewWithTag(1) as! UITextField
-            let valueTextField = cell.viewWithTag(2) as! UITextField
-            let deleteButton = cell.viewWithTag(3) as! UIButton
-            keyTextField.text = ""
-            valueTextField.text = ""
-            deleteButton.isEnabled = true
-            // Setup MGKeyboardAccessory
-            keyTextField.setupKeyboardAccessory(characters, barStyle: .black)
-            valueTextField.setupKeyboardAccessory(characters, barStyle: .black)
-            //Set headers if it is not null
-            if headerKeys.count > indexPath.row {
-                keyTextField.text = headerKeys[indexPath.row]
-                valueTextField.text = headerValues[indexPath.row]
-            }
-        }
-        // Parameter cekk
-        else if indexPath.section == 1 {
-            //Cell is headers or parameters
-            cell = tableView.dequeueReusableCell(withIdentifier: "parameterIdentifier", for: indexPath)
-            let keyTextField = cell.viewWithTag(1) as! UITextField
-            let valueTextField = cell.viewWithTag(2) as! UITextField
-            let deleteButton = cell.viewWithTag(3) as! UIButton
-            keyTextField.text = ""
-            valueTextField.text = ""
-            deleteButton.isEnabled = true
-            // Setup MGKeyboardAccessory
-            keyTextField.setupKeyboardAccessory(characters, barStyle: .black)
-            valueTextField.setupKeyboardAccessory(characters, barStyle: .black)
-            //Set parameters if it is not null
-            if parameterKeys.count > indexPath.row {
-                keyTextField.text = parameterKeys[indexPath.row]
-                valueTextField.text = parameterValues[indexPath.row]
-            }
-        }
-        // Body cell
-        else if indexPath.section == 2 {
-            cell = tableView.dequeueReusableCell(withIdentifier: "bodyIdentifier", for: indexPath)
-        }
-        return cell
-    }
-    
-    //MARK: - UITextViewDelegate
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        editingTextField = textField
-        if textField == urlTextField {
-            return
-        }
-        let cell = textField.superview?.superview
-        let rect = cell?.convert((cell?.bounds)!, to: self.view)
-        let y = (rect?.origin.y)!
-        let screenHeight = (self.view.window?.frame.size.height)!
-        if y > (screenHeight - keyboardHeight) {
-            let offset = keyboardHeight - (screenHeight - y) + (cell?.frame.size.height)!
-            UIView.animate(withDuration: 0.5, animations: {
-                self.view.frame = CGRect(x: 0, y: -offset, width: self.view.frame.size.width, height: self.view.frame.size.height)
-            })
-        }
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        UIView.animate(withDuration: 0.5, animations: {
-            self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
-        })
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField.isFirstResponder {
-            textField.resignFirstResponder()
-        }
-        return true
     }
     
     //MARK: - Navigation
@@ -446,4 +298,159 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         body = notification.object as! String
     }
 
+}
+
+extension RequestViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
+        case 0:
+            return headerCount
+        case 1:
+            return parameterCount
+        default:
+            return 1
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return " "
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView: UIView = {
+            let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
+            view.backgroundColor = .clear
+            return view
+        }()
+        
+        //Set name
+        let nameLabel: UILabel = {
+            let label = UILabel(frame: CGRect(x: 15, y: 0, width: headerView.bounds.size.width - headerView.bounds.size.height, height: headerView.bounds.size.height))
+            label.textColor = .white
+            switch section {
+            case 0:
+                label.text = R.string.localizable.headers()
+            case 1:
+                label.text = R.string.localizable.parameters()
+            case 2:
+                label.text = R.string.localizable.body()
+            default:
+                break
+            }
+            return label
+        }()
+        headerView.addSubview(nameLabel)
+        
+        if section < 2 {
+            //Set button
+            let addButton: UIButton = {
+                let button = UIButton(frame: CGRect(x: tableView.bounds.size.width - headerView.bounds.size.height - 43, y: 0, width: headerView.bounds.size.height, height: headerView.bounds.size.height))
+                button.setImage(R.image.add_value(), for: UIControlState.normal)
+                button.tag = section
+                button.addTarget(self, action: #selector(addNewValue(_:)), for: .touchUpInside)
+                return button
+            }()
+            headerView.addSubview(addButton)
+        }
+        
+        //Set line
+        let lineView: UIView = {
+            let view = UILabel(frame: CGRect(x: 15, y: 28, width: headerView.bounds.size.width - 15, height: 1))
+            view.backgroundColor = UIColor.darkGray
+            return view
+        }()
+        headerView.addSubview(lineView)
+        
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell: UITableViewCell!
+        // Header cell
+        if indexPath.section == 0 {
+            //Cell is headers or parameters
+            cell = tableView.dequeueReusableCell(withIdentifier: "headerIdentifier", for: indexPath)
+            let keyTextField = cell.viewWithTag(1) as! UITextField
+            let valueTextField = cell.viewWithTag(2) as! UITextField
+            let deleteButton = cell.viewWithTag(3) as! UIButton
+            keyTextField.text = ""
+            valueTextField.text = ""
+            deleteButton.isEnabled = true
+            // Setup MGKeyboardAccessory
+            keyTextField.setupKeyboardAccessory(characters, barStyle: .black)
+            valueTextField.setupKeyboardAccessory(characters, barStyle: .black)
+            //Set headers if it is not null
+            if headerKeys.count > indexPath.row {
+                keyTextField.text = headerKeys[indexPath.row]
+                valueTextField.text = headerValues[indexPath.row]
+            }
+        }
+            // Parameter cekk
+        else if indexPath.section == 1 {
+            //Cell is headers or parameters
+            cell = tableView.dequeueReusableCell(withIdentifier: "parameterIdentifier", for: indexPath)
+            let keyTextField = cell.viewWithTag(1) as! UITextField
+            let valueTextField = cell.viewWithTag(2) as! UITextField
+            let deleteButton = cell.viewWithTag(3) as! UIButton
+            keyTextField.text = ""
+            valueTextField.text = ""
+            deleteButton.isEnabled = true
+            // Setup MGKeyboardAccessory
+            keyTextField.setupKeyboardAccessory(characters, barStyle: .black)
+            valueTextField.setupKeyboardAccessory(characters, barStyle: .black)
+            //Set parameters if it is not null
+            if parameterKeys.count > indexPath.row {
+                keyTextField.text = parameterKeys[indexPath.row]
+                valueTextField.text = parameterValues[indexPath.row]
+            }
+        }
+            // Body cell
+        else if indexPath.section == 2 {
+            cell = tableView.dequeueReusableCell(withIdentifier: "bodyIdentifier", for: indexPath)
+        }
+        return cell
+    }
+    
+}
+
+extension RequestViewController: UITableViewDelegate {
+    
+}
+
+extension RequestViewController: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        editingTextField = textField
+        if textField == urlTextField {
+            return
+        }
+        let cell = textField.superview?.superview
+        let rect = cell?.convert((cell?.bounds)!, to: self.view)
+        let y = (rect?.origin.y)!
+        let screenHeight = (self.view.window?.frame.size.height)!
+        if y > (screenHeight - keyboardHeight) {
+            let offset = keyboardHeight - (screenHeight - y) + (cell?.frame.size.height)!
+            UIView.animate(withDuration: 0.5, animations: {
+                self.view.frame = CGRect(x: 0, y: -offset, width: self.view.frame.size.width, height: self.view.frame.size.height)
+            })
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+        })
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField.isFirstResponder {
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+    
 }
