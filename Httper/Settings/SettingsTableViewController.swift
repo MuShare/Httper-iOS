@@ -9,6 +9,7 @@
 import UIKit
 import Kingfisher
 import SwiftyUserDefaults
+import BiometricAuthentication
 
 class SettingsTableViewController: UITableViewController {
 
@@ -17,6 +18,8 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var loginOrUserinfoButton: UIButton!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var protectionSwitch: UISwitch!
+    @IBOutlet weak var protectionLabel: UILabel!
+    @IBOutlet weak var protectionIconImgaeView: UIImageView!
     
     let user = UserManager.shared
     
@@ -28,6 +31,16 @@ class SettingsTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
         protectionSwitch.isOn = Defaults[.protection] ?? false
+        
+        if BioMetricAuthenticator.canAuthenticate() {
+            if BioMetricAuthenticator.shared.faceIDAvailable() {
+                protectionLabel.text = R.string.localizable.protection_faceid()
+                protectionIconImgaeView.image = R.image.faceid()
+            } else {
+                protectionLabel.text = R.string.localizable.protection_touchid()
+                protectionIconImgaeView.image = R.image.touchid()
+            }
+        }
         
         if user.login {
             loginOrUserinfoButton.setTitle(user.name, for: .normal)

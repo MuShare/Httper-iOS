@@ -118,3 +118,7 @@ delete_request_confirm = "Are you sure to delete request ";
 add_character = "Add Customized Character";
 
 name_not_empty = "Name is empty!";
+
+protection_passcode = "Protection with passcode";
+protection_touchid = "Protection with TouchID";
+protection_faceid = "Protection with FaceID";

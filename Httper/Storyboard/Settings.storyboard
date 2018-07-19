@@ -1086,11 +1086,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="touchid" translatesAutoresizingMaskIntoConstraints="NO" id="CMd-b7-h8J">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="passcode" translatesAutoresizingMaskIntoConstraints="NO" id="CMd-b7-h8J">
                                                     <rect key="frame" x="15" y="9" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Protection with TouchID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FS1-Yy-1up">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Protection with passcode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FS1-Yy-1up">
                                                     <rect key="frame" x="53" y="14" width="234" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1303,6 +1303,8 @@
                         <outlet property="avatarImageView" destination="DNv-wn-A8k" id="6hE-ni-lSJ"/>
                         <outlet property="emailLabel" destination="DdJ-zy-gQo" id="x02-Vc-1Ov"/>
                         <outlet property="loginOrUserinfoButton" destination="WOw-lb-2e6" id="ptE-n6-UaO"/>
+                        <outlet property="protectionIconImgaeView" destination="CMd-b7-h8J" id="UI2-ID-3QK"/>
+                        <outlet property="protectionLabel" destination="FS1-Yy-1up" id="Xzh-iK-JMt"/>
                         <outlet property="protectionSwitch" destination="ChG-vg-5dO" id="IfB-jP-p5O"/>
                         <segue destination="W89-1r-Nwr" kind="push" identifier="profileSegue" id="xnN-KP-42i"/>
                     </connections>
@@ -1597,12 +1599,12 @@
         <image name="keyboard" width="30" height="30"/>
         <image name="minus" width="20" height="20"/>
         <image name="name" width="30" height="30"/>
+        <image name="passcode" width="30" height="30"/>
         <image name="ping" width="30" height="30"/>
         <image name="plus" width="30" height="30"/>
         <image name="signin" width="70" height="70"/>
         <image name="start" width="30" height="30"/>
         <image name="tab_settings" width="30" height="30"/>
-        <image name="touchid" width="30" height="30"/>
         <image name="wifi" width="30" height="30"/>
     </resources>
 </document>
