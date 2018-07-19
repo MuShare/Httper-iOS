@@ -222,7 +222,7 @@ class ProjectTableViewController: UITableViewController {
             // Add your logic here
             self?.syncRequests()
         }, loadingView: loadingView)
-        tableView.dg_setPullToRefreshFillColor(RGB(DesignColor.nagivation.rawValue))
+        tableView.dg_setPullToRefreshFillColor(UIColor(hex: DesignColor.nagivation.rawValue))
         tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
     }
 

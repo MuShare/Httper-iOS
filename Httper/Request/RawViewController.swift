@@ -34,7 +34,7 @@ class RawViewController: UIViewController {
             label.text = text
             label.backgroundColor = UIColor.clear
             label.font = UIFont(name: "Menlo", size: 12)
-            label.textColor = RGB(PrettyColor.normal.rawValue)
+            label.textColor = UIColor(hex: PrettyColor.normal.rawValue)
             return label
         }()
         let rowSize = rowLabel.sizeThatFits(CGSize(width: width - 10, height: CGFloat.greatestFiniteMagnitude))
