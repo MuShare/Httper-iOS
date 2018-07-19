@@ -323,7 +323,7 @@ extension RequestViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView: UIView = {
             let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
-            view.backgroundColor = .clear
+            view.backgroundColor = UIColor(hex: DesignColor.background.rawValue)
             return view
         }()
         
