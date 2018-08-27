@@ -55,7 +55,6 @@
 		E4D034491E4A0DB300580FAC /* ProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D034481E4A0DB300580FAC /* ProjectTableViewController.swift */; };
 		E4D161F71ECEA16A009B1DD9 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D161F61ECEA16A009B1DD9 /* UserManager.swift */; };
 		E4D1CAE51DF5C028008DC4F9 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */; };
-		E4D1F28720EBAC4B002953A1 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1F28620EBAC4B002953A1 /* Settings.swift */; };
 		E4D1F28920EBAC5F002953A1 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4D1F28820EBAC5F002953A1 /* Settings.storyboard */; };
 		E4D1F28B20EBB57A002953A1 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1F28A20EBB579002953A1 /* UIColor+Extension.swift */; };
 		E4DE76911E1D2645002A8385 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DE76901E1D2644002A8385 /* LoginViewController.swift */; };
@@ -159,7 +158,6 @@
 		E4D034481E4A0DB300580FAC /* ProjectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTableViewController.swift; sourceTree = "<group>"; };
 		E4D161F61ECEA16A009B1DD9 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
-		E4D1F28620EBAC4B002953A1 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		E4D1F28820EBAC5F002953A1 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		E4D1F28A20EBB579002953A1 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		E4DE76901E1D2644002A8385 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -330,7 +328,6 @@
 				E48D41631D444F3F0028B84F /* LaunchScreen.storyboard */,
 				E48D415B1D444F3F0028B84F /* Main.storyboard */,
 				774C75F120D79B9D00DBD9EC /* Login.storyboard */,
-				E4D1F28620EBAC4B002953A1 /* Settings.swift */,
 				E4D1F28820EBAC5F002953A1 /* Settings.storyboard */,
 			);
 			path = Storyboard;
@@ -671,7 +668,6 @@
 				E4DE76991E1D3DF5002A8385 /* RegisterViewController.swift in Sources */,
 				E4712ED81E55FC71002FF8E1 /* ProjectNameViewController.swift in Sources */,
 				E45D3E861E21296F0002E1F2 /* InternetResponse.swift in Sources */,
-				E4D1F28720EBAC4B002953A1 /* Settings.swift in Sources */,
 				E46ABF521E140F2E00E0C092 /* InternetTool.m in Sources */,
 				E4E297B11E00021500AD484E /* ResponseHeaderViewController.swift in Sources */,
 				E4A37A9D1E018D7500586BA1 /* RequestDao.swift in Sources */,

@@ -464,7 +464,7 @@
                     <navigationItem key="navigationItem" id="dhr-5V-0BF">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="QG4-JF-fLM">
-                            <rect key="frame" x="71" y="7" width="188" height="30"/>
+                            <rect key="frame" x="96" y="7" width="188" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Pretty"/>
@@ -1340,7 +1340,7 @@
         <image name="trash" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QUB-Yp-06a"/>
-        <segue reference="hRk-xi-ydu"/>
+        <segue reference="GHl-qG-vPC"/>
+        <segue reference="TGO-AX-uyd"/>
     </inferredMetricsTieBreakers>
 </document>
