@@ -2,8 +2,8 @@
 //  RequestViewController.swift
 //  Httper
 //
-//  Created by 李大爷的电脑 on 06/12/2016.
-//  Copyright © 2016 limeng. All rights reserved.
+//  Created by Meng Li on 06/12/2016.
+//  Copyright © 2016 MuShare Group. All rights reserved.
 //
 
 import UIKit
@@ -44,6 +44,8 @@ class RequestViewController: UIViewController {
     
     // Variables for saving request to project.
     var saveToProject: Project?
+    
+    var viewModel: RequestViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -428,22 +430,24 @@ extension RequestViewController: UITextFieldDelegate {
         if textField == urlTextField {
             return
         }
-        let cell = textField.superview?.superview
-        let rect = cell?.convert((cell?.bounds)!, to: self.view)
-        let y = (rect?.origin.y)!
-        let screenHeight = (self.view.window?.frame.size.height)!
-        if y > (screenHeight - keyboardHeight) {
-            let offset = keyboardHeight - (screenHeight - y) + (cell?.frame.size.height)!
-            UIView.animate(withDuration: 0.5, animations: {
+        
+        guard let cell = textField.superview?.superview else {
+            return
+        }
+        let rect = cell.convert(cell.bounds, to: self.view)
+        let y = rect.origin.y
+        if let screenHeight = view.window?.frame.size.height, y > (screenHeight - keyboardHeight) {
+            let offset = keyboardHeight - (screenHeight - y) + cell.frame.size.height
+            UIView.animate(withDuration: 0.5) {
                 self.view.frame = CGRect(x: 0, y: -offset, width: self.view.frame.size.width, height: self.view.frame.size.height)
-            })
+            }
         }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: 0.5) {
             self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
-        })
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

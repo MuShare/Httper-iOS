@@ -3,7 +3,7 @@
 //  Httper
 //
 //  Created by Meng Li on 2018/06/18.
-//  Copyright © 2018 limeng. All rights reserved.
+//  Copyright © 2018 MuShare Group. All rights reserved.
 //
 
 import UIKit

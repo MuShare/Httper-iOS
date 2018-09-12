@@ -2,8 +2,8 @@
 //  SimplePing.m
 //  Httper
 //
-//  Created by 李大爷的电脑 on 27/12/2016.
-//  Copyright © 2016 limeng. All rights reserved.
+//  Created by Meng Li on 27/12/2016.
+//  Copyright © 2016 MuShare Group. All rights reserved.
 //
 
 #import "SimplePing.h"

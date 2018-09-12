@@ -2,8 +2,8 @@
 //  ProjectsViewController.swift
 //  Httper
 //
-//  Created by 李大爷的电脑 on 2018/7/4.
-//  Copyright © 2018 limeng. All rights reserved.
+//  Created by Meng Li on 2018/7/4.
+//  Copyright © 2018 MuShare Group. All rights reserved.
 //
 
 import UIKit
@@ -18,6 +18,8 @@ class ProjectsViewController: UIViewController {
     var selectedProject: Project!
     
     let sync = SyncManager()
+    
+    var viewModel: ProjectsViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()

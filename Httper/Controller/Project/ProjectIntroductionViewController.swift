@@ -2,8 +2,8 @@
 //  ProjectIntroductionViewController.swift
 //  Httper
 //
-//  Created by 李大爷的电脑 on 17/02/2017.
-//  Copyright © 2017 limeng. All rights reserved.
+//  Created by Meng Li on 17/02/2017.
+//  Copyright © 2017 MuShare Group. All rights reserved.
 //
 
 import UIKit

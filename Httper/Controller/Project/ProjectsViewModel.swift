@@ -1,5 +1,5 @@
 //
-//  MainViewModel.swift
+//  ProjectsViewModel.swift
 //  Httper
 //
 //  Created by Meng Li on 2018/9/12.
@@ -8,10 +8,10 @@
 
 import RxFlow
 
-class MainViewModel {
+class ProjectsViewModel {
     
 }
 
-extension MainViewModel: Stepper {
+extension ProjectsViewModel: Stepper {
     
 }

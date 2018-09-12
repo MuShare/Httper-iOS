@@ -2,8 +2,8 @@
 //  WhoisViewController.swift
 //  Httper
 //
-//  Created by 李大爷的电脑 on 30/12/2016.
-//  Copyright © 2016 limeng. All rights reserved.
+//  Created by Meng Li on 30/12/2016.
+//  Copyright © 2016 MuShare Group. All rights reserved.
 //
 
 import UIKit

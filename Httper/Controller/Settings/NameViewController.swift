@@ -3,7 +3,7 @@
 //  Httper
 //
 //  Created by lidaye on 10/02/2017.
-//  Copyright © 2017 limeng. All rights reserved.
+//  Copyright © 2017 MuShare Group. All rights reserved.
 //
 
 import UIKit

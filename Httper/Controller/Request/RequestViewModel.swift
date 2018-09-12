@@ -1,17 +1,18 @@
 //
-//  MainViewModel.swift
+//  RequestViewModel.swift
 //  Httper
 //
 //  Created by Meng Li on 2018/9/12.
 //  Copyright © 2018 MuShare Group. All rights reserved.
 //
 
+import RxSwift
 import RxFlow
 
-class MainViewModel {
+class RequestViewModel {
     
 }
 
-extension MainViewModel: Stepper {
+extension RequestViewModel: Stepper {
     
 }
