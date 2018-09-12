@@ -7,15 +7,63 @@
 //
 
 import UIKit
+import RxSwift
 
-enum MainTabType {
-    case request
+enum MainTabType: Int {
+    case request = 0
     case project
     case settings
+    
+    var tabTitle: String {
+        switch self {
+        case .request:
+            return R.string.localizable.tab_request()
+        case .project:
+            return R.string.localizable.tab_project()
+        case .settings:
+            return R.string.localizable.tab_settings()
+        }
+    }
+    
+    var tabImage: UIImage? {
+        switch self {
+        case .request:
+            return R.image.tab_request()
+        case .project:
+            return R.image.tab_project()
+        case .settings:
+            return R.image.tab_settings()
+        }
+    }
 }
 
 class MainViewController: UITabBarController {
 
+    private let viewModel: MainViewModel
+    private let disposeBag = DisposeBag()
+    
+    init(viewModel: MainViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override var viewControllers: [UIViewController]? {
+        didSet {
+            guard let viewControllers = viewControllers, viewControllers.count > 0 else {
+                return
+            }
+            for (index, viewController) in viewControllers.enumerated() {
+                let type = MainTabType(rawValue: index)
+                viewController.tabBarItem = UITabBarItem(title: type?.tabTitle, image: type?.tabImage, tag: index)
+            }
+            updateNavigationBar(with: .request)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,23 +72,6 @@ class MainViewController: UITabBarController {
         tabBar.barTintColor = UIColor(hex: 0x42474b)
         tabBar.tintColor = UIColor(hex: 0xffffff)
         
-        let requestViewController = R.storyboard.main.requestViewController()!
-        requestViewController.tabBarItem = UITabBarItem(title: R.string.localizable.tab_request(),
-                                                        image: R.image.tab_request(),
-                                                        tag: 0)
-        
-        let projectsViewController = R.storyboard.main.projectsViewController()!
-        projectsViewController.tabBarItem = UITabBarItem(title: R.string.localizable.tab_project(),
-                                                              image: R.image.tab_project(),
-                                                              tag: 1)
-        
-        let settingsTableViewController = R.storyboard.settings.settingsTableViewController()!
-        settingsTableViewController.tabBarItem = UITabBarItem(title: R.string.localizable.tab_settings(),
-                                                              image: R.image.tab_settings(),
-                                                              tag: 2)
-        
-        viewControllers = [requestViewController, projectsViewController, settingsTableViewController]
-        updateNavigationBar(with: .request)
     }
     
     private func updateNavigationBar(with type: MainTabType) {
@@ -76,13 +107,10 @@ class MainViewController: UITabBarController {
 extension MainViewController: UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        if viewController.isKind(of: RequestViewController.self) {
-            updateNavigationBar(with: .request)
-        } else if viewController.isKind(of: ProjectsViewController.self) {
-            updateNavigationBar(with: .project)
-        } else if viewController.isKind(of: SettingsTableViewController.self) {
-            updateNavigationBar(with: .settings)
+        guard let tabType = MainTabType(rawValue: tabBarController.selectedIndex) else {
+            return
         }
+        updateNavigationBar(with: tabType)
     }
     
 }
