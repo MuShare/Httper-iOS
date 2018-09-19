@@ -24,6 +24,7 @@ target 'Httper' do
     pod 'RxKingfisher', '~> 0.2'
     pod 'SnapKit', '~> 4'
     pod 'UIGradient', '~> 1.2'
+    pod 'PagingKit'
 end
 
 post_install do |installer|
