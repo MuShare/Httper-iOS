@@ -12,14 +12,83 @@ import MGKeyboardAccessory
 
 let protocols = ["http", "https"]
 
+fileprivate struct Const {
+    
+    static let margin = 16
+    
+    struct requestMethod {
+        static let buttonWidth = 50
+        static let height = 50
+    }
+    
+    struct protocols {
+        static let width = 75
+    }
+    
+    struct url {
+        static let height = 50
+    }
+    
+    struct bottomButton {
+        static let height = 40
+    }
+    
+}
+
 class RequestViewController: UIViewController {
     
-    @IBOutlet weak var requestMethodButton: UIButton!
-    @IBOutlet weak var urlTextField: UITextField!
+    private lazy var requestMethodLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Request Method"
+        label.textColor = .white
+        return label
+    }()
+    
+    private lazy var requestMethodButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("GET", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        return button
+    }()
+    
+    private lazy var protocolsSegmentedControl: UISegmentedControl = {
+        let segmentedControl = UISegmentedControl()
+        segmentedControl.insertSegment(withTitle: "http", at: 0, animated: false)
+        segmentedControl.insertSegment(withTitle: "https", at: 1, animated: false)
+        segmentedControl.tintColor = .white
+        segmentedControl.selectedSegmentIndex = 0
+        return segmentedControl
+    }()
+    
+    private lazy var urlTextField: UITextField = {
+        let textField = UITextField()
+        textField.attributedPlaceholder = NSAttributedString(string: "request URL", attributes: [NSAttributedStringKey.foregroundColor : UIColor.lightGray])
+        textField.textColor = .white
+        return textField
+    }()
+    
     @IBOutlet weak var valueTableView: UITableView!
-    @IBOutlet weak var sendButton: UIButton!
-    @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var protocolsSegmentedControl: UISegmentedControl!
+    private lazy var sendButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Send Request", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.layer.borderColor = UIColor.lightGray.cgColor
+        button.layer.borderWidth = 1
+        button.layer.cornerRadius = 5
+        return button
+    }()
+    
+    private lazy var saveButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Save to Project", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.layer.borderColor = UIColor.lightGray.cgColor
+        button.layer.borderWidth = 1
+        button.layer.cornerRadius = 5
+        return button
+    }()
+    
+
     
     var editingTextField: UITextField!
     
@@ -50,12 +119,59 @@ class RequestViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.addSubview(requestMethodLabel)
+        view.addSubview(requestMethodButton)
+        view.addSubview(protocolsSegmentedControl)
+        view.addSubview(urlTextField)
+        view.addSubview(saveButton)
+        view.addSubview(sendButton)
+        createConstraints()
+        
         valueTableView.hideFooterView()
         
-        sendButton.layer.borderColor = UIColor.lightGray.cgColor
-        saveButton.layer.borderColor = UIColor.lightGray.cgColor
-
         NotificationCenter.default.addObserver(self, selector: #selector(bodyChanged(notification:)), name: NSNotification.Name(rawValue: "bodyChanged"), object: nil)
+    }
+    
+    private func createConstraints() {
+        requestMethodButton.snp.makeConstraints {
+            $0.top.equalTo(view.safeArea.top).offset(Const.margin)
+            $0.height.equalTo(Const.requestMethod.height)
+            $0.width.equalTo(Const.requestMethod.buttonWidth)
+            $0.right.equalToSuperview().offset(-Const.margin)
+        }
+        
+        requestMethodLabel.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(Const.margin)
+            $0.right.equalTo(requestMethodButton.snp.left).offset(Const.margin)
+            $0.height.equalTo(requestMethodButton)
+            $0.centerY.equalTo(requestMethodButton)
+        }
+        
+        urlTextField.snp.makeConstraints {
+            $0.left.equalTo(protocolsSegmentedControl.snp.right)
+            $0.right.equalToSuperview().offset(Const.margin)
+            $0.top.equalTo(requestMethodButton.snp.bottom)
+            $0.height.equalTo(Const.url.height)
+        }
+        
+        protocolsSegmentedControl.snp.makeConstraints {
+            $0.centerY.equalTo(urlTextField)
+            $0.left.equalToSuperview().offset(Const.margin)
+            $0.width.equalTo(Const.protocols.width)
+        }
+        
+        saveButton.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(Const.margin)
+            $0.height.equalTo(Const.bottomButton.height)
+            $0.bottom.equalTo(view.safeArea.bottom).offset(-Const.margin)
+            $0.right.equalTo(sendButton.snp.left).offset(-Const.margin)
+        }
+        
+        sendButton.snp.makeConstraints {
+            $0.size.equalTo(saveButton)
+            $0.centerY.equalTo(saveButton)
+            $0.right.equalToSuperview().offset(-Const.margin)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -159,13 +275,13 @@ class RequestViewController: UIViewController {
         case R.segue.requestViewController.requestBodySegue.identifier:
             let destination = segue.destination as! RequestBodyViewController
             destination.body = body
-        case R.segue.requestViewController.requestMethodSegue.identifier:
-            if editingTextField == nil {
-                return
-            }
-            if editingTextField.isFirstResponder {
-                editingTextField.resignFirstResponder()
-            }
+//        case R.segue.requestViewController.requestMethodSegue.identifier:
+//            if editingTextField == nil {
+//                return
+//            }
+//            if editingTextField.isFirstResponder {
+//                editingTextField.resignFirstResponder()
+//            }
         default:
             break
         }
@@ -351,7 +467,7 @@ extension RequestViewController: UITableViewDataSource {
             //Set button
             let addButton: UIButton = {
                 let button = UIButton(frame: CGRect(x: tableView.bounds.size.width - headerView.bounds.size.height - 43, y: 0, width: headerView.bounds.size.height, height: headerView.bounds.size.height))
-                button.setImage(R.image.add_value(), for: UIControlState.normal)
+                button.setImage(R.image.add_value(), for: .normal)
                 button.tag = section
                 button.addTarget(self, action: #selector(addNewValue(_:)), for: .touchUpInside)
                 return button
