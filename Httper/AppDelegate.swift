@@ -2,20 +2,25 @@
 //  AppDelegate.swift
 //  Httper
 //
-//  Created by 李大爷的电脑 on 7/24/16.
-//  Copyright © 2016 limeng. All rights reserved.
+//  Created by Meng Li on 7/24/16.
+//  Copyright © 2016 MuShare Group. All rights reserved.
 //
 
 import UIKit
-import CoreData
-import Alamofire
 import FacebookCore
+import RxSwift
+import RxCocoa
+import RxFlow
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    private let coordinator = Coordinator()
+    private let disposeBag = DisposeBag()
+    private var appFlow: AppFlow!
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         appUpdate()
@@ -29,18 +34,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.backgroundColor = .white
-        window?.rootViewController = {
-            let navigationController = UINavigationController(rootViewController: MainViewController())
-            navigationController.navigationBar.tintColor = UIColor(hex: 0xffffff)
-            navigationController.navigationBar.titleTextAttributes = [
-                NSAttributedStringKey.foregroundColor: UIColor(hex: 0xffffff)
-            ]
-            navigationController.navigationBar.barTintColor = UIColor(hex: 0x4e5255)
-            return navigationController
-        }()
-        window?.makeKeyAndVisible()
+        guard let window = self.window else { return false }
+        
+        // Listen for Coordinator mechanism is not mandatory
+        coordinator.rx.didNavigate.subscribe(onNext: { (flow, step) in
+            print("did navigate to flow = \(flow) and step = \(step)")
+        }).disposed(by: disposeBag)
+        
+        // Luach the app with an appFlow.
+        appFlow = AppFlow(window: window)
+        let stepper = OneStepper(withSingleStep: AppStep.main)
+        coordinator.coordinate(flow: appFlow, withStepper: stepper)
         
         return true
     }
