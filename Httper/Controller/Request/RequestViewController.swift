@@ -35,7 +35,7 @@ fileprivate struct Const {
     }
     
     struct menu {
-        static let height = 44
+        static let height = 40
         static let cell = "menuCell"
     }
 
@@ -98,8 +98,8 @@ class RequestViewController: UIViewController {
         let controller = PagingMenuViewController()
         controller.dataSource = self
         controller.delegate = self
-        controller.register(type: TitleLabelMenuViewCell.self, forCellWithReuseIdentifier: Const.menu.cell)
-        controller.registerFocusView(view: UnderlineFocusView())
+        controller.register(type: MenuViewCell.self, forCellWithReuseIdentifier: Const.menu.cell)
+        controller.registerFocusView(view: UIView())
         controller.view.backgroundColor = .clear
         return controller
     }()
@@ -111,6 +111,8 @@ class RequestViewController: UIViewController {
         controller.view.frame = view.bounds
         return controller
     }()
+    
+    var contentViewControllers: [UIViewController] = []
     
     var editingTextField: UITextField!
     
@@ -198,13 +200,13 @@ class RequestViewController: UIViewController {
             $0.height.equalTo(Const.menu.height)
             $0.left.equalToSuperview().offset(Const.margin)
             $0.right.equalToSuperview().offset(-Const.margin)
-            $0.top.equalTo(urlTextField.snp.bottom)
+            $0.top.equalTo(urlTextField.snp.bottom).offset(Const.margin)
         }
         
         contentViewController.view.snp.makeConstraints {
             $0.left.equalToSuperview()
             $0.right.equalToSuperview()
-            $0.top.equalTo(menuViewController.view.snp.bottom)
+            $0.top.equalTo(menuViewController.view.snp.bottom).offset(Const.margin)
             $0.bottom.equalTo(saveButton.snp.top)
         }
         
@@ -630,10 +632,10 @@ extension RequestViewController: UITextFieldDelegate {
 extension RequestViewController: PagingMenuViewControllerDataSource {
     
     func menuViewController(viewController: PagingMenuViewController, cellForItemAt index: Int) -> PagingMenuViewCell {
-        guard let cell = viewController.dequeueReusableCell(withReuseIdentifier: Const.menu.cell, for: index) as? TitleLabelMenuViewCell else {
-            return TitleLabelMenuViewCell()
+        guard let cell = viewController.dequeueReusableCell(withReuseIdentifier: Const.menu.cell, for: index) as? MenuViewCell else {
+            return MenuViewCell()
         }
-        cell.titleLabel.text = Const.menus[index]
+        cell.title = Const.menus[index]
         return cell
     }
     
@@ -661,7 +663,7 @@ extension RequestViewController: PagingContentViewControllerDataSource {
     }
     
     func contentViewController(viewController: PagingContentViewController, viewControllerAt index: Int) -> UIViewController {
-        return UIViewController()
+        return contentViewControllers[index]
     }
     
 }

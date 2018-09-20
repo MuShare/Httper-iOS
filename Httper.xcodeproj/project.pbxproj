@@ -11,7 +11,13 @@
 		774C75EE20D7940200DBD9EC /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774C75ED20D7940200DBD9EC /* UIViewController+Extension.swift */; };
 		774C75F020D795EE00DBD9EC /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774C75EF20D795EE00DBD9EC /* R.generated.swift */; };
 		774C75F220D79B9D00DBD9EC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 774C75F120D79B9D00DBD9EC /* Login.storyboard */; };
-		E4007EB91DFEE7B7002A87FA /* RequestBodyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4007EB81DFEE7B7002A87FA /* RequestBodyViewController.swift */; };
+		77F3995F215373600016978E /* KeyValueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F3995E215373600016978E /* KeyValueViewController.swift */; };
+		77F39961215373770016978E /* KeyValueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F39960215373770016978E /* KeyValueViewModel.swift */; };
+		77F39964215374370016978E /* KeyValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F39963215374370016978E /* KeyValueTableViewCell.swift */; };
+		77F39966215377790016978E /* SingleSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F39965215377790016978E /* SingleSection.swift */; };
+		77F39968215381700016978E /* BodyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F39967215381700016978E /* BodyViewModel.swift */; };
+		77F3996A215382BA0016978E /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F39969215382BA0016978E /* MenuViewCell.swift */; };
+		E4007EB91DFEE7B7002A87FA /* BodyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4007EB81DFEE7B7002A87FA /* BodyViewController.swift */; };
 		E40B257E1DF44BD20039CA8D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40B257D1DF44BD20039CA8D /* MainViewController.swift */; };
 		E411A30A215286C5004ADBAE /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E411A309215286C5004ADBAE /* UIView+Extension.swift */; };
 		E41642D31DF970CE00F0339E /* CommonTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41642D21DF970CE00F0339E /* CommonTool.swift */; };
@@ -110,8 +116,14 @@
 		774C75ED20D7940200DBD9EC /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		774C75EF20D795EE00DBD9EC /* R.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		774C75F120D79B9D00DBD9EC /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		77F3995E215373600016978E /* KeyValueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueViewController.swift; sourceTree = "<group>"; };
+		77F39960215373770016978E /* KeyValueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueViewModel.swift; sourceTree = "<group>"; };
+		77F39963215374370016978E /* KeyValueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueTableViewCell.swift; sourceTree = "<group>"; };
+		77F39965215377790016978E /* SingleSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleSection.swift; sourceTree = "<group>"; };
+		77F39967215381700016978E /* BodyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyViewModel.swift; sourceTree = "<group>"; };
+		77F39969215382BA0016978E /* MenuViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewCell.swift; sourceTree = "<group>"; };
 		7EBC322CA510BFBBFF4AB72E /* Pods-Httper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Httper.release.xcconfig"; path = "Pods/Target Support Files/Pods-Httper/Pods-Httper.release.xcconfig"; sourceTree = "<group>"; };
-		E4007EB81DFEE7B7002A87FA /* RequestBodyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestBodyViewController.swift; sourceTree = "<group>"; };
+		E4007EB81DFEE7B7002A87FA /* BodyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodyViewController.swift; sourceTree = "<group>"; };
 		E400D3C220C1BEF100B2BC7F /* route_simulator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = route_simulator.h; sourceTree = "<group>"; };
 		E400D3C320C1BF0900B2BC7F /* radix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = radix.h; sourceTree = "<group>"; };
 		E40B257D1DF44BD20039CA8D /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -264,11 +276,14 @@
 		774C75DF20D7915100DBD9EC /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				E4007EB81DFEE7B7002A87FA /* BodyViewController.swift */,
+				77F39967215381700016978E /* BodyViewModel.swift */,
 				E4CA760B1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift */,
+				77F3995E215373600016978E /* KeyValueViewController.swift */,
+				77F39960215373770016978E /* KeyValueViewModel.swift */,
 				E48553311DF9B2AF00A1DB60 /* PrettyViewController.swift */,
 				E48553351DF9B2CF00A1DB60 /* PreviewViewController.swift */,
 				E48553331DF9B2BF00A1DB60 /* RawViewController.swift */,
-				E4007EB81DFEE7B7002A87FA /* RequestBodyViewController.swift */,
 				E431C4A81DF7179D006BB2D6 /* RequestMethodsTableViewController.swift */,
 				E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */,
 				E49F680121495BA500646892 /* RequestViewModel.swift */,
@@ -283,7 +298,6 @@
 		774C75E620D791E400DBD9EC /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				774C75EC20D793D000DBD9EC /* Extension */,
 				E41642D21DF970CE00F0339E /* CommonTool.swift */,
 				E4798BDE1E2BC92600DCD4E2 /* EditingViewController.swift */,
 				E4305A371E2E5FF900010B52 /* Global.swift */,
@@ -295,6 +309,7 @@
 				E46ABF4F1E140C6700E0C092 /* route.h */,
 				E4EC89D51E12A4C70072ACF3 /* SimplePing.h */,
 				E4EC89D61E12A4C70072ACF3 /* SimplePing.m */,
+				77F39965215377790016978E /* SingleSection.swift */,
 				E4EC89CF1E129FA10072ACF3 /* STDPingServices.h */,
 				E4EC89D01E129FA10072ACF3 /* STDPingServices.m */,
 				E47FDC5F1E3861AF00251EEC /* Versions.swift */,
@@ -369,6 +384,15 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		77F399622153741F0016978E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				77F39963215374370016978E /* KeyValueTableViewCell.swift */,
+				77F39969215382BA0016978E /* MenuViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		A8EB941CC2B91E61E832B80C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -413,9 +437,11 @@
 		E48D41561D444F3F0028B84F /* Httper */ = {
 			isa = PBXGroup;
 			children = (
+				77F399622153741F0016978E /* Cell */,
 				E49F67F8214955C300646892 /* Controller */,
 				E49F67F3214954E000646892 /* Flow */,
 				774C75DE20D7912A00DBD9EC /* Dao */,
+				774C75EC20D793D000DBD9EC /* Extension */,
 				774C75E620D791E400DBD9EC /* Library */,
 				774C75DD20D7911B00DBD9EC /* Manager */,
 				774C75DC20D790F300DBD9EC /* Model */,
@@ -640,6 +666,7 @@
 				"${BUILT_PRODUCTS_DIR}/AttributedTextView/AttributedTextView.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/DGElasticPullToRefresh/DGElasticPullToRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
@@ -654,7 +681,9 @@
 				"${BUILT_PRODUCTS_DIR}/PagingKit/PagingKit.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/ReachabilitySwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Reusable/Reusable.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxFlow/RxFlow.framework",
 				"${BUILT_PRODUCTS_DIR}/RxKingfisher/RxKingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -671,6 +700,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AttributedTextView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DGElasticPullToRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
@@ -685,7 +715,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PagingKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReachabilitySwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reusable.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxFlow.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxKingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -729,6 +761,7 @@
 				E49F680421495E3300646892 /* ProjectFlow.swift in Sources */,
 				E4DE76991E1D3DF5002A8385 /* RegisterViewController.swift in Sources */,
 				E4712ED81E55FC71002FF8E1 /* ProjectNameViewController.swift in Sources */,
+				77F39964215374370016978E /* KeyValueTableViewCell.swift in Sources */,
 				E49F680021495B0E00646892 /* RequestFlow.swift in Sources */,
 				E45D3E861E21296F0002E1F2 /* InternetResponse.swift in Sources */,
 				E46ABF521E140F2E00E0C092 /* InternetTool.m in Sources */,
@@ -743,6 +776,7 @@
 				E4D1CAE51DF5C028008DC4F9 /* RequestViewController.swift in Sources */,
 				E48553361DF9B2CF00A1DB60 /* PreviewViewController.swift in Sources */,
 				E4D034491E4A0DB300580FAC /* ProjectTableViewController.swift in Sources */,
+				77F39961215373770016978E /* KeyValueViewModel.swift in Sources */,
 				E4CA760C1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift in Sources */,
 				E4EC89D71E12A4C70072ACF3 /* SimplePing.m in Sources */,
 				E42A713B214960DA0070D8FC /* SettingsFlow.swift in Sources */,
@@ -753,7 +787,9 @@
 				E4305A491E34F8E100010B52 /* DaoTemplate.swift in Sources */,
 				E4D1F28B20EBB57A002953A1 /* UIColor+Extension.swift in Sources */,
 				E44B98A720EBDE06004FEF67 /* ProjectsViewController.swift in Sources */,
+				77F3996A215382BA0016978E /* MenuViewCell.swift in Sources */,
 				E4712EDA1E55FC81002FF8E1 /* ProjectIntroductionViewController.swift in Sources */,
+				77F3995F215373600016978E /* KeyValueViewController.swift in Sources */,
 				E48D41581D444F3F0028B84F /* AppDelegate.swift in Sources */,
 				E4305A3A1E2F11EB00010B52 /* ProfileTableViewController.swift in Sources */,
 				E47FDC651E38697600251EEC /* SyncManager.swift in Sources */,
@@ -770,7 +806,8 @@
 				E46077611E126948002DE839 /* PingViewController.swift in Sources */,
 				E49BC0AB1E4226F400241004 /* Project+CoreDataClass.swift in Sources */,
 				E4798BDF1E2BC92600DCD4E2 /* EditingViewController.swift in Sources */,
-				E4007EB91DFEE7B7002A87FA /* RequestBodyViewController.swift in Sources */,
+				E4007EB91DFEE7B7002A87FA /* BodyViewController.swift in Sources */,
+				77F39968215381700016978E /* BodyViewModel.swift in Sources */,
 				E4EC89D21E129FA10072ACF3 /* STDPingServices.m in Sources */,
 				E4EC89D41E12A00C0072ACF3 /* IPAddressTableViewController.swift in Sources */,
 				E4305A471E34F65000010B52 /* DaoManager.swift in Sources */,
@@ -785,6 +822,7 @@
 				E46CE471214A828B0046BCCA /* AppFlow.swift in Sources */,
 				E411A30A215286C5004ADBAE /* UIView+Extension.swift in Sources */,
 				E4DE76911E1D2645002A8385 /* LoginViewController.swift in Sources */,
+				77F39966215377790016978E /* SingleSection.swift in Sources */,
 				E4CA76131E3F7E1A008D7A52 /* AddProjectViewController.swift in Sources */,
 				774C75EE20D7940200DBD9EC /* UIViewController+Extension.swift in Sources */,
 				E49BC0AE1E4226F400241004 /* Request+CoreDataProperties.swift in Sources */,
