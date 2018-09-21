@@ -21,7 +21,7 @@ class KeyValueTableViewCell: UITableViewCell, Reusable {
     
     private lazy var keyTextField: UITextField = {
         let textField = UITextField()
-        textField.attributedPlaceholder = NSAttributedString(string: "key", attributes: [NSAttributedStringKey.foregroundColor : UIColor.lightGray])
+        textField.attributedPlaceholder = NSAttributedString(string: "key", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
         textField.textColor = .white
         textField.backgroundColor = .clear
         return textField
@@ -35,7 +35,7 @@ class KeyValueTableViewCell: UITableViewCell, Reusable {
     
     private lazy var valueTextField: UITextField = {
         let textField = UITextField()
-        textField.attributedPlaceholder = NSAttributedString(string: "value", attributes: [NSAttributedStringKey.foregroundColor : UIColor.lightGray])
+        textField.attributedPlaceholder = NSAttributedString(string: "value", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
         textField.textColor = .white
         textField.backgroundColor = .clear
         return textField
@@ -53,7 +53,7 @@ class KeyValueTableViewCell: UITableViewCell, Reusable {
         return button
     }()
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         backgroundColor = .clear

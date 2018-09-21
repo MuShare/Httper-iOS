@@ -104,7 +104,7 @@ extension ProjectsViewController: UITableViewDelegate {
         self.performSegue(withIdentifier: R.segue.projectsViewController.projectSegue, sender: self)
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Remove it from persistent store and server.
             sync.deleteProject(projects[indexPath.row], completionHandler: nil)

@@ -32,7 +32,7 @@ class HttperNavigationController: UINavigationController {
         
         navigationBar.tintColor = .white
         navigationBar.titleTextAttributes = [
-            NSAttributedStringKey.foregroundColor: UIColor.white
+            NSAttributedString.Key.foregroundColor: UIColor.white
         ]
         navigationBar.shadowImage = UIImage()
         navigationBar.barTintColor = barTintColor

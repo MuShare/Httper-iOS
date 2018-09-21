@@ -16,8 +16,8 @@ target 'Httper' do
     pod 'NVActivityIndicatorView', '~> 4'
     pod 'Kingfisher', '~> 4'
     pod 'UIImageView+Extension', '~> 0.2'
-    pod 'R.swift', '~> 4.0'
-    pod 'MGFormatter', '~> 0.2'
+    pod 'R.swift', '= 5.0.0.alpha.2'
+    pod 'MGFormatter', '~> 0.3'
     pod 'Reusable', '~> 4'
     pod 'RxSwift', '~> 4'
     pod 'RxCocoa', '~> 4'
@@ -26,7 +26,7 @@ target 'Httper' do
     pod 'RxKingfisher', '~> 0.2'
     pod 'SnapKit', '~> 4'
     pod 'UIGradient', '~> 1.2'
-    pod 'PagingKit'
+    pod 'PagingKit', '~> 1'
 end
 
 post_install do |installer|

@@ -69,7 +69,7 @@ class RequestViewController: UIViewController {
     
     private lazy var urlTextField: UITextField = {
         let textField = UITextField()
-        textField.attributedPlaceholder = NSAttributedString(string: "request URL", attributes: [NSAttributedStringKey.foregroundColor : UIColor.lightGray])
+        textField.attributedPlaceholder = NSAttributedString(string: "request URL", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
         textField.textColor = .white
         return textField
     }()
@@ -159,13 +159,13 @@ class RequestViewController: UIViewController {
     }
     
     private func setupPagingKit() {
-        addChildViewController(contentViewController)
+        addChild(contentViewController)
         view.insertSubview(contentViewController.view, at: 0)
-        contentViewController.didMove(toParentViewController: self)
+        contentViewController.didMove(toParent: self)
         
-        addChildViewController(menuViewController)
+        addChild(menuViewController)
         view.insertSubview(menuViewController.view, aboveSubview: contentViewController.view)
-        menuViewController.didMove(toParentViewController: self)
+        menuViewController.didMove(toParent: self)
     }
     
     private func createConstraints() {
