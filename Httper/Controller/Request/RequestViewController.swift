@@ -9,17 +9,110 @@
 import UIKit
 import Alamofire
 import MGKeyboardAccessory
+import PagingKit
 
 let protocols = ["http", "https"]
 
+fileprivate struct Const {
+    
+    static let margin = 16
+    
+    struct requestMethod {
+        static let buttonWidth = 50
+        static let height = 50
+    }
+    
+    struct protocols {
+        static let width = 75
+    }
+    
+    struct url {
+        static let height = 50
+    }
+    
+    struct bottomButton {
+        static let height = 40
+    }
+    
+    struct menu {
+        static let height = 40
+        static let cell = "menuCell"
+    }
+
+    static let menus = ["Headers", "Parameters", "Body"]
+}
+
 class RequestViewController: UIViewController {
     
-    @IBOutlet weak var requestMethodButton: UIButton!
-    @IBOutlet weak var urlTextField: UITextField!
-    @IBOutlet weak var valueTableView: UITableView!
-    @IBOutlet weak var sendButton: UIButton!
-    @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var protocolsSegmentedControl: UISegmentedControl!
+    private lazy var requestMethodLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Request Method"
+        label.textColor = .white
+        return label
+    }()
+    
+    private lazy var requestMethodButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("GET", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        return button
+    }()
+    
+    private lazy var protocolsSegmentedControl: UISegmentedControl = {
+        let segmentedControl = UISegmentedControl()
+        segmentedControl.insertSegment(withTitle: "http", at: 0, animated: false)
+        segmentedControl.insertSegment(withTitle: "https", at: 1, animated: false)
+        segmentedControl.tintColor = .white
+        segmentedControl.selectedSegmentIndex = 0
+        return segmentedControl
+    }()
+    
+    private lazy var urlTextField: UITextField = {
+        let textField = UITextField()
+        textField.attributedPlaceholder = NSAttributedString(string: "request URL", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
+        textField.textColor = .white
+        return textField
+    }()
+    
+    private lazy var sendButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Send Request", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.layer.borderColor = UIColor.lightGray.cgColor
+        button.layer.borderWidth = 1
+        button.layer.cornerRadius = 5
+        return button
+    }()
+    
+    private lazy var saveButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Save to Project", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.layer.borderColor = UIColor.lightGray.cgColor
+        button.layer.borderWidth = 1
+        button.layer.cornerRadius = 5
+        return button
+    }()
+    
+    private lazy var menuViewController: PagingMenuViewController = {
+        let controller = PagingMenuViewController()
+        controller.dataSource = self
+        controller.delegate = self
+        controller.register(type: MenuViewCell.self, forCellWithReuseIdentifier: Const.menu.cell)
+        controller.registerFocusView(view: UIView())
+        controller.view.backgroundColor = .clear
+        return controller
+    }()
+    
+    private lazy var contentViewController: PagingContentViewController = {
+        let controller = PagingContentViewController()
+        controller.dataSource = self
+        controller.delegate = self
+        controller.view.frame = view.bounds
+        return controller
+    }()
+    
+    var contentViewControllers: [UIViewController] = []
     
     var editingTextField: UITextField!
     
@@ -50,12 +143,85 @@ class RequestViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        valueTableView.hideFooterView()
+        view.addSubview(requestMethodLabel)
+        view.addSubview(requestMethodButton)
+        view.addSubview(protocolsSegmentedControl)
+        view.addSubview(urlTextField)
+        view.addSubview(saveButton)
+        view.addSubview(sendButton)
+        setupPagingKit()
+        createConstraints()
         
-        sendButton.layer.borderColor = UIColor.lightGray.cgColor
-        saveButton.layer.borderColor = UIColor.lightGray.cgColor
-
+        menuViewController.reloadData()
+        contentViewController.reloadData()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(bodyChanged(notification:)), name: NSNotification.Name(rawValue: "bodyChanged"), object: nil)
+    }
+    
+    private func setupPagingKit() {
+        addChild(contentViewController)
+        view.insertSubview(contentViewController.view, at: 0)
+        contentViewController.didMove(toParent: self)
+        
+        addChild(menuViewController)
+        view.insertSubview(menuViewController.view, aboveSubview: contentViewController.view)
+        menuViewController.didMove(toParent: self)
+    }
+    
+    private func createConstraints() {
+        requestMethodButton.snp.makeConstraints {
+            $0.top.equalTo(view.safeArea.top).offset(Const.margin)
+            $0.height.equalTo(Const.requestMethod.height)
+            $0.width.equalTo(Const.requestMethod.buttonWidth)
+            $0.right.equalToSuperview().offset(-Const.margin)
+        }
+        
+        requestMethodLabel.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(Const.margin)
+            $0.right.equalTo(requestMethodButton.snp.left).offset(Const.margin)
+            $0.height.equalTo(requestMethodButton)
+            $0.centerY.equalTo(requestMethodButton)
+        }
+        
+        urlTextField.snp.makeConstraints {
+            $0.left.equalTo(protocolsSegmentedControl.snp.right)
+            $0.right.equalToSuperview().offset(Const.margin)
+            $0.top.equalTo(requestMethodButton.snp.bottom)
+            $0.height.equalTo(Const.url.height)
+        }
+        
+        protocolsSegmentedControl.snp.makeConstraints {
+            $0.centerY.equalTo(urlTextField)
+            $0.left.equalToSuperview().offset(Const.margin)
+            $0.width.equalTo(Const.protocols.width)
+        }
+        
+        menuViewController.view.snp.makeConstraints {
+            $0.height.equalTo(Const.menu.height)
+            $0.left.equalToSuperview().offset(Const.margin)
+            $0.right.equalToSuperview().offset(-Const.margin)
+            $0.top.equalTo(urlTextField.snp.bottom).offset(Const.margin)
+        }
+        
+        contentViewController.view.snp.makeConstraints {
+            $0.left.equalToSuperview()
+            $0.right.equalToSuperview()
+            $0.top.equalTo(menuViewController.view.snp.bottom).offset(Const.margin)
+            $0.bottom.equalTo(saveButton.snp.top)
+        }
+        
+        saveButton.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(Const.margin)
+            $0.height.equalTo(Const.bottomButton.height)
+            $0.bottom.equalTo(view.safeArea.bottom).offset(-Const.margin)
+            $0.right.equalTo(sendButton.snp.left).offset(-Const.margin)
+        }
+        
+        sendButton.snp.makeConstraints {
+            $0.size.equalTo(saveButton)
+            $0.centerY.equalTo(saveButton)
+            $0.right.equalToSuperview().offset(-Const.margin)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -68,15 +234,15 @@ class RequestViewController: UIViewController {
 
         // Setup keyboard accessory.
         urlTextField.setupKeyboardAccessory(characters, barStyle: .black)
-        for cell in valueTableView.visibleCells {
-            if cell.reuseIdentifier == R.reuseIdentifier.headerIdentifier.identifier ||
-                cell.reuseIdentifier == R.reuseIdentifier.parameterIdentifier.identifier {
-                let keyTextField = cell.viewWithTag(1) as! UITextField
-                let valueTextField = cell.viewWithTag(2) as! UITextField
-                keyTextField.setupKeyboardAccessory(characters, barStyle: .black)
-                valueTextField.setupKeyboardAccessory(characters, barStyle: .black)
-            }
-        }
+//        for cell in valueTableView.visibleCells {
+//            if cell.reuseIdentifier == R.reuseIdentifier.headerIdentifier.identifier ||
+//                cell.reuseIdentifier == R.reuseIdentifier.parameterIdentifier.identifier {
+//                let keyTextField = cell.viewWithTag(1) as! UITextField
+//                let valueTextField = cell.viewWithTag(2) as! UITextField
+//                keyTextField.setupKeyboardAccessory(characters, barStyle: .black)
+//                valueTextField.setupKeyboardAccessory(characters, barStyle: .black)
+//            }
+//        }
         
         // Set request method.
         requestMethodButton.setTitle(method, for: .normal)
@@ -119,7 +285,7 @@ class RequestViewController: UIViewController {
             }
             urlTextField.text = url
             request = nil
-            valueTableView.reloadData()
+//            valueTableView.reloadData()
         }
         
         // Save to project.
@@ -156,22 +322,23 @@ class RequestViewController: UIViewController {
             destination.headers = headers
             destination.parameters = parameters
             destination.body = body
-        case R.segue.requestViewController.requestBodySegue.identifier:
-            let destination = segue.destination as! RequestBodyViewController
-            destination.body = body
-        case R.segue.requestViewController.requestMethodSegue.identifier:
-            if editingTextField == nil {
-                return
-            }
-            if editingTextField.isFirstResponder {
-                editingTextField.resignFirstResponder()
-            }
+//        case R.segue.requestViewController.requestBodySegue.identifier:
+//            let destination = segue.destination as! RequestBodyViewController
+//            destination.body = body
+//        case R.segue.requestViewController.requestMethodSegue.identifier:
+//            if editingTextField == nil {
+//                return
+//            }
+//            if editingTextField.isFirstResponder {
+//                editingTextField.resignFirstResponder()
+//            }
         default:
             break
         }
     }
     
     //MARK: - Action
+    /**
     @IBAction func deleteValue(_ sender: UIButton) {
         sender.isEnabled = false;
         let cell: UITableViewCell = (sender as UIView).superview?.superview as! UITableViewCell
@@ -198,6 +365,7 @@ class RequestViewController: UIViewController {
             sender.isEnabled = true
         }
     }
+ */
     
     @IBAction func chooseHeaderKey(_ sender: UIButton) {
         let cell: UITableViewCell = (sender as UIView).superview?.superview as! UITableViewCell
@@ -231,7 +399,7 @@ class RequestViewController: UIViewController {
             self.headerValues = []
             self.parameterKeys = []
             self.parameterValues = []
-            self.valueTableView.reloadData()
+//            self.valueTableView.reloadData()
         })
         self.present(alertController, animated: true, completion: nil)
     }
@@ -258,6 +426,7 @@ class RequestViewController: UIViewController {
         
         headers = HTTPHeaders()
         parameters = Parameters()
+        /**
         for section in 0 ..< 2 {
             for row in 0 ..< valueTableView.numberOfRows(inSection: section) {
                 let cell: UITableViewCell = valueTableView.cellForRow(at: IndexPath(row: row, section: section))!
@@ -273,6 +442,7 @@ class RequestViewController: UIViewController {
                 }
             }
         }
+ */
         return true
     }
     
@@ -293,7 +463,7 @@ class RequestViewController: UIViewController {
         } else if section == 1 {
             parameterCount += 1
         }
-        valueTableView.insertRows(at: [indexPath], with: .automatic)
+//        valueTableView.insertRows(at: [indexPath], with: .automatic)
     }
     
     @objc func bodyChanged(notification: Notification) {
@@ -351,7 +521,7 @@ extension RequestViewController: UITableViewDataSource {
             //Set button
             let addButton: UIButton = {
                 let button = UIButton(frame: CGRect(x: tableView.bounds.size.width - headerView.bounds.size.height - 43, y: 0, width: headerView.bounds.size.height, height: headerView.bounds.size.height))
-                button.setImage(R.image.add_value(), for: UIControlState.normal)
+                button.setImage(R.image.add_value(), for: .normal)
                 button.tag = section
                 button.addTarget(self, action: #selector(addNewValue(_:)), for: .touchUpInside)
                 return button
@@ -455,6 +625,65 @@ extension RequestViewController: UITextFieldDelegate {
             textField.resignFirstResponder()
         }
         return true
+    }
+    
+}
+
+extension RequestViewController: PagingMenuViewControllerDataSource {
+    
+    func menuViewController(viewController: PagingMenuViewController, cellForItemAt index: Int) -> PagingMenuViewCell {
+        guard let cell = viewController.dequeueReusableCell(withReuseIdentifier: Const.menu.cell, for: index) as? MenuViewCell else {
+            return MenuViewCell()
+        }
+        cell.title = Const.menus[index]
+        return cell
+    }
+    
+    func menuViewController(viewController: PagingMenuViewController, widthForItemAt index: Int) -> CGFloat {
+        return menuViewController.view.bounds.width / CGFloat(Const.menus.count)
+    }
+    
+    var insets: UIEdgeInsets {
+        if #available(iOS 11.0, *) {
+            return view.safeAreaInsets
+        } else {
+            return .zero
+        }
+    }
+    
+    func numberOfItemsForMenuViewController(viewController: PagingMenuViewController) -> Int {
+        return Const.menus.count
+    }
+}
+
+extension RequestViewController: PagingContentViewControllerDataSource {
+    
+    func numberOfItemsForContentViewController(viewController: PagingContentViewController) -> Int {
+        return Const.menus.count
+    }
+    
+    func contentViewController(viewController: PagingContentViewController, viewControllerAt index: Int) -> UIViewController {
+        return contentViewControllers[index]
+    }
+    
+}
+
+extension RequestViewController: PagingMenuViewControllerDelegate {
+    
+    func menuViewController(viewController: PagingMenuViewController, didSelect page: Int, previousPage: Int) {
+        contentViewController.scroll(to: page, animated: true)
+        
+
+    }
+    
+}
+
+extension RequestViewController: PagingContentViewControllerDelegate {
+    
+    func contentViewController(viewController: PagingContentViewController, didManualScrollOn index: Int, percent: CGFloat) {
+        menuViewController.scroll(index: index, percent: percent, animated: false)
+        
+
     }
     
 }

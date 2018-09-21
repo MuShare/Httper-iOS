@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private let disposeBag = DisposeBag()
     private var appFlow: AppFlow!
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         appUpdate()
         
@@ -82,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     @available(iOS 9.0, *)
-    func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
         return SDKApplicationDelegate.shared.application(application, open: url, options: options)
     }
     

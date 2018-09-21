@@ -2,8 +2,8 @@
 //  UIColor+Extension.swift
 //  xlnqclient
 //
-//  Created by 呉 也魯 on 2017/10/26.
-//  Copyright © 2017 XFLAG, inc. All rights reserved.
+//  Created by Meng Li on 2017/10/26.
+//  Copyright © 2017 MuShare Group. All rights reserved.
 //
 
 import UIKit

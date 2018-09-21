@@ -42,7 +42,7 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        pageViewController = self.childViewControllers.first as! UIPageViewController
+        pageViewController = children.first as! UIPageViewController
         pageViewController.dataSource = self
         
         // Show loading activity idicator.
@@ -162,7 +162,7 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
                 // Show response.
                 self.httpURLResponse = response.response
                 let infoBarButtonItem = UIBarButtonItem(image: UIImage.init(named: "info"),
-                                                        style: UIBarButtonItemStyle.plain,
+                                                        style: UIBarButtonItem.Style.plain,
                                                         target: self,
                                                         action: #selector(self.showRequestInfo))
                 self.navigationItem.rightBarButtonItem = infoBarButtonItem

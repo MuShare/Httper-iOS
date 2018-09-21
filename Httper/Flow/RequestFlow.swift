@@ -10,6 +10,7 @@ import RxFlow
 
 enum RequestStep: Step {
     case start
+
 }
 
 class RequestFlow: Flow {
@@ -28,8 +29,25 @@ class RequestFlow: Flow {
         case .start:
             let requestViewModel = RequestViewModel()
             requestViewController.viewModel = requestViewModel
-            return .one(flowItem: NextFlowItem(nextPresentable: requestViewController, nextStepper: requestViewModel))
+            
+            let parametersViewModel = KeyValueViewModel()
+            let parametersViewController = KeyValueViewController(viewModel: parametersViewModel)
+            let headersViewModel = KeyValueViewModel()
+            let headersViewController = KeyValueViewController(viewModel: headersViewModel)
+            let bodyViewModel = BodyViewModel()
+            let bodyViewController = BodyViewController(viewModel: bodyViewModel)
+
+            requestViewController.contentViewControllers = [parametersViewController, headersViewController, bodyViewController]
+            
+            return .multiple(flowItems: [
+                NextFlowItem(nextPresentable: requestViewController, nextStepper: requestViewModel),
+                NextFlowItem(nextPresentable: parametersViewController, nextStepper: parametersViewModel),
+                NextFlowItem(nextPresentable: headersViewController, nextStepper: headersViewModel),
+                NextFlowItem(nextPresentable: bodyViewController, nextStepper: bodyViewModel)
+            ])
+
         }
     }
+    
     
 }
