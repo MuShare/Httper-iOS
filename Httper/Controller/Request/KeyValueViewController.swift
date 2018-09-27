@@ -22,8 +22,20 @@ class KeyValueViewController: UIViewController {
         return tableView
     }()
     
+    private lazy var addButton: UIButton = {
+        let button = UIButton()
+        button.setImage(R.image.add_value(), for: .normal)
+        button.rx.tap.subscribe(onNext: {
+            self.viewModel.addNewKey()
+            self.tableView.scrollToBottom()
+        }).disposed(by: disposeBag)
+        return button
+    }()
+    
     private lazy var dataSource = TableViewSingleSectionDataSource<KeyValue>(configureCell: { _, tableView, indexPath, keyValue in
         let cell = tableView.dequeueReusableCell(for: indexPath) as KeyValueTableViewCell
+        cell.keyValue = keyValue
+        cell.delegate = self
         return cell
     })
     
@@ -42,6 +54,7 @@ class KeyValueViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.addSubview(addButton)
         view.addSubview(tableView)
         createConstraints()
         
@@ -49,9 +62,26 @@ class KeyValueViewController: UIViewController {
     }
     
     private func createConstraints() {
+        addButton.snp.makeConstraints {
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.height.equalTo(60)
+        }
+        
         tableView.snp.makeConstraints {
-            $0.size.equalToSuperview()
-            $0.center.equalToSuperview()
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.top.equalToSuperview()
+            $0.bottom.equalTo(addButton.snp.top)
         }
     }
+}
+
+extension KeyValueViewController: KeyValueTableViewCellDelegate {
+    
+    func cellShouldRemoved(by identifier: String) {
+        viewModel.remove(by: identifier)
+    }
+    
 }
