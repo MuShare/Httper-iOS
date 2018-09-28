@@ -32,7 +32,7 @@ class KeyValueViewController: UIViewController {
         return button
     }()
     
-    private lazy var dataSource = TableViewSingleSectionDataSource<KeyValue>(configureCell: { _, tableView, indexPath, keyValue in
+    private lazy var dataSource = TableViewAnimatedSingleSectionDataSource<KeyValue>(configureCell: { _, tableView, indexPath, keyValue in
         let cell = tableView.dequeueReusableCell(for: indexPath) as KeyValueTableViewCell
         cell.keyValue = keyValue
         cell.delegate = self
