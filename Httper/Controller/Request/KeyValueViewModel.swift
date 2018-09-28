@@ -22,12 +22,22 @@ struct KeyValue {
     
 }
 
+extension KeyValue: AnimatableModel {
+
+    typealias Identity = String
+    
+    var identity: String {
+        return identifier
+    }
+    
+}
+
 class KeyValueViewModel {
     
     private let keyValues = BehaviorRelay<[KeyValue]>(value: [.empty])
     
-    var keyValueSection: Observable<SingleSection<KeyValue>> {
-        return keyValues.map { SingleSection.create($0) }
+    var keyValueSection: Observable<AnimatableSingleSection<KeyValue>> {
+        return keyValues.map { AnimatableSingleSection.create($0) }
     }
     
     func addNewKey() {
