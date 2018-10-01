@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import MGKeyboardAccessory
+import MGSelector
 import PagingKit
 
 let protocols = ["http", "https"]
@@ -18,7 +19,7 @@ fileprivate struct Const {
     static let margin = 16
     
     struct requestMethod {
-        static let buttonWidth = 50
+        static let buttonWidth = 100
         static let height = 50
     }
     
@@ -55,6 +56,10 @@ class RequestViewController: UIViewController {
         let button = UIButton()
         button.setTitle("GET", for: .normal)
         button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(.lightGray, for: .highlighted)
+        button.rx.tap.bind {
+            self.openSelector(title: "Request Methods", options: self.viewModel.requestMethods, theme: .dark)
+        }.disposed(by: disposeBag)
         return button
     }()
     
@@ -684,6 +689,14 @@ extension RequestViewController: PagingContentViewControllerDelegate {
         menuViewController.scroll(index: index, percent: percent, animated: false)
         
 
+    }
+    
+}
+
+extension RequestViewController: MGSelectable {
+    
+    func didSelect(option: MGSelectorOption) {
+        requestMethodButton.setTitle(option.title, for: .normal)
     }
     
 }

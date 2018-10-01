@@ -11,6 +11,7 @@ target 'Httper' do
     pod 'M80AttributedLabel', '~> 1'
     pod 'MGFormatter', '~> 0.3'
     pod 'MGKeyboardAccessory', '~> 0.4'
+    pod 'MGSelector', '~> 0.1'
     pod 'NVActivityIndicatorView', '~> 4'
     pod 'PagingKit', '~> 1'
     pod 'R.swift', '= 5.0.0.alpha.2'

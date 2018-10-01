@@ -8,8 +8,31 @@
 
 import RxSwift
 import RxFlow
+import MGSelector
+
+fileprivate struct Const {
+    static let methods = ["GET", "POST", "HEAD", "PUT", "DELETE", "CONNECT", "OPTIONS", "TRACE", "PATCH"]
+}
+
+struct DetailOption {
+    var key: String
+}
+
+extension DetailOption: MGSelectorOption {
+    
+    var title: String {
+        return key
+    }
+    
+    var detail: String? {
+        return NSLocalizedString(key, comment: "")
+    }
+    
+}
 
 class RequestViewModel {
+    
+    let requestMethods = Const.methods.map { DetailOption(key: $0) }
     
 }
 
