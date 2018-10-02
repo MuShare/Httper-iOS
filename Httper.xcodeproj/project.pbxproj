@@ -10,6 +10,7 @@
 		4F51F2CAB45DDC76A9F169B1 /* Pods_Httper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5637677047F4C4B6CA981D18 /* Pods_Httper.framework */; };
 		774C75F020D795EE00DBD9EC /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774C75EF20D795EE00DBD9EC /* R.generated.swift */; };
 		774C75F220D79B9D00DBD9EC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 774C75F120D79B9D00DBD9EC /* Login.storyboard */; };
+		77CE45DF2163424D0030E0CF /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CE45DE2163424D0030E0CF /* Operators.swift */; };
 		77F3995F215373600016978E /* KeyValueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F3995E215373600016978E /* KeyValueViewController.swift */; };
 		77F39961215373770016978E /* KeyValueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F39960215373770016978E /* KeyValueViewModel.swift */; };
 		77F39964215374370016978E /* KeyValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F39963215374370016978E /* KeyValueTableViewCell.swift */; };
@@ -114,6 +115,7 @@
 		5637677047F4C4B6CA981D18 /* Pods_Httper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Httper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		774C75EF20D795EE00DBD9EC /* R.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		774C75F120D79B9D00DBD9EC /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		77CE45DE2163424D0030E0CF /* Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 		77F3995E215373600016978E /* KeyValueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueViewController.swift; sourceTree = "<group>"; };
 		77F39960215373770016978E /* KeyValueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueViewModel.swift; sourceTree = "<group>"; };
 		77F39963215374370016978E /* KeyValueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueTableViewCell.swift; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 				E4EC89CF1E129FA10072ACF3 /* STDPingServices.h */,
 				E4EC89D01E129FA10072ACF3 /* STDPingServices.m */,
 				E47FDC5F1E3861AF00251EEC /* Versions.swift */,
+				77CE45DE2163424D0030E0CF /* Operators.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -823,6 +826,7 @@
 				E411A30A215286C5004ADBAE /* UIView+Extension.swift in Sources */,
 				E4DE76911E1D2645002A8385 /* LoginViewController.swift in Sources */,
 				77F39966215377790016978E /* SingleSection.swift in Sources */,
+				77CE45DF2163424D0030E0CF /* Operators.swift in Sources */,
 				E4CA76131E3F7E1A008D7A52 /* AddProjectViewController.swift in Sources */,
 				E49BC0AE1E4226F400241004 /* Request+CoreDataProperties.swift in Sources */,
 				E447287B1DF7CE80007D2C8B /* ResultViewController.swift in Sources */,

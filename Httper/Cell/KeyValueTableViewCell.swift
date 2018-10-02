@@ -21,6 +21,7 @@ fileprivate struct Const {
 
 protocol KeyValueTableViewCellDelegate: class {
     func cellShouldRemoved(by identifier: String)
+    func keyValueUpdated(keyValue: KeyValue)
 }
 
 class KeyValueTableViewCell: UITableViewCell, Reusable {
@@ -93,6 +94,13 @@ class KeyValueTableViewCell: UITableViewCell, Reusable {
         addSubview(valueBorderView)
         addSubview(removeButton)
         createConstraints()
+        
+        Observable.combineLatest(keyTextField.rx.text.orEmpty, valueTextField.rx.text.orEmpty)
+            .map {
+                KeyValue(key: $0, value: $1)
+            }.subscribe(onNext: { [weak self] in
+ 
+            }).disposed(by: disposeBag)
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -59,10 +59,6 @@ class BodyViewController: UIViewController {
         rawBodyTextView.becomeFirstResponder()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "bodyChanged"), object: rawBodyTextView.text)
-    }
-    
     // MARK: - Action
     @IBAction func cleatRequestBody(_ sender: Any) {
         let alertController = UIAlertController(title: R.string.localizable.tip_name(),

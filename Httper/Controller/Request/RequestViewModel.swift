@@ -7,12 +7,9 @@
 //
 
 import RxSwift
+import RxCocoa
 import RxFlow
 import MGSelector
-
-fileprivate struct Const {
-    static let methods = ["GET", "POST", "HEAD", "PUT", "DELETE", "CONNECT", "OPTIONS", "TRACE", "PATCH"]
-}
 
 struct DetailOption {
     var key: String
@@ -32,10 +29,18 @@ extension DetailOption: MGSelectorOption {
 
 class RequestViewModel {
     
-    let requestMethods = Const.methods.map { DetailOption(key: $0) }
+    let protocols = ["http", "https"]
+    let methods = ["GET", "POST", "HEAD", "PUT", "DELETE", "CONNECT", "OPTIONS", "TRACE", "PATCH"]
     
+    let requestMethod = BehaviorSubject<String>(value: "GET")
+    let url = BehaviorRelay<String>(value: "")
+    let requestProtocol = BehaviorRelay<Int>(value: 0)
 }
 
 extension RequestViewModel: Stepper {
+    
+    func sendRequest() {
+        
+    }
     
 }

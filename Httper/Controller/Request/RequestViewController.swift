@@ -27,6 +27,10 @@ fileprivate struct Const {
         static let width = 75
     }
     
+    struct seperator {
+        static let margin = 5
+    }
+    
     struct url {
         static let height = 50
     }
@@ -54,22 +58,31 @@ class RequestViewController: UIViewController {
     
     private lazy var requestMethodButton: UIButton = {
         let button = UIButton()
+        button.contentHorizontalAlignment = .right
         button.setTitle("GET", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.setTitleColor(.lightGray, for: .highlighted)
         button.rx.tap.bind {
-            self.openSelector(title: "Request Methods", options: self.viewModel.requestMethods, theme: .dark)
+            let options = self.viewModel.methods.map { DetailOption(key: $0) }
+            self.openSelector(title: "Request Methods", options: options, theme: .dark)
         }.disposed(by: disposeBag)
         return button
     }()
     
     private lazy var protocolsSegmentedControl: UISegmentedControl = {
         let segmentedControl = UISegmentedControl()
-        segmentedControl.insertSegment(withTitle: "http", at: 0, animated: false)
-        segmentedControl.insertSegment(withTitle: "https", at: 1, animated: false)
+        viewModel.protocols.enumerated().forEach { (index, requestProtocol) in
+            segmentedControl.insertSegment(withTitle: requestProtocol, at: index, animated: false)
+        }
         segmentedControl.tintColor = .white
-        segmentedControl.selectedSegmentIndex = 0
         return segmentedControl
+    }()
+    
+    private lazy var separatorLabel: UILabel = {
+        let label = UILabel()
+        label.text = "://"
+        label.textColor = .white
+        return label
     }()
     
     private lazy var urlTextField: UITextField = {
@@ -86,6 +99,9 @@ class RequestViewController: UIViewController {
         button.layer.borderColor = UIColor.lightGray.cgColor
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 5
+        button.rx.tap.bind {
+            self.viewModel.sendRequest()
+        }.disposed(by: disposeBag)
         return button
     }()
     
@@ -151,6 +167,7 @@ class RequestViewController: UIViewController {
         view.addSubview(requestMethodLabel)
         view.addSubview(requestMethodButton)
         view.addSubview(protocolsSegmentedControl)
+        view.addSubview(separatorLabel)
         view.addSubview(urlTextField)
         view.addSubview(saveButton)
         view.addSubview(sendButton)
@@ -160,7 +177,11 @@ class RequestViewController: UIViewController {
         menuViewController.reloadData()
         contentViewController.reloadData()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(bodyChanged(notification:)), name: NSNotification.Name(rawValue: "bodyChanged"), object: nil)
+        viewModel.requestMethod.bind(to: requestMethodButton.rx.title(for: .normal)).disposed(by: disposeBag)
+        
+        (urlTextField.rx.text.orEmpty <-> viewModel.url).disposed(by: disposeBag)
+        (protocolsSegmentedControl.rx.selectedSegmentIndex <-> viewModel.requestProtocol).disposed(by: disposeBag)
+     
     }
     
     private func setupPagingKit() {
@@ -189,10 +210,15 @@ class RequestViewController: UIViewController {
         }
         
         urlTextField.snp.makeConstraints {
-            $0.left.equalTo(protocolsSegmentedControl.snp.right)
             $0.right.equalToSuperview().offset(Const.margin)
             $0.top.equalTo(requestMethodButton.snp.bottom)
             $0.height.equalTo(Const.url.height)
+        }
+        
+        separatorLabel.snp.makeConstraints {
+            $0.centerY.equalTo(urlTextField)
+            $0.left.equalTo(protocolsSegmentedControl.snp.right).offset(Const.seperator.margin)
+            $0.right.equalTo(urlTextField.snp.left).offset(-Const.seperator.margin)
         }
         
         protocolsSegmentedControl.snp.makeConstraints {
@@ -229,11 +255,6 @@ class RequestViewController: UIViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -248,9 +269,6 @@ class RequestViewController: UIViewController {
 //                valueTextField.setupKeyboardAccessory(characters, barStyle: .black)
 //            }
 //        }
-        
-        // Set request method.
-        requestMethodButton.setTitle(method, for: .normal)
 
         // Set header key.
         if choosingHeaderTextFeild != nil {
@@ -341,47 +359,11 @@ class RequestViewController: UIViewController {
             break
         }
     }
-    
-    //MARK: - Action
-    /**
-    @IBAction func deleteValue(_ sender: UIButton) {
-        sender.isEnabled = false;
-        let cell: UITableViewCell = (sender as UIView).superview?.superview as! UITableViewCell
-        let indexPath = valueTableView.indexPath(for: cell)!
-        if indexPath.section == 0 && headerCount > 1 {
-            headerCount -= 1
-            valueTableView.deleteRows(at: [indexPath], with: .automatic)
-            if headerKeys.count > indexPath.row {
-                headerKeys.remove(at: indexPath.row)
-                headerValues.remove(at: indexPath.row)
-            }
-        } else if indexPath.section == 1 && parameterCount > 1 {
-            parameterCount -= 1
-            valueTableView.deleteRows(at: [indexPath], with: .automatic)
-            if parameterKeys.count > indexPath.row {
-                parameterKeys.remove(at: indexPath.row)
-                parameterValues.remove(at: indexPath.row)
-            }
-        } else {
-            let keyTextField = cell.viewWithTag(1) as! UITextField
-            let valueTextField = cell.viewWithTag(2) as! UITextField
-            keyTextField.text = ""
-            valueTextField.text = ""
-            sender.isEnabled = true
-        }
-    }
- */
-    
+
     @IBAction func chooseHeaderKey(_ sender: UIButton) {
         let cell: UITableViewCell = (sender as UIView).superview?.superview as! UITableViewCell
         choosingHeaderTextFeild = cell.viewWithTag(1) as? UITextField
         self.performSegue(withIdentifier: "headerKeySegue", sender: self)
-    }
-    
-    @IBAction func sendRequest(_ sender: Any) {
-        if checkRequest() {
-            self.performSegue(withIdentifier: "resultSegue", sender: self)
-        }
     }
     
     @IBAction func clearRequest(_ sender: Any) {
@@ -450,151 +432,6 @@ class RequestViewController: UIViewController {
  */
         return true
     }
-    
-    @objc func addNewValue(_ sender: AnyObject?) {
-        /**
-        Remove the limitation of header count and parameter count.
-        if headerCount + parameterCount == 7 {
-            showAlert(title: R.string.localizable.tip_name(),
-                      content: R.string.localizable.value_max(),
-                      controller: self)
-            return
-        }
-        */
-        let section: Int! = sender?.tag
-        let indexPath = IndexPath(row: (section == 0) ? headerCount: parameterCount, section: section)
-        if section == 0 {
-            headerCount += 1
-        } else if section == 1 {
-            parameterCount += 1
-        }
-//        valueTableView.insertRows(at: [indexPath], with: .automatic)
-    }
-    
-    @objc func bodyChanged(notification: Notification) {
-        body = notification.object as! String
-    }
-
-}
-
-extension RequestViewController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return headerCount
-        case 1:
-            return parameterCount
-        default:
-            return 1
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return " "
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView: UIView = {
-            let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
-            view.backgroundColor = .clear
-            return view
-        }()
-        
-        //Set name
-        let nameLabel: UILabel = {
-            let label = UILabel(frame: CGRect(x: 15, y: 0, width: headerView.bounds.size.width - headerView.bounds.size.height, height: headerView.bounds.size.height))
-            label.textColor = .white
-            switch section {
-            case 0:
-                label.text = R.string.localizable.headers()
-            case 1:
-                label.text = R.string.localizable.parameters()
-            case 2:
-                label.text = R.string.localizable.body()
-            default:
-                break
-            }
-            return label
-        }()
-        headerView.addSubview(nameLabel)
-        
-        if section < 2 {
-            //Set button
-            let addButton: UIButton = {
-                let button = UIButton(frame: CGRect(x: tableView.bounds.size.width - headerView.bounds.size.height - 43, y: 0, width: headerView.bounds.size.height, height: headerView.bounds.size.height))
-                button.setImage(R.image.add_value(), for: .normal)
-                button.tag = section
-                button.addTarget(self, action: #selector(addNewValue(_:)), for: .touchUpInside)
-                return button
-            }()
-            headerView.addSubview(addButton)
-        }
-        
-        //Set line
-        let lineView: UIView = {
-            let view = UILabel(frame: CGRect(x: 15, y: 28, width: headerView.bounds.size.width - 15, height: 1))
-            view.backgroundColor = UIColor.darkGray
-            return view
-        }()
-        headerView.addSubview(lineView)
-        
-        return headerView
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell: UITableViewCell!
-        // Header cell
-        if indexPath.section == 0 {
-            //Cell is headers or parameters
-            cell = tableView.dequeueReusableCell(withIdentifier: "headerIdentifier", for: indexPath)
-            let keyTextField = cell.viewWithTag(1) as! UITextField
-            let valueTextField = cell.viewWithTag(2) as! UITextField
-            let deleteButton = cell.viewWithTag(3) as! UIButton
-            keyTextField.text = ""
-            valueTextField.text = ""
-            deleteButton.isEnabled = true
-            // Setup MGKeyboardAccessory
-            keyTextField.setupKeyboardAccessory(characters, barStyle: .black)
-            valueTextField.setupKeyboardAccessory(characters, barStyle: .black)
-            //Set headers if it is not null
-            if headerKeys.count > indexPath.row {
-                keyTextField.text = headerKeys[indexPath.row]
-                valueTextField.text = headerValues[indexPath.row]
-            }
-        }
-            // Parameter cekk
-        else if indexPath.section == 1 {
-            //Cell is headers or parameters
-            cell = tableView.dequeueReusableCell(withIdentifier: "parameterIdentifier", for: indexPath)
-            let keyTextField = cell.viewWithTag(1) as! UITextField
-            let valueTextField = cell.viewWithTag(2) as! UITextField
-            let deleteButton = cell.viewWithTag(3) as! UIButton
-            keyTextField.text = ""
-            valueTextField.text = ""
-            deleteButton.isEnabled = true
-            // Setup MGKeyboardAccessory
-            keyTextField.setupKeyboardAccessory(characters, barStyle: .black)
-            valueTextField.setupKeyboardAccessory(characters, barStyle: .black)
-            //Set parameters if it is not null
-            if parameterKeys.count > indexPath.row {
-                keyTextField.text = parameterKeys[indexPath.row]
-                valueTextField.text = parameterValues[indexPath.row]
-            }
-        }
-            // Body cell
-        else if indexPath.section == 2 {
-            cell = tableView.dequeueReusableCell(withIdentifier: "bodyIdentifier", for: indexPath)
-        }
-        return cell
-    }
-    
-}
-
-extension RequestViewController: UITableViewDelegate {
     
 }
 
@@ -677,8 +514,6 @@ extension RequestViewController: PagingMenuViewControllerDelegate {
     
     func menuViewController(viewController: PagingMenuViewController, didSelect page: Int, previousPage: Int) {
         contentViewController.scroll(to: page, animated: true)
-        
-
     }
     
 }
@@ -687,8 +522,6 @@ extension RequestViewController: PagingContentViewControllerDelegate {
     
     func contentViewController(viewController: PagingContentViewController, didManualScrollOn index: Int, percent: CGFloat) {
         menuViewController.scroll(index: index, percent: percent, animated: false)
-        
-
     }
     
 }
@@ -696,7 +529,7 @@ extension RequestViewController: PagingContentViewControllerDelegate {
 extension RequestViewController: MGSelectable {
     
     func didSelect(option: MGSelectorOption) {
-        requestMethodButton.setTitle(option.title, for: .normal)
+        viewModel.requestMethod.onNext(option.title)
     }
     
 }
