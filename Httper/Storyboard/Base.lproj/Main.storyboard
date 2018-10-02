@@ -759,59 +759,6 @@
             </objects>
             <point key="canvasLocation" x="3038.4000000000001" y="-881.5592203898052"/>
         </scene>
-        <!--Request Methods-->
-        <scene sceneID="aEs-L5-oas">
-            <objects>
-                <tableViewController id="eEe-SD-vRa" customClass="RequestMethodsTableViewController" customModule="Httper" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" id="vwP-XR-A3y">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.18746668100357056" green="0.2114855945110321" blue="0.23234263062477112" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="methodIdentifier" id="XYx-go-vYa">
-                                <rect key="frame" x="0.0" y="28" width="320" height="65"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XYx-go-vYa" id="BZh-xx-up2">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="64.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Method Introduction" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9d7-q7-xqo">
-                                            <rect key="frame" x="23" y="31" width="281" height="31"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="31" id="6MQ-UF-qiK"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Request Method" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DUy-Kw-XO6">
-                                            <rect key="frame" x="15" y="6" width="297" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="9d7-q7-xqo" firstAttribute="top" secondItem="BZh-xx-up2" secondAttribute="topMargin" constant="20" id="HF8-px-t2E"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="9d7-q7-xqo" secondAttribute="trailing" id="fcr-9V-RQA"/>
-                                        <constraint firstItem="9d7-q7-xqo" firstAttribute="leading" secondItem="BZh-xx-up2" secondAttribute="leadingMargin" constant="7" id="hvU-Fc-iDp"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="eEe-SD-vRa" id="u3C-1r-hH4"/>
-                            <outlet property="delegate" destination="eEe-SD-vRa" id="cTw-oa-8uD"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Request Methods" id="5JM-HU-KLG"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qUI-S4-Khx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3038.4000000000001" y="-243.77811094452775"/>
-        </scene>
         <!--Response Information-->
         <scene sceneID="eHX-Ly-sdM">
             <objects>
