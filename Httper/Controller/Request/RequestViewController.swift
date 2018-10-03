@@ -62,7 +62,7 @@ class RequestViewController: UIViewController {
         button.setTitle("GET", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.setTitleColor(.lightGray, for: .highlighted)
-        button.rx.tap.bind {
+        button.rx.tap.bind { [unowned self] in
             let options = self.viewModel.methods.map { DetailOption(key: $0) }
             self.openSelector(title: "Request Methods", options: options, theme: .dark)
         }.disposed(by: disposeBag)
@@ -99,7 +99,7 @@ class RequestViewController: UIViewController {
         button.layer.borderColor = UIColor.lightGray.cgColor
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 5
-        button.rx.tap.bind {
+        button.rx.tap.bind { [unowned self] in
             self.viewModel.sendRequest()
         }.disposed(by: disposeBag)
         return button
@@ -529,7 +529,7 @@ extension RequestViewController: PagingContentViewControllerDelegate {
 extension RequestViewController: MGSelectable {
     
     func didSelect(option: MGSelectorOption) {
-        viewModel.requestMethod.onNext(option.title)
+        viewModel.requestMethod.accept(option.title)
     }
     
 }

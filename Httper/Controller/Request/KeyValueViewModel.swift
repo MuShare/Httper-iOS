@@ -36,6 +36,8 @@ class KeyValueViewModel {
     
     private let keyValues = BehaviorRelay<[KeyValue]>(value: [.empty])
     
+    var results: [String: KeyValue] = [:]
+    
     var keyValueSection: Observable<AnimatableSingleSection<KeyValue>> {
         return keyValues.map { AnimatableSingleSection.create($0) }
     }
@@ -53,6 +55,12 @@ class KeyValueViewModel {
         }
         value.remove(at: index)
         keyValues.accept(value)
+        
+        results.removeValue(forKey: identifier)
+    }
+    
+    func update(keyValue: KeyValue) {
+        results[keyValue.identifier] = keyValue
     }
 }
 

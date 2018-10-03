@@ -27,9 +27,6 @@ class RequestFlow: Flow {
         }
         switch requestStep {
         case .start:
-            let requestViewModel = RequestViewModel()
-            requestViewController.viewModel = requestViewModel
-            
             let parametersViewModel = KeyValueViewModel()
             let parametersViewController = KeyValueViewController(viewModel: parametersViewModel)
             let headersViewModel = KeyValueViewModel()
@@ -37,6 +34,8 @@ class RequestFlow: Flow {
             let bodyViewModel = BodyViewModel()
             let bodyViewController = BodyViewController(viewModel: bodyViewModel)
 
+            let requestViewModel = RequestViewModel(headersViewModel: headersViewModel, parametersViewModel: parametersViewModel, bodyViewModel: bodyViewModel)
+            requestViewController.viewModel = requestViewModel
             requestViewController.contentViewControllers = [parametersViewController, headersViewController, bodyViewController]
             
             return .multiple(flowItems: [

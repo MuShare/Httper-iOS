@@ -7,22 +7,21 @@
 //
 
 import UIKit
+import RxSwift
 import MGKeyboardAccessory
 
 class BodyViewController: UIViewController {
-    
-    var characters: [String]!
-    
-    var body: String!
     
     private lazy var rawBodyTextView: UITextView = {
         let textView = UITextView()
         textView.backgroundColor = .clear
         textView.textColor = .white
+        textView.setupKeyboardAccessory(UserManager.shared.characters ?? [], barStyle: .black)
         return textView
     }()
     
     private let viewModel: BodyViewModel
+    private let disposeBag = DisposeBag()
     
     init(viewModel: BodyViewModel) {
         self.viewModel = viewModel
@@ -35,28 +34,14 @@ class BodyViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if body != nil {
-            rawBodyTextView.text = body
-        } else {
-            rawBodyTextView.text = ""
-        }
         
         view.addSubview(rawBodyTextView)
         rawBodyTextView.snp.makeConstraints {
             $0.center.equalToSuperview()
             $0.size.equalToSuperview()
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        rawBodyTextView.setupKeyboardAccessory(UserManager.shared.characters!, barStyle: .black)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        characters = UserManager.shared.characters!
-        rawBodyTextView.becomeFirstResponder()
+        
+        (rawBodyTextView.rx.text.orEmpty <-> viewModel.body).disposed(by: disposeBag)
     }
     
     // MARK: - Action
@@ -73,10 +58,4 @@ class BodyViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    
-    func addTab() {
-        if rawBodyTextView.isFirstResponder {
-            rawBodyTextView.text = rawBodyTextView.text! + "  "
-        }
-    }
 }

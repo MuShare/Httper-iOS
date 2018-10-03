@@ -126,50 +126,6 @@
             </objects>
             <point key="canvasLocation" x="3740.8000000000002" y="834.78260869565224"/>
         </scene>
-        <!--Request Body-->
-        <scene sceneID="GE9-Wu-xzv">
-            <objects>
-                <viewController id="DXb-74-dUq" customClass="RequestBodyViewController" customModule="Httper" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Blh-PL-LaY"/>
-                        <viewControllerLayoutGuide type="bottom" id="jwU-1u-4xE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="KIZ-Qz-TpE">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EV7-O7-nEV">
-                                <rect key="frame" x="0.0" y="-44" width="320" height="324"/>
-                                <color key="backgroundColor" red="0.187466681" green="0.21148559450000001" blue="0.23234263059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="13"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" red="0.187466681" green="0.21148559450000001" blue="0.23234263059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="jwU-1u-4xE" firstAttribute="top" secondItem="EV7-O7-nEV" secondAttribute="bottom" constant="288" id="04Z-BB-axL"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="EV7-O7-nEV" secondAttribute="trailing" constant="-16" id="C5d-o0-70w"/>
-                            <constraint firstItem="EV7-O7-nEV" firstAttribute="leading" secondItem="KIZ-Qz-TpE" secondAttribute="leadingMargin" constant="-16" id="VLt-M1-jpk"/>
-                            <constraint firstItem="EV7-O7-nEV" firstAttribute="top" secondItem="Blh-PL-LaY" secondAttribute="bottom" constant="-64" id="e3U-wV-C3b"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Request Body" id="lIb-yG-fE4">
-                        <barButtonItem key="rightBarButtonItem" image="clear" id="hUF-du-8f4">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="cleatRequestBody:" destination="DXb-74-dUq" id="MAi-zu-yYc"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="rawBodyTextView" destination="EV7-O7-nEV" id="MRy-24-zPP"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bC9-0M-8Xu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1188.8" y="541.52923538230891"/>
-        </scene>
         <!--Project Table View Controller-->
         <scene sceneID="shH-KA-nSy">
             <objects>
@@ -909,7 +865,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="clear" width="30" height="30"/>
         <image name="introduction" width="30" height="25"/>
         <image name="privilege" width="30" height="30"/>
         <image name="tab_project" width="30" height="30"/>

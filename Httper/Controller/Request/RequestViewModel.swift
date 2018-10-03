@@ -29,18 +29,33 @@ extension DetailOption: MGSelectorOption {
 
 class RequestViewModel {
     
+    private let headersViewModel: KeyValueViewModel
+    private let parametersViewModel: KeyValueViewModel
+    private let bodyViewModel: BodyViewModel
+    
+    init(headersViewModel: KeyValueViewModel, parametersViewModel: KeyValueViewModel,  bodyViewModel: BodyViewModel) {
+        self.headersViewModel = headersViewModel
+        self.parametersViewModel = parametersViewModel
+        self.bodyViewModel = bodyViewModel
+    }
+    
     let protocols = ["http", "https"]
     let methods = ["GET", "POST", "HEAD", "PUT", "DELETE", "CONNECT", "OPTIONS", "TRACE", "PATCH"]
     
-    let requestMethod = BehaviorSubject<String>(value: "GET")
+    let requestMethod = BehaviorRelay<String>(value: "GET")
     let url = BehaviorRelay<String>(value: "")
     let requestProtocol = BehaviorRelay<Int>(value: 0)
+    
 }
 
 extension RequestViewModel: Stepper {
     
     func sendRequest() {
-        
+        let requestData = RequestData(method: requestMethod.value, url: url.value,
+                                      headers: Array(headersViewModel.results.values),
+                                      parameters: Array(parametersViewModel.results.values),
+                                      body: bodyViewModel.body.value)
+        print(requestData)
     }
     
 }

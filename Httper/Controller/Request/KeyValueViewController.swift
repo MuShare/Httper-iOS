@@ -25,7 +25,7 @@ class KeyValueViewController: UIViewController {
     private lazy var addButton: UIButton = {
         let button = UIButton()
         button.setImage(R.image.add_value(), for: .normal)
-        button.rx.tap.subscribe(onNext: {
+        button.rx.tap.subscribe(onNext: { [unowned self] in
             self.viewModel.addNewKey()
             self.tableView.scrollToBottom()
         }).disposed(by: disposeBag)
@@ -79,6 +79,10 @@ class KeyValueViewController: UIViewController {
 }
 
 extension KeyValueViewController: KeyValueTableViewCellDelegate {
+    
+    func keyValueUpdated(_ keyValue: KeyValue) {
+        viewModel.update(keyValue: keyValue)
+    }
     
     func cellShouldRemoved(by identifier: String) {
         viewModel.remove(by: identifier)
