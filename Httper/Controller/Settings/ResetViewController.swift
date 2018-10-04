@@ -52,7 +52,7 @@ class ResetViewController: EditingViewController, NVActivityIndicatorViewable {
             _ = self.navigationController?.popViewController(animated: true)
             return
         }
-        if !isEmailAddress(emailTextField.text!) {
+        if let email = emailTextField.text, !email.isEmailAddress {
             showAlert(title: R.string.localizable.tip_name(),
                       content: R.string.localizable.reset_password_not_validate())
             return

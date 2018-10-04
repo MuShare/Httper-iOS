@@ -334,31 +334,6 @@ class RequestViewController: UIViewController {
         }
         
     }
-    
-    //MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier {
-        case R.segue.requestViewController.resultSegue.identifier:
-            let destination = segue.destination as! ResultViewController
-            destination.method = method
-            destination.url = generateRequestUrl()
-            destination.headers = headers
-            destination.parameters = parameters
-            destination.body = body
-//        case R.segue.requestViewController.requestBodySegue.identifier:
-//            let destination = segue.destination as! RequestBodyViewController
-//            destination.body = body
-//        case R.segue.requestViewController.requestMethodSegue.identifier:
-//            if editingTextField == nil {
-//                return
-//            }
-//            if editingTextField.isFirstResponder {
-//                editingTextField.resignFirstResponder()
-//            }
-        default:
-            break
-        }
-    }
 
     @IBAction func chooseHeaderKey(_ sender: UIButton) {
         let cell: UITableViewCell = (sender as UIView).superview?.superview as! UITableViewCell

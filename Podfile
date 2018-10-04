@@ -23,6 +23,7 @@ target 'Httper' do
     pod 'RxFlow', '~> 1.4'
     pod 'RxKingfisher', '~> 0.2'
     pod 'SnapKit', '~> 4'
+    pod 'SwipeBack', '~> 1'
     pod 'SwiftyUserDefaults', '~> 3'
     pod 'SwiftyJSON', '~> 4'
     pod 'UIGradient', '~> 1.2'

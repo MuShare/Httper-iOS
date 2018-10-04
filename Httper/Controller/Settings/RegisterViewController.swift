@@ -54,7 +54,7 @@ class RegisterViewController: EditingViewController, NVActivityIndicatorViewable
                       content: R.string.localizable.register_not_validate())
             return
         }
-        if !isEmailAddress(emailTextField.text!) {
+        if let email = emailTextField.text, !email.isEmailAddress {
             showAlert(title: R.string.localizable.tip_name(),
                       content: R.string.localizable.email_invalidate())
             return
@@ -65,7 +65,8 @@ class RegisterViewController: EditingViewController, NVActivityIndicatorViewable
         user.register(email: emailTextField.text!,
                       name: usernameTextField.text!,
                       password: passwordTextField.text!)
-        { (success, tip) in
+        { [weak self] (success, tip) in
+            guard let `self` = self else { return }
             self.stopAnimating()
             if success {
                 self.registered = true

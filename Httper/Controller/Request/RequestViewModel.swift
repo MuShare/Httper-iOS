@@ -55,7 +55,7 @@ extension RequestViewModel: Stepper {
                                       headers: Array(headersViewModel.results.values),
                                       parameters: Array(parametersViewModel.results.values),
                                       body: bodyViewModel.body.value)
-        print(requestData)
+        step.accept(RequestStep.result(requestData))
     }
     
 }

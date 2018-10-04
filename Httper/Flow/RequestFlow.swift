@@ -10,7 +10,7 @@ import RxFlow
 
 enum RequestStep: Step {
     case start
-
+    case result(RequestData)
 }
 
 class RequestFlow: Flow {
@@ -20,6 +20,10 @@ class RequestFlow: Flow {
     }
     
     private lazy var requestViewController = R.storyboard.main.requestViewController()!
+    
+    private var navigationController: UINavigationController? {
+        return requestViewController.navigationController
+    }
     
     func navigate(to step: Step) -> NextFlowItems {
         guard let requestStep = step as? RequestStep else {
@@ -44,7 +48,22 @@ class RequestFlow: Flow {
                 NextFlowItem(nextPresentable: headersViewController, nextStepper: headersViewModel),
                 NextFlowItem(nextPresentable: bodyViewController, nextStepper: bodyViewModel)
             ])
-
+        case .result(let requestData):
+            let prettyViewModel = PrettyViewModel()
+            let prettyViewController = PrettyViewController(viewModel: prettyViewModel)
+            let rawViewModel = RawViewModel()
+            let rawViewController = RawViewController(viewModel: rawViewModel)
+            let previewViewModel = PreviewViewModel()
+            let previewViewController = PreviewViewController(viewModel: previewViewModel)
+            let detailViewModel = DetailViewModel()
+            let detailViewController = DetailViewController(viewModel: detailViewModel)
+            
+            let resultViewModel = ResultViewModel(requestData: requestData)
+            let resultViewController = ResultViewController(viewModel: resultViewModel)
+            resultViewController.contentViewControllers = [prettyViewController, rawViewController, previewViewController, detailViewController
+            ]
+            navigationController?.pushViewController(resultViewController, animated: true)
+            return .one(flowItem: NextFlowItem(nextPresentable: resultViewController, nextStepper: resultViewModel))
         }
     }
     

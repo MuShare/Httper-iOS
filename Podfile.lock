@@ -63,6 +63,7 @@ PODS:
   - SnapKit (4.0.1)
   - SwiftyJSON (4.2.0)
   - SwiftyUserDefaults (3.0.1)
+  - SwipeBack (1.1.1)
   - UIGradient (1.2.0)
   - "UIImageView+Extension (0.2.6)"
   - "UITextView+Placeholder (1.2.1)"
@@ -91,6 +92,7 @@ DEPENDENCIES:
   - SnapKit (~> 4)
   - SwiftyJSON (~> 4)
   - SwiftyUserDefaults (~> 3)
+  - SwipeBack (~> 1)
   - UIGradient (~> 1.2)
   - "UIImageView+Extension (~> 0.2)"
   - "UITextView+Placeholder (~> 1.2)"
@@ -127,6 +129,7 @@ SPEC REPOS:
     - SnapKit
     - SwiftyJSON
     - SwiftyUserDefaults
+    - SwipeBack
     - UIGradient
     - "UIImageView+Extension"
     - "UITextView+Placeholder"
@@ -162,10 +165,11 @@ SPEC CHECKSUMS:
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   SwiftyUserDefaults: 3d273b1739b68ada3145dc754a70ec775bc5c8be
+  SwipeBack: d6759601b40da1f4161033feb30ab475d7d04322
   UIGradient: 48439bb1662c937b9a3d8b954712d0db5096372e
   "UIImageView+Extension": bc26c60a9c8cd6fb515ae1e37377a6f0988e76d8
   "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
 
-PODFILE CHECKSUM: 853c750205e28519134cf765bd548596542e9a0c
+PODFILE CHECKSUM: af520e398348ec2c8a3976236b0a64abd5ab055d
 
 COCOAPODS: 1.5.3
