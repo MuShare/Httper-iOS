@@ -8,7 +8,6 @@ xcuserdata/
 
 # Pod
 *.xcworkspace/
-Podfile.lock
 Pods/
 
 # R.swift

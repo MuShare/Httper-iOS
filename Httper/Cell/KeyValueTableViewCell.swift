@@ -8,6 +8,8 @@
 
 import UIKit
 import Reusable
+import MGKeyboardAccessory
+import RxSwift
 
 fileprivate struct Const {
     static let margin = 16
@@ -17,13 +19,21 @@ fileprivate struct Const {
     }
 }
 
+protocol KeyValueTableViewCellDelegate: class {
+    func cellShouldRemoved(by identifier: String)
+    func keyValueUpdated(_ keyValue: KeyValue)
+}
+
 class KeyValueTableViewCell: UITableViewCell, Reusable {
+    
+    private let characters = UserManager.shared.characters ?? []
     
     private lazy var keyTextField: UITextField = {
         let textField = UITextField()
         textField.attributedPlaceholder = NSAttributedString(string: "key", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
         textField.textColor = .white
         textField.backgroundColor = .clear
+        textField.setupKeyboardAccessory(characters, barStyle: .black)
         return textField
     }()
     
@@ -38,6 +48,7 @@ class KeyValueTableViewCell: UITableViewCell, Reusable {
         textField.attributedPlaceholder = NSAttributedString(string: "value", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
         textField.textColor = .white
         textField.backgroundColor = .clear
+        textField.setupKeyboardAccessory(characters, barStyle: .black)
         return textField
     }()
     
@@ -50,8 +61,28 @@ class KeyValueTableViewCell: UITableViewCell, Reusable {
     private lazy var removeButton: UIButton = {
         let button = UIButton()
         button.setImage(R.image.delete_value(), for: .normal)
+        button.rx.tap.subscribe(onNext: { [weak self] in
+            guard let `self` = self, let identifier = self.keyValue?.identifier else {
+                return
+            }
+            self.delegate?.cellShouldRemoved(by: identifier)
+        }).disposed(by: disposeBag)
         return button
     }()
+    
+    private let disposeBag = DisposeBag()
+    
+    var keyValue: KeyValue? {
+        didSet {
+            guard let keyValue = keyValue else {
+                return
+            }
+            keyTextField.text = keyValue.key
+            valueTextField.text = keyValue.value
+        }
+    }
+    
+    weak var delegate: KeyValueTableViewCellDelegate?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -63,6 +94,18 @@ class KeyValueTableViewCell: UITableViewCell, Reusable {
         addSubview(valueBorderView)
         addSubview(removeButton)
         createConstraints()
+        
+        Observable.combineLatest(keyTextField.rx.text.orEmpty, valueTextField.rx.text.orEmpty).subscribe(onNext: { [weak self] in
+            guard
+                let delegate = self?.delegate,
+                var keyValue = self?.keyValue
+            else {
+                return
+            }
+            keyValue.key = $0
+            keyValue.value = $1
+            delegate.keyValueUpdated(keyValue)
+        }).disposed(by: disposeBag)
     }
     
     required init?(coder aDecoder: NSCoder) {

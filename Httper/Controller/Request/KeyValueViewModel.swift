@@ -7,21 +7,60 @@
 //
 
 import RxSwift
+import RxCocoa
 import RxFlow
 
 struct KeyValue {
+    
+    let identifier = UUID().uuidString
     var key = ""
     var value = ""
     
-    static let empty = KeyValue(key: "", value: "")
+    static var empty: KeyValue {
+        return KeyValue(key: "", value: "")
+    }
+    
+}
+
+extension KeyValue: AnimatableModel {
+
+    typealias Identity = String
+    
+    var identity: String {
+        return identifier
+    }
+    
 }
 
 class KeyValueViewModel {
     
-    private let keyValues = BehaviorSubject<[KeyValue]>(value: [.empty])
+    private let keyValues = BehaviorRelay<[KeyValue]>(value: [.empty])
     
-    var keyValueSection: Observable<SingleSection<KeyValue>> {
-        return keyValues.map { SingleSection.create($0) }
+    var results: [String: KeyValue] = [:]
+    
+    var keyValueSection: Observable<AnimatableSingleSection<KeyValue>> {
+        return keyValues.map { AnimatableSingleSection.create($0) }
+    }
+    
+    func addNewKey() {
+        var value = keyValues.value
+        value.append(.empty)
+        keyValues.accept(value)
+    }
+    
+    func remove(by identifier: String) {
+        var value = keyValues.value
+        guard let index = value.firstIndex(where: { $0.identifier == identifier }) else {
+            return
+        }
+        value.remove(at: index)
+        keyValues.accept(value)
+        
+        results.removeValue(forKey: identifier)
+    }
+    
+    func update(keyValue: KeyValue) {
+        results[keyValue.identifier] = keyValue
     }
 }
 

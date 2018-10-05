@@ -18,9 +18,10 @@ class PrettyViewController: UIViewController {
     var text: String!
     var headers: [AnyHashable : Any]!
     
-    init?(text: String, headers: [AnyHashable : Any]) {
-        self.text = text
-        self.headers = headers
+    private let viewModel: PrettyViewModel
+    
+    init(viewModel: PrettyViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -39,7 +40,7 @@ class PrettyViewController: UIViewController {
             $0.bottom.equalToSuperview()
         }
 
-        format()
+//        format()
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -8,7 +8,7 @@
 
 import UIKit
 import Alamofire
-import M80AttributedLabel
+import PagingKit
 
 extension String: ParameterEncoding {
     
@@ -20,97 +20,92 @@ extension String: ParameterEncoding {
     
 }
 
-class ResultViewController: UIViewController, UIPageViewControllerDataSource {
+fileprivate struct Const {
+    struct menu {
+        static let height = 40
+        static let cell = "menuCell"
+    }
     
-    @IBOutlet weak var styleSegmentedControl: UISegmentedControl!
+    static let menus = ["Pretty", "Raw", "Preview", "Detail"]
+}
+
+class ResultViewController: HttperViewController {
     
-    var pageViewController: UIPageViewController!
+    private lazy var menuViewController: PagingMenuViewController = {
+        let controller = PagingMenuViewController()
+        controller.dataSource = self
+        controller.delegate = self
+        controller.register(type: MenuViewCell.self, forCellWithReuseIdentifier: Const.menu.cell)
+        controller.registerFocusView(view: UIView())
+        controller.view.backgroundColor = .clear
+        return controller
+    }()
     
-    var prettyViewController: PrettyViewController!
-    var rawViewController: RawViewController!
-    var previewViewController: PreviewViewController!
+    private lazy var contentViewController: PagingContentViewController = {
+        let controller = PagingContentViewController()
+        controller.dataSource = self
+        controller.delegate = self
+        controller.view.frame = view.bounds
+        return controller
+    }()
     
-    var method: String!, url: String!
-    var headers: HTTPHeaders!
-    var parameters: Parameters!
-    var body: String!
+    var contentViewControllers: [UIViewController] = []
     
-    var httpURLResponse: HTTPURLResponse!
+    private let viewModel: ResultViewModel
     
-    let dao = DaoManager.shared
+    init(viewModel: ResultViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        setupPagingKit()
+        menuViewController.reloadData()
+        contentViewController.reloadData()
+    }
+    
+    private func setupPagingKit() {
+        addChild(menuViewController)
+        view.addSubview(menuViewController.view)
+        menuViewController.didMove(toParent: self)
         
-        pageViewController = children.first as! UIPageViewController
-        pageViewController.dataSource = self
+        addChild(contentViewController)
+        view.addSubview(contentViewController.view)
+        contentViewController.didMove(toParent: self)
         
-        // Show loading activity idicator.
-        replaceBarButtonItemWithActivityIndicator()
+        menuViewController.view.snp.makeConstraints {
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.top.equalToSuperview().offset(topPadding)
+            $0.height.equalTo(Const.menu.height)
+        }
         
-        sendRequest()
+        contentViewController.view.snp.makeConstraints {
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.top.equalTo(menuViewController.view.snp.bottom)
+            $0.bottom.equalToSuperview()
+        }
     }
 
-    //MARK: - UIPageViewControllerDataSource
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        if viewController.isKind(of: PrettyViewController.self) {
-            return self.rawViewController
-        } else if viewController.isKind(of: RawViewController.self) {
-            return self.previewViewController
-        }
-        return nil
-    }
-    
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        if viewController.isKind(of: PreviewViewController.self) {
-            return self.rawViewController
-        } else if viewController.isKind(of: RawViewController.self) {
-            return self.prettyViewController
-        }
-        return nil
-    }
-    
     //MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier {
-        case R.segue.resultViewController.requestInfoSegue.identifier:
-            let destination = segue.destination as! ResponseInfoTableViewController
-            destination.response = httpURLResponse
-        default:
-            break
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        switch segue.identifier {
+//        case R.segue.resultViewController.requestInfoSegue.identifier:
+//            let destination = segue.destination as! ResponseInfoTableViewController
+//            destination.response = httpURLResponse
+//        default:
+//            break
+//        }
+//    }
     
-    //MARK: - Action
-    @IBAction func selectStyle(_ sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
-        case Style.pretty.rawValue:
-            if self.prettyViewController != nil {
-                self.pageViewController.setViewControllers([self.prettyViewController],
-                                                           direction: .forward,
-                                                           animated: true,
-                                                           completion: nil)
-            }
-        case Style.raw.rawValue:
-            if self.rawViewController != nil {
-                self.pageViewController.setViewControllers([self.rawViewController],
-                                                           direction: .forward,
-                                                           animated: true,
-                                                           completion: nil)
-                
-            }
-        case Style.preview.rawValue:
-            if self.prettyViewController != nil {
-                self.pageViewController.setViewControllers([self.previewViewController],
-                                                           direction: .forward,
-                                                           animated: true,
-                                                           completion: nil)
-                
-            }
-        default:
-            break
-        }
-    }
+
     
     //MARK: - Service
     func getHTTPMethod(method: String) -> HTTPMethod {
@@ -138,15 +133,10 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
         }
     }
     
-    @objc func currentPageChanged(notification: Notification) {
-        styleSegmentedControl.selectedSegmentIndex = notification.object as! Int
-    }
-    
-    @objc func showRequestInfo() {
-        self.performSegue(withIdentifier: "requestInfoSegue", sender: self)
-    }
+
     
     // Send request.
+    /**
     func sendRequest() {
         Alamofire.request(url,
                           method: getHTTPMethod(method: method),
@@ -176,4 +166,61 @@ class ResultViewController: UIViewController, UIPageViewControllerDataSource {
         
         NotificationCenter.default.addObserver(self, selector: #selector(currentPageChanged(notification:)), name: NSNotification.Name(rawValue: "currentPageChanged"), object: nil)
     }
+ */
+}
+
+
+extension ResultViewController: PagingMenuViewControllerDataSource {
+    
+    func menuViewController(viewController: PagingMenuViewController, cellForItemAt index: Int) -> PagingMenuViewCell {
+        guard let cell = viewController.dequeueReusableCell(withReuseIdentifier: Const.menu.cell, for: index) as? MenuViewCell else {
+            return MenuViewCell()
+        }
+        cell.title = Const.menus[index]
+        return cell
+    }
+    
+    func menuViewController(viewController: PagingMenuViewController, widthForItemAt index: Int) -> CGFloat {
+        return menuViewController.view.bounds.width / CGFloat(Const.menus.count)
+    }
+    
+    var insets: UIEdgeInsets {
+        if #available(iOS 11.0, *) {
+            return view.safeAreaInsets
+        } else {
+            return .zero
+        }
+    }
+    
+    func numberOfItemsForMenuViewController(viewController: PagingMenuViewController) -> Int {
+        return Const.menus.count
+    }
+}
+
+extension ResultViewController: PagingContentViewControllerDataSource {
+    
+    func numberOfItemsForContentViewController(viewController: PagingContentViewController) -> Int {
+        return Const.menus.count
+    }
+    
+    func contentViewController(viewController: PagingContentViewController, viewControllerAt index: Int) -> UIViewController {
+        return contentViewControllers[index]
+    }
+    
+}
+
+extension ResultViewController: PagingMenuViewControllerDelegate {
+    
+    func menuViewController(viewController: PagingMenuViewController, didSelect page: Int, previousPage: Int) {
+        contentViewController.scroll(to: page, animated: true)
+    }
+    
+}
+
+extension ResultViewController: PagingContentViewControllerDelegate {
+    
+    func contentViewController(viewController: PagingContentViewController, didManualScrollOn index: Int, percent: CGFloat) {
+        menuViewController.scroll(index: index, percent: percent, animated: false)
+    }
+    
 }

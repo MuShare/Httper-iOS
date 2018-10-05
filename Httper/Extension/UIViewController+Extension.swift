@@ -10,6 +10,25 @@ import UIKit
 
 extension UIViewController {
 
+    var topPadding: CGFloat {
+        return UIApplication.shared.statusBarFrame.height + (navigationController?.navigationBar.frame.height ?? 0)
+    }
+    
+    var topPaddingFullScreen: CGFloat {
+        let padding = UIApplication.shared.statusBarFrame.height
+        return padding == 20 ? 0 : padding
+    }
+    
+    var bottomPadding: CGFloat {
+        var bottom: CGFloat = 0
+        if #available(iOS 11.0, *) {
+            if let window = UIApplication.shared.keyWindow {
+                bottom += window.safeAreaInsets.bottom
+            }
+        }
+        return bottom
+    }
+    
     func showTip(_ tip: String) {
         showAlert(title: R.string.localizable.tip_name(),
                   content: tip)

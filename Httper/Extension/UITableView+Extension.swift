@@ -2,7 +2,7 @@
 //  UITableView+Extension.swift
 //  Tsukuba-iOS
 //
-//  Created by mon.ri on 2018/07/02.
+//  Created by Meng Li on 2018/07/02.
 //  Copyright © 2018 MuShare. All rights reserved.
 //
 

@@ -13,11 +13,12 @@ class PreviewViewController: UIViewController {
     var text: String!
     var url: URL!
     
-    var previewWebView: UIWebView!
+    private lazy var previewWebView = UIWebView()
     
-    init?(text: String, url: URL) {
-        self.text = text
-        self.url = url
+    private let viewModel: PreviewViewModel
+
+    init(viewModel: PreviewViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -27,17 +28,16 @@ class PreviewViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        previewWebView = {
-            let view = UIWebView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height - 50))
-            return view
-        }()
         
-        //Set preview web view
-        self.previewWebView.loadHTMLString(text, baseURL: url)
-
-        self.view.addSubview(previewWebView)
-
+        view.addSubview(previewWebView)
+        previewWebView.snp.makeConstraints {
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.top.equalToSuperview().offset(topPadding)
+            $0.bottom.equalToSuperview()
+        }
+        
+//         previewWebView.loadHTMLString(text, baseURL: url)
     }
     
     override func viewWillAppear(_ animated: Bool) {

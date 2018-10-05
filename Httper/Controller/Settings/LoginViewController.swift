@@ -45,7 +45,7 @@ class LoginViewController: EditingViewController, NVActivityIndicatorViewable {
     }
 
     @IBAction func login(_ sender: Any) {
-        if emailTextField.text == "" || !isEmailAddress(emailTextField.text!) || passwordTextField.text == "" {
+        if emailTextField.text == "" || !(emailTextField.text!).isEmailAddress || passwordTextField.text == "" {
             showAlert(title: R.string.localizable.tip_name(),
                       content: R.string.localizable.login_not_validate())
             return
@@ -82,7 +82,7 @@ class LoginViewController: EditingViewController, NVActivityIndicatorViewable {
             case .success(_, _, let accessToken):
                 self.startAnimating()
                 
-                self.user.loginWithFacebook(accessToken.authenticationToken, completion: { (success, tip) in
+                self.user.loginWithFacebook(accessToken.authenticationToken) { (success, tip) in
                     self.stopAnimating()
                     if success {
                         // Sync project and request entities from server
@@ -92,7 +92,7 @@ class LoginViewController: EditingViewController, NVActivityIndicatorViewable {
                     } else {
                         self.showAlert(title: R.string.localizable.tip_name(), content: tip!)
                     }
-                })
+                }
             }
         }
     }

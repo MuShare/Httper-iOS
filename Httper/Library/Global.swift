@@ -62,6 +62,34 @@ enum DesignColor: Int {
     case tableLine = 0xbcbbc1
 }
 
+extension UIColor {
+    // Pretty colors
+    open class var normal: UIColor {
+        return UIColor(hex: 0xeeeeee)
+    }
+    
+    open class var key: UIColor {
+        return UIColor(hex: 0xff9999)
+    }
+    
+    open class var value: UIColor {
+        return UIColor(hex: 0x33ccff)
+    }
+    
+    // Design colors
+    open class var background: UIColor {
+        return UIColor(hex: 0x30363b)
+    }
+    
+    open class var nagivation: UIColor {
+        return UIColor(hex: 0x3d4143)
+    }
+    
+    open class var tableLine: UIColor {
+        return UIColor(hex: 0xbcbbc1)
+    }
+}
+
 enum ErrorCode: Int {
     case badRequest = -99999
     case tokenError = 901

@@ -7,9 +7,12 @@
 //
 
 import RxSwift
+import RxCocoa
 import RxFlow
 
 class BodyViewModel {
+    
+    let body = BehaviorRelay<String>(value: "")
     
 }
 
