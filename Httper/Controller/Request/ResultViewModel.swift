@@ -12,10 +12,33 @@ import RxFlow
 
 class ResultViewModel {
     
-    private let requestData: RequestData
+    private let prettyViewModel: PrettyViewModel
+    private let rawViewModel: RawViewModel
+    private let previewViewModel: PreviewViewModel
+    private let detailViewModel: DetailViewModel
     
-    init(requestData: RequestData) {
+    private let requestData: RequestData
+    private let disposeBag = DisposeBag()
+    
+    init(requestData: RequestData, prettyViewModel: PrettyViewModel, rawViewModel: RawViewModel, previewViewModel: PreviewViewModel, detailViewModel: DetailViewModel) {
         self.requestData = requestData
+        self.prettyViewModel = prettyViewModel
+        self.rawViewModel = rawViewModel
+        self.previewViewModel = previewViewModel
+        self.detailViewModel = detailViewModel
+        
+        RequestManager.shared.send(requestData).subscribe(onNext: { [weak self] (response, data) in
+            guard
+                response.statusCode == 200,
+                let `self` = self,
+                let text = String(data: data, encoding: .utf8)
+            else {
+                return
+            }
+            self.prettyViewModel.setText(string: text, headers: response.allHeaderFields)
+        }, onError: {
+            print($0)
+        }).disposed(by: disposeBag)
     }
     
 }

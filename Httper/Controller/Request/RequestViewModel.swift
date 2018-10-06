@@ -51,7 +51,8 @@ class RequestViewModel {
 extension RequestViewModel: Stepper {
     
     func sendRequest() {
-        let requestData = RequestData(method: requestMethod.value, url: url.value,
+        let requestData = RequestData(method: requestMethod.value,
+                                      url: protocols[requestProtocol.value] + "://" + url.value,
                                       headers: Array(headersViewModel.results.values),
                                       parameters: Array(parametersViewModel.results.values),
                                       body: bodyViewModel.body.value)

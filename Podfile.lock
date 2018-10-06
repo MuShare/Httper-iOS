@@ -46,6 +46,11 @@ PODS:
     - Reusable/View (= 4.0.3)
   - Reusable/Storyboard (4.0.3)
   - Reusable/View (4.0.3)
+  - RxAlamofire (4.3.0):
+    - RxAlamofire/Core (= 4.3.0)
+  - RxAlamofire/Core (4.3.0):
+    - Alamofire (~> 4.5)
+    - RxSwift (~> 4)
   - RxCocoa (4.3.1):
     - RxSwift (~> 4.0)
   - RxDataSources (3.1.0):
@@ -84,6 +89,7 @@ DEPENDENCIES:
   - R.swift (= 5.0.0.alpha.2)
   - ReachabilitySwift (~> 3)
   - Reusable (~> 4)
+  - RxAlamofire (~> 4.3)
   - RxCocoa (~> 4)
   - RxDataSources (~> 3)
   - RxFlow (~> 1.4)
@@ -121,6 +127,7 @@ SPEC REPOS:
     - R.swift.Library
     - ReachabilitySwift
     - Reusable
+    - RxAlamofire
     - RxCocoa
     - RxDataSources
     - RxFlow
@@ -157,6 +164,7 @@ SPEC CHECKSUMS:
   R.swift.Library: 3c21b823839bf5a6769dc7f96cb44479dab51b1b
   ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
   Reusable: 12b67a60e1f3e8c523cc910795dab733f58fbc7e
+  RxAlamofire: 09624d0f2d48ed8b686e4eb4cf68e28cbd2df556
   RxCocoa: 78763c7b07d02455598d9fc3c1ad091a28b73635
   RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
   RxFlow: 80ba3d5c5bf5820c5c160cb6b2d533c3038b165d
@@ -170,6 +178,6 @@ SPEC CHECKSUMS:
   "UIImageView+Extension": bc26c60a9c8cd6fb515ae1e37377a6f0988e76d8
   "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
 
-PODFILE CHECKSUM: af520e398348ec2c8a3976236b0a64abd5ab055d
+PODFILE CHECKSUM: 232559df5727b41eff8365f3c879d795eaba2de0
 
 COCOAPODS: 1.5.3

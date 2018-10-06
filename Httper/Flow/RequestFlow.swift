@@ -58,7 +58,11 @@ class RequestFlow: Flow {
             let detailViewModel = DetailViewModel()
             let detailViewController = DetailViewController(viewModel: detailViewModel)
             
-            let resultViewModel = ResultViewModel(requestData: requestData)
+            let resultViewModel = ResultViewModel(requestData: requestData,
+                                                  prettyViewModel: prettyViewModel,
+                                                  rawViewModel: rawViewModel,
+                                                  previewViewModel: previewViewModel,
+                                                  detailViewModel: detailViewModel)
             let resultViewController = ResultViewController(viewModel: resultViewModel)
             resultViewController.contentViewControllers = [prettyViewController, rawViewController, previewViewController, detailViewController
             ]

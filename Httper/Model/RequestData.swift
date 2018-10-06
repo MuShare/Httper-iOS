@@ -28,3 +28,31 @@ struct RequestData {
     }
     
 }
+
+extension RequestData {
+    
+    var httpMethod: HTTPMethod {
+        switch method {
+        case "GET":
+            return HTTPMethod.get
+        case "HEAD":
+            return HTTPMethod.head
+        case "POST":
+            return HTTPMethod.post
+        case "PUT":
+            return HTTPMethod.put
+        case "DELETE":
+            return HTTPMethod.delete
+        case "CONNECT":
+            return HTTPMethod.connect
+        case "OPTIONS":
+            return HTTPMethod.options
+        case "TRACE":
+            return HTTPMethod.trace
+        case "PATCH":
+            return HTTPMethod.patch
+        default:
+            return HTTPMethod.get
+        }
+    }
+}
