@@ -11,6 +11,13 @@ import NVActivityIndicatorView
 
 class ResetViewController: EditingViewController, NVActivityIndicatorViewable {
 
+    private lazy var backgroundImageView: UIImageView = {
+        let imageView = UIImageView(frame: self.view.bounds)
+        imageView.image = R.image.loginBgJpg()
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
@@ -24,32 +31,25 @@ class ResetViewController: EditingViewController, NVActivityIndicatorViewable {
         super.viewDidLoad()
 
         submitButton.layer.borderColor = UIColor.lightGray.cgColor
+        view.clipsToBounds = true
+        view.insertSubview(backgroundImageView, at: 0)
         
-        //Set background image
-        let backgroundImageView: UIImageView = {
-            let view = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
-            let ratio = view.frame.size.height / view.frame.size.width
-            view.image = UIImage(named: ratio == 4 / 3 ? "register-bg-iPad.jpg" : "register-bg.jpg")
-            return view
-        }()
-        self.view.insertSubview(backgroundImageView, at: 0)
-        
-        self.navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.isHidden = true
     }
     
     override func viewDidLayoutSubviews() {
-        self.shownHeight = submitButton.frame.minY
+        shownHeight = submitButton.frame.minY
     }
 
     // MARK: - Action
     @IBAction func back(_ sender: Any) {
-        _ = self.navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func submit(_ sender: Any) {
         // If email is submitted before, back to sign in view
         if submit {
-            _ = self.navigationController?.popViewController(animated: true)
+            navigationController?.popViewController(animated: true)
             return
         }
         if let email = emailTextField.text, !email.isEmailAddress {

@@ -25,7 +25,7 @@ PODS:
   - Kanna (4.0.2)
   - Kingfisher (4.10.0)
   - M80AttributedLabel (1.7.0)
-  - MGFormatter (0.3):
+  - MGFormatter (0.3.1):
     - AttributedTextView (~> 1.2)
     - Fuzi (~> 2)
     - SnapKit (~> 4)
@@ -155,7 +155,7 @@ SPEC CHECKSUMS:
   Kanna: c60b61d72554bf04ed1ee074f9b379855cab4892
   Kingfisher: 43c4b802d8b5256cf1f4379e9cd10b329be6d3e2
   M80AttributedLabel: 7dd017588f524b13149d4cf5c7b1eaf02b0f06a4
-  MGFormatter: 05e168dc4b4ba2a956f383b8324e9bca0a22c538
+  MGFormatter: 5954840af327baa597dd6744fc36432f98d26d06
   MGKeyboardAccessory: 4ea8edfeaac566a11b018259dba198df4f822304
   MGSelector: 8feb6c39b87eb9a1af395fba334a57eb4d7c84dc
   NVActivityIndicatorView: ec7440a57af2450319d3a4181cca7da6fc127064

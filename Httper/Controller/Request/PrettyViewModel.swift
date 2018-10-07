@@ -24,7 +24,7 @@ class PrettyViewModel {
         } else if contentType.contains("application/json") {
             style.onNext(.jsonDark)
         } else {
-            style.onNext(.noneDark)
+            style.onNext(FormatterStyle(font: UIFont(name: "Menlo", size: 12) ?? UIFont.systemFont(ofSize: 12), lineSpacing: 5, type: .none(.white)))
         }
         text.onNext(string)
     }
