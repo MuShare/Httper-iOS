@@ -35,7 +35,9 @@ class ResultViewModel {
             else {
                 return
             }
-            self.prettyViewModel.setText(string: text, headers: response.allHeaderFields)
+            self.prettyViewModel.set(text: text, headers: response.allHeaderFields)
+            self.rawViewModel.set(text: text)
+            self.previewViewModel.set(text: text, url: response.url)
         }, onError: {
             print($0)
         }).disposed(by: disposeBag)

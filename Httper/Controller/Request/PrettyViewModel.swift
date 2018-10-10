@@ -15,7 +15,7 @@ class PrettyViewModel {
     let style = PublishSubject<FormatterStyle>()
     let text = PublishSubject<String>()
     
-    func setText(string: String, headers: [AnyHashable : Any]) {
+    func set(text: String, headers: [AnyHashable : Any]) {
         guard let contentType = headers["Content-Type"] as? String else {
             return
         }
@@ -26,7 +26,7 @@ class PrettyViewModel {
         } else {
             style.onNext(FormatterStyle(font: UIFont(name: "Menlo", size: 12) ?? UIFont.systemFont(ofSize: 12), lineSpacing: 5, type: .none(.white)))
         }
-        text.onNext(string)
+        self.text.onNext(text)
     }
     
 }

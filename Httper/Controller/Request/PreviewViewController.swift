@@ -7,12 +7,10 @@
 //
 
 import UIKit
+import RxSwift
 
 class PreviewViewController: UIViewController {
 
-    var text: String!
-    var url: URL!
-    
     private lazy var previewWebView = UIWebView()
     
     private let viewModel: PreviewViewModel
@@ -30,19 +28,20 @@ class PreviewViewController: UIViewController {
         super.viewDidLoad()
         
         view.addSubview(previewWebView)
-        previewWebView.snp.makeConstraints {
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview()
-            $0.top.equalToSuperview().offset(topPadding)
-            $0.bottom.equalToSuperview()
-        }
+        createConstraints()
         
-//         previewWebView.loadHTMLString(text, baseURL: url)
+        Observable.combineLatest(viewModel.text, viewModel.url)
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] (text, url) in
+                self?.previewWebView.loadHTMLString(text, baseURL: url)
+            }).disposed(by: disposeBag)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "currentPageChanged"), object: Style.preview.rawValue)
+    private func createConstraints() {
+        previewWebView.snp.makeConstraints {
+            $0.size.equalToSuperview()
+            $0.center.equalToSuperview()
+        }
     }
     
 }

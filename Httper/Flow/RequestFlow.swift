@@ -64,8 +64,7 @@ class RequestFlow: Flow {
                                                   previewViewModel: previewViewModel,
                                                   detailViewModel: detailViewModel)
             let resultViewController = ResultViewController(viewModel: resultViewModel)
-            resultViewController.contentViewControllers = [prettyViewController, rawViewController, previewViewController, detailViewController
-            ]
+            resultViewController.contentViewControllers = [prettyViewController, rawViewController, previewViewController, detailViewController]
             navigationController?.pushViewController(resultViewController, animated: true)
             return .one(flowItem: NextFlowItem(nextPresentable: resultViewController, nextStepper: resultViewModel))
         }
