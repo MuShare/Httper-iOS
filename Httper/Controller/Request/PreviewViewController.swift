@@ -30,11 +30,10 @@ class PreviewViewController: UIViewController {
         view.addSubview(previewWebView)
         createConstraints()
         
-        Observable.combineLatest(viewModel.text, viewModel.url)
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] (text, url) in
-                self?.previewWebView.loadHTMLString(text, baseURL: url)
-            }).disposed(by: disposeBag)
+        viewModel.content.subscribe(onNext: { [unowned self] (text, url) in
+            self.previewWebView.loadHTMLString(text, baseURL: url)
+        }).disposed(by: disposeBag)
+
     }
     
     private func createConstraints() {

@@ -10,6 +10,10 @@ import UIKit
 import RxSwift
 import MGFormatter
 
+fileprivate struct Const {
+    static let margin = 5
+}
+
 class RawViewController: UIViewController {
     
     private lazy var rawView = FormatterView()
@@ -37,10 +41,9 @@ class RawViewController: UIViewController {
  
     private func createConstrants() {
         rawView.snp.makeConstraints {
-            $0.left.equalToSuperview().offset(5)
-            $0.right.equalToSuperview().offset(-5)
-            $0.top.equalToSuperview()
-            $0.bottom.equalToSuperview()
+            $0.left.equalToSuperview().offset(Const.margin)
+            $0.right.equalToSuperview().offset(Const.margin)
+            $0.top.bottom.equalToSuperview()
         }
     }
 }

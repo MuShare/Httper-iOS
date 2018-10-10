@@ -11,12 +11,10 @@ import RxFlow
 
 class PreviewViewModel {
     
-    let url = PublishSubject<URL?>()
-    let text = PublishSubject<String>()
+    let content = BehaviorSubject<(String, URL?)>(value: ("", nil))
     
-    func set(text: String, url: URL?) {
-        self.text.onNext(text)
-        self.url.onNext(url)
+    func set(url: URL?, text: String) {
+        content.onNext((text, url))
     }
     
 }

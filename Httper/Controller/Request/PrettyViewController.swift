@@ -10,6 +10,10 @@ import UIKit
 import MGFormatter
 import RxSwift
 
+fileprivate struct Const {
+    static let margin = 5
+}
+
 class PrettyViewController: UIViewController {
     
     private lazy var formatterView = FormatterView()
@@ -38,10 +42,9 @@ class PrettyViewController: UIViewController {
     
     private func createConstraints() {
         formatterView.snp.makeConstraints {
-            $0.left.equalToSuperview().offset(5)
-            $0.right.equalToSuperview().offset(-5)
-            $0.top.equalToSuperview()
-            $0.bottom.equalToSuperview()
+            $0.left.equalToSuperview().offset(Const.margin)
+            $0.right.equalToSuperview().offset(Const.margin)
+            $0.top.bottom.equalToSuperview()
         }
     }
     
