@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import M80AttributedLabel
-import Alamofire
 import MGFormatter
 import RxSwift
 

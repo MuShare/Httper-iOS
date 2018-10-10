@@ -7,30 +7,12 @@
 //
 
 import UIKit
-import M80AttributedLabel
+import RxSwift
+import MGFormatter
 
 class RawViewController: UIViewController {
     
-    private lazy var rowLabel: M80AttributedLabel = {
-        let label = M80AttributedLabel()
-        label.backgroundColor = UIColor.clear
-        label.font = UIFont(name: "Menlo", size: 12)
-        label.textColor = .normal
-        return label
-    }()
-    
-    private lazy var rowScrollView: UIScrollView = {
-        let width = self.view.frame.size.width
-        let height = self.view.frame.size.height
-        let rowSize = rowLabel.sizeThatFits(CGSize(width: width - 10, height: CGFloat.greatestFiniteMagnitude))
-        rowLabel.frame = CGRect(x: 5, y: 5, width: rowSize.width, height: rowSize.height)
-        
-        let view = UITextView(frame: CGRect(x: 0, y: 0, width: width, height: height - 50))
-        view.backgroundColor = .clear
-        view.contentSize = CGSize(width: width, height: rowSize.height + 70)
-        view.addSubview(rowLabel)
-        return view
-    }()
+    private lazy var rawView = FormatterView()
     
     private let viewModel: RawViewModel
 
@@ -46,11 +28,19 @@ class RawViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.addSubview(rowScrollView)
-        viewModel.text.bind(to: rowLabel.rx.text).disposed(by: disposeBag)
-        viewModel.text.subscribe(onNext: {
-            print($0)
+        view.addSubview(rawView)
+        createConstrants()
+        viewModel.text.observeOn(MainScheduler.instance).subscribe(onNext: { [unowned self] in
+            self.rawView.format(string: $0, style: .noneDark)
         }).disposed(by: disposeBag)
     }
-    
+ 
+    private func createConstrants() {
+        rawView.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(5)
+            $0.right.equalToSuperview().offset(-5)
+            $0.top.equalToSuperview()
+            $0.bottom.equalToSuperview()
+        }
+    }
 }
