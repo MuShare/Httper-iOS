@@ -43,6 +43,10 @@ class ResultViewModel {
         }).disposed(by: disposeBag)
     }
     
+    var title: Observable<String> {
+        return Observable.just(requestData.url)
+    }
+    
 }
 
 extension ResultViewModel: Stepper {

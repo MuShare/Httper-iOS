@@ -23,6 +23,7 @@ extension String: ParameterEncoding {
 fileprivate struct Const {
     struct menu {
         static let height = 40
+        static let margin: CGFloat = 10
         static let cell = "menuCell"
     }
     
@@ -68,6 +69,8 @@ class ResultViewController: HttperViewController {
         setupPagingKit()
         menuViewController.reloadData()
         contentViewController.reloadData()
+        
+        viewModel.title.bind(to: rx.title).disposed(by: disposeBag)
     }
     
     private func setupPagingKit() {
@@ -80,93 +83,17 @@ class ResultViewController: HttperViewController {
         contentViewController.didMove(toParent: self)
         
         menuViewController.view.snp.makeConstraints {
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview()
-            $0.top.equalToSuperview().offset(topPadding)
+            $0.left.equalToSuperview().offset(Const.menu.margin)
+            $0.right.equalToSuperview().offset(-Const.menu.margin)
+            $0.top.equalToSuperview().offset(topPadding + Const.menu.margin)
             $0.height.equalTo(Const.menu.height)
         }
         
         contentViewController.view.snp.makeConstraints {
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview()
-            $0.top.equalTo(menuViewController.view.snp.bottom)
-            $0.bottom.equalToSuperview()
+            $0.left.right.bottom.equalToSuperview()
+            $0.top.equalTo(menuViewController.view.snp.bottom).offset(Const.menu.margin)
         }
     }
-
-    //MARK: - Navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        switch segue.identifier {
-//        case R.segue.resultViewController.requestInfoSegue.identifier:
-//            let destination = segue.destination as! ResponseInfoTableViewController
-//            destination.response = httpURLResponse
-//        default:
-//            break
-//        }
-//    }
-    
-
-    
-    //MARK: - Service
-    func getHTTPMethod(method: String) -> HTTPMethod {
-        switch method {
-        case "GET":
-            return HTTPMethod.get
-        case "HEAD":
-            return HTTPMethod.head
-        case "POST":
-            return HTTPMethod.post
-        case "PUT":
-            return HTTPMethod.put
-        case "DELETE":
-            return HTTPMethod.delete
-        case "CONNECT":
-            return HTTPMethod.connect
-        case "OPTIONS":
-            return HTTPMethod.options
-        case "TRACE":
-            return HTTPMethod.trace
-        case "PATCH":
-            return HTTPMethod.patch
-        default:
-            return HTTPMethod.get
-        }
-    }
-    
-
-    
-    // Send request.
-    /**
-    func sendRequest() {
-        Alamofire.request(url,
-                          method: getHTTPMethod(method: method),
-                          parameters: parameters,
-                          encoding: (body == nil) ? URLEncoding.default : body,
-                          headers: headers)
-            .response { response in
-                if response.response == nil {
-                    self.showAlert(title: R.string.localizable.tip_name(), content: R.string.localizable.cannot_access())
-                    return
-                }
-                
-                // Show response.
-                self.httpURLResponse = response.response
-                let infoBarButtonItem = UIBarButtonItem(image: UIImage.init(named: "info"),
-                                                        style: UIBarButtonItem.Style.plain,
-                                                        target: self,
-                                                        action: #selector(self.showRequestInfo))
-                self.navigationItem.rightBarButtonItem = infoBarButtonItem
-                
-                let utf8Text = String(data: response.data!, encoding: .utf8) ?? ""
-                self.prettyViewController = PrettyViewController(text: utf8Text, headers: (response.response?.allHeaderFields)!)
-                self.rawViewController = RawViewController(text: utf8Text)
-                self.previewViewController = PreviewViewController(text: utf8Text, url: (response.response?.url)!)
-                self.pageViewController.setViewControllers([self.prettyViewController], direction: .forward, animated: true, completion: nil)
-        }
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(currentPageChanged(notification:)), name: NSNotification.Name(rawValue: "currentPageChanged"), object: nil)
-    }
- */
 }
 
 
