@@ -11,6 +11,12 @@ import RxFlow
 
 class RawViewModel {
     
+    let text = PublishSubject<String>()
+    
+    func set(text: String) {
+        self.text.onNext(text)
+    }
+    
 }
 
 extension RawViewModel: Stepper {

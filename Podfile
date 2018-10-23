@@ -17,6 +17,7 @@ target 'Httper' do
     pod 'R.swift', '= 5.0.0.alpha.2'
     pod 'ReachabilitySwift', '~> 3'
     pod 'Reusable', '~> 4'
+    pod 'RxAlamofire', '~> 4.3'
     pod 'RxSwift', '~> 4'
     pod 'RxCocoa', '~> 4'
     pod 'RxDataSources', '~> 3'

@@ -8,8 +8,31 @@
 
 import RxSwift
 import RxFlow
+import Alamofire
+
+struct DetailModel {
+    var title: String
+    var content: String
+}
 
 class DetailViewModel {
+    
+    let response = BehaviorSubject<HTTPURLResponse?>(value: nil)
+    
+    var detailSection: Observable<SingleSection<DetailModel>> {
+        return response.map {
+            guard let response = $0 else {
+                return SingleSection.create([])
+            }
+            var models: [DetailModel] = []
+            models.append(DetailModel(title: "Request URL", content: response.url?.description ?? ""))
+            models.append(DetailModel(title: "Status Code", content: response.statusCode.description))
+            response.allHeaderFields.forEach { (key, value) in
+                models.append(DetailModel(title: key.description, content: value as? String ?? ""))
+            }
+            return SingleSection.create(models)
+        }
+    }
     
 }
 

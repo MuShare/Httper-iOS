@@ -7,16 +7,16 @@
 //
 
 import UIKit
-import M80AttributedLabel
-import Alamofire
 import MGFormatter
+import RxSwift
+
+fileprivate struct Const {
+    static let margin = 5
+}
 
 class PrettyViewController: UIViewController {
     
     private lazy var formatterView = FormatterView()
-    
-    var text: String!
-    var headers: [AnyHashable : Any]!
     
     private let viewModel: PrettyViewModel
     
@@ -33,34 +33,19 @@ class PrettyViewController: UIViewController {
         super.viewDidLoad()
         
         view.addSubview(formatterView)
-        formatterView.snp.makeConstraints {
-            $0.left.equalToSuperview().offset(5)
-            $0.right.equalToSuperview().offset(-5)
-            $0.top.equalToSuperview()
-            $0.bottom.equalToSuperview()
-        }
-
-//        format()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "currentPageChanged"), object: Style.pretty.rawValue)
-    }
-    
-    private func format() {
-        if let contentType = headers["Content-Type"] as? String {
-            if contentType.contains("text/html") {
-                formatterView.format(string: text, style: .htmlDark)
-                return
-            } else if contentType.contains("application/json") {
-                formatterView.format(string: text, style: .jsonDark)
-                return
-            }
-        }
+        createConstraints()
         
-        let style = FormatterStyle(font: UIFont.systemFont(ofSize: 12), lineSpacing: 5, type: .none(.white))
-        formatterView.format(string: text, style: style)
+        Observable.combineLatest(viewModel.text, viewModel.style).subscribe(onNext: { [unowned self] (text, style) in
+            self.formatterView.format(string: text, style: style)
+        }).disposed(by: disposeBag)
+    }
+    
+    private func createConstraints() {
+        formatterView.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(Const.margin)
+            $0.right.equalToSuperview().offset(Const.margin)
+            $0.top.bottom.equalToSuperview()
+        }
     }
     
 }

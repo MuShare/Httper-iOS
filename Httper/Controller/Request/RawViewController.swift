@@ -7,33 +7,16 @@
 //
 
 import UIKit
-import M80AttributedLabel
+import RxSwift
+import MGFormatter
+
+fileprivate struct Const {
+    static let margin = 5
+}
 
 class RawViewController: UIViewController {
     
-    private lazy var rowLabel: M80AttributedLabel = {
-        let label = M80AttributedLabel()
-        label.text = text
-        label.backgroundColor = UIColor.clear
-        label.font = UIFont(name: "Menlo", size: 12)
-        label.textColor = .normal
-        return label
-    }()
-    
-    private lazy var rowScrollView: UIScrollView = {
-        let width = self.view.frame.size.width
-        let height = self.view.frame.size.height
-        let rowSize = rowLabel.sizeThatFits(CGSize(width: width - 10, height: CGFloat.greatestFiniteMagnitude))
-        rowLabel.frame = CGRect.init(x: 5, y: 5, width: rowSize.width, height: rowSize.height)
-        
-        let view = UITextView(frame: CGRect(x: 0, y: 0, width: width, height: height - 50))
-        view.backgroundColor = UIColor.clear
-        view.contentSize = CGSize.init(width: width, height: rowSize.height + 70)
-        view.addSubview(rowLabel)
-        return view
-    }()
-    
-    var text: String!
+    private lazy var rawView = FormatterView()
     
     private let viewModel: RawViewModel
 
@@ -49,12 +32,18 @@ class RawViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.addSubview(rowScrollView)
+        view.addSubview(rawView)
+        createConstrants()
+        viewModel.text.observeOn(MainScheduler.instance).subscribe(onNext: { [unowned self] in
+            self.rawView.format(string: $0, style: .noneDark)
+        }).disposed(by: disposeBag)
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "currentPageChanged"), object: Style.raw.rawValue)
+ 
+    private func createConstrants() {
+        rawView.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(Const.margin)
+            $0.right.equalToSuperview().offset(Const.margin)
+            $0.top.bottom.equalToSuperview()
+        }
     }
-    
 }
