@@ -21,7 +21,6 @@ class BodyViewController: UIViewController {
     }()
     
     private let viewModel: BodyViewModel
-    private let disposeBag = DisposeBag()
     
     init(viewModel: BodyViewModel) {
         self.viewModel = viewModel

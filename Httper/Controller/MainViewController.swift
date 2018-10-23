@@ -40,8 +40,7 @@ enum MainTabType: Int {
 class MainViewController: UITabBarController {
 
     private let viewModel: MainViewModel
-    private let disposeBag = DisposeBag()
-    
+
     init(viewModel: MainViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
