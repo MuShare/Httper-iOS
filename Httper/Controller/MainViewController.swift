@@ -80,7 +80,7 @@ class MainViewController: UITabBarController {
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: R.string.localizable.tab_request_clear(), style: .plain, target: self, action: #selector(clearRequest))
         case .project:
             title = R.string.localizable.tab_project_title()
-            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewProject))
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
         case .settings:
             title = ""
         }

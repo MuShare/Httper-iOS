@@ -47,7 +47,7 @@ fileprivate struct Const {
     static let menus = ["Headers", "Parameters", "Body"]
 }
 
-class RequestViewController: UIViewController {
+class RequestViewController: HttperViewController {
     
     private lazy var requestMethodLabel: UILabel = {
         let label = UILabel()

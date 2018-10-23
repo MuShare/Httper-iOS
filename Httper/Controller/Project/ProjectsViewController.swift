@@ -9,9 +9,38 @@
 import UIKit
 import DGElasticPullToRefresh
 
-class ProjectsViewController: UIViewController {
+class ProjectsViewController: HttperViewController {
 
-    @IBOutlet weak var tableView: UITableView!
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.hideFooterView()
+        tableView.backgroundColor = .clear
+
+        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] in
+            self?.syncProjects()
+        }, loadingView: {
+            let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+            loadingView.tintColor = .lightGray
+            return loadingView
+        }())
+        tableView.dg_setPullToRefreshFillColor(.nagivation)
+        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
+        
+        tableView.rx.itemSelected.subscribe(onNext: { [unowned self] indexPath in
+            
+        }).disposed(by: disposeBag)
+        return tableView
+    }()
+    
+    private lazy var dataSource = TableViewSingleSectionDataSource<Project>(configureCell: { (_, tableView, indexPath, project) in
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "projectCell")
+        cell.accessoryType = .disclosureIndicator
+        cell.selectionStyle = .none
+        cell.backgroundColor = .clear
+        cell.textLabel?.textColor = .white
+        cell.textLabel?.text = project.pname
+        return cell
+    })
     
     let dao = DaoManager.shared
     var projects: [Project] = []
@@ -19,21 +48,27 @@ class ProjectsViewController: UIViewController {
     
     let sync = SyncManager()
     
-    var viewModel: ProjectsViewModel!
+    private let viewModel: ProjectsViewModel
+    
+    init(viewModel: ProjectsViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Syncrhonize projects, pull remote projects and push local projects.
-        syncProjects()
-        // Initialize loading view.
-        initLoadingView()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(topPadding)
+            $0.left.right.bottom.equalToSuperview()
+        }
         
-        projects = dao.projectDao.findAll()
-        tableView.reloadData()
+        viewModel.projectSection.bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
     }
     
     // MARK: - Navigation
@@ -63,16 +98,7 @@ class ProjectsViewController: UIViewController {
             self.tableView.dg_stopLoading()
         }
     }
-    
-    func initLoadingView() {
-        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-        loadingView.tintColor = UIColor.lightGray
-        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
-            self?.syncProjects()
-            }, loadingView: loadingView)
-        tableView.dg_setPullToRefreshFillColor(UIColor(hex: DesignColor.nagivation.rawValue))
-        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
-    }
+
 
 }
 

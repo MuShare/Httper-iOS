@@ -18,8 +18,8 @@ class ProjectFlow: Flow {
         return projecstViewController
     }
     
-    private lazy var projecstViewController = R.storyboard.main.projectsViewController()!
-
+    private lazy var projectsViewModel = ProjectsViewModel()
+    private lazy var projecstViewController = ProjectsViewController(viewModel: projectsViewModel)
 
     func navigate(to step: Step) -> NextFlowItems {
         guard let projectStep = step as? ProjectStep else {
@@ -27,8 +27,6 @@ class ProjectFlow: Flow {
         }
         switch projectStep {
         case .start:
-            let projectsViewModel = ProjectsViewModel()
-            projecstViewController.viewModel = projectsViewModel
             return .one(flowItem: NextFlowItem(nextPresentable: projecstViewController, nextStepper: projectsViewModel))
         }
     }

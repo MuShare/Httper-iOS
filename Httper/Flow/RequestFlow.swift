@@ -19,7 +19,7 @@ class RequestFlow: Flow {
         return requestViewController
     }
     
-    private lazy var requestViewController = R.storyboard.main.requestViewController()!
+    private lazy var requestViewController = RequestViewController()
     
     private var navigationController: UINavigationController? {
         return requestViewController.navigationController
