@@ -26,8 +26,8 @@ class ProjectsViewController: HttperViewController {
         tableView.dg_setPullToRefreshFillColor(.nagivation)
         tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
         
-        tableView.rx.itemSelected.subscribe(onNext: { [unowned self] indexPath in
-            
+        tableView.rx.itemSelected.subscribe(onNext: { [unowned self] in
+            self.viewModel.pickProject(at: $0.row)
         }).disposed(by: disposeBag)
         return tableView
     }()
@@ -69,17 +69,6 @@ class ProjectsViewController: HttperViewController {
         }
         
         viewModel.projectSection.bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
-    }
-    
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier {
-        case R.segue.projectsViewController.projectSegue.identifier:
-            let destination = segue.destination as! ProjectTableViewController
-            destination.project = selectedProject
-        default:
-            break
-        }
     }
     
     // MARK: - Service

@@ -1,5 +1,5 @@
 //
-//  ProjectTableViewController.swift
+//  ProjectViewController.swift
 //  Httper
 //
 //  Created by Meng Li on 07/02/2017.
@@ -8,12 +8,53 @@
 
 import UIKit
 import DGElasticPullToRefresh
+import RxDataSources
 
 let attributeImgaes = ["tab_project", "privilege"]
 
-class ProjectTableViewController: UITableViewController {
-
-    @IBOutlet weak var deleteProjectCell: UITableViewCell!
+class ProjectViewController: HttperViewController {
+    
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.hideFooterView()
+        tableView.backgroundColor = .clear
+        tableView.register(cellType: SelectionTableViewCell.self)
+        tableView.register(cellType: RequestTableViewCell.self)
+        return tableView
+    }()
+    
+    private lazy var dataSource = RxTableViewSectionedReloadDataSource<ProjectSectionModel>(configureCell: { (dataSource, tableView, indexPath, item) in
+        switch dataSource[indexPath] {
+        case .selectionItem(let selection):
+            let cell = tableView.dequeueReusableCell(for: indexPath) as SelectionTableViewCell
+            cell.selection = selection
+            return cell
+        case .requestItem(let request):
+            let cell = tableView.dequeueReusableCell(for: indexPath) as RequestTableViewCell
+            cell.request = request
+            return cell
+        case .deleteItem:
+            let cell = UITableViewCell(style: .default, reuseIdentifier: "deleteCell")
+            cell.selectionStyle = .none
+            cell.textLabel?.text = "Delete"
+            cell.textLabel?.textColor = .red
+            return cell
+        }
+    }, titleForHeaderInSection: { (dataSource, index) in
+        let section = dataSource[index]
+        return section.title
+    })
+    
+    private let viewModel: ProjectViewModel
+    
+    init(viewModel: ProjectViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     let dao = DaoManager.shared
     let sync = SyncManager.shared
@@ -29,27 +70,17 @@ class ProjectTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        syncRequests()
-        initLoadingView()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(topPadding)
+            $0.left.right.bottom.equalToSuperview()
+        }
         
-        requests = project.requests?.array as! [Request]
-        
-        self.title = project.pname
-        // Update table view.
-        tableView.reloadData()
+        viewModel.title.bind(to: rx.title).disposed(by: disposeBag)
+        viewModel.sections.bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        // Show tab bar.
-        self.tabBarController?.tabBar.isHidden = false
-    }
-
-    // MARK: - Table view data source
+    /** MARK: - Table view data source
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.01
     }
@@ -132,6 +163,7 @@ class ProjectTableViewController: UITableViewController {
             self.performSegue(withIdentifier: "projectRequestSegue", sender: self)
         }
     }
+    */
     
     // MARK: - Action
     @IBAction func deleteRequestFromProject(_ sender: UIButton) {
@@ -182,7 +214,7 @@ class ProjectTableViewController: UITableViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    // MARK: - Navigation
+    /** MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "projectHistorySegue" {
             // Pop history view controller to this view controller.
@@ -202,7 +234,7 @@ class ProjectTableViewController: UITableViewController {
             break
         }
     }
-
+     */
     
     // MARK: - Service
     func syncRequests() {
@@ -218,7 +250,7 @@ class ProjectTableViewController: UITableViewController {
     func initLoadingView() {
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
         loadingView.tintColor = UIColor.lightGray
-        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] in
             // Add your logic here
             self?.syncRequests()
         }, loadingView: loadingView)

@@ -10,6 +10,7 @@ import RxFlow
 
 enum ProjectStep: Step {
     case start
+    case project(Project)
 }
 
 class ProjectFlow: Flow {
@@ -21,6 +22,10 @@ class ProjectFlow: Flow {
     private lazy var projectsViewModel = ProjectsViewModel()
     private lazy var projecstViewController = ProjectsViewController(viewModel: projectsViewModel)
 
+    private var navigationController: UINavigationController? {
+        return projecstViewController.navigationController
+    }
+    
     func navigate(to step: Step) -> NextFlowItems {
         guard let projectStep = step as? ProjectStep else {
             return .none
@@ -28,6 +33,11 @@ class ProjectFlow: Flow {
         switch projectStep {
         case .start:
             return .one(flowItem: NextFlowItem(nextPresentable: projecstViewController, nextStepper: projectsViewModel))
+        case .project(let project):
+            let projectViewModel = ProjectViewModel(project: project)
+            let projectViewController = ProjectViewController(viewModel: projectViewModel)
+            navigationController?.pushViewController(projectViewController, animated: true)
+            return .one(flowItem: NextFlowItem(nextPresentable: projectViewController, nextStepper: projectViewModel))
         }
     }
 }

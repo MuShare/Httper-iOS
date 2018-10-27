@@ -38,4 +38,10 @@ class ProjectsViewModel {
 
 extension ProjectsViewModel: Stepper {
     
+    func pickProject(at index: Int) {
+        guard index < projects.value.count else {
+            return
+        }
+        step.accept(ProjectStep.project(projects.value[index]))
+    }
 }
