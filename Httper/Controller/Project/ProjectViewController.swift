@@ -20,6 +20,11 @@ class ProjectViewController: HttperViewController {
         tableView.backgroundColor = .clear
         tableView.register(cellType: SelectionTableViewCell.self)
         tableView.register(cellType: RequestTableViewCell.self)
+        tableView.register(cellType: DeleteTableViewCell.self)
+        tableView.rowHeight = 50
+        tableView.rx.itemSelected.subscribe(onNext: { [unowned self] indexPath in
+            self.viewModel.pick(at: indexPath)
+        }).disposed(by: disposeBag)
         return tableView
     }()
     
@@ -34,15 +39,8 @@ class ProjectViewController: HttperViewController {
             cell.request = request
             return cell
         case .deleteItem:
-            let cell = UITableViewCell(style: .default, reuseIdentifier: "deleteCell")
-            cell.selectionStyle = .none
-            cell.textLabel?.text = "Delete"
-            cell.textLabel?.textColor = .red
-            return cell
+            return tableView.dequeueReusableCell(for: indexPath) as DeleteTableViewCell
         }
-    }, titleForHeaderInSection: { (dataSource, index) in
-        let section = dataSource[index]
-        return section.title
     })
     
     private let viewModel: ProjectViewModel
@@ -95,55 +93,6 @@ class ProjectViewController: HttperViewController {
         return view
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return 3
-        case 1:
-            return requests.count
-        case 2:
-            return 1
-        default:
-            return 0
-        }
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell: UITableViewCell
-        switch indexPath.section {
-        case 0:
-            if indexPath.row == 0 {
-                cell = tableView.dequeueReusableCell(withIdentifier: "projectIdentifier", for: indexPath)
-                let projectLabel = cell.viewWithTag(2) as! UILabel
-                projectLabel.text = project.pname
-            } else if indexPath.row == 1 {
-                cell = tableView.dequeueReusableCell(withIdentifier: "privilegeIdentifier", for: indexPath)
-                let privilegeLabel = cell.viewWithTag(2) as! UILabel
-                privilegeLabel.text = project.privilege
-            } else if indexPath.row == 2 {
-                cell = tableView.dequeueReusableCell(withIdentifier: "introductionIdentifier", for: indexPath)
-                let introductionLabel = cell.viewWithTag(2) as! UILabel
-                introductionLabel.text = project.introduction
-            }
-            cell = UITableViewCell()
-        case 1:
-            cell = tableView.dequeueReusableCell(withIdentifier: "requestIdentifier", for: indexPath)
-            let urlLabel = cell.viewWithTag(1) as! UILabel
-            let methodLabel = cell.viewWithTag(2) as! UILabel
-            let request = requests[indexPath.row]
-            urlLabel.text = request.url
-            methodLabel.text = request.method
-        case 2:
-            cell = tableView.dequeueReusableCell(withIdentifier: "deleteIdentifier", for: indexPath)
-        default:
-            cell = UITableViewCell()
-        }
-        return cell
-    }
     
     // MARK: - UITableViewDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -101,4 +101,8 @@ class ProjectViewModel {
 
 extension ProjectViewModel: Stepper {
     
+    func pick(at indexPath: IndexPath) {
+        
+    }
+    
 }

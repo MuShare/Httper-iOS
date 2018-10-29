@@ -28,6 +28,7 @@
 		77BBBCBD21815C9C00500A3A /* RequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BBBCBC21815C9C00500A3A /* RequestTableViewCell.swift */; };
 		77BBBCE621819B0700500A3A /* ProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BBBCE521819B0700500A3A /* ProjectViewModel.swift */; };
 		77CE45DF2163424D0030E0CF /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CE45DE2163424D0030E0CF /* Operators.swift */; };
+		77D6A7ED2186AA4500A65283 /* DeleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D6A7EC2186AA4500A65283 /* DeleteTableViewCell.swift */; };
 		77F3995F215373600016978E /* KeyValueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F3995E215373600016978E /* KeyValueViewController.swift */; };
 		77F39961215373770016978E /* KeyValueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F39960215373770016978E /* KeyValueViewModel.swift */; };
 		77F39964215374370016978E /* KeyValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F39963215374370016978E /* KeyValueTableViewCell.swift */; };
@@ -149,6 +150,7 @@
 		77BBBCBC21815C9C00500A3A /* RequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTableViewCell.swift; sourceTree = "<group>"; };
 		77BBBCE521819B0700500A3A /* ProjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewModel.swift; sourceTree = "<group>"; };
 		77CE45DE2163424D0030E0CF /* Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
+		77D6A7EC2186AA4500A65283 /* DeleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTableViewCell.swift; sourceTree = "<group>"; };
 		77F3995E215373600016978E /* KeyValueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueViewController.swift; sourceTree = "<group>"; };
 		77F39960215373770016978E /* KeyValueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueViewModel.swift; sourceTree = "<group>"; };
 		77F39963215374370016978E /* KeyValueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueTableViewCell.swift; sourceTree = "<group>"; };
@@ -438,6 +440,7 @@
 				7766EA7B217DC4AB001A6260 /* DetailTableViewCell.swift */,
 				77BBBCBA2181585C00500A3A /* SelectionTableViewCell.swift */,
 				77BBBCBC21815C9C00500A3A /* RequestTableViewCell.swift */,
+				77D6A7EC2186AA4500A65283 /* DeleteTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -877,6 +880,7 @@
 				E49F680621495EE300646892 /* ProjectsViewModel.swift in Sources */,
 				E46077611E126948002DE839 /* PingViewController.swift in Sources */,
 				E49BC0AB1E4226F400241004 /* Project+CoreDataClass.swift in Sources */,
+				77D6A7ED2186AA4500A65283 /* DeleteTableViewCell.swift in Sources */,
 				E4798BDF1E2BC92600DCD4E2 /* EditingViewController.swift in Sources */,
 				E4007EB91DFEE7B7002A87FA /* BodyViewController.swift in Sources */,
 				77F39968215381700016978E /* BodyViewModel.swift in Sources */,
