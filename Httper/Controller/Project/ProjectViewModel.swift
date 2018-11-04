@@ -96,7 +96,7 @@ class ProjectViewModel {
     var title: Observable<String> {
         return Observable.just(project.pname ?? "")
     }
-
+    
 }
 
 extension ProjectViewModel: Stepper {

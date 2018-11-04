@@ -17,7 +17,9 @@ class ProjectsViewController: HttperViewController {
         tableView.backgroundColor = .clear
 
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] in
-            self?.syncProjects()
+            self?.viewModel.syncProjects {
+                self?.tableView.dg_stopLoading()
+            }
         }, loadingView: {
             let loadingView = DGElasticPullToRefreshLoadingViewCircle()
             loadingView.tintColor = .lightGray
@@ -70,46 +72,7 @@ class ProjectsViewController: HttperViewController {
         
         viewModel.projectSection.bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
     }
-    
-    // MARK: - Service
-    func syncProjects() {
-        // Pull remote projects from server
-        sync.pullUpdatedProjects { (revision) in
-            // Pull successfully.
-            if revision > 0 {
-                self.projects = self.dao.projectDao.findAll()
-                self.tableView.reloadData()
-                
-                // Push local projects to server in background.
-                self.sync.pushLocalProjects(nil)
-            }
-            // Stop loading.
-            self.tableView.dg_stopLoading()
-        }
-    }
 
-
-}
-
-extension ProjectsViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return projects.count
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0.01
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let project = projects[indexPath.row]
-        //        print("Project's physical id in server is \(project.pid)")
-        let cell = tableView.dequeueReusableCell(withIdentifier: "projectIdentifier", for: indexPath)
-        let projectNameLabel = cell.viewWithTag(1) as! UILabel
-        projectNameLabel.text = project.pname
-        return cell
-    }
-    
 }
 
 extension ProjectsViewController: UITableViewDelegate {

@@ -15,10 +15,10 @@ class ProjectsViewModel {
     private let projects = BehaviorRelay<[Project]>(value: DaoManager.shared.projectDao.findAll())
     
     init() {
-        syncProjects()
+        syncProjects {}
     }
     
-    private func syncProjects() {
+    func syncProjects(completion: @escaping () -> ()) {
         // Pull remote projects from server
         SyncManager.shared.pullUpdatedProjects { [weak self] revision in
             // Pull successfully.
@@ -28,12 +28,14 @@ class ProjectsViewModel {
                 // Push local projects to server in background.
                 SyncManager.shared.pushLocalProjects(nil)
             }
+            completion()
         }
     }
     
     var projectSection: Observable<SingleSection<Project>> {
         return projects.map { SingleSection.create($0) }
     }
+
 }
 
 extension ProjectsViewModel: Stepper {
