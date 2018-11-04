@@ -18,13 +18,15 @@ class ProjectViewController: HttperViewController {
         let tableView = UITableView()
         tableView.hideFooterView()
         tableView.backgroundColor = .clear
+        tableView.separatorColor = .background
         tableView.register(cellType: SelectionTableViewCell.self)
         tableView.register(cellType: RequestTableViewCell.self)
         tableView.register(cellType: DeleteTableViewCell.self)
-        tableView.rowHeight = 50
+        tableView.rowHeight = 60
         tableView.rx.itemSelected.subscribe(onNext: { [unowned self] indexPath in
             self.viewModel.pick(at: indexPath)
         }).disposed(by: disposeBag)
+        tableView.delegate = self
         return tableView
     }()
     
@@ -41,7 +43,10 @@ class ProjectViewController: HttperViewController {
         case .deleteItem:
             return tableView.dequeueReusableCell(for: indexPath) as DeleteTableViewCell
         }
+    }, titleForHeaderInSection: { (dataSource, index) in
+        return " "
     })
+
     
     private let viewModel: ProjectViewModel
     
@@ -205,6 +210,14 @@ class ProjectViewController: HttperViewController {
         }, loadingView: loadingView)
         tableView.dg_setPullToRefreshFillColor(UIColor(hex: DesignColor.nagivation.rawValue))
         tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
+    }
+
+}
+
+extension ProjectViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = .clear
     }
 
 }

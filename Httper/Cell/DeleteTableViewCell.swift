@@ -22,7 +22,7 @@ class DeleteTableViewCell: UITableViewCell, Reusable {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        backgroundColor = .clear
+        backgroundColor = .navigation
         selectionStyle = .none
         addSubview(deleteButton)
         deleteButton.snp.makeConstraints {

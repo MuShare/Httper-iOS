@@ -15,7 +15,7 @@ class ProjectsViewController: HttperViewController {
         let tableView = UITableView()
         tableView.hideFooterView()
         tableView.backgroundColor = .clear
-
+        tableView.rowHeight = 50
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] in
             self?.viewModel.syncProjects {
                 self?.tableView.dg_stopLoading()
@@ -25,7 +25,7 @@ class ProjectsViewController: HttperViewController {
             loadingView.tintColor = .lightGray
             return loadingView
         }())
-        tableView.dg_setPullToRefreshFillColor(.nagivation)
+        tableView.dg_setPullToRefreshFillColor(.navigation)
         tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
         
         tableView.rx.itemSelected.subscribe(onNext: { [unowned self] in
@@ -43,12 +43,6 @@ class ProjectsViewController: HttperViewController {
         cell.textLabel?.text = project.pname
         return cell
     })
-    
-    let dao = DaoManager.shared
-    var projects: [Project] = []
-    var selectedProject: Project!
-    
-    let sync = SyncManager()
     
     private let viewModel: ProjectsViewModel
     
@@ -74,22 +68,3 @@ class ProjectsViewController: HttperViewController {
     }
 
 }
-
-extension ProjectsViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedProject = projects[indexPath.row]
-        self.performSegue(withIdentifier: R.segue.projectsViewController.projectSegue, sender: self)
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Remove it from persistent store and server.
-            sync.deleteProject(projects[indexPath.row], completionHandler: nil)
-            // Remove project from table view.
-            projects.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
-    }
-}
-
