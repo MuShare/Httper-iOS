@@ -9,7 +9,7 @@
 import RxFlow
 
 enum RequestStep: Step {
-    case start
+    case start(Request?)
     case result(RequestData)
 }
 
@@ -30,7 +30,7 @@ class RequestFlow: Flow {
             return .none
         }
         switch requestStep {
-        case .start:
+        case .start(let request):
             let parametersViewModel = KeyValueViewModel()
             let parametersViewController = KeyValueViewController(viewModel: parametersViewModel)
             let headersViewModel = KeyValueViewModel()

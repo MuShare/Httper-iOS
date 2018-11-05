@@ -11,6 +11,7 @@ import RxFlow
 enum ProjectStep: Step {
     case start
     case project(Project)
+    case request(Request)
 }
 
 class ProjectFlow: Flow {
@@ -38,6 +39,12 @@ class ProjectFlow: Flow {
             let projectViewController = ProjectViewController(viewModel: projectViewModel)
             navigationController?.pushViewController(projectViewController, animated: true)
             return .one(flowItem: NextFlowItem(nextPresentable: projectViewController, nextStepper: projectViewModel))
+        case .request(let request):
+            let requestFlow = RequestFlow()
+            Flows.whenReady(flow1: requestFlow) { root in
+                self.navigationController?.pushViewController(root, animated: true)
+            }
+            return .one(flowItem: NextFlowItem(nextPresentable: requestFlow, nextStepper: OneStepper(withSingleStep: RequestStep.start(request))))
         }
     }
 }

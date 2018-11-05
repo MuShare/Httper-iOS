@@ -71,11 +71,13 @@ class ProjectViewModel {
         
     }
 
-    let selectionSection = Observable.just(ProjectSectionModel.selectionSection(title: "Selction", items: [
-        .selectionItem(Selection(icon: R.image.tab_project(), title: "Project Name")),
-        .selectionItem(Selection(icon: R.image.privilege(), title: "Privilege")),
-        .selectionItem(Selection(icon: R.image.introduction(), title: "Introduction"))
-    ]))
+    var selectionSection: Observable<ProjectSectionModel> {
+        return Observable.just(ProjectSectionModel.selectionSection(title: "Selction", items: [
+            .selectionItem(Selection(icon: R.image.tab_project(), title: project.pname ?? "Project Name")),
+            .selectionItem(Selection(icon: R.image.privilege(), title: project.privilege ?? "Privilege")),
+            .selectionItem(Selection(icon: R.image.introduction(), title: "Introduction"))
+        ]))
+    }
     
     let deleteSection = Observable.just(ProjectSectionModel.deleteSection(title: "Delete", items: [.deleteItem]))
     
@@ -102,7 +104,23 @@ class ProjectViewModel {
 extension ProjectViewModel: Stepper {
     
     func pick(at indexPath: IndexPath) {
-        
+        switch (indexPath.section, indexPath.row) {
+        case (0, 0):
+            break
+        case (0, 1):
+            break
+        case (0, 2):
+            break
+        case (1, _):
+            guard indexPath.row < requests.value.count else {
+                return
+            }
+            step.accept(ProjectStep.request(requests.value[indexPath.row]))
+        case (2, 0):
+            break
+        default:
+            break
+        }
     }
     
 }
