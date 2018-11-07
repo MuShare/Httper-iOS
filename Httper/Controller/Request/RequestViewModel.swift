@@ -29,14 +29,24 @@ extension DetailOption: MGSelectorOption {
 
 class RequestViewModel {
     
+    private let request: Request?
     private let headersViewModel: KeyValueViewModel
     private let parametersViewModel: KeyValueViewModel
     private let bodyViewModel: BodyViewModel
     
-    init(headersViewModel: KeyValueViewModel, parametersViewModel: KeyValueViewModel,  bodyViewModel: BodyViewModel) {
+    init(request: Request?, headersViewModel: KeyValueViewModel, parametersViewModel: KeyValueViewModel,  bodyViewModel: BodyViewModel) {
+        self.request = request
         self.headersViewModel = headersViewModel
         self.parametersViewModel = parametersViewModel
         self.bodyViewModel = bodyViewModel
+        
+        if let method = request?.method {
+            requestMethod.accept(method)
+        }
+        if let urlString = request?.url {
+            url.accept(urlString)
+        }
+ 
     }
     
     let protocols = ["http", "https"]

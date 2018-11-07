@@ -38,7 +38,7 @@ class RequestFlow: Flow {
             let bodyViewModel = BodyViewModel()
             let bodyViewController = BodyViewController(viewModel: bodyViewModel)
 
-            let requestViewModel = RequestViewModel(headersViewModel: headersViewModel, parametersViewModel: parametersViewModel, bodyViewModel: bodyViewModel)
+            let requestViewModel = RequestViewModel(request: request, headersViewModel: headersViewModel, parametersViewModel: parametersViewModel, bodyViewModel: bodyViewModel)
             requestViewController.viewModel = requestViewModel
             requestViewController.contentViewControllers = [parametersViewController, headersViewController, bodyViewController]
             
