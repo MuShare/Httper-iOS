@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 import RxFlow
 import MGSelector
+import Alamofire
 
 struct DetailOption {
     var key: String
@@ -46,7 +47,17 @@ class RequestViewModel {
         if let urlString = request?.url {
             url.accept(urlString)
         }
- 
+        if let requestData = request?.parameters as Data?, let parameters =  NSKeyedUnarchiver.unarchiveObject(with: requestData) as? Parameters {
+            parametersViewModel.keyValues.accept(parameters.map {
+                KeyValue(key: $0.key, value: $0.value as? String ?? "")
+            })
+        }
+        if let headerData = request?.headers as Data?, let headers = NSKeyedUnarchiver.unarchiveObject(with: headerData) as? HTTPHeaders {
+            headersViewModel.keyValues.accept(headers.map {
+                KeyValue(key: $0.key, value: $0.value)
+            })
+        }
+        
     }
     
     let protocols = ["http", "https"]

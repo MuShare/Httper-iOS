@@ -44,7 +44,7 @@ fileprivate struct Const {
         static let cell = "menuCell"
     }
 
-    static let menus = ["Headers", "Parameters", "Body"]
+    static let menus = ["Parameters", "Headers", "Body"]
 }
 
 class RequestViewController: HttperViewController {
