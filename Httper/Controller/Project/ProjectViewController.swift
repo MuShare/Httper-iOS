@@ -10,8 +10,6 @@ import UIKit
 import DGElasticPullToRefresh
 import RxDataSources
 
-let attributeImgaes = ["tab_project", "privilege"]
-
 class ProjectViewController: HttperViewController {
     
     private lazy var tableView: UITableView = {
@@ -23,6 +21,18 @@ class ProjectViewController: HttperViewController {
         tableView.register(cellType: RequestTableViewCell.self)
         tableView.register(cellType: DeleteTableViewCell.self)
         tableView.rowHeight = 60
+        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] in
+            self?.viewModel.syncProject {
+                self?.tableView.dg_stopLoading()
+            }
+        }, loadingView: {
+            let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+            loadingView.tintColor = .lightGray
+            return loadingView
+        }())
+        tableView.dg_setPullToRefreshFillColor(.navigation)
+        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor ?? .clear)
+        
         tableView.rx.itemSelected.subscribe(onNext: { [unowned self] indexPath in
             self.viewModel.pick(at: indexPath)
         }).disposed(by: disposeBag)
@@ -82,42 +92,6 @@ class ProjectViewController: HttperViewController {
         viewModel.title.bind(to: rx.title).disposed(by: disposeBag)
         viewModel.sections.bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
     }
-
-    /** MARK: - Table view data source
-    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0.01
-    }
-
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return " "
-    }
-    
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.size.width, height: 30))
-        view.backgroundColor = UIColor.clear
-        return view
-    }
-    
-    
-    // MARK: - UITableViewDelegate
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
-            switch indexPath.row {
-            case 0:
-                self.performSegue(withIdentifier: "projectNameSegue", sender: self)
-            case 1:
-                break
-            case 2:
-                self.performSegue(withIdentifier: "introductionSegue", sender: self)
-            default:
-                break
-            }
-        } else if indexPath.section == 1 {
-            selectedRequest = project.requests?[indexPath.row] as! Request?
-            self.performSegue(withIdentifier: "projectRequestSegue", sender: self)
-        }
-    }
-    */
     
     // MARK: - Action
     @IBAction func deleteRequestFromProject(_ sender: UIButton) {
@@ -167,51 +141,7 @@ class ProjectViewController: HttperViewController {
         alertController.popoverPresentationController?.sourceRect = sender.bounds;
         self.present(alertController, animated: true, completion: nil)
     }
-    
-    /** MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "projectHistorySegue" {
-            // Pop history view controller to this view controller.
-            segue.destination.setValue(false, forKey: "push")
-        } 
-        switch segue.identifier {
-        case R.segue.projectTableViewController.projectRequestSegue.identifier:
-            let destination = segue.destination as! RequestViewController
-            destination.request = selectedRequest
-        case R.segue.projectTableViewController.projectNameSegue.identifier:
-            let destination = segue.destination as! ProjectNameViewController
-            destination.project = project
-        case R.segue.projectTableViewController.introductionSegue.identifier:
-            let destination = segue.destination as! ProjectIntroductionViewController
-            destination.project = project
-        default:
-            break
-        }
-    }
-     */
-    
-    // MARK: - Service
-    func syncRequests() {
-        // Pull new updated requests from server.
-        sync.pullUpdatedRequests { (revision) in
-            self.requests = self.project.requests?.array as! [Request]
-            self.tableView.reloadData()
-            self.tableView.dg_stopLoading()
-        }
-    }
-    
-    // Initialize loading view
-    func initLoadingView() {
-        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-        loadingView.tintColor = UIColor.lightGray
-        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] in
-            // Add your logic here
-            self?.syncRequests()
-        }, loadingView: loadingView)
-        tableView.dg_setPullToRefreshFillColor(UIColor(hex: DesignColor.nagivation.rawValue))
-        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
-    }
-
+   
 }
 
 extension ProjectViewController: UITableViewDelegate {

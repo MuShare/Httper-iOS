@@ -98,7 +98,7 @@ class MainViewController: UITabBarController {
             return
         }
         let requestViewController = controller as! RequestViewController
-        requestViewController.clearRequest(navigationItem.rightBarButtonItem!)
+//        requestViewController.clearRequest(navigationItem.rightBarButtonItem!)
     }
     
 }

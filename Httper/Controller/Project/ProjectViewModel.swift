@@ -68,7 +68,7 @@ class ProjectViewModel {
             return
         }
         self.requests = BehaviorRelay(value: requests)
-        
+        syncProject()
     }
 
     var selectionSection: Observable<ProjectSectionModel> {
@@ -97,6 +97,15 @@ class ProjectViewModel {
     
     var title: Observable<String> {
         return Observable.just(project.pname ?? "")
+    }
+    
+    func syncProject(completion: (() -> ())? = nil) {
+        SyncManager.shared.pullUpdatedRequests { [weak self] _ in
+            if let requests = self?.project.requests?.array as? [Request] {
+                self?.requests.accept(requests)
+            }
+            completion?()
+        }
     }
     
 }

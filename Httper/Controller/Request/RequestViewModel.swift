@@ -62,7 +62,9 @@ class RequestViewModel {
                 KeyValue(key: $0.key, value: $0.value)
             })
         }
-        
+        if let bodyData = request?.body as Data?, let body = String(data: bodyData, encoding: .utf8) {
+            bodyViewModel.body.accept(body)
+        }
     }
     
     let protocols = ["http", "https"]

@@ -26,7 +26,7 @@ class ProjectsViewController: HttperViewController {
             return loadingView
         }())
         tableView.dg_setPullToRefreshFillColor(.navigation)
-        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
+        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor ?? .clear)
         
         tableView.rx.itemSelected.subscribe(onNext: { [unowned self] in
             self.viewModel.pickProject(at: $0.row)
