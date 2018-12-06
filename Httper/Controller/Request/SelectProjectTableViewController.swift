@@ -51,7 +51,7 @@ class SelectProjectTableViewController: UITableViewController {
         let mainController = self.navigationController?.viewControllers[0] as! MainViewController
         if let controller = mainController.selectedViewController, controller.isKind(of: RequestViewController.self) {
             let requestViewController = controller as! RequestViewController
-            requestViewController.saveToProject = projects[indexPath.row]
+//            requestViewController.saveToProject = projects[indexPath.row]
             navigationController?.popViewController(animated: true)
         }
     }

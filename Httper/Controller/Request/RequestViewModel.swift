@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 import RxFlow
 import MGSelector
+import Alamofire
 
 struct DetailOption {
     var key: String
@@ -29,14 +30,41 @@ extension DetailOption: MGSelectorOption {
 
 class RequestViewModel {
     
+    private let request: Request?
     private let headersViewModel: KeyValueViewModel
     private let parametersViewModel: KeyValueViewModel
     private let bodyViewModel: BodyViewModel
     
-    init(headersViewModel: KeyValueViewModel, parametersViewModel: KeyValueViewModel,  bodyViewModel: BodyViewModel) {
+    init(request: Request?, headersViewModel: KeyValueViewModel, parametersViewModel: KeyValueViewModel,  bodyViewModel: BodyViewModel) {
+        self.request = request
         self.headersViewModel = headersViewModel
         self.parametersViewModel = parametersViewModel
         self.bodyViewModel = bodyViewModel
+        
+        if let method = request?.method {
+            requestMethod.accept(method)
+        }
+        if let urlString = request?.url {
+            let splits = urlString.split(separator: ":")
+            requestProtocol.accept(protocols.firstIndex(of: String(splits[0])) ?? 0)
+            var urlPart = splits[1]
+            urlPart.removeFirst()
+            urlPart.removeFirst()
+            url.accept(String(urlPart))
+        }
+        if let requestData = request?.parameters as Data?, let parameters =  NSKeyedUnarchiver.unarchiveObject(with: requestData) as? Parameters {
+            parametersViewModel.keyValues.accept(parameters.map {
+                KeyValue(key: $0.key, value: $0.value as? String ?? "")
+            })
+        }
+        if let headerData = request?.headers as Data?, let headers = NSKeyedUnarchiver.unarchiveObject(with: headerData) as? HTTPHeaders {
+            headersViewModel.keyValues.accept(headers.map {
+                KeyValue(key: $0.key, value: $0.value)
+            })
+        }
+        if let bodyData = request?.body as Data?, let body = String(data: bodyData, encoding: .utf8) {
+            bodyViewModel.body.accept(body)
+        }
     }
     
     let protocols = ["http", "https"]

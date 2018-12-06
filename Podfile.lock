@@ -9,22 +9,22 @@ PODS:
   - Bolts/Tasks (1.9.0)
   - DGElasticPullToRefresh (1.1)
   - Differentiator (3.1.0)
-  - FacebookCore (0.4.0):
+  - FacebookCore (0.5.0):
     - Bolts (~> 1.9)
-    - FBSDKCoreKit (~> 4.36)
-  - FacebookLogin (0.4.0):
+    - FBSDKCoreKit (~> 4.37)
+  - FacebookLogin (0.5.0):
     - Bolts (~> 1.9)
-    - FacebookCore (~> 0.4)
-    - FBSDKCoreKit (~> 4.36)
-    - FBSDKLoginKit (~> 4.36)
-  - FBSDKCoreKit (4.37.0):
-    - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.37.0):
+    - FacebookCore (~> 0.5)
+    - FBSDKCoreKit (~> 4.37)
+    - FBSDKLoginKit (~> 4.37)
+  - FBSDKCoreKit (4.38.1):
+    - Bolts (~> 1.9)
+  - FBSDKLoginKit (4.38.1):
     - FBSDKCoreKit
   - Fuzi (2.1.0)
   - Kanna (4.0.2)
-  - Kingfisher (4.10.0)
-  - M80AttributedLabel (1.7.0)
+  - Kingfisher (4.10.1)
+  - M80AttributedLabel (1.7.1)
   - MGFormatter (0.3.1):
     - AttributedTextView (~> 1.2)
     - Fuzi (~> 2)
@@ -36,36 +36,38 @@ PODS:
   - NVActivityIndicatorView (4.4.0):
     - NVActivityIndicatorView/Presenter (= 4.4.0)
   - NVActivityIndicatorView/Presenter (4.4.0)
-  - PagingKit (1.6.0)
+  - PagingKit (1.7.0)
   - R.swift (5.0.0.alpha.2):
     - R.swift.Library (~> 5.0.0.alpha.2)
   - R.swift.Library (5.0.0.alpha.2)
   - ReachabilitySwift (3)
-  - Reusable (4.0.3):
-    - Reusable/Storyboard (= 4.0.3)
-    - Reusable/View (= 4.0.3)
-  - Reusable/Storyboard (4.0.3)
-  - Reusable/View (4.0.3)
+  - Reusable (4.0.4):
+    - Reusable/Storyboard (= 4.0.4)
+    - Reusable/View (= 4.0.4)
+  - Reusable/Storyboard (4.0.4)
+  - Reusable/View (4.0.4)
   - RxAlamofire (4.3.0):
     - RxAlamofire/Core (= 4.3.0)
   - RxAlamofire/Core (4.3.0):
     - Alamofire (~> 4.5)
     - RxSwift (~> 4)
-  - RxCocoa (4.3.1):
+  - RxAtomic (4.4.0)
+  - RxCocoa (4.4.0):
     - RxSwift (~> 4.0)
   - RxDataSources (3.1.0):
     - Differentiator (~> 3.0)
     - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
-  - RxFlow (1.6.0):
-    - RxCocoa (>= 4.2.0)
-    - RxSwift (>= 4.2.0)
-  - RxKingfisher (0.2.0):
+  - RxFlow (1.6.1):
+    - RxCocoa (>= 4.3.0)
+    - RxSwift (>= 4.3.0)
+  - RxKingfisher (0.3.1):
     - Kingfisher (~> 4)
-    - RxCocoa (~> 4)
-    - RxSwift (~> 4)
-  - RxSwift (4.3.1)
-  - SnapKit (4.0.1)
+    - RxCocoa (~> 4.3)
+    - RxSwift (~> 4.3)
+  - RxSwift (4.4.0):
+    - RxAtomic (~> 4.4)
+  - SnapKit (4.2.0)
   - SwiftyJSON (4.2.0)
   - SwiftyUserDefaults (3.0.1)
   - SwipeBack (1.1.1)
@@ -128,6 +130,7 @@ SPEC REPOS:
     - ReachabilitySwift
     - Reusable
     - RxAlamofire
+    - RxAtomic
     - RxCocoa
     - RxDataSources
     - RxFlow
@@ -147,30 +150,31 @@ SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   DGElasticPullToRefresh: 28f11a6026302a90f8ffebbc6e24748e584dddd3
   Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
-  FacebookCore: 770e57cfe250a4de4458b682191c0ff062dee247
-  FacebookLogin: eb0f2251aca835a94d70a5f7e580edc46d1e1603
-  FBSDKCoreKit: fe5f3474499a81963e11e3f3a5c753d0a95ca2b4
-  FBSDKLoginKit: 2f7249686d1e30ce8a5ef5400eedf50b3e3df332
+  FacebookCore: 74288d0add931d361b1596beae787ab72c438249
+  FacebookLogin: ebcf34714a1cb9f0759d9f071cfb01ed500996cf
+  FBSDKCoreKit: 8d47857400e2f5bdea697a80daff882e91c84ef6
+  FBSDKLoginKit: 4621c690d9dd8628031a4791497062183ea34b0d
   Fuzi: 8c57344debff6d3a0c76a9e0f549152defdaaa48
   Kanna: c60b61d72554bf04ed1ee074f9b379855cab4892
-  Kingfisher: 43c4b802d8b5256cf1f4379e9cd10b329be6d3e2
-  M80AttributedLabel: 7dd017588f524b13149d4cf5c7b1eaf02b0f06a4
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  M80AttributedLabel: 7cb5064930533719b706c1c8febee32442da7cf3
   MGFormatter: 5954840af327baa597dd6744fc36432f98d26d06
   MGKeyboardAccessory: 4ea8edfeaac566a11b018259dba198df4f822304
   MGSelector: 8feb6c39b87eb9a1af395fba334a57eb4d7c84dc
   NVActivityIndicatorView: ec7440a57af2450319d3a4181cca7da6fc127064
-  PagingKit: a03fdc031bdcea3ada7188a24c91f8947d0376bc
+  PagingKit: 01d82dd405fb9001a39d8293aa67e1b7789c701c
   R.swift: 31fa1bd537fa81307815cc622122f33331f32174
   R.swift.Library: 3c21b823839bf5a6769dc7f96cb44479dab51b1b
   ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
-  Reusable: 12b67a60e1f3e8c523cc910795dab733f58fbc7e
+  Reusable: 7fc772097df3e5fc86f59d8a7af9708e49b5ff55
   RxAlamofire: 09624d0f2d48ed8b686e4eb4cf68e28cbd2df556
-  RxCocoa: 78763c7b07d02455598d9fc3c1ad091a28b73635
+  RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
+  RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
   RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
-  RxFlow: 80ba3d5c5bf5820c5c160cb6b2d533c3038b165d
-  RxKingfisher: d3cd6dbd4e79b74a232e6de0d2014c976cc980fe
-  RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
-  SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
+  RxFlow: d5b398955d82bc01c1a43597435e800282c612e0
+  RxKingfisher: d79612e7a6cab0b67d6e9b63fc1572fccc825afb
+  RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   SwiftyUserDefaults: 3d273b1739b68ada3145dc754a70ec775bc5c8be
   SwipeBack: d6759601b40da1f4161033feb30ab475d7d04322

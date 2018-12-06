@@ -47,7 +47,7 @@ class HeaderKeysTableViewController: UITableViewController {
         let mainController = self.navigationController?.viewControllers[0] as! MainViewController
         if let controller = mainController.selectedViewController, controller.isKind(of: RequestViewController.self) {
             let requestViewController = controller as! RequestViewController
-            requestViewController.choosedheaderKey = Const.headerKeys[indexPath.row]
+//            requestViewController.choosedheaderKey = Const.headerKeys[indexPath.row]
             navigationController?.popViewController(animated: true)
         }
     }

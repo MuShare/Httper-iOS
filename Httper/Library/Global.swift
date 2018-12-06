@@ -81,7 +81,7 @@ extension UIColor {
         return UIColor(hex: 0x30363b)
     }
     
-    open class var nagivation: UIColor {
+    open class var navigation: UIColor {
         return UIColor(hex: 0x3d4143)
     }
     

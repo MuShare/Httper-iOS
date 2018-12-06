@@ -24,7 +24,11 @@
 		77A53080216708E00008CC56 /* PreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A5307F216708E00008CC56 /* PreviewViewModel.swift */; };
 		77A53082216708F60008CC56 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A53081216708F60008CC56 /* DetailViewModel.swift */; };
 		77A53084216709460008CC56 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A53083216709460008CC56 /* DetailViewController.swift */; };
+		77BBBCBB2181585C00500A3A /* SelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BBBCBA2181585C00500A3A /* SelectionTableViewCell.swift */; };
+		77BBBCBD21815C9C00500A3A /* RequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BBBCBC21815C9C00500A3A /* RequestTableViewCell.swift */; };
+		77BBBCE621819B0700500A3A /* ProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BBBCE521819B0700500A3A /* ProjectViewModel.swift */; };
 		77CE45DF2163424D0030E0CF /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CE45DE2163424D0030E0CF /* Operators.swift */; };
+		77D6A7ED2186AA4500A65283 /* DeleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D6A7EC2186AA4500A65283 /* DeleteTableViewCell.swift */; };
 		77F3995F215373600016978E /* KeyValueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F3995E215373600016978E /* KeyValueViewController.swift */; };
 		77F39961215373770016978E /* KeyValueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F39960215373770016978E /* KeyValueViewModel.swift */; };
 		77F39964215374370016978E /* KeyValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F39963215374370016978E /* KeyValueTableViewCell.swift */; };
@@ -85,7 +89,7 @@
 		E4BBC9931E4DCCBB002107DF /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BBC9921E4DCCBB002107DF /* NameViewController.swift */; };
 		E4CA760C1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CA760B1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift */; };
 		E4CA76131E3F7E1A008D7A52 /* AddProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CA76121E3F7E1A008D7A52 /* AddProjectViewController.swift */; };
-		E4D034491E4A0DB300580FAC /* ProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D034481E4A0DB300580FAC /* ProjectTableViewController.swift */; };
+		E4D034491E4A0DB300580FAC /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D034481E4A0DB300580FAC /* ProjectViewController.swift */; };
 		E4D161F71ECEA16A009B1DD9 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D161F61ECEA16A009B1DD9 /* UserManager.swift */; };
 		E4D1CAE51DF5C028008DC4F9 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */; };
 		E4D1F28920EBAC5F002953A1 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4D1F28820EBAC5F002953A1 /* Settings.storyboard */; };
@@ -142,7 +146,11 @@
 		77A5307F216708E00008CC56 /* PreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewModel.swift; sourceTree = "<group>"; };
 		77A53081216708F60008CC56 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		77A53083216709460008CC56 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		77BBBCBA2181585C00500A3A /* SelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTableViewCell.swift; sourceTree = "<group>"; };
+		77BBBCBC21815C9C00500A3A /* RequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTableViewCell.swift; sourceTree = "<group>"; };
+		77BBBCE521819B0700500A3A /* ProjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewModel.swift; sourceTree = "<group>"; };
 		77CE45DE2163424D0030E0CF /* Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
+		77D6A7EC2186AA4500A65283 /* DeleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTableViewCell.swift; sourceTree = "<group>"; };
 		77F3995E215373600016978E /* KeyValueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueViewController.swift; sourceTree = "<group>"; };
 		77F39960215373770016978E /* KeyValueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueViewModel.swift; sourceTree = "<group>"; };
 		77F39963215374370016978E /* KeyValueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueTableViewCell.swift; sourceTree = "<group>"; };
@@ -218,7 +226,7 @@
 		E4CA760B1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderKeysTableViewController.swift; sourceTree = "<group>"; };
 		E4CA76121E3F7E1A008D7A52 /* AddProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProjectViewController.swift; sourceTree = "<group>"; };
 		E4CA76141E3F80B2008D7A52 /* Httper_1.3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Httper_1.3.xcdatamodel; sourceTree = "<group>"; };
-		E4D034481E4A0DB300580FAC /* ProjectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTableViewController.swift; sourceTree = "<group>"; };
+		E4D034481E4A0DB300580FAC /* ProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
 		E4D161F61ECEA16A009B1DD9 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		E4D1F28820EBAC5F002953A1 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
@@ -356,11 +364,12 @@
 			isa = PBXGroup;
 			children = (
 				E4CA76121E3F7E1A008D7A52 /* AddProjectViewController.swift */,
-				E4D034481E4A0DB300580FAC /* ProjectTableViewController.swift */,
-				E4712ED71E55FC71002FF8E1 /* ProjectNameViewController.swift */,
 				E4712ED91E55FC81002FF8E1 /* ProjectIntroductionViewController.swift */,
+				E4712ED71E55FC71002FF8E1 /* ProjectNameViewController.swift */,
 				E44B98A620EBDE06004FEF67 /* ProjectsViewController.swift */,
 				E49F680521495EE300646892 /* ProjectsViewModel.swift */,
+				E4D034481E4A0DB300580FAC /* ProjectViewController.swift */,
+				77BBBCE521819B0700500A3A /* ProjectViewModel.swift */,
 			);
 			path = Project;
 			sourceTree = "<group>";
@@ -429,6 +438,9 @@
 				77F39963215374370016978E /* KeyValueTableViewCell.swift */,
 				77F39969215382BA0016978E /* MenuViewCell.swift */,
 				7766EA7B217DC4AB001A6260 /* DetailTableViewCell.swift */,
+				77BBBCBA2181585C00500A3A /* SelectionTableViewCell.swift */,
+				77BBBCBC21815C9C00500A3A /* RequestTableViewCell.swift */,
+				77D6A7EC2186AA4500A65283 /* DeleteTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -724,6 +736,7 @@
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/ReachabilitySwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Reusable/Reusable.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxFlow/RxFlow.framework",
@@ -761,6 +774,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReachabilitySwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reusable.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxFlow.framework",
@@ -813,6 +827,7 @@
 				777BE32C216C83D300D70427 /* RequestManager.swift in Sources */,
 				E49F680021495B0E00646892 /* RequestFlow.swift in Sources */,
 				7766EA7C217DC4AB001A6260 /* DetailTableViewCell.swift in Sources */,
+				77BBBCE621819B0700500A3A /* ProjectViewModel.swift in Sources */,
 				77A53084216709460008CC56 /* DetailViewController.swift in Sources */,
 				77A530782165C6C00008CC56 /* UINavigationBar+Extension.swift in Sources */,
 				77A530722165BEE50008CC56 /* ResultViewModel.swift in Sources */,
@@ -830,7 +845,7 @@
 				E4305A381E2E5FF900010B52 /* Global.swift in Sources */,
 				E4D1CAE51DF5C028008DC4F9 /* RequestViewController.swift in Sources */,
 				E48553361DF9B2CF00A1DB60 /* PreviewViewController.swift in Sources */,
-				E4D034491E4A0DB300580FAC /* ProjectTableViewController.swift in Sources */,
+				E4D034491E4A0DB300580FAC /* ProjectViewController.swift in Sources */,
 				77F39961215373770016978E /* KeyValueViewModel.swift in Sources */,
 				E4CA760C1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift in Sources */,
 				E4EC89D71E12A4C70072ACF3 /* SimplePing.m in Sources */,
@@ -847,11 +862,13 @@
 				E40986A4215523A3006CCC04 /* UIViewController+Extension.swift in Sources */,
 				77F3996A215382BA0016978E /* MenuViewCell.swift in Sources */,
 				E4712EDA1E55FC81002FF8E1 /* ProjectIntroductionViewController.swift in Sources */,
+				77BBBCBD21815C9C00500A3A /* RequestTableViewCell.swift in Sources */,
 				77F3995F215373600016978E /* KeyValueViewController.swift in Sources */,
 				E48D41581D444F3F0028B84F /* AppDelegate.swift in Sources */,
 				E4305A3A1E2F11EB00010B52 /* ProfileTableViewController.swift in Sources */,
 				E47FDC651E38697600251EEC /* SyncManager.swift in Sources */,
 				E49F67FE2149573100646892 /* HttperNavigationController.swift in Sources */,
+				77BBBCBB2181585C00500A3A /* SelectionTableViewCell.swift in Sources */,
 				77A5307A2165C7580008CC56 /* UIImage+Extension.swift in Sources */,
 				E46CE472214A828B0046BCCA /* MainFlow.swift in Sources */,
 				E4F95CD61E15685A005A0004 /* WhoisViewController.swift in Sources */,
@@ -865,6 +882,7 @@
 				E49F680621495EE300646892 /* ProjectsViewModel.swift in Sources */,
 				E46077611E126948002DE839 /* PingViewController.swift in Sources */,
 				E49BC0AB1E4226F400241004 /* Project+CoreDataClass.swift in Sources */,
+				77D6A7ED2186AA4500A65283 /* DeleteTableViewCell.swift in Sources */,
 				E4798BDF1E2BC92600DCD4E2 /* EditingViewController.swift in Sources */,
 				E4007EB91DFEE7B7002A87FA /* BodyViewController.swift in Sources */,
 				77F39968215381700016978E /* BodyViewModel.swift in Sources */,

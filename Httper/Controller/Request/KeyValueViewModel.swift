@@ -34,7 +34,7 @@ extension KeyValue: AnimatableModel {
 
 class KeyValueViewModel {
     
-    private let keyValues = BehaviorRelay<[KeyValue]>(value: [.empty])
+    let keyValues = BehaviorRelay<[KeyValue]>(value: [.empty])
     
     var results: [String: KeyValue] = [:]
     

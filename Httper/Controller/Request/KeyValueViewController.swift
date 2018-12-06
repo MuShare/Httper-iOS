@@ -40,7 +40,6 @@ class KeyValueViewController: UIViewController {
     })
     
     private let viewModel: KeyValueViewModel
-    private let disposeBag = DisposeBag()
     
     init(viewModel: KeyValueViewModel) {
         self.viewModel = viewModel

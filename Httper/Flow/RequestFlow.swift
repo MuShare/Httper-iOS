@@ -9,7 +9,7 @@
 import RxFlow
 
 enum RequestStep: Step {
-    case start
+    case start(Request?)
     case result(RequestData)
 }
 
@@ -19,7 +19,7 @@ class RequestFlow: Flow {
         return requestViewController
     }
     
-    private lazy var requestViewController = R.storyboard.main.requestViewController()!
+    private lazy var requestViewController = RequestViewController()
     
     private var navigationController: UINavigationController? {
         return requestViewController.navigationController
@@ -30,7 +30,7 @@ class RequestFlow: Flow {
             return .none
         }
         switch requestStep {
-        case .start:
+        case .start(let request):
             let parametersViewModel = KeyValueViewModel()
             let parametersViewController = KeyValueViewController(viewModel: parametersViewModel)
             let headersViewModel = KeyValueViewModel()
@@ -38,7 +38,7 @@ class RequestFlow: Flow {
             let bodyViewModel = BodyViewModel()
             let bodyViewController = BodyViewController(viewModel: bodyViewModel)
 
-            let requestViewModel = RequestViewModel(headersViewModel: headersViewModel, parametersViewModel: parametersViewModel, bodyViewModel: bodyViewModel)
+            let requestViewModel = RequestViewModel(request: request, headersViewModel: headersViewModel, parametersViewModel: parametersViewModel, bodyViewModel: bodyViewModel)
             requestViewController.viewModel = requestViewModel
             requestViewController.contentViewControllers = [parametersViewController, headersViewController, bodyViewController]
             

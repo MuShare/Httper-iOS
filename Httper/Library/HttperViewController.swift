@@ -25,8 +25,6 @@ class HttperViewController: UIViewController {
         }
     }
     
-    private let disposeBag = DisposeBag()
-    
     deinit {
         print("😀🎉🎉🎉🎉 deinit \(type(of: self))")
     }
