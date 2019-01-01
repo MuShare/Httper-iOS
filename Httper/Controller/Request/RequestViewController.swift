@@ -112,6 +112,9 @@ class RequestViewController: HttperViewController {
         button.layer.borderColor = UIColor.lightGray.cgColor
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 5
+        button.rx.tap.bind { [unowned self] in
+            self.viewModel.saveToProject()
+        }.disposed(by: disposeBag)
         return button
     }()
     
@@ -153,6 +156,7 @@ class RequestViewController: HttperViewController {
         menuViewController.reloadData()
         contentViewController.reloadData()
         
+        viewModel.alert.bind(to: rx.alert).disposed(by: disposeBag)
         viewModel.requestMethod.bind(to: requestMethodButton.rx.title(for: .normal)).disposed(by: disposeBag)
         
         (urlTextField.rx.text.orEmpty <-> viewModel.url).disposed(by: disposeBag)
