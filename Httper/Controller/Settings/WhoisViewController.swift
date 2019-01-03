@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 import Kanna
-import ReachabilitySwift
+import Reachability
 
 class WhoisViewController: UIViewController, UITextFieldDelegate {
 
@@ -53,7 +53,7 @@ class WhoisViewController: UIViewController, UITextFieldDelegate {
         }
         
         //Check Internet state
-        if reachability.currentReachabilityStatus == .notReachable {
+        if reachability.connection == .none {
             showAlert(title: R.string.localizable.tip_name(),
                       content: R.string.localizable.not_internet_connection())
             return

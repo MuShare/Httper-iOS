@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -58,7 +58,6 @@
                     </navigationItem>
                     <connections>
                         <segue destination="krd-iW-pwO" kind="push" identifier="headerKeySegue" id="fGC-yI-EuA"/>
-                        <segue destination="6IY-1v-kx0" kind="push" identifier="selectProjectSegue" id="5gD-8d-pZJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bez-Qf-KXg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -68,7 +67,6 @@
         <!--Table View Controller-->
         <scene sceneID="shH-KA-nSy">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FKT-xo-IFa" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="1TY-Zo-K8R" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="A3Y-19-xEq"/>
                     <connections>
@@ -77,6 +75,7 @@
                         <segue destination="45K-Dx-1Yd" kind="push" identifier="introductionSegue" id="jXi-ga-4uL"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FKT-xo-IFa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2000" y="-1539.1304347826087"/>
         </scene>
@@ -181,21 +180,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fKQ-da-EPa">
-                                <rect key="frame" x="16" y="174" width="305" height="1"/>
+                                <rect key="frame" x="16" y="130" width="305" height="1"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="UE6-I2-lAO"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gsa-CE-24J">
-                                <rect key="frame" x="16" y="117" width="305" height="1"/>
+                                <rect key="frame" x="16" y="73" width="305" height="1"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Yl7-7C-2R5"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Your project name" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AXr-Sz-Flt">
-                                <rect key="frame" x="128" y="72" width="178" height="40"/>
+                                <rect key="frame" x="128" y="28" width="178" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="ycx-nc-bzq"/>
                                 </constraints>
@@ -209,7 +208,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ZQ-Kw-kQh">
-                                <rect key="frame" x="128" y="130" width="180" height="33"/>
+                                <rect key="frame" x="128" y="86" width="180" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="MT3-TL-JBb"/>
                                 </constraints>
@@ -219,7 +218,7 @@
                                 </state>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gvc-WY-0JN">
-                                <rect key="frame" x="11" y="183" width="303" height="174"/>
+                                <rect key="frame" x="11" y="139" width="303" height="218"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -232,14 +231,14 @@
                                 </userDefinedRuntimeAttributes>
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab_project" translatesAutoresizingMaskIntoConstraints="NO" id="jBr-Bg-g1l">
-                                <rect key="frame" x="16" y="77" width="30" height="30"/>
+                                <rect key="frame" x="16" y="33" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="EvE-0s-hX6"/>
                                     <constraint firstAttribute="height" constant="30" id="VBd-E7-XJp"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="privilege" translatesAutoresizingMaskIntoConstraints="NO" id="f9f-Pm-Kwc">
-                                <rect key="frame" x="16" y="131" width="30" height="30"/>
+                                <rect key="frame" x="16" y="87" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="7TU-dy-K9D"/>
                                     <constraint firstAttribute="height" constant="30" id="QFm-Qj-ace"/>
@@ -489,7 +488,7 @@
         <image name="tab_request" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QUB-Yp-06a"/>
+        <segue reference="GHl-qG-vPC"/>
         <segue reference="TGO-AX-uyd"/>
     </inferredMetricsTieBreakers>
 </document>

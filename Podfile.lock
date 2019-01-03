@@ -36,11 +36,11 @@ PODS:
   - NVActivityIndicatorView (4.5.1):
     - NVActivityIndicatorView/Presenter (= 4.5.1)
   - NVActivityIndicatorView/Presenter (4.5.1)
-  - PagingKit (1.8.1)
-  - R.swift (5.0.0.alpha.2):
-    - R.swift.Library (~> 5.0.0.alpha.2)
+  - PagingKit (1.8.0)
+  - R.swift (5.0.1):
+    - R.swift.Library (~> 5.0.0)
   - R.swift.Library (5.0.0)
-  - ReachabilitySwift (3)
+  - ReachabilitySwift (4.3.0)
   - Reusable (4.0.5):
     - Reusable/Storyboard (= 4.0.5)
     - Reusable/View (= 4.0.5)
@@ -79,35 +79,35 @@ PODS:
   - "UITextView+Placeholder (1.2.1)"
 
 DEPENDENCIES:
-  - Alamofire (~> 4)
-  - DGElasticPullToRefresh (~> 1.1)
-  - FacebookCore (~> 0.2)
-  - FacebookLogin (~> 0.2)
-  - Kanna (~> 4)
-  - Kingfisher (~> 4)
-  - M80AttributedLabel (~> 1)
-  - MGFormatter (~> 0.3)
-  - MGKeyboardAccessory (~> 0.4)
-  - MGSelector (~> 0.1)
-  - NVActivityIndicatorView (~> 4)
-  - PagingKit (~> 1)
-  - R.swift (= 5.0.0.alpha.2)
-  - ReachabilitySwift (~> 3)
-  - Reusable (~> 4)
-  - RxAlamofire (~> 4.3)
+  - Alamofire
+  - DGElasticPullToRefresh
+  - FacebookCore
+  - FacebookLogin
+  - Kanna
+  - Kingfisher
+  - M80AttributedLabel
+  - MGFormatter
+  - MGKeyboardAccessory
+  - MGSelector
+  - NVActivityIndicatorView
+  - PagingKit (= 1.8.0)
+  - R.swift
+  - ReachabilitySwift
+  - Reusable
+  - RxAlamofire
   - RxAlertViewable
-  - RxCocoa (~> 4)
-  - RxDataSources (~> 3)
-  - RxFlow (~> 1.4)
-  - RxKingfisher (~> 0.2)
-  - RxSwift (~> 4)
-  - SnapKit (~> 4)
-  - SwiftyJSON (~> 4)
-  - SwiftyUserDefaults (~> 3)
-  - SwipeBack (~> 1)
-  - UIGradient (~> 1.2)
-  - "UIImageView+Extension (~> 0.2)"
-  - "UITextView+Placeholder (~> 1.2)"
+  - RxCocoa
+  - RxDataSources
+  - RxFlow
+  - RxKingfisher
+  - RxSwift
+  - SnapKit
+  - SwiftyJSON
+  - SwiftyUserDefaults
+  - SwipeBack
+  - UIGradient
+  - "UIImageView+Extension"
+  - "UITextView+Placeholder"
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -167,10 +167,10 @@ SPEC CHECKSUMS:
   MGKeyboardAccessory: 4ea8edfeaac566a11b018259dba198df4f822304
   MGSelector: 8feb6c39b87eb9a1af395fba334a57eb4d7c84dc
   NVActivityIndicatorView: ec34a7b88c51fab270004a1a1f32116e711010cd
-  PagingKit: bec8769bbc58411218baabe50fb8e93a244a60ee
-  R.swift: 31fa1bd537fa81307815cc622122f33331f32174
+  PagingKit: 59283d81d0e748c0214518d1a3283a53e501b155
+  R.swift: a8e1a7e7f38441282fbcb7a3c266076eb38b77ba
   R.swift.Library: 0bf390e729bc10bb2c9e4fb78bd043164a7be4ff
-  ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
+  ReachabilitySwift: 408477d1b6ed9779dba301953171e017c31241f3
   Reusable: 188be1a54ac0691bc66e5bb24ec6eb91971b315b
   RxAlamofire: 09624d0f2d48ed8b686e4eb4cf68e28cbd2df556
   RxAlertViewable: a22a4273644154389937003eb6668c9e609d67d1
@@ -188,6 +188,6 @@ SPEC CHECKSUMS:
   "UIImageView+Extension": bc26c60a9c8cd6fb515ae1e37377a6f0988e76d8
   "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
 
-PODFILE CHECKSUM: d7055a546bc5ee517c5a08c00da2a1ba3a628ce7
+PODFILE CHECKSUM: f3e298c83af853752d8e68985b2c0ac054710209
 
 COCOAPODS: 1.5.3

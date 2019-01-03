@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import ReachabilitySwift
+import Reachability
 
 class PingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     
@@ -84,7 +84,7 @@ class PingViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         //Check Internet state.
-        if reachability.currentReachabilityStatus == .notReachable {
+        if reachability.connection == .none {
             showAlert(title: R.string.localizable.tip_name(),
                       content: R.string.localizable.not_internet_connection())
             return

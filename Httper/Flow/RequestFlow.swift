@@ -11,6 +11,7 @@ import RxFlow
 enum RequestStep: Step {
     case start(Request?)
     case result(RequestData)
+    case save(RequestData)
 }
 
 class RequestFlow: Flow {
@@ -67,6 +68,11 @@ class RequestFlow: Flow {
             resultViewController.contentViewControllers = [prettyViewController, rawViewController, previewViewController, detailViewController]
             navigationController?.pushViewController(resultViewController, animated: true)
             return .one(flowItem: NextFlowItem(nextPresentable: resultViewController, nextStepper: resultViewModel))
+        case .save(let requestData):
+            let saveToProjectViewModel = SaveToProjectViewModel()
+            let saveToProjectViewController = SaveToProjectViewController(viewModel: saveToProjectViewModel)
+            navigationController?.pushViewController(saveToProjectViewController, animated: true)
+            return .one(flowItem: NextFlowItem(nextPresentable: saveToProjectViewController, nextStepper: saveToProjectViewModel))
         }
     }
     
