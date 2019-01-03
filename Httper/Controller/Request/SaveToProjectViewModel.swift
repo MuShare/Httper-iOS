@@ -38,4 +38,8 @@ class SaveToProjectViewModel: BaseViewModel {
         
     }
     
+    func addProject() {
+        
+    }
+    
 }

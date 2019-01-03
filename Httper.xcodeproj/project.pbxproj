@@ -89,7 +89,6 @@
 		E49F680421495E3300646892 /* ProjectFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49F680321495E3300646892 /* ProjectFlow.swift */; };
 		E49F680621495EE300646892 /* ProjectsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49F680521495EE300646892 /* ProjectsViewModel.swift */; };
 		E4A37A9D1E018D7500586BA1 /* RequestDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A37A9C1E018D7500586BA1 /* RequestDao.swift */; };
-		E4B5F9EA1EA78DA1000B8C6F /* SelectProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B5F9E91EA78DA1000B8C6F /* SelectProjectTableViewController.swift */; };
 		E4BBC9931E4DCCBB002107DF /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BBC9921E4DCCBB002107DF /* NameViewController.swift */; };
 		E4CA760C1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CA760B1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift */; };
 		E4CA76131E3F7E1A008D7A52 /* AddProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CA76121E3F7E1A008D7A52 /* AddProjectViewController.swift */; };
@@ -229,7 +228,6 @@
 		E49F680321495E3300646892 /* ProjectFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectFlow.swift; sourceTree = "<group>"; };
 		E49F680521495EE300646892 /* ProjectsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsViewModel.swift; sourceTree = "<group>"; };
 		E4A37A9C1E018D7500586BA1 /* RequestDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestDao.swift; sourceTree = "<group>"; };
-		E4B5F9E91EA78DA1000B8C6F /* SelectProjectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectProjectTableViewController.swift; sourceTree = "<group>"; };
 		E4BBC9921E4DCCBB002107DF /* NameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
 		E4CA760B1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderKeysTableViewController.swift; sourceTree = "<group>"; };
 		E4CA76121E3F7E1A008D7A52 /* AddProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProjectViewController.swift; sourceTree = "<group>"; };
@@ -364,7 +362,6 @@
 				E4E297B01E00021500AD484E /* ResponseHeaderViewController.swift */,
 				E447287A1DF7CE80007D2C8B /* ResultViewController.swift */,
 				77A530712165BEE50008CC56 /* ResultViewModel.swift */,
-				E4B5F9E91EA78DA1000B8C6F /* SelectProjectTableViewController.swift */,
 				77271CAF21E747D30072E007 /* SaveToProjectViewController.swift */,
 				77271CB121E747FB0072E007 /* SaveToProjectViewModel.swift */,
 			);
@@ -889,7 +886,6 @@
 				E4F16F621E4B685F00C17DA4 /* ResetViewController.swift in Sources */,
 				E48BF6551F3DAA0D00F567FC /* KeyboardAccessoryCollectionViewController.swift in Sources */,
 				77A530762165C4BE0008CC56 /* HttperViewController.swift in Sources */,
-				E4B5F9EA1EA78DA1000B8C6F /* SelectProjectTableViewController.swift in Sources */,
 				E4F95CDA1E16A7D3005A0004 /* DetailIPInformationTableViewController.swift in Sources */,
 				E4305A491E34F8E100010B52 /* DaoTemplate.swift in Sources */,
 				77A5307E216708CC0008CC56 /* RawViewModel.swift in Sources */,

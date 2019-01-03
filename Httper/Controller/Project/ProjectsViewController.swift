@@ -14,6 +14,7 @@ class ProjectsViewController: HttperViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.hideFooterView()
+        tableView.register(cellType: ProjectTableViewCell.self)
         tableView.backgroundColor = .clear
         tableView.rowHeight = 50
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] in
@@ -35,12 +36,9 @@ class ProjectsViewController: HttperViewController {
     }()
     
     private lazy var dataSource = TableViewSingleSectionDataSource<Project>(configureCell: { (_, tableView, indexPath, project) in
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "projectCell")
+        let cell = tableView.dequeueReusableCell(for: indexPath) as ProjectTableViewCell
         cell.accessoryType = .disclosureIndicator
-        cell.selectionStyle = .none
-        cell.backgroundColor = .clear
-        cell.textLabel?.textColor = .white
-        cell.textLabel?.text = project.pname
+        cell.project = project
         return cell
     })
     
