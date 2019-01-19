@@ -28,6 +28,7 @@
 		77A53080216708E00008CC56 /* PreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A5307F216708E00008CC56 /* PreviewViewModel.swift */; };
 		77A53082216708F60008CC56 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A53081216708F60008CC56 /* DetailViewModel.swift */; };
 		77A53084216709460008CC56 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A53083216709460008CC56 /* DetailViewController.swift */; };
+		77B474DC21F3593100BE4551 /* AddProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B474DB21F3593100BE4551 /* AddProjectViewModel.swift */; };
 		77BBBCBB2181585C00500A3A /* SelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BBBCBA2181585C00500A3A /* SelectionTableViewCell.swift */; };
 		77BBBCBD21815C9C00500A3A /* RequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BBBCBC21815C9C00500A3A /* RequestTableViewCell.swift */; };
 		77BBBCE621819B0700500A3A /* ProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BBBCE521819B0700500A3A /* ProjectViewModel.swift */; };
@@ -153,6 +154,7 @@
 		77A5307F216708E00008CC56 /* PreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewModel.swift; sourceTree = "<group>"; };
 		77A53081216708F60008CC56 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		77A53083216709460008CC56 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		77B474DB21F3593100BE4551 /* AddProjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectViewModel.swift; sourceTree = "<group>"; };
 		77BBBCBA2181585C00500A3A /* SelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTableViewCell.swift; sourceTree = "<group>"; };
 		77BBBCBC21815C9C00500A3A /* RequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTableViewCell.swift; sourceTree = "<group>"; };
 		77BBBCE521819B0700500A3A /* ProjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewModel.swift; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 				E49F680521495EE300646892 /* ProjectsViewModel.swift */,
 				E4D034481E4A0DB300580FAC /* ProjectViewController.swift */,
 				77BBBCE521819B0700500A3A /* ProjectViewModel.swift */,
+				77B474DB21F3593100BE4551 /* AddProjectViewModel.swift */,
 			);
 			path = Project;
 			sourceTree = "<group>";
@@ -746,6 +749,7 @@
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/DGElasticPullToRefresh/DGElasticPullToRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
+				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
@@ -785,6 +789,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DGElasticPullToRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
@@ -901,6 +906,7 @@
 				E49F67FE2149573100646892 /* HttperNavigationController.swift in Sources */,
 				77BBBCBB2181585C00500A3A /* SelectionTableViewCell.swift in Sources */,
 				77A5307A2165C7580008CC56 /* UIImage+Extension.swift in Sources */,
+				77B474DC21F3593100BE4551 /* AddProjectViewModel.swift in Sources */,
 				77271CB421E74DE60072E007 /* ProjectTableViewCell.swift in Sources */,
 				E46CE472214A828B0046BCCA /* MainFlow.swift in Sources */,
 				E4F95CD61E15685A005A0004 /* WhoisViewController.swift in Sources */,

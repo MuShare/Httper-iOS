@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (4.8.0)
+  - Alamofire (4.8.1)
   - AttributedTextView (1.2.3)
   - Bolts (1.9.0):
     - Bolts/AppLinks (= 1.9.0)
@@ -9,6 +9,7 @@ PODS:
   - Bolts/Tasks (1.9.0)
   - DGElasticPullToRefresh (1.1)
   - Differentiator (3.1.0)
+  - Eureka (4.3.1)
   - FacebookCore (0.5.0):
     - Bolts (~> 1.9)
     - FBSDKCoreKit (~> 4.37)
@@ -51,7 +52,7 @@ PODS:
   - RxAlamofire/Core (4.3.0):
     - Alamofire (~> 4.5)
     - RxSwift (~> 4)
-  - RxAlertViewable (0.4):
+  - RxAlertViewable (0.5):
     - RxCocoa (~> 4.4)
     - RxSwift (~> 4.4)
   - RxAtomic (4.4.0)
@@ -81,6 +82,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - DGElasticPullToRefresh
+  - Eureka
   - FacebookCore
   - FacebookLogin
   - Kanna
@@ -116,6 +118,7 @@ SPEC REPOS:
     - Bolts
     - DGElasticPullToRefresh
     - Differentiator
+    - Eureka
     - FacebookCore
     - FacebookLogin
     - FBSDKCoreKit
@@ -150,11 +153,12 @@ SPEC REPOS:
     - "UITextView+Placeholder"
 
 SPEC CHECKSUMS:
-  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
+  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   AttributedTextView: 4c073150101402f0420ac3016ca4610bab156726
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   DGElasticPullToRefresh: 28f11a6026302a90f8ffebbc6e24748e584dddd3
   Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
+  Eureka: 28ea296f06710f6745266b71f17862048941a32d
   FacebookCore: 74288d0add931d361b1596beae787ab72c438249
   FacebookLogin: ebcf34714a1cb9f0759d9f071cfb01ed500996cf
   FBSDKCoreKit: f442aa96179cc9b382bb4abeb7e340a47cca8f91
@@ -173,7 +177,7 @@ SPEC CHECKSUMS:
   ReachabilitySwift: 408477d1b6ed9779dba301953171e017c31241f3
   Reusable: 188be1a54ac0691bc66e5bb24ec6eb91971b315b
   RxAlamofire: 09624d0f2d48ed8b686e4eb4cf68e28cbd2df556
-  RxAlertViewable: a22a4273644154389937003eb6668c9e609d67d1
+  RxAlertViewable: e67cf3f824df1267001138b84d3bb7e9d8b0f52a
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
   RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
   RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
@@ -188,6 +192,6 @@ SPEC CHECKSUMS:
   "UIImageView+Extension": bc26c60a9c8cd6fb515ae1e37377a6f0988e76d8
   "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
 
-PODFILE CHECKSUM: f3e298c83af853752d8e68985b2c0ac054710209
+PODFILE CHECKSUM: 933105318130dade8e20cb9993d7184db4a5a2f2
 
 COCOAPODS: 1.5.3

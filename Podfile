@@ -4,6 +4,7 @@ platform :ios, '9.0'
 target 'Httper' do
     pod 'Alamofire'
     pod 'DGElasticPullToRefresh'
+    pod 'Eureka'
     pod 'FacebookCore'
     pod 'FacebookLogin'
     pod 'Kanna'
