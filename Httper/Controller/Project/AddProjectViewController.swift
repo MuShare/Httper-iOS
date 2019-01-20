@@ -9,7 +9,7 @@
 import UIKit
 import Eureka
 
-class AddProjectViewController: UIViewController {
+class AddProjectViewController: HttperViewController {
     
     private lazy var projectNameTextRow = TextRow() {
         $0.title = "Project Name"
@@ -25,6 +25,14 @@ class AddProjectViewController: UIViewController {
         $0.placeholder = "Introduction"
         $0.textAreaHeight = .dynamic(initialTextViewHeight: 200)
     }
+    
+    private lazy var saveBarButtonItem: UIBarButtonItem = {
+        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: nil, action: nil)
+        barButtonItem.rx.tap.bind { [unowned self] in
+            self.viewModel.saveProject()
+        }.disposed(by: disposeBag)
+        return barButtonItem
+    }()
     
     private lazy var section: Section = {
         let section = Section()
@@ -57,6 +65,10 @@ class AddProjectViewController: UIViewController {
         addChild(formViewController)
         view.addSubview(formViewController.view)
         formViewController.didMove(toParent: self)
+        
+        navigationItem.rightBarButtonItem = saveBarButtonItem
+
+        viewModel.title.bind(to: rx.title).disposed(by: disposeBag)
     }
 
     // MARK: - Action

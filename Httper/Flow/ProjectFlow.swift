@@ -12,7 +12,6 @@ enum ProjectStep: Step {
     case start
     case project(Project)
     case request(Request)
-    case add
 }
 
 class ProjectFlow: Flow {
@@ -46,11 +45,6 @@ class ProjectFlow: Flow {
                 self.navigationController?.pushViewController(root, animated: true)
             }
             return .one(flowItem: NextFlowItem(nextPresentable: requestFlow, nextStepper: OneStepper(withSingleStep: RequestStep.start(request))))
-        case .add:
-            let addProjectViewModel = AddProjectViewModel()
-            let addProjectViewController = AddProjectViewController(viewModel: addProjectViewModel)
-            navigationController?.pushViewController(addProjectViewController, animated: true)
-            return .one(flowItem: NextFlowItem(nextPresentable: addProjectViewController, nextStepper: addProjectViewModel))
         }
     }
 }

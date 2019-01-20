@@ -309,6 +309,15 @@
 			path = Net;
 			sourceTree = "<group>";
 		};
+		772F8D6B21F6C5EE00858714 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				E40B257D1DF44BD20039CA8D /* MainViewController.swift */,
+				E49F67FB214956C900646892 /* MainViewModel.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		774C75DC20D790F300DBD9EC /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -390,13 +399,13 @@
 			isa = PBXGroup;
 			children = (
 				E4CA76121E3F7E1A008D7A52 /* AddProjectViewController.swift */,
+				77B474DB21F3593100BE4551 /* AddProjectViewModel.swift */,
 				E4712ED91E55FC81002FF8E1 /* ProjectIntroductionViewController.swift */,
 				E4712ED71E55FC71002FF8E1 /* ProjectNameViewController.swift */,
 				E44B98A620EBDE06004FEF67 /* ProjectsViewController.swift */,
 				E49F680521495EE300646892 /* ProjectsViewModel.swift */,
 				E4D034481E4A0DB300580FAC /* ProjectViewController.swift */,
 				77BBBCE521819B0700500A3A /* ProjectViewModel.swift */,
-				77B474DB21F3593100BE4551 /* AddProjectViewModel.swift */,
 			);
 			path = Project;
 			sourceTree = "<group>";
@@ -569,8 +578,7 @@
 		E49F67F8214955C300646892 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E40B257D1DF44BD20039CA8D /* MainViewController.swift */,
-				E49F67FB214956C900646892 /* MainViewModel.swift */,
+				772F8D6B21F6C5EE00858714 /* Main */,
 				774C75E820D7921500DBD9EC /* Project */,
 				774C75DF20D7915100DBD9EC /* Request */,
 				774C75EA20D7927F00DBD9EC /* Settings */,

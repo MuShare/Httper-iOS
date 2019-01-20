@@ -39,7 +39,7 @@ class SaveToProjectViewModel: BaseViewModel {
     }
     
     func addProject() {
-        
+        step.accept(RequestStep.addProject)
     }
     
 }

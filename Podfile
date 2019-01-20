@@ -14,7 +14,7 @@ target 'Httper' do
     pod 'MGKeyboardAccessory'
     pod 'MGSelector'
     pod 'NVActivityIndicatorView'
-    pod 'PagingKit', '= 1.8.0'
+    pod 'PagingKit'
     pod 'R.swift'
     pod 'ReachabilitySwift'
     pod 'Reusable'

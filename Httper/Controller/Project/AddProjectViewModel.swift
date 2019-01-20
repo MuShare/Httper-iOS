@@ -14,4 +14,10 @@ class AddProjectViewModel: BaseViewModel {
     let projectName = BehaviorRelay<String?>(value: nil)
     let introduction = BehaviorRelay<String?>(value: nil)
     
+    let title = Observable.just("Add Project")
+    
+    func saveProject() {
+        
+    }
+    
 }
