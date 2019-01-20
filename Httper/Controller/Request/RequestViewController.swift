@@ -158,10 +158,9 @@ class RequestViewController: HttperViewController {
         
         viewModel.alert.bind(to: rx.alert).disposed(by: disposeBag)
         viewModel.requestMethod.bind(to: requestMethodButton.rx.title(for: .normal)).disposed(by: disposeBag)
-        
-        (urlTextField.rx.text.orEmpty <-> viewModel.url).disposed(by: disposeBag)
-        (protocolsSegmentedControl.rx.selectedSegmentIndex <-> viewModel.requestProtocol).disposed(by: disposeBag)
-     
+
+        viewModel.url.twoWayBind(to: urlTextField.rx.text.orEmpty).disposed(by: disposeBag)
+        viewModel.requestProtocol.twoWayBind(to: protocolsSegmentedControl.rx.selectedSegmentIndex).disposed(by: disposeBag)     
     }
     
     private func setupPagingKit() {
