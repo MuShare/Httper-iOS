@@ -16,8 +16,22 @@ class AddProjectViewModel: BaseViewModel {
     
     let title = Observable.just("Add Project")
     
+    var validate: Observable<Bool> {
+        return projectName.map {
+            guard let projectName = $0 else {
+                return false
+            }
+            return !projectName.isEmpty
+        }
+    }
+    
     func saveProject() {
-        
+        guard
+            let projectName = self.projectName.value,
+            let introdution = self.introduction.value
+        else {
+            return
+        }
     }
     
 }

@@ -69,6 +69,9 @@ class AddProjectViewController: HttperViewController {
         navigationItem.rightBarButtonItem = saveBarButtonItem
 
         viewModel.title.bind(to: rx.title).disposed(by: disposeBag)
+        viewModel.validate.bind(to: saveBarButtonItem.rx.isEnabled).disposed(by: disposeBag)
+        viewModel.projectName.twoWayBind(to: projectNameTextRow.rx.value).disposed(by: disposeBag)
+        viewModel.introduction.twoWayBind(to: introductionTextAreaRow.rx.value).disposed(by: disposeBag)
     }
 
     // MARK: - Action
