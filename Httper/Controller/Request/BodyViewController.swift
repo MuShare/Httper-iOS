@@ -40,7 +40,7 @@ class BodyViewController: UIViewController {
             $0.size.equalToSuperview()
         }
         
-        (rawBodyTextView.rx.text.orEmpty <-> viewModel.body).disposed(by: disposeBag)
+        viewModel.body.twoWayBind(to: rawBodyTextView.rx.text.orEmpty).disposed(by: disposeBag)
     }
     
     // MARK: - Action

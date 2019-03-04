@@ -1,34 +1,29 @@
 //
-//  ProjectsViewController.swift
+//  SaveToProjectViewController.swift
 //  Httper
 //
-//  Created by Meng Li on 2018/7/4.
-//  Copyright © 2018 MuShare Group. All rights reserved.
+//  Created by Meng Li on 2019/01/03.
+//  Copyright © 2019 MuShare Group. All rights reserved.
 //
 
 import UIKit
-import DGElasticPullToRefresh
 
-class ProjectsViewController: HttperViewController {
-
+class SaveToProjectViewController: HttperViewController {
+    
+    private lazy var addProjectBarButtonItem: UIBarButtonItem = {
+        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
+        barButtonItem.rx.tap.bind { [unowned self] in
+            self.viewModel.addProject()
+        }.disposed(by: disposeBag)
+        return barButtonItem
+    }()
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.hideFooterView()
         tableView.register(cellType: ProjectTableViewCell.self)
         tableView.backgroundColor = .clear
         tableView.rowHeight = 50
-        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] in
-            self?.viewModel.syncProjects {
-                self?.tableView.dg_stopLoading()
-            }
-        }, loadingView: {
-            let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-            loadingView.tintColor = .lightGray
-            return loadingView
-        }())
-        tableView.dg_setPullToRefreshFillColor(.navigation)
-        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor ?? .clear)
-        
         tableView.rx.itemSelected.subscribe(onNext: { [unowned self] in
             self.viewModel.pickProject(at: $0.row)
         }).disposed(by: disposeBag)
@@ -37,14 +32,13 @@ class ProjectsViewController: HttperViewController {
     
     private lazy var dataSource = TableViewSingleSectionDataSource<Project>(configureCell: { (_, tableView, indexPath, project) in
         let cell = tableView.dequeueReusableCell(for: indexPath) as ProjectTableViewCell
-        cell.accessoryType = .disclosureIndicator
         cell.project = project
         return cell
     })
     
-    private let viewModel: ProjectsViewModel
+    private let viewModel: SaveToProjectViewModel
     
-    init(viewModel: ProjectsViewModel) {
+    init(viewModel: SaveToProjectViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -55,14 +49,20 @@ class ProjectsViewController: HttperViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        navigationItem.rightBarButtonItem = addProjectBarButtonItem
         view.addSubview(tableView)
+        createConstraints()
+        
+        viewModel.title.bind(to: rx.title).disposed(by: disposeBag)
+        viewModel.projectSection.bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+    }
+    
+    private func createConstraints() {
         tableView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(topPadding)
             $0.left.right.bottom.equalToSuperview()
         }
-        
-        viewModel.projectSection.bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
     }
-
+    
 }

@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (4.7.3)
+  - Alamofire (4.8.1)
   - AttributedTextView (1.2.3)
   - Bolts (1.9.0):
     - Bolts/AppLinks (= 1.9.0)
@@ -9,6 +9,7 @@ PODS:
   - Bolts/Tasks (1.9.0)
   - DGElasticPullToRefresh (1.1)
   - Differentiator (3.1.0)
+  - Eureka (4.3.1)
   - FacebookCore (0.5.0):
     - Bolts (~> 1.9)
     - FBSDKCoreKit (~> 4.37)
@@ -17,14 +18,14 @@ PODS:
     - FacebookCore (~> 0.5)
     - FBSDKCoreKit (~> 4.37)
     - FBSDKLoginKit (~> 4.37)
-  - FBSDKCoreKit (4.38.1):
+  - FBSDKCoreKit (4.39.1):
     - Bolts (~> 1.9)
-  - FBSDKLoginKit (4.38.1):
+  - FBSDKLoginKit (4.39.1):
     - FBSDKCoreKit
   - Fuzi (2.1.0)
-  - Kanna (4.0.2)
+  - Kanna (4.0.3)
   - Kingfisher (4.10.1)
-  - M80AttributedLabel (1.7.1)
+  - M80AttributedLabel (1.8.1)
   - MGFormatter (0.3.1):
     - AttributedTextView (~> 1.2)
     - Fuzi (~> 2)
@@ -33,24 +34,27 @@ PODS:
   - MGKeyboardAccessory (0.4)
   - MGSelector (0.1):
     - SnapKit (~> 4)
-  - NVActivityIndicatorView (4.4.0):
-    - NVActivityIndicatorView/Presenter (= 4.4.0)
-  - NVActivityIndicatorView/Presenter (4.4.0)
-  - PagingKit (1.7.0)
-  - R.swift (5.0.0.alpha.2):
-    - R.swift.Library (~> 5.0.0.alpha.2)
-  - R.swift.Library (5.0.0.alpha.2)
-  - ReachabilitySwift (3)
-  - Reusable (4.0.4):
-    - Reusable/Storyboard (= 4.0.4)
-    - Reusable/View (= 4.0.4)
-  - Reusable/Storyboard (4.0.4)
-  - Reusable/View (4.0.4)
+  - NVActivityIndicatorView (4.6.0):
+    - NVActivityIndicatorView/Presenter (= 4.6.0)
+  - NVActivityIndicatorView/Presenter (4.6.0)
+  - PagingKit (1.9.0)
+  - R.swift (5.0.1):
+    - R.swift.Library (~> 5.0.0)
+  - R.swift.Library (5.0.0)
+  - ReachabilitySwift (4.3.0)
+  - Reusable (4.0.5):
+    - Reusable/Storyboard (= 4.0.5)
+    - Reusable/View (= 4.0.5)
+  - Reusable/Storyboard (4.0.5)
+  - Reusable/View (4.0.5)
   - RxAlamofire (4.3.0):
     - RxAlamofire/Core (= 4.3.0)
   - RxAlamofire/Core (4.3.0):
     - Alamofire (~> 4.5)
     - RxSwift (~> 4)
+  - RxAlertViewable (0.5):
+    - RxCocoa (~> 4.4)
+    - RxSwift (~> 4.4)
   - RxAtomic (4.4.0)
   - RxCocoa (4.4.0):
     - RxSwift (~> 4.0)
@@ -58,7 +62,7 @@ PODS:
     - Differentiator (~> 3.0)
     - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
-  - RxFlow (1.6.1):
+  - RxFlow (1.6.2):
     - RxCocoa (>= 4.3.0)
     - RxSwift (>= 4.3.0)
   - RxKingfisher (0.3.1):
@@ -76,34 +80,36 @@ PODS:
   - "UITextView+Placeholder (1.2.1)"
 
 DEPENDENCIES:
-  - Alamofire (~> 4)
-  - DGElasticPullToRefresh (~> 1.1)
-  - FacebookCore (~> 0.2)
-  - FacebookLogin (~> 0.2)
-  - Kanna (~> 4)
-  - Kingfisher (~> 4)
-  - M80AttributedLabel (~> 1)
-  - MGFormatter (~> 0.3)
-  - MGKeyboardAccessory (~> 0.4)
-  - MGSelector (~> 0.1)
-  - NVActivityIndicatorView (~> 4)
-  - PagingKit (~> 1)
-  - R.swift (= 5.0.0.alpha.2)
-  - ReachabilitySwift (~> 3)
-  - Reusable (~> 4)
-  - RxAlamofire (~> 4.3)
-  - RxCocoa (~> 4)
-  - RxDataSources (~> 3)
-  - RxFlow (~> 1.4)
-  - RxKingfisher (~> 0.2)
-  - RxSwift (~> 4)
-  - SnapKit (~> 4)
-  - SwiftyJSON (~> 4)
-  - SwiftyUserDefaults (~> 3)
-  - SwipeBack (~> 1)
-  - UIGradient (~> 1.2)
-  - "UIImageView+Extension (~> 0.2)"
-  - "UITextView+Placeholder (~> 1.2)"
+  - Alamofire
+  - DGElasticPullToRefresh
+  - Eureka
+  - FacebookCore
+  - FacebookLogin
+  - Kanna
+  - Kingfisher
+  - M80AttributedLabel
+  - MGFormatter
+  - MGKeyboardAccessory
+  - MGSelector
+  - NVActivityIndicatorView
+  - PagingKit
+  - R.swift
+  - ReachabilitySwift
+  - Reusable
+  - RxAlamofire
+  - RxAlertViewable
+  - RxCocoa
+  - RxDataSources
+  - RxFlow
+  - RxKingfisher
+  - RxSwift
+  - SnapKit
+  - SwiftyJSON
+  - SwiftyUserDefaults
+  - SwipeBack
+  - UIGradient
+  - "UIImageView+Extension"
+  - "UITextView+Placeholder"
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -112,6 +118,7 @@ SPEC REPOS:
     - Bolts
     - DGElasticPullToRefresh
     - Differentiator
+    - Eureka
     - FacebookCore
     - FacebookLogin
     - FBSDKCoreKit
@@ -130,6 +137,7 @@ SPEC REPOS:
     - ReachabilitySwift
     - Reusable
     - RxAlamofire
+    - RxAlertViewable
     - RxAtomic
     - RxCocoa
     - RxDataSources
@@ -145,33 +153,35 @@ SPEC REPOS:
     - "UITextView+Placeholder"
 
 SPEC CHECKSUMS:
-  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   AttributedTextView: 4c073150101402f0420ac3016ca4610bab156726
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   DGElasticPullToRefresh: 28f11a6026302a90f8ffebbc6e24748e584dddd3
   Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
+  Eureka: 28ea296f06710f6745266b71f17862048941a32d
   FacebookCore: 74288d0add931d361b1596beae787ab72c438249
   FacebookLogin: ebcf34714a1cb9f0759d9f071cfb01ed500996cf
-  FBSDKCoreKit: 8d47857400e2f5bdea697a80daff882e91c84ef6
-  FBSDKLoginKit: 4621c690d9dd8628031a4791497062183ea34b0d
+  FBSDKCoreKit: f442aa96179cc9b382bb4abeb7e340a47cca8f91
+  FBSDKLoginKit: c3079d9a4db27c492287b1eed7a4272b28cf8a59
   Fuzi: 8c57344debff6d3a0c76a9e0f549152defdaaa48
-  Kanna: c60b61d72554bf04ed1ee074f9b379855cab4892
+  Kanna: 0ebbdd0e7e3308f0aafbd569e79c8cadc5eb877c
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
-  M80AttributedLabel: 7cb5064930533719b706c1c8febee32442da7cf3
+  M80AttributedLabel: 56905e0d2cf50d4550ba181dd15f992f7f4e21e8
   MGFormatter: 5954840af327baa597dd6744fc36432f98d26d06
   MGKeyboardAccessory: 4ea8edfeaac566a11b018259dba198df4f822304
   MGSelector: 8feb6c39b87eb9a1af395fba334a57eb4d7c84dc
-  NVActivityIndicatorView: ec7440a57af2450319d3a4181cca7da6fc127064
-  PagingKit: 01d82dd405fb9001a39d8293aa67e1b7789c701c
-  R.swift: 31fa1bd537fa81307815cc622122f33331f32174
-  R.swift.Library: 3c21b823839bf5a6769dc7f96cb44479dab51b1b
-  ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
-  Reusable: 7fc772097df3e5fc86f59d8a7af9708e49b5ff55
+  NVActivityIndicatorView: 9c3704896798b042315e2a154dc27e48384756f0
+  PagingKit: a65ffc616296d617ac89897a986263fdae766db4
+  R.swift: a8e1a7e7f38441282fbcb7a3c266076eb38b77ba
+  R.swift.Library: 0bf390e729bc10bb2c9e4fb78bd043164a7be4ff
+  ReachabilitySwift: 408477d1b6ed9779dba301953171e017c31241f3
+  Reusable: 188be1a54ac0691bc66e5bb24ec6eb91971b315b
   RxAlamofire: 09624d0f2d48ed8b686e4eb4cf68e28cbd2df556
+  RxAlertViewable: e67cf3f824df1267001138b84d3bb7e9d8b0f52a
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
   RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
   RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
-  RxFlow: d5b398955d82bc01c1a43597435e800282c612e0
+  RxFlow: 2460b8f1d546a7536d3b259536357301030a4140
   RxKingfisher: d79612e7a6cab0b67d6e9b63fc1572fccc825afb
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
@@ -182,6 +192,6 @@ SPEC CHECKSUMS:
   "UIImageView+Extension": bc26c60a9c8cd6fb515ae1e37377a6f0988e76d8
   "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
 
-PODFILE CHECKSUM: 232559df5727b41eff8365f3c879d795eaba2de0
+PODFILE CHECKSUM: 0d33f6b6b2db89babd81ef71dff5569729773a59
 
 COCOAPODS: 1.5.3

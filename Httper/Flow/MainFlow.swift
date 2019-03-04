@@ -10,7 +10,8 @@ import RxFlow
 
 enum MainStep: Step {
     case start
-
+    case clearRequest
+    case addRequest
 }
 
 class MainFlow: Flow {
@@ -39,10 +40,19 @@ class MainFlow: Flow {
                 self.mainViewController.viewControllers = [requestRoot, projectRoot, settingsRoot]
             }
             return .multiple(flowItems: [
+                NextFlowItem(nextPresentable: mainViewController, nextStepper: mainViewModel),
                 NextFlowItem(nextPresentable: requestFlow, nextStepper: OneStepper(withSingleStep: RequestStep.start(nil))),
                 NextFlowItem(nextPresentable: projectFlow, nextStepper: OneStepper(withSingleStep: ProjectStep.start)),
                 NextFlowItem(nextPresentable: settingsFlow, nextStepper: OneStepper(withSingleStep: SettingsStep.start))
             ])
+        case .clearRequest:
+            
+            return .none
+        case .addRequest:
+            let addProjectViewModel = AddProjectViewModel()
+            let addProjectViewController = AddProjectViewController(viewModel: addProjectViewModel)
+            navigationController?.pushViewController(addProjectViewController, animated: true)
+            return .one(flowItem: NextFlowItem(nextPresentable: addProjectViewController, nextStepper: addProjectViewModel))
         }
     }
     

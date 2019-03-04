@@ -38,6 +38,24 @@ enum MainTabType: Int {
 }
 
 class MainViewController: UITabBarController {
+    
+    private lazy var clearRequestBarButtonItem: UIBarButtonItem = {
+        let barButtonItem = UIBarButtonItem()
+        barButtonItem.style = .plain
+        barButtonItem.title = R.string.localizable.tab_request_clear()
+        barButtonItem.rx.tap.bind { [unowned self] in
+            self.viewModel.clearRequest()
+        }.disposed(by: disposeBag)
+        return barButtonItem
+    }()
+    
+    private lazy var addRequestBarButtonItem: UIBarButtonItem = {
+        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
+        barButtonItem.rx.tap.bind { [unowned self] in
+            self.viewModel.addRequest()
+        }.disposed(by: disposeBag)
+        return barButtonItem
+    }()
 
     private let viewModel: MainViewModel
 
@@ -77,15 +95,16 @@ class MainViewController: UITabBarController {
         switch type {
         case .request:
             title = R.string.localizable.tab_request_title()
-            navigationItem.rightBarButtonItem = UIBarButtonItem(title: R.string.localizable.tab_request_clear(), style: .plain, target: self, action: #selector(clearRequest))
+            navigationItem.rightBarButtonItem = clearRequestBarButtonItem
         case .project:
             title = R.string.localizable.tab_project_title()
-            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
+            navigationItem.rightBarButtonItem = addRequestBarButtonItem
         case .settings:
             title = ""
         }
     }
     
+    /**
     @objc private func addNewProject() {
         guard let controller = selectedViewController, controller.isKind(of: ProjectsViewController.self) else {
             return
@@ -100,6 +119,7 @@ class MainViewController: UITabBarController {
         let requestViewController = controller as! RequestViewController
 //        requestViewController.clearRequest(navigationItem.rightBarButtonItem!)
     }
+    */
     
 }
 

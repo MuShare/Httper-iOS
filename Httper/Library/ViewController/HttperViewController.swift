@@ -9,8 +9,10 @@
 import UIKit
 import RxSwift
 import SwipeBack
+import NVActivityIndicatorView
+import RxAlertViewable
 
-class HttperViewController: UIViewController {
+class HttperViewController: UIViewController, NVActivityIndicatorViewable, RxAlertViewable {
     
     var lastBarTintColor: UIColor? = nil
     var currentBarColor: UIColor? = nil {
@@ -26,7 +28,7 @@ class HttperViewController: UIViewController {
     }
     
     deinit {
-        print("😀🎉🎉🎉🎉 deinit \(type(of: self))")
+        NSLog("[DEINIT View Controller] %@", type(of: self).description())
     }
     
     override func viewDidLoad() {

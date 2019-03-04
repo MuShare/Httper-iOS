@@ -8,7 +8,7 @@
 
 import UIKit
 import Alamofire
-import ReachabilitySwift
+import Reachability
 
 class IPAddressTableViewController: UITableViewController {
     
@@ -48,7 +48,7 @@ class IPAddressTableViewController: UITableViewController {
         }
         
         //Check Internet state
-        if reachability.currentReachabilityStatus == .notReachable {
+        if reachability.connection == .none {
             self.publicIPLabel.text = R.string.localizable.not_internet_connection()
             self.publicIPLabel.isHidden = false
             self.loadingActivityIndicatorView.stopAnimating()

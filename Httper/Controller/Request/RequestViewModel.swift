@@ -28,7 +28,7 @@ extension DetailOption: MGSelectorOption {
     
 }
 
-class RequestViewModel {
+class RequestViewModel: BaseViewModel {
     
     private let request: Request?
     private let headersViewModel: KeyValueViewModel
@@ -74,17 +74,28 @@ class RequestViewModel {
     let url = BehaviorRelay<String>(value: "")
     let requestProtocol = BehaviorRelay<Int>(value: 0)
     
-}
-
-extension RequestViewModel: Stepper {
+    var requestData: RequestData {
+        return RequestData(method: requestMethod.value,
+                           url: protocols[requestProtocol.value] + "://" + url.value,
+                           headers: Array(headersViewModel.results.values),
+                           parameters: Array(parametersViewModel.results.values),
+                           body: bodyViewModel.body.value)
+    }
     
     func sendRequest() {
-        let requestData = RequestData(method: requestMethod.value,
-                                      url: protocols[requestProtocol.value] + "://" + url.value,
-                                      headers: Array(headersViewModel.results.values),
-                                      parameters: Array(parametersViewModel.results.values),
-                                      body: bodyViewModel.body.value)
+        guard !url.value.isEmpty else {
+            alert.onNext(.warning(R.string.localizable.url_empty()))
+            return
+        }
         step.accept(RequestStep.result(requestData))
+    }
+    
+    func saveToProject() {
+        guard !url.value.isEmpty else {
+            alert.onNext(.warning(R.string.localizable.url_empty()))
+            return
+        }
+        step.accept(RequestStep.save(requestData))
     }
     
 }
