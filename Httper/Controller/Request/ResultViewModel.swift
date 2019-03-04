@@ -8,9 +8,8 @@
 
 import RxSwift
 import RxCocoa
-import RxFlow
 
-class ResultViewModel {
+class ResultViewModel: BaseViewModel {
     
     private let prettyViewModel: PrettyViewModel
     private let rawViewModel: RawViewModel
@@ -18,7 +17,6 @@ class ResultViewModel {
     private let detailViewModel: DetailViewModel
     
     private let requestData: RequestData
-    private let disposeBag = DisposeBag()
     
     init(requestData: RequestData, prettyViewModel: PrettyViewModel, rawViewModel: RawViewModel, previewViewModel: PreviewViewModel, detailViewModel: DetailViewModel) {
         self.requestData = requestData
@@ -27,6 +25,7 @@ class ResultViewModel {
         self.previewViewModel = previewViewModel
         self.detailViewModel = detailViewModel
         
+        super.init()
         RequestManager.shared.send(requestData).subscribe(onNext: { [weak self] (response, data) in
             guard
                 response.statusCode == 200,
@@ -47,9 +46,5 @@ class ResultViewModel {
     var title: Observable<String> {
         return Observable.just(requestData.url)
     }
-    
-}
-
-extension ResultViewModel: Stepper {
     
 }

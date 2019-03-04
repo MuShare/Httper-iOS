@@ -21,13 +21,13 @@ class RequestFlow: Flow {
         return requestViewController
     }
     
-    private lazy var requestViewController = RequestViewController()
+    private lazy var requestViewController = UIViewController()
     
     private var navigationController: UINavigationController? {
         return requestViewController.navigationController
     }
     
-    func navigate(to step: Step) -> NextFlowItems {
+    func navigate(to step: Step) -> FlowContributors {
         guard let requestStep = step as? RequestStep else {
             return .none
         }
@@ -41,14 +41,15 @@ class RequestFlow: Flow {
             let bodyViewController = BodyViewController(viewModel: bodyViewModel)
 
             let requestViewModel = RequestViewModel(request: request, headersViewModel: headersViewModel, parametersViewModel: parametersViewModel, bodyViewModel: bodyViewModel)
-            requestViewController.viewModel = requestViewModel
+            let requestViewController = RequestViewController(viewModel: requestViewModel)
             requestViewController.contentViewControllers = [parametersViewController, headersViewController, bodyViewController]
+            self.requestViewController = requestViewController
             
-            return .multiple(flowItems: [
-                NextFlowItem(nextPresentable: requestViewController, nextStepper: requestViewModel),
-                NextFlowItem(nextPresentable: parametersViewController, nextStepper: parametersViewModel),
-                NextFlowItem(nextPresentable: headersViewController, nextStepper: headersViewModel),
-                NextFlowItem(nextPresentable: bodyViewController, nextStepper: bodyViewModel)
+            return .multiple(flowContributors: [
+                .viewController(requestViewController),
+                .viewController(parametersViewController),
+                .viewController(headersViewController),
+                .viewController(bodyViewController),
             ])
         case .result(let requestData):
             let prettyViewModel = PrettyViewModel()
@@ -68,17 +69,17 @@ class RequestFlow: Flow {
             let resultViewController = ResultViewController(viewModel: resultViewModel)
             resultViewController.contentViewControllers = [prettyViewController, rawViewController, previewViewController, detailViewController]
             navigationController?.pushViewController(resultViewController, animated: true)
-            return .one(flowItem: NextFlowItem(nextPresentable: resultViewController, nextStepper: resultViewModel))
+            return .viewController(resultViewController)
         case .save(let requestData):
             let saveToProjectViewModel = SaveToProjectViewModel()
             let saveToProjectViewController = SaveToProjectViewController(viewModel: saveToProjectViewModel)
             navigationController?.pushViewController(saveToProjectViewController, animated: true)
-            return .one(flowItem: NextFlowItem(nextPresentable: saveToProjectViewController, nextStepper: saveToProjectViewModel))
+            return .viewController(saveToProjectViewController)
         case .addProject:
             let addProjectViewModel = AddProjectViewModel()
             let addProjectViewController = AddProjectViewController(viewModel: addProjectViewModel)
             navigationController?.pushViewController(addProjectViewController, animated: true)
-            return .one(flowItem: NextFlowItem(nextPresentable: addProjectViewController, nextStepper: addProjectViewModel))
+            return .viewController(addProjectViewController)
         }
     }
     

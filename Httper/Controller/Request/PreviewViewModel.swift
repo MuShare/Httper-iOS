@@ -7,18 +7,13 @@
 //
 
 import RxSwift
-import RxFlow
 
-class PreviewViewModel {
+class PreviewViewModel: BaseViewModel {
     
     let content = BehaviorSubject<(String, URL?)>(value: ("", nil))
     
     func set(url: URL?, text: String) {
         content.onNext((text, url))
     }
-    
-}
-
-extension PreviewViewModel: Stepper {
     
 }

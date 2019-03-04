@@ -11,10 +11,10 @@ import RxFlow
 class MainViewModel: BaseViewModel {
     
     func clearRequest() {
-        step.accept(MainStep.clearRequest)
+        steps.accept(MainStep.clearRequest)
     }
     
     func addRequest() {
-        step.accept(MainStep.addRequest)
+        steps.accept(MainStep.addRequest)
     }
 }

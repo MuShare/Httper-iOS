@@ -9,7 +9,7 @@
 import UIKit
 import DGElasticPullToRefresh
 
-class ProjectsViewController: HttperViewController {
+class ProjectsViewController: BaseViewController<ProjectsViewModel> {
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -41,17 +41,6 @@ class ProjectsViewController: HttperViewController {
         cell.project = project
         return cell
     })
-    
-    private let viewModel: ProjectsViewModel
-    
-    init(viewModel: ProjectsViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

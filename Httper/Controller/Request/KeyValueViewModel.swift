@@ -8,7 +8,6 @@
 
 import RxSwift
 import RxCocoa
-import RxFlow
 
 struct KeyValue {
     
@@ -32,7 +31,7 @@ extension KeyValue: AnimatableModel {
     
 }
 
-class KeyValueViewModel {
+class KeyValueViewModel: BaseViewModel {
     
     let keyValues = BehaviorRelay<[KeyValue]>(value: [.empty])
     
@@ -62,8 +61,4 @@ class KeyValueViewModel {
     func update(keyValue: KeyValue) {
         results[keyValue.identifier] = keyValue
     }
-}
-
-extension KeyValueViewModel: Stepper {
-    
 }

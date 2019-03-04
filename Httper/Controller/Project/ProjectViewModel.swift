@@ -8,7 +8,6 @@
 
 import RxSwift
 import RxCocoa
-import RxFlow
 import RxDataSources
 
 enum ProjectSectionItem {
@@ -55,7 +54,7 @@ extension ProjectSectionModel: SectionModelType {
     
 }
 
-class ProjectViewModel {
+class ProjectViewModel: BaseViewModel {
     
     private let project: Project
     
@@ -63,11 +62,13 @@ class ProjectViewModel {
     
     init(project: Project) {
         self.project = project
-        guard let array = project.requests?.array, let requests = array as? [Request] else {
+        if let array = project.requests?.array, let requests = array as? [Request]  {
+            self.requests = BehaviorRelay(value: requests)
+        } else {
             self.requests = BehaviorRelay(value: [])
-            return
         }
-        self.requests = BehaviorRelay(value: requests)
+
+        super.init()
         syncProject()
     }
 
@@ -108,10 +109,6 @@ class ProjectViewModel {
         }
     }
     
-}
-
-extension ProjectViewModel: Stepper {
-    
     func pick(at indexPath: IndexPath) {
         switch (indexPath.section, indexPath.row) {
         case (0, 0):
@@ -124,7 +121,7 @@ extension ProjectViewModel: Stepper {
             guard indexPath.row < requests.value.count else {
                 return
             }
-            step.accept(ProjectStep.request(requests.value[indexPath.row]))
+            steps.accept(ProjectStep.request(requests.value[indexPath.row]))
         case (2, 0):
             break
         default:

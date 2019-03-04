@@ -10,7 +10,7 @@ import UIKit
 import DGElasticPullToRefresh
 import RxDataSources
 
-class ProjectViewController: HttperViewController {
+class ProjectViewController: BaseViewController<ProjectViewModel>, UITableViewDelegate {
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -56,18 +56,6 @@ class ProjectViewController: HttperViewController {
     }, titleForHeaderInSection: { (dataSource, index) in
         return " "
     })
-
-    
-    private let viewModel: ProjectViewModel
-    
-    init(viewModel: ProjectViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     let dao = DaoManager.shared
     let sync = SyncManager.shared
@@ -142,10 +130,7 @@ class ProjectViewController: HttperViewController {
         self.present(alertController, animated: true, completion: nil)
     }
    
-}
-
-extension ProjectViewController: UITableViewDelegate {
-    
+    // MARK: UITableViewDelegate
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         view.tintColor = .clear
     }
