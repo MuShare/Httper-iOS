@@ -742,7 +742,7 @@
 			);
 			name = R.swift;
 			outputPaths = (
-				$SRCROOT/$TARGET_NAME/R.generated.swift,
+				"$SRCROOT/$TARGET_NAME/R.generated.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
@@ -754,7 +754,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Httper/Pods-Httper-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Httper/Pods-Httper-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AttributedTextView/AttributedTextView.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
@@ -835,7 +835,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Httper/Pods-Httper-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Httper/Pods-Httper-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B34714CFC077D59594A73EA9 /* [CP] Check Pods Manifest.lock */ = {
