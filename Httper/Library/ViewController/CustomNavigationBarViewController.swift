@@ -30,7 +30,7 @@ class CustomNavigationBarViewController: UIViewController {
         if let navigationController = navigationController {
             navigationController.swipeBackEnabled = true
             
-            if let index = navigationController.viewControllers.index(of: self), index > 0 {
+            if let index = navigationController.viewControllers.firstIndex(of: self), index > 0 {
                 navigationItem.leftBarButtonItem = UIBarButtonItem(image: R.image.back(), style: .plain, target: self, action: #selector(back))
             } else {
                 navigationItem.leftBarButtonItem = nil

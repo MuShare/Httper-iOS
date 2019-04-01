@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import DGElasticPullToRefresh
+import ESPullToRefresh
 
 class ProjectsViewController: BaseViewController<ProjectsViewModel> {
 
@@ -17,17 +17,11 @@ class ProjectsViewController: BaseViewController<ProjectsViewModel> {
         tableView.register(cellType: ProjectTableViewCell.self)
         tableView.backgroundColor = .clear
         tableView.rowHeight = 50
-        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] in
-            self?.viewModel.syncProjects {
-                self?.tableView.dg_stopLoading()
+        tableView.es.addPullToRefresh { [unowned self] in
+            self.viewModel.syncProjects {
+                tableView.es.stopPullToRefresh(ignoreDate: true, ignoreFooter: true)
             }
-        }, loadingView: {
-            let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-            loadingView.tintColor = .lightGray
-            return loadingView
-        }())
-        tableView.dg_setPullToRefreshFillColor(.navigation)
-        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor ?? .clear)
+        }
         
         tableView.rx.itemSelected.subscribe(onNext: { [unowned self] in
             self.viewModel.pickProject(at: $0.row)

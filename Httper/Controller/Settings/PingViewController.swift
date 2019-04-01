@@ -16,7 +16,7 @@ class PingViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var controlBarButtonItem: UIBarButtonItem!
 
     var pingService: STDPingServices?
-    var items: Array<STDPingItem>!
+    var items: [STDPingItem] = []
     
     let reachability = Reachability()!
     
@@ -96,26 +96,23 @@ class PingViewController: UIViewController, UITableViewDataSource, UITableViewDe
             return
         }
         if pingService == nil {
-            if items != nil {
-                items = nil
+            if items.count > 0 {
+                items = []
                 tableView.reloadData()
             }
             controlBarButtonItem.image = UIImage.init(named: "stop")
-            pingService = STDPingServices.startPingAddress(addressTextField.text!, callbackHandler: { pingItem, pingItems in
-                if pingItem?.status != STDPingStatus.finished {
-                    self.items = pingItems as! Array<STDPingItem>!
-                    if self.items != nil {
-                        let indexPath = IndexPath(row: self.items.count - 1, section: 0)
-                        self.tableView.insertRows(at: [indexPath], with: .automatic)
-                        self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
-                    }
+            pingService = STDPingServices.startPingAddress(addressTextField.text!, callbackHandler: { [weak self] pingItem, pingItems in
+                guard let `self` = self else { return }
+                if pingItem?.status != STDPingStatus.finished, let items = pingItems as? [STDPingItem] {
+                    self.items = items
+                    let indexPath = IndexPath(row: self.items.count - 1, section: 0)
+                    self.tableView.insertRows(at: [indexPath], with: .automatic)
+                    self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
                 } else {
                     self.pingService = nil
-                    if self.items != nil {
-                        let indexPath = IndexPath(row: self.items.count, section: 0)
-                        self.tableView.insertRows(at: [indexPath], with: .automatic)
-                        self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
-                    }
+                    let indexPath = IndexPath(row: self.items.count, section: 0)
+                    self.tableView.insertRows(at: [indexPath], with: .automatic)
+                    self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
                 }
             })
         } else {

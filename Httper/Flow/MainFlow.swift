@@ -33,7 +33,7 @@ class MainFlow: Flow {
         }
         switch step {
         case .start:
-            let requestFlow = RequestFlow()
+            let requestFlow = RequestFlow(request: nil)
             let projectFlow = ProjectFlow()
             let settingsFlow = SettingsFlow()
             Flows.whenReady(flow1: requestFlow, flow2: projectFlow, flow3: settingsFlow) { requestRoot, projectRoot, settingsRoot in
@@ -41,9 +41,9 @@ class MainFlow: Flow {
             }
             return .multiple(flowContributors: [
                 .contribute(withNextPresentable: mainViewController, withNextStepper: mainViewModel),
-                .flow(requestFlow, with: RequestStep.start(nil)),
-                .flow( projectFlow, with: ProjectStep.start),
-                .flow( settingsFlow, with: SettingsStep.start)
+                .flow(requestFlow, with: RequestStep.start),
+                .flow(projectFlow, with: ProjectStep.start),
+                .flow(settingsFlow, with: SettingsStep.start)
             ])
         case .clearRequest:
             

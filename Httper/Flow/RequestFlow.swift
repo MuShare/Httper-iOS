@@ -9,22 +9,36 @@
 import RxFlow
 
 enum RequestStep: Step {
-    case start(Request?)
+    case start
     case result(RequestData)
     case save(RequestData)
     case addProject
 }
 
 class RequestFlow: Flow {
-
+    
+    private let requestViewController: RequestViewController
+    
     var root: Presentable {
         return requestViewController
     }
-    
-    private lazy var requestViewController = UIViewController()
-    
+
     private var navigationController: UINavigationController? {
         return requestViewController.navigationController
+    }
+    
+    init(request: Request?) {
+        let parametersViewModel = KeyValueViewModel()
+        let parametersViewController = KeyValueViewController(viewModel: parametersViewModel)
+        let headersViewModel = KeyValueViewModel()
+        let headersViewController = KeyValueViewController(viewModel: headersViewModel)
+        let bodyViewModel = BodyViewModel()
+        let bodyViewController = BodyViewController(viewModel: bodyViewModel)
+        
+        let requestViewModel = RequestViewModel(request: request, headersViewModel: headersViewModel, parametersViewModel: parametersViewModel, bodyViewModel: bodyViewModel)
+        
+        requestViewController = RequestViewController(viewModel: requestViewModel)
+        requestViewController.contentViewControllers = [parametersViewController, headersViewController, bodyViewController]
     }
     
     func navigate(to step: Step) -> FlowContributors {
@@ -32,25 +46,15 @@ class RequestFlow: Flow {
             return .none
         }
         switch requestStep {
-        case .start(let request):
-            let parametersViewModel = KeyValueViewModel()
-            let parametersViewController = KeyValueViewController(viewModel: parametersViewModel)
-            let headersViewModel = KeyValueViewModel()
-            let headersViewController = KeyValueViewController(viewModel: headersViewModel)
-            let bodyViewModel = BodyViewModel()
-            let bodyViewController = BodyViewController(viewModel: bodyViewModel)
-
-            let requestViewModel = RequestViewModel(request: request, headersViewModel: headersViewModel, parametersViewModel: parametersViewModel, bodyViewModel: bodyViewModel)
-            let requestViewController = RequestViewController(viewModel: requestViewModel)
-            requestViewController.contentViewControllers = [parametersViewController, headersViewController, bodyViewController]
-            self.requestViewController = requestViewController
-            
-            return .multiple(flowContributors: [
-                .viewController(requestViewController),
-                .viewController(parametersViewController),
-                .viewController(headersViewController),
-                .viewController(bodyViewController),
-            ])
+        case .start:
+            guard let contentViewControllers = requestViewController.contentViewControllers as? [BaseViewController] else {
+                return .none
+            }
+            return .multiple(flowContributors:
+                [FlowContributor.viewController(requestViewController)] + contentViewControllers.map {
+                    FlowContributor.viewController($0)
+                }
+            )
         case .result(let requestData):
             let prettyViewModel = PrettyViewModel()
             let prettyViewController = PrettyViewController(viewModel: prettyViewModel)

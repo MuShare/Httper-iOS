@@ -141,6 +141,7 @@ class RequestViewController: BaseViewController<RequestViewModel> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = .background
         view.addSubview(requestMethodLabel)
         view.addSubview(requestMethodButton)
         view.addSubview(protocolsSegmentedControl)

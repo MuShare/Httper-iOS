@@ -11,7 +11,7 @@ import SwiftyJSON
 
 class InternetResponse: NSObject {
     
-    var data: [String: Any]!
+    var data: [String: Any] = [:]
     
     init(_ response: DataResponse<Any>) {
         if DEBUG && response.response != nil {
@@ -20,16 +20,18 @@ class InternetResponse: NSObject {
         if DEBUG && response.data != nil {
             NSLog("Response body:\n\(String.init(data: response.data!, encoding: .utf8)!)")
         }
-        data = response.result.value as! Dictionary<String, Any>!
+        if let value = response.result.value as? [String: Any] {
+            data = value
+        }
         if DEBUG {
-            if data != nil {
-                NSLog("Response with JSON:\n\(data!)")
+            if !data.isEmpty {
+                NSLog("Response with JSON:\n\(data)")
             }
         }
     }
     
     func statusOK() -> Bool {
-        if data == nil {
+        if data.isEmpty {
             return false
         }
         return data["status"] as! Int == 200
@@ -40,7 +42,7 @@ class InternetResponse: NSObject {
     }
     
     func errorCode() -> ErrorCode {
-        if data == nil {
+        if data.isEmpty {
             return .badRequest
         }
         let code = data["errorCode"] as! Int

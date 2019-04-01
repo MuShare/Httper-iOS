@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import DGElasticPullToRefresh
+import ESPullToRefresh
 import RxDataSources
 
 class ProjectViewController: BaseViewController<ProjectViewModel>, UITableViewDelegate {
@@ -21,18 +21,11 @@ class ProjectViewController: BaseViewController<ProjectViewModel>, UITableViewDe
         tableView.register(cellType: RequestTableViewCell.self)
         tableView.register(cellType: DeleteTableViewCell.self)
         tableView.rowHeight = 60
-        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] in
-            self?.viewModel.syncProject {
-                self?.tableView.dg_stopLoading()
+        tableView.es.addPullToRefresh { [unowned self] in
+            self.viewModel.syncProject {
+                tableView.es.stopPullToRefresh(ignoreDate: true, ignoreFooter: true)
             }
-        }, loadingView: {
-            let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-            loadingView.tintColor = .lightGray
-            return loadingView
-        }())
-        tableView.dg_setPullToRefreshFillColor(.navigation)
-        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor ?? .clear)
-        
+        }
         tableView.rx.itemSelected.subscribe(onNext: { [unowned self] indexPath in
             self.viewModel.pick(at: indexPath)
         }).disposed(by: disposeBag)
@@ -63,10 +56,6 @@ class ProjectViewController: BaseViewController<ProjectViewModel>, UITableViewDe
     var project: Project!
     var selectedRequest: Request!
     var requests: [Request]!
-
-    deinit {
-        tableView.dg_removePullToRefresh()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
