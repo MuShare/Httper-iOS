@@ -39,6 +39,7 @@ class SaveToProjectViewController: BaseViewController<SaveToProjectViewModel> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = .background
         navigationItem.rightBarButtonItem = addProjectBarButtonItem
         view.addSubview(tableView)
         createConstraints()

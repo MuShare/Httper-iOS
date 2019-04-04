@@ -47,14 +47,16 @@ class RequestFlow: Flow {
         }
         switch requestStep {
         case .start:
-            guard let contentViewControllers = requestViewController.contentViewControllers as? [BaseViewController] else {
-                return .none
-            }
-            return .multiple(flowContributors:
-                [FlowContributor.viewController(requestViewController)] + contentViewControllers.map {
-                    FlowContributor.viewController($0)
-                }
-            )
+//            guard let contentViewControllers = requestViewController.contentViewControllers as? [BaseViewController] else {
+//                return .none
+//            }
+//            return .multiple(flowContributors:
+//                [FlowContributor.viewController(requestViewController)] + contentViewControllers.map { FlowContributor.viewController($0) }
+//            )
+            return .multiple(flowContributors: [
+                .viewController(requestViewController)
+            ])
+
         case .result(let requestData):
             let prettyViewModel = PrettyViewModel()
             let prettyViewController = PrettyViewController(viewModel: prettyViewModel)
@@ -75,7 +77,7 @@ class RequestFlow: Flow {
             navigationController?.pushViewController(resultViewController, animated: true)
             return .viewController(resultViewController)
         case .save(let requestData):
-            let saveToProjectViewModel = SaveToProjectViewModel()
+            let saveToProjectViewModel = SaveToProjectViewModel(requestData: requestData)
             let saveToProjectViewController = SaveToProjectViewController(viewModel: saveToProjectViewModel)
             navigationController?.pushViewController(saveToProjectViewController, animated: true)
             return .viewController(saveToProjectViewController)

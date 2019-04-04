@@ -51,11 +51,12 @@ class AddProjectViewController: BaseViewController<AddProjectViewModel> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        formViewController.view.backgroundColor = .background
+        navigationItem.rightBarButtonItem = saveBarButtonItem
+        
         addChild(formViewController)
         view.addSubview(formViewController.view)
         formViewController.didMove(toParent: self)
-        
-        navigationItem.rightBarButtonItem = saveBarButtonItem
 
         viewModel.title ~> rx.title ~ disposeBag
         viewModel.validate ~> saveBarButtonItem.rx.isEnabled ~ disposeBag

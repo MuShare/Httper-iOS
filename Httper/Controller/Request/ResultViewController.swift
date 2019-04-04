@@ -55,6 +55,7 @@ class ResultViewController: BaseViewController<ResultViewModel> {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.backgroundColor = .background
         setupPagingKit()
         menuViewController.reloadData()
         contentViewController.reloadData()

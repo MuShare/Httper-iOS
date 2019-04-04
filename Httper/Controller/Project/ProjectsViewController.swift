@@ -39,13 +39,18 @@ class ProjectsViewController: BaseViewController<ProjectsViewModel> {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.backgroundColor = .background
         view.addSubview(tableView)
+        createConstraints()
+        
+        viewModel.projectSection.bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+    }
+    
+    private func createConstraints() {
         tableView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(topPadding)
             $0.left.right.bottom.equalToSuperview()
         }
-        
-        viewModel.projectSection.bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
     }
 
 }

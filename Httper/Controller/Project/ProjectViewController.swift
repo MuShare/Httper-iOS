@@ -10,7 +10,7 @@ import UIKit
 import ESPullToRefresh
 import RxDataSources
 
-class ProjectViewController: BaseViewController<ProjectViewModel>, UITableViewDelegate {
+class ProjectViewController: BaseViewController<ProjectViewModel> {
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -60,14 +60,19 @@ class ProjectViewController: BaseViewController<ProjectViewModel>, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = .background
         view.addSubview(tableView)
+        createConstraints()
+        
+        viewModel.title.bind(to: rx.title).disposed(by: disposeBag)
+        viewModel.sections.bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+    }
+    
+    private func createConstraints() {
         tableView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(topPadding)
             $0.left.right.bottom.equalToSuperview()
         }
-        
-        viewModel.title.bind(to: rx.title).disposed(by: disposeBag)
-        viewModel.sections.bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
     }
     
     // MARK: - Action
@@ -118,10 +123,13 @@ class ProjectViewController: BaseViewController<ProjectViewModel>, UITableViewDe
         alertController.popoverPresentationController?.sourceRect = sender.bounds;
         self.present(alertController, animated: true, completion: nil)
     }
-   
-    // MARK: UITableViewDelegate
+
+}
+
+extension ProjectViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         view.tintColor = .clear
     }
-
+    
 }
