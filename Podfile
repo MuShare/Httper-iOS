@@ -29,7 +29,7 @@ target 'Httper' do
     pod 'SwipeBack'
     pod 'SwiftyUserDefaults'
     pod 'SwiftyJSON'
-    pod 'UIGradient'
+    pod 'UIGradient',  :git => 'https://github.com/lm2343635/UIGradient.git'
     pod 'UIImageView+Extension'
     pod 'UITextView+Placeholder'
 end

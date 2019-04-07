@@ -105,7 +105,7 @@ DEPENDENCIES:
   - SwiftyJSON
   - SwiftyUserDefaults
   - SwipeBack
-  - UIGradient
+  - UIGradient (from `https://github.com/lm2343635/UIGradient.git`)
   - "UIImageView+Extension"
   - "UITextView+Placeholder"
 
@@ -144,7 +144,6 @@ SPEC REPOS:
     - SwiftyJSON
     - SwiftyUserDefaults
     - SwipeBack
-    - UIGradient
     - "UIImageView+Extension"
     - "UITextView+Placeholder"
 
@@ -152,11 +151,16 @@ EXTERNAL SOURCES:
   ESPullToRefresh:
     :git: https://github.com/eggswift/pull-to-refresh.git
     :tag: '2.8'
+  UIGradient:
+    :git: https://github.com/lm2343635/UIGradient.git
 
 CHECKOUT OPTIONS:
   ESPullToRefresh:
     :git: https://github.com/eggswift/pull-to-refresh.git
     :tag: '2.8'
+  UIGradient:
+    :commit: 16edbbe90407243977288590363473d066302af3
+    :git: https://github.com/lm2343635/UIGradient.git
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
@@ -197,6 +201,6 @@ SPEC CHECKSUMS:
   "UIImageView+Extension": bc26c60a9c8cd6fb515ae1e37377a6f0988e76d8
   "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
 
-PODFILE CHECKSUM: fce2fc69e41ff9322582a2fbde667d5ae7e739a2
+PODFILE CHECKSUM: d50f67dc8a77de1a463ef3b2abb155ee8e4f7940
 
 COCOAPODS: 1.6.1
