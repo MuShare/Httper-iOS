@@ -123,7 +123,16 @@ class ProjectViewModel: BaseViewModel {
             }
             steps.accept(ProjectStep.request(requests.value[indexPath.row]))
         case (2, 0):
-            break
+            let title = R.string.localizable.delete_project()
+            let message = R.string.localizable.delete_project_message()
+            alert.onNext(.customConfirm(title: title, message: message, onConfirm: { [unowned self] in
+                self.loading.onNext(true)
+                SyncManager.shared.deleteProject(self.project) { [weak self] _ in
+                    guard let `self` = self else { return }
+                    self.loading.onNext(false)
+                    self.steps.accept(ProjectStep.projectIsComplete)
+                }
+            }))
         default:
             break
         }

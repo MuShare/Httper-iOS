@@ -102,27 +102,6 @@ class ProjectViewController: BaseViewController<ProjectViewModel> {
         alertController.addAction(confirm)
         self.present(alertController, animated: true, completion: nil)
     }
-    
-    @IBAction func deleteProject(_ sender: UIButton) {
-        let alertController = UIAlertController(title: R.string.localizable.delete_project(),
-                                                message: R.string.localizable.delete_project_message(),
-                                                preferredStyle: .actionSheet)
-        let confirm = UIAlertAction(title: R.string.localizable.yes_name(),
-                                    style: .destructive) { (action) in
-            // Remove it from persistent store and server.
-            self.sync.deleteProject(self.project, completionHandler: { (revision) in
-                self.navigationController?.popViewController(animated: true)
-            })
-        }
-        let cancel = UIAlertAction(title: R.string.localizable.cancel_name(),
-                                   style: .cancel,
-                                   handler: nil)
-        alertController.addAction(confirm)
-        alertController.addAction(cancel)
-        alertController.popoverPresentationController?.sourceView = sender;
-        alertController.popoverPresentationController?.sourceRect = sender.bounds;
-        self.present(alertController, animated: true, completion: nil)
-    }
 
 }
 

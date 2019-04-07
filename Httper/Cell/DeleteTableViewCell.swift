@@ -11,12 +11,12 @@ import Reusable
 
 class DeleteTableViewCell: UITableViewCell, Reusable {
     
-    private lazy var deleteButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Delete", for: .normal)
-        button.setTitleColor(.red, for: .normal)
-        button.setTitleColor(UIColor(hex: 0xff6666), for: .highlighted)
-        return button
+    private lazy var deleteLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Delete"
+        label.textColor = .red
+        label.textAlignment = .center
+        return label
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -24,14 +24,19 @@ class DeleteTableViewCell: UITableViewCell, Reusable {
         
         backgroundColor = .navigation
         selectionStyle = .none
-        addSubview(deleteButton)
-        deleteButton.snp.makeConstraints {
-            $0.center.equalToSuperview()
-            $0.size.equalToSuperview()
-        }
+        
+        addSubview(deleteLabel)
+        createConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private func createConstraints() {
+        deleteLabel.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
+    }
+    
 }

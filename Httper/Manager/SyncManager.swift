@@ -294,7 +294,7 @@ class SyncManager {
     }
     
     // Delete project in persistent store and server.
-    func deleteProject(_ project: Project, completionHandler: ((Int) -> Void)?) {
+    func deleteProject(_ project: Project, completionHandler: ((Int) -> Void)? = nil) {
         // If this project entity is not sync with server, just delete it in local persistent store.
         if project.pid == nil && token() == nil  {
             dao.managedObjectContext.delete(project)
