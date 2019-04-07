@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import DGElasticPullToRefresh
+import ESPullToRefresh
 
-class ProjectsViewController: HttperViewController {
+class ProjectsViewController: BaseViewController<ProjectsViewModel> {
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -17,17 +17,11 @@ class ProjectsViewController: HttperViewController {
         tableView.register(cellType: ProjectTableViewCell.self)
         tableView.backgroundColor = .clear
         tableView.rowHeight = 50
-        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] in
-            self?.viewModel.syncProjects {
-                self?.tableView.dg_stopLoading()
+        tableView.es.addPullToRefresh { [unowned self] in
+            self.viewModel.syncProjects {
+                tableView.es.stopPullToRefresh(ignoreDate: true, ignoreFooter: true)
             }
-        }, loadingView: {
-            let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-            loadingView.tintColor = .lightGray
-            return loadingView
-        }())
-        tableView.dg_setPullToRefreshFillColor(.navigation)
-        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor ?? .clear)
+        }
         
         tableView.rx.itemSelected.subscribe(onNext: { [unowned self] in
             self.viewModel.pickProject(at: $0.row)
@@ -42,27 +36,21 @@ class ProjectsViewController: HttperViewController {
         return cell
     })
     
-    private let viewModel: ProjectsViewModel
-    
-    init(viewModel: ProjectsViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.backgroundColor = .background
         view.addSubview(tableView)
+        createConstraints()
+        
+        viewModel.projectSection.bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+    }
+    
+    private func createConstraints() {
         tableView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(topPadding)
             $0.left.right.bottom.equalToSuperview()
         }
-        
-        viewModel.projectSection.bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
     }
 
 }

@@ -14,20 +14,9 @@ fileprivate struct Const {
     static let margin = 5
 }
 
-class RawViewController: UIViewController {
+class RawViewController: BaseViewController<RawViewModel> {
     
     private lazy var rawView = FormatterView()
-    
-    private let viewModel: RawViewModel
-
-    init(viewModel: RawViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

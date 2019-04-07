@@ -57,6 +57,7 @@ class MainViewController: UITabBarController {
         return barButtonItem
     }()
 
+    private let disposeBag = DisposeBag()
     private let viewModel: MainViewModel
 
     init(viewModel: MainViewModel) {

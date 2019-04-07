@@ -40,6 +40,6 @@ class ProjectsViewModel: BaseViewModel {
         guard index < projects.value.count else {
             return
         }
-        step.accept(ProjectStep.project(projects.value[index]))
+        steps.accept(ProjectStep.project(projects.value[index]))
     }
 }

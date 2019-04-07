@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-class KeyValueViewController: UIViewController {
+class KeyValueViewController: BaseViewController<KeyValueViewModel> {
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -38,17 +38,6 @@ class KeyValueViewController: UIViewController {
         cell.delegate = self
         return cell
     })
-    
-    private let viewModel: KeyValueViewModel
-    
-    init(viewModel: KeyValueViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

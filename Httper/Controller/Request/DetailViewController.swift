@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-class DetailViewController: UIViewController {
+class DetailViewController: BaseViewController<DetailViewModel> {
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -26,18 +26,7 @@ class DetailViewController: UIViewController {
         cell.detail = detail
         return cell
     })
-    
-    private let viewModel: DetailViewModel
-    
-    init(viewModel: DetailViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

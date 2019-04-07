@@ -7,10 +7,10 @@
 //
 
 import UIKit
-import DGElasticPullToRefresh
+import ESPullToRefresh
 import RxDataSources
 
-class ProjectViewController: HttperViewController {
+class ProjectViewController: BaseViewController<ProjectViewModel> {
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -21,18 +21,11 @@ class ProjectViewController: HttperViewController {
         tableView.register(cellType: RequestTableViewCell.self)
         tableView.register(cellType: DeleteTableViewCell.self)
         tableView.rowHeight = 60
-        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] in
-            self?.viewModel.syncProject {
-                self?.tableView.dg_stopLoading()
+        tableView.es.addPullToRefresh { [unowned self] in
+            self.viewModel.syncProject {
+                tableView.es.stopPullToRefresh(ignoreDate: true, ignoreFooter: true)
             }
-        }, loadingView: {
-            let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-            loadingView.tintColor = .lightGray
-            return loadingView
-        }())
-        tableView.dg_setPullToRefreshFillColor(.navigation)
-        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor ?? .clear)
-        
+        }
         tableView.rx.itemSelected.subscribe(onNext: { [unowned self] indexPath in
             self.viewModel.pick(at: indexPath)
         }).disposed(by: disposeBag)
@@ -56,18 +49,6 @@ class ProjectViewController: HttperViewController {
     }, titleForHeaderInSection: { (dataSource, index) in
         return " "
     })
-
-    
-    private let viewModel: ProjectViewModel
-    
-    init(viewModel: ProjectViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     let dao = DaoManager.shared
     let sync = SyncManager.shared
@@ -75,22 +56,23 @@ class ProjectViewController: HttperViewController {
     var project: Project!
     var selectedRequest: Request!
     var requests: [Request]!
-
-    deinit {
-        tableView.dg_removePullToRefresh()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = .background
         view.addSubview(tableView)
+        createConstraints()
+        
+        viewModel.title.bind(to: rx.title).disposed(by: disposeBag)
+        viewModel.sections.bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+    }
+    
+    private func createConstraints() {
         tableView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(topPadding)
             $0.left.right.bottom.equalToSuperview()
         }
-        
-        viewModel.title.bind(to: rx.title).disposed(by: disposeBag)
-        viewModel.sections.bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
     }
     
     // MARK: - Action
@@ -141,7 +123,7 @@ class ProjectViewController: HttperViewController {
         alertController.popoverPresentationController?.sourceRect = sender.bounds;
         self.present(alertController, animated: true, completion: nil)
     }
-   
+
 }
 
 extension ProjectViewController: UITableViewDelegate {
@@ -149,5 +131,5 @@ extension ProjectViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         view.tintColor = .clear
     }
-
+    
 }

@@ -9,47 +9,54 @@
 import RxFlow
 
 enum RequestStep: Step {
-    case start(Request?)
+    case start
     case result(RequestData)
     case save(RequestData)
     case addProject
 }
 
 class RequestFlow: Flow {
-
+    
+    private let requestViewController: RequestViewController
+    
     var root: Presentable {
         return requestViewController
     }
-    
-    private lazy var requestViewController = RequestViewController()
-    
+
     private var navigationController: UINavigationController? {
         return requestViewController.navigationController
     }
     
-    func navigate(to step: Step) -> NextFlowItems {
+    init(request: Request?) {
+        let parametersViewModel = KeyValueViewModel()
+        let parametersViewController = KeyValueViewController(viewModel: parametersViewModel)
+        let headersViewModel = KeyValueViewModel()
+        let headersViewController = KeyValueViewController(viewModel: headersViewModel)
+        let bodyViewModel = BodyViewModel()
+        let bodyViewController = BodyViewController(viewModel: bodyViewModel)
+        
+        let requestViewModel = RequestViewModel(request: request, headersViewModel: headersViewModel, parametersViewModel: parametersViewModel, bodyViewModel: bodyViewModel)
+        
+        requestViewController = RequestViewController(viewModel: requestViewModel)
+        requestViewController.contentViewControllers = [parametersViewController, headersViewController, bodyViewController]
+    }
+    
+    func navigate(to step: Step) -> FlowContributors {
         guard let requestStep = step as? RequestStep else {
             return .none
         }
         switch requestStep {
-        case .start(let request):
-            let parametersViewModel = KeyValueViewModel()
-            let parametersViewController = KeyValueViewController(viewModel: parametersViewModel)
-            let headersViewModel = KeyValueViewModel()
-            let headersViewController = KeyValueViewController(viewModel: headersViewModel)
-            let bodyViewModel = BodyViewModel()
-            let bodyViewController = BodyViewController(viewModel: bodyViewModel)
-
-            let requestViewModel = RequestViewModel(request: request, headersViewModel: headersViewModel, parametersViewModel: parametersViewModel, bodyViewModel: bodyViewModel)
-            requestViewController.viewModel = requestViewModel
-            requestViewController.contentViewControllers = [parametersViewController, headersViewController, bodyViewController]
-            
-            return .multiple(flowItems: [
-                NextFlowItem(nextPresentable: requestViewController, nextStepper: requestViewModel),
-                NextFlowItem(nextPresentable: parametersViewController, nextStepper: parametersViewModel),
-                NextFlowItem(nextPresentable: headersViewController, nextStepper: headersViewModel),
-                NextFlowItem(nextPresentable: bodyViewController, nextStepper: bodyViewModel)
+        case .start:
+//            guard let contentViewControllers = requestViewController.contentViewControllers as? [BaseViewController] else {
+//                return .none
+//            }
+//            return .multiple(flowContributors:
+//                [FlowContributor.viewController(requestViewController)] + contentViewControllers.map { FlowContributor.viewController($0) }
+//            )
+            return .multiple(flowContributors: [
+                .viewController(requestViewController)
             ])
+
         case .result(let requestData):
             let prettyViewModel = PrettyViewModel()
             let prettyViewController = PrettyViewController(viewModel: prettyViewModel)
@@ -68,17 +75,17 @@ class RequestFlow: Flow {
             let resultViewController = ResultViewController(viewModel: resultViewModel)
             resultViewController.contentViewControllers = [prettyViewController, rawViewController, previewViewController, detailViewController]
             navigationController?.pushViewController(resultViewController, animated: true)
-            return .one(flowItem: NextFlowItem(nextPresentable: resultViewController, nextStepper: resultViewModel))
+            return .viewController(resultViewController)
         case .save(let requestData):
-            let saveToProjectViewModel = SaveToProjectViewModel()
+            let saveToProjectViewModel = SaveToProjectViewModel(requestData: requestData)
             let saveToProjectViewController = SaveToProjectViewController(viewModel: saveToProjectViewModel)
             navigationController?.pushViewController(saveToProjectViewController, animated: true)
-            return .one(flowItem: NextFlowItem(nextPresentable: saveToProjectViewController, nextStepper: saveToProjectViewModel))
+            return .viewController(saveToProjectViewController)
         case .addProject:
             let addProjectViewModel = AddProjectViewModel()
             let addProjectViewController = AddProjectViewController(viewModel: addProjectViewModel)
             navigationController?.pushViewController(addProjectViewController, animated: true)
-            return .one(flowItem: NextFlowItem(nextPresentable: addProjectViewController, nextStepper: addProjectViewModel))
+            return .viewController(addProjectViewController)
         }
     }
     

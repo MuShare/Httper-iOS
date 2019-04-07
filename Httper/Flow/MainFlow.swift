@@ -27,23 +27,23 @@ class MainFlow: Flow {
         return mainViewController.navigationController
     }
     
-    func navigate(to step: Step) -> NextFlowItems {
+    func navigate(to step: Step) -> FlowContributors {
         guard let step = step as? MainStep else {
             return .none
         }
         switch step {
         case .start:
-            let requestFlow = RequestFlow()
+            let requestFlow = RequestFlow(request: nil)
             let projectFlow = ProjectFlow()
             let settingsFlow = SettingsFlow()
             Flows.whenReady(flow1: requestFlow, flow2: projectFlow, flow3: settingsFlow) { requestRoot, projectRoot, settingsRoot in
                 self.mainViewController.viewControllers = [requestRoot, projectRoot, settingsRoot]
             }
-            return .multiple(flowItems: [
-                NextFlowItem(nextPresentable: mainViewController, nextStepper: mainViewModel),
-                NextFlowItem(nextPresentable: requestFlow, nextStepper: OneStepper(withSingleStep: RequestStep.start(nil))),
-                NextFlowItem(nextPresentable: projectFlow, nextStepper: OneStepper(withSingleStep: ProjectStep.start)),
-                NextFlowItem(nextPresentable: settingsFlow, nextStepper: OneStepper(withSingleStep: SettingsStep.start))
+            return .multiple(flowContributors: [
+                .contribute(withNextPresentable: mainViewController, withNextStepper: mainViewModel),
+                .flow(requestFlow, with: RequestStep.start),
+                .flow(projectFlow, with: ProjectStep.start),
+                .flow(settingsFlow, with: SettingsStep.start)
             ])
         case .clearRequest:
             
@@ -52,7 +52,7 @@ class MainFlow: Flow {
             let addProjectViewModel = AddProjectViewModel()
             let addProjectViewController = AddProjectViewController(viewModel: addProjectViewModel)
             navigationController?.pushViewController(addProjectViewController, animated: true)
-            return .one(flowItem: NextFlowItem(nextPresentable: addProjectViewController, nextStepper: addProjectViewModel))
+            return .viewController(addProjectViewController)
         }
     }
     

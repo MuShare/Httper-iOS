@@ -21,7 +21,7 @@ class AppFlow: Flow {
     
     private let rootWindow: UIWindow
     
-    private lazy var navigationController = HttperNavigationController()
+    private lazy var navigationController = BaseNavigationController()
     
     init(window: UIWindow) {
         rootWindow = window
@@ -29,7 +29,7 @@ class AppFlow: Flow {
         rootWindow.rootViewController = navigationController
     }
     
-    func navigate(to step: Step) -> NextFlowItems {
+    func navigate(to step: Step) -> FlowContributors {
         guard let appStep = step as? AppStep else {
             return  .none
         }
@@ -39,7 +39,7 @@ class AppFlow: Flow {
             Flows.whenReady(flow1: mainFlow) { [unowned self] mainViewController in
                 self.navigationController.viewControllers = [mainViewController]
             }
-            return .one(flowItem: NextFlowItem(nextPresentable: mainFlow, nextStepper: OneStepper(withSingleStep: MainStep.start)))
+            return .flow(mainFlow, with: MainStep.start)
         }
     }
     

@@ -7,10 +7,9 @@
 //
 
 import RxSwift
-import RxFlow
 import MGFormatter
 
-class PrettyViewModel {
+class PrettyViewModel: BaseViewModel {
     
     let style = PublishSubject<FormatterStyle>()
     let text = PublishSubject<String>()
@@ -28,9 +27,5 @@ class PrettyViewModel {
         }
         self.text.onNext(text)
     }
-    
-}
-
-extension PrettyViewModel: Stepper {
     
 }

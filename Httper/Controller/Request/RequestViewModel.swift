@@ -35,7 +35,7 @@ class RequestViewModel: BaseViewModel {
     private let parametersViewModel: KeyValueViewModel
     private let bodyViewModel: BodyViewModel
     
-    init(request: Request?, headersViewModel: KeyValueViewModel, parametersViewModel: KeyValueViewModel,  bodyViewModel: BodyViewModel) {
+    init(request: Request?, headersViewModel: KeyValueViewModel, parametersViewModel: KeyValueViewModel, bodyViewModel: BodyViewModel) {
         self.request = request
         self.headersViewModel = headersViewModel
         self.parametersViewModel = parametersViewModel
@@ -87,7 +87,7 @@ class RequestViewModel: BaseViewModel {
             alert.onNext(.warning(R.string.localizable.url_empty()))
             return
         }
-        step.accept(RequestStep.result(requestData))
+        steps.accept(RequestStep.result(requestData))
     }
     
     func saveToProject() {
@@ -95,7 +95,7 @@ class RequestViewModel: BaseViewModel {
             alert.onNext(.warning(R.string.localizable.url_empty()))
             return
         }
-        step.accept(RequestStep.save(requestData))
+        steps.accept(RequestStep.save(requestData))
     }
     
 }

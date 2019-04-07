@@ -6,12 +6,6 @@
 //  Copyright © 2018 MuShare Group. All rights reserved.
 //
 
-import RxFlow
-
-class SettingsViewModel {
-    
-}
-
-extension SettingsViewModel: Stepper {
+class SettingsViewModel: BaseViewModel {
     
 }

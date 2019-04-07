@@ -30,7 +30,7 @@ fileprivate struct Const {
     static let menus = ["Pretty", "Raw", "Preview", "Detail"]
 }
 
-class ResultViewController: HttperViewController {
+class ResultViewController: BaseViewController<ResultViewModel> {
     
     private lazy var menuViewController: PagingMenuViewController = {
         let controller = PagingMenuViewController()
@@ -51,21 +51,11 @@ class ResultViewController: HttperViewController {
     }()
     
     var contentViewControllers: [UIViewController] = []
-    
-    private let viewModel: ResultViewModel
-    
-    init(viewModel: ResultViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.backgroundColor = .background
         setupPagingKit()
         menuViewController.reloadData()
         contentViewController.reloadData()

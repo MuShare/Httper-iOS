@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import MGKeyboardAccessory
 
-class BodyViewController: UIViewController {
+class BodyViewController: BaseViewController<BodyViewModel> {
     
     private lazy var rawBodyTextView: UITextView = {
         let textView = UITextView()
@@ -20,27 +20,20 @@ class BodyViewController: UIViewController {
         return textView
     }()
     
-    private let viewModel: BodyViewModel
-    
-    init(viewModel: BodyViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.addSubview(rawBodyTextView)
+        createConstraints()
+        
+        viewModel.body.twoWayBind(to: rawBodyTextView.rx.text.orEmpty).disposed(by: disposeBag)
+    }
+    
+    private func createConstraints() {
         rawBodyTextView.snp.makeConstraints {
             $0.center.equalToSuperview()
             $0.size.equalToSuperview()
         }
-        
-        viewModel.body.twoWayBind(to: rawBodyTextView.rx.text.orEmpty).disposed(by: disposeBag)
     }
     
     // MARK: - Action

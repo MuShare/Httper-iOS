@@ -11,12 +11,13 @@ import RxCocoa
 
 class SaveToProjectViewModel: BaseViewModel {
     
+    private let requestData: RequestData
     private let projects = BehaviorRelay<[Project]>(value: DaoManager.shared.projectDao.findAll())
-    
-    let title = Observable.just("Save to Project")
-    
-    override init() {
+
+    init(requestData: RequestData) {
+        self.requestData = requestData
         super.init()
+        
         SyncManager.shared.pullUpdatedProjects { [weak self] revision in
             // Pull successfully.
             if revision > 0 {
@@ -26,6 +27,8 @@ class SaveToProjectViewModel: BaseViewModel {
             }
         }
     }
+    
+    let title = Observable.just("Save to Project")
     
     var projectSection: Observable<SingleSection<Project>> {
         return projects.map { SingleSection.create($0) }
@@ -39,7 +42,7 @@ class SaveToProjectViewModel: BaseViewModel {
     }
     
     func addProject() {
-        step.accept(RequestStep.addProject)
+        steps.accept(RequestStep.addProject)
     }
     
 }

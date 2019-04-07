@@ -47,7 +47,7 @@ fileprivate struct Const {
     static let menus = ["Parameters", "Headers", "Body"]
 }
 
-class RequestViewController: HttperViewController {
+class RequestViewController: BaseViewController<RequestViewModel> {
     
     private lazy var requestMethodLabel: UILabel = {
         let label = UILabel()
@@ -137,12 +137,11 @@ class RequestViewController: HttperViewController {
     }()
     
     var contentViewControllers: [UIViewController] = []
-    
-    var viewModel: RequestViewModel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = .background
         view.addSubview(requestMethodLabel)
         view.addSubview(requestMethodButton)
         view.addSubview(protocolsSegmentedControl)

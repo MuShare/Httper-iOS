@@ -15,11 +15,9 @@ import RxFlow
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
-    
-    private let coordinator = Coordinator()
+    private let coordinator = FlowCoordinator()
     private let disposeBag = DisposeBag()
-    private var appFlow: AppFlow!
+    private let window = UIWindow()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
@@ -34,33 +32,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        guard let window = self.window else { return false }
-        
         // Listen for Coordinator mechanism is not mandatory
-        coordinator.rx.didNavigate.subscribe(onNext: { (flow, step) in
-            print("did navigate to flow = \(flow) and step = \(step)")
+        coordinator.rx.didNavigate.subscribe(onNext: {
+            AppLog.debug("did navigate to \($0) -> \($1)")
         }).disposed(by: disposeBag)
         
         // Luach the app with an appFlow.
-        appFlow = AppFlow(window: window)
-        let stepper = OneStepper(withSingleStep: AppStep.main)
-        coordinator.coordinate(flow: appFlow, withStepper: stepper)
+        coordinator.coordinate(
+            flow: AppFlow(window: window),
+            with: OneStepper(withSingleStep: AppStep.main)
+        )
+        window.makeKeyAndVisible()
         
         return true
-    }
-
-    func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-    }
-
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    }
-
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -97,8 +81,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         
     }
-    
-    
 
 }
 

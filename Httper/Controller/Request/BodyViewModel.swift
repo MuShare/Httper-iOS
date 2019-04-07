@@ -8,14 +8,9 @@
 
 import RxSwift
 import RxCocoa
-import RxFlow
 
-class BodyViewModel {
+class BodyViewModel: BaseViewModel {
     
     let body = BehaviorRelay<String>(value: "")
-    
-}
-
-extension BodyViewModel: Stepper {
     
 }

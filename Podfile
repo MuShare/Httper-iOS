@@ -3,7 +3,7 @@ platform :ios, '9.0'
 
 target 'Httper' do
     pod 'Alamofire'
-    pod 'DGElasticPullToRefresh'
+    pod 'ESPullToRefresh', :git => 'https://github.com/eggswift/pull-to-refresh.git', :tag => '2.8'
     pod 'Eureka'
     pod 'FacebookCore'
     pod 'FacebookLogin'
@@ -29,19 +29,7 @@ target 'Httper' do
     pod 'SwipeBack'
     pod 'SwiftyUserDefaults'
     pod 'SwiftyJSON'
-    pod 'UIGradient'
+    pod 'UIGradient',  :git => 'https://github.com/lm2343635/UIGradient.git'
     pod 'UIImageView+Extension'
     pod 'UITextView+Placeholder'
-end
-
-post_install do |installer|
-    targets_3 = ['DGElasticPullToRefresh']
-
-    installer.pods_project.targets.each do |target|
-        if targets_3.include? target.name
-            target.build_configurations.each do |config|
-                config.build_settings['SWIFT_VERSION'] = '3.1'
-            end
-        end
-    end
 end

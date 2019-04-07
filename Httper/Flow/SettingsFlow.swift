@@ -20,7 +20,7 @@ class SettingsFlow: Flow {
     
     private lazy var settingsTableViewController = R.storyboard.settings.settingsTableViewController()!
     
-    func navigate(to step: Step) -> NextFlowItems {
+    func navigate(to step: Step) -> FlowContributors {
         guard let settingsStep = step as? SettingsStep else {
             return .none
         }
@@ -28,7 +28,7 @@ class SettingsFlow: Flow {
         case .start:
             let settingsViewModel = SettingsViewModel()
             settingsTableViewController.viewModel = settingsViewModel
-            return .one(flowItem: NextFlowItem(nextPresentable: settingsTableViewController, nextStepper: settingsViewModel))
+            return .one(flowContributor: .viewController(settingsTableViewController, with: settingsViewModel))
         }
     }
     

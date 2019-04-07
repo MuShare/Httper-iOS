@@ -14,20 +14,9 @@ fileprivate struct Const {
     static let margin = 5
 }
 
-class PrettyViewController: UIViewController {
+class PrettyViewController: BaseViewController<PrettyViewModel> {
     
     private lazy var formatterView = FormatterView()
-    
-    private let viewModel: PrettyViewModel
-    
-    init(viewModel: PrettyViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

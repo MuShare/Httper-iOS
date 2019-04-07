@@ -7,7 +7,6 @@
 //
 
 import RxSwift
-import RxFlow
 import Alamofire
 
 struct DetailModel {
@@ -15,7 +14,7 @@ struct DetailModel {
     var content: String
 }
 
-class DetailViewModel {
+class DetailViewModel: BaseViewModel {
     
     let response = BehaviorSubject<HTTPURLResponse?>(value: nil)
     
@@ -33,9 +32,5 @@ class DetailViewModel {
             return SingleSection.create(models)
         }
     }
-    
-}
-
-extension DetailViewModel: Stepper {
     
 }

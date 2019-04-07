@@ -9,7 +9,7 @@
 import UIKit
 import Eureka
 
-class AddProjectViewController: HttperViewController {
+class AddProjectViewController: BaseViewController<AddProjectViewModel> {
     
     private lazy var projectNameTextRow = TextRow() {
         $0.title = "Project Name"
@@ -48,30 +48,20 @@ class AddProjectViewController: HttperViewController {
         return viewController
     }()
     
-    private let viewModel: AddProjectViewModel
-    
-    init(viewModel: AddProjectViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        formViewController.view.backgroundColor = .background
+        navigationItem.rightBarButtonItem = saveBarButtonItem
         
         addChild(formViewController)
         view.addSubview(formViewController.view)
         formViewController.didMove(toParent: self)
-        
-        navigationItem.rightBarButtonItem = saveBarButtonItem
 
-        viewModel.title.bind(to: rx.title).disposed(by: disposeBag)
-        viewModel.validate.bind(to: saveBarButtonItem.rx.isEnabled).disposed(by: disposeBag)
-        viewModel.projectName.twoWayBind(to: projectNameTextRow.rx.value).disposed(by: disposeBag)
-        viewModel.introduction.twoWayBind(to: introductionTextAreaRow.rx.value).disposed(by: disposeBag)
+        viewModel.title ~> rx.title ~ disposeBag
+        viewModel.validate ~> saveBarButtonItem.rx.isEnabled ~ disposeBag
+        viewModel.projectName <~> projectNameTextRow.rx.value ~ disposeBag
+        viewModel.introduction <~> introductionTextAreaRow.rx.value ~ disposeBag
     }
 
     // MARK: - Action

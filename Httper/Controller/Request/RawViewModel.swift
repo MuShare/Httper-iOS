@@ -7,18 +7,13 @@
 //
 
 import RxSwift
-import RxFlow
 
-class RawViewModel {
+class RawViewModel: BaseViewModel {
     
     let text = PublishSubject<String>()
     
     func set(text: String) {
         self.text.onNext(text)
     }
-    
-}
-
-extension RawViewModel: Stepper {
     
 }
