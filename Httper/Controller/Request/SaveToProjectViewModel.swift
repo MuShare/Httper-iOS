@@ -41,7 +41,25 @@ class SaveToProjectViewModel: BaseViewModel {
         guard index < projects.value.count else {
             return
         }
-        
+        loading.onNext(true)
+        let project = projects.value[index]
+        DaoManager.shared.requestDao.saveOrUpdate(
+            rid: nil,
+            update: nil,
+            revision: nil,
+            method: requestData.method,
+            url: requestData.url,
+            headers: requestData.headers,
+            parameters: requestData.parameters,
+            bodytype: "raw",
+            body: requestData.bodyData,
+            project: project
+        )
+        SyncManager.shared.pushLocalRequests { [weak self] _ in
+            guard let `self` = self else { return }
+            self.loading.onNext(false)
+            self.steps.accept(RequestStep.saveIsCompleted)
+        }
     }
     
     func addProject() {

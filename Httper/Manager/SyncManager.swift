@@ -86,7 +86,7 @@ class SyncManager {
         }
     }
     
-    func pushLocalRequests(_ completionHandler: ((Int) -> Void)?) {
+    func pushLocalRequests(_ completionHandler: ((Int) -> Void)? = nil) {
         let requests = dao.requestDao.findUnsynced()
         if requests.count == 0 {
             return
