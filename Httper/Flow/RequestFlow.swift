@@ -12,7 +12,8 @@ enum RequestStep: Step {
     case start
     case result(RequestData)
     case save(RequestData)
-    case addProject
+    case addProject(Step)
+    case addProjectIsComplete
 }
 
 class RequestFlow: Flow {
@@ -81,11 +82,17 @@ class RequestFlow: Flow {
             let saveToProjectViewController = SaveToProjectViewController(viewModel: saveToProjectViewModel)
             navigationController?.pushViewController(saveToProjectViewController, animated: true)
             return .viewController(saveToProjectViewController)
-        case .addProject:
-            let addProjectViewModel = AddProjectViewModel()
+        case .addProject(let step):
+            let addProjectViewModel = AddProjectViewModel(endStep: step)
             let addProjectViewController = AddProjectViewController(viewModel: addProjectViewModel)
             navigationController?.pushViewController(addProjectViewController, animated: true)
             return .viewController(addProjectViewController)
+        case .addProjectIsComplete:
+            guard navigationController?.topViewController is AddProjectViewController else {
+                return .none
+            }
+            navigationController?.popViewController(animated: true)
+            return .none
         }
     }
     

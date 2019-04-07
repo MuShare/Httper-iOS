@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -71,64 +71,12 @@
                     <navigationItem key="navigationItem" id="A3Y-19-xEq"/>
                     <connections>
                         <segue destination="J2A-Wk-9m9" kind="push" identifier="projectRequestSegue" id="TGO-AX-uyd"/>
-                        <segue destination="49W-Rz-eqM" kind="push" identifier="projectNameSegue" id="Mdg-RQ-k8w"/>
                         <segue destination="45K-Dx-1Yd" kind="push" identifier="introductionSegue" id="jXi-ga-4uL"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FKT-xo-IFa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2000" y="-1539.1304347826087"/>
-        </scene>
-        <!--Project Name View Controller-->
-        <scene sceneID="jCP-Xf-ctH">
-            <objects>
-                <viewController id="49W-Rz-eqM" customClass="ProjectNameViewController" customModule="Httper" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Yl9-1Z-JdX"/>
-                        <viewControllerLayoutGuide type="bottom" id="1c2-aC-Yz8"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="PMn-Fg-QbD">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New project name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nva-UU-c6z">
-                                <rect key="frame" x="0.0" y="92" width="320" height="60"/>
-                                <color key="backgroundColor" red="0.25954487919807434" green="0.27729591727256775" blue="0.2945818305015564" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="iyr-c2-I6e"/>
-                                </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
-                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" red="0.18665182590484619" green="0.2099614143371582" blue="0.23271286487579346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="nva-UU-c6z" secondAttribute="trailing" constant="-16" id="02j-VD-uim"/>
-                            <constraint firstItem="nva-UU-c6z" firstAttribute="leading" secondItem="PMn-Fg-QbD" secondAttribute="leadingMargin" constant="-16" id="82a-6m-AOt"/>
-                            <constraint firstItem="nva-UU-c6z" firstAttribute="top" secondItem="Yl9-1Z-JdX" secondAttribute="bottom" constant="28" id="zTF-bx-320"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="iGC-Ll-QDS">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="ZxM-2j-q0e">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="saveProjectName:" destination="49W-Rz-eqM" id="fU2-1b-igf"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="projectNameTextField" destination="nva-UU-c6z" id="TaK-5M-ew2"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aDK-fS-3A2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3038.4000000000001" y="-1539.1304347826087"/>
         </scene>
         <!--Project Introduction View Controller-->
         <scene sceneID="M6N-Lr-zxR">
@@ -165,7 +113,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lWy-Vz-9cG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3038.4000000000001" y="-2182.3088455772117"/>
+            <point key="canvasLocation" x="3038" y="-2198"/>
         </scene>
         <!--Add Project-->
         <scene sceneID="uyp-bW-bmr">

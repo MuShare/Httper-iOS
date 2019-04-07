@@ -52,7 +52,7 @@ class MainViewController: UITabBarController {
     private lazy var addRequestBarButtonItem: UIBarButtonItem = {
         let barButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
         barButtonItem.rx.tap.bind { [unowned self] in
-            self.viewModel.addRequest()
+            self.viewModel.addProject()
         }.disposed(by: disposeBag)
         return barButtonItem
     }()

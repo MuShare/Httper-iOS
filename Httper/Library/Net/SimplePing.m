@@ -13,7 +13,6 @@
 #include <errno.h>
 #include <arpa/inet.h>
 
-
 #pragma mark * IPv4 and ICMPv4 On-The-Wire Format
 /*! Describes the on-the-wire header format for an IPv4 packet.
  *  \details This defines the header structure of IPv4 packets on the wire.  We need

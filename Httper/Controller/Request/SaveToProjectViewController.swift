@@ -27,6 +27,11 @@ class SaveToProjectViewController: BaseViewController<SaveToProjectViewModel> {
         tableView.rx.itemSelected.subscribe(onNext: { [unowned self] in
             self.viewModel.pickProject(at: $0.row)
         }).disposed(by: disposeBag)
+        tableView.es.addPullToRefresh { [unowned self] in
+            self.viewModel.syncProjects {
+                tableView.es.stopPullToRefresh(ignoreDate: true, ignoreFooter: true)
+            }
+        }
         return tableView
     }()
     
@@ -46,6 +51,12 @@ class SaveToProjectViewController: BaseViewController<SaveToProjectViewModel> {
         
         viewModel.title.bind(to: rx.title).disposed(by: disposeBag)
         viewModel.projectSection.bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        viewModel.syncProjects()
     }
     
     private func createConstraints() {

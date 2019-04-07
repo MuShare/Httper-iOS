@@ -11,7 +11,8 @@ import RxFlow
 enum MainStep: Step {
     case start
     case clearRequest
-    case addRequest
+    case addProject(Step)
+    case addProjectIsComplete
 }
 
 class MainFlow: Flow {
@@ -48,11 +49,17 @@ class MainFlow: Flow {
         case .clearRequest:
             
             return .none
-        case .addRequest:
-            let addProjectViewModel = AddProjectViewModel()
+        case .addProject(let step):
+            let addProjectViewModel = AddProjectViewModel(endStep: step)
             let addProjectViewController = AddProjectViewController(viewModel: addProjectViewModel)
             navigationController?.pushViewController(addProjectViewController, animated: true)
             return .viewController(addProjectViewController)
+        case .addProjectIsComplete:
+            guard navigationController?.topViewController is AddProjectViewController else {
+                return .none
+            }
+            navigationController?.popViewController(animated: true)
+            return .none
         }
     }
     

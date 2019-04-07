@@ -11,7 +11,7 @@ import SwiftyJSON
 
 class ProjectDao: DaoTemplate {
     
-    func save(pname: String, privilege: String, introduction: String) -> Project {
+    @discardableResult func save(pname: String, privilege: String, introduction: String) -> Project {
         let project = NSEntityDescription.insertNewObject(forEntityName: NSStringFromClass(Project.self),
                                                           into: context) as! Project
         project.pname = pname;

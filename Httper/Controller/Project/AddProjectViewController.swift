@@ -16,9 +16,13 @@ class AddProjectViewController: BaseViewController<AddProjectViewModel> {
         $0.placeholder = "Your project name"
     }
     
-    private lazy var privilegePickerInputRow = PickerInputRow<String>(nil){
+    private lazy var privilegePickerInputRow = ActionSheetRow<String>() {
         $0.title = "Privilege"
+        $0.selectorTitle = "Select Privilege"
         $0.options = ["Private"]
+        $0.value = "Private"
+    }.onPresent { from, to in
+        to.popoverPresentationController?.permittedArrowDirections = .up
     }
     
     private lazy var introductionTextAreaRow = TextAreaRow("notes") {
@@ -50,36 +54,17 @@ class AddProjectViewController: BaseViewController<AddProjectViewModel> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        formViewController.view.backgroundColor = .background
+
         navigationItem.rightBarButtonItem = saveBarButtonItem
         
         addChild(formViewController)
         view.addSubview(formViewController.view)
         formViewController.didMove(toParent: self)
-
+        
         viewModel.title ~> rx.title ~ disposeBag
         viewModel.validate ~> saveBarButtonItem.rx.isEnabled ~ disposeBag
         viewModel.projectName <~> projectNameTextRow.rx.value ~ disposeBag
         viewModel.introduction <~> introductionTextAreaRow.rx.value ~ disposeBag
     }
 
-    // MARK: - Action
-    /**
-    @IBAction func saveProject(_ sender: Any) {
-        if projectNameTextField.text == "" {
-            showAlert(title: R.string.localizable.tip_name(),
-                      content: R.string.localizable.add_project_error())
-            return
-        }
-        
-        replaceBarButtonItemWithActivityIndicator()
-        _ = dao.projectDao.save(pname: projectNameTextField.text!,
-                                privilege: "private",
-                                introduction: introudctionTextView.text!)
-        SyncManager.shared.pushLocalProjects { (revision) in
-            _ = self.navigationController?.popViewController(animated: true)
-        }
-    }
- */
 }

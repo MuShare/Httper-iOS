@@ -17,7 +17,9 @@ class SaveToProjectViewModel: BaseViewModel {
     init(requestData: RequestData) {
         self.requestData = requestData
         super.init()
-        
+    }
+    
+    func syncProjects(completion: (() -> Void)? = nil) {
         SyncManager.shared.pullUpdatedProjects { [weak self] revision in
             // Pull successfully.
             if revision > 0 {
@@ -25,6 +27,7 @@ class SaveToProjectViewModel: BaseViewModel {
                 // Push local projects to server in background.
                 SyncManager.shared.pushLocalProjects(nil)
             }
+            completion?()
         }
     }
     
@@ -42,7 +45,7 @@ class SaveToProjectViewModel: BaseViewModel {
     }
     
     func addProject() {
-        steps.accept(RequestStep.addProject)
+        steps.accept(RequestStep.addProject(RequestStep.addProjectIsComplete))
     }
     
 }

@@ -276,6 +276,4 @@ struct route_cb {
 };
 #endif
 
-
-
 #endif
