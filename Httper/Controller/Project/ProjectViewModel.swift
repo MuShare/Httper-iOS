@@ -56,28 +56,27 @@ extension ProjectSectionModel: SectionModelType {
 
 class ProjectViewModel: BaseViewModel {
     
-    private let project: Project
-    
+    private let project: BehaviorRelay<Project>
     private let requests: BehaviorRelay<[Request]>
     
     init(project: Project) {
-        self.project = project
+        self.project = BehaviorRelay(value: project)
         if let array = project.requests?.array, let requests = array as? [Request]  {
             self.requests = BehaviorRelay(value: requests)
         } else {
             self.requests = BehaviorRelay(value: [])
         }
-
         super.init()
-        syncProject()
     }
 
     var selectionSection: Observable<ProjectSectionModel> {
-        return Observable.just(ProjectSectionModel.selectionSection(title: "Selction", items: [
-            .selectionItem(Selection(icon: R.image.tab_project(), title: project.pname ?? "Project Name")),
-            .selectionItem(Selection(icon: R.image.privilege(), title: project.privilege ?? "Privilege")),
-            .selectionItem(Selection(icon: R.image.introduction(), title: "Introduction"))
-        ]))
+        return project.map {
+            ProjectSectionModel.selectionSection(title: "Selction", items: [
+                .selectionItem(Selection(icon: R.image.tab_project(), title: $0.pname ?? "Project Name")),
+                .selectionItem(Selection(icon: R.image.privilege(), title: $0.privilege ?? "Privilege")),
+                .selectionItem(Selection(icon: R.image.introduction(), title: "Introduction"))
+            ])
+        }
     }
     
     let deleteSection = Observable.just(ProjectSectionModel.deleteSection(title: "Delete", items: [.deleteItem]))
@@ -97,13 +96,18 @@ class ProjectViewModel: BaseViewModel {
     }
     
     var title: Observable<String> {
-        return Observable.just(project.pname ?? "")
+        return project.map { $0.pname }.unwrap()
     }
     
     func syncProject(completion: (() -> ())? = nil) {
+        if let pid = project.value.pid, let project = DaoManager.shared.projectDao.getByPid(pid) {
+            self.project.accept(project)
+        }
+        
         SyncManager.shared.pullUpdatedRequests { [weak self] _ in
-            if let requests = self?.project.requests?.array as? [Request] {
-                self?.requests.accept(requests)
+            guard let `self` = self else { return }
+            if let requests = self.project.value.requests?.array as? [Request] {
+                self.requests.accept(requests)
             }
             completion?()
         }
@@ -112,7 +116,7 @@ class ProjectViewModel: BaseViewModel {
     func pick(at indexPath: IndexPath) {
         switch (indexPath.section, indexPath.row) {
         case (0, 0):
-            break
+            steps.accept(ProjectStep.name(project.value))
         case (0, 1):
             break
         case (0, 2):
@@ -127,7 +131,7 @@ class ProjectViewModel: BaseViewModel {
             let message = R.string.localizable.delete_project_message()
             alert.onNext(.customConfirm(title: title, message: message, onConfirm: { [unowned self] in
                 self.loading.onNext(true)
-                SyncManager.shared.deleteProject(self.project) { [weak self] _ in
+                SyncManager.shared.deleteProject(self.project.value) { [weak self] _ in
                     guard let `self` = self else { return }
                     self.loading.onNext(false)
                     self.steps.accept(ProjectStep.projectIsComplete)

@@ -55,13 +55,6 @@ class ProjectViewController: BaseViewController<ProjectViewModel> {
         return indexPath.section == 1
     })
     
-    let dao = DaoManager.shared
-    let sync = SyncManager.shared
-    
-    var project: Project!
-    var selectedRequest: Request!
-    var requests: [Request]!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -71,6 +64,12 @@ class ProjectViewController: BaseViewController<ProjectViewModel> {
         
         viewModel.title.bind(to: rx.title).disposed(by: disposeBag)
         viewModel.sections.bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        viewModel.syncProject()
     }
     
     private func createConstraints() {
