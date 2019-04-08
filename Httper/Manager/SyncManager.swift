@@ -155,7 +155,7 @@ class SyncManager {
     }
     
     // Delete a request in persistent store and server.
-    func deleteRequest(_ request: Request, completionHandler: ((Int) -> Void)?) {
+    func deleteRequest(_ request: Request, completionHandler: ((Int) -> Void)? = nil) {
         // If rid is nil or token is nil, that means this request cannot sync with server
         // Just delete this request entity in local persistent store.
         if request.rid == nil && token() == nil {

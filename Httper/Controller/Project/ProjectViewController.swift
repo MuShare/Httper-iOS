@@ -26,8 +26,11 @@ class ProjectViewController: BaseViewController<ProjectViewModel> {
                 tableView.es.stopPullToRefresh(ignoreDate: true, ignoreFooter: true)
             }
         }
-        tableView.rx.itemSelected.subscribe(onNext: { [unowned self] indexPath in
-            self.viewModel.pick(at: indexPath)
+        tableView.rx.itemSelected.subscribe(onNext: { [unowned self] in
+            self.viewModel.pick(at: $0)
+        }).disposed(by: disposeBag)
+        tableView.rx.itemDeleted.subscribe(onNext: { [unowned self] in
+            self.viewModel.deleteRequest(at: $0.row)
         }).disposed(by: disposeBag)
         tableView.delegate = self
         return tableView
@@ -46,8 +49,10 @@ class ProjectViewController: BaseViewController<ProjectViewModel> {
         case .deleteItem:
             return tableView.dequeueReusableCell(for: indexPath) as DeleteTableViewCell
         }
-    }, titleForHeaderInSection: { (dataSource, index) in
+    }, titleForHeaderInSection: { (_, _) in
         return " "
+    }, canEditRowAtIndexPath: { (_, indexPath) -> Bool in
+        return indexPath.section == 1
     })
     
     let dao = DaoManager.shared
@@ -73,34 +78,6 @@ class ProjectViewController: BaseViewController<ProjectViewModel> {
             $0.top.equalToSuperview().offset(topPadding)
             $0.left.right.bottom.equalToSuperview()
         }
-    }
-    
-    // MARK: - Action
-    @IBAction func deleteRequestFromProject(_ sender: UIButton) {
-        let cell: UITableViewCell = (sender as UIView).superview?.superview as! UITableViewCell
-        let indexPath = self.tableView.indexPath(for: cell)!
-        let url = (cell.viewWithTag(1) as! UILabel).text!
-        let method = (cell.viewWithTag(2) as! UILabel).text!
-        let message = R.string.localizable.delete_request_confirm() + url + "(" + method + ")"
-        let alertController = UIAlertController(title: R.string.localizable.tip_name(),
-                                                message: message,
-                                                preferredStyle: .alert)
-        let cancel = UIAlertAction(title: R.string.localizable.cancel_name(),
-                                   style: .cancel,
-                                   handler: nil)
-        let confirm = UIAlertAction(title: R.string.localizable.yes_name(),
-                                    style: .destructive) { (action) in
-            // Remove request from table view.
-            self.requests.remove(at: indexPath.row)
-            self.tableView.deleteRows(at: [indexPath], with: .fade)
-            // Remove it from persistent store and server.
-            let deletedRequest = self.project.requests?[indexPath.row] as! Request
-            self.sync.deleteRequest(deletedRequest, completionHandler: nil)
-
-        }
-        alertController.addAction(cancel)
-        alertController.addAction(confirm)
-        self.present(alertController, animated: true, completion: nil)
     }
 
 }

@@ -138,4 +138,14 @@ class ProjectViewModel: BaseViewModel {
         }
     }
     
+    func deleteRequest(at index: Int) {
+        var requests = self.requests.value
+        guard 0 ..< requests.count ~= index else {
+            return
+        }
+        SyncManager.shared.deleteRequest(requests[index])
+        requests.remove(at: index)
+        self.requests.accept(requests)
+    }
+    
 }

@@ -34,9 +34,9 @@ PODS:
   - MGKeyboardAccessory (0.4.1)
   - MGSelector (0.1):
     - SnapKit (~> 4)
-  - NVActivityIndicatorView (4.6.1):
-    - NVActivityIndicatorView/Presenter (= 4.6.1)
-  - NVActivityIndicatorView/Presenter (4.6.1)
+  - NVActivityIndicatorView (4.7.0):
+    - NVActivityIndicatorView/Presenter (= 4.7.0)
+  - NVActivityIndicatorView/Presenter (4.7.0)
   - PagingKit (1.10.0)
   - R.swift (5.0.3):
     - R.swift.Library (~> 5.0.0)
@@ -47,11 +47,11 @@ PODS:
     - Reusable/View (= 4.0.5)
   - Reusable/Storyboard (4.0.5)
   - Reusable/View (4.0.5)
-  - RxAlamofire (4.4.0):
-    - RxAlamofire/Core (= 4.4.0)
-  - RxAlamofire/Core (4.4.0):
+  - RxAlamofire (4.4.1):
+    - RxAlamofire/Core (= 4.4.1)
+  - RxAlamofire/Core (4.4.1):
     - Alamofire (~> 4.8)
-    - RxSwift (~> 4.4)
+    - RxSwift (~> 4.5)
   - RxAlertViewable (0.5.1):
     - RxCocoa (~> 4.4)
     - RxSwift (~> 4.4)
@@ -61,9 +61,9 @@ PODS:
     - Differentiator (~> 3.0)
     - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
-  - RxFlow (2.0.0):
-    - RxCocoa (>= 4.4.0)
-    - RxSwift (>= 4.4.0)
+  - RxFlow (2.1.0):
+    - RxCocoa (>= 4.5.0)
+    - RxSwift (>= 4.5.0)
   - RxKingfisher (0.3.1):
     - Kingfisher (~> 4)
     - RxCocoa (~> 4.3)
@@ -180,17 +180,17 @@ SPEC CHECKSUMS:
   MGFormatter: 5954840af327baa597dd6744fc36432f98d26d06
   MGKeyboardAccessory: c607fbf32ea941397c2e2d6b1ae5de2c13651fe3
   MGSelector: 8feb6c39b87eb9a1af395fba334a57eb4d7c84dc
-  NVActivityIndicatorView: 4ca19fccc84595a78957336a086d00a49be6ce61
+  NVActivityIndicatorView: b19ddab2576f805cbe0fb2306cba3476e09a1dea
   PagingKit: 05ff12fc68f9f7ca10d75a7acdcc6c362c7f4fe3
   R.swift: f5a87643b91ea569d23d6afb3eee9c743edde239
   R.swift.Library: cfe85d569d9bae6cb262922db130e7c3a7a5fad1
   ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
   Reusable: 188be1a54ac0691bc66e5bb24ec6eb91971b315b
-  RxAlamofire: ecc5e458ee11250938d23360179eb3a37cd3ee1e
+  RxAlamofire: ed65f451f5a9a59419b0b9e705043dc01410edd9
   RxAlertViewable: 42241f15be83eaeb2171744b47441e5ae23b0197
   RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
   RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
-  RxFlow: f0212025e3747431b3be09c6be04bfde0a3bf5a4
+  RxFlow: 78df76493bd7fc6a0181014cc2be3f29a2cd54fb
   RxKingfisher: d79612e7a6cab0b67d6e9b63fc1572fccc825afb
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
