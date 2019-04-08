@@ -31,7 +31,9 @@ PODS:
     - Fuzi (~> 2)
     - SnapKit (~> 4)
     - SwiftyJSON (~> 4)
-  - MGKeyboardAccessory (0.4.1)
+  - MGKeyboardAccessory (0.5):
+    - MGKeyboardAccessory/Core (= 0.5)
+  - MGKeyboardAccessory/Core (0.5)
   - MGSelector (0.1):
     - SnapKit (~> 4)
   - NVActivityIndicatorView (4.7.0):
@@ -99,7 +101,7 @@ DEPENDENCIES:
   - RxCocoa
   - RxDataSources
   - RxFlow
-  - RxKingfisher (~> 0.5)
+  - RxKingfisher
   - RxSwift
   - SnapKit
   - SwiftyJSON
@@ -178,7 +180,7 @@ SPEC CHECKSUMS:
   Kingfisher: d9e7e0b209b59b8f9873aa2f37654e81a7beea51
   M80AttributedLabel: d1177fbd7451d134794b50e91ca8b0cb167ef530
   MGFormatter: 5954840af327baa597dd6744fc36432f98d26d06
-  MGKeyboardAccessory: c607fbf32ea941397c2e2d6b1ae5de2c13651fe3
+  MGKeyboardAccessory: a9f30a9c1fd158b1895aada9aab905a3c4b93581
   MGSelector: 8feb6c39b87eb9a1af395fba334a57eb4d7c84dc
   NVActivityIndicatorView: b19ddab2576f805cbe0fb2306cba3476e09a1dea
   PagingKit: 05ff12fc68f9f7ca10d75a7acdcc6c362c7f4fe3
@@ -201,6 +203,6 @@ SPEC CHECKSUMS:
   "UIImageView+Extension": bc26c60a9c8cd6fb515ae1e37377a6f0988e76d8
   "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
 
-PODFILE CHECKSUM: c3efe54a33e596aa423ea2521a7e698370ca90c4
+PODFILE CHECKSUM: c79fbb1dc2a4991a020c73dbb9d858cc6d82ad5c
 
 COCOAPODS: 1.6.1

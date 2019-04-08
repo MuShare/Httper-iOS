@@ -120,7 +120,7 @@ class ProjectViewModel: BaseViewModel {
         case (0, 1):
             break
         case (0, 2):
-            break
+            steps.accept(ProjectStep.introduction(project.value))
         case (1, _):
             guard indexPath.row < requests.value.count else {
                 return

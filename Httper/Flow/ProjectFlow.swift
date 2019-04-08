@@ -65,9 +65,15 @@ class ProjectFlow: Flow {
             }
             navigationController?.popViewController(animated: true)
             return .none
-        case .introduction(_):
-            return .none
+        case .introduction(let project):
+            let projectIntroductionViewController = ProjectIntroductionViewController(viewModel: .init(project: project))
+            navigationController?.pushViewController(projectIntroductionViewController, animated: true)
+            return .viewController(projectIntroductionViewController)
         case .introductionIsComplete:
+            guard navigationController?.topViewController is ProjectIntroductionViewController else {
+                return .none
+            }
+            navigationController?.popViewController(animated: true)
             return .none
         }
     }
