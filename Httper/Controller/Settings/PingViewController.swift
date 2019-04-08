@@ -43,7 +43,7 @@ class PingViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if items == nil {
+        if items.count == 0 {
             return 0
         }
         return (pingService == nil) ? items.count + 1 : items.count
