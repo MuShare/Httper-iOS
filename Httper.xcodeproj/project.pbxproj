@@ -15,6 +15,7 @@
 		772F8D7021F6D12300858714 /* Eruka+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772F8D6F21F6D12300858714 /* Eruka+Rx.swift */; };
 		77396287225C33EE0091C669 /* ProjectNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77396286225C33EE0091C669 /* ProjectNameViewModel.swift */; };
 		77396289225C43080091C669 /* Observable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77396288225C43080091C669 /* Observable+Extension.swift */; };
+		7739628B225C46320091C669 /* ProjectIntroductionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7739628A225C46320091C669 /* ProjectIntroductionViewModel.swift */; };
 		774C75F020D795EE00DBD9EC /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774C75EF20D795EE00DBD9EC /* R.generated.swift */; };
 		774C75F220D79B9D00DBD9EC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 774C75F120D79B9D00DBD9EC /* Login.storyboard */; };
 		77513CDD216DFDD900929068 /* M80AttributedLabel+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77513CDC216DFDD900929068 /* M80AttributedLabel+Rx.swift */; };
@@ -148,6 +149,7 @@
 		772F8D6F21F6D12300858714 /* Eruka+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Eruka+Rx.swift"; sourceTree = "<group>"; };
 		77396286225C33EE0091C669 /* ProjectNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectNameViewModel.swift; sourceTree = "<group>"; };
 		77396288225C43080091C669 /* Observable+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observable+Extension.swift"; sourceTree = "<group>"; };
+		7739628A225C46320091C669 /* ProjectIntroductionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectIntroductionViewModel.swift; sourceTree = "<group>"; };
 		774C75EF20D795EE00DBD9EC /* R.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		774C75F120D79B9D00DBD9EC /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		77513CDC216DFDD900929068 /* M80AttributedLabel+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "M80AttributedLabel+Rx.swift"; sourceTree = "<group>"; };
@@ -417,6 +419,7 @@
 				E4CA76121E3F7E1A008D7A52 /* AddProjectViewController.swift */,
 				77B474DB21F3593100BE4551 /* AddProjectViewModel.swift */,
 				E4712ED91E55FC81002FF8E1 /* ProjectIntroductionViewController.swift */,
+				7739628A225C46320091C669 /* ProjectIntroductionViewModel.swift */,
 				E4712ED71E55FC71002FF8E1 /* ProjectNameViewController.swift */,
 				77396286225C33EE0091C669 /* ProjectNameViewModel.swift */,
 				E44B98A620EBDE06004FEF67 /* ProjectsViewController.swift */,
@@ -971,6 +974,7 @@
 				772F8D7021F6D12300858714 /* Eruka+Rx.swift in Sources */,
 				E46CE471214A828B0046BCCA /* AppFlow.swift in Sources */,
 				77A530742165C3F20008CC56 /* String+Extension.swift in Sources */,
+				7739628B225C46320091C669 /* ProjectIntroductionViewModel.swift in Sources */,
 				E411A30A215286C5004ADBAE /* UIView+Extension.swift in Sources */,
 				E4DE76911E1D2645002A8385 /* LoginViewController.swift in Sources */,
 				77F39966215377790016978E /* SingleSection.swift in Sources */,
@@ -1062,7 +1066,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1105,7 +1109,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -1127,7 +1131,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6ANM44X2CJ;
 				INFOPLIST_FILE = Httper/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = pw.fczm.Httper;
@@ -1155,7 +1159,7 @@
 					"DEBUG=0",
 				);
 				INFOPLIST_FILE = Httper/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = pw.fczm.Httper;
 				PRODUCT_NAME = "$(TARGET_NAME)";

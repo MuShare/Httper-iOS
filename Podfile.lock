@@ -9,7 +9,7 @@ PODS:
   - Bolts/Tasks (1.9.0)
   - Differentiator (3.1.0)
   - ESPullToRefresh (2.8)
-  - Eureka (4.3.1)
+  - Eureka (5.0.0)
   - FacebookCore (0.6.0):
     - Bolts (~> 1.9)
     - FBSDKCoreKit (~> 4.43)
@@ -24,7 +24,7 @@ PODS:
     - FBSDKCoreKit
   - Fuzi (2.2.1)
   - Kanna (5.0.0)
-  - Kingfisher (4.10.1)
+  - Kingfisher (5.3.1)
   - M80AttributedLabel (1.9.5)
   - MGFormatter (0.3.1):
     - AttributedTextView (~> 1.2)
@@ -64,8 +64,8 @@ PODS:
   - RxFlow (2.1.0):
     - RxCocoa (>= 4.5.0)
     - RxSwift (>= 4.5.0)
-  - RxKingfisher (0.3.1):
-    - Kingfisher (~> 4)
+  - RxKingfisher (0.5.0):
+    - Kingfisher (~> 5)
     - RxCocoa (~> 4.3)
     - RxSwift (~> 4.3)
   - RxSwift (4.5.0)
@@ -73,7 +73,7 @@ PODS:
   - SwiftyJSON (4.3.0)
   - SwiftyUserDefaults (3.0.1)
   - SwipeBack (1.1.1)
-  - UIGradient (1.2.0)
+  - UIGradient (1.3)
   - "UIImageView+Extension (0.2.6)"
   - "UITextView+Placeholder (1.2.1)"
 
@@ -99,7 +99,7 @@ DEPENDENCIES:
   - RxCocoa
   - RxDataSources
   - RxFlow
-  - RxKingfisher
+  - RxKingfisher (~> 0.5)
   - RxSwift
   - SnapKit
   - SwiftyJSON
@@ -159,7 +159,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/eggswift/pull-to-refresh.git
     :tag: '2.8'
   UIGradient:
-    :commit: 16edbbe90407243977288590363473d066302af3
+    :commit: da2b4dbcb273846a1b61839883938043516fe202
     :git: https://github.com/lm2343635/UIGradient.git
 
 SPEC CHECKSUMS:
@@ -168,14 +168,14 @@ SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
   ESPullToRefresh: 441449eca0618977890516b5665775f705e70c4d
-  Eureka: 28ea296f06710f6745266b71f17862048941a32d
+  Eureka: 0f64f477ec8ef6201c6fec143d60ff5c201cf654
   FacebookCore: 38cd3a4078738d6f648eb9b6b9d35b02d693e9a1
   FacebookLogin: 658b0569961a081a0890f5f4dbf69ced00657d9e
   FBSDKCoreKit: 8bcd4503afe43f28823c2175a6142a7f50f1bf28
   FBSDKLoginKit: 93c5a407ab1a6a17b1b38cff57e89991f714d878
   Fuzi: 3e6c73359d84a92376763abbaf8ced4d49c0f4ea
   Kanna: a32875df62975f8f4b871e933b4ea1a5c3b8be0f
-  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  Kingfisher: d9e7e0b209b59b8f9873aa2f37654e81a7beea51
   M80AttributedLabel: d1177fbd7451d134794b50e91ca8b0cb167ef530
   MGFormatter: 5954840af327baa597dd6744fc36432f98d26d06
   MGKeyboardAccessory: c607fbf32ea941397c2e2d6b1ae5de2c13651fe3
@@ -191,16 +191,16 @@ SPEC CHECKSUMS:
   RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
   RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
   RxFlow: 78df76493bd7fc6a0181014cc2be3f29a2cd54fb
-  RxKingfisher: d79612e7a6cab0b67d6e9b63fc1572fccc825afb
+  RxKingfisher: b6c043154e287f943ea8370bda0961bc052cf6b9
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   SwiftyUserDefaults: 3d273b1739b68ada3145dc754a70ec775bc5c8be
   SwipeBack: d6759601b40da1f4161033feb30ab475d7d04322
-  UIGradient: 48439bb1662c937b9a3d8b954712d0db5096372e
+  UIGradient: 47bfafd7afb3f51b5a55d9bcf07bf43b29b19ee4
   "UIImageView+Extension": bc26c60a9c8cd6fb515ae1e37377a6f0988e76d8
   "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
 
-PODFILE CHECKSUM: d50f67dc8a77de1a463ef3b2abb155ee8e4f7940
+PODFILE CHECKSUM: c3efe54a33e596aa423ea2521a7e698370ca90c4
 
 COCOAPODS: 1.6.1
