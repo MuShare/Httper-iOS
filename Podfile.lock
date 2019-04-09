@@ -76,15 +76,15 @@ PODS:
   - RxSwift (4.5.0)
   - SnapKit (4.2.0)
   - SwiftyJSON (4.3.0)
-  - SwiftyUserDefaults (3.0.1)
+  - SwiftyUserDefaults (4.0.0-beta.2)
   - SwipeBack (1.1.1)
-  - UIGradient (1.3)
+  - UIGradient (1.3.1)
   - "UIImageView+Extension (0.2.6)"
   - "UITextView+Placeholder (1.2.1)"
 
 DEPENDENCIES:
   - Alamofire
-  - ESPullToRefresh (from `https://github.com/eggswift/pull-to-refresh.git`, tag `2.8`)
+  - ESPullToRefresh (from `https://github.com/eggswift/pull-to-refresh.git`)
   - Eureka
   - FacebookCore
   - FacebookLogin
@@ -109,9 +109,9 @@ DEPENDENCIES:
   - RxSwift
   - SnapKit
   - SwiftyJSON
-  - SwiftyUserDefaults
+  - SwiftyUserDefaults (= 4.0.0-beta.2)
   - SwipeBack
-  - UIGradient (from `https://github.com/lm2343635/UIGradient.git`)
+  - UIGradient
   - "UIImageView+Extension"
   - "UITextView+Placeholder"
 
@@ -151,23 +151,18 @@ SPEC REPOS:
     - SwiftyJSON
     - SwiftyUserDefaults
     - SwipeBack
+    - UIGradient
     - "UIImageView+Extension"
     - "UITextView+Placeholder"
 
 EXTERNAL SOURCES:
   ESPullToRefresh:
     :git: https://github.com/eggswift/pull-to-refresh.git
-    :tag: '2.8'
-  UIGradient:
-    :git: https://github.com/lm2343635/UIGradient.git
 
 CHECKOUT OPTIONS:
   ESPullToRefresh:
+    :commit: eeb9be8de9aff796adb60d0492f2b3205545db4b
     :git: https://github.com/eggswift/pull-to-refresh.git
-    :tag: '2.8'
-  UIGradient:
-    :commit: da2b4dbcb273846a1b61839883938043516fe202
-    :git: https://github.com/lm2343635/UIGradient.git
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
@@ -203,12 +198,12 @@ SPEC CHECKSUMS:
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
-  SwiftyUserDefaults: 3d273b1739b68ada3145dc754a70ec775bc5c8be
+  SwiftyUserDefaults: 39ec70433f22f3052a64bc5fbfb34f46932b8bf1
   SwipeBack: d6759601b40da1f4161033feb30ab475d7d04322
-  UIGradient: 47bfafd7afb3f51b5a55d9bcf07bf43b29b19ee4
+  UIGradient: 9c7041327bf202b09aab2db7c33fb41f768b19ea
   "UIImageView+Extension": bc26c60a9c8cd6fb515ae1e37377a6f0988e76d8
   "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
 
-PODFILE CHECKSUM: 84e22caf4aa906cb709a75b5f6170d2f7287ea82
+PODFILE CHECKSUM: bb159f26c333f71af1f36aa903b83bb7abd1e92f
 
 COCOAPODS: 1.6.1

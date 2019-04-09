@@ -153,7 +153,7 @@ class RequestViewController: BaseViewController<RequestViewModel>, RxKeyboardVie
         menuViewController.reloadData()
         contentViewController.reloadData()
         
-        viewModel.alert ~> rx.alert ~ disposeBag
+        viewModel.title ~> rx.title ~ disposeBag
         viewModel.requestMethod ~> requestMethodButton.rx.title(for: .normal) ~ disposeBag
         viewModel.keyboardHeight ~> rx.keyboardHeight ~ disposeBag
         viewModel.url <~> urlTextField.rx.text.orEmpty ~ disposeBag

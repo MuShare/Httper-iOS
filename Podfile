@@ -28,9 +28,9 @@ target 'Httper' do
     pod 'RxKingfisher'
     pod 'SnapKit'
     pod 'SwipeBack'
-    pod 'SwiftyUserDefaults'
+    pod 'SwiftyUserDefaults', '= 4.0.0-beta.2'
     pod 'SwiftyJSON'
-    pod 'UIGradient', :git => 'https://github.com/lm2343635/UIGradient.git'
+    pod 'UIGradient'
     pod 'UIImageView+Extension'
     pod 'UITextView+Placeholder'
 end

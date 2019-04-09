@@ -83,6 +83,10 @@ class RequestViewModel: BaseViewModel {
                            body: bodyViewModel.body.value)
     }
     
+    var title: Observable<String> {
+        return Observable.just(request).unwrap().map { _ in  "Request" }
+    }
+    
     var editingState: Observable<KeyValueEditingState> {
         return Observable.merge(headersViewModel.editingState, parametersViewModel.editingState).distinctUntilChanged {
             switch ($0, $1) {

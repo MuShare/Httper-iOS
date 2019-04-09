@@ -60,15 +60,19 @@ class SettingsTableViewController: UITableViewController {
         guard let cell = tableView.cellForRow(at: indexPath) else {
             return
         }
+        var url: String? = nil
         switch cell.reuseIdentifier {
         case R.reuseIdentifier.appstore.identifier:
-            UIApplication.shared.openURL(URL.init(string: "itms-apps://itunes.apple.com/app/httper/id1166884043")!)
+            url = "itms-apps://itunes.apple.com/app/httper/id1166884043"
         case R.reuseIdentifier.github.identifier:
-            UIApplication.shared.openURL(URL.init(string: "https://github.com/lm2343635/Httper")!)
+            url = "https://github.com/lm2343635/Httper"
         case R.reuseIdentifier.about.identifier:
-            UIApplication.shared.openURL(URL.init(string: "http://httper.mushare.cn")!)
+            url = "http://httper.mushare.cn"
         default:
             break
+        }
+        if let urlString = url, let url = URL(string: urlString) {
+            UIApplication.shared.open(url , options: [:])
         }
     }
     
