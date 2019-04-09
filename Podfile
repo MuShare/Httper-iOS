@@ -3,7 +3,7 @@ platform :ios, '10.0'
 
 target 'Httper' do
     pod 'Alamofire'
-    pod 'ESPullToRefresh', :git => 'https://github.com/eggswift/pull-to-refresh.git', :tag => '2.8'
+    pod 'ESPullToRefresh', :git => 'https://github.com/eggswift/pull-to-refresh.git'
     pod 'Eureka'
     pod 'FacebookCore'
     pod 'FacebookLogin'
@@ -24,12 +24,13 @@ target 'Httper' do
     pod 'RxCocoa'
     pod 'RxDataSources'
     pod 'RxFlow'
+    pod 'RxKeyboard'
     pod 'RxKingfisher'
     pod 'SnapKit'
     pod 'SwipeBack'
     pod 'SwiftyUserDefaults'
     pod 'SwiftyJSON'
-    pod 'UIGradient',  :git => 'https://github.com/lm2343635/UIGradient.git'
+    pod 'UIGradient', :git => 'https://github.com/lm2343635/UIGradient.git'
     pod 'UIImageView+Extension'
     pod 'UITextView+Placeholder'
 end

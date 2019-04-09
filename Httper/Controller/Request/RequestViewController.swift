@@ -12,8 +12,6 @@ import MGKeyboardAccessory
 import MGSelector
 import PagingKit
 
-let protocols = ["http", "https"]
-
 fileprivate struct Const {
     
     static let margin = 16
@@ -47,7 +45,7 @@ fileprivate struct Const {
     static let menus = ["Parameters", "Headers", "Body"]
 }
 
-class RequestViewController: BaseViewController<RequestViewModel> {
+class RequestViewController: BaseViewController<RequestViewModel>, RxKeyboardViewController {
     
     private lazy var requestMethodLabel: UILabel = {
         let label = UILabel()
@@ -155,11 +153,11 @@ class RequestViewController: BaseViewController<RequestViewModel> {
         menuViewController.reloadData()
         contentViewController.reloadData()
         
-        viewModel.alert.bind(to: rx.alert).disposed(by: disposeBag)
-        viewModel.requestMethod.bind(to: requestMethodButton.rx.title(for: .normal)).disposed(by: disposeBag)
-
-        viewModel.url.twoWayBind(to: urlTextField.rx.text.orEmpty).disposed(by: disposeBag)
-        viewModel.requestProtocol.twoWayBind(to: protocolsSegmentedControl.rx.selectedSegmentIndex).disposed(by: disposeBag)     
+        viewModel.alert ~> rx.alert ~ disposeBag
+        viewModel.requestMethod ~> requestMethodButton.rx.title(for: .normal) ~ disposeBag
+        viewModel.keyboardHeight ~> rx.keyboardHeight ~ disposeBag
+        viewModel.url <~> urlTextField.rx.text.orEmpty ~ disposeBag
+        viewModel.requestProtocol <~> protocolsSegmentedControl.rx.selectedSegmentIndex ~ disposeBag
     }
     
     private func setupPagingKit() {

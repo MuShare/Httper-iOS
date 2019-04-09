@@ -20,6 +20,7 @@
 		774C75F220D79B9D00DBD9EC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 774C75F120D79B9D00DBD9EC /* Login.storyboard */; };
 		77513CDD216DFDD900929068 /* M80AttributedLabel+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77513CDC216DFDD900929068 /* M80AttributedLabel+Rx.swift */; };
 		7766EA7C217DC4AB001A6260 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7766EA7B217DC4AB001A6260 /* DetailTableViewCell.swift */; };
+		777760D4225D99B20053BA3D /* RxKeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777760D3225D99B20053BA3D /* RxKeyboardViewController.swift */; };
 		777BE32C216C83D300D70427 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777BE32B216C83D300D70427 /* RequestManager.swift */; };
 		77A530702165AF070008CC56 /* RequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A5306F2165AF070008CC56 /* RequestData.swift */; };
 		77A530722165BEE50008CC56 /* ResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A530712165BEE50008CC56 /* ResultViewModel.swift */; };
@@ -154,6 +155,7 @@
 		774C75F120D79B9D00DBD9EC /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		77513CDC216DFDD900929068 /* M80AttributedLabel+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "M80AttributedLabel+Rx.swift"; sourceTree = "<group>"; };
 		7766EA7B217DC4AB001A6260 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
+		777760D3225D99B20053BA3D /* RxKeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxKeyboardViewController.swift; sourceTree = "<group>"; };
 		777BE32B216C83D300D70427 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		77A5306F2165AF070008CC56 /* RequestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestData.swift; sourceTree = "<group>"; };
 		77A530712165BEE50008CC56 /* ResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewModel.swift; sourceTree = "<group>"; };
@@ -400,6 +402,7 @@
 		774C75E620D791E400DBD9EC /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				777760D2225D999D0053BA3D /* Protocol */,
 				77271CAE21E744D30072E007 /* Net */,
 				77271CAD21E744BA0072E007 /* ViewController */,
 				77CDA185222E130A0063C472 /* AppLog.swift */,
@@ -490,6 +493,14 @@
 				E40986A1215523A3006CCC04 /* UIViewController+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		777760D2225D999D0053BA3D /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				777760D3225D99B20053BA3D /* RxKeyboardViewController.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		77F399622153741F0016978E /* Cell */ = {
@@ -763,7 +774,7 @@
 			);
 			name = R.swift;
 			outputPaths = (
-				$SRCROOT/$TARGET_NAME/R.generated.swift,
+				"$SRCROOT/$TARGET_NAME/R.generated.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
@@ -803,6 +814,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxFlow/RxFlow.framework",
+				"${BUILT_PRODUCTS_DIR}/RxKeyboard/RxKeyboard.framework",
 				"${BUILT_PRODUCTS_DIR}/RxKingfisher/RxKingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
@@ -842,6 +854,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxFlow.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxKeyboard.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxKingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
@@ -889,6 +902,7 @@
 				77F39964215374370016978E /* KeyValueTableViewCell.swift in Sources */,
 				77A5307C2167087F0008CC56 /* PrettyViewModel.swift in Sources */,
 				777BE32C216C83D300D70427 /* RequestManager.swift in Sources */,
+				777760D4225D99B20053BA3D /* RxKeyboardViewController.swift in Sources */,
 				E49F680021495B0E00646892 /* RequestFlow.swift in Sources */,
 				77CDA18D222E13FE0063C472 /* BaseNavigationController.swift in Sources */,
 				7766EA7C217DC4AB001A6260 /* DetailTableViewCell.swift in Sources */,

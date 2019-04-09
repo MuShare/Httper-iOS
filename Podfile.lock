@@ -66,6 +66,9 @@ PODS:
   - RxFlow (2.1.0):
     - RxCocoa (>= 4.5.0)
     - RxSwift (>= 4.5.0)
+  - RxKeyboard (0.9.0):
+    - RxCocoa (>= 4.3.1)
+    - RxSwift (>= 4.3.1)
   - RxKingfisher (0.5.0):
     - Kingfisher (~> 5)
     - RxCocoa (~> 4.3)
@@ -101,6 +104,7 @@ DEPENDENCIES:
   - RxCocoa
   - RxDataSources
   - RxFlow
+  - RxKeyboard
   - RxKingfisher
   - RxSwift
   - SnapKit
@@ -140,6 +144,7 @@ SPEC REPOS:
     - RxCocoa
     - RxDataSources
     - RxFlow
+    - RxKeyboard
     - RxKingfisher
     - RxSwift
     - SnapKit
@@ -193,6 +198,7 @@ SPEC CHECKSUMS:
   RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
   RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
   RxFlow: 78df76493bd7fc6a0181014cc2be3f29a2cd54fb
+  RxKeyboard: 4f782303f499f41577b41c96c6a9a5d7acd51a47
   RxKingfisher: b6c043154e287f943ea8370bda0961bc052cf6b9
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
@@ -203,6 +209,6 @@ SPEC CHECKSUMS:
   "UIImageView+Extension": bc26c60a9c8cd6fb515ae1e37377a6f0988e76d8
   "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
 
-PODFILE CHECKSUM: c79fbb1dc2a4991a020c73dbb9d858cc6d82ad5c
+PODFILE CHECKSUM: 84e22caf4aa906cb709a75b5f6170d2f7287ea82
 
 COCOAPODS: 1.6.1

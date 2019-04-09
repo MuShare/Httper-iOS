@@ -10,6 +10,12 @@ import UIKit
 import RxSwift
 import MGKeyboardAccessory
 
+fileprivate struct Const {
+    struct rawBody {
+        static let margin = 10
+    }
+}
+
 class BodyViewController: BaseViewController<BodyViewModel> {
     
     private lazy var rawBodyTextView: UITextView = {
@@ -26,28 +32,15 @@ class BodyViewController: BaseViewController<BodyViewModel> {
         view.addSubview(rawBodyTextView)
         createConstraints()
         
-        viewModel.body.twoWayBind(to: rawBodyTextView.rx.text.orEmpty).disposed(by: disposeBag)
+        viewModel.body <~> rawBodyTextView.rx.text.orEmpty ~ disposeBag
     }
     
     private func createConstraints() {
         rawBodyTextView.snp.makeConstraints {
-            $0.center.equalToSuperview()
-            $0.size.equalToSuperview()
+            $0.top.bottom.equalToSuperview()
+            $0.left.equalToSuperview().offset(Const.rawBody.margin)
+            $0.right.equalToSuperview().offset(-Const.rawBody.margin)
         }
-    }
-    
-    // MARK: - Action
-    @IBAction func cleatRequestBody(_ sender: Any) {
-        let alertController = UIAlertController(title: R.string.localizable.tip_name(),
-                                                message: R.string.localizable.clear_request_body(),
-                                                preferredStyle: .alert);
-        alertController.addAction(UIAlertAction(title: R.string.localizable.cancel_name(),
-                                                style: .cancel, handler: nil))
-        alertController.addAction(UIAlertAction(title: R.string.localizable.yes_name(),
-                                                style: .destructive) { action in
-                                                    self.rawBodyTextView.text = ""
-        })
-        self.present(alertController, animated: true, completion: nil)
     }
     
 }
