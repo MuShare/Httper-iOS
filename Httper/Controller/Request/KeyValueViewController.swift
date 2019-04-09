@@ -67,13 +67,21 @@ class KeyValueViewController: BaseViewController<KeyValueViewModel> {
 }
 
 extension KeyValueViewController: KeyValueTableViewCellDelegate {
-    
+
     func keyValueUpdated(_ keyValue: KeyValue) {
         viewModel.update(keyValue: keyValue)
     }
     
     func cellShouldRemoved(by identifier: String) {
         viewModel.remove(by: identifier)
+    }
+    
+    func editingDidBegin(for identifier: String) {
+        
+    }
+    
+    func editingDidEnd(for identifier: String) {
+        
     }
     
 }
