@@ -86,7 +86,7 @@ class MainViewController: UITabBarController {
         super.viewDidLoad()
         
         delegate = self
-
+        
         tabBar.barTintColor = UIColor(hex: 0x42474b)
         tabBar.tintColor = UIColor(hex: 0xffffff)
         
