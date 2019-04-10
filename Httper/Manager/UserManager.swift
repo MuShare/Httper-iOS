@@ -97,7 +97,7 @@ class UserManager {
         dao = DaoManager.shared
     }
     
-    func pullUser(_ completionHandler: ((Bool) -> Void)?) {
+    func pullUser(_ completionHandler: ((Bool) -> Void)? = nil) {
         Alamofire.request(createUrl("api/user"),
                           method: .get,
                           parameters: nil,
