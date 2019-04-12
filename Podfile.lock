@@ -57,6 +57,9 @@ PODS:
   - RxAlertViewable (0.5.1):
     - RxCocoa (~> 4.4)
     - RxSwift (~> 4.4)
+  - RxBinding (0.1.1):
+    - RxCocoa (~> 4.5)
+    - RxSwift (~> 4.5)
   - RxCocoa (4.5.0):
     - RxSwift (>= 4.4.2, ~> 4.4)
   - RxDataSources (3.1.0):
@@ -101,6 +104,7 @@ DEPENDENCIES:
   - Reusable
   - RxAlamofire
   - RxAlertViewable
+  - RxBinding
   - RxCocoa
   - RxDataSources
   - RxFlow
@@ -141,6 +145,7 @@ SPEC REPOS:
     - Reusable
     - RxAlamofire
     - RxAlertViewable
+    - RxBinding
     - RxCocoa
     - RxDataSources
     - RxFlow
@@ -190,6 +195,7 @@ SPEC CHECKSUMS:
   Reusable: 188be1a54ac0691bc66e5bb24ec6eb91971b315b
   RxAlamofire: ed65f451f5a9a59419b0b9e705043dc01410edd9
   RxAlertViewable: 42241f15be83eaeb2171744b47441e5ae23b0197
+  RxBinding: 6be1d63cb1e24927fe153fd8f0c2d73519bc59ce
   RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
   RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
   RxFlow: 78df76493bd7fc6a0181014cc2be3f29a2cd54fb
@@ -204,6 +210,6 @@ SPEC CHECKSUMS:
   "UIImageView+Extension": bc26c60a9c8cd6fb515ae1e37377a6f0988e76d8
   "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
 
-PODFILE CHECKSUM: bb159f26c333f71af1f36aa903b83bb7abd1e92f
+PODFILE CHECKSUM: a1d560acbad3a0508e53667c1af2a889c530161d
 
 COCOAPODS: 1.6.1

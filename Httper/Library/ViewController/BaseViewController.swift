@@ -43,15 +43,3 @@ class BaseViewController<ViewModel: BaseViewModel>: CustomNavigationBarViewContr
 extension BaseViewController: NVActivityIndicatorViewable {}
 
 extension BaseViewController: RxAlertViewable {}
-
-extension BaseViewController {
-    
-    func bind<T, O>(_ observable: Observable<T>, to observer: O) where O: ObserverType, O.E == T {
-        observable.bind(to: observer).disposed(by: disposeBag)
-    }
-    
-    func twoWayBind<T>(_ behaviorRelay: BehaviorRelay<T>, to property: ControlProperty<T>) {
-        behaviorRelay.twoWayBind(to: property).disposed(by: disposeBag)
-    }
-    
-}

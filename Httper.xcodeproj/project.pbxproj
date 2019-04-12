@@ -11,7 +11,6 @@
 		77271CB021E747D30072E007 /* SaveToProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77271CAF21E747D30072E007 /* SaveToProjectViewController.swift */; };
 		77271CB221E747FB0072E007 /* SaveToProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77271CB121E747FB0072E007 /* SaveToProjectViewModel.swift */; };
 		77271CB421E74DE60072E007 /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77271CB321E74DE60072E007 /* ProjectTableViewCell.swift */; };
-		772F8D6E21F6D07400858714 /* BehaviorRelay+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772F8D6D21F6D07400858714 /* BehaviorRelay+Extension.swift */; };
 		772F8D7021F6D12300858714 /* Eruka+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772F8D6F21F6D12300858714 /* Eruka+Rx.swift */; };
 		77396287225C33EE0091C669 /* ProjectNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77396286225C33EE0091C669 /* ProjectNameViewModel.swift */; };
 		77396289225C43080091C669 /* Observable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77396288225C43080091C669 /* Observable+Extension.swift */; };
@@ -42,7 +41,6 @@
 		77CDA18C222E13FE0063C472 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDA188222E13FE0063C472 /* BaseViewModel.swift */; };
 		77CDA18D222E13FE0063C472 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDA189222E13FE0063C472 /* BaseNavigationController.swift */; };
 		77CDA18E222E13FE0063C472 /* CustomNavigationBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDA18A222E13FE0063C472 /* CustomNavigationBarViewController.swift */; };
-		77CDA190222E14DD0063C472 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDA18F222E14DD0063C472 /* Operators.swift */; };
 		77CDA192222E1CB90063C472 /* NVActivityIndicatorViewable+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDA191222E1CB90063C472 /* NVActivityIndicatorViewable+Rx.swift */; };
 		77D6A7ED2186AA4500A65283 /* DeleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D6A7EC2186AA4500A65283 /* DeleteTableViewCell.swift */; };
 		77F3995F215373600016978E /* KeyValueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F3995E215373600016978E /* KeyValueViewController.swift */; };
@@ -146,7 +144,6 @@
 		77271CAF21E747D30072E007 /* SaveToProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveToProjectViewController.swift; sourceTree = "<group>"; };
 		77271CB121E747FB0072E007 /* SaveToProjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveToProjectViewModel.swift; sourceTree = "<group>"; };
 		77271CB321E74DE60072E007 /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
-		772F8D6D21F6D07400858714 /* BehaviorRelay+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BehaviorRelay+Extension.swift"; sourceTree = "<group>"; };
 		772F8D6F21F6D12300858714 /* Eruka+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Eruka+Rx.swift"; sourceTree = "<group>"; };
 		77396286225C33EE0091C669 /* ProjectNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectNameViewModel.swift; sourceTree = "<group>"; };
 		77396288225C43080091C669 /* Observable+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observable+Extension.swift"; sourceTree = "<group>"; };
@@ -177,7 +174,6 @@
 		77CDA188222E13FE0063C472 /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		77CDA189222E13FE0063C472 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		77CDA18A222E13FE0063C472 /* CustomNavigationBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarViewController.swift; sourceTree = "<group>"; };
-		77CDA18F222E14DD0063C472 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 		77CDA191222E1CB90063C472 /* NVActivityIndicatorViewable+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NVActivityIndicatorViewable+Rx.swift"; sourceTree = "<group>"; };
 		77D6A7EC2186AA4500A65283 /* DeleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTableViewCell.swift; sourceTree = "<group>"; };
 		77F3995E215373600016978E /* KeyValueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueViewController.swift; sourceTree = "<group>"; };
@@ -409,7 +405,6 @@
 				E41642D21DF970CE00F0339E /* CommonTool.swift */,
 				E4305A371E2E5FF900010B52 /* Global.swift */,
 				E45D3E851E21296F0002E1F2 /* InternetResponse.swift */,
-				77CDA18F222E14DD0063C472 /* Operators.swift */,
 				77F39965215377790016978E /* SingleSection.swift */,
 				E47FDC5F1E3861AF00251EEC /* Versions.swift */,
 			);
@@ -478,7 +473,6 @@
 		774C75EC20D793D000DBD9EC /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				772F8D6D21F6D07400858714 /* BehaviorRelay+Extension.swift */,
 				772F8D6F21F6D12300858714 /* Eruka+Rx.swift */,
 				77513CDC216DFDD900929068 /* M80AttributedLabel+Rx.swift */,
 				77CDA191222E1CB90063C472 /* NVActivityIndicatorViewable+Rx.swift */,
@@ -774,7 +768,7 @@
 			);
 			name = R.swift;
 			outputPaths = (
-				"$SRCROOT/$TARGET_NAME/R.generated.swift",
+				$SRCROOT/$TARGET_NAME/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
@@ -811,6 +805,7 @@
 				"${BUILT_PRODUCTS_DIR}/Reusable/Reusable.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAlertViewable/RxAlertViewable.framework",
+				"${BUILT_PRODUCTS_DIR}/RxBinding/RxBinding.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxFlow/RxFlow.framework",
@@ -851,6 +846,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reusable.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlertViewable.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBinding.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxFlow.framework",
@@ -966,7 +962,6 @@
 				E48553341DF9B2BF00A1DB60 /* RawViewController.swift in Sources */,
 				E48553321DF9B2AF00A1DB60 /* PrettyViewController.swift in Sources */,
 				E49BC0B01E4227BA00241004 /* ProjectDao.swift in Sources */,
-				772F8D6E21F6D07400858714 /* BehaviorRelay+Extension.swift in Sources */,
 				E49F680621495EE300646892 /* ProjectsViewModel.swift in Sources */,
 				E46077611E126948002DE839 /* PingViewController.swift in Sources */,
 				77CDA18C222E13FE0063C472 /* BaseViewModel.swift in Sources */,
@@ -982,7 +977,6 @@
 				E40B257E1DF44BD20039CA8D /* MainViewController.swift in Sources */,
 				E49F67FA2149568B00646892 /* SettingsTableViewController.swift in Sources */,
 				E49BC0AD1E4226F400241004 /* Request+CoreDataClass.swift in Sources */,
-				77CDA190222E14DD0063C472 /* Operators.swift in Sources */,
 				E4BBC9931E4DCCBB002107DF /* NameViewController.swift in Sources */,
 				E49F680221495BA500646892 /* RequestViewModel.swift in Sources */,
 				772F8D7021F6D12300858714 /* Eruka+Rx.swift in Sources */,
