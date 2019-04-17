@@ -9,7 +9,7 @@
 import UIKit
 import Reachability
 
-class PingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
+class PingViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addressTextField: UITextField!
@@ -37,48 +37,8 @@ class PingViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    // MARK: - Table view data source
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0.01
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if items.count == 0 {
-            return 0
-        }
-        return (pingService == nil) ? items.count + 1 : items.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell!
-        if indexPath.row < items.count {
-            cell = tableView.dequeueReusableCell(withIdentifier: "pingResultIdentifier", for: indexPath)
-            let bytesLabel = cell.viewWithTag(1) as! UILabel
-            let reqttlLabel = cell.viewWithTag(2) as! UILabel
-            let timeLabel = cell.viewWithTag(3) as! UILabel
-            let item = items[indexPath.row]
-            let address = (item.ipAddress == nil) ? "unknown" : item.ipAddress as String
-            bytesLabel.text = "\(item.dateBytesLength) bytes from \(address)"
-            reqttlLabel.text = "icmp_req = \(item.icmpSequence), ttl = \(item.timeToLive)"
-            timeLabel.text = "\(String(format: "%.2f", item.timeMilliseconds))ms"
-        } else {
-            cell = tableView.dequeueReusableCell(withIdentifier: "pingStatisticsIdentifier", for: indexPath)
-            let statisticsLabel = cell.viewWithTag(1) as! UILabel
-            statisticsLabel.text = STDPingItem.statistics(withPingItems: items)
-        }
-        return cell
-    }
-    
-    // MARK: - UITextFieldDelegate
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == addressTextField {
-            startPing(controlBarButtonItem)
-        }
-        return true
-    }
-    
     // MARK: - Action
-    @IBAction func startPing(_ sender: Any) {
+    @IBAction func startPing(_ sender: UITextField) {
         if addressTextField.isFirstResponder {
             addressTextField.resignFirstResponder()
         }
@@ -121,4 +81,54 @@ class PingViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
 
+}
+
+extension PingViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.01
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if items.count == 0 {
+            return 0
+        }
+        return (pingService == nil) ? items.count + 1 : items.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: UITableViewCell!
+        if indexPath.row < items.count {
+            cell = tableView.dequeueReusableCell(withIdentifier: "pingResultIdentifier", for: indexPath)
+            let bytesLabel = cell.viewWithTag(1) as! UILabel
+            let reqttlLabel = cell.viewWithTag(2) as! UILabel
+            let timeLabel = cell.viewWithTag(3) as! UILabel
+            let item = items[indexPath.row]
+            let address = (item.ipAddress == nil) ? "unknown" : item.ipAddress as String
+            bytesLabel.text = "\(item.dateBytesLength) bytes from \(address)"
+            reqttlLabel.text = "icmp_req = \(item.icmpSequence), ttl = \(item.timeToLive)"
+            timeLabel.text = "\(String(format: "%.2f", item.timeMilliseconds))ms"
+        } else {
+            cell = tableView.dequeueReusableCell(withIdentifier: "pingStatisticsIdentifier", for: indexPath)
+            let statisticsLabel = cell.viewWithTag(1) as! UILabel
+            statisticsLabel.text = STDPingItem.statistics(withPingItems: items)
+        }
+        return cell
+    }
+    
+}
+
+extension PingViewController: UITableViewDelegate {
+    
+}
+
+extension PingViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == addressTextField {
+            startPing(addressTextField)
+        }
+        return true
+    }
+    
 }
