@@ -156,7 +156,7 @@ class RequestViewController: BaseViewController<RequestViewModel>, RxKeyboardVie
         viewModel.title ~> rx.title ~ disposeBag
         viewModel.requestMethod ~> requestMethodButton.rx.title(for: .normal) ~ disposeBag
         viewModel.keyboardHeight ~> rx.keyboardHeight ~ disposeBag
-        viewModel.url <~> urlTextField.rx.text.orEmpty ~ disposeBag
+        viewModel.url <~> urlTextField.rx.text ~ disposeBag
         viewModel.requestProtocol <~> protocolsSegmentedControl.rx.selectedSegmentIndex ~ disposeBag
     }
     

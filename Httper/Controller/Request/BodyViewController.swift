@@ -32,7 +32,7 @@ class BodyViewController: BaseViewController<BodyViewModel> {
         view.addSubview(rawBodyTextView)
         createConstraints()
         
-        viewModel.body <~> rawBodyTextView.rx.text.orEmpty ~ disposeBag
+        viewModel.body <~> rawBodyTextView.rx.text ~ disposeBag
     }
     
     private func createConstraints() {

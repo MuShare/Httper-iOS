@@ -62,7 +62,7 @@ PODS:
     - RxSwift (~> 4.5)
   - RxCocoa (4.5.0):
     - RxSwift (>= 4.4.2, ~> 4.4)
-  - RxController (0.1):
+  - RxController (0.2):
     - RxCocoa (~> 4.5)
     - RxFlow (~> 2.1)
     - RxSwift (~> 4.5)
@@ -207,7 +207,7 @@ SPEC CHECKSUMS:
   RxAlertViewable: 42241f15be83eaeb2171744b47441e5ae23b0197
   RxBinding: 6be1d63cb1e24927fe153fd8f0c2d73519bc59ce
   RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
-  RxController: 34578d14304a436394ff8e60b78cd97d354c2962
+  RxController: a2cbe88b66472830a1191d2c3cae0d2a570ae84b
   RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
   RxFlow: 78df76493bd7fc6a0181014cc2be3f29a2cd54fb
   RxKeyboard: 4f782303f499f41577b41c96c6a9a5d7acd51a47

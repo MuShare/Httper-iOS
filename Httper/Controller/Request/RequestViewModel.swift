@@ -72,15 +72,17 @@ class RequestViewModel: BaseViewModel {
     let methods = ["GET", "POST", "HEAD", "PUT", "DELETE", "CONNECT", "OPTIONS", "TRACE", "PATCH"]
     
     let requestMethod = BehaviorRelay<String>(value: "GET")
-    let url = BehaviorRelay<String>(value: "")
+    let url = BehaviorRelay<String?>(value: nil)
     let requestProtocol = BehaviorRelay<Int>(value: 0)
     
     var requestData: RequestData {
-        return RequestData(method: requestMethod.value,
-                           url: protocols[requestProtocol.value] + "://" + url.value,
-                           headers: Array(headersViewModel.results.values),
-                           parameters: Array(parametersViewModel.results.values),
-                           body: bodyViewModel.body.value)
+        return RequestData(
+            method: requestMethod.value,
+            url: protocols[requestProtocol.value] + "://" + (url.value ?? ""),
+            headers: Array(headersViewModel.results.values),
+            parameters: Array(parametersViewModel.results.values),
+            body: bodyViewModel.body.value ?? ""
+        )
     }
     
     var title: Observable<String> {
@@ -105,7 +107,7 @@ class RequestViewModel: BaseViewModel {
     }
     
     func sendRequest() {
-        guard !url.value.isEmpty else {
+        guard let url = url.value, !url.isEmpty else {
             alert.onNext(.warning(R.string.localizable.url_empty()))
             return
         }
@@ -113,7 +115,7 @@ class RequestViewModel: BaseViewModel {
     }
     
     func saveToProject() {
-        guard !url.value.isEmpty else {
+        guard let url = url.value, !url.isEmpty else {
             alert.onNext(.warning(R.string.localizable.url_empty()))
             return
         }

@@ -11,6 +11,6 @@ import RxCocoa
 
 class BodyViewModel: BaseViewModel {
     
-    let body = BehaviorRelay<String>(value: "")
+    let body = BehaviorRelay<String?>(value: nil)
     
 }
