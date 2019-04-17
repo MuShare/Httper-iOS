@@ -7,20 +7,12 @@
 //
 
 import RxSwift
-import RxCocoa
-import RxFlow
 import RxAlertViewable
+import RxController
 
-class BaseViewModel: NSObject, Stepper {
-
-    let steps = PublishRelay<Step>()
-    let disposeBag = DisposeBag()
+class BaseViewModel: RxViewModel {
     
     let alert = PublishSubject<RxAlert>()
     let loading = PublishSubject<Bool>()
-    
-    deinit {
-        AppLog.debug("[DEINIT View Model] \(type(of: self))")
-    }
     
 }
