@@ -10,6 +10,7 @@ import UIKit
 import Reusable
 
 fileprivate struct Const {
+    
     struct bytes {
         static let marginLeft = 15
         static let marginTop = 10
@@ -22,6 +23,7 @@ fileprivate struct Const {
     struct time {
         static let marginRight = 15
     }
+    
 }
 
 class PingTableViewCell: UITableViewCell, Reusable {
@@ -29,14 +31,14 @@ class PingTableViewCell: UITableViewCell, Reusable {
     private lazy var bytesLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 15)
+        label.font = UIFont.systemFont(ofSize: 13)
         return label
     }()
     
     private lazy var reqttlLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 15)
+        label.font = UIFont.systemFont(ofSize: 13)
         return label
     }()
     
@@ -51,9 +53,11 @@ class PingTableViewCell: UITableViewCell, Reusable {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        backgroundColor = .clear
         addSubview(bytesLabel)
         addSubview(reqttlLabel)
         addSubview(timeLabel)
+        createConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -77,6 +81,18 @@ class PingTableViewCell: UITableViewCell, Reusable {
             $0.centerY.equalToSuperview()
         }
         
+    }
+    
+    var pingItem: STDPingItem? {
+        didSet {
+            guard let item = pingItem else {
+                return
+            }
+            let address = (item.ipAddress == nil) ? "unknown" : item.ipAddress as String
+            bytesLabel.text = "\(item.dateBytesLength) bytes from \(address)"
+            reqttlLabel.text = "icmp_req = \(item.icmpSequence), ttl = \(item.timeToLive)"
+            timeLabel.text = "\(String(format: "%.2f", item.timeMilliseconds))ms"
+        }
     }
     
 }

@@ -22,15 +22,19 @@ PODS:
     - Bolts (~> 1.9)
   - FBSDKLoginKit (4.44.1):
     - FBSDKCoreKit
-  - Fuzi (2.2.1)
+  - Fuzi (3.0.0)
   - Kanna (5.0.0)
   - Kingfisher (5.3.1)
   - M80AttributedLabel (1.9.5)
-  - MGFormatter (0.3.1):
-    - AttributedTextView (~> 1.2)
-    - Fuzi (~> 2)
-    - SnapKit (~> 4)
-    - SwiftyJSON (~> 4)
+  - MGFormatter (0.4):
+    - AttributedTextView (~> 1.3)
+    - Fuzi (~> 3)
+    - MGFormatter/Core (= 0.4)
+    - SwiftyJSON (~> 4.3)
+  - MGFormatter/Core (0.4):
+    - AttributedTextView (~> 1.3)
+    - Fuzi (~> 3)
+    - SwiftyJSON (~> 4.3)
   - MGKeyboardAccessory (0.5):
     - MGKeyboardAccessory/Core (= 0.5)
   - MGKeyboardAccessory/Core (0.5)
@@ -57,7 +61,7 @@ PODS:
   - RxAlertViewable (0.5.1):
     - RxCocoa (~> 4.4)
     - RxSwift (~> 4.4)
-  - RxBinding (0.1.1):
+  - RxBinding (0.2):
     - RxCocoa (~> 4.5)
     - RxSwift (~> 4.5)
   - RxCocoa (4.5.0):
@@ -190,11 +194,11 @@ SPEC CHECKSUMS:
   FacebookLogin: 658b0569961a081a0890f5f4dbf69ced00657d9e
   FBSDKCoreKit: a823ae35bdb60ebb8d7a7e51abe7c5d87d2bfced
   FBSDKLoginKit: 54ae59987f2a8703021557c90a9aebb9e5c2bef6
-  Fuzi: 3e6c73359d84a92376763abbaf8ced4d49c0f4ea
+  Fuzi: a758e57fab9fbec6fd218ea7f2e00aa79325a93a
   Kanna: a32875df62975f8f4b871e933b4ea1a5c3b8be0f
   Kingfisher: d9e7e0b209b59b8f9873aa2f37654e81a7beea51
   M80AttributedLabel: d1177fbd7451d134794b50e91ca8b0cb167ef530
-  MGFormatter: 5954840af327baa597dd6744fc36432f98d26d06
+  MGFormatter: 32a94fea1478c9df39783dfbf692b0238a896a15
   MGKeyboardAccessory: a9f30a9c1fd158b1895aada9aab905a3c4b93581
   MGSelector: 8feb6c39b87eb9a1af395fba334a57eb4d7c84dc
   NVActivityIndicatorView: b19ddab2576f805cbe0fb2306cba3476e09a1dea
@@ -205,7 +209,7 @@ SPEC CHECKSUMS:
   Reusable: 188be1a54ac0691bc66e5bb24ec6eb91971b315b
   RxAlamofire: ed65f451f5a9a59419b0b9e705043dc01410edd9
   RxAlertViewable: 42241f15be83eaeb2171744b47441e5ae23b0197
-  RxBinding: 6be1d63cb1e24927fe153fd8f0c2d73519bc59ce
+  RxBinding: df5d06bbba41f17842dd88d9c355716edd843b02
   RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
   RxController: a2cbe88b66472830a1191d2c3cae0d2a570ae84b
   RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3

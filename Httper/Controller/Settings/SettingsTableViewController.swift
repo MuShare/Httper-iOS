@@ -62,6 +62,9 @@ class SettingsTableViewController: UITableViewController {
         }
         var url: String? = nil
         switch cell.reuseIdentifier {
+        case R.reuseIdentifier.ping.identifier:
+            let pingViewController = PingViewController(viewModel: .init())
+            navigationController?.pushViewController(pingViewController, animated: true)
         case R.reuseIdentifier.appstore.identifier:
             url = "itms-apps://itunes.apple.com/app/httper/id1166884043"
         case R.reuseIdentifier.github.identifier:

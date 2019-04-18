@@ -1088,7 +1088,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="50" id="W1z-Z4-pIW">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ping" rowHeight="50" id="W1z-Z4-pIW">
                                         <rect key="frame" x="0.0" y="250" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="W1z-Z4-pIW" id="5mx-u6-3OZ">
@@ -1109,9 +1109,6 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.26071092489999997" green="0.27878823879999998" blue="0.29450204969999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <segue destination="uKh-Sv-K10" kind="push" id="0k4-le-tl9"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="50" id="2Ub-dT-a3s">
                                         <rect key="frame" x="0.0" y="300" width="375" height="50"/>
@@ -1368,7 +1365,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Domain Name / IP Address" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="04H-f2-8bC">
-                                <rect key="frame" x="54" y="72" width="305" height="40"/>
+                                <rect key="frame" x="54" y="28" width="305" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="C4z-sB-KUC"/>
                                 </constraints>
@@ -1385,17 +1382,17 @@
                                 </connections>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="global" translatesAutoresizingMaskIntoConstraints="NO" id="PnD-pQ-LV8">
-                                <rect key="frame" x="16" y="77" width="30" height="30"/>
+                                <rect key="frame" x="16" y="33" width="30" height="30"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sth-MW-RUu">
-                                <rect key="frame" x="15" y="120" width="360" height="1"/>
+                                <rect key="frame" x="15" y="76" width="360" height="1"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="0is-Wf-dve"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Hyk-Ol-PXJ">
-                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
+                                <rect key="frame" x="0.0" y="76" width="375" height="591"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>

@@ -23,6 +23,8 @@
 		777BE32C216C83D300D70427 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777BE32B216C83D300D70427 /* RequestManager.swift */; };
 		7782A5F822697497002B6AE2 /* PingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7782A5F722697497002B6AE2 /* PingViewModel.swift */; };
 		7782A5FA226977E4002B6AE2 /* PingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7782A5F9226977E4002B6AE2 /* PingTableViewCell.swift */; };
+		779B060F2269A18300F5B225 /* UIBarButtonItem+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779B060E2269A18300F5B225 /* UIBarButtonItem+Rx.swift */; };
+		779B06112269A8CE00F5B225 /* UITextField+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779B06102269A8CE00F5B225 /* UITextField+Rx.swift */; };
 		77A530702165AF070008CC56 /* RequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A5306F2165AF070008CC56 /* RequestData.swift */; };
 		77A530722165BEE50008CC56 /* ResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A530712165BEE50008CC56 /* ResultViewModel.swift */; };
 		77A530742165C3F20008CC56 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A530732165C3F20008CC56 /* String+Extension.swift */; };
@@ -159,6 +161,8 @@
 		777BE32B216C83D300D70427 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		7782A5F722697497002B6AE2 /* PingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingViewModel.swift; sourceTree = "<group>"; };
 		7782A5F9226977E4002B6AE2 /* PingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingTableViewCell.swift; sourceTree = "<group>"; };
+		779B060E2269A18300F5B225 /* UIBarButtonItem+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Rx.swift"; sourceTree = "<group>"; };
+		779B06102269A8CE00F5B225 /* UITextField+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Rx.swift"; sourceTree = "<group>"; };
 		77A5306F2165AF070008CC56 /* RequestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestData.swift; sourceTree = "<group>"; };
 		77A530712165BEE50008CC56 /* ResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewModel.swift; sourceTree = "<group>"; };
 		77A530732165C3F20008CC56 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -487,10 +491,12 @@
 				77396288225C43080091C669 /* Observable+Extension.swift */,
 				77CDA183222E12B80063C472 /* RxFlow+Extension.swift */,
 				77A530732165C3F20008CC56 /* String+Extension.swift */,
+				779B060E2269A18300F5B225 /* UIBarButtonItem+Rx.swift */,
 				E409869F215523A2006CCC04 /* UIColor+Extension.swift */,
 				77A530792165C7580008CC56 /* UIImage+Extension.swift */,
 				77A530772165C6BF0008CC56 /* UINavigationBar+Extension.swift */,
 				E40986A0215523A2006CCC04 /* UITableView+Extension.swift */,
+				779B06102269A8CE00F5B225 /* UITextField+Rx.swift */,
 				E411A309215286C5004ADBAE /* UIView+Extension.swift */,
 				E40986A1215523A3006CCC04 /* UIViewController+Extension.swift */,
 			);
@@ -979,11 +985,13 @@
 				E46077611E126948002DE839 /* PingViewController.swift in Sources */,
 				77CDA18C222E13FE0063C472 /* BaseViewModel.swift in Sources */,
 				E49BC0AB1E4226F400241004 /* Project+CoreDataClass.swift in Sources */,
+				779B06112269A8CE00F5B225 /* UITextField+Rx.swift in Sources */,
 				77D6A7ED2186AA4500A65283 /* DeleteTableViewCell.swift in Sources */,
 				E4798BDF1E2BC92600DCD4E2 /* EditingViewController.swift in Sources */,
 				E4007EB91DFEE7B7002A87FA /* BodyViewController.swift in Sources */,
 				77F39968215381700016978E /* BodyViewModel.swift in Sources */,
 				E4EC89D21E129FA10072ACF3 /* STDPingServices.m in Sources */,
+				779B060F2269A18300F5B225 /* UIBarButtonItem+Rx.swift in Sources */,
 				E4EC89D41E12A00C0072ACF3 /* IPAddressTableViewController.swift in Sources */,
 				E4305A471E34F65000010B52 /* DaoManager.swift in Sources */,
 				E42A713D214961780070D8FC /* SettingsViewModel.swift in Sources */,
