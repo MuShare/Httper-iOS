@@ -9,11 +9,41 @@
 import UIKit
 import Reachability
 
-class PingViewController: UIViewController {
+fileprivate struct Const {
+    struct icon {
+        static let size = 30
+        static let margin = 15
+    }
     
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var addressTextField: UITextField!
-    @IBOutlet weak var controlBarButtonItem: UIBarButtonItem!
+    struct address {
+        static let height = 40
+        static let margin = 15
+    }
+}
+
+class PingViewController: BaseViewController<PingViewModel> {
+    
+    private lazy var controlBarButtonItem: UIBarButtonItem = {
+        let barButtonItem = UIBarButtonItem()
+        
+        return barButtonItem
+    }()
+    
+    private lazy var iconImageView = UIImageView(image: R.image.global())
+    
+    private lazy var addressTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Domain Name"
+        textField.becomeFirstResponder()
+        return textField
+    }()
+    
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.hideFooterView()
+        tableView.register(cellType: PingTableViewCell.self)
+        return tableView
+    }()
 
     var pingService: STDPingServices?
     var items: [STDPingItem] = []
@@ -22,11 +52,13 @@ class PingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        addressTextField.becomeFirstResponder()
+    
+        navigationItem.rightBarButtonItem = controlBarButtonItem
+        view.backgroundColor = .background
+        view.addSubview(iconImageView)
+        view.addSubview(addressTextField)
+        view.addSubview(tableView)
+        createConstraints()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -35,6 +67,28 @@ class PingViewController: UIViewController {
         if pingService != nil {
             pingService?.cancel()
         }
+    }
+    
+    private func createConstraints() {
+        
+        iconImageView.snp.makeConstraints {
+            $0.size.equalTo(Const.icon.size)
+            $0.top.equalTo(view.safeArea.top).offset(Const.icon.margin)
+            $0.left.equalToSuperview().offset(Const.icon.margin)
+        }
+        
+        addressTextField.snp.makeConstraints {
+            $0.height.equalTo(Const.address.height)
+            $0.centerY.equalTo(iconImageView)
+            $0.left.equalTo(iconImageView.snp.left).offset(Const.address.margin)
+            $0.right.equalToSuperview().offset(-Const.address.margin)
+        }
+        
+        tableView.snp.makeConstraints {
+            $0.left.bottom.right.equalToSuperview()
+            $0.top.equalTo(addressTextField.snp.bottom).offset(Const.address.margin)
+        }
+        
     }
     
     // MARK: - Action
@@ -63,20 +117,22 @@ class PingViewController: UIViewController {
             controlBarButtonItem.image = UIImage.init(named: "stop")
             pingService = STDPingServices.startPingAddress(addressTextField.text!, callbackHandler: { [weak self] pingItem, pingItems in
                 guard let `self` = self else { return }
-                if pingItem?.status != STDPingStatus.finished, let items = pingItems as? [STDPingItem] {
-                    self.items = items
-                    let indexPath = IndexPath(row: self.items.count - 1, section: 0)
-                    self.tableView.insertRows(at: [indexPath], with: .automatic)
-                    self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
-                } else {
-                    self.pingService = nil
-                    let indexPath = IndexPath(row: self.items.count, section: 0)
-                    self.tableView.insertRows(at: [indexPath], with: .automatic)
-                    self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
-                }
+                print(pingItem)
+                print(pingItems)
+//                if pingItem?.status != STDPingStatus.finished, let items = pingItems as? [STDPingItem] {
+//                    self.items = items
+//                    let indexPath = IndexPath(row: self.items.count - 1, section: 0)
+//                    self.tableView.insertRows(at: [indexPath], with: .automatic)
+//                    self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+//                } else {
+//                    self.pingService = nil
+//                    let indexPath = IndexPath(row: self.items.count, section: 0)
+//                    self.tableView.insertRows(at: [indexPath], with: .automatic)
+//                    self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+//                }
             })
         } else {
-            controlBarButtonItem.image = UIImage.init(named: "start")
+            controlBarButtonItem.image = R.image.start()
             pingService?.cancel()
         }
     }
