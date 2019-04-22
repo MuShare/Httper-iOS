@@ -54,6 +54,10 @@ class PingViewModel: BaseViewModel {
         return pingItems.map { AnimatableSingleSection.create($0) }
     }
     
+    var update: Observable<Void> {
+        return pingItemSection.map { _ in }
+    }
+    
     func controlPing() {
         if reachability.connection == .none {
             alert.onNext(.customTip(
@@ -79,6 +83,12 @@ class PingViewModel: BaseViewModel {
                 }
             }
         } else {
+            if pingItems.value.count > 0 {
+                alert.onNext(.customTip(
+                    title: "Ping Result",
+                    message: STDPingItem.statistics(withPingItems: pingItems.value)
+                ))
+            }
             pingService?.cancel()
         }
     }

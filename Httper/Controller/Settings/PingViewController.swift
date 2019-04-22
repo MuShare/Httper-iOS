@@ -57,7 +57,7 @@ class PingViewController: BaseViewController<PingViewModel> {
         tableView.register(cellType: PingTableViewCell.self)
         return tableView
     }()
-
+    
     private lazy var dataSource = TableViewAnimatedSingleSectionDataSource<STDPingItem>(configureCell: { (_, tableView, indexPath, pingItem) in
         let cell = tableView.dequeueReusableCell(for: indexPath) as PingTableViewCell
         cell.pingItem = pingItem
@@ -74,12 +74,14 @@ class PingViewController: BaseViewController<PingViewModel> {
         view.addSubview(tableView)
         createConstraints()
         
-        disposeBag
-            ~ viewModel.title ~> rx.title
-            ~ viewModel.icon ~> controlBarButtonItem.rx.image
-            ~ viewModel.isValidate ~> controlBarButtonItem.rx.isEnabled
-            ~ viewModel.address <~> addressTextField.rx.text
-            ~ viewModel.pingItemSection ~> tableView.rx.items(dataSource: dataSource)
+        disposeBag ~ [
+            viewModel.title ~> rx.title,
+            viewModel.icon ~> controlBarButtonItem.rx.image,
+            viewModel.isValidate ~> controlBarButtonItem.rx.isEnabled,
+            viewModel.address <~> addressTextField.rx.text,
+            viewModel.pingItemSection ~> tableView.rx.items(dataSource: dataSource),
+            viewModel.update ~> tableView.rx.scrollToBottom
+        ]
     }
     
     private func createConstraints() {
@@ -98,8 +100,9 @@ class PingViewController: BaseViewController<PingViewModel> {
         }
         
         tableView.snp.makeConstraints {
-            $0.left.bottom.right.equalToSuperview()
+            $0.left.right.equalToSuperview()
             $0.top.equalTo(addressTextField.snp.bottom).offset(Const.address.margin)
+            $0.bottom.equalTo(view.snp.bottom)
         }
         
     }

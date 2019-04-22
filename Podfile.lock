@@ -61,7 +61,7 @@ PODS:
   - RxAlertViewable (0.5.1):
     - RxCocoa (~> 4.4)
     - RxSwift (~> 4.4)
-  - RxBinding (0.2):
+  - RxBinding (0.3):
     - RxCocoa (~> 4.5)
     - RxSwift (~> 4.5)
   - RxCocoa (4.5.0):
@@ -209,7 +209,7 @@ SPEC CHECKSUMS:
   Reusable: 188be1a54ac0691bc66e5bb24ec6eb91971b315b
   RxAlamofire: ed65f451f5a9a59419b0b9e705043dc01410edd9
   RxAlertViewable: 42241f15be83eaeb2171744b47441e5ae23b0197
-  RxBinding: df5d06bbba41f17842dd88d9c355716edd843b02
+  RxBinding: bf62f59dfb4ff1b84e3d1c293f9a9bdd8ce92280
   RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
   RxController: a2cbe88b66472830a1191d2c3cae0d2a570ae84b
   RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
