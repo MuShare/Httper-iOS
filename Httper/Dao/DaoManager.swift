@@ -9,18 +9,12 @@
 import CoreData
 
 class DaoManager: NSObject {
-
-    var requestDao: RequestDao!
-    var projectDao: ProjectDao!
     
     static let shared = DaoManager()
     
-    override init() {
-        super.init()
-        requestDao = RequestDao(managedObjectContext)
-        projectDao = ProjectDao(managedObjectContext)
-    }
-    
+    lazy var requestDao = RequestDao(managedObjectContext)
+    lazy var projectDao = ProjectDao(managedObjectContext)
+
     // MARK: - Core Data stack
     
     lazy var applicationDocumentsDirectory: URL = {

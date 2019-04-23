@@ -14,8 +14,8 @@ class MainViewModel: BaseViewModel {
         steps.accept(MainStep.clearRequest)
     }
     
-    func addRequest() {
-        steps.accept(MainStep.addRequest)
+    func addProject() {
+        steps.accept(MainStep.addProject(MainStep.addProjectIsComplete))
     }
     
 }

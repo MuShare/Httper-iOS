@@ -17,7 +17,9 @@ class SaveToProjectViewModel: BaseViewModel {
     init(requestData: RequestData) {
         self.requestData = requestData
         super.init()
-        
+    }
+    
+    func syncProjects(completion: (() -> Void)? = nil) {
         SyncManager.shared.pullUpdatedProjects { [weak self] revision in
             // Pull successfully.
             if revision > 0 {
@@ -25,6 +27,7 @@ class SaveToProjectViewModel: BaseViewModel {
                 // Push local projects to server in background.
                 SyncManager.shared.pushLocalProjects(nil)
             }
+            completion?()
         }
     }
     
@@ -38,11 +41,29 @@ class SaveToProjectViewModel: BaseViewModel {
         guard index < projects.value.count else {
             return
         }
-        
+        loading.onNext(true)
+        let project = projects.value[index]
+        DaoManager.shared.requestDao.saveOrUpdate(
+            rid: nil,
+            update: nil,
+            revision: nil,
+            method: requestData.method,
+            url: requestData.url,
+            headers: requestData.headers,
+            parameters: requestData.parameters,
+            bodytype: "raw",
+            body: requestData.bodyData,
+            project: project
+        )
+        SyncManager.shared.pushLocalRequests { [weak self] _ in
+            guard let `self` = self else { return }
+            self.loading.onNext(false)
+            self.steps.accept(RequestStep.saveIsCompleted)
+        }
     }
     
     func addProject() {
-        steps.accept(RequestStep.addProject)
+        steps.accept(RequestStep.addProject(RequestStep.addProjectIsComplete))
     }
     
 }

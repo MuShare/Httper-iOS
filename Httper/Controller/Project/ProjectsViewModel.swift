@@ -13,12 +13,7 @@ class ProjectsViewModel: BaseViewModel {
     
     private let projects = BehaviorRelay<[Project]>(value: DaoManager.shared.projectDao.findAll())
     
-    override init() {
-        super.init()
-        syncProjects()
-    }
-    
-    func syncProjects(completion: (() -> ())? = nil) {
+    func syncProjects(completion: (() -> Void)? = nil) {
         // Pull remote projects from server
         SyncManager.shared.pullUpdatedProjects { [weak self] revision in
             // Pull successfully.

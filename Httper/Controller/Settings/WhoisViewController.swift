@@ -47,7 +47,7 @@ class WhoisViewController: UIViewController, UITextFieldDelegate {
     }
 
     // MARK: - Action
-    @IBAction func whois(_ sender: Any) {
+    @IBAction func whois(_ sender: UIBarButtonItem) {
         if domainTextField.isFirstResponder {
             domainTextField.resignFirstResponder()
         }

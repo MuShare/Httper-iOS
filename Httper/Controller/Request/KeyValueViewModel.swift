@@ -31,9 +31,15 @@ extension KeyValue: AnimatableModel {
     
 }
 
+enum KeyValueEditingState {
+    case begin(CGFloat)
+    case end
+}
+
 class KeyValueViewModel: BaseViewModel {
     
     let keyValues = BehaviorRelay<[KeyValue]>(value: [.empty])
+    let editingState = PublishSubject<KeyValueEditingState>()
     
     var results: [String: KeyValue] = [:]
     
@@ -61,4 +67,17 @@ class KeyValueViewModel: BaseViewModel {
     func update(keyValue: KeyValue) {
         results[keyValue.identifier] = keyValue
     }
+    
+    func index(for identifier: String) -> Int? {
+        return keyValues.value.firstIndex { $0.identifier == identifier }
+    }
+    
+    func beginEditing(at height: CGFloat) {
+        editingState.onNext(.begin(height))
+    }
+    
+    func endEditing() {
+        editingState.onNext(.end)
+    }
+    
 }

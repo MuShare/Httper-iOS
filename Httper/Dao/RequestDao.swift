@@ -12,7 +12,9 @@ import SwiftyJSON
 
 class RequestDao: DaoTemplate {
     
-    func saveOrUpdate(rid: String?, update: Int64?, revision: Int16?, method: String, url: String, headers: HTTPHeaders, parameters: Parameters, bodytype: String, body: NSData?, project: Project) -> Request {
+    @discardableResult func saveOrUpdate(rid: String?, update: Int64?, revision: Int16?, method: String,
+                      url: String, headers: HTTPHeaders, parameters: Parameters,
+                      bodytype: String, body: NSData?, project: Project) -> Request {
         var request: Request? = nil
         if rid != nil {
             request = self.getByRid(rid!)
@@ -40,16 +42,18 @@ class RequestDao: DaoTemplate {
     
     func syncUpdated(_ requestObject: JSON, project: Project) -> Request {
         let body = requestObject["body"].stringValue
-        return self.saveOrUpdate(rid: requestObject["rid"].stringValue,
-                              update: requestObject["updateAt"].int64Value,
-                              revision: requestObject["revision"].int16Value,
-                              method: requestObject["method"].stringValue,
-                              url: requestObject["url"].stringValue,
-                              headers: serializeJSON(requestObject["headers"].stringValue) as! HTTPHeaders,
-                              parameters: serializeJSON(requestObject["parameters"].stringValue) as! Parameters,
-                              bodytype: requestObject["bodyType"].stringValue,
-                              body: NSData.init(data: body.data(using: .utf8)!),
-                              project: project)
+        return saveOrUpdate(
+            rid: requestObject["rid"].stringValue,
+            update: requestObject["updateAt"].int64Value,
+            revision: requestObject["revision"].int16Value,
+            method: requestObject["method"].stringValue,
+            url: requestObject["url"].stringValue,
+            headers: serializeJSON(requestObject["headers"].stringValue) as! HTTPHeaders,
+            parameters: serializeJSON(requestObject["parameters"].stringValue) as! Parameters,
+            bodytype: requestObject["bodyType"].stringValue,
+            body: NSData.init(data: body.data(using: .utf8)!),
+            project: project
+        )
     }
     
     func findAll() -> [Request] {

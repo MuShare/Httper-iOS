@@ -86,7 +86,7 @@ class SyncManager {
         }
     }
     
-    func pushLocalRequests(_ completionHandler: ((Int) -> Void)?) {
+    func pushLocalRequests(_ completionHandler: ((Int) -> Void)? = nil) {
         let requests = dao.requestDao.findUnsynced()
         if requests.count == 0 {
             return
@@ -155,7 +155,7 @@ class SyncManager {
     }
     
     // Delete a request in persistent store and server.
-    func deleteRequest(_ request: Request, completionHandler: ((Int) -> Void)?) {
+    func deleteRequest(_ request: Request, completionHandler: ((Int) -> Void)? = nil) {
         // If rid is nil or token is nil, that means this request cannot sync with server
         // Just delete this request entity in local persistent store.
         if request.rid == nil && token() == nil {
@@ -294,7 +294,7 @@ class SyncManager {
     }
     
     // Delete project in persistent store and server.
-    func deleteProject(_ project: Project, completionHandler: ((Int) -> Void)?) {
+    func deleteProject(_ project: Project, completionHandler: ((Int) -> Void)? = nil) {
         // If this project entity is not sync with server, just delete it in local persistent store.
         if project.pid == nil && token() == nil  {
             dao.managedObjectContext.delete(project)

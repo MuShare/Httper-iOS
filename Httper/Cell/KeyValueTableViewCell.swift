@@ -22,6 +22,8 @@ fileprivate struct Const {
 protocol KeyValueTableViewCellDelegate: class {
     func cellShouldRemoved(by identifier: String)
     func keyValueUpdated(_ keyValue: KeyValue)
+    func editingDidBegin(for identifier: String)
+    func editingDidEnd(for identifier: String)
 }
 
 class KeyValueTableViewCell: UITableViewCell, Reusable {
@@ -30,10 +32,22 @@ class KeyValueTableViewCell: UITableViewCell, Reusable {
     
     private lazy var keyTextField: UITextField = {
         let textField = UITextField()
-        textField.attributedPlaceholder = NSAttributedString(string: "key", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
+        textField.attributedPlaceholder = NSAttributedString(string: "key", attributes: [.foregroundColor : UIColor.lightGray])
         textField.textColor = .white
         textField.backgroundColor = .clear
         textField.setupKeyboardAccessory(characters, barStyle: .black)
+        textField.rx.controlEvent(.editingDidBegin).bind { [unowned self] _ in
+            guard let identifier = self.keyValue?.identifier else {
+                return
+            }
+            self.delegate?.editingDidBegin(for: identifier)
+        }.disposed(by: disposeBag)
+        textField.rx.controlEvent(.editingDidEnd).bind { [unowned self] _ in
+            guard let identifier = self.keyValue?.identifier else {
+                return
+            }
+            self.delegate?.editingDidEnd(for: identifier)
+        }.disposed(by: disposeBag)
         return textField
     }()
     
@@ -45,10 +59,22 @@ class KeyValueTableViewCell: UITableViewCell, Reusable {
     
     private lazy var valueTextField: UITextField = {
         let textField = UITextField()
-        textField.attributedPlaceholder = NSAttributedString(string: "value", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
+        textField.attributedPlaceholder = NSAttributedString(string: "value", attributes: [.foregroundColor : UIColor.lightGray])
         textField.textColor = .white
         textField.backgroundColor = .clear
         textField.setupKeyboardAccessory(characters, barStyle: .black)
+        textField.rx.controlEvent(.editingDidBegin).bind { [unowned self] _ in
+            guard let identifier = self.keyValue?.identifier else {
+                return
+            }
+            self.delegate?.editingDidBegin(for: identifier)
+        }.disposed(by: disposeBag)
+        textField.rx.controlEvent(.editingDidEnd).bind { [unowned self] _ in
+            guard let identifier = self.keyValue?.identifier else {
+                return
+            }
+            self.delegate?.editingDidEnd(for: identifier)
+        }.disposed(by: disposeBag)
         return textField
     }()
     

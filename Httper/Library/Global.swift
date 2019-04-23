@@ -9,6 +9,7 @@
 import Foundation
 import SwiftyUserDefaults
 import Alamofire
+@_exported import RxBinding
 
 let DEBUG = false
 

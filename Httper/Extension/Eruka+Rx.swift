@@ -10,49 +10,46 @@ import Eureka
 import RxSwift
 import RxCocoa
 
-public class BindableObserver<ContainerType, ValueType>: ObserverType {
+class BindableObserver<ContainerType, ValueType>: ObserverType {
     
-    private var _container: ContainerType?
+    private var container: ContainerType?
     
-    private let _binding: (ContainerType, ValueType) -> Void
-    
-    public init(container: ContainerType, binding: @escaping (ContainerType, ValueType) -> Void) {
-        self._container = container
-        self._binding = binding
-    }
-    
-    /**
-     Binds next element
-     */
-    public func on(_ event: Event<ValueType>) {
-        switch event {
-        case .next(let element):
-            guard let _container = self._container else {
-                fatalError("No _container in BindableObserver at time of a .Next event")
-            }
-            self._binding(_container, element)
-        case .error:
-            self._container = nil
-        case .completed:
-            self._container = nil
-        }
-    }
+    private let binding: (ContainerType, ValueType) -> Void
     
     deinit {
-        self._container = nil
+        container = nil
+    }
+    
+    init(container: ContainerType, binding: @escaping (ContainerType, ValueType) -> Void) {
+        self.container = container
+        self.binding = binding
+    }
+    
+    func on(_ event: Event<ValueType>) {
+        switch event {
+        case .next(let element):
+            guard let container = container else {
+                fatalError("No _container in BindableObserver at time of a .Next event")
+            }
+            binding(container, element)
+        case .error:
+            container = nil
+        case .completed:
+            container = nil
+        }
     }
     
 }
 
 extension BaseRow: ReactiveCompatible { }
 
-public extension Reactive where Base: BaseRow, Base: RowType {
+extension Reactive where Base: BaseRow, Base: RowType {
     
-    public var value: ControlProperty<Base.Cell.Value?> {
+    var value: ControlProperty<Base.Cell.Value?> {
         let source = Observable<Base.Cell.Value?>.create { [weak base] observer in
-            if let _base = base {
-                observer.onNext(_base.value)
-                _base.onChange({ row in
+            if let base = base {
+                observer.onNext(base.value)
+                base.onChange({ row in
                     observer.onNext(row.value)
                 })
             }
@@ -66,11 +63,11 @@ public extension Reactive where Base: BaseRow, Base: RowType {
         return ControlProperty(values: source, valueSink: bindingObserver)
     }
     
-    public var isHighlighted: ControlProperty<Bool> {
+    var isHighlighted: ControlProperty<Bool> {
         let source = Observable<Bool>.create { [weak base] observer in
-            if let _base = base {
-                observer.onNext(_base.isHighlighted)
-                _base.onCellHighlightChanged({ (_, row) in
+            if let base = base {
+                observer.onNext(base.isHighlighted)
+                base.onCellHighlightChanged({ (_, row) in
                     observer.onNext(row.isHighlighted)
                 })
             }
@@ -85,3 +82,4 @@ public extension Reactive where Base: BaseRow, Base: RowType {
     }
     
 }
+

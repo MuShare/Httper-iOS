@@ -8,34 +8,56 @@
 
 import UIKit
 
-class ProjectNameViewController: UIViewController {
+fileprivate struct Const {
+    struct name {
+        static let marginTop = 20
+        static let height = 50
+    }
+}
 
-    @IBOutlet weak var projectNameTextField: UITextField!
+class ProjectNameViewController: BaseViewController<ProjectNameViewModel> {
+
+    private lazy var nameTextField: UITextField = {
+        let textField = UITextField()
+        textField.attributedPlaceholder = NSAttributedString(string: "New Project Name", attributes: [.foregroundColor : UIColor.lightGray])
+        textField.textColor = .white
+        textField.textAlignment = .center
+        textField.backgroundColor = .darkGray
+        return textField
+    }()
     
-    var project: Project!
-    let dao = DaoManager.shared
-    let sync = SyncManager.shared
+    private lazy var saveBarButtonItem: UIBarButtonItem = {
+        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: nil, action: nil)
+        barButtonItem.rx.tap.bind { [unowned self] in
+            self.viewModel.save()
+        }.disposed(by: disposeBag)
+        return barButtonItem
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = project.pname
-        projectNameTextField.becomeFirstResponder()
+        view.backgroundColor = .background
+        navigationItem.rightBarButtonItem = saveBarButtonItem
+        view.addSubview(nameTextField)
+        createConstraints()
+        
+        nameTextField.becomeFirstResponder()
+        
+        viewModel.title ~> rx.title ~ disposeBag
+        viewModel.isValidate ~> saveBarButtonItem.rx.isEnabled ~ disposeBag
+        viewModel.name <~> nameTextField.rx.text ~ disposeBag
+        
     }
-
-    @IBAction func saveProjectName(_ sender: Any) {
-        if projectNameTextField.text == "" {
-            showAlert(title: R.string.localizable.tip_name(),
-                      content: R.string.localizable.project_name_empty())
-
+    
+    private func createConstraints() {
+        
+        nameTextField.snp.makeConstraints {
+            $0.left.right.equalToSuperview()
+            $0.top.equalTo(view.safeArea.top).offset(Const.name.marginTop)
+            $0.height.equalTo(Const.name.height)
         }
-        // Save project name to persistent store, and set project revision to 0.
-        project.pname = projectNameTextField.text
-        project.revision = 0
-        dao.saveContext()
-        sync.pushLocalProjects { (revision) in
-            _ = self.navigationController?.popViewController(animated: true)
-        }
+        
     }
     
 }

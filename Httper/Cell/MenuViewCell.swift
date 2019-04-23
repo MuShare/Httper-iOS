@@ -15,6 +15,7 @@ class MenuViewCell: PagingMenuViewCell {
         let label = UILabel()
         label.textColor = .white
         label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
         label.backgroundColor = .clear
         label.layer.cornerRadius = 20
         label.layer.masksToBounds = true
@@ -27,14 +28,18 @@ class MenuViewCell: PagingMenuViewCell {
         backgroundColor = .clear
         
         addSubview(titleLabel)
-        titleLabel.snp.makeConstraints {
-            $0.size.equalToSuperview()
-            $0.center.equalToSuperview()
-        }
+        createConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func createConstraints() {
+        titleLabel.snp.makeConstraints {
+            $0.size.equalToSuperview()
+            $0.center.equalToSuperview()
+        }
     }
     
     override var isSelected: Bool {

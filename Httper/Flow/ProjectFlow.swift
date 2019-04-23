@@ -11,7 +11,12 @@ import RxFlow
 enum ProjectStep: Step {
     case start
     case project(Project)
+    case projectIsComplete
     case request(Request)
+    case name(Project)
+    case nameIsComplete
+    case introduction(Project)
+    case introductionIsComplete
 }
 
 class ProjectFlow: Flow {
@@ -35,16 +40,41 @@ class ProjectFlow: Flow {
         case .start:
             return .viewController(projecstViewController)
         case .project(let project):
-            let projectViewModel = ProjectViewModel(project: project)
-            let projectViewController = ProjectViewController(viewModel: projectViewModel)
+            let projectViewController = ProjectViewController(viewModel: .init(project: project))
             navigationController?.pushViewController(projectViewController, animated: true)
             return .viewController(projectViewController)
+        case .projectIsComplete:
+            guard navigationController?.topViewController is ProjectViewController else {
+                return .none
+            }
+            navigationController?.popViewController(animated: true)
+            return .none
         case .request(let request):
             let requestFlow = RequestFlow(request: request)
             Flows.whenReady(flow1: requestFlow) { root in
                 self.navigationController?.pushViewController(root, animated: true)
             }
             return .flow(requestFlow, with: RequestStep.start)
+        case .name(let project):
+            let projectNameViewController = ProjectNameViewController(viewModel: .init(project: project))
+            navigationController?.pushViewController(projectNameViewController, animated: true)
+            return .viewController(projectNameViewController)
+        case .nameIsComplete:
+            guard navigationController?.topViewController is ProjectNameViewController else {
+                return .none
+            }
+            navigationController?.popViewController(animated: true)
+            return .none
+        case .introduction(let project):
+            let projectIntroductionViewController = ProjectIntroductionViewController(viewModel: .init(project: project))
+            navigationController?.pushViewController(projectIntroductionViewController, animated: true)
+            return .viewController(projectIntroductionViewController)
+        case .introductionIsComplete:
+            guard navigationController?.topViewController is ProjectIntroductionViewController else {
+                return .none
+            }
+            navigationController?.popViewController(animated: true)
+            return .none
         }
     }
 }

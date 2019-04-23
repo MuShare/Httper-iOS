@@ -21,7 +21,11 @@ class AppFlow: Flow {
     
     private let rootWindow: UIWindow
     
-    private lazy var navigationController = BaseNavigationController()
+    private lazy var navigationController: UINavigationController = {
+        let controller = BaseNavigationController()
+        controller.view.backgroundColor = .background
+        return controller
+    }()
     
     init(window: UIWindow) {
         rootWindow = window

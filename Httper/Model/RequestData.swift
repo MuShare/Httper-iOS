@@ -33,26 +33,24 @@ extension RequestData {
     
     var httpMethod: HTTPMethod {
         switch method {
-        case "GET":
-            return HTTPMethod.get
-        case "HEAD":
-            return HTTPMethod.head
-        case "POST":
-            return HTTPMethod.post
-        case "PUT":
-            return HTTPMethod.put
-        case "DELETE":
-            return HTTPMethod.delete
-        case "CONNECT":
-            return HTTPMethod.connect
-        case "OPTIONS":
-            return HTTPMethod.options
-        case "TRACE":
-            return HTTPMethod.trace
-        case "PATCH":
-            return HTTPMethod.patch
-        default:
-            return HTTPMethod.get
+        case "GET":     return .get
+        case "HEAD":    return .head
+        case "POST":    return .post
+        case "PUT":     return .put
+        case "DELETE":  return .delete
+        case "CONNECT": return .connect
+        case "OPTIONS": return .options
+        case "TRACE":   return .trace
+        case "PATCH":   return .patch
+        default:        return .get
         }
     }
+    
+    var bodyData: NSData? {
+        guard let data = body.data(using: .utf8) else {
+            return nil
+        }
+        return NSData(data: data)
+    }
+    
 }

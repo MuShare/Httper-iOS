@@ -52,7 +52,7 @@ class MainViewController: UITabBarController {
     private lazy var addRequestBarButtonItem: UIBarButtonItem = {
         let barButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
         barButtonItem.rx.tap.bind { [unowned self] in
-            self.viewModel.addRequest()
+            self.viewModel.addProject()
         }.disposed(by: disposeBag)
         return barButtonItem
     }()
@@ -86,7 +86,7 @@ class MainViewController: UITabBarController {
         super.viewDidLoad()
         
         delegate = self
-
+        
         tabBar.barTintColor = UIColor(hex: 0x42474b)
         tabBar.tintColor = UIColor(hex: 0xffffff)
         

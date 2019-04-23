@@ -8,22 +8,42 @@
 
 import UIKit
 
-class ProjectIntroductionViewController: UIViewController {
+class ProjectIntroductionViewController: BaseViewController<ProjectIntroductionViewModel> {
 
-    @IBOutlet weak var introductionTextView: UITextView!
-    @IBOutlet weak var editBarButtonItem: UIBarButtonItem!
+    private lazy var introductionTextView: UITextView = {
+        let textView = UITextView()
+        textView.textColor = .white
+        textView.backgroundColor = .clear
+        textView.becomeFirstResponder()
+        return textView
+    }()
     
-    var project: Project!
-    
+    private lazy var saveBarButtonItem: UIBarButtonItem = {
+        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: nil, action: nil)
+        barButtonItem.rx.tap.bind { [unowned self] in
+            self.viewModel.save()
+        }.disposed(by: disposeBag)
+        return barButtonItem
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = project.pname
-        introductionTextView.text = project.introduction
+        view.backgroundColor = .background
+        navigationItem.rightBarButtonItem = saveBarButtonItem
+        view.addSubview(introductionTextView)
+        createConstraints()
+        
+        viewModel.title ~> rx.title ~ disposeBag
+        viewModel.isValidate ~> saveBarButtonItem.rx.isEnabled ~ disposeBag
+        viewModel.introduction <~> introductionTextView.rx.text ~ disposeBag
+    }
+    
+    private func createConstraints() {
+        introductionTextView.snp.makeConstraints {
+            $0.left.right.bottom.equalToSuperview()
+            $0.top.equalTo(view.safeArea.top)
+        }
     }
 
-    // MARK: - Action
-    @IBAction func editIntroduction(_ sender: Any) {
-        
-    }
 }

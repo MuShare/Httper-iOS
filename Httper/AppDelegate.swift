@@ -24,10 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appUpdate()
         
         // Pull updated requests and push local requests(if exist) when user login.
-        let user = UserManager.shared
-        if user.login {
+        if UserManager.shared.login {
             SyncManager.shared.syncAll()
-            user.pullUser(nil)
+            UserManager.shared.pullUser()
         }
         
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -58,14 +57,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DaoManager.shared.saveContext()
     }
 
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        return SDKApplicationDelegate.shared.application(application,
-                                                         open: url,
-                                                         sourceApplication: sourceApplication,
-                                                         annotation: annotation)
-    }
-    
-    @available(iOS 9.0, *)
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
         return SDKApplicationDelegate.shared.application(application, open: url, options: options)
     }

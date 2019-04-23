@@ -12,7 +12,9 @@ enum RequestStep: Step {
     case start
     case result(RequestData)
     case save(RequestData)
-    case addProject
+    case saveIsCompleted
+    case addProject(Step)
+    case addProjectIsComplete
 }
 
 class RequestFlow: Flow {
@@ -35,7 +37,12 @@ class RequestFlow: Flow {
         let bodyViewModel = BodyViewModel()
         let bodyViewController = BodyViewController(viewModel: bodyViewModel)
         
-        let requestViewModel = RequestViewModel(request: request, headersViewModel: headersViewModel, parametersViewModel: parametersViewModel, bodyViewModel: bodyViewModel)
+        let requestViewModel = RequestViewModel(
+            request: request,
+            headersViewModel: headersViewModel,
+            parametersViewModel: parametersViewModel,
+            bodyViewModel: bodyViewModel
+        )
         
         requestViewController = RequestViewController(viewModel: requestViewModel)
         requestViewController.contentViewControllers = [parametersViewController, headersViewController, bodyViewController]
@@ -81,11 +88,23 @@ class RequestFlow: Flow {
             let saveToProjectViewController = SaveToProjectViewController(viewModel: saveToProjectViewModel)
             navigationController?.pushViewController(saveToProjectViewController, animated: true)
             return .viewController(saveToProjectViewController)
-        case .addProject:
-            let addProjectViewModel = AddProjectViewModel()
+        case .saveIsCompleted:
+            guard navigationController?.topViewController is SaveToProjectViewController else {
+                return .none
+            }
+            navigationController?.popViewController(animated: true)
+            return .none
+        case .addProject(let step):
+            let addProjectViewModel = AddProjectViewModel(endStep: step)
             let addProjectViewController = AddProjectViewController(viewModel: addProjectViewModel)
             navigationController?.pushViewController(addProjectViewController, animated: true)
             return .viewController(addProjectViewController)
+        case .addProjectIsComplete:
+            guard navigationController?.topViewController is AddProjectViewController else {
+                return .none
+            }
+            navigationController?.popViewController(animated: true)
+            return .none
         }
     }
     

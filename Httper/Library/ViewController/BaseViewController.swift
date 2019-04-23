@@ -8,26 +8,33 @@
 
 import UIKit
 import NVActivityIndicatorView
+import SwipeBack
 import RxAlertViewable
 import RxSwift
 import RxCocoa
+import RxController
 
-class BaseViewController<ViewModel: BaseViewModel>: CustomNavigationBarViewController {
-
-    let disposeBag = DisposeBag()
-    let viewModel: ViewModel
-
-    init(viewModel: ViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
+class BaseViewController<ViewModel: BaseViewModel>: RxViewController<ViewModel> {
+    
+    var lastBarTintColor: UIColor? = nil
+    var currentBarColor: UIColor? = nil {
+        didSet {
+            lastBarTintColor = navigationController?.navigationBar.barTintColor
+        }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    var isNavigationBarHidden: Bool = false {
+        didSet {
+            navigationController?.isNavigationBarHidden = isNavigationBarHidden
+        }
     }
-
-    deinit {
-        AppLog.debug("[DEINIT View Controller] \(type(of: self))")
+    
+    /**
+     * This property indicates whether this controller is a child view controller of another controller.
+     * If the property is false, the isNavigationBarHidden property is disabled.
+     */
+    var isChild: Bool {
+        return false
     }
     
     override func viewDidLoad() {
@@ -35,23 +42,49 @@ class BaseViewController<ViewModel: BaseViewModel>: CustomNavigationBarViewContr
         
         viewModel.alert ~> rx.alert ~ disposeBag
         viewModel.loading ~> rx.nvActivityIndicatorAnimating ~ disposeBag
-
+        
+        if let navigationController = navigationController {
+            navigationController.swipeBackEnabled = true
+            
+            if let index = navigationController.viewControllers.firstIndex(of: self), index > 0 {
+                navigationItem.leftBarButtonItem = UIBarButtonItem(image: R.image.back(), style: .plain, target: self, action: #selector(back))
+            } else {
+                navigationItem.leftBarButtonItem = nil
+            }
+        }
+        
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard let navigationController = navigationController, !isChild else {
+            return
+        }
+        if navigationController.isNavigationBarHidden != isNavigationBarHidden {
+            navigationController.isNavigationBarHidden = isNavigationBarHidden
+        }
+        
+        if let color = currentBarColor {
+            navigationController.navigationBar.barColor = color
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if let color = lastBarTintColor, let navigationController = navigationController, !isChild  {
+            navigationController.navigationBar.barColor = nil
+            navigationController.navigationBar.barTintColor = color
+        }
+    }
+    
+    @objc private func back() {
+        navigationController?.popViewController(animated: true)
+    }
+    
 }
 
 extension BaseViewController: NVActivityIndicatorViewable {}
 
 extension BaseViewController: RxAlertViewable {}
-
-extension BaseViewController {
-    
-    func bind<T, O>(_ observable: Observable<T>, to observer: O) where O: ObserverType, O.E == T {
-        observable.bind(to: observer).disposed(by: disposeBag)
-    }
-    
-    func twoWayBind<T>(_ behaviorRelay: BehaviorRelay<T>, to property: ControlProperty<T>) {
-        behaviorRelay.twoWayBind(to: property).disposed(by: disposeBag)
-    }
-    
-}
