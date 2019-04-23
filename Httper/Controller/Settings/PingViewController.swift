@@ -108,22 +108,3 @@ class PingViewController: BaseViewController<PingViewModel> {
     }
  
 }
-
-/**
-extension PingViewController: UITableViewDataSource {
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell!
-        if indexPath.row < items.count {
-
-        } else {
-            cell = tableView.dequeueReusableCell(withIdentifier: "pingStatisticsIdentifier", for: indexPath)
-            let statisticsLabel = cell.viewWithTag(1) as! UILabel
-            statisticsLabel.text = STDPingItem.statistics(withPingItems: items)
-        }
-        return cell
-    }
-    
-}
-
- */

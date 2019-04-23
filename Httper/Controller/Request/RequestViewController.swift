@@ -14,11 +14,11 @@ import PagingKit
 
 fileprivate struct Const {
     
-    static let margin = 16
+    static let margin: CGFloat = 16
     
     struct requestMethod {
         static let buttonWidth = 100
-        static let height = 50
+        static let height: CGFloat = 50
     }
     
     struct protocols {
@@ -30,7 +30,7 @@ fileprivate struct Const {
     }
     
     struct url {
-        static let height = 50
+        static let height: CGFloat = 50
     }
     
     struct bottomButton {
@@ -38,7 +38,7 @@ fileprivate struct Const {
     }
     
     struct menu {
-        static let height = 40
+        static let height: CGFloat = 40
         static let cell = "menuCell"
     }
 
@@ -85,8 +85,11 @@ class RequestViewController: BaseViewController<RequestViewModel>, RxKeyboardVie
     
     private lazy var urlTextField: UITextField = {
         let textField = UITextField()
-        textField.attributedPlaceholder = NSAttributedString(string: "request URL", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
+        textField.attributedPlaceholder = NSAttributedString(string: "request URL", attributes: [
+            .foregroundColor: UIColor.lightGray
+        ])
         textField.textColor = .white
+        textField.setupKeyboardAccessory(UserManager.shared.characters ?? [], barStyle: .black)
         return textField
     }()
     
@@ -153,11 +156,16 @@ class RequestViewController: BaseViewController<RequestViewModel>, RxKeyboardVie
         menuViewController.reloadData()
         contentViewController.reloadData()
         
-        viewModel.title ~> rx.title ~ disposeBag
-        viewModel.requestMethod ~> requestMethodButton.rx.title(for: .normal) ~ disposeBag
-        viewModel.keyboardHeight ~> rx.keyboardHeight ~ disposeBag
-        viewModel.url <~> urlTextField.rx.text ~ disposeBag
-        viewModel.requestProtocol <~> protocolsSegmentedControl.rx.selectedSegmentIndex ~ disposeBag
+        viewModel.valueOriginY = topPadding + 300
+        
+        disposeBag ~ [
+            viewModel.title ~> rx.title,
+            viewModel.requestMethod ~> requestMethodButton.rx.title(for: .normal),
+            viewModel.moveupHeight ~> rx.moveupHeight,
+            viewModel.url <~> urlTextField.rx.text,
+            viewModel.requestProtocol <~> protocolsSegmentedControl.rx.selectedSegmentIndex
+        ]
+
     }
     
     private func setupPagingKit() {

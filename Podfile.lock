@@ -8,7 +8,7 @@ PODS:
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
   - Differentiator (3.1.0)
-  - ESPullToRefresh (2.8)
+  - ESPullToRefresh (2.9)
   - Eureka (5.0.0)
   - FacebookCore (0.6.0):
     - Bolts (~> 1.9)
@@ -95,7 +95,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
-  - ESPullToRefresh (from `https://github.com/eggswift/pull-to-refresh.git`)
+  - ESPullToRefresh
   - Eureka
   - FacebookCore
   - FacebookLogin
@@ -134,6 +134,7 @@ SPEC REPOS:
     - AttributedTextView
     - Bolts
     - Differentiator
+    - ESPullToRefresh
     - Eureka
     - FacebookCore
     - FacebookLogin
@@ -170,15 +171,10 @@ SPEC REPOS:
     - "UITextView+Placeholder"
 
 EXTERNAL SOURCES:
-  ESPullToRefresh:
-    :git: https://github.com/eggswift/pull-to-refresh.git
   SnapKit:
     :git: https://github.com/SnapKit/SnapKit.git
 
 CHECKOUT OPTIONS:
-  ESPullToRefresh:
-    :commit: e7e22ef9325e3e97b764ee836bb114e0d0222dec
-    :git: https://github.com/eggswift/pull-to-refresh.git
   SnapKit:
     :commit: eea05d74f073696202cd0bb8e744e4c89781a414
     :git: https://github.com/SnapKit/SnapKit.git
@@ -188,7 +184,7 @@ SPEC CHECKSUMS:
   AttributedTextView: 9e01651d96c1af861a9c67c2cc3f94c30320d1c2
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
-  ESPullToRefresh: 441449eca0618977890516b5665775f705e70c4d
+  ESPullToRefresh: ce058a36454a5032519cc9d8b45da217728cf104
   Eureka: 0f64f477ec8ef6201c6fec143d60ff5c201cf654
   FacebookCore: 38cd3a4078738d6f648eb9b6b9d35b02d693e9a1
   FacebookLogin: 658b0569961a081a0890f5f4dbf69ced00657d9e
@@ -225,6 +221,6 @@ SPEC CHECKSUMS:
   "UIImageView+Extension": bc26c60a9c8cd6fb515ae1e37377a6f0988e76d8
   "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
 
-PODFILE CHECKSUM: ba4417d99fae287030fa041cf7a85df54fb1b3cd
+PODFILE CHECKSUM: 4dc9bcc9a628d886fad321a3dd5ceba4b5c2dda8
 
 COCOAPODS: 1.6.1

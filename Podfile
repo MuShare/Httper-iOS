@@ -3,7 +3,7 @@ platform :ios, '10.0'
 
 target 'Httper' do
     pod 'Alamofire'
-    pod 'ESPullToRefresh', :git => 'https://github.com/eggswift/pull-to-refresh.git'
+    pod 'ESPullToRefresh'
     pod 'Eureka'
     pod 'FacebookCore'
     pod 'FacebookLogin'
