@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import FacebookCore
+import FBSDKCoreKit
 import RxSwift
 import RxCocoa
 import RxFlow
@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserManager.shared.pullUser()
         }
         
-        SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        FBSDKCoreKit.ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
         // Listen for Coordinator mechanism is not mandatory
         coordinator.rx.didNavigate.subscribe(onNext: {
@@ -47,8 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        AppEventsLogger.activate(application)
+        AppEvents.activateApp()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -58,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
-        return SDKApplicationDelegate.shared.application(application, open: url, options: options)
+        return FBSDKCoreKit.ApplicationDelegate.shared.application(application, open: url, options: options)
     }
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {

@@ -1,30 +1,26 @@
 PODS:
   - Alamofire (4.8.2)
   - AttributedTextView (1.4.1)
-  - Bolts (1.9.0):
-    - Bolts/AppLinks (= 1.9.0)
-    - Bolts/Tasks (= 1.9.0)
-  - Bolts/AppLinks (1.9.0):
-    - Bolts/Tasks
-  - Bolts/Tasks (1.9.0)
   - Differentiator (3.1.0)
   - ESPullToRefresh (2.9)
   - Eureka (5.0.0)
-  - FacebookCore (0.6.0):
-    - Bolts (~> 1.9)
-    - FBSDKCoreKit (~> 4.43)
-  - FacebookLogin (0.6.0):
-    - Bolts (~> 1.9)
-    - FacebookCore (~> 0.5)
-    - FBSDKCoreKit (~> 4.43)
-    - FBSDKLoginKit (~> 4.43)
-  - FBSDKCoreKit (4.44.1):
-    - Bolts (~> 1.9)
-  - FBSDKLoginKit (4.44.1):
-    - FBSDKCoreKit
+  - FacebookCore (0.7.0):
+    - FBSDKCoreKit (~> 5.0)
+  - FacebookLogin (0.7.0):
+    - FacebookCore (~> 0.7)
+    - FBSDKCoreKit (~> 5.0)
+    - FBSDKLoginKit (~> 5.0)
+  - FBSDKCoreKit (5.0.0):
+    - FBSDKCoreKit/Basics (= 5.0.0)
+    - FBSDKCoreKit/Core (= 5.0.0)
+  - FBSDKCoreKit/Basics (5.0.0)
+  - FBSDKCoreKit/Core (5.0.0):
+    - FBSDKCoreKit/Basics
+  - FBSDKLoginKit (5.0.0):
+    - FBSDKCoreKit (= 5.0.0)
   - Fuzi (3.0.0)
   - Kanna (5.0.0)
-  - Kingfisher (5.3.1)
+  - Kingfisher (5.4.0)
   - M80AttributedLabel (1.9.5)
   - MGFormatter (0.4):
     - AttributedTextView (~> 1.3)
@@ -38,8 +34,8 @@ PODS:
   - MGKeyboardAccessory (0.5):
     - MGKeyboardAccessory/Core (= 0.5)
   - MGKeyboardAccessory/Core (0.5)
-  - MGSelector (0.1):
-    - SnapKit (~> 4)
+  - MGSelector (0.2):
+    - SnapKit (~> 5)
   - NVActivityIndicatorView (4.7.0):
     - NVActivityIndicatorView/Presenter (= 4.7.0)
   - NVActivityIndicatorView/Presenter (4.7.0)
@@ -48,11 +44,11 @@ PODS:
     - R.swift.Library (~> 5.0.0)
   - R.swift.Library (5.0.1)
   - ReachabilitySwift (4.3.1)
-  - Reusable (4.0.5):
-    - Reusable/Storyboard (= 4.0.5)
-    - Reusable/View (= 4.0.5)
-  - Reusable/Storyboard (4.0.5)
-  - Reusable/View (4.0.5)
+  - Reusable (4.1.0):
+    - Reusable/Storyboard (= 4.1.0)
+    - Reusable/View (= 4.1.0)
+  - Reusable/Storyboard (4.1.0)
+  - Reusable/View (4.1.0)
   - RxAlamofire (4.4.1):
     - RxAlamofire/Core (= 4.4.1)
   - RxAlamofire/Core (4.4.1):
@@ -74,7 +70,7 @@ PODS:
     - Differentiator (~> 3.0)
     - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
-  - RxFlow (2.1.0):
+  - RxFlow (2.2.0):
     - RxCocoa (>= 4.5.0)
     - RxSwift (>= 4.5.0)
   - RxKeyboard (0.9.0):
@@ -85,9 +81,9 @@ PODS:
     - RxCocoa (~> 4.3)
     - RxSwift (~> 4.3)
   - RxSwift (4.5.0)
-  - SnapKit (4.2.0)
+  - SnapKit (5.0.0)
   - SwiftyJSON (4.3.0)
-  - SwiftyUserDefaults (4.0.0-beta.2)
+  - SwiftyUserDefaults (4.0.0)
   - SwipeBack (1.1.1)
   - UIGradient (1.3.1)
   - "UIImageView+Extension (0.2.6)"
@@ -120,9 +116,9 @@ DEPENDENCIES:
   - RxKeyboard
   - RxKingfisher
   - RxSwift
-  - SnapKit (from `https://github.com/SnapKit/SnapKit.git`)
+  - SnapKit
   - SwiftyJSON
-  - SwiftyUserDefaults (= 4.0.0-beta.2)
+  - SwiftyUserDefaults
   - SwipeBack
   - UIGradient
   - "UIImageView+Extension"
@@ -132,7 +128,6 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - AttributedTextView
-    - Bolts
     - Differentiator
     - ESPullToRefresh
     - Eureka
@@ -163,6 +158,7 @@ SPEC REPOS:
     - RxKeyboard
     - RxKingfisher
     - RxSwift
+    - SnapKit
     - SwiftyJSON
     - SwiftyUserDefaults
     - SwipeBack
@@ -170,57 +166,47 @@ SPEC REPOS:
     - "UIImageView+Extension"
     - "UITextView+Placeholder"
 
-EXTERNAL SOURCES:
-  SnapKit:
-    :git: https://github.com/SnapKit/SnapKit.git
-
-CHECKOUT OPTIONS:
-  SnapKit:
-    :commit: eea05d74f073696202cd0bb8e744e4c89781a414
-    :git: https://github.com/SnapKit/SnapKit.git
-
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   AttributedTextView: 9e01651d96c1af861a9c67c2cc3f94c30320d1c2
-  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
   ESPullToRefresh: ce058a36454a5032519cc9d8b45da217728cf104
   Eureka: 0f64f477ec8ef6201c6fec143d60ff5c201cf654
-  FacebookCore: 38cd3a4078738d6f648eb9b6b9d35b02d693e9a1
-  FacebookLogin: 658b0569961a081a0890f5f4dbf69ced00657d9e
-  FBSDKCoreKit: a823ae35bdb60ebb8d7a7e51abe7c5d87d2bfced
-  FBSDKLoginKit: 54ae59987f2a8703021557c90a9aebb9e5c2bef6
+  FacebookCore: 4eee98476cb37a485af5d337eb21f8cd5b3c7e6c
+  FacebookLogin: 94cdad6850e86a2b04704dedfe7674a7af8148eb
+  FBSDKCoreKit: ba361d4a9d4dc29ff218822b849b22d4f869c7bb
+  FBSDKLoginKit: c6d0dc187bd076e370dffa10f7fc8a3562a6892c
   Fuzi: a758e57fab9fbec6fd218ea7f2e00aa79325a93a
   Kanna: a32875df62975f8f4b871e933b4ea1a5c3b8be0f
-  Kingfisher: d9e7e0b209b59b8f9873aa2f37654e81a7beea51
+  Kingfisher: 9c8f2cc6710334e06f32ba2b45e77707d5e2f0c9
   M80AttributedLabel: d1177fbd7451d134794b50e91ca8b0cb167ef530
   MGFormatter: 32a94fea1478c9df39783dfbf692b0238a896a15
   MGKeyboardAccessory: a9f30a9c1fd158b1895aada9aab905a3c4b93581
-  MGSelector: 8feb6c39b87eb9a1af395fba334a57eb4d7c84dc
+  MGSelector: e6dd39fb0dac1a577d9644f7766579cf9b9b18ad
   NVActivityIndicatorView: b19ddab2576f805cbe0fb2306cba3476e09a1dea
   PagingKit: 05ff12fc68f9f7ca10d75a7acdcc6c362c7f4fe3
   R.swift: f5a87643b91ea569d23d6afb3eee9c743edde239
   R.swift.Library: cfe85d569d9bae6cb262922db130e7c3a7a5fad1
   ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
-  Reusable: 188be1a54ac0691bc66e5bb24ec6eb91971b315b
+  Reusable: 82be188f29d96dc5eff0db7b2393bcc08d2cdd5b
   RxAlamofire: ed65f451f5a9a59419b0b9e705043dc01410edd9
   RxAlertViewable: 42241f15be83eaeb2171744b47441e5ae23b0197
   RxBinding: bf62f59dfb4ff1b84e3d1c293f9a9bdd8ce92280
   RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
   RxController: a2cbe88b66472830a1191d2c3cae0d2a570ae84b
   RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
-  RxFlow: 78df76493bd7fc6a0181014cc2be3f29a2cd54fb
+  RxFlow: f8cdfc0be3c837464fad1fcd28187fd414bcc716
   RxKeyboard: 4f782303f499f41577b41c96c6a9a5d7acd51a47
   RxKingfisher: b6c043154e287f943ea8370bda0961bc052cf6b9
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
-  SnapKit: ae1cdee794f6a7b8e909092c5244a79b9d1c9e26
+  SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
-  SwiftyUserDefaults: 39ec70433f22f3052a64bc5fbfb34f46932b8bf1
+  SwiftyUserDefaults: 6a1951df1daa19337862b677dd9a4b9bd4c288cd
   SwipeBack: d6759601b40da1f4161033feb30ab475d7d04322
   UIGradient: 9c7041327bf202b09aab2db7c33fb41f768b19ea
   "UIImageView+Extension": bc26c60a9c8cd6fb515ae1e37377a6f0988e76d8
   "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
 
-PODFILE CHECKSUM: 4dc9bcc9a628d886fad321a3dd5ceba4b5c2dda8
+PODFILE CHECKSUM: f82a3ccbc16e73e469c886cfc4f5a0f36e95009e
 
 COCOAPODS: 1.6.1
