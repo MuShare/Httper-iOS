@@ -26,7 +26,10 @@ class ResultViewModel: BaseViewModel {
         self.detailViewModel = detailViewModel
         
         super.init()
+        
+        loading.onNext(true)
         RequestManager.shared.send(requestData).subscribe(onNext: { [weak self] (response, data) in
+            self?.loading.onNext(false)
             guard
                 response.statusCode == 200,
                 let `self` = self,
@@ -34,12 +37,13 @@ class ResultViewModel: BaseViewModel {
             else {
                 return
             }
+            
             self.prettyViewModel.set(text: text, headers: response.allHeaderFields)
             self.rawViewModel.set(text: text)
             self.previewViewModel.set(url: response.url, text: text)
             self.detailViewModel.response.onNext(response)
-        }, onError: {
-            print($0)
+        }, onError: { [weak self] _ in
+            self?.loading.onNext(false)
         }).disposed(by: disposeBag)
     }
     

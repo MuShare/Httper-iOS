@@ -194,7 +194,7 @@ class RequestViewController: BaseViewController<RequestViewModel>, RxKeyboardVie
         }
         
         urlTextField.snp.makeConstraints {
-            $0.right.equalToSuperview().offset(Const.margin)
+            $0.right.equalToSuperview().offset(-Const.margin)
             $0.top.equalTo(requestMethodButton.snp.bottom)
             $0.height.equalTo(Const.url.height)
         }
