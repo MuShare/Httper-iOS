@@ -106,7 +106,7 @@ class RequestViewModel: BaseViewModel {
     
     var moveupHeight: Observable<CGFloat> {
         let relativeScreenHeight = UIScreen.main.bounds.height - valueOriginY
-        print(relativeScreenHeight)
+
         return Observable.combineLatest(
             editingState,
             RxKeyboard.instance.visibleHeight.skip(1).asObservable()
@@ -135,6 +135,17 @@ class RequestViewModel: BaseViewModel {
             return
         }
         steps.accept(RequestStep.save(requestData))
+    }
+    
+    func clear() {
+        alert.onNext(.customConfirm(title: "Clear Request", message: "Are you sure to clear this request?", onConfirm: { [unowned self] in
+            self.requestMethod.accept("GET")
+            self.url.accept(nil)
+            self.requestProtocol.accept(0)
+            self.parametersViewModel.clear()
+            self.headersViewModel.clear()
+            self.bodyViewModel.clear()
+        }))
     }
     
 }

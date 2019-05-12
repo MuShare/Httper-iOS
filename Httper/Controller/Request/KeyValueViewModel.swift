@@ -80,4 +80,8 @@ class KeyValueViewModel: BaseViewModel {
         editingState.onNext(.end)
     }
     
+    func clear() {
+        keyValues.accept([.empty])
+    }
+    
 }
