@@ -46,14 +46,13 @@
 		77CDA18D222E13FE0063C472 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDA189222E13FE0063C472 /* BaseNavigationController.swift */; };
 		77CDA192222E1CB90063C472 /* NVActivityIndicatorViewable+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDA191222E1CB90063C472 /* NVActivityIndicatorViewable+Rx.swift */; };
 		77D6A7ED2186AA4500A65283 /* DeleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D6A7EC2186AA4500A65283 /* DeleteTableViewCell.swift */; };
-		77EE85312267252B00F06394 /* BaseChildViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77EE852F2267252B00F06394 /* BaseChildViewModel.swift */; };
-		77EE85322267252B00F06394 /* BaseChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77EE85302267252B00F06394 /* BaseChildViewController.swift */; };
 		77F3995F215373600016978E /* KeyValueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F3995E215373600016978E /* KeyValueViewController.swift */; };
 		77F39961215373770016978E /* KeyValueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F39960215373770016978E /* KeyValueViewModel.swift */; };
 		77F39964215374370016978E /* KeyValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F39963215374370016978E /* KeyValueTableViewCell.swift */; };
 		77F39966215377790016978E /* SingleSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F39965215377790016978E /* SingleSection.swift */; };
 		77F39968215381700016978E /* BodyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F39967215381700016978E /* BodyViewModel.swift */; };
 		77F3996A215382BA0016978E /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F39969215382BA0016978E /* MenuViewCell.swift */; };
+		BB07BE0E22A7FF2A00A03CBD /* Kingfisher+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB07BE0D22A7FF2A00A03CBD /* Kingfisher+Rx.swift */; };
 		BBC41DE7226DE5F500ABF820 /* UITableView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC41DE6226DE5F500ABF820 /* UITableView+Rx.swift */; };
 		E4007EB91DFEE7B7002A87FA /* BodyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4007EB81DFEE7B7002A87FA /* BodyViewController.swift */; };
 		E40986A2215523A3006CCC04 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409869F215523A2006CCC04 /* UIColor+Extension.swift */; };
@@ -185,8 +184,6 @@
 		77CDA189222E13FE0063C472 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		77CDA191222E1CB90063C472 /* NVActivityIndicatorViewable+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NVActivityIndicatorViewable+Rx.swift"; sourceTree = "<group>"; };
 		77D6A7EC2186AA4500A65283 /* DeleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTableViewCell.swift; sourceTree = "<group>"; };
-		77EE852F2267252B00F06394 /* BaseChildViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseChildViewModel.swift; sourceTree = "<group>"; };
-		77EE85302267252B00F06394 /* BaseChildViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseChildViewController.swift; sourceTree = "<group>"; };
 		77F3995E215373600016978E /* KeyValueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueViewController.swift; sourceTree = "<group>"; };
 		77F39960215373770016978E /* KeyValueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueViewModel.swift; sourceTree = "<group>"; };
 		77F39963215374370016978E /* KeyValueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueTableViewCell.swift; sourceTree = "<group>"; };
@@ -194,6 +191,7 @@
 		77F39967215381700016978E /* BodyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyViewModel.swift; sourceTree = "<group>"; };
 		77F39969215382BA0016978E /* MenuViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewCell.swift; sourceTree = "<group>"; };
 		7EBC322CA510BFBBFF4AB72E /* Pods-Httper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Httper.release.xcconfig"; path = "Pods/Target Support Files/Pods-Httper/Pods-Httper.release.xcconfig"; sourceTree = "<group>"; };
+		BB07BE0D22A7FF2A00A03CBD /* Kingfisher+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Kingfisher+Rx.swift"; sourceTree = "<group>"; };
 		BBC41DE6226DE5F500ABF820 /* UITableView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Rx.swift"; sourceTree = "<group>"; };
 		E4007EB81DFEE7B7002A87FA /* BodyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodyViewController.swift; sourceTree = "<group>"; };
 		E400D3C220C1BEF100B2BC7F /* route_simulator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = route_simulator.h; sourceTree = "<group>"; };
@@ -312,8 +310,6 @@
 		77271CAD21E744BA0072E007 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				77EE85302267252B00F06394 /* BaseChildViewController.swift */,
-				77EE852F2267252B00F06394 /* BaseChildViewModel.swift */,
 				77CDA189222E13FE0063C472 /* BaseNavigationController.swift */,
 				77CDA187222E13FE0063C472 /* BaseViewController.swift */,
 				77CDA188222E13FE0063C472 /* BaseViewModel.swift */,
@@ -488,6 +484,7 @@
 			isa = PBXGroup;
 			children = (
 				772F8D6F21F6D12300858714 /* Eruka+Rx.swift */,
+				BB07BE0D22A7FF2A00A03CBD /* Kingfisher+Rx.swift */,
 				77513CDC216DFDD900929068 /* M80AttributedLabel+Rx.swift */,
 				77CDA191222E1CB90063C472 /* NVActivityIndicatorViewable+Rx.swift */,
 				77396288225C43080091C669 /* Observable+Extension.swift */,
@@ -786,7 +783,7 @@
 			);
 			name = R.swift;
 			outputPaths = (
-				"$SRCROOT/$TARGET_NAME/R.generated.swift",
+				$SRCROOT/$TARGET_NAME/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
@@ -828,7 +825,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxFlow/RxFlow.framework",
 				"${BUILT_PRODUCTS_DIR}/RxKeyboard/RxKeyboard.framework",
-				"${BUILT_PRODUCTS_DIR}/RxKingfisher/RxKingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -869,7 +866,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxFlow.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxKeyboard.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxKingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -927,6 +924,7 @@
 				77A530722165BEE50008CC56 /* ResultViewModel.swift in Sources */,
 				E45D3E861E21296F0002E1F2 /* InternetResponse.swift in Sources */,
 				77A53080216708E00008CC56 /* PreviewViewModel.swift in Sources */,
+				BB07BE0E22A7FF2A00A03CBD /* Kingfisher+Rx.swift in Sources */,
 				E46ABF521E140F2E00E0C092 /* InternetTool.m in Sources */,
 				E4E297B11E00021500AD484E /* ResponseHeaderViewController.swift in Sources */,
 				E4A37A9D1E018D7500586BA1 /* RequestDao.swift in Sources */,
@@ -944,7 +942,6 @@
 				E4D1CAE51DF5C028008DC4F9 /* RequestViewController.swift in Sources */,
 				E48553361DF9B2CF00A1DB60 /* PreviewViewController.swift in Sources */,
 				E4D034491E4A0DB300580FAC /* ProjectViewController.swift in Sources */,
-				77EE85322267252B00F06394 /* BaseChildViewController.swift in Sources */,
 				77271CB221E747FB0072E007 /* SaveToProjectViewModel.swift in Sources */,
 				77F39961215373770016978E /* KeyValueViewModel.swift in Sources */,
 				E4CA760C1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift in Sources */,
@@ -980,7 +977,6 @@
 				E47FDC601E3861AF00251EEC /* Versions.swift in Sources */,
 				E49BC0AC1E4226F400241004 /* Project+CoreDataProperties.swift in Sources */,
 				E48553341DF9B2BF00A1DB60 /* RawViewController.swift in Sources */,
-				77EE85312267252B00F06394 /* BaseChildViewModel.swift in Sources */,
 				E48553321DF9B2AF00A1DB60 /* PrettyViewController.swift in Sources */,
 				E49BC0B01E4227BA00241004 /* ProjectDao.swift in Sources */,
 				E49F680621495EE300646892 /* ProjectsViewModel.swift in Sources */,

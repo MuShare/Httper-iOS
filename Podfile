@@ -26,7 +26,6 @@ target 'Httper' do
     pod 'RxDataSources'
     pod 'RxFlow'
     pod 'RxKeyboard'
-    pod 'RxKingfisher'
     pod 'RxSwift'
     pod 'SnapKit'
     pod 'SwipeBack'
