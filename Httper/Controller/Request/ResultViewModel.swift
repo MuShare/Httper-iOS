@@ -29,15 +29,14 @@ class ResultViewModel: BaseViewModel {
         
         loading.onNext(true)
         RequestManager.shared.send(requestData).subscribe(onNext: { [weak self] (response, data) in
-            self?.loading.onNext(false)
-            guard
-                response.statusCode == 200,
-                let `self` = self,
-                let text = String(data: data, encoding: .utf8)
-            else {
+            guard let `self` = self else {
                 return
             }
-            
+            self.loading.onNext(false)
+            guard let text = String(data: data, encoding: .utf8) else {
+                self.alert.onNext(.tip("Nothing from this url."))
+                return
+            }
             self.prettyViewModel.set(text: text, headers: response.allHeaderFields)
             self.rawViewModel.set(text: text)
             self.previewViewModel.set(url: response.url, text: text)
