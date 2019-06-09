@@ -41,8 +41,12 @@ class ResultViewModel: BaseViewModel {
             self.rawViewModel.set(text: text)
             self.previewViewModel.set(url: response.url, text: text)
             self.detailViewModel.response.onNext(response)
-        }, onError: { [weak self] _ in
-            self?.loading.onNext(false)
+        }, onError: { [weak self] error in
+            guard let `self` = self else {
+                return
+            }
+            self.loading.onNext(false)
+            self.alert.onNext(.error(error.localizedDescription))
         }).disposed(by: disposeBag)
     }
     
