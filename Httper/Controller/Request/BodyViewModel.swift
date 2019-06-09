@@ -13,4 +13,8 @@ class BodyViewModel: BaseViewModel {
     
     let body = BehaviorRelay<String?>(value: nil)
     
+    func clear() {
+        body.accept(nil)
+    }
+    
 }

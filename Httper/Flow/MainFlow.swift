@@ -24,6 +24,8 @@ class MainFlow: Flow {
     private let mainViewModel = MainViewModel()
     private lazy var mainViewController = MainViewController(viewModel: mainViewModel)
     
+    private var requestViewController: RequestViewController?
+    
     private var navigationController: UINavigationController? {
         return mainViewController.navigationController
     }
@@ -37,8 +39,9 @@ class MainFlow: Flow {
             let requestFlow = RequestFlow(request: nil)
             let projectFlow = ProjectFlow()
             let settingsFlow = SettingsFlow()
-            Flows.whenReady(flow1: requestFlow, flow2: projectFlow, flow3: settingsFlow) { requestRoot, projectRoot, settingsRoot in
-                self.mainViewController.viewControllers = [requestRoot, projectRoot, settingsRoot]
+            Flows.whenReady(flow1: requestFlow, flow2: projectFlow, flow3: settingsFlow) {
+                self.mainViewController.viewControllers = [$0, $1, $2]
+                self.requestViewController = $0 as? RequestViewController
             }
             return .multiple(flowContributors: [
                 .contribute(withNextPresentable: mainViewController, withNextStepper: mainViewModel),
@@ -47,7 +50,10 @@ class MainFlow: Flow {
                 .flow(settingsFlow, with: SettingsStep.start)
             ])
         case .clearRequest:
-            
+            guard let requestViewController = requestViewController else {
+                return .none
+            }
+            requestViewController.viewModel.clear()
             return .none
         case .addProject(let step):
             let addProjectViewModel = AddProjectViewModel(endStep: step)

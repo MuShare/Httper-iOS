@@ -10,18 +10,14 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-fileprivate struct Const {
-    static let shownHeight: CGFloat = 200
-}
-
 protocol RxKeyboardViewController {}
 
 extension Reactive where Base: UIViewController, Base: RxKeyboardViewController {
     
-    var keyboardHeight: Binder<CGFloat> {
+    var moveupHeight: Binder<CGFloat> {
         return Binder(self.base) { (view, binder) in
             let height = binder
-            guard height > Const.shownHeight else {
+            guard height > 0 else {
                 UIView.animate(withDuration: 0.3) {
                     UIView.animate(withDuration: 0.5, animations: {
                         view.view.frame = CGRect(x: 0, y: 0, width: view.view.frame.size.width, height: view.view.frame.size.height)
@@ -30,10 +26,9 @@ extension Reactive where Base: UIViewController, Base: RxKeyboardViewController 
                 }
                 return
             }
-            
-            let offset = height - Const.shownHeight
+
             UIView.animate(withDuration: 0.3) {
-                view.view.frame = CGRect(x: 0, y: -offset, width: view.view.frame.size.width, height: view.view.frame.size.height)
+                view.view.frame = CGRect(x: 0, y: -height, width: view.view.frame.size.width, height: view.view.frame.size.height)
                 view.view.layoutIfNeeded()
             }
         }

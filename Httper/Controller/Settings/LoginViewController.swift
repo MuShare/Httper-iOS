@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import FacebookCore
 import FacebookLogin
+import FBSDKLoginKit
 import NVActivityIndicatorView
 
 class LoginViewController: EditingViewController, NVActivityIndicatorViewable {
@@ -70,7 +70,7 @@ class LoginViewController: EditingViewController, NVActivityIndicatorViewable {
     
     @IBAction func loginWithFacebook(_ sender: Any) {
         let loginManager = LoginManager()
-        loginManager.logIn(readPermissions: [.publicProfile ], viewController: self) { loginResult in
+        loginManager.logIn(permissions: [.publicProfile], viewController: self) { loginResult in
             switch loginResult {
             case .failed(let error):
                 if DEBUG {
@@ -83,7 +83,7 @@ class LoginViewController: EditingViewController, NVActivityIndicatorViewable {
             case .success(_, _, let accessToken):
                 self.startAnimating()
                 
-                self.user.loginWithFacebook(accessToken.authenticationToken) { [weak self] (success, tip) in
+                self.user.loginWithFacebook(accessToken.tokenString) { [weak self] (success, tip) in
                     guard let `self` = self else { return }
                     self.stopAnimating()
                     if success {

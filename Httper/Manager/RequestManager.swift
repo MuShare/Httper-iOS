@@ -11,6 +11,7 @@ import RxAlamofire
 import Alamofire
 
 class RequestManager {
+    
     static let shared = RequestManager()
 
     func send(_ request: RequestData) -> Observable<(HTTPURLResponse, Data)> {
@@ -21,4 +22,5 @@ class RequestManager {
                             headers: request.headers)
             .responseData()
     }
+    
 }

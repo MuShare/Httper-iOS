@@ -75,6 +75,8 @@ class RequestViewModel: BaseViewModel {
     let url = BehaviorRelay<String?>(value: nil)
     let requestProtocol = BehaviorRelay<Int>(value: 0)
     
+    var valueOriginY: CGFloat = 0
+    
     var requestData: RequestData {
         return RequestData(
             method: requestMethod.value,
@@ -102,8 +104,21 @@ class RequestViewModel: BaseViewModel {
         }
     }
     
-    var keyboardHeight: Observable<CGFloat> {
-        return RxKeyboard.instance.visibleHeight.skip(1).asObservable().map { $0 + 35.0 }
+    var moveupHeight: Observable<CGFloat> {
+        let relativeScreenHeight = UIScreen.main.bounds.height - valueOriginY
+
+        return Observable.combineLatest(
+            editingState,
+            RxKeyboard.instance.visibleHeight.skip(1).asObservable()
+        ).map {
+            let (state, keyboardHeight) = $0
+            switch state {
+            case .begin(let height):
+                return max(keyboardHeight - (relativeScreenHeight - height), 0)
+            case .end:
+                return 0
+            }
+        }
     }
     
     func sendRequest() {
@@ -120,6 +135,17 @@ class RequestViewModel: BaseViewModel {
             return
         }
         steps.accept(RequestStep.save(requestData))
+    }
+    
+    func clear() {
+        alert.onNext(.customConfirm(title: "Clear Request", message: "Are you sure to clear this request?", onConfirm: { [unowned self] in
+            self.requestMethod.accept("GET")
+            self.url.accept(nil)
+            self.requestProtocol.accept(0)
+            self.parametersViewModel.clear()
+            self.headersViewModel.clear()
+            self.bodyViewModel.clear()
+        }))
     }
     
 }
