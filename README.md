@@ -1,4 +1,4 @@
-# Httper
+# Httper [![Build Status](https://travis-ci.org/MuShare/Httper-iOS.svg?branch=master)](https://travis-ci.org/MuShare/Httper-iOS)
 
 Httper is a REST API test tool running on your iOS devices. It helps developers to test their REST APIs anywhere and anytime without PC.
 
@@ -16,7 +16,7 @@ Httper is a REST API test tool running on your iOS devices. It helps developers 
 Submit issues on https://github.com/lm2343635/Httper/issues or send email to me(lm2343635@126.com).
 Httper is an open source software. If you like my app, please give me a star on Github: https://github.com/lm2343635/Httper
 
-![Httper](https://raw.githubusercontent.com/MuShare/Httper-iOS/master/screenshot/httper.png)
+[![Httper](https://raw.githubusercontent.com/MuShare/Httper-iOS/master/screenshot/httper.png)](https://itunes.apple.com/app/httper/id1166884043)
 
 Submit issues on https://github.com/lm2343635/Httper/issues or send email to me.
 
