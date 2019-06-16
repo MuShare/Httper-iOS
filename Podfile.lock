@@ -13,13 +13,13 @@ PODS:
     - FacebookCore (~> 0.7)
     - FBSDKCoreKit (~> 5.0)
     - FBSDKLoginKit (~> 5.0)
-  - FBSDKCoreKit (5.0.1):
-    - FBSDKCoreKit/Basics (= 5.0.1)
-    - FBSDKCoreKit/Core (= 5.0.1)
-  - FBSDKCoreKit/Basics (5.0.1)
-  - FBSDKCoreKit/Core (5.0.1):
+  - FBSDKCoreKit (5.0.2):
+    - FBSDKCoreKit/Basics (= 5.0.2)
+    - FBSDKCoreKit/Core (= 5.0.2)
+  - FBSDKCoreKit/Basics (5.0.2)
+  - FBSDKCoreKit/Core (5.0.2):
     - FBSDKCoreKit/Basics
-  - FBSDKLoginKit (5.0.1):
+  - FBSDKLoginKit (5.0.2):
     - FBSDKCoreKit (~> 5.0)
   - Firebase/Core (6.2.0):
     - Firebase/CoreOnly
@@ -99,7 +99,7 @@ PODS:
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.2)
   - Kanna (5.0.0)
-  - Kingfisher (5.5.0)
+  - Kingfisher (5.6.0)
   - M80AttributedLabel (1.9.5)
   - MGFormatter (0.4):
     - AttributedTextView (~> 1.3)
@@ -278,8 +278,8 @@ SPEC CHECKSUMS:
   Fabric: f6f21452846788bb44595d73e9909d79d328e617
   FacebookCore: 4eee98476cb37a485af5d337eb21f8cd5b3c7e6c
   FacebookLogin: 94cdad6850e86a2b04704dedfe7674a7af8148eb
-  FBSDKCoreKit: 4a19534474ade7c71bd016d800aa5e7722bcdda1
-  FBSDKLoginKit: 41efa754b909b0ea813fa9a8596dacc8ed196d50
+  FBSDKCoreKit: 3e41c402eb64ea7799c71833ff9e5690f27b9c42
+  FBSDKLoginKit: a88f36da648e4c5d60eb261c63eac067abb97130
   Firebase: 5965bac23e7fcb5fa6d926ed429c9ecef8a2014e
   FirebaseABTesting: a32c488eb75089a61eb3d86db061dfb909d765db
   FirebaseAnalytics: 629301c2b9925f3537d4093a17a72751ae5b7084
@@ -293,7 +293,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: 996e0db07153674fd1b54b220fda3a3dc3547cba
   GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
   Kanna: a32875df62975f8f4b871e933b4ea1a5c3b8be0f
-  Kingfisher: 6fe5e67a90fd335e49b0f5c075ff55ac5ebedd94
+  Kingfisher: 1a50df6880a60bae26f3e21a0df3d17b892f5e0b
   M80AttributedLabel: d1177fbd7451d134794b50e91ca8b0cb167ef530
   MGFormatter: 32a94fea1478c9df39783dfbf692b0238a896a15
   MGKeyboardAccessory: a9f30a9c1fd158b1895aada9aab905a3c4b93581

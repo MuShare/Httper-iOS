@@ -53,7 +53,7 @@
 		77F39968215381700016978E /* BodyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F39967215381700016978E /* BodyViewModel.swift */; };
 		77F3996A215382BA0016978E /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F39969215382BA0016978E /* MenuViewCell.swift */; };
 		BB07BE0E22A7FF2A00A03CBD /* Kingfisher+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB07BE0D22A7FF2A00A03CBD /* Kingfisher+Rx.swift */; };
-		BB3106B822AD1BB6009B9DCF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB3106B722AD1BB6009B9DCF /* GoogleService-Info.plist */; };
+		BB44C51522B687380040DCD3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB44C51422B687370040DCD3 /* GoogleService-Info.plist */; };
 		BBC41DE7226DE5F500ABF820 /* UITableView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC41DE6226DE5F500ABF820 /* UITableView+Rx.swift */; };
 		E4007EB91DFEE7B7002A87FA /* BodyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4007EB81DFEE7B7002A87FA /* BodyViewController.swift */; };
 		E40986A2215523A3006CCC04 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409869F215523A2006CCC04 /* UIColor+Extension.swift */; };
@@ -193,7 +193,7 @@
 		77F39969215382BA0016978E /* MenuViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewCell.swift; sourceTree = "<group>"; };
 		7EBC322CA510BFBBFF4AB72E /* Pods-Httper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Httper.release.xcconfig"; path = "Pods/Target Support Files/Pods-Httper/Pods-Httper.release.xcconfig"; sourceTree = "<group>"; };
 		BB07BE0D22A7FF2A00A03CBD /* Kingfisher+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Kingfisher+Rx.swift"; sourceTree = "<group>"; };
-		BB3106B722AD1BB6009B9DCF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BB44C51422B687370040DCD3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BBC41DE6226DE5F500ABF820 /* UITableView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Rx.swift"; sourceTree = "<group>"; };
 		E4007EB81DFEE7B7002A87FA /* BodyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodyViewController.swift; sourceTree = "<group>"; };
 		E400D3C220C1BEF100B2BC7F /* route_simulator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = route_simulator.h; sourceTree = "<group>"; };
@@ -442,7 +442,7 @@
 		774C75E920D7923B00DBD9EC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				BB3106B722AD1BB6009B9DCF /* GoogleService-Info.plist */,
+				BB44C51422B687370040DCD3 /* GoogleService-Info.plist */,
 				E431C4AB1DF72172006BB2D6 /* Localizable.strings */,
 				E4DE76921E1D2AB0002A8385 /* login-bg-iPad.jpg */,
 				E4DE76951E1D3DAE002A8385 /* login-bg.jpg */,
@@ -755,7 +755,7 @@
 				E431C4AC1DF72172006BB2D6 /* Localizable.strings in Resources */,
 				E4DE769B1E1E9FE2002A8385 /* register-bg-iPad.jpg in Resources */,
 				E4F95CD81E1572FD005A0004 /* whois.css in Resources */,
-				BB3106B822AD1BB6009B9DCF /* GoogleService-Info.plist in Resources */,
+				BB44C51522B687380040DCD3 /* GoogleService-Info.plist in Resources */,
 				E48D41621D444F3F0028B84F /* Assets.xcassets in Resources */,
 				774C75F220D79B9D00DBD9EC /* Login.storyboard in Resources */,
 			);

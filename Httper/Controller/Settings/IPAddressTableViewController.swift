@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import Reachability
+import SwiftyJSON
 
 class IPAddressTableViewController: UITableViewController {
     
@@ -22,7 +23,7 @@ class IPAddressTableViewController: UITableViewController {
     @IBOutlet weak var loadingActivityIndicatorView: UIActivityIndicatorView!
 
     var pingService: STDPingServices!
-    var ipInfo: Dictionary<String, Any>!
+    var ipInfo: JSON?
     
     let reachability = Reachability()!
     
@@ -31,20 +32,18 @@ class IPAddressTableViewController: UITableViewController {
 
         let routeInfo = InternetTool.getRouterInfo()
 
-        
-
-        if let wifiInfo = routeInfo?.value(forKey: kTypeInfoKeyWifi) {
-            let wifi = wifiInfo as! [String: String]
-            wifiLocalLabel.text = wifi["local"]
-            wifiBroadcastLabel.text = wifi["broadcast"]
-            wifiGatewayLabel.text = wifi["gateway"]
-            wifiNetmaskLabel.text = wifi["netmask"]
+        if let wifiInfo = routeInfo?.value(forKey: kTypeInfoKeyWifi) as? [String: String] {
+            let wifi = JSON(wifiInfo)
+            wifiLocalLabel.text = wifi["local"].stringValue
+            wifiBroadcastLabel.text = wifi["broadcast"].stringValue
+            wifiGatewayLabel.text = wifi["gateway"].stringValue
+            wifiNetmaskLabel.text = wifi["netmask"].stringValue
         }
         
-        if let cellularInfo = routeInfo?.value(forKey: kTypeInfoKeyCellular) {
-            let cellular = cellularInfo as! [String: String]
-            cellularLocalLabel.text = cellular["local"]
-            cellularNetmaskLabel.text = cellular["netmask"]
+        if let cellularInfo = routeInfo?.value(forKey: kTypeInfoKeyCellular) as? [String: String] {
+            let cellular = JSON(cellularInfo)
+            cellularLocalLabel.text = cellular["local"].stringValue
+            cellularNetmaskLabel.text = cellular["netmask"].stringValue
         }
         
         //Check Internet state
@@ -53,12 +52,13 @@ class IPAddressTableViewController: UITableViewController {
             self.publicIPLabel.isHidden = false
             self.loadingActivityIndicatorView.stopAnimating()
         } else {
-            Alamofire.request(ipInfoUrl).responseJSON { response in
-                self.ipInfo = response.result.value as! Dictionary<String, Any>?
-                
-                if (self.ipInfo["ip"] != nil) {
-                    self.publicIPLabel.text = self.ipInfo["ip"]! as? String
+            Alamofire.request(ipInfoUrl).responseJSON { [weak self] response in
+                guard let `self` = self, let info = response.result.value as? [String: Any] else {
+                    return
                 }
+                let ipInfo = JSON(info)
+                self.ipInfo = ipInfo
+                self.publicIPLabel.text = ipInfo["ip"].stringValue
                 self.publicIPLabel.isHidden = false
                 self.loadingActivityIndicatorView.stopAnimating()
             }

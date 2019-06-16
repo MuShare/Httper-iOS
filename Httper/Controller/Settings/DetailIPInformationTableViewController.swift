@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import SwiftyJSON
 
 class DetailIPInformationTableViewController: UITableViewController {
     
@@ -20,7 +21,7 @@ class DetailIPInformationTableViewController: UITableViewController {
     @IBOutlet weak var longitudeLabel: UILabel!
     @IBOutlet weak var locationMapView: MKMapView!
     
-    var ipInfo: Dictionary<String, Any>!
+    var ipInfo: JSON!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,35 +31,18 @@ class DetailIPInformationTableViewController: UITableViewController {
         }
         
         //Set detail IP information.
-        self.title = ipInfo["ip"]! as? String
+        self.title = ipInfo["ip"].stringValue
         
-        let city = ipInfo["city"]! as? String
-        let region = ipInfo["region"]! as? String
-        let country = ipInfo["country"]! as? String
-        let postCode = ipInfo["postal"]! as? String
-        let timezone = ipInfo["timezone"]! as? String
-        
-        if city != "" && city != nil {
-            cityLabel.text = city
-        }
-        if region != "" && region != nil {
-            regionLabel.text = region
-        }
-        if country != "" && country != nil {
-            coutryLabel.text = country
-        }
-        if postCode != "" && postCode != nil {
-            postCodeLabel.text = postCode
-        }
-        if timezone != "" && timezone != nil {
-            timeZoneLabel.text = timezone
-        }
-        
-        latitudeLabel.text = "\(ipInfo["latitude"]!)"
-        longitudeLabel.text = "\(ipInfo["longitude"]!)"
+        cityLabel.text = ipInfo["city"].stringValue
+        regionLabel.text = ipInfo["region"].stringValue
+        coutryLabel.text = ipInfo["country"].stringValue
+        postCodeLabel.text = ipInfo["postal"].stringValue
+        timeZoneLabel.text = ipInfo["timezone"].stringValue
+        latitudeLabel.text = ipInfo["latitude"].stringValue
+        longitudeLabel.text = ipInfo["longitude"].stringValue
         
         //Set map
-        let center = CLLocation(latitude: (ipInfo["latitude"]! as? Double)!, longitude: (ipInfo["longitude"]! as? Double)!)
+        let center = CLLocation(latitude: ipInfo["latitude"].doubleValue, longitude: ipInfo["longitude"].doubleValue)
         let currentLocationSpan = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
         let currentRegion = MKCoordinateRegion(center: center.coordinate, span: currentLocationSpan)
         locationMapView.setRegion(currentRegion, animated: true)
