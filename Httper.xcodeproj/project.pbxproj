@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		4F51F2CAB45DDC76A9F169B1 /* Pods_Httper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5637677047F4C4B6CA981D18 /* Pods_Httper.framework */; };
+		77055F4F22B75557001F140D /* IPAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77055F4E22B75557001F140D /* IPAddressViewController.swift */; };
+		77055F5122B75598001F140D /* IPAddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77055F5022B75598001F140D /* IPAddressViewModel.swift */; };
+		77055F5322B76570001F140D /* IPAddressInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77055F5222B76570001F140D /* IPAddressInfoTableViewCell.swift */; };
+		77055F5522B76595001F140D /* IPAddressHeadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77055F5422B76595001F140D /* IPAddressHeadTableViewCell.swift */; };
 		77271CB021E747D30072E007 /* SaveToProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77271CAF21E747D30072E007 /* SaveToProjectViewController.swift */; };
 		77271CB221E747FB0072E007 /* SaveToProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77271CB121E747FB0072E007 /* SaveToProjectViewModel.swift */; };
 		77271CB421E74DE60072E007 /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77271CB321E74DE60072E007 /* ProjectTableViewCell.swift */; };
@@ -49,7 +53,6 @@
 		77F3995F215373600016978E /* KeyValueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F3995E215373600016978E /* KeyValueViewController.swift */; };
 		77F39961215373770016978E /* KeyValueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F39960215373770016978E /* KeyValueViewModel.swift */; };
 		77F39964215374370016978E /* KeyValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F39963215374370016978E /* KeyValueTableViewCell.swift */; };
-		77F39966215377790016978E /* SingleSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F39965215377790016978E /* SingleSection.swift */; };
 		77F39968215381700016978E /* BodyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F39967215381700016978E /* BodyViewModel.swift */; };
 		77F3996A215382BA0016978E /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F39969215382BA0016978E /* MenuViewCell.swift */; };
 		BB07BE0E22A7FF2A00A03CBD /* Kingfisher+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB07BE0D22A7FF2A00A03CBD /* Kingfisher+Rx.swift */; };
@@ -147,6 +150,10 @@
 		4787A86C21239A8AA4ADE88E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		4F2FE7831EA2CA12EBD27AA5 /* Pods-Httper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Httper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Httper/Pods-Httper.debug.xcconfig"; sourceTree = "<group>"; };
 		5637677047F4C4B6CA981D18 /* Pods_Httper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Httper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		77055F4E22B75557001F140D /* IPAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPAddressViewController.swift; sourceTree = "<group>"; };
+		77055F5022B75598001F140D /* IPAddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPAddressViewModel.swift; sourceTree = "<group>"; };
+		77055F5222B76570001F140D /* IPAddressInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPAddressInfoTableViewCell.swift; sourceTree = "<group>"; };
+		77055F5422B76595001F140D /* IPAddressHeadTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPAddressHeadTableViewCell.swift; sourceTree = "<group>"; };
 		77271CAF21E747D30072E007 /* SaveToProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveToProjectViewController.swift; sourceTree = "<group>"; };
 		77271CB121E747FB0072E007 /* SaveToProjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveToProjectViewModel.swift; sourceTree = "<group>"; };
 		77271CB321E74DE60072E007 /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
@@ -188,7 +195,6 @@
 		77F3995E215373600016978E /* KeyValueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueViewController.swift; sourceTree = "<group>"; };
 		77F39960215373770016978E /* KeyValueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueViewModel.swift; sourceTree = "<group>"; };
 		77F39963215374370016978E /* KeyValueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueTableViewCell.swift; sourceTree = "<group>"; };
-		77F39965215377790016978E /* SingleSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleSection.swift; sourceTree = "<group>"; };
 		77F39967215381700016978E /* BodyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyViewModel.swift; sourceTree = "<group>"; };
 		77F39969215382BA0016978E /* MenuViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewCell.swift; sourceTree = "<group>"; };
 		7EBC322CA510BFBBFF4AB72E /* Pods-Httper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Httper.release.xcconfig"; path = "Pods/Target Support Files/Pods-Httper/Pods-Httper.release.xcconfig"; sourceTree = "<group>"; };
@@ -416,7 +422,6 @@
 				E41642D21DF970CE00F0339E /* CommonTool.swift */,
 				E4305A371E2E5FF900010B52 /* Global.swift */,
 				E45D3E851E21296F0002E1F2 /* InternetResponse.swift */,
-				77F39965215377790016978E /* SingleSection.swift */,
 				E47FDC5F1E3861AF00251EEC /* Versions.swift */,
 			);
 			path = Library;
@@ -457,6 +462,8 @@
 			children = (
 				E4F95CD91E16A7D3005A0004 /* DetailIPInformationTableViewController.swift */,
 				E4EC89D31E12A00C0072ACF3 /* IPAddressTableViewController.swift */,
+				77055F4E22B75557001F140D /* IPAddressViewController.swift */,
+				77055F5022B75598001F140D /* IPAddressViewModel.swift */,
 				E48BF6541F3DAA0D00F567FC /* KeyboardAccessoryCollectionViewController.swift */,
 				E4DE76901E1D2644002A8385 /* LoginViewController.swift */,
 				E4BBC9921E4DCCBB002107DF /* NameViewController.swift */,
@@ -519,6 +526,8 @@
 			children = (
 				77D6A7EC2186AA4500A65283 /* DeleteTableViewCell.swift */,
 				7766EA7B217DC4AB001A6260 /* DetailTableViewCell.swift */,
+				77055F5422B76595001F140D /* IPAddressHeadTableViewCell.swift */,
+				77055F5222B76570001F140D /* IPAddressInfoTableViewCell.swift */,
 				77F39963215374370016978E /* KeyValueTableViewCell.swift */,
 				77F39969215382BA0016978E /* MenuViewCell.swift */,
 				7782A5F9226977E4002B6AE2 /* PingTableViewCell.swift */,
@@ -832,6 +841,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxController/RxController.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
+				"${BUILT_PRODUCTS_DIR}/RxDataSourcesSingleSection/RxDataSourcesSingleSection.framework",
 				"${BUILT_PRODUCTS_DIR}/RxFlow/RxFlow.framework",
 				"${BUILT_PRODUCTS_DIR}/RxKeyboard/RxKeyboard.framework",
 				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
@@ -878,6 +888,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSourcesSingleSection.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxFlow.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxKeyboard.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
@@ -941,6 +952,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E49F680421495E3300646892 /* ProjectFlow.swift in Sources */,
+				77055F5122B75598001F140D /* IPAddressViewModel.swift in Sources */,
 				E4DE76991E1D3DF5002A8385 /* RegisterViewController.swift in Sources */,
 				E4712ED81E55FC71002FF8E1 /* ProjectNameViewController.swift in Sources */,
 				77A53082216708F60008CC56 /* DetailViewModel.swift in Sources */,
@@ -990,6 +1002,7 @@
 				E4F95CDA1E16A7D3005A0004 /* DetailIPInformationTableViewController.swift in Sources */,
 				E4305A491E34F8E100010B52 /* DaoTemplate.swift in Sources */,
 				77A5307E216708CC0008CC56 /* RawViewModel.swift in Sources */,
+				77055F5322B76570001F140D /* IPAddressInfoTableViewCell.swift in Sources */,
 				E44B98A720EBDE06004FEF67 /* ProjectsViewController.swift in Sources */,
 				E40986A4215523A3006CCC04 /* UIViewController+Extension.swift in Sources */,
 				77F3996A215382BA0016978E /* MenuViewCell.swift in Sources */,
@@ -1010,6 +1023,7 @@
 				774C75F020D795EE00DBD9EC /* R.generated.swift in Sources */,
 				E47FDC601E3861AF00251EEC /* Versions.swift in Sources */,
 				E49BC0AC1E4226F400241004 /* Project+CoreDataProperties.swift in Sources */,
+				77055F4F22B75557001F140D /* IPAddressViewController.swift in Sources */,
 				E48553341DF9B2BF00A1DB60 /* RawViewController.swift in Sources */,
 				E48553321DF9B2AF00A1DB60 /* PrettyViewController.swift in Sources */,
 				E49BC0B01E4227BA00241004 /* ProjectDao.swift in Sources */,
@@ -1039,9 +1053,9 @@
 				7739628B225C46320091C669 /* ProjectIntroductionViewModel.swift in Sources */,
 				E411A30A215286C5004ADBAE /* UIView+Extension.swift in Sources */,
 				E4DE76911E1D2645002A8385 /* LoginViewController.swift in Sources */,
-				77F39966215377790016978E /* SingleSection.swift in Sources */,
 				E4CA76131E3F7E1A008D7A52 /* AddProjectViewController.swift in Sources */,
 				E49BC0AE1E4226F400241004 /* Request+CoreDataProperties.swift in Sources */,
+				77055F5522B76595001F140D /* IPAddressHeadTableViewCell.swift in Sources */,
 				E447287B1DF7CE80007D2C8B /* ResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

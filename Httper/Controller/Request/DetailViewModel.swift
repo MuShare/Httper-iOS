@@ -7,7 +7,7 @@
 //
 
 import RxSwift
-import Alamofire
+import RxDataSourcesSingleSection
 
 struct DetailModel {
     var title: String

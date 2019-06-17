@@ -156,6 +156,11 @@ PODS:
     - Differentiator (~> 4.0)
     - RxCocoa (~> 5.0)
     - RxSwift (~> 5.0)
+  - RxDataSourcesSingleSection (0.1.1):
+    - Reusable (~> 4)
+    - RxCocoa (~> 5)
+    - RxDataSources (~> 4)
+    - RxSwift (~> 5)
   - RxFlow (2.3.0):
     - RxCocoa (>= 5.0.0)
     - RxSwift (>= 5.0.0)
@@ -199,7 +204,7 @@ DEPENDENCIES:
   - RxBinding
   - RxCocoa
   - RxController
-  - RxDataSources
+  - RxDataSourcesSingleSection
   - RxFlow
   - RxKeyboard
   - RxSwift
@@ -256,6 +261,7 @@ SPEC REPOS:
     - RxCocoa
     - RxController
     - RxDataSources
+    - RxDataSourcesSingleSection
     - RxFlow
     - RxKeyboard
     - RxRelay
@@ -312,6 +318,7 @@ SPEC CHECKSUMS:
   RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
   RxController: 71002a053a093f28c1d50b149f17af7327a82d54
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
+  RxDataSourcesSingleSection: 42ee6900e6c069ce2d0bb9a1cd81308dce772d28
   RxFlow: ee6f1fdbacfa4ca8926122e466dfba32e3edf73f
   RxKeyboard: 6683c4344304a00f943c158bd8a43ce5469c82a7
   RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
@@ -324,6 +331,6 @@ SPEC CHECKSUMS:
   "UIImageView+Extension": bc26c60a9c8cd6fb515ae1e37377a6f0988e76d8
   "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
 
-PODFILE CHECKSUM: bfe3571807a4e5c968b8748e9b0ce50e4f5d9d75
+PODFILE CHECKSUM: 2e7c5766cf47b1e3e36d090a59878f9326981901
 
 COCOAPODS: 1.7.1

@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import RxDataSourcesSingleSection
 
 class DetailViewController: BaseViewController<DetailViewModel> {
     
