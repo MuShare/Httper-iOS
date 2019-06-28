@@ -17,7 +17,6 @@ let DEBUG = false
 let baseUrl = "https://httper.mushare.cn/"
 //let baseUrl = "http://192.168.96.128:8080/"
 
-let ipInfoUrl = "https://ipapi.co/json/"
 let whoisUrl = "https://www.whois.com"
 
 func createUrl(_ relative: String) -> String {

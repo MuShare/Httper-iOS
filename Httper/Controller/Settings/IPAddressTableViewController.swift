@@ -52,7 +52,7 @@ class IPAddressTableViewController: UITableViewController {
             self.publicIPLabel.isHidden = false
             self.loadingActivityIndicatorView.stopAnimating()
         } else {
-            Alamofire.request(ipInfoUrl).responseJSON { [weak self] response in
+            Alamofire.request("https://ipapi.co/json/").responseJSON { [weak self] response in
                 guard let `self` = self, let info = response.result.value as? [String: Any] else {
                     return
                 }
