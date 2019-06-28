@@ -13,11 +13,12 @@ private struct Const {
     
     struct icon {
         static let size = 30
-        static let marginTop = 10
+        static let marginTop = 15
     }
     
     struct name {
-        static let marginVertical = 5
+        static let marginTop = 5
+        static let marginBottom = 10
     }
     
 }
@@ -35,6 +36,9 @@ class IPAddressHeadTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        selectionStyle = .none
+        backgroundColor = .clear
         
         addSubview(iconImageView)
         addSubview(nameLabel)
@@ -54,9 +58,9 @@ class IPAddressHeadTableViewCell: UITableViewCell {
         }
         
         nameLabel.snp.makeConstraints {
-            $0.top.equalTo(iconImageView.snp.bottom).offset(Const.name.marginVertical)
             $0.centerX.equalToSuperview()
-            $0.bottom.equalToSuperview().offset(-Const.name.marginVertical)
+            $0.top.equalTo(iconImageView.snp.bottom).offset(Const.name.marginTop)
+            $0.bottom.equalToSuperview().offset(-Const.name.marginBottom)
         }
         
     }

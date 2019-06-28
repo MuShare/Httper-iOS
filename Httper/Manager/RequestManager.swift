@@ -10,7 +10,7 @@ import RxSwift
 import RxAlamofire
 import Alamofire
 
-class RequestManager {
+final class RequestManager {
     
     static let shared = RequestManager()
 

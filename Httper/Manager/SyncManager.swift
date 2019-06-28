@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyUserDefaults
 
-class SyncManager {
+final class SyncManager {
     
     var dao: DaoManager!
     

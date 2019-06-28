@@ -31,6 +31,9 @@ class IPAddressInfoTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        selectionStyle = .none
+        backgroundColor = .clear
+        
         addSubview(nameLabel)
         addSubview(infoLabel)
         createConstraints()
@@ -67,7 +70,8 @@ extension IPAddressInfoTableViewCell: Configurable {
     typealias Model = IPAddressInfo
     
     func configure(_ model: IPAddressInfo) {
-        
+        nameLabel.text = model.name
+        infoLabel.text = model.info
     }
     
 }
