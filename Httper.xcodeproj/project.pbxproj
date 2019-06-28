@@ -123,12 +123,10 @@
 		E4DE769B1E1E9FE2002A8385 /* register-bg-iPad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4DE769A1E1E9FE2002A8385 /* register-bg-iPad.jpg */; };
 		E4E297B11E00021500AD484E /* ResponseHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E297B01E00021500AD484E /* ResponseHeaderViewController.swift */; };
 		E4EC89D21E129FA10072ACF3 /* STDPingServices.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EC89D01E129FA10072ACF3 /* STDPingServices.m */; };
-		E4EC89D41E12A00C0072ACF3 /* IPAddressTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EC89D31E12A00C0072ACF3 /* IPAddressTableViewController.swift */; };
 		E4EC89D71E12A4C70072ACF3 /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EC89D61E12A4C70072ACF3 /* SimplePing.m */; };
 		E4F16F621E4B685F00C17DA4 /* ResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F16F611E4B685F00C17DA4 /* ResetViewController.swift */; };
 		E4F95CD61E15685A005A0004 /* WhoisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F95CD51E15685A005A0004 /* WhoisViewController.swift */; };
 		E4F95CD81E1572FD005A0004 /* whois.css in Resources */ = {isa = PBXBuildFile; fileRef = E4F95CD71E1572FD005A0004 /* whois.css */; };
-		E4F95CDA1E16A7D3005A0004 /* DetailIPInformationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F95CD91E16A7D3005A0004 /* DetailIPInformationTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -283,13 +281,11 @@
 		E4E297B01E00021500AD484E /* ResponseHeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseHeaderViewController.swift; sourceTree = "<group>"; };
 		E4EC89CF1E129FA10072ACF3 /* STDPingServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STDPingServices.h; sourceTree = "<group>"; };
 		E4EC89D01E129FA10072ACF3 /* STDPingServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STDPingServices.m; sourceTree = "<group>"; };
-		E4EC89D31E12A00C0072ACF3 /* IPAddressTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPAddressTableViewController.swift; sourceTree = "<group>"; };
 		E4EC89D51E12A4C70072ACF3 /* SimplePing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePing.h; sourceTree = "<group>"; };
 		E4EC89D61E12A4C70072ACF3 /* SimplePing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePing.m; sourceTree = "<group>"; };
 		E4F16F611E4B685F00C17DA4 /* ResetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetViewController.swift; sourceTree = "<group>"; };
 		E4F95CD51E15685A005A0004 /* WhoisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhoisViewController.swift; sourceTree = "<group>"; };
 		E4F95CD71E1572FD005A0004 /* whois.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = whois.css; sourceTree = "<group>"; };
-		E4F95CD91E16A7D3005A0004 /* DetailIPInformationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailIPInformationTableViewController.swift; sourceTree = "<group>"; };
 		EF3A954FCEE5E084F25916CA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -465,8 +461,6 @@
 		774C75EA20D7927F00DBD9EC /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				E4F95CD91E16A7D3005A0004 /* DetailIPInformationTableViewController.swift */,
-				E4EC89D31E12A00C0072ACF3 /* IPAddressTableViewController.swift */,
 				77055F4E22B75557001F140D /* IPAddressViewController.swift */,
 				77055F5022B75598001F140D /* IPAddressViewModel.swift */,
 				E48BF6541F3DAA0D00F567FC /* KeyboardAccessoryCollectionViewController.swift */,
@@ -1006,7 +1000,6 @@
 				E4F16F621E4B685F00C17DA4 /* ResetViewController.swift in Sources */,
 				7782A5F822697497002B6AE2 /* PingViewModel.swift in Sources */,
 				E48BF6551F3DAA0D00F567FC /* KeyboardAccessoryCollectionViewController.swift in Sources */,
-				E4F95CDA1E16A7D3005A0004 /* DetailIPInformationTableViewController.swift in Sources */,
 				E4305A491E34F8E100010B52 /* DaoTemplate.swift in Sources */,
 				77A5307E216708CC0008CC56 /* RawViewModel.swift in Sources */,
 				77055F5322B76570001F140D /* IPAddressInfoTableViewCell.swift in Sources */,
@@ -1045,7 +1038,6 @@
 				77F39968215381700016978E /* BodyViewModel.swift in Sources */,
 				E4EC89D21E129FA10072ACF3 /* STDPingServices.m in Sources */,
 				779B060F2269A18300F5B225 /* UIBarButtonItem+Rx.swift in Sources */,
-				E4EC89D41E12A00C0072ACF3 /* IPAddressTableViewController.swift in Sources */,
 				E4305A471E34F65000010B52 /* DaoManager.swift in Sources */,
 				E42A713D214961780070D8FC /* SettingsViewModel.swift in Sources */,
 				E40B257E1DF44BD20039CA8D /* MainViewController.swift in Sources */,
