@@ -119,6 +119,10 @@ class RequestViewController: BaseViewController<RequestViewModel>, RxKeyboardVie
         return button
     }()
     
+    private lazy var menuView = UIView()
+    
+    private lazy var contentView = UIView()
+    
     private lazy var menuViewController: PagingMenuViewController = {
         let controller = PagingMenuViewController()
         controller.dataSource = self
@@ -137,6 +141,22 @@ class RequestViewController: BaseViewController<RequestViewModel>, RxKeyboardVie
         return controller
     }()
     
+    private lazy var topOffSet: CGFloat = {
+        if #available(iOS 11.0, *) {
+            return 0
+        } else {
+            return 64.0
+        }
+    }()
+    
+    private lazy var bottomOffSet: CGFloat = {
+        if #available(iOS 11.0, *) {
+            return 0
+        } else {
+            return 49.0
+        }
+    }()
+
     var contentViewControllers: [UIViewController] = []
 
     override func viewDidLoad() {
@@ -148,10 +168,14 @@ class RequestViewController: BaseViewController<RequestViewModel>, RxKeyboardVie
         view.addSubview(protocolsSegmentedControl)
         view.addSubview(separatorLabel)
         view.addSubview(urlTextField)
+        view.addSubview(menuView)
+        view.addSubview(contentView)
         view.addSubview(saveButton)
         view.addSubview(sendButton)
-        setupPagingKit()
         createConstraints()
+        
+        addChild(menuViewController, to: menuView)
+        addChild(contentViewController, to: contentView)
         
         menuViewController.reloadData()
         contentViewController.reloadData()
@@ -168,19 +192,10 @@ class RequestViewController: BaseViewController<RequestViewModel>, RxKeyboardVie
 
     }
     
-    private func setupPagingKit() {
-        addChild(contentViewController)
-        view.insertSubview(contentViewController.view, at: 0)
-        contentViewController.didMove(toParent: self)
-        
-        addChild(menuViewController)
-        view.insertSubview(menuViewController.view, aboveSubview: contentViewController.view)
-        menuViewController.didMove(toParent: self)
-    }
-    
     private func createConstraints() {
+        
         requestMethodButton.snp.makeConstraints {
-            $0.top.equalTo(view.safeArea.top).offset(Const.margin)
+            $0.top.equalTo(view.safeArea.top).offset(topOffSet + Const.margin)
             $0.height.equalTo(Const.requestMethod.height)
             $0.width.equalTo(Const.requestMethod.buttonWidth)
             $0.right.equalToSuperview().offset(-Const.margin)
@@ -211,24 +226,24 @@ class RequestViewController: BaseViewController<RequestViewModel>, RxKeyboardVie
             $0.width.equalTo(Const.protocols.width)
         }
         
-        menuViewController.view.snp.makeConstraints {
+        menuView.snp.makeConstraints {
             $0.height.equalTo(Const.menu.height)
             $0.left.equalToSuperview().offset(Const.margin)
             $0.right.equalToSuperview().offset(-Const.margin)
             $0.top.equalTo(urlTextField.snp.bottom).offset(Const.margin)
         }
         
-        contentViewController.view.snp.makeConstraints {
+        contentView.snp.makeConstraints {
             $0.left.equalToSuperview()
             $0.right.equalToSuperview()
-            $0.top.equalTo(menuViewController.view.snp.bottom).offset(Const.margin)
+            $0.top.equalTo(menuView.snp.bottom).offset(Const.margin)
             $0.bottom.equalTo(saveButton.snp.top)
         }
         
         saveButton.snp.makeConstraints {
             $0.left.equalToSuperview().offset(Const.margin)
             $0.height.equalTo(Const.bottomButton.height)
-            $0.bottom.equalTo(view.safeArea.bottom).offset(-Const.margin)
+            $0.bottom.equalTo(view.safeArea.bottom).offset(-bottomOffSet - Const.margin)
             $0.right.equalTo(sendButton.snp.left).offset(-Const.margin)
         }
         
