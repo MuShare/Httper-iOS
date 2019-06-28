@@ -28,6 +28,7 @@
 		7782A5F822697497002B6AE2 /* PingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7782A5F722697497002B6AE2 /* PingViewModel.swift */; };
 		7782A5FA226977E4002B6AE2 /* PingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7782A5F9226977E4002B6AE2 /* PingTableViewCell.swift */; };
 		7799F6BA22C5BB9E00E1AFC4 /* IPAddressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7799F6B922C5BB9E00E1AFC4 /* IPAddressManager.swift */; };
+		7799F6BC22C5F55F00E1AFC4 /* IPAddressMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7799F6BB22C5F55F00E1AFC4 /* IPAddressMapTableViewCell.swift */; };
 		779B060F2269A18300F5B225 /* UIBarButtonItem+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779B060E2269A18300F5B225 /* UIBarButtonItem+Rx.swift */; };
 		779B06112269A8CE00F5B225 /* UITextField+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779B06102269A8CE00F5B225 /* UITextField+Rx.swift */; };
 		77A530702165AF070008CC56 /* RequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A5306F2165AF070008CC56 /* RequestData.swift */; };
@@ -171,6 +172,7 @@
 		7782A5F722697497002B6AE2 /* PingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingViewModel.swift; sourceTree = "<group>"; };
 		7782A5F9226977E4002B6AE2 /* PingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingTableViewCell.swift; sourceTree = "<group>"; };
 		7799F6B922C5BB9E00E1AFC4 /* IPAddressManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPAddressManager.swift; sourceTree = "<group>"; };
+		7799F6BB22C5F55F00E1AFC4 /* IPAddressMapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPAddressMapTableViewCell.swift; sourceTree = "<group>"; };
 		779B060E2269A18300F5B225 /* UIBarButtonItem+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Rx.swift"; sourceTree = "<group>"; };
 		779B06102269A8CE00F5B225 /* UITextField+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Rx.swift"; sourceTree = "<group>"; };
 		77A5306F2165AF070008CC56 /* RequestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestData.swift; sourceTree = "<group>"; };
@@ -531,6 +533,7 @@
 				7766EA7B217DC4AB001A6260 /* DetailTableViewCell.swift */,
 				77055F5422B76595001F140D /* IPAddressHeadTableViewCell.swift */,
 				77055F5222B76570001F140D /* IPAddressInfoTableViewCell.swift */,
+				7799F6BB22C5F55F00E1AFC4 /* IPAddressMapTableViewCell.swift */,
 				77F39963215374370016978E /* KeyValueTableViewCell.swift */,
 				77F39969215382BA0016978E /* MenuViewCell.swift */,
 				7782A5F9226977E4002B6AE2 /* PingTableViewCell.swift */,
@@ -964,6 +967,7 @@
 				777BE32C216C83D300D70427 /* RequestManager.swift in Sources */,
 				777760D4225D99B20053BA3D /* RxKeyboardViewController.swift in Sources */,
 				E49F680021495B0E00646892 /* RequestFlow.swift in Sources */,
+				7799F6BC22C5F55F00E1AFC4 /* IPAddressMapTableViewCell.swift in Sources */,
 				77CDA18D222E13FE0063C472 /* BaseNavigationController.swift in Sources */,
 				7766EA7C217DC4AB001A6260 /* DetailTableViewCell.swift in Sources */,
 				77BBBCE621819B0700500A3A /* ProjectViewModel.swift in Sources */,

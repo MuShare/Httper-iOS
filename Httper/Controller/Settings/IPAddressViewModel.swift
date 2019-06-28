@@ -9,10 +9,12 @@
 import RxCocoa
 import RxDataSourcesSingleSection
 import RxSwift
+import MapKit
 
 enum IPAddressType {
     case head(IPAddressHead)
     case info(IPAddressInfo)
+    case map(CLLocation)
 }
 
 class IPAddressViewModel: BaseViewModel {
@@ -43,7 +45,10 @@ class IPAddressViewModel: BaseViewModel {
                     .info(IPAddressInfo(name: R.string.localizable.ip_address_public_city(), info: ip.city)),
                     .info(IPAddressInfo(name: R.string.localizable.ip_address_public_country(), info: ip.country)),
                     .info(IPAddressInfo(name: R.string.localizable.ip_address_public_post_code(), info: ip.postal)),
-                    .info(IPAddressInfo(name: R.string.localizable.ip_address_public_time_zone(), info: ip.timezone))
+                    .info(IPAddressInfo(name: R.string.localizable.ip_address_public_time_zone(), info: ip.timezone)),
+                    .info(IPAddressInfo(name: R.string.localizable.ip_address_public_latitude(), info: ip.latitude.description)),
+                    .info(IPAddressInfo(name: R.string.localizable.ip_address_public_longitude(), info: ip.longitude.description)),
+                    .map(CLLocation(latitude: ip.latitude, longitude: ip.longitude))
                 ]
             }
             return types

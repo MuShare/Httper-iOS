@@ -32,7 +32,7 @@ class IPAddressInfoTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         selectionStyle = .none
-        backgroundColor = .clear
+        backgroundColor = UIColor(hex: 0x3a3e42)
         
         addSubview(nameLabel)
         addSubview(infoLabel)

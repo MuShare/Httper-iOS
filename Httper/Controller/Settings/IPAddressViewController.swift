@@ -14,10 +14,12 @@ class IPAddressViewController: BaseViewController<IPAddressViewModel> {
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .clear
+        tableView.separatorColor = UIColor(hex: 0x222222)
         tableView.hideFooterView()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.register(cellType: IPAddressHeadTableViewCell.self)
         tableView.register(cellType: IPAddressInfoTableViewCell.self)
+        tableView.register(cellType: IPAddressMapTableViewCell.self)
         return tableView
     }()
     
@@ -30,6 +32,10 @@ class IPAddressViewController: BaseViewController<IPAddressViewModel> {
         case .info(let info):
             let cell = tableView.dequeueReusableCell(for: indexPath) as IPAddressInfoTableViewCell
             cell.configure(info)
+            return cell
+        case .map(let location):
+            let cell = tableView.dequeueReusableCell(for: indexPath) as IPAddressMapTableViewCell
+            cell.configure(location)
             return cell
         }
     })
