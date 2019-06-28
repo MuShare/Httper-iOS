@@ -32,6 +32,10 @@ fileprivate struct Const {
 
 class ResultViewController: BaseViewController<ResultViewModel> {
     
+    private lazy var menuView = UIView()
+    
+    private lazy var contentView = UIView()
+    
     private lazy var menuViewController: PagingMenuViewController = {
         let controller = PagingMenuViewController()
         controller.dataSource = self
@@ -56,34 +60,37 @@ class ResultViewController: BaseViewController<ResultViewModel> {
         super.viewDidLoad()
 
         view.backgroundColor = .background
-        setupPagingKit()
+        view.addSubview(menuView)
+        view.addSubview(contentView)
+        createConstraints()
+        
+        addChild(menuViewController, to: menuView)
+        addChild(contentViewController, to: contentView)
+        
         menuViewController.reloadData()
         contentViewController.reloadData()
         
-        viewModel.title.bind(to: rx.title).disposed(by: disposeBag)
+        disposeBag ~ [
+            viewModel.title ~> rx.title
+        ]
     }
     
-    private func setupPagingKit() {
-        addChild(menuViewController)
-        view.addSubview(menuViewController.view)
-        menuViewController.didMove(toParent: self)
+    private func createConstraints() {
         
-        addChild(contentViewController)
-        view.addSubview(contentViewController.view)
-        contentViewController.didMove(toParent: self)
-        
-        menuViewController.view.snp.makeConstraints {
+        menuView.snp.makeConstraints {
             $0.left.equalToSuperview().offset(Const.menu.margin)
             $0.right.equalToSuperview().offset(-Const.menu.margin)
             $0.top.equalToSuperview().offset(topPadding + Const.menu.margin)
             $0.height.equalTo(Const.menu.height)
         }
         
-        contentViewController.view.snp.makeConstraints {
+        contentView.snp.makeConstraints {
             $0.left.right.bottom.equalToSuperview()
-            $0.top.equalTo(menuViewController.view.snp.bottom).offset(Const.menu.margin)
+            $0.top.equalTo(menuView.snp.bottom).offset(Const.menu.margin)
         }
+        
     }
+
 }
 
 

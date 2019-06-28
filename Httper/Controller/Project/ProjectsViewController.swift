@@ -23,7 +23,6 @@ class ProjectsViewController: BaseViewController<ProjectsViewModel> {
                 tableView.es.stopPullToRefresh(ignoreDate: true, ignoreFooter: true)
             }
         }
-        
         tableView.rx.itemSelected.subscribe(onNext: { [unowned self] in
             self.viewModel.pickProject(at: $0.row)
         }).disposed(by: disposeBag)
