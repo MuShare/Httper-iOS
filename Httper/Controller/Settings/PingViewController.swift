@@ -10,15 +10,17 @@ import UIKit
 import RxDataSourcesSingleSection
 
 fileprivate struct Const {
+    
     struct icon {
         static let size = 30
-        static let margin = 15
+        static let margin: CGFloat = 15
     }
     
     struct address {
         static let height = 40
         static let margin = 15
     }
+    
 }
 
 class PingViewController: BaseViewController<PingViewModel> {
@@ -89,7 +91,7 @@ class PingViewController: BaseViewController<PingViewModel> {
         
         iconImageView.snp.makeConstraints {
             $0.size.equalTo(Const.icon.size)
-            $0.top.equalTo(view.safeArea.top).offset(Const.icon.margin)
+            $0.top.equalTo(view.safeArea.top).offset(Const.icon.margin + topOffSet)
             $0.left.equalToSuperview().offset(Const.icon.margin)
         }
         

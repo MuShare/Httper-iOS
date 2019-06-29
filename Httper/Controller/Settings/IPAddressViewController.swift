@@ -16,6 +16,7 @@ class IPAddressViewController: BaseViewController<IPAddressViewModel> {
         tableView.backgroundColor = .clear
         tableView.separatorColor = UIColor(hex: 0x222222)
         tableView.hideFooterView()
+        tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableView.automaticDimension
         tableView.register(cellType: IPAddressHeadTableViewCell.self)
         tableView.register(cellType: IPAddressInfoTableViewCell.self)
