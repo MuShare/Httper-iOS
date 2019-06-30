@@ -8,8 +8,6 @@
 
 import UIKit
 
-
-
 class HeaderKeysTableViewController: UITableViewController {
     
     private struct Const {

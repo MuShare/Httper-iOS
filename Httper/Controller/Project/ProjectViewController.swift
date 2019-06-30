@@ -62,8 +62,10 @@ class ProjectViewController: BaseViewController<ProjectViewModel> {
         view.addSubview(tableView)
         createConstraints()
         
-        viewModel.title.bind(to: rx.title).disposed(by: disposeBag)
-        viewModel.sections.bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+        disposeBag ~ [
+            viewModel.title ~> rx.title,
+            viewModel.sections ~> tableView.rx.items(dataSource: dataSource)
+        ]
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,8 +76,8 @@ class ProjectViewController: BaseViewController<ProjectViewModel> {
     
     private func createConstraints() {
         tableView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(topPadding)
             $0.left.right.bottom.equalToSuperview()
+            $0.top.equalToSuperview().offset(topPadding)
         }
     }
 

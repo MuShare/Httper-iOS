@@ -13,7 +13,7 @@ import SwiftyUserDefaults
 let UserTypeEmail = "email"
 let UserTypeFacebook = "facebook"
 
-class UserManager {
+final class UserManager {
     
     var dao: DaoManager!
     

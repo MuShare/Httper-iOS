@@ -46,12 +46,11 @@ class RequestViewModel: BaseViewModel {
             requestMethod.accept(method)
         }
         if let urlString = request?.url {
-            let splits = urlString.split(separator: ":")
-            requestProtocol.accept(protocols.firstIndex(of: String(splits[0])) ?? 0)
-            var urlPart = splits[1]
-            urlPart.removeFirst()
-            urlPart.removeFirst()
-            url.accept(String(urlPart))
+            let splits = urlString.components(separatedBy: "://")
+            if splits.count == 2 {
+                requestProtocol.accept(protocols.firstIndex(of: splits[0]) ?? 0)
+                url.accept(splits[1])
+            }
         }
         if let requestData = request?.parameters as Data?, let parameters =  NSKeyedUnarchiver.unarchiveObject(with: requestData) as? Parameters {
             parametersViewModel.keyValues.accept(parameters.map {

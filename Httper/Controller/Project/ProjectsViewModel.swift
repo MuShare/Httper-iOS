@@ -8,6 +8,7 @@
 
 import RxSwift
 import RxCocoa
+import RxDataSourcesSingleSection
 
 class ProjectsViewModel: BaseViewModel {
     

@@ -27,7 +27,7 @@ target 'Httper' do
     pod 'RxBinding'
     pod 'RxCocoa'
     pod 'RxController'
-    pod 'RxDataSources'
+    pod 'RxDataSourcesSingleSection'
     pod 'RxFlow'
     pod 'RxKeyboard'
     pod 'RxSwift'

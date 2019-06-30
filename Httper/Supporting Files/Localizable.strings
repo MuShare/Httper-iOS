@@ -116,3 +116,24 @@ delete_request_confirm = "Are you sure to delete request ";
 add_character = "Add Customized Character";
 
 name_not_empty = "Name is empty!";
+
+// IPAddressViewController
+ip_adress_title = "My IP Address";
+ip_address_unknown = "unknown";
+ip_address_wifi = "WiFi Network";
+ip_address_wifi_local_ip = "Local IP";
+ip_address_wifi_broadcast = "Broadcast";
+ip_address_wifi_gateway = "Gateway";
+ip_address_wifi_netmask = "Netmask";
+ip_address_cellular = "Cellular Network";
+ip_address_cellular_local_ip = "Local IP";
+ip_address_cellular_netmask = "Netmask";
+ip_address_internet = "Internet";
+ip_address_public_ip = "Public IP";
+ip_address_public_city = "City";
+ip_address_public_region = "Region";
+ip_address_public_country = "Country";
+ip_address_public_post_code = "Post Code";
+ip_address_public_time_zone = "Time Zone";
+ip_address_public_latitude = "Latitude";
+ip_address_public_longitude = "Longitude";
