@@ -141,14 +141,6 @@ class RequestViewController: BaseViewController<RequestViewModel>, RxKeyboardVie
         return controller
     }()
     
-    private lazy var topOffSet: CGFloat = {
-        if #available(iOS 11.0, *) {
-            return 0
-        } else {
-            return 64.0
-        }
-    }()
-    
     private lazy var bottomOffSet: CGFloat = {
         if #available(iOS 11.0, *) {
             return 0
