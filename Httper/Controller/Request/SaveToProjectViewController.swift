@@ -36,11 +36,7 @@ class SaveToProjectViewController: BaseViewController<SaveToProjectViewModel> {
         return tableView
     }()
     
-    private lazy var dataSource = TableViewSingleSectionDataSource<Project>(configureCell: { (_, tableView, indexPath, project) in
-        let cell = tableView.dequeueReusableCell(for: indexPath) as ProjectTableViewCell
-        cell.project = project
-        return cell
-    })
+    private lazy var dataSource = ProjectTableViewCell.tableViewSingleSectionDataSource()
 
     override func viewDidLoad() {
         super.viewDidLoad()

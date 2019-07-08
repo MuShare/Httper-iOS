@@ -29,11 +29,8 @@ class ProjectsViewController: BaseViewController<ProjectsViewModel> {
         return tableView
     }()
     
-    private lazy var dataSource = TableViewSingleSectionDataSource<Project>(configureCell: { (_, tableView, indexPath, project) in
-        let cell = tableView.dequeueReusableCell(for: indexPath) as ProjectTableViewCell
+    private lazy var dataSource = ProjectTableViewCell.tableViewSingleSectionDataSource(configureCell: { cell, _, _ in
         cell.accessoryType = .disclosureIndicator
-        cell.project = project
-        return cell
     })
     
     override func viewDidLoad() {

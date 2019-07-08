@@ -7,12 +7,12 @@
 //
 
 import UIKit
-import Reusable
+import RxDataSourcesSingleSection
 
 fileprivate struct Const {
     
     struct bytes {
-        static let marginLeft = 15
+        static let marginLeft = 20
         static let marginTop = 10
     }
     
@@ -26,7 +26,7 @@ fileprivate struct Const {
     
 }
 
-class PingTableViewCell: UITableViewCell, Reusable {
+class PingTableViewCell: UITableViewCell {
     
     private lazy var bytesLabel: UILabel = {
         let label = UILabel()
@@ -83,16 +83,17 @@ class PingTableViewCell: UITableViewCell, Reusable {
         
     }
     
-    var pingItem: STDPingItem? {
-        didSet {
-            guard let item = pingItem else {
-                return
-            }
-            let address = (item.ipAddress == nil) ? "unknown" : item.ipAddress as String
-            bytesLabel.text = "\(item.dateBytesLength) bytes from \(address)"
-            reqttlLabel.text = "icmp_req = \(item.icmpSequence), ttl = \(item.timeToLive)"
-            timeLabel.text = "\(String(format: "%.2f", item.timeMilliseconds))ms"
-        }
+}
+
+extension PingTableViewCell: Configurable {
+    
+    typealias Model = STDPingItem
+    
+    func configure(_ model: STDPingItem) {
+        let address = (model.ipAddress == nil) ? "unknown" : model.ipAddress as String
+        bytesLabel.text = "\(model.dateBytesLength) bytes from \(address)"
+        reqttlLabel.text = "icmp_req = \(model.icmpSequence), ttl = \(model.timeToLive)"
+        timeLabel.text = "\(String(format: "%.2f", model.timeMilliseconds))ms"
     }
     
 }

@@ -13,13 +13,13 @@ PODS:
     - FacebookCore (~> 0.7)
     - FBSDKCoreKit (~> 5.0)
     - FBSDKLoginKit (~> 5.0)
-  - FBSDKCoreKit (5.1.1):
-    - FBSDKCoreKit/Basics (= 5.1.1)
-    - FBSDKCoreKit/Core (= 5.1.1)
-  - FBSDKCoreKit/Basics (5.1.1)
-  - FBSDKCoreKit/Core (5.1.1):
+  - FBSDKCoreKit (5.2.1):
+    - FBSDKCoreKit/Basics (= 5.2.1)
+    - FBSDKCoreKit/Core (= 5.2.1)
+  - FBSDKCoreKit/Basics (5.2.1)
+  - FBSDKCoreKit/Core (5.2.1):
     - FBSDKCoreKit/Basics
-  - FBSDKLoginKit (5.1.1):
+  - FBSDKLoginKit (5.2.1):
     - FBSDKCoreKit (~> 5.0)
   - Firebase/Core (6.3.0):
     - Firebase/CoreOnly
@@ -99,14 +99,14 @@ PODS:
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.2)
   - Kanna (5.0.0)
-  - Kingfisher (5.6.0)
+  - Kingfisher (5.7.0)
   - M80AttributedLabel (1.9.5)
-  - MGFormatter (0.4):
+  - MGFormatter (0.4.1):
     - AttributedTextView (~> 1.3)
     - Fuzi (~> 3)
-    - MGFormatter/Core (= 0.4)
+    - MGFormatter/Core (= 0.4.1)
     - SwiftyJSON (~> 4.3)
-  - MGFormatter/Core (0.4):
+  - MGFormatter/Core (0.4.1):
     - AttributedTextView (~> 1.3)
     - Fuzi (~> 3)
     - SwiftyJSON (~> 4.3)
@@ -156,7 +156,7 @@ PODS:
     - Differentiator (~> 4.0)
     - RxCocoa (~> 5.0)
     - RxSwift (~> 5.0)
-  - RxDataSourcesSingleSection (0.1.1):
+  - RxDataSourcesSingleSection (0.2.1):
     - Reusable (~> 4)
     - RxCocoa (~> 5)
     - RxDataSources (~> 4)
@@ -284,8 +284,8 @@ SPEC CHECKSUMS:
   Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
   FacebookCore: 4eee98476cb37a485af5d337eb21f8cd5b3c7e6c
   FacebookLogin: 94cdad6850e86a2b04704dedfe7674a7af8148eb
-  FBSDKCoreKit: c29b6b65f6a171ca0a317960a622cff62c9ee269
-  FBSDKLoginKit: fdaf402766755e1175ed5c0382f25e2e7dab3c2a
+  FBSDKCoreKit: e1ab8d86f5eea2d7aa6ab12acca3e1d2dcb11983
+  FBSDKLoginKit: 6e20e44775ddf4b159a8ca676834325e13d12221
   Firebase: 8432d732974498afd5987e9001a05f90f1a3d625
   FirebaseABTesting: a32c488eb75089a61eb3d86db061dfb909d765db
   FirebaseAnalytics: 470ddab7253b21ad5a40bebd4a9903d7ae19386a
@@ -299,9 +299,9 @@ SPEC CHECKSUMS:
   GoogleUtilities: c7a0b08bda3bf808be823ed151f0e28ac6866e71
   GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
   Kanna: a32875df62975f8f4b871e933b4ea1a5c3b8be0f
-  Kingfisher: 1a50df6880a60bae26f3e21a0df3d17b892f5e0b
+  Kingfisher: c7d211b54f1f30d8060aadab177d52b4349c825b
   M80AttributedLabel: d1177fbd7451d134794b50e91ca8b0cb167ef530
-  MGFormatter: 32a94fea1478c9df39783dfbf692b0238a896a15
+  MGFormatter: f7e8a7fa333f6d7cbd55dbdcc142533fdb7c068e
   MGKeyboardAccessory: a9f30a9c1fd158b1895aada9aab905a3c4b93581
   MGSelector: e6dd39fb0dac1a577d9644f7766579cf9b9b18ad
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
@@ -318,7 +318,7 @@ SPEC CHECKSUMS:
   RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
   RxController: dc5201b39e2cfe389e268ce00e2ff44e26eb32e1
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
-  RxDataSourcesSingleSection: 42ee6900e6c069ce2d0bb9a1cd81308dce772d28
+  RxDataSourcesSingleSection: 4394e57ae097f33e3845cf3a57bdf7826eca2d38
   RxFlow: ee6f1fdbacfa4ca8926122e466dfba32e3edf73f
   RxKeyboard: 6683c4344304a00f943c158bd8a43ce5469c82a7
   RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
@@ -333,4 +333,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 2e7c5766cf47b1e3e36d090a59878f9326981901
 
-COCOAPODS: 1.7.2
+COCOAPODS: 1.7.3

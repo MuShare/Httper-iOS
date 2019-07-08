@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import Reusable
+import RxDataSourcesSingleSection
 
-class ProjectTableViewCell: UITableViewCell, Reusable {
+class ProjectTableViewCell: UITableViewCell {
     
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
@@ -37,13 +37,15 @@ class ProjectTableViewCell: UITableViewCell, Reusable {
             $0.centerY.equalToSuperview()
         }
     }
+
+}
+
+extension ProjectTableViewCell: Configurable {
     
-    var project: Project? {
-        didSet {
-            guard let project = project else {
-                return
-            }
-            nameLabel.text = project.pname
-        }
+    typealias Model = Project
+    
+    func configure(_ model: Project) {
+        nameLabel.text = model.pname
     }
+    
 }

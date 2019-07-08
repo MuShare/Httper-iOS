@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Reusable
+import RxDataSourcesSingleSection
 
 fileprivate struct Const {
     static let margin = 20
@@ -18,7 +18,7 @@ fileprivate struct Const {
     }
 }
 
-class DetailTableViewCell: UITableViewCell, Reusable {
+class DetailTableViewCell: UITableViewCell {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -69,15 +69,16 @@ class DetailTableViewCell: UITableViewCell, Reusable {
         }
     }
     
-    var detail: DetailModel? {
-        didSet {
-            guard let detail = detail else {
-                return
-            }
-            titleLabel.text = detail.title
-            contentTextView.text = detail.content
-            contentTextView.sizeToFit()
-        }
+}
+
+extension DetailTableViewCell: Configurable {
+    
+    typealias Model = DetailModel
+    
+    func configure(_ model: DetailModel) {
+        titleLabel.text = model.title
+        contentTextView.text = model.content
+        contentTextView.sizeToFit()
     }
     
 }

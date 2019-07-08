@@ -59,11 +59,7 @@ class PingViewController: BaseViewController<PingViewModel> {
         return tableView
     }()
     
-    private lazy var dataSource = TableViewAnimatedSingleSectionDataSource<STDPingItem>(configureCell: { (_, tableView, indexPath, pingItem) in
-        let cell = tableView.dequeueReusableCell(for: indexPath) as PingTableViewCell
-        cell.pingItem = pingItem
-        return cell
-    })
+    private lazy var dataSource = PingTableViewCell.tableViewAnimatedSingleSectionDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()

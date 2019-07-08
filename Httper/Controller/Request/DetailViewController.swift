@@ -22,11 +22,7 @@ class DetailViewController: BaseViewController<DetailViewModel> {
         return tableView
     }()
     
-    private lazy var dataSource = TableViewSingleSectionDataSource<DetailModel>(configureCell: { (_, tableView, indexPath, detail) in
-        let cell = tableView.dequeueReusableCell(for: indexPath) as DetailTableViewCell
-        cell.detail = detail
-        return cell
-    })
+    private lazy var dataSource = DetailTableViewCell.tableViewSingleSectionDataSource()
 
     override func viewDidLoad() {
         super.viewDidLoad()
