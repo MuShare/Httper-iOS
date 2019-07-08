@@ -9,6 +9,14 @@
 import UIKit
 
 extension UIViewController {
+    
+    var topOffSet: CGFloat {
+        if #available(iOS 11.0, *) {
+            return 0
+        } else {
+            return 64.0
+        }
+    }
 
     var topPadding: CGFloat {
         return UIApplication.shared.statusBarFrame.height + (navigationController?.navigationBar.frame.height ?? 0)
