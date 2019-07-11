@@ -22,7 +22,9 @@ class AddProjectViewModel: BaseViewModel {
         super.init()
     }
     
-    let title = Observable.just("Add Project")
+    var title: Observable<String> {
+        return .just("Add Project")
+    }
     
     var validate: Observable<Bool> {
         return projectName.map {
@@ -34,12 +36,10 @@ class AddProjectViewModel: BaseViewModel {
     }
     
     func saveProject() {
-        guard
-            let projectName = self.projectName.value,
-            let introdution = self.introduction.value
-        else {
+        guard let projectName = self.projectName.value else {
             return
         }
+        let introdution = introduction.value ?? ""
         loading.onNext(true)
         DaoManager.shared.projectDao.save(pname: projectName, privilege: "private", introduction: introdution)
         SyncManager.shared.pushLocalProjects { [weak self] _ in
