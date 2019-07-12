@@ -15,6 +15,11 @@ class ProjectsViewModel: BaseViewModel {
     private let projects = BehaviorRelay<[Project]>(value: DaoManager.shared.projectDao.findAll())
     
     func syncProjects(completion: (() -> Void)? = nil) {
+        if !UserManager.shared.login {
+            projects.accept(DaoManager.shared.projectDao.findAll())
+            completion?()
+            return
+        }
         // Pull remote projects from server
         SyncManager.shared.pullUpdatedProjects { [weak self] revision in
             // Pull successfully.

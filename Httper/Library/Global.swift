@@ -154,7 +154,7 @@ func appUpdate() {
         let dao = DaoManager.shared
         let sync = SyncManager.shared
         for request in dao.requestDao.findWithNilPorject() {
-            sync.deleteRequest(request, completionHandler: nil)
+            sync.deleteRequest(request)
         }
         if Defaults[.token] != nil {
             Defaults[.version] = App.version

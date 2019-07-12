@@ -78,9 +78,11 @@ class RequestViewController: BaseViewController<RequestViewModel>, RxKeyboardVie
             .foregroundColor: UIColor.black,
             .font: UIFont.systemFont(ofSize: 12)
         ], for: .selected)
+        /**
         if #available(iOS 13, *) {
             segmentedControl.selectedSegmentTintColor = .white
         }
+         */
         viewModel.protocols.enumerated().forEach { (index, requestProtocol) in
             segmentedControl.insertSegment(withTitle: requestProtocol, at: index, animated: false)
         }

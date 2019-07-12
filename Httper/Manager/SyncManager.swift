@@ -124,13 +124,14 @@ final class SyncManager {
         let params: Parameters = [
             "requestsJSONArray": JSONStringWithObject(requestArray)!
         ]
-        Alamofire.request(createUrl("api/request/push"),
-                          method: .post,
-                          parameters: params,
-                          encoding: URLEncoding.default,
-                          headers: tokenHeader())
-        .responseJSON { (responseObject) in
-            let response = InternetResponse(responseObject)
+        Alamofire.request(
+            createUrl("api/request/push"),
+            method: .post,
+            parameters: params,
+            encoding: URLEncoding.default,
+            headers: tokenHeader()
+        ).responseJSON {
+            let response = InternetResponse($0)
             if response.statusOK() {
                 let dataResult = response.getResult()
                 let results = dataResult["results"]
@@ -155,46 +156,48 @@ final class SyncManager {
     }
     
     // Delete a request in persistent store and server.
-    func deleteRequest(_ request: Request, completionHandler: ((Int) -> Void)? = nil) {
+    func deleteRequest(_ request: Request, completion: ((Int) -> Void)? = nil) {
         // If rid is nil or token is nil, that means this request cannot sync with server
         // Just delete this request entity in local persistent store.
-        if request.rid == nil && token() == nil {
+        guard let rid = request.rid, token() != nil else {
             dao.requestDao.delete(request)
             dao.saveContext()
+            completion?(0)
             return
         }
         let params: Parameters = [
-            "rid": request.rid!
+            "rid": rid
         ]
-        Alamofire.request(createUrl("api/request/push"),
-                          method: HTTPMethod.delete,
-                          parameters: params,
-                          encoding: URLEncoding.default,
-                          headers: tokenHeader())
-            .responseJSON(completionHandler: { (responseObject) in
-                let response = InternetResponse(responseObject)
-                if response.statusOK() {
-                    // Update local request revision by the revision from server.
-                    let revision = response.getResult()["revision"].intValue
-                    updateRequestRevision(revision)
-                    // Delete local request entity.
-                    self.dao.requestDao.delete(request)
+        Alamofire.request(
+            createUrl("api/request/push"),
+            method: HTTPMethod.delete,
+            parameters: params,
+            encoding: URLEncoding.default,
+            headers: tokenHeader()
+        ).responseJSON {
+            let response = InternetResponse($0)
+            if response.statusOK() {
+                // Update local request revision by the revision from server.
+                let revision = response.getResult()["revision"].intValue
+                updateRequestRevision(revision)
+                // Delete local request entity.
+                self.dao.requestDao.delete(request)
+                self.dao.saveContext()
+                // Completion
+                completion?(revision)
+            } else {
+                switch response.errorCode() {
+                case .tokenError:
+                    // Delete local request entity if token is error,
+                    // that means this entity cannot map with any entity in server.
+                    self.dao.managedObjectContext.delete(request)
                     self.dao.saveContext()
-                    // Completion
-                    completionHandler?(revision)
-                } else {
-                    switch response.errorCode() {
-                    case .tokenError:
-                        // Delete local request entity if token is error,
-                        // that means this entity cannot map with any entity in server.
-                        self.dao.managedObjectContext.delete(request)
-                        self.dao.saveContext()
-                    default:
-                        break
-                    }
-                    completionHandler?(-1)
+                default:
+                    break
                 }
-            })
+                completion?(-1)
+            }
+        }
 
     }
     
@@ -205,13 +208,14 @@ final class SyncManager {
         let params: Parameters = [
             "revision": localRevision
         ]
-        Alamofire.request(createUrl("api/project/pull"),
-                          method: .get,
-                          parameters: params,
-                          encoding: URLEncoding.default,
-                          headers: tokenHeader())
-        .responseJSON { (responseObject) in
-            let response = InternetResponse(responseObject)
+        Alamofire.request(
+            createUrl("api/project/pull"),
+            method: .get,
+            parameters: params,
+            encoding: URLEncoding.default,
+            headers: tokenHeader()
+        ).responseJSON {
+            let response = InternetResponse($0)
             if response.statusOK() {
                 let result = response.getResult()
                 let revision = result["revision"].intValue
@@ -245,31 +249,39 @@ final class SyncManager {
 
     // Push local projects to server.
     // Return newest revision in completionHandler
-    func pushLocalProjects(_ completionHandler: ((Int) -> Void)?) {
+    func pushLocalProjects(_ completion: ((Int) -> Void)?) {
         let projects = dao.projectDao.findUnsynced()
         if projects.count == 0 {
+            completion?(0)
             return
         }
-        var projectArray: [[String: Any]] = []
-        for project in projects {
-            projectArray.append([
-                "pname": project.pname!,
-                "privilege": project.privilege!,
-                "introduction": project.introduction!,
-                "updateAt": project.update,
-                "pid": project.pid ?? ""
-            ]);
+        let projectArray: [[String: Any]] = projects.filter {
+            $0.pname != nil && $0.privilege != nil && $0.introduction != nil
+        }.map {
+            [
+                "pname": $0.pname!,
+                "privilege": $0.privilege!,
+                "introduction": $0.introduction!,
+                "updateAt": $0.update,
+                "pid": $0.pid ?? ""
+            ]
         }
+        guard let projectsJSONArray = JSONStringWithObject(projectArray) else {
+            completion?(0)
+            return
+        }
+        
         let params: Parameters = [
-            "projectsJSONArray": JSONStringWithObject(projectArray)!
+            "projectsJSONArray": projectsJSONArray
         ]
-        Alamofire.request(createUrl("api/project/push"),
-                          method: .post,
-                          parameters: params,
-                          encoding: URLEncoding.default,
-                          headers: tokenHeader())
-        .responseJSON { (responseObject) in
-            let response = InternetResponse(responseObject)
+        Alamofire.request(
+            createUrl("api/project/push"),
+            method: .post,
+            parameters: params,
+            encoding: URLEncoding.default,
+            headers: tokenHeader()
+        ).responseJSON {
+            let response = InternetResponse($0)
             if response.statusOK() {
                 let dataResult = response.getResult()
                 let results = dataResult["results"]
@@ -285,32 +297,34 @@ final class SyncManager {
                 // Update local request revision
                 updateProjectRevision(revision)
                 // Completion
-                completionHandler?(revision)
+                completion?(revision)
             } else {
                 // If push failed, completion with -1.
-                completionHandler?(-1)
+                completion?(-1)
             }
         }
     }
     
     // Delete project in persistent store and server.
-    func deleteProject(_ project: Project, completionHandler: ((Int) -> Void)? = nil) {
+    func deleteProject(_ project: Project, completion: ((Int) -> Void)? = nil) {
         // If this project entity is not sync with server, just delete it in local persistent store.
-        if project.pid == nil && token() == nil  {
+        guard let pid = project.pid, token() != nil else {
             dao.managedObjectContext.delete(project)
             dao.saveContext()
+            completion?(0)
             return
         }
         let params: Parameters = [
-            "pid": project.pid!
+            "pid": pid
         ]
-        Alamofire.request(createUrl("api/project/push"),
-                          method: .delete,
-                          parameters: params,
-                          encoding: URLEncoding.default,
-                          headers: tokenHeader())
-        .responseJSON { (responseObject) in
-            let response = InternetResponse(responseObject)
+        Alamofire.request(
+            createUrl("api/project/push"),
+            method: .delete,
+            parameters: params,
+            encoding: URLEncoding.default,
+            headers: tokenHeader()
+        ).responseJSON {
+            let response = InternetResponse($0)
             if response.statusOK() {
                 // Update local project revision by the revision from server.
                 let revision = response.getResult()["revision"].intValue
@@ -319,7 +333,7 @@ final class SyncManager {
                 self.dao.managedObjectContext.delete(project)
                 self.dao.saveContext()
                 // Completion
-                completionHandler?(revision)
+                completion?(revision)
             } else {
                 switch response.errorCode() {
                 case .tokenError:
@@ -330,7 +344,7 @@ final class SyncManager {
                 default:
                     break
                 }
-                completionHandler?(-1)
+                completion?(-1)
             }
         }
     }
