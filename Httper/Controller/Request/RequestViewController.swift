@@ -69,10 +69,23 @@ class RequestViewController: BaseViewController<RequestViewModel>, RxKeyboardVie
     
     private lazy var protocolsSegmentedControl: UISegmentedControl = {
         let segmentedControl = UISegmentedControl()
+        segmentedControl.tintColor = .white
+        segmentedControl.setTitleTextAttributes([
+            .foregroundColor: UIColor.white,
+            .font: UIFont.systemFont(ofSize: 12)
+        ], for: .normal)
+        segmentedControl.setTitleTextAttributes([
+            .foregroundColor: UIColor.black,
+            .font: UIFont.systemFont(ofSize: 12)
+        ], for: .selected)
+        /**
+        if #available(iOS 13, *) {
+            segmentedControl.selectedSegmentTintColor = .white
+        }
+         */
         viewModel.protocols.enumerated().forEach { (index, requestProtocol) in
             segmentedControl.insertSegment(withTitle: requestProtocol, at: index, animated: false)
         }
-        segmentedControl.tintColor = .white
         return segmentedControl
     }()
     

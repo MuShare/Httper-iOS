@@ -1,14 +1,13 @@
 language: objective-c
 osx_image: xcode10.2
 
-before_install:
-  - pod repo update
+language: objective-c
+cache: cocoapods
 
-pods: remove_debug_pods
-pods:
-  rm -rf Pods
-  bundle install
-  bundle exec pod install
+before_install:
+- gem update cocoapods
+- pod repo update
+- pod install
 
 script:
   - set -o pipefail && xcodebuild -workspace Httper.xcworkspace -scheme Httper -sdk iphonesimulator build CODE_SIGNING_REQUIRED=NO | xcpretty -c 
