@@ -116,11 +116,9 @@
 		E4D1CAE51DF5C028008DC4F9 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */; };
 		E4D1F28920EBAC5F002953A1 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4D1F28820EBAC5F002953A1 /* Settings.storyboard */; };
 		E4DE76911E1D2645002A8385 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DE76901E1D2644002A8385 /* LoginViewController.swift */; };
-		E4DE76931E1D2AB0002A8385 /* login-bg-iPad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4DE76921E1D2AB0002A8385 /* login-bg-iPad.jpg */; };
 		E4DE76961E1D3DAE002A8385 /* register-bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4DE76941E1D3DAE002A8385 /* register-bg.jpg */; };
 		E4DE76971E1D3DAE002A8385 /* login-bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4DE76951E1D3DAE002A8385 /* login-bg.jpg */; };
 		E4DE76991E1D3DF5002A8385 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DE76981E1D3DF5002A8385 /* RegisterViewController.swift */; };
-		E4DE769B1E1E9FE2002A8385 /* register-bg-iPad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4DE769A1E1E9FE2002A8385 /* register-bg-iPad.jpg */; };
 		E4E297B11E00021500AD484E /* ResponseHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E297B01E00021500AD484E /* ResponseHeaderViewController.swift */; };
 		E4EC89D21E129FA10072ACF3 /* STDPingServices.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EC89D01E129FA10072ACF3 /* STDPingServices.m */; };
 		E4EC89D71E12A4C70072ACF3 /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EC89D61E12A4C70072ACF3 /* SimplePing.m */; };
@@ -273,11 +271,9 @@
 		E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		E4D1F28820EBAC5F002953A1 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		E4DE76901E1D2644002A8385 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		E4DE76921E1D2AB0002A8385 /* login-bg-iPad.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "login-bg-iPad.jpg"; sourceTree = "<group>"; };
 		E4DE76941E1D3DAE002A8385 /* register-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "register-bg.jpg"; sourceTree = "<group>"; };
 		E4DE76951E1D3DAE002A8385 /* login-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "login-bg.jpg"; sourceTree = "<group>"; };
 		E4DE76981E1D3DF5002A8385 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		E4DE769A1E1E9FE2002A8385 /* register-bg-iPad.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "register-bg-iPad.jpg"; sourceTree = "<group>"; };
 		E4E297B01E00021500AD484E /* ResponseHeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseHeaderViewController.swift; sourceTree = "<group>"; };
 		E4EC89CF1E129FA10072ACF3 /* STDPingServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STDPingServices.h; sourceTree = "<group>"; };
 		E4EC89D01E129FA10072ACF3 /* STDPingServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STDPingServices.m; sourceTree = "<group>"; };
@@ -450,9 +446,7 @@
 			children = (
 				BB44C51422B687370040DCD3 /* GoogleService-Info.plist */,
 				E431C4AB1DF72172006BB2D6 /* Localizable.strings */,
-				E4DE76921E1D2AB0002A8385 /* login-bg-iPad.jpg */,
 				E4DE76951E1D3DAE002A8385 /* login-bg.jpg */,
-				E4DE769A1E1E9FE2002A8385 /* register-bg-iPad.jpg */,
 				E4DE76941E1D3DAE002A8385 /* register-bg.jpg */,
 			);
 			path = "Supporting Files";
@@ -756,13 +750,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4DE76931E1D2AB0002A8385 /* login-bg-iPad.jpg in Resources */,
 				E48D41651D444F3F0028B84F /* LaunchScreen.storyboard in Resources */,
 				E4D1F28920EBAC5F002953A1 /* Settings.storyboard in Resources */,
 				E4DE76971E1D3DAE002A8385 /* login-bg.jpg in Resources */,
 				E4DE76961E1D3DAE002A8385 /* register-bg.jpg in Resources */,
 				E431C4AC1DF72172006BB2D6 /* Localizable.strings in Resources */,
-				E4DE769B1E1E9FE2002A8385 /* register-bg-iPad.jpg in Resources */,
 				E4F95CD81E1572FD005A0004 /* whois.css in Resources */,
 				BB44C51522B687380040DCD3 /* GoogleService-Info.plist in Resources */,
 				E48D41621D444F3F0028B84F /* Assets.xcassets in Resources */,
