@@ -222,7 +222,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Domain Name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nJS-Sv-5mA">
-                                <rect key="frame" x="54" y="72" width="305" height="40"/>
+                                <rect key="frame" x="54" y="28" width="305" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="G9d-Q5-rvd"/>
                                 </constraints>
@@ -239,21 +239,21 @@
                                 </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xzn-zw-Xyt">
-                                <rect key="frame" x="15" y="120" width="360" height="1"/>
+                                <rect key="frame" x="15" y="76" width="360" height="1"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="XIp-Nz-eiO"/>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="global" translatesAutoresizingMaskIntoConstraints="NO" id="oR4-FN-5or">
-                                <rect key="frame" x="16" y="77" width="30" height="30"/>
+                                <rect key="frame" x="16" y="33" width="30" height="30"/>
                             </imageView>
                             <webView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ygV-b4-CIj">
-                                <rect key="frame" x="0.0" y="129" width="375" height="538"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="85" width="375" height="582"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </webView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Qxo-Oh-8vn">
-                                <rect key="frame" x="169" y="379.5" width="37" height="37"/>
+                                <rect key="frame" x="169" y="357.5" width="37" height="37"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.187466681" green="0.21148559450000001" blue="0.23234263059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -426,7 +426,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.26071092489999997" green="0.27878823879999998" blue="0.29450204969999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="50" id="2Ub-dT-a3s">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="whois" rowHeight="50" id="2Ub-dT-a3s">
                                         <rect key="frame" x="0.0" y="300" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2Ub-dT-a3s" id="Nf3-o0-GVa">
@@ -447,9 +447,6 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.26071092489999997" green="0.27878823879999998" blue="0.29450204969999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <segue destination="Gxf-zw-J2U" kind="push" id="bCT-eh-wv7"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ipaddress" rowHeight="50" id="8gP-9Y-XCk">
                                         <rect key="frame" x="0.0" y="350" width="375" height="50"/>

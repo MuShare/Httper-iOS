@@ -41,6 +41,7 @@
 		77A53080216708E00008CC56 /* PreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A5307F216708E00008CC56 /* PreviewViewModel.swift */; };
 		77A53082216708F60008CC56 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A53081216708F60008CC56 /* DetailViewModel.swift */; };
 		77A53084216709460008CC56 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A53083216709460008CC56 /* DetailViewController.swift */; };
+		77B1991B230B8201003EE42F /* WhoisViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B1991A230B8201003EE42F /* WhoisViewModel.swift */; };
 		77B474DC21F3593100BE4551 /* AddProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B474DB21F3593100BE4551 /* AddProjectViewModel.swift */; };
 		77BBBCBB2181585C00500A3A /* SelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BBBCBA2181585C00500A3A /* SelectionTableViewCell.swift */; };
 		77BBBCBD21815C9C00500A3A /* RequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BBBCBC21815C9C00500A3A /* RequestTableViewCell.swift */; };
@@ -181,6 +182,7 @@
 		77A5307F216708E00008CC56 /* PreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewModel.swift; sourceTree = "<group>"; };
 		77A53081216708F60008CC56 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		77A53083216709460008CC56 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		77B1991A230B8201003EE42F /* WhoisViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhoisViewModel.swift; sourceTree = "<group>"; };
 		77B474DB21F3593100BE4551 /* AddProjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectViewModel.swift; sourceTree = "<group>"; };
 		77BBBCBA2181585C00500A3A /* SelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTableViewCell.swift; sourceTree = "<group>"; };
 		77BBBCBC21815C9C00500A3A /* RequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTableViewCell.swift; sourceTree = "<group>"; };
@@ -469,6 +471,7 @@
 				E42A713C214961780070D8FC /* SettingsViewModel.swift */,
 				E4F95CD71E1572FD005A0004 /* whois.css */,
 				E4F95CD51E15685A005A0004 /* WhoisViewController.swift */,
+				77B1991A230B8201003EE42F /* WhoisViewModel.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1000,6 +1003,7 @@
 				77F3996A215382BA0016978E /* MenuViewCell.swift in Sources */,
 				E4712EDA1E55FC81002FF8E1 /* ProjectIntroductionViewController.swift in Sources */,
 				77BBBCBD21815C9C00500A3A /* RequestTableViewCell.swift in Sources */,
+				77B1991B230B8201003EE42F /* WhoisViewModel.swift in Sources */,
 				77F3995F215373600016978E /* KeyValueViewController.swift in Sources */,
 				E48D41581D444F3F0028B84F /* AppDelegate.swift in Sources */,
 				E4305A3A1E2F11EB00010B52 /* ProfileTableViewController.swift in Sources */,
