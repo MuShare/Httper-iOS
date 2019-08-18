@@ -115,13 +115,13 @@ class WhoisViewController: BaseViewController<WhoisViewModel> {
             $0.height.equalTo(Const.line.height)
             $0.left.equalTo(iconImageView)
             $0.top.equalTo(addressTextField.snp.bottom).offset(Const.line.marginTop)
-            $0.right.equalTo(addressTextField)
+            $0.right.equalToSuperview()
         }
         
         resultWebView.snp.makeConstraints {
             $0.left.right.equalToSuperview()
             $0.top.equalTo(lineView.snp.bottom).offset(Const.result.marginTop)
-            $0.bottom.equalTo(view.snp.bottom)
+            $0.bottom.equalToSuperview()
         }
         
         loadingActivityIndicatorView.snp.makeConstraints {
