@@ -6,11 +6,6 @@
 //  Copyright © 2016 MuShare Group. All rights reserved.
 //
 
-import UIKit
-import Alamofire
-import Kanna
-import Reachability
-
 fileprivate struct Const {
     
     struct icon {
@@ -25,18 +20,25 @@ fileprivate struct Const {
     
     struct line {
         static let height = 1
-        static let marginTop = 15
+        static let marginTop = 10
     }
     
     struct result {
-        static let marginTop = 15
+        static let marginTop = 10
     }
     
 }
 
 class WhoisViewController: BaseViewController<WhoisViewModel> {
 
-    private lazy var searchBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: nil, action: nil)
+    private lazy var searchBarButtonItem: UIBarButtonItem = {
+        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: nil, action: nil)
+        barButtonItem.rx.tap.bind { [unowned self] in
+            self.addressTextField.resignFirstResponder()
+            self.viewModel.search()
+        }.disposed(by: disposeBag)
+        return barButtonItem
+    }()
     
     private lazy var iconImageView = UIImageView(image: R.image.global())
     
@@ -72,9 +74,6 @@ class WhoisViewController: BaseViewController<WhoisViewModel> {
         activityIndicatorView.hidesWhenStopped = true
         return activityIndicatorView
     }()
-
-    let reachability = Reachability()!
-    var css = "<style>"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,17 +88,12 @@ class WhoisViewController: BaseViewController<WhoisViewModel> {
         createConstraints()
         
         disposeBag ~ [
-            viewModel.title ~> rx.title
+            viewModel.title ~> rx.title,
+            viewModel.isSearchBarButtonItemEnabled ~> searchBarButtonItem.rx.isEnabled,
+            viewModel.isLoading ~> loadingActivityIndicatorView.rx.isAnimating,
+            viewModel.domain <~> addressTextField.rx.text,
+            viewModel.html ~> resultWebView.rx.html
         ]
-        
-        do {
-            if let cssURL = R.file.whoisCss() {
-                css += try String(contentsOf: cssURL, encoding: .utf8)
-            }
-        } catch let error {
-            print("Failed reading, Error: " + error.localizedDescription)
-        }
-        css += "</style>"
     }
     
     private func createConstraints() {
@@ -126,55 +120,14 @@ class WhoisViewController: BaseViewController<WhoisViewModel> {
         
         resultWebView.snp.makeConstraints {
             $0.left.right.equalToSuperview()
-            $0.top.equalTo(addressTextField.snp.bottom).offset(Const.result.marginTop)
+            $0.top.equalTo(lineView.snp.bottom).offset(Const.result.marginTop)
             $0.bottom.equalTo(view.snp.bottom)
         }
         
-    }
-    
-    /**
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        domainTextField.becomeFirstResponder()
-    }
-    
-    // MARK: - UITextFieldDelegate
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == domainTextField {
-            whois(searchBarButtonItem)
-        }
-        return true
-    }
-
-    // MARK: - Action
-    @IBAction func whois(_ sender: UIBarButtonItem) {
-        if domainTextField.isFirstResponder {
-            domainTextField.resignFirstResponder()
+        loadingActivityIndicatorView.snp.makeConstraints {
+            $0.center.equalTo(resultWebView)
         }
         
-        //Check Internet state
-        if reachability.connection == .none {
-            showAlert(title: R.string.localizable.tip_name(),
-                      content: R.string.localizable.not_internet_connection())
-            return
-        }
-        
-        //Get domain info.
-        searchBarButtonItem.isEnabled = false
-        loadingActivityIndicatorView.startAnimating()
-        Alamofire.request(whoisUrl + "/whois/" + domainTextField.text!).responseString { response in
-            var html = "<meta name='format-detection' content='telephone=no'/>" + self.css
-            let doc = try? HTML(html: response.result.value!, encoding: .utf8)
-            if let doc = doc {
-                for link in doc.css(".df-block") {
-                    html += link.toHTML!
-                }
-                self.resultWebView.loadHTMLString(html, baseURL: URL.init(string: whoisUrl))
-                self.resultWebView.isHidden = false
-                self.searchBarButtonItem.isEnabled = true
-                self.loadingActivityIndicatorView.stopAnimating()
-            }
-        }
     }
- */
+    
 }
