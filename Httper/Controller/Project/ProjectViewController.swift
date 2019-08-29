@@ -40,7 +40,7 @@ class ProjectViewController: BaseViewController<ProjectViewModel> {
         switch dataSource[indexPath] {
         case .selectionItem(let selection):
             let cell = tableView.dequeueReusableCell(for: indexPath) as SelectionTableViewCell
-            cell.selection = selection
+            cell.configure(selection)
             return cell
         case .requestItem(let request):
             let cell = tableView.dequeueReusableCell(for: indexPath) as RequestTableViewCell

@@ -10,15 +10,22 @@ import RxFlow
 
 enum SettingsStep: Step {
     case start
+    case ping
+    case whois
+    case ip
 }
 
 class SettingsFlow: Flow {
     
     var root: Presentable {
-        return settingsTableViewController
+        return settingsViewController
     }
     
-    private lazy var settingsTableViewController = R.storyboard.settings.settingsTableViewController()!
+    private lazy var settingsViewController = SettingsViewController(viewModel: .init())
+    
+    private var navigationController: UINavigationController? {
+        return settingsViewController.navigationController
+    }
     
     func navigate(to step: Step) -> FlowContributors {
         guard let settingsStep = step as? SettingsStep else {
@@ -26,9 +33,19 @@ class SettingsFlow: Flow {
         }
         switch settingsStep {
         case .start:
-            let settingsViewModel = SettingsViewModel()
-            settingsTableViewController.viewModel = settingsViewModel
-            return .one(flowContributor: .viewController(settingsTableViewController, with: settingsViewModel))
+            return .viewController(settingsViewController)
+        case .ping:
+            let pingViewController = PingViewController(viewModel: .init())
+            navigationController?.pushViewController(pingViewController, animated: true)
+            return .viewController(pingViewController)
+        case .whois:
+            let whoisViewController = WhoisViewController(viewModel: .init())
+            navigationController?.pushViewController(whoisViewController, animated: true)
+            return .viewController(whoisViewController)
+        case .ip:
+            let ipAddressViewController = IPAddressViewController(viewModel: .init())
+            navigationController?.pushViewController(ipAddressViewController, animated: true)
+            return .viewController(ipAddressViewController)
         }
     }
     

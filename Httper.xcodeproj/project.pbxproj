@@ -61,6 +61,8 @@
 		77F3996A215382BA0016978E /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F39969215382BA0016978E /* MenuViewCell.swift */; };
 		BB07BE0E22A7FF2A00A03CBD /* Kingfisher+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB07BE0D22A7FF2A00A03CBD /* Kingfisher+Rx.swift */; };
 		BB44C51522B687380040DCD3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB44C51422B687370040DCD3 /* GoogleService-Info.plist */; };
+		BBADABF72317F7DD00995AD2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBADABF62317F7DD00995AD2 /* SettingsViewController.swift */; };
+		BBADABFB2317FFDA00995AD2 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBADABFA2317FFDA00995AD2 /* Array+Extension.swift */; };
 		BBC41DE7226DE5F500ABF820 /* UITableView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC41DE6226DE5F500ABF820 /* UITableView+Rx.swift */; };
 		E4007EB91DFEE7B7002A87FA /* BodyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4007EB81DFEE7B7002A87FA /* BodyViewController.swift */; };
 		E40986A2215523A3006CCC04 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409869F215523A2006CCC04 /* UIColor+Extension.swift */; };
@@ -204,6 +206,8 @@
 		7EBC322CA510BFBBFF4AB72E /* Pods-Httper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Httper.release.xcconfig"; path = "Pods/Target Support Files/Pods-Httper/Pods-Httper.release.xcconfig"; sourceTree = "<group>"; };
 		BB07BE0D22A7FF2A00A03CBD /* Kingfisher+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Kingfisher+Rx.swift"; sourceTree = "<group>"; };
 		BB44C51422B687370040DCD3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BBADABF62317F7DD00995AD2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		BBADABFA2317FFDA00995AD2 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		BBC41DE6226DE5F500ABF820 /* UITableView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Rx.swift"; sourceTree = "<group>"; };
 		E4007EB81DFEE7B7002A87FA /* BodyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodyViewController.swift; sourceTree = "<group>"; };
 		E400D3C220C1BEF100B2BC7F /* route_simulator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = route_simulator.h; sourceTree = "<group>"; };
@@ -470,6 +474,7 @@
 				E4DE76981E1D3DF5002A8385 /* RegisterViewController.swift */,
 				E4F16F611E4B685F00C17DA4 /* ResetViewController.swift */,
 				E49F67F92149568B00646892 /* SettingsTableViewController.swift */,
+				BBADABF62317F7DD00995AD2 /* SettingsViewController.swift */,
 				E42A713C214961780070D8FC /* SettingsViewModel.swift */,
 				E4F95CD71E1572FD005A0004 /* whois.css */,
 				E4F95CD51E15685A005A0004 /* WhoisViewController.swift */,
@@ -508,6 +513,7 @@
 				E411A309215286C5004ADBAE /* UIView+Extension.swift */,
 				E40986A1215523A3006CCC04 /* UIViewController+Extension.swift */,
 				77B1991C230B8BEA003EE42F /* UIWebView+Rx.swift */,
+				BBADABFA2317FFDA00995AD2 /* Array+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1036,9 +1042,11 @@
 				E4007EB91DFEE7B7002A87FA /* BodyViewController.swift in Sources */,
 				77F39968215381700016978E /* BodyViewModel.swift in Sources */,
 				E4EC89D21E129FA10072ACF3 /* STDPingServices.m in Sources */,
+				BBADABF72317F7DD00995AD2 /* SettingsViewController.swift in Sources */,
 				779B060F2269A18300F5B225 /* UIBarButtonItem+Rx.swift in Sources */,
 				E4305A471E34F65000010B52 /* DaoManager.swift in Sources */,
 				E42A713D214961780070D8FC /* SettingsViewModel.swift in Sources */,
+				BBADABFB2317FFDA00995AD2 /* Array+Extension.swift in Sources */,
 				E40B257E1DF44BD20039CA8D /* MainViewController.swift in Sources */,
 				7782A5FA226977E4002B6AE2 /* PingTableViewCell.swift in Sources */,
 				E49F67FA2149568B00646892 /* SettingsTableViewController.swift in Sources */,
