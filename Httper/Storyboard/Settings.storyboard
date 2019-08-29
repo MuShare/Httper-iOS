@@ -151,7 +151,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qv6-rI-exv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="974" y="2859"/>
+            <point key="canvasLocation" x="1177" y="2665"/>
         </scene>
         <!--Modify Name-->
         <scene sceneID="QOt-Hb-ier">
@@ -207,92 +207,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jdN-lK-kKT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1804" y="2858"/>
-        </scene>
-        <!--Whois-->
-        <scene sceneID="I3r-1F-0Um">
-            <objects>
-                <viewController id="Gxf-zw-J2U" customClass="WhoisViewController" customModule="Httper" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="93Y-S0-0HB"/>
-                        <viewControllerLayoutGuide type="bottom" id="JH3-2I-WOH"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="5pd-T6-edH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Domain Name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nJS-Sv-5mA">
-                                <rect key="frame" x="54" y="28" width="305" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="G9d-Q5-rvd"/>
-                                </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
-                                        <color key="value" red="0.72148895260000001" green="0.72161453959999999" blue="0.72148102520000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <outlet property="delegate" destination="Gxf-zw-J2U" id="weH-Xs-jht"/>
-                                </connections>
-                            </textField>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xzn-zw-Xyt">
-                                <rect key="frame" x="15" y="76" width="360" height="1"/>
-                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="XIp-Nz-eiO"/>
-                                </constraints>
-                            </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="global" translatesAutoresizingMaskIntoConstraints="NO" id="oR4-FN-5or">
-                                <rect key="frame" x="16" y="33" width="30" height="30"/>
-                            </imageView>
-                            <webView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ygV-b4-CIj">
-                                <rect key="frame" x="0.0" y="85" width="375" height="582"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </webView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Qxo-Oh-8vn">
-                                <rect key="frame" x="169" y="357.5" width="37" height="37"/>
-                            </activityIndicatorView>
-                        </subviews>
-                        <color key="backgroundColor" red="0.187466681" green="0.21148559450000001" blue="0.23234263059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="ygV-b4-CIj" firstAttribute="leading" secondItem="5pd-T6-edH" secondAttribute="leadingMargin" constant="-16" id="2za-QA-g60"/>
-                            <constraint firstItem="oR4-FN-5or" firstAttribute="top" secondItem="93Y-S0-0HB" secondAttribute="bottom" constant="13" id="8vo-Su-UCt"/>
-                            <constraint firstItem="xzn-zw-Xyt" firstAttribute="leading" secondItem="5pd-T6-edH" secondAttribute="leadingMargin" constant="-1" id="BW8-ir-Tn4"/>
-                            <constraint firstItem="xzn-zw-Xyt" firstAttribute="top" secondItem="93Y-S0-0HB" secondAttribute="bottom" constant="56" id="Rjn-vo-SVr"/>
-                            <constraint firstItem="oR4-FN-5or" firstAttribute="leading" secondItem="5pd-T6-edH" secondAttribute="leading" constant="16" id="SZF-Dw-exo"/>
-                            <constraint firstItem="JH3-2I-WOH" firstAttribute="top" secondItem="ygV-b4-CIj" secondAttribute="bottom" id="ZRD-GJ-dgj"/>
-                            <constraint firstItem="nJS-Sv-5mA" firstAttribute="leading" secondItem="5pd-T6-edH" secondAttribute="leadingMargin" constant="38" id="aEu-mp-oPJ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="xzn-zw-Xyt" secondAttribute="trailing" constant="-16" id="f7W-4D-IEt"/>
-                            <constraint firstItem="ygV-b4-CIj" firstAttribute="top" secondItem="93Y-S0-0HB" secondAttribute="bottom" constant="65" id="gFQ-xo-ySK"/>
-                            <constraint firstItem="Qxo-Oh-8vn" firstAttribute="centerY" secondItem="ygV-b4-CIj" secondAttribute="centerY" id="j4R-rk-goL"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ygV-b4-CIj" secondAttribute="trailing" constant="-16" id="nmx-ju-Rsn"/>
-                            <constraint firstItem="Qxo-Oh-8vn" firstAttribute="centerX" secondItem="ygV-b4-CIj" secondAttribute="centerX" id="oSQ-HX-Svh"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="nJS-Sv-5mA" secondAttribute="trailing" id="q13-LH-k81"/>
-                            <constraint firstItem="nJS-Sv-5mA" firstAttribute="top" secondItem="93Y-S0-0HB" secondAttribute="bottom" constant="8" id="y47-tV-eT2"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="Zrt-VO-eOR"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Whois" id="H4Z-EL-AVd">
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="Ea5-uv-yfi">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="whois:" destination="Gxf-zw-J2U" id="Ai9-vb-CaY"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="domainTextField" destination="nJS-Sv-5mA" id="EIX-cG-3JU"/>
-                        <outlet property="loadingActivityIndicatorView" destination="Qxo-Oh-8vn" id="UgU-FG-uuo"/>
-                        <outlet property="resultWebView" destination="ygV-b4-CIj" id="Xai-Dq-J4m"/>
-                        <outlet property="searchBarButtonItem" destination="Ea5-uv-yfi" id="pwd-Is-n4r"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sRk-9d-zY0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="974" y="2123"/>
+            <point key="canvasLocation" x="2087" y="2658"/>
         </scene>
         <!--Settings Table View Controller-->
         <scene sceneID="llZ-0W-cTg">
@@ -609,7 +524,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lED-zX-sJ5">
-                                            <rect key="frame" x="60" y="24" width="16" height="22"/>
+                                            <rect key="frame" x="56" y="24" width="20" height="22"/>
                                             <state key="normal" image="minus"/>
                                             <connections>
                                                 <action selector="removeCharacter:" destination="bHu-3c-Hwg" eventType="touchUpInside" id="eUp-OS-7je"/>
@@ -660,7 +575,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pA3-IJ-GAl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="974" y="1402"/>
+            <point key="canvasLocation" x="1177" y="1902"/>
         </scene>
         <!--Settings-->
         <scene sceneID="f1K-dM-Hpr">
@@ -698,7 +613,6 @@
         <image name="domain" width="30" height="30"/>
         <image name="email" width="30" height="30"/>
         <image name="github" width="30" height="30"/>
-        <image name="global" width="30" height="30"/>
         <image name="ip" width="30" height="30"/>
         <image name="keyboard" width="30" height="30"/>
         <image name="minus" width="20" height="20"/>
