@@ -6,13 +6,19 @@
 //  Copyright © 2019 MuShare. All rights reserved.
 //
 
+import RxCocoa
 import RxDataSources
+import RxSwift
 
 private struct Const {
     
     struct avatar {
-        static let size = 70
+        static let size: CGFloat = 70
         static let marginTop = 40
+    }
+    
+    struct name {
+        static let marginTop = 5
     }
     
     struct header {
@@ -22,23 +28,39 @@ private struct Const {
 }
 
 class SettingsViewController: BaseViewController<SettingsViewModel> {
+
+    private lazy var avatarImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = Const.avatar.size / 2
+        imageView.layer.masksToBounds = true
+        return imageView
+    }()
     
     private lazy var avatarButton: UIButton = {
         let button = UIButton()
-        button.setImage(R.image.signin(), for: .normal)
+        button.addSubview(avatarImageView)
+        button.rx.tap.bind { [unowned self] in
+            self.viewModel.signin()
+        }.disposed(by: disposeBag)
         return button
     }()
     
     private lazy var nameButton: UIButton = {
         let button = UIButton()
         button.setTitleColor(.white, for: .normal)
-        button.setTitleColor(.lightText, for: .normal)
+        button.setTitleColor(.lightText, for: .highlighted)
+        button.rx.tap.bind { [unowned self] in
+            self.viewModel.signin()
+        }.disposed(by: disposeBag)
         return button
     }()
     
     private lazy var emailButton: UIButton = {
         let button = UIButton()
-        
+        button.rx.tap.bind { [unowned self] in
+            self.viewModel.signin()
+        }.disposed(by: disposeBag)
         return button
     }()
     
@@ -81,8 +103,16 @@ class SettingsViewController: BaseViewController<SettingsViewModel> {
         createConstraints()
         
         disposeBag ~ [
+            viewModel.avatar ~> rx.avatar,
+            viewModel.name ~> nameButton.rx.title(),
             viewModel.sections ~> tableView.rx.items(dataSource: dataSource)
         ]
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        viewModel.reload()
     }
     
     private func createConstraints() {
@@ -98,6 +128,15 @@ class SettingsViewController: BaseViewController<SettingsViewModel> {
             $0.top.equalToSuperview().offset(Const.avatar.marginTop)
         }
         
+        avatarImageView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        nameButton.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(avatarButton.snp.bottom).offset(Const.name.marginTop)
+        }
+
     }
     
 }
@@ -108,4 +147,25 @@ extension SettingsViewController: UITableViewDelegate {
         return UIView()
     }
     
+}
+
+private extension SettingsViewController {
+    
+    func setAvatar(_ avatar: URL?) {
+        if let avatar = avatar {
+            avatarImageView.kf.setImage(with: avatar)
+        } else {
+            avatarImageView.image = R.image.signin()
+        }
+    }
+    
+}
+
+extension Reactive where Base: SettingsViewController {
+    
+    var avatar: Binder<URL?> {
+        return Binder(base) { viewController, avatar in
+            viewController.setAvatar(avatar)
+        }
+    }
 }

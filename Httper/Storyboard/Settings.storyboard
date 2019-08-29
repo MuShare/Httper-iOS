@@ -13,7 +13,7 @@
         <!--Profile-->
         <scene sceneID="rUc-Kr-XmU">
             <objects>
-                <tableViewController id="W89-1r-Nwr" customClass="ProfileTableViewController" customModule="Httper" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="profileTableViewController" id="W89-1r-Nwr" customClass="ProfileTableViewController" customModule="Httper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="guY-qp-51B">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

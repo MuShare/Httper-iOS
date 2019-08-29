@@ -10,6 +10,8 @@ import RxFlow
 
 enum SettingsStep: Step {
     case start
+    case signin
+    case profile
     case ping
     case whois
     case ip
@@ -34,6 +36,16 @@ class SettingsFlow: Flow {
         switch settingsStep {
         case .start:
             return .viewController(settingsViewController)
+        case .signin:
+            if let loginViewController = R.storyboard.login().instantiateInitialViewController() {
+                settingsViewController.present(loginViewController, animated: true)
+            }
+            return .none
+        case .profile:
+            if let profileTableViewController = R.storyboard.settings.profileTableViewController() {
+                navigationController?.pushViewController(profileTableViewController, animated: true)
+            }
+            return .none
         case .ping:
             let pingViewController = PingViewController(viewModel: .init())
             navigationController?.pushViewController(pingViewController, animated: true)

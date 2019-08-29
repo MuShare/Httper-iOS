@@ -49,8 +49,35 @@ private enum Const {
 
 class SettingsViewModel: BaseViewModel {
     
+    private let isLoginSubject = PublishSubject<Bool>()
+    
+    var avatar: Observable<URL?> {
+        print(R.image.signin.bundle.bundlePath + R.image.signin.name)
+        return isLoginSubject.distinctUntilChanged().map {
+            $0 ? imageURL(UserManager.shared.avatar) :  nil
+        }
+    }
+    
+    var name: Observable<String?> {
+        return isLoginSubject.distinctUntilChanged().map {
+            $0 ? UserManager.shared.name : R.string.localizable.sign_in_sign_up()
+        }
+    }
+    
     var sections: Observable<[SettingsSectionModel]> {
         return .just(Const.sections)
+    }
+    
+    func reload() {
+        isLoginSubject.onNext(UserManager.shared.login)
+    }
+    
+    func signin() {
+        if UserManager.shared.login {
+            steps.accept(SettingsStep.profile)
+        } else {
+            steps.accept(SettingsStep.signin)
+        }
     }
     
     func pick(at indexPath: IndexPath) {
