@@ -105,7 +105,6 @@
 		E49BC0AD1E4226F400241004 /* Request+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49BC0A91E4226F400241004 /* Request+CoreDataClass.swift */; };
 		E49BC0AE1E4226F400241004 /* Request+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49BC0AA1E4226F400241004 /* Request+CoreDataProperties.swift */; };
 		E49BC0B01E4227BA00241004 /* ProjectDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49BC0AF1E4227BA00241004 /* ProjectDao.swift */; };
-		E49F67FA2149568B00646892 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49F67F92149568B00646892 /* SettingsTableViewController.swift */; };
 		E49F67FC214956C900646892 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49F67FB214956C900646892 /* MainViewModel.swift */; };
 		E49F680021495B0E00646892 /* RequestFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49F67FF21495B0E00646892 /* RequestFlow.swift */; };
 		E49F680221495BA500646892 /* RequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49F680121495BA500646892 /* RequestViewModel.swift */; };
@@ -263,7 +262,6 @@
 		E49BC0A91E4226F400241004 /* Request+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Request+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E49BC0AA1E4226F400241004 /* Request+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Request+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E49BC0AF1E4227BA00241004 /* ProjectDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDao.swift; sourceTree = "<group>"; };
-		E49F67F92149568B00646892 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		E49F67FB214956C900646892 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		E49F67FF21495B0E00646892 /* RequestFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFlow.swift; sourceTree = "<group>"; };
 		E49F680121495BA500646892 /* RequestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewModel.swift; sourceTree = "<group>"; };
@@ -473,7 +471,6 @@
 				E4305A391E2F11EB00010B52 /* ProfileTableViewController.swift */,
 				E4DE76981E1D3DF5002A8385 /* RegisterViewController.swift */,
 				E4F16F611E4B685F00C17DA4 /* ResetViewController.swift */,
-				E49F67F92149568B00646892 /* SettingsTableViewController.swift */,
 				BBADABF62317F7DD00995AD2 /* SettingsViewController.swift */,
 				E42A713C214961780070D8FC /* SettingsViewModel.swift */,
 				E4F95CD71E1572FD005A0004 /* whois.css */,
@@ -1049,7 +1046,6 @@
 				BBADABFB2317FFDA00995AD2 /* Array+Extension.swift in Sources */,
 				E40B257E1DF44BD20039CA8D /* MainViewController.swift in Sources */,
 				7782A5FA226977E4002B6AE2 /* PingTableViewCell.swift in Sources */,
-				E49F67FA2149568B00646892 /* SettingsTableViewController.swift in Sources */,
 				77B1991D230B8BEA003EE42F /* UIWebView+Rx.swift in Sources */,
 				E49BC0AD1E4226F400241004 /* Request+CoreDataClass.swift in Sources */,
 				E4BBC9931E4DCCBB002107DF /* NameViewController.swift in Sources */,

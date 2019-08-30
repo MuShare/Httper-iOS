@@ -101,7 +101,7 @@ class SettingsViewModel: BaseViewModel {
         let item = items[indexPath.row]
         switch item {
         case .keyboard:
-            break
+            steps.accept(SettingsStep.keyboard)
         case .ping:
             steps.accept(SettingsStep.ping)
         case .whois:

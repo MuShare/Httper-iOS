@@ -12,6 +12,7 @@ enum SettingsStep: Step {
     case start
     case signin
     case profile
+    case keyboard
     case ping
     case whois
     case ip
@@ -44,6 +45,11 @@ class SettingsFlow: Flow {
         case .profile:
             if let profileTableViewController = R.storyboard.settings.profileTableViewController() {
                 navigationController?.pushViewController(profileTableViewController, animated: true)
+            }
+            return .none
+        case .keyboard:
+            if let keyboardAccessoryCollectionViewController = R.storyboard.settings.keyboardAccessoryCollectionViewController() {
+                navigationController?.pushViewController(keyboardAccessoryCollectionViewController, animated: true)
             }
             return .none
         case .ping:

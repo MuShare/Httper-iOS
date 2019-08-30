@@ -207,11 +207,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jdN-lK-kKT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2087" y="2658"/>
+            <point key="canvasLocation" x="2126" y="2656"/>
         </scene>
         <!--Settings Table View Controller-->
         <scene sceneID="llZ-0W-cTg">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5xv-OJ-OrG" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="SettingsTableViewController" id="J6a-zA-ou3" customClass="SettingsTableViewController" customModule="Httper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="zhb-hJ-FCm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -490,14 +491,13 @@
                         <segue destination="W89-1r-Nwr" kind="push" identifier="profileSegue" id="xnN-KP-42i"/>
                     </connections>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5xv-OJ-OrG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="141" y="2277"/>
         </scene>
         <!--Customized Keyboard Accessory-->
         <scene sceneID="NEK-Qp-cZ7">
             <objects>
-                <collectionViewController id="bHu-3c-Hwg" customClass="KeyboardAccessoryCollectionViewController" customModule="Httper" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="keyboardAccessoryCollectionViewController" id="bHu-3c-Hwg" customClass="KeyboardAccessoryCollectionViewController" customModule="Httper" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="bOn-Ct-cob">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -580,6 +580,7 @@
         <!--Settings-->
         <scene sceneID="f1K-dM-Hpr">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lCo-CR-XB7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="5Ks-0N-GiU" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="tab_settings" id="aVy-sw-oDB"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tE9-mW-Nc5">
@@ -602,7 +603,6 @@
                         <segue destination="J6a-zA-ou3" kind="relationship" relationship="rootViewController" id="c88-0E-xYU"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lCo-CR-XB7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-729" y="2276"/>
         </scene>
