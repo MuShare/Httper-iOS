@@ -58,6 +58,8 @@ class SettingsViewController: BaseViewController<SettingsViewModel> {
     
     private lazy var emailButton: UIButton = {
         let button = UIButton()
+        button.setTitleColor(.lightGray, for: .normal)
+        button.setTitleColor(.darkGray, for: .highlighted)
         button.rx.tap.bind { [unowned self] in
             self.viewModel.signin()
         }.disposed(by: disposeBag)
@@ -105,6 +107,7 @@ class SettingsViewController: BaseViewController<SettingsViewModel> {
         disposeBag ~ [
             viewModel.avatar ~> rx.avatar,
             viewModel.name ~> nameButton.rx.title(),
+            viewModel.email ~> emailButton.rx.title(),
             viewModel.sections ~> tableView.rx.items(dataSource: dataSource)
         ]
     }
@@ -135,6 +138,11 @@ class SettingsViewController: BaseViewController<SettingsViewModel> {
         nameButton.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalTo(avatarButton.snp.bottom).offset(Const.name.marginTop)
+        }
+        
+        emailButton.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(nameButton.snp.bottom)
         }
 
     }

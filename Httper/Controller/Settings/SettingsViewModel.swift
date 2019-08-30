@@ -52,15 +52,25 @@ class SettingsViewModel: BaseViewModel {
     private let isLoginSubject = PublishSubject<Bool>()
     
     var avatar: Observable<URL?> {
-        print(R.image.signin.bundle.bundlePath + R.image.signin.name)
         return isLoginSubject.distinctUntilChanged().map {
-            $0 ? imageURL(UserManager.shared.avatar) :  nil
+            switch UserManager.shared.type {
+            case UserTypeFacebook:
+                return $0 ? imageURL(UserManager.shared.avatar) :  nil
+            default:
+                return nil
+            }
         }
     }
     
     var name: Observable<String?> {
         return isLoginSubject.distinctUntilChanged().map {
             $0 ? UserManager.shared.name : R.string.localizable.sign_in_sign_up()
+        }
+    }
+    
+    var email: Observable<String?> {
+        return isLoginSubject.distinctUntilChanged().map {
+            $0 ? UserManager.shared.email : nil
         }
     }
     
