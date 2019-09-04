@@ -21,6 +21,15 @@ fileprivate struct Const {
         static let margin = 15
     }
     
+    struct line {
+        static let height = 1
+        static let marginTop = 10
+    }
+    
+    struct table {
+        static let marginTop = 10
+    }
+    
 }
 
 class PingViewController: BaseViewController<PingViewModel> {
@@ -52,11 +61,18 @@ class PingViewController: BaseViewController<PingViewModel> {
         return textField
     }()
     
+    private lazy var lineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .darkGray
+        return view
+    }()
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.hideFooterView()
         tableView.backgroundColor = .clear
         tableView.rowHeight = 56
+        tableView.separatorColor = .darkGray
         tableView.register(cellType: PingTableViewCell.self)
         return tableView
     }()
@@ -70,6 +86,7 @@ class PingViewController: BaseViewController<PingViewModel> {
         view.backgroundColor = .background
         view.addSubview(iconImageView)
         view.addSubview(addressTextField)
+        view.addSubview(lineView)
         view.addSubview(tableView)
         createConstraints()
         
@@ -98,10 +115,17 @@ class PingViewController: BaseViewController<PingViewModel> {
             $0.right.equalToSuperview().offset(-Const.address.margin)
         }
         
+        lineView.snp.makeConstraints {
+            $0.height.equalTo(Const.line.height)
+            $0.left.equalTo(iconImageView)
+            $0.top.equalTo(addressTextField.snp.bottom).offset(Const.line.marginTop)
+            $0.right.equalToSuperview()
+        }
+        
         tableView.snp.makeConstraints {
             $0.left.right.equalToSuperview()
-            $0.top.equalTo(addressTextField.snp.bottom).offset(Const.address.margin)
-            $0.bottom.equalTo(view.snp.bottom)
+            $0.top.equalTo(lineView.snp.bottom).offset(Const.table.marginTop)
+            $0.bottom.equalToSuperview()
         }
         
     }

@@ -15,9 +15,6 @@ let DEBUG = false
 
 // Server base url
 let baseUrl = "https://httper.mushare.cn/"
-//let baseUrl = "http://192.168.96.128:8080/"
-
-let whoisUrl = "https://www.whois.com"
 
 func createUrl(_ relative: String) -> String {
     let requestUrl = baseUrl + relative

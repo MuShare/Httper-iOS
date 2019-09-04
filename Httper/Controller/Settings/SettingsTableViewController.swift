@@ -68,6 +68,9 @@ class SettingsTableViewController: UITableViewController {
         case R.reuseIdentifier.ipaddress.identifier:
             let ipAddressViewController = IPAddressViewController(viewModel: .init())
             navigationController?.pushViewController(ipAddressViewController, animated: true)
+        case R.reuseIdentifier.whois.identifier:
+            let whoisViewController = WhoisViewController(viewModel: .init())
+            navigationController?.pushViewController(whoisViewController, animated: true)
         case R.reuseIdentifier.appstore.identifier:
             url = "itms-apps://itunes.apple.com/app/httper/id1166884043"
         case R.reuseIdentifier.github.identifier:
