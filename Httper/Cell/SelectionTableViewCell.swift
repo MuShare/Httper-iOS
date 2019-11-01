@@ -6,8 +6,7 @@
 //  Copyright © 2018 limeng. All rights reserved.
 //
 
-import UIKit
-import Reusable
+import RxDataSourcesSingleSection
 
 fileprivate struct Const {
     static let margin = 17
@@ -26,7 +25,13 @@ struct Selection {
     var title: String
 }
 
-class SelectionTableViewCell: UITableViewCell, Reusable {
+extension Selection: Equatable {
+    static func == (lhs: Selection, rhs: Selection) -> Bool {
+        return lhs.title == rhs.title
+    }
+}
+
+class SelectionTableViewCell: UITableViewCell {
     
     private lazy var iconImageView = UIImageView()
     
@@ -55,6 +60,7 @@ class SelectionTableViewCell: UITableViewCell, Reusable {
     }
     
     private func createConstraints() {
+        
         iconImageView.snp.makeConstraints {
             $0.left.equalToSuperview().offset(Const.margin)
             $0.size.equalTo(Const.icon.size)
@@ -66,16 +72,26 @@ class SelectionTableViewCell: UITableViewCell, Reusable {
             $0.right.equalToSuperview().offset(-Const.title.marginRight)
             $0.centerY.equalToSuperview()
         }
+        
     }
 
-    var selection: Selection? {
-        didSet {
-            guard let selection = selection else {
-                return
-            }
-            iconImageView.image = selection.icon
-            titleLabel.text = selection.title
+    var titleAlignment: NSTextAlignment {
+        get {
+            return titleLabel.textAlignment
         }
+        set {
+            titleLabel.textAlignment = newValue
+        }
+    }
+}
+
+extension SelectionTableViewCell: Configurable {
+    
+    typealias Model = Selection
+    
+    func configure(_ model: Selection) {
+        iconImageView.image = model.icon
+        titleLabel.text = model.title
     }
     
 }

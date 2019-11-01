@@ -13,35 +13,37 @@ PODS:
     - FacebookCore (~> 0.8.0)
     - FBSDKCoreKit (~> 5.0)
     - FBSDKLoginKit (~> 5.0)
-  - FBSDKCoreKit (5.4.0):
-    - FBSDKCoreKit/Basics (= 5.4.0)
-    - FBSDKCoreKit/Core (= 5.4.0)
-  - FBSDKCoreKit/Basics (5.4.0)
-  - FBSDKCoreKit/Core (5.4.0):
+  - FBSDKCoreKit (5.4.1):
+    - FBSDKCoreKit/Basics (= 5.4.1)
+    - FBSDKCoreKit/Core (= 5.4.1)
+  - FBSDKCoreKit/Basics (5.4.1)
+  - FBSDKCoreKit/Core (5.4.1):
     - FBSDKCoreKit/Basics
-  - FBSDKLoginKit (5.4.0):
+  - FBSDKLoginKit (5.4.1):
     - FBSDKCoreKit (~> 5.0)
-  - Firebase/Core (6.6.0):
+  - Firebase/Core (6.7.0):
     - Firebase/CoreOnly
-    - FirebaseAnalytics (= 6.1.0)
-  - Firebase/CoreOnly (6.6.0):
-    - FirebaseCore (= 6.2.0)
-  - Firebase/Performance (6.6.0):
+    - FirebaseAnalytics (= 6.1.1)
+  - Firebase/CoreOnly (6.7.0):
+    - FirebaseCore (= 6.2.1)
+  - Firebase/Performance (6.7.0):
     - Firebase/CoreOnly
     - FirebasePerformance (~> 3.1.2)
-  - FirebaseABTesting (3.0.0):
-    - FirebaseCore (~> 6.0)
-    - Protobuf (~> 3.5)
-  - FirebaseAnalytics (6.1.0):
+  - FirebaseABTesting (3.1.0):
+    - FirebaseAnalyticsInterop (~> 1.3)
+    - FirebaseCore (~> 6.1)
+    - Protobuf (~> 3.8)
+  - FirebaseAnalytics (6.1.1):
     - FirebaseCore (~> 6.2)
     - FirebaseInstanceID (~> 4.2)
-    - GoogleAppMeasurement (= 6.1.0)
+    - GoogleAppMeasurement (= 6.1.1)
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
     - GoogleUtilities/Network (~> 6.0)
     - "GoogleUtilities/NSData+zlib (~> 6.0)"
     - nanopb (~> 0.3)
-  - FirebaseCore (6.2.0):
+  - FirebaseAnalyticsInterop (1.4.0)
+  - FirebaseCore (6.2.1):
     - FirebaseCoreDiagnostics (~> 1.0)
     - FirebaseCoreDiagnosticsInterop (~> 1.0)
     - GoogleUtilities/Environment (~> 6.2)
@@ -67,22 +69,23 @@ PODS:
     - GoogleUtilities/MethodSwizzler (~> 6.0)
     - GTMSessionFetcher/Core (~> 1.1)
     - Protobuf (~> 3.5)
-  - FirebaseRemoteConfig (4.2.1):
-    - FirebaseABTesting (~> 3.0)
-    - FirebaseCore (~> 6.1)
+  - FirebaseRemoteConfig (4.3.0):
+    - FirebaseABTesting (~> 3.1)
+    - FirebaseAnalyticsInterop (~> 1.4)
+    - FirebaseCore (~> 6.2)
     - FirebaseInstanceID (~> 4.2)
     - GoogleUtilities/Environment (~> 6.0)
     - "GoogleUtilities/NSData+zlib (~> 6.0)"
     - Protobuf (~> 3.5)
   - Fuzi (3.1.1)
-  - GoogleAppMeasurement (6.1.0):
+  - GoogleAppMeasurement (6.1.1):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
     - GoogleUtilities/Network (~> 6.0)
     - "GoogleUtilities/NSData+zlib (~> 6.0)"
     - nanopb (~> 0.3)
-  - GoogleDataTransport (1.1.1)
-  - GoogleDataTransportCCTSupport (1.0.1):
+  - GoogleDataTransport (1.1.3)
+  - GoogleDataTransportCCTSupport (1.0.2):
     - GoogleDataTransport (~> 1.1)
     - nanopb
   - GoogleToolboxForMac/Defines (2.2.1)
@@ -244,6 +247,7 @@ SPEC REPOS:
     - Firebase
     - FirebaseABTesting
     - FirebaseAnalytics
+    - FirebaseAnalyticsInterop
     - FirebaseCore
     - FirebaseCoreDiagnostics
     - FirebaseCoreDiagnosticsInterop
@@ -300,21 +304,22 @@ SPEC CHECKSUMS:
   Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
   FacebookCore: 563bb4cbcd7dd86cf89f3729252140bf256aacaa
   FacebookLogin: 8b966ae661e95e7dba837d7cc49cc464ce003dba
-  FBSDKCoreKit: 026e56cf2c2cebc656cf2aec5c6898b8c4f33930
-  FBSDKLoginKit: f5064bb8f20c065ee1ea5987cbe0475b713edf9b
-  Firebase: a2b5951f30ff38fd3b3bdae9c7d340f940fd3c51
-  FirebaseABTesting: a32c488eb75089a61eb3d86db061dfb909d765db
-  FirebaseAnalytics: 48414ae5cbf6976d8a2f7177e0466540e5ab33ce
-  FirebaseCore: 8c9e08bce0c72a3affd83927d8184cf244918bc8
+  FBSDKCoreKit: 5144671077d67f07d7d243dbc7fd57a171f73954
+  FBSDKLoginKit: ff38b353b6843353f090028eb1b895c78aa82796
+  Firebase: 291d7b0a7b393f252358083b5d224884126fa46d
+  FirebaseABTesting: a0622113a60c4dce068765e16a77e20c3331c44a
+  FirebaseAnalytics: 843c7f64a8f9c79f0d03281197ebe7bb1d58d477
+  FirebaseAnalyticsInterop: d48b6ab67bcf016a05e55b71fc39c61c0cb6b7f3
+  FirebaseCore: 32b48f41c84a56fbde73b35ed01a830b3b6dc048
   FirebaseCoreDiagnostics: 4c04ae09d0ab027c30179828c6bb47764df1bd13
   FirebaseCoreDiagnosticsInterop: 6829da2b8d1fc795ff1bd99df751d3788035d2cb
   FirebaseInstanceID: 8b42755db950682e7de0d167bc6fb26a57b244af
   FirebasePerformance: 270bab0bfa55e067ffd839e4ce4e592a1bdeebd6
-  FirebaseRemoteConfig: ed74d16d7e5b19e77a4c3e3eee4fe363039b0834
+  FirebaseRemoteConfig: 938b338e9e56f73b4e3880213cc01287b8582468
   Fuzi: bcc5694488dd6e672e126cbf3c5471d7a79506d1
-  GoogleAppMeasurement: 47285fa897e5a125df56b9ef8750a1d81e4598a8
-  GoogleDataTransport: ffbadce4ab93c88fb9dd8e6366c47bfcb4a32193
-  GoogleDataTransportCCTSupport: 3451e7d8ba19093e533362a6d78d6d9014c6a037
+  GoogleAppMeasurement: 86a82f0e1f20b8eedf8e20326530138fd71409de
+  GoogleDataTransport: 91e682bd60a49d3f8f69f2e909a66efaed5a1e7a
+  GoogleDataTransportCCTSupport: 6b545f7149111180763dc18c6f372c963de4a310
   GoogleToolboxForMac: b3553629623a3b1bff17f555e736cd5a6d95ad55
   GoogleUtilities: e7dc37039b19df7fe543479d3e4a02ac8d11bb69
   GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23

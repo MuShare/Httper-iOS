@@ -101,26 +101,10 @@ class MainViewController: UITabBarController {
             title = R.string.localizable.tab_project_title()
             navigationItem.rightBarButtonItem = addRequestBarButtonItem
         case .settings:
-            title = ""
+            title = R.string.localizable.tab_settings()
+            navigationItem.rightBarButtonItem = nil
         }
     }
-    
-    /**
-    @objc private func addNewProject() {
-        guard let controller = selectedViewController, controller.isKind(of: ProjectsViewController.self) else {
-            return
-        }
-        controller.performSegue(withIdentifier: R.segue.projectsViewController.addProjectSegue.identifier, sender: controller)
-    }
-    
-    @objc private func clearRequest() {
-        guard let controller = selectedViewController, controller.isKind(of: RequestViewController.self) else {
-            return
-        }
-        let requestViewController = controller as! RequestViewController
-//        requestViewController.clearRequest(navigationItem.rightBarButtonItem!)
-    }
-    */
     
 }
 
