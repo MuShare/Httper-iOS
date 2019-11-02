@@ -14,7 +14,7 @@ import RxSwift
 
 class WhoisViewModel: BaseViewModel {
     
-    private let reachability = Reachability()
+    private let reachability = try? Reachability()
     
     private let css: String = {
         var css = "<style>"
