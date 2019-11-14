@@ -63,6 +63,9 @@
 		BB44C51522B687380040DCD3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB44C51422B687370040DCD3 /* GoogleService-Info.plist */; };
 		BBADABF72317F7DD00995AD2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBADABF62317F7DD00995AD2 /* SettingsViewController.swift */; };
 		BBADABFB2317FFDA00995AD2 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBADABFA2317FFDA00995AD2 /* Array+Extension.swift */; };
+		BBB0DAB7237D5A900074B5AE /* KeyboardAccessoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB0DAB6237D5A900074B5AE /* KeyboardAccessoryViewController.swift */; };
+		BBB0DAB9237D5A9E0074B5AE /* KeyboardAccessoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB0DAB8237D5A9E0074B5AE /* KeyboardAccessoryViewModel.swift */; };
+		BBB0DABB237D5BD60074B5AE /* KeyboardAccessoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB0DABA237D5BD60074B5AE /* KeyboardAccessoryCollectionViewCell.swift */; };
 		BBC41DE7226DE5F500ABF820 /* UITableView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC41DE6226DE5F500ABF820 /* UITableView+Rx.swift */; };
 		E4007EB91DFEE7B7002A87FA /* BodyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4007EB81DFEE7B7002A87FA /* BodyViewController.swift */; };
 		E40986A2215523A3006CCC04 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409869F215523A2006CCC04 /* UIColor+Extension.swift */; };
@@ -207,6 +210,9 @@
 		BB44C51422B687370040DCD3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BBADABF62317F7DD00995AD2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BBADABFA2317FFDA00995AD2 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		BBB0DAB6237D5A900074B5AE /* KeyboardAccessoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAccessoryViewController.swift; sourceTree = "<group>"; };
+		BBB0DAB8237D5A9E0074B5AE /* KeyboardAccessoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAccessoryViewModel.swift; sourceTree = "<group>"; };
+		BBB0DABA237D5BD60074B5AE /* KeyboardAccessoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAccessoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		BBC41DE6226DE5F500ABF820 /* UITableView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Rx.swift"; sourceTree = "<group>"; };
 		E4007EB81DFEE7B7002A87FA /* BodyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodyViewController.swift; sourceTree = "<group>"; };
 		E400D3C220C1BEF100B2BC7F /* route_simulator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = route_simulator.h; sourceTree = "<group>"; };
@@ -464,6 +470,8 @@
 				77055F4E22B75557001F140D /* IPAddressViewController.swift */,
 				77055F5022B75598001F140D /* IPAddressViewModel.swift */,
 				E48BF6541F3DAA0D00F567FC /* KeyboardAccessoryCollectionViewController.swift */,
+				BBB0DAB6237D5A900074B5AE /* KeyboardAccessoryViewController.swift */,
+				BBB0DAB8237D5A9E0074B5AE /* KeyboardAccessoryViewModel.swift */,
 				E4DE76901E1D2644002A8385 /* LoginViewController.swift */,
 				E4BBC9921E4DCCBB002107DF /* NameViewController.swift */,
 				E46077601E126948002DE839 /* PingViewController.swift */,
@@ -537,6 +545,7 @@
 				77271CB321E74DE60072E007 /* ProjectTableViewCell.swift */,
 				77BBBCBC21815C9C00500A3A /* RequestTableViewCell.swift */,
 				77BBBCBA2181585C00500A3A /* SelectionTableViewCell.swift */,
+				BBB0DABA237D5BD60074B5AE /* KeyboardAccessoryCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -798,7 +807,7 @@
 			);
 			name = R.swift;
 			outputPaths = (
-				"$SRCROOT/$TARGET_NAME/R.generated.swift",
+				$SRCROOT/$TARGET_NAME/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
@@ -976,7 +985,9 @@
 				E46ABF521E140F2E00E0C092 /* InternetTool.m in Sources */,
 				E4E297B11E00021500AD484E /* ResponseHeaderViewController.swift in Sources */,
 				E4A37A9D1E018D7500586BA1 /* RequestDao.swift in Sources */,
+				BBB0DABB237D5BD60074B5AE /* KeyboardAccessoryCollectionViewCell.swift in Sources */,
 				E4D161F71ECEA16A009B1DD9 /* UserManager.swift in Sources */,
+				BBB0DAB9237D5A9E0074B5AE /* KeyboardAccessoryViewModel.swift in Sources */,
 				E48D41601D444F3F0028B84F /* Httper.xcdatamodeld in Sources */,
 				77CDA192222E1CB90063C472 /* NVActivityIndicatorViewable+Rx.swift in Sources */,
 				77271CB021E747D30072E007 /* SaveToProjectViewController.swift in Sources */,
@@ -1044,6 +1055,7 @@
 				E4305A471E34F65000010B52 /* DaoManager.swift in Sources */,
 				E42A713D214961780070D8FC /* SettingsViewModel.swift in Sources */,
 				BBADABFB2317FFDA00995AD2 /* Array+Extension.swift in Sources */,
+				BBB0DAB7237D5A900074B5AE /* KeyboardAccessoryViewController.swift in Sources */,
 				E40B257E1DF44BD20039CA8D /* MainViewController.swift in Sources */,
 				7782A5FA226977E4002B6AE2 /* PingTableViewCell.swift in Sources */,
 				77B1991D230B8BEA003EE42F /* UIWebView+Rx.swift in Sources */,
