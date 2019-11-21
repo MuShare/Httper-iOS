@@ -14,7 +14,7 @@ import RxSwift
 
 class WhoisViewModel: BaseViewModel {
     
-    private let reachability = Reachability()
+    private let reachability = try? Reachability()
     
     private let css: String = {
         var css = "<style>"
@@ -55,7 +55,7 @@ class WhoisViewModel: BaseViewModel {
         return htmlSubject.asObservable()
     }
     func search() {
-        guard reachability?.connection != .none else {
+        guard reachability?.connection != .unavailable else {
             alert.onNextTip(R.string.localizable.not_internet_connection())
             return
         }

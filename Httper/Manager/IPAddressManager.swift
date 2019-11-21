@@ -79,7 +79,7 @@ final class IPAddressManager {
     }
     
     func getIpAddressInfo() -> Observable<IPAddress?> {
-        guard let reachability = Reachability(), reachability.connection != .none else {
+        guard let reachability = try? Reachability(), reachability.connection != .none else {
             return .just(nil)
         }
         return RxAlamofire.request(
