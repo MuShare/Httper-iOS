@@ -539,13 +539,13 @@
 				77055F5422B76595001F140D /* IPAddressHeadTableViewCell.swift */,
 				77055F5222B76570001F140D /* IPAddressInfoTableViewCell.swift */,
 				7799F6BB22C5F55F00E1AFC4 /* IPAddressMapTableViewCell.swift */,
+				BBB0DABA237D5BD60074B5AE /* KeyboardAccessoryCollectionViewCell.swift */,
 				77F39963215374370016978E /* KeyValueTableViewCell.swift */,
 				77F39969215382BA0016978E /* MenuViewCell.swift */,
 				7782A5F9226977E4002B6AE2 /* PingTableViewCell.swift */,
 				77271CB321E74DE60072E007 /* ProjectTableViewCell.swift */,
 				77BBBCBC21815C9C00500A3A /* RequestTableViewCell.swift */,
 				77BBBCBA2181585C00500A3A /* SelectionTableViewCell.swift */,
-				BBB0DABA237D5BD60074B5AE /* KeyboardAccessoryCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -807,7 +807,7 @@
 			);
 			name = R.swift;
 			outputPaths = (
-				"$SRCROOT/$TARGET_NAME/R.generated.swift",
+				$SRCROOT/$TARGET_NAME/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;

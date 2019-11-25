@@ -24,12 +24,23 @@ class KeyboardAccessoryViewController: BaseViewController<KeyboardAccessoryViewM
 
         return collectionView
     }()
+    
+    private lazy var dataSource = KeyboardAccessoryCollectionViewCell.collectionViewSingleSectionDataSource(configureCell: { cell, indexPath, _ in
+        cell.didRemove = { [unowned self] in
+            self.viewModel.remove(at: indexPath.row)
+        }
+    })
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.addSubview(collectionView)
         createConstraints()
+        
+        disposeBag ~ [
+            viewModel.characterSection ~> collectionView.rx.items(dataSource: dataSource)
+        ]
+        
     }
 
     private func createConstraints() {

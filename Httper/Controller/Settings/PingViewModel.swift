@@ -65,10 +65,10 @@ class PingViewModel: BaseViewModel {
             return
         }
         if reachability.connection == .unavailable {
-            alert.onNext(.customTip(
+            alert.onNextCustomTip(
                 title: R.string.localizable.tip_name(),
                 message: R.string.localizable.not_internet_connection()
-            ))
+            )
             return
         }
         guard let address = address.value, !address.isEmpty else {
@@ -89,10 +89,10 @@ class PingViewModel: BaseViewModel {
             }
         } else {
             if pingItems.value.count > 0 {
-                alert.onNext(.customTip(
+                alert.onNextCustomTip(
                     title: "Ping Result",
                     message: STDPingItem.statistics(withPingItems: pingItems.value)
-                ))
+                )
             }
             pingService?.cancel()
         }
