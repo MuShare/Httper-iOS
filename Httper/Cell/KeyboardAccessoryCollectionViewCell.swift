@@ -34,6 +34,7 @@ class KeyboardAccessoryCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        backgroundColor = UIColor(hex: 0x434343)
         addSubview(removeButton)
         addSubview(characterLabel)
         createConstraints()

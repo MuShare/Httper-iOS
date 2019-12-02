@@ -7,7 +7,14 @@
 //
 
 private struct Const {
-    static let cellSize = CGSize(width: UIScreen.main.bounds.width / 4, height: UIScreen.main.bounds.width / 4)
+    
+    struct collection {
+        static let marginTop = 2
+        static func cellWidth(column: Int) -> CGFloat {
+            (UIScreen.main.bounds.width - CGFloat(column - 1) * 1) / 4
+        }
+    }
+    
 }
 
 class KeyboardAccessoryViewController: BaseViewController<KeyboardAccessoryViewModel> {
@@ -15,8 +22,10 @@ class KeyboardAccessoryViewController: BaseViewController<KeyboardAccessoryViewM
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: {
             let layout = UICollectionViewFlowLayout()
-            layout.itemSize = Const.cellSize
-            layout.minimumLineSpacing = 0
+            let width = Const.collection.cellWidth(column: 4)
+            layout.itemSize = CGSize(width: width, height: width)
+            layout.minimumLineSpacing = 1
+            layout.minimumInteritemSpacing = 0
             layout.scrollDirection = .vertical
             return layout
         }())
@@ -38,6 +47,7 @@ class KeyboardAccessoryViewController: BaseViewController<KeyboardAccessoryViewM
         createConstraints()
         
         disposeBag ~ [
+            viewModel.title ~> rx.title,
             viewModel.characterSection ~> collectionView.rx.items(dataSource: dataSource)
         ]
         
@@ -45,7 +55,7 @@ class KeyboardAccessoryViewController: BaseViewController<KeyboardAccessoryViewM
 
     private func createConstraints() {
         collectionView.snp.makeConstraints {
-            $0.top.equalTo(view.safeArea.top)
+            $0.top.equalTo(view.safeArea.top).offset(Const.collection.marginTop)
             $0.left.right.bottom.equalToSuperview()
         }
     }

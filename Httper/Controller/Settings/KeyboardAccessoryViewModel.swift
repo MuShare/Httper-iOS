@@ -13,6 +13,10 @@ import RxSwift
 class KeyboardAccessoryViewModel: BaseViewModel {
     
     private let charactersRelay = BehaviorRelay<[String]>(value: UserManager.shared.characters ?? [])
+
+    var title: Observable<String> {
+        .just("Customized Keyboard Accessory")
+    }
     
     var characterSection: Observable<SingleSection<String>> {
         charactersRelay.map { SingleSection.create($0) }
