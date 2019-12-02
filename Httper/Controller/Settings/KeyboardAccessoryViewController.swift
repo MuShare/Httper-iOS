@@ -18,6 +18,8 @@ private struct Const {
 }
 
 class KeyboardAccessoryViewController: BaseViewController<KeyboardAccessoryViewModel> {
+    
+    private lazy var addBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCharacter))
 
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: {
@@ -43,6 +45,7 @@ class KeyboardAccessoryViewController: BaseViewController<KeyboardAccessoryViewM
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationItem.rightBarButtonItem = addBarButtonItem
         view.addSubview(collectionView)
         createConstraints()
         
@@ -58,6 +61,24 @@ class KeyboardAccessoryViewController: BaseViewController<KeyboardAccessoryViewM
             $0.top.equalTo(view.safeArea.top).offset(Const.collection.marginTop)
             $0.left.right.bottom.equalToSuperview()
         }
+    }
+    
+    @objc private func addCharacter() {
+        let alertController = UIAlertController(
+            title: R.string.localizable.add_character(),
+            message: nil,
+            preferredStyle: .alert
+        )
+        alertController.addTextField {
+            $0.textAlignment = .center
+        }
+        let addAction = UIAlertAction(title: R.string.localizable.ok_name(), style: .default) { [unowned self] _ in
+            self.viewModel.add(character: alertController.textFields?[0].text)
+        }
+        let cancelAction = UIAlertAction(title: R.string.localizable.cancel_name(), style: .cancel)
+        alertController.addAction(addAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true)
     }
     
 }

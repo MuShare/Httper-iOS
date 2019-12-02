@@ -22,8 +22,13 @@ class KeyboardAccessoryViewModel: BaseViewModel {
         charactersRelay.map { SingleSection.create($0) }
     }
     
-    func add(character: String) {
-        
+    func add(character: String?) {
+        guard let character = character, !character.isEmpty else {
+            alert.onNextWarning("Please input a legal character!")
+            return
+        }
+        UserManager.shared.characters?.append(character)
+        charactersRelay.accept(UserManager.shared.characters ?? [])
     }
     
     func remove(at index: Int) {
