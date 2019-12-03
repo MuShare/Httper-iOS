@@ -15,7 +15,7 @@ target 'Httper' do
     pod 'Kingfisher'
     pod 'M80AttributedLabel'
     pod 'MGFormatter'
-    pod 'MGKeyboardAccessory'
+    pod 'MGKeyboardAccessory/Rx'
     pod 'MGSelector'
     pod 'NVActivityIndicatorView'
     pod 'PagingKit'
@@ -38,4 +38,8 @@ target 'Httper' do
     pod 'UIGradient'
     pod 'UIImageView+Extension'
     pod 'UITextView+Placeholder'
+end
+
+post_install do |installer|
+    system("bash #{Pathname(installer.sandbox.root)}/RxController/rxtree/build_for_xcode.sh")
 end

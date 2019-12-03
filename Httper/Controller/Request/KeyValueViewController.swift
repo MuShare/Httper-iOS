@@ -6,9 +6,15 @@
 //  Copyright © 2018 MuShare. All rights reserved.
 //
 
-import UIKit
+import RxCocoa
 import RxSwift
 import RxDataSourcesSingleSection
+
+private struct Const {
+    struct add {
+        static let height = 60
+    }
+}
 
 class KeyValueViewController: BaseViewController<KeyValueViewModel> {
     
@@ -47,24 +53,26 @@ class KeyValueViewController: BaseViewController<KeyValueViewModel> {
         view.addSubview(tableView)
         createConstraints()
         
-        viewModel.keyValueSection.bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+        disposeBag ~ [
+            viewModel.keyValueSection ~> tableView.rx.items(dataSource: dataSource),
+            viewModel.characters ~> rx.characters
+        ]
     }
     
     private func createConstraints() {
+        
         addButton.snp.makeConstraints {
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview()
-            $0.height.equalTo(60)
+            $0.height.equalTo(Const.add.height)
+            $0.left.right.bottom.equalToSuperview()
         }
         
         tableView.snp.makeConstraints {
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview()
-            $0.top.equalToSuperview()
+            $0.left.top.right.equalToSuperview()
             $0.bottom.equalTo(addButton.snp.top)
         }
+        
     }
+    
 }
 
 extension KeyValueViewController: KeyValueTableViewCellDelegate {
@@ -91,3 +99,28 @@ extension KeyValueViewController: KeyValueTableViewCellDelegate {
     }
     
 }
+
+private extension KeyValueViewController {
+    
+    func updateCharacters(_ characters: [String]) {
+        (0..<tableView.numberOfRows(inSection: 0)).map {
+            IndexPath(row: $0, section: 0)
+        }.compactMap {
+            tableView.cellForRow(at: $0) as? KeyValueTableViewCell
+        }.forEach {
+            $0.updateCharacters(characters)
+        }
+    }
+    
+}
+
+extension Reactive where Base: KeyValueViewController {
+    
+    var characters: Binder<[String]> {
+        Binder(base) { viewController, characters in
+            viewController.updateCharacters(characters)
+        }
+    }
+    
+}
+

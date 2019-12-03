@@ -39,28 +39,34 @@ enum KeyValueEditingState {
 
 class KeyValueViewModel: BaseViewModel {
     
-    let keyValues = BehaviorRelay<[KeyValue]>(value: [.empty])
-    let editingState = PublishSubject<KeyValueEditingState>()
+    let keyValuesRelay = BehaviorRelay<[KeyValue]>(value: [.empty])
+    let editingStateSubject = PublishSubject<KeyValueEditingState>()
     
     var results: [String: KeyValue] = [:]
     
     var keyValueSection: Observable<AnimatableSingleSection<KeyValue>> {
-        return keyValues.map { AnimatableSingleSection.create($0) }
+        keyValuesRelay.map {
+            AnimatableSingleSection.create($0)
+        }
+    }
+    
+    var characters: Observable<[String]> {
+        UserManager.shared.charactersRelay.asObservable()
     }
     
     func addNewKey() {
-        var value = keyValues.value
+        var value = keyValuesRelay.value
         value.append(.empty)
-        keyValues.accept(value)
+        keyValuesRelay.accept(value)
     }
     
     func remove(by identifier: String) {
-        var value = keyValues.value
+        var value = keyValuesRelay.value
         guard let index = value.firstIndex(where: { $0.identifier == identifier }) else {
             return
         }
         value.remove(at: index)
-        keyValues.accept(value)
+        keyValuesRelay.accept(value)
         
         results.removeValue(forKey: identifier)
     }
@@ -70,19 +76,19 @@ class KeyValueViewModel: BaseViewModel {
     }
     
     func index(for identifier: String) -> Int? {
-        return keyValues.value.firstIndex { $0.identifier == identifier }
+        keyValuesRelay.value.firstIndex { $0.identifier == identifier }
     }
     
     func beginEditing(at height: CGFloat) {
-        editingState.onNext(.begin(height))
+        editingStateSubject.onNext(.begin(height))
     }
     
     func endEditing() {
-        editingState.onNext(.end)
+        editingStateSubject.onNext(.end)
     }
     
     func clear() {
-        keyValues.accept([.empty])
+        keyValuesRelay.accept([.empty])
     }
     
 }

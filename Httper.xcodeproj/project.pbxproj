@@ -63,6 +63,9 @@
 		BB44C51522B687380040DCD3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB44C51422B687370040DCD3 /* GoogleService-Info.plist */; };
 		BBADABF72317F7DD00995AD2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBADABF62317F7DD00995AD2 /* SettingsViewController.swift */; };
 		BBADABFB2317FFDA00995AD2 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBADABFA2317FFDA00995AD2 /* Array+Extension.swift */; };
+		BBB0DAB7237D5A900074B5AE /* KeyboardAccessoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB0DAB6237D5A900074B5AE /* KeyboardAccessoryViewController.swift */; };
+		BBB0DAB9237D5A9E0074B5AE /* KeyboardAccessoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB0DAB8237D5A9E0074B5AE /* KeyboardAccessoryViewModel.swift */; };
+		BBB0DABB237D5BD60074B5AE /* KeyboardAccessoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB0DABA237D5BD60074B5AE /* KeyboardAccessoryCollectionViewCell.swift */; };
 		BBC41DE7226DE5F500ABF820 /* UITableView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC41DE6226DE5F500ABF820 /* UITableView+Rx.swift */; };
 		E4007EB91DFEE7B7002A87FA /* BodyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4007EB81DFEE7B7002A87FA /* BodyViewController.swift */; };
 		E40986A2215523A3006CCC04 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409869F215523A2006CCC04 /* UIColor+Extension.swift */; };
@@ -93,7 +96,6 @@
 		E48553321DF9B2AF00A1DB60 /* PrettyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48553311DF9B2AF00A1DB60 /* PrettyViewController.swift */; };
 		E48553341DF9B2BF00A1DB60 /* RawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48553331DF9B2BF00A1DB60 /* RawViewController.swift */; };
 		E48553361DF9B2CF00A1DB60 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48553351DF9B2CF00A1DB60 /* PreviewViewController.swift */; };
-		E48BF6551F3DAA0D00F567FC /* KeyboardAccessoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48BF6541F3DAA0D00F567FC /* KeyboardAccessoryCollectionViewController.swift */; };
 		E48D41581D444F3F0028B84F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48D41571D444F3F0028B84F /* AppDelegate.swift */; };
 		E48D41601D444F3F0028B84F /* Httper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E48D415E1D444F3F0028B84F /* Httper.xcdatamodeld */; };
 		E48D41621D444F3F0028B84F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E48D41611D444F3F0028B84F /* Assets.xcassets */; };
@@ -207,6 +209,9 @@
 		BB44C51422B687370040DCD3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BBADABF62317F7DD00995AD2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BBADABFA2317FFDA00995AD2 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		BBB0DAB6237D5A900074B5AE /* KeyboardAccessoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAccessoryViewController.swift; sourceTree = "<group>"; };
+		BBB0DAB8237D5A9E0074B5AE /* KeyboardAccessoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAccessoryViewModel.swift; sourceTree = "<group>"; };
+		BBB0DABA237D5BD60074B5AE /* KeyboardAccessoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAccessoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		BBC41DE6226DE5F500ABF820 /* UITableView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Rx.swift"; sourceTree = "<group>"; };
 		E4007EB81DFEE7B7002A87FA /* BodyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodyViewController.swift; sourceTree = "<group>"; };
 		E400D3C220C1BEF100B2BC7F /* route_simulator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = route_simulator.h; sourceTree = "<group>"; };
@@ -244,7 +249,6 @@
 		E48553311DF9B2AF00A1DB60 /* PrettyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrettyViewController.swift; sourceTree = "<group>"; };
 		E48553331DF9B2BF00A1DB60 /* RawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawViewController.swift; sourceTree = "<group>"; };
 		E48553351DF9B2CF00A1DB60 /* PreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
-		E48BF6541F3DAA0D00F567FC /* KeyboardAccessoryCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAccessoryCollectionViewController.swift; sourceTree = "<group>"; };
 		E48D41541D444F3F0028B84F /* Httper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Httper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E48D41571D444F3F0028B84F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E48D415F1D444F3F0028B84F /* Httper.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Httper.xcdatamodel; sourceTree = "<group>"; };
@@ -463,7 +467,8 @@
 			children = (
 				77055F4E22B75557001F140D /* IPAddressViewController.swift */,
 				77055F5022B75598001F140D /* IPAddressViewModel.swift */,
-				E48BF6541F3DAA0D00F567FC /* KeyboardAccessoryCollectionViewController.swift */,
+				BBB0DAB6237D5A900074B5AE /* KeyboardAccessoryViewController.swift */,
+				BBB0DAB8237D5A9E0074B5AE /* KeyboardAccessoryViewModel.swift */,
 				E4DE76901E1D2644002A8385 /* LoginViewController.swift */,
 				E4BBC9921E4DCCBB002107DF /* NameViewController.swift */,
 				E46077601E126948002DE839 /* PingViewController.swift */,
@@ -531,6 +536,7 @@
 				77055F5422B76595001F140D /* IPAddressHeadTableViewCell.swift */,
 				77055F5222B76570001F140D /* IPAddressInfoTableViewCell.swift */,
 				7799F6BB22C5F55F00E1AFC4 /* IPAddressMapTableViewCell.swift */,
+				BBB0DABA237D5BD60074B5AE /* KeyboardAccessoryCollectionViewCell.swift */,
 				77F39963215374370016978E /* KeyValueTableViewCell.swift */,
 				77F39969215382BA0016978E /* MenuViewCell.swift */,
 				7782A5F9226977E4002B6AE2 /* PingTableViewCell.swift */,
@@ -832,7 +838,7 @@
 				"${BUILT_PRODUCTS_DIR}/MGSelector/MGSelector.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/PagingKit/PagingKit.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/Reusable/Reusable.framework",
@@ -879,7 +885,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MGSelector.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PagingKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reusable.framework",
@@ -976,7 +982,9 @@
 				E46ABF521E140F2E00E0C092 /* InternetTool.m in Sources */,
 				E4E297B11E00021500AD484E /* ResponseHeaderViewController.swift in Sources */,
 				E4A37A9D1E018D7500586BA1 /* RequestDao.swift in Sources */,
+				BBB0DABB237D5BD60074B5AE /* KeyboardAccessoryCollectionViewCell.swift in Sources */,
 				E4D161F71ECEA16A009B1DD9 /* UserManager.swift in Sources */,
+				BBB0DAB9237D5A9E0074B5AE /* KeyboardAccessoryViewModel.swift in Sources */,
 				E48D41601D444F3F0028B84F /* Httper.xcdatamodeld in Sources */,
 				77CDA192222E1CB90063C472 /* NVActivityIndicatorViewable+Rx.swift in Sources */,
 				77271CB021E747D30072E007 /* SaveToProjectViewController.swift in Sources */,
@@ -1000,7 +1008,6 @@
 				E40986A3215523A3006CCC04 /* UITableView+Extension.swift in Sources */,
 				E4F16F621E4B685F00C17DA4 /* ResetViewController.swift in Sources */,
 				7782A5F822697497002B6AE2 /* PingViewModel.swift in Sources */,
-				E48BF6551F3DAA0D00F567FC /* KeyboardAccessoryCollectionViewController.swift in Sources */,
 				E4305A491E34F8E100010B52 /* DaoTemplate.swift in Sources */,
 				77A5307E216708CC0008CC56 /* RawViewModel.swift in Sources */,
 				77055F5322B76570001F140D /* IPAddressInfoTableViewCell.swift in Sources */,
@@ -1044,6 +1051,7 @@
 				E4305A471E34F65000010B52 /* DaoManager.swift in Sources */,
 				E42A713D214961780070D8FC /* SettingsViewModel.swift in Sources */,
 				BBADABFB2317FFDA00995AD2 /* Array+Extension.swift in Sources */,
+				BBB0DAB7237D5A900074B5AE /* KeyboardAccessoryViewController.swift in Sources */,
 				E40B257E1DF44BD20039CA8D /* MainViewController.swift in Sources */,
 				7782A5FA226977E4002B6AE2 /* PingTableViewCell.swift in Sources */,
 				77B1991D230B8BEA003EE42F /* UIWebView+Rx.swift in Sources */,

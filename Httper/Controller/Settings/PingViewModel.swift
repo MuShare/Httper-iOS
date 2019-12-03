@@ -23,10 +23,11 @@ extension STDPingItem: AnimatableModel {
 
 class PingViewModel: BaseViewModel {
     
-    private let reachability = Reachability()!
+    private let reachability = try? Reachability()
+    private var pingService: STDPingServices?
+    
     private let pinging = BehaviorRelay<Bool>(value: false)
     private let pingItems = BehaviorRelay<[STDPingItem]>(value: [])
-    private var pingService: STDPingServices?
     
     deinit {
         pingService?.cancel()
@@ -60,11 +61,14 @@ class PingViewModel: BaseViewModel {
     }
     
     func controlPing() {
-        if reachability.connection == .none {
-            alert.onNext(.customTip(
+        guard let reachability = reachability else {
+            return
+        }
+        if reachability.connection == .unavailable {
+            alert.onNextCustomTip(
                 title: R.string.localizable.tip_name(),
                 message: R.string.localizable.not_internet_connection()
-            ))
+            )
             return
         }
         guard let address = address.value, !address.isEmpty else {
@@ -85,10 +89,10 @@ class PingViewModel: BaseViewModel {
             }
         } else {
             if pingItems.value.count > 0 {
-                alert.onNext(.customTip(
+                alert.onNextCustomTip(
                     title: "Ping Result",
                     message: STDPingItem.statistics(withPingItems: pingItems.value)
-                ))
+                )
             }
             pingService?.cancel()
         }

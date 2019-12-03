@@ -13,6 +13,10 @@ class BodyViewModel: BaseViewModel {
     
     let body = BehaviorRelay<String?>(value: nil)
     
+    var characters: Observable<[String]> {
+        UserManager.shared.charactersRelay.asObservable()
+    }
+    
     func clear() {
         body.accept(nil)
     }

@@ -48,10 +48,12 @@ class SettingsFlow: Flow {
             }
             return .none
         case .keyboard:
-            if let keyboardAccessoryCollectionViewController = R.storyboard.settings.keyboardAccessoryCollectionViewController() {
-                navigationController?.pushViewController(keyboardAccessoryCollectionViewController, animated: true)
-            }
-            return .none
+//            if let keyboardAccessoryCollectionViewController = R.storyboard.settings.keyboardAccessoryCollectionViewController() {
+//                navigationController?.pushViewController(keyboardAccessoryCollectionViewController, animated: true)
+//            }
+            let keyboardAccessoruViewController = KeyboardAccessoryViewController(viewModel: .init())
+            navigationController?.pushViewController(keyboardAccessoruViewController, animated: true)
+            return .viewController(keyboardAccessoruViewController)
         case .ping:
             let pingViewController = PingViewController(viewModel: .init())
             navigationController?.pushViewController(pingViewController, animated: true)

@@ -12,3 +12,6 @@ Pods/
 
 # R.swift
 *.generated.swift
+
+# rxtree
+rxtree
