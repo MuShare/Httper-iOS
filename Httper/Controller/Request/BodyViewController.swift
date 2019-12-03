@@ -22,7 +22,6 @@ class BodyViewController: BaseViewController<BodyViewModel> {
         let textView = UITextView()
         textView.backgroundColor = .clear
         textView.textColor = .white
-        textView.setupKeyboardAccessory(UserManager.shared.characters ?? [], barStyle: .black)
         return textView
     }()
     
@@ -32,7 +31,10 @@ class BodyViewController: BaseViewController<BodyViewModel> {
         view.addSubview(rawBodyTextView)
         createConstraints()
         
-        viewModel.body <~> rawBodyTextView.rx.text ~ disposeBag
+        disposeBag ~ [
+            viewModel.body <~> rawBodyTextView.rx.text,
+            viewModel.characters ~> rawBodyTextView.rx.keyboardAccessoryStrings(style: .black)
+        ]
     }
     
     private func createConstraints() {

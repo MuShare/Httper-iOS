@@ -28,14 +28,11 @@ protocol KeyValueTableViewCellDelegate: class {
 
 class KeyValueTableViewCell: UITableViewCell, Reusable {
     
-    private let characters = UserManager.shared.characters ?? []
-    
     private lazy var keyTextField: UITextField = {
         let textField = UITextField()
         textField.attributedPlaceholder = NSAttributedString(string: "key", attributes: [.foregroundColor : UIColor.lightGray])
         textField.textColor = .white
         textField.backgroundColor = .clear
-        textField.setupKeyboardAccessory(characters, barStyle: .black)
         textField.rx.controlEvent(.editingDidBegin).bind { [unowned self] _ in
             guard let identifier = self.keyValue?.identifier else {
                 return
@@ -62,7 +59,6 @@ class KeyValueTableViewCell: UITableViewCell, Reusable {
         textField.attributedPlaceholder = NSAttributedString(string: "value", attributes: [.foregroundColor : UIColor.lightGray])
         textField.textColor = .white
         textField.backgroundColor = .clear
-        textField.setupKeyboardAccessory(characters, barStyle: .black)
         textField.rx.controlEvent(.editingDidBegin).bind { [unowned self] _ in
             guard let identifier = self.keyValue?.identifier else {
                 return
@@ -173,6 +169,11 @@ class KeyValueTableViewCell: UITableViewCell, Reusable {
             $0.centerX.equalTo(keyTextField)
             $0.bottom.equalTo(keyTextField)
         }
+    }
+    
+    func updateCharacters(_ characters: [String]) {
+        keyTextField.setupKeyboardAccessory(characters, barStyle: .black)
+        valueTextField.setupKeyboardAccessory(characters, barStyle: .black)
     }
     
 }

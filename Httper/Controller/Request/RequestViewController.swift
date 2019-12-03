@@ -102,7 +102,6 @@ class RequestViewController: BaseViewController<RequestViewModel>, RxKeyboardVie
             .foregroundColor: UIColor.lightGray
         ])
         textField.textColor = .white
-        textField.setupKeyboardAccessory(UserManager.shared.characters ?? [], barStyle: .black)
         return textField
     }()
     
@@ -192,7 +191,8 @@ class RequestViewController: BaseViewController<RequestViewModel>, RxKeyboardVie
             viewModel.requestMethod ~> requestMethodButton.rx.title(for: .normal),
             viewModel.moveupHeight ~> rx.moveupHeight,
             viewModel.url <~> urlTextField.rx.text,
-            viewModel.requestProtocol <~> protocolsSegmentedControl.rx.selectedSegmentIndex
+            viewModel.requestProtocol <~> protocolsSegmentedControl.rx.selectedSegmentIndex,
+            viewModel.characters ~> urlTextField.rx.keyboardAccessoryStrings(style: .black)
         ]
 
     }

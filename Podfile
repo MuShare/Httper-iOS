@@ -15,7 +15,7 @@ target 'Httper' do
     pod 'Kingfisher'
     pod 'M80AttributedLabel'
     pod 'MGFormatter'
-    pod 'MGKeyboardAccessory'
+    pod 'MGKeyboardAccessory/Rx'
     pod 'MGSelector'
     pod 'NVActivityIndicatorView'
     pod 'PagingKit'

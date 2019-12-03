@@ -6,8 +6,8 @@
 //  Copyright © 2017 MuShare Group. All rights reserved.
 //
 
-import Foundation
 import Alamofire
+import RxCocoa
 import SwiftyUserDefaults
 
 let UserTypeEmail = "email"
@@ -79,7 +79,11 @@ final class UserManager {
     
     var characters: [String]? {
         set {
+            guard let newValue = newValue else {
+                return
+            }
             Defaults[.characters] = newValue
+            charactersRelay.accept(newValue)
         }
         get {
             var characters = Defaults[.characters]
@@ -91,10 +95,14 @@ final class UserManager {
         }
     }
     
+    // Once characters is updated, the keyboard accessory should be updated.
+    var charactersRelay = BehaviorRelay<[String]>(value: [])
+    
     static let shared = UserManager()
     
     init() {
         dao = DaoManager.shared
+        charactersRelay.accept(characters ?? [])
     }
     
     func pullUser(_ completionHandler: ((Bool) -> Void)? = nil) {

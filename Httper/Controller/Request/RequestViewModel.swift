@@ -53,12 +53,12 @@ class RequestViewModel: BaseViewModel {
             }
         }
         if let requestData = request?.parameters as Data?, let parameters =  NSKeyedUnarchiver.unarchiveObject(with: requestData) as? Parameters {
-            parametersViewModel.keyValues.accept(parameters.map {
+            parametersViewModel.keyValuesRelay.accept(parameters.map {
                 KeyValue(key: $0.key, value: $0.value as? String ?? "")
             })
         }
         if let headerData = request?.headers as Data?, let headers = NSKeyedUnarchiver.unarchiveObject(with: headerData) as? HTTPHeaders {
-            headersViewModel.keyValues.accept(headers.map {
+            headersViewModel.keyValuesRelay.accept(headers.map {
                 KeyValue(key: $0.key, value: $0.value)
             })
         }
@@ -77,7 +77,7 @@ class RequestViewModel: BaseViewModel {
     var valueOriginY: CGFloat = 0
     
     var requestData: RequestData {
-        return RequestData(
+        RequestData(
             method: requestMethod.value,
             url: protocols[requestProtocol.value] + "://" + (url.value ?? ""),
             headers: Array(headersViewModel.results.values),
@@ -87,11 +87,14 @@ class RequestViewModel: BaseViewModel {
     }
     
     var title: Observable<String> {
-        return Observable.just(request).unwrap().map { _ in  "Request" }
+        Observable.just(request).unwrap().map { _ in  "Request" }
     }
     
     var editingState: Observable<KeyValueEditingState> {
-        return Observable.merge(headersViewModel.editingState, parametersViewModel.editingState).distinctUntilChanged {
+        Observable.merge(
+            headersViewModel.editingStateSubject,
+            parametersViewModel.editingStateSubject
+        ).distinctUntilChanged {
             switch ($0, $1) {
             case (.begin(let height1), .begin(let height2)):
                 return height1 == height2
@@ -120,6 +123,10 @@ class RequestViewModel: BaseViewModel {
         }
     }
     
+    var characters: Observable<[String]> {
+        UserManager.shared.charactersRelay.asObservable()
+    }
+    
     func sendRequest() {
         guard let url = url.value, !url.isEmpty else {
             alert.onNext(.warning(R.string.localizable.url_empty()))
@@ -137,14 +144,14 @@ class RequestViewModel: BaseViewModel {
     }
     
     func clear() {
-        alert.onNext(.customConfirm(title: "Clear Request", message: "Are you sure to clear this request?", onConfirm: { [unowned self] in
+        alert.onNextCustomConfirm(title: "Clear Request", message: "Are you sure to clear this request?", onConfirm: { [unowned self] in
             self.requestMethod.accept("GET")
             self.url.accept(nil)
             self.requestProtocol.accept(0)
             self.parametersViewModel.clear()
             self.headersViewModel.clear()
             self.bodyViewModel.clear()
-        }))
+        })
     }
     
 }

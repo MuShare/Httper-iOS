@@ -130,9 +130,10 @@ PODS:
     - AttributedTextView (~> 1.3)
     - Fuzi (~> 3)
     - SwiftyJSON (~> 4.3)
-  - MGKeyboardAccessory (0.5):
-    - MGKeyboardAccessory/Core (= 0.5)
-  - MGKeyboardAccessory/Core (0.5)
+  - MGKeyboardAccessory/Core (0.6)
+  - MGKeyboardAccessory/Rx (0.6):
+    - MGKeyboardAccessory/Core (~> 0)
+    - RxCocoa (~> 5.0)
   - MGSelector (0.2):
     - SnapKit (~> 5)
   - nanopb (0.3.9011):
@@ -144,7 +145,7 @@ PODS:
     - NVActivityIndicatorView/Presenter (= 4.8.0)
   - NVActivityIndicatorView/Presenter (4.8.0)
   - PagingKit (1.11.0)
-  - Protobuf (3.11.0)
+  - Protobuf (3.11.1)
   - R.swift (5.1.0):
     - R.swift.Library (~> 5.1.0)
   - R.swift.Library (5.1.0)
@@ -212,7 +213,7 @@ DEPENDENCIES:
   - Kingfisher
   - M80AttributedLabel
   - MGFormatter
-  - MGKeyboardAccessory
+  - MGKeyboardAccessory/Rx
   - MGSelector
   - NVActivityIndicatorView
   - PagingKit
@@ -332,12 +333,12 @@ SPEC CHECKSUMS:
   Kingfisher: 4569606189149e19c7d9439f47e885d0679b7a90
   M80AttributedLabel: 77fedfe63804c989a6de0fa4d400ea8cad3ab441
   MGFormatter: f7e8a7fa333f6d7cbd55dbdcc142533fdb7c068e
-  MGKeyboardAccessory: a9f30a9c1fd158b1895aada9aab905a3c4b93581
+  MGKeyboardAccessory: 7211d69e6afb5d0659e1b9419ab2f41933eb371b
   MGSelector: e6dd39fb0dac1a577d9644f7766579cf9b9b18ad
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   NVActivityIndicatorView: d24b7ebcf80af5dcd994adb650e2b6c93379270f
   PagingKit: 0f5ddbf2c742e245eeca450e9c0d1882380c3dc5
-  Protobuf: 394b2bf29ec303f4325e3ee4892c09e675647152
+  Protobuf: 20d79da7f20b5928b80043b05080b816e802659e
   R.swift: 8cbc4fc69b740305b6a17c8a8ed968eb788962d9
   R.swift.Library: fa85ce1e0d0b7e818cd9e080df910ba54d2776cc
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
@@ -361,6 +362,6 @@ SPEC CHECKSUMS:
   "UIImageView+Extension": bc26c60a9c8cd6fb515ae1e37377a6f0988e76d8
   "UITextView+Placeholder": c407b27599ea23cca425946fee3cf1db5d547008
 
-PODFILE CHECKSUM: 6d099cd4c587be4f56616c93f8756537f825f519
+PODFILE CHECKSUM: d23dfd40fe475633fd2b62f6f6adb80341051e20
 
 COCOAPODS: 1.8.4
