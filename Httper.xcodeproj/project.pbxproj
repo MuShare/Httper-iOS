@@ -96,7 +96,6 @@
 		E48553321DF9B2AF00A1DB60 /* PrettyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48553311DF9B2AF00A1DB60 /* PrettyViewController.swift */; };
 		E48553341DF9B2BF00A1DB60 /* RawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48553331DF9B2BF00A1DB60 /* RawViewController.swift */; };
 		E48553361DF9B2CF00A1DB60 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48553351DF9B2CF00A1DB60 /* PreviewViewController.swift */; };
-		E48BF6551F3DAA0D00F567FC /* KeyboardAccessoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48BF6541F3DAA0D00F567FC /* KeyboardAccessoryCollectionViewController.swift */; };
 		E48D41581D444F3F0028B84F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48D41571D444F3F0028B84F /* AppDelegate.swift */; };
 		E48D41601D444F3F0028B84F /* Httper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E48D415E1D444F3F0028B84F /* Httper.xcdatamodeld */; };
 		E48D41621D444F3F0028B84F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E48D41611D444F3F0028B84F /* Assets.xcassets */; };
@@ -250,7 +249,6 @@
 		E48553311DF9B2AF00A1DB60 /* PrettyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrettyViewController.swift; sourceTree = "<group>"; };
 		E48553331DF9B2BF00A1DB60 /* RawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawViewController.swift; sourceTree = "<group>"; };
 		E48553351DF9B2CF00A1DB60 /* PreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
-		E48BF6541F3DAA0D00F567FC /* KeyboardAccessoryCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAccessoryCollectionViewController.swift; sourceTree = "<group>"; };
 		E48D41541D444F3F0028B84F /* Httper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Httper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E48D41571D444F3F0028B84F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E48D415F1D444F3F0028B84F /* Httper.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Httper.xcdatamodel; sourceTree = "<group>"; };
@@ -469,7 +467,6 @@
 			children = (
 				77055F4E22B75557001F140D /* IPAddressViewController.swift */,
 				77055F5022B75598001F140D /* IPAddressViewModel.swift */,
-				E48BF6541F3DAA0D00F567FC /* KeyboardAccessoryCollectionViewController.swift */,
 				BBB0DAB6237D5A900074B5AE /* KeyboardAccessoryViewController.swift */,
 				BBB0DAB8237D5A9E0074B5AE /* KeyboardAccessoryViewModel.swift */,
 				E4DE76901E1D2644002A8385 /* LoginViewController.swift */,
@@ -1011,7 +1008,6 @@
 				E40986A3215523A3006CCC04 /* UITableView+Extension.swift in Sources */,
 				E4F16F621E4B685F00C17DA4 /* ResetViewController.swift in Sources */,
 				7782A5F822697497002B6AE2 /* PingViewModel.swift in Sources */,
-				E48BF6551F3DAA0D00F567FC /* KeyboardAccessoryCollectionViewController.swift in Sources */,
 				E4305A491E34F8E100010B52 /* DaoTemplate.swift in Sources */,
 				77A5307E216708CC0008CC56 /* RawViewModel.swift in Sources */,
 				77055F5322B76570001F140D /* IPAddressInfoTableViewCell.swift in Sources */,

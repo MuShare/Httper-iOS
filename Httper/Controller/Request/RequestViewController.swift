@@ -22,7 +22,7 @@ fileprivate struct Const {
     }
     
     struct protocols {
-        static let width = 75
+        static let width = 90
     }
     
     struct seperator {
@@ -78,11 +78,9 @@ class RequestViewController: BaseViewController<RequestViewModel>, RxKeyboardVie
             .foregroundColor: UIColor.black,
             .font: UIFont.systemFont(ofSize: 12)
         ], for: .selected)
-        /**
         if #available(iOS 13, *) {
             segmentedControl.selectedSegmentTintColor = .white
         }
-         */
         viewModel.protocols.enumerated().forEach { (index, requestProtocol) in
             segmentedControl.insertSegment(withTitle: requestProtocol, at: index, animated: false)
         }
@@ -226,22 +224,22 @@ class RequestViewController: BaseViewController<RequestViewModel>, RxKeyboardVie
         }
         
         protocolsSegmentedControl.snp.makeConstraints {
+            $0.width.equalTo(Const.protocols.width)
             $0.centerY.equalTo(urlTextField)
             $0.left.equalToSuperview().offset(Const.margin)
-            $0.width.equalTo(Const.protocols.width)
         }
         
         menuView.snp.makeConstraints {
             $0.height.equalTo(Const.menu.height)
             $0.left.equalToSuperview().offset(Const.margin)
-            $0.right.equalToSuperview().offset(-Const.margin)
             $0.top.equalTo(urlTextField.snp.bottom).offset(Const.margin)
+            $0.right.equalToSuperview().offset(-Const.margin)
         }
         
         contentView.snp.makeConstraints {
             $0.left.equalToSuperview()
-            $0.right.equalToSuperview()
             $0.top.equalTo(menuView.snp.bottom).offset(Const.margin)
+            $0.right.equalToSuperview()
             $0.bottom.equalTo(saveButton.snp.top)
         }
         

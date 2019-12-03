@@ -3,7 +3,7 @@
 //  Httper
 //
 //  Created by Meng Li on 2019/11/14.
-//  Copyright © 2019 limeng. All rights reserved.
+//  Copyright © 2019 MuShare. All rights reserved.
 //
 
 import RxCocoa
