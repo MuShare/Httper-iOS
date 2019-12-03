@@ -38,6 +38,16 @@ target 'Httper' do
     pod 'UIGradient'
     pod 'UIImageView+Extension'
     pod 'UITextView+Placeholder'
+
+    target 'HttperTests' do
+        inherit! :search_paths
+        pod 'Firebase/Core'
+    end
+
+    target 'HttperUITests' do
+        inherit! :search_paths
+        pod 'Firebase/Core'
+    end
 end
 
 post_install do |installer|
