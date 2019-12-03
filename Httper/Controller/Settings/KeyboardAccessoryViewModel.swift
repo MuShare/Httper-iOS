@@ -27,12 +27,22 @@ class KeyboardAccessoryViewModel: BaseViewModel {
             alert.onNextWarning("Please input a legal character!")
             return
         }
-        UserManager.shared.characters?.append(character)
-        charactersRelay.accept(UserManager.shared.characters ?? [])
+        var characters = charactersRelay.value
+        characters.append(character)
+        UserManager.shared.characters = characters
+        charactersRelay.accept(characters)
     }
     
     func remove(at index: Int) {
-        
+        guard charactersRelay.value.isSafe(for: index) else {
+            return
+        }
+        var characters = charactersRelay.value
+        alert.onNextConfirm("Are you sure to delete the character '\(characters[index])'?", onConfirm: {
+            characters.remove(at: index)
+            UserManager.shared.characters = characters
+            self.charactersRelay.accept(characters)
+        })
     }
     
 }
