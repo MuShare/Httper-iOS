@@ -8,7 +8,7 @@ jobs:
     runs-on: macOS-latest
 
     steps:
-    - uses: fastlane/github-actions/fastlane-env-reminder@latest
+    - uses: CultureHQ/actions-bundler@v1.0.0
     - name: Bundle install
       run: bundle install
     - name: Run test
