@@ -1,6 +1,6 @@
-name: Swift
+name: pull_request_build_check
 
-on: [push]
+on: [pull_request]
 
 jobs:
   build:
@@ -8,7 +8,7 @@ jobs:
     runs-on: macOS-latest
 
     steps:
-    - uses: fastlane/github-actions/fastlane-env-reminder@latest
+    - uses: actions/checkout@v1
     - name: Bundle install
       run: bundle install
     - name: Run test
