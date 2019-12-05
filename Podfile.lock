@@ -13,11 +13,11 @@ PODS:
     - FacebookCore (~> 0.9.0)
     - FBSDKCoreKit (~> 5.0)
     - FBSDKLoginKit (~> 5.0)
-  - FBSDKCoreKit (5.11.1):
-    - FBSDKCoreKit/Basics (= 5.11.1)
-    - FBSDKCoreKit/Core (= 5.11.1)
-  - FBSDKCoreKit/Basics (5.11.1)
-  - FBSDKCoreKit/Core (5.11.1):
+  - FBSDKCoreKit (5.12.0):
+    - FBSDKCoreKit/Basics (= 5.12.0)
+    - FBSDKCoreKit/Core (= 5.12.0)
+  - FBSDKCoreKit/Basics (5.12.0)
+  - FBSDKCoreKit/Core (5.12.0):
     - FBSDKCoreKit/Basics
   - FBSDKLoginKit (5.11.1):
     - FBSDKLoginKit/Login (= 5.11.1)
@@ -130,8 +130,8 @@ PODS:
     - AttributedTextView (~> 1.3)
     - Fuzi (~> 3)
     - SwiftyJSON (~> 4.3)
-  - MGKeyboardAccessory/Core (0.6)
-  - MGKeyboardAccessory/Rx (0.6):
+  - MGKeyboardAccessory/Core (0.6.1)
+  - MGKeyboardAccessory/Rx (0.6.1):
     - MGKeyboardAccessory/Core (~> 0)
     - RxCocoa (~> 5.0)
   - MGSelector (0.2):
@@ -169,7 +169,7 @@ PODS:
   - RxCocoa (5.0.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
-  - RxController (0.9.2):
+  - RxController (0.9.3):
     - RxCocoa (~> 5)
     - RxFlow (~> 2)
     - RxSwift (~> 5)
@@ -310,7 +310,7 @@ SPEC CHECKSUMS:
   Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
   FacebookCore: ba86524b66cfa86d0f8e65d08faa8504a9f732dd
   FacebookLogin: 6cee9fd6e1fe976fe8f7eec199e27b28b14f5d63
-  FBSDKCoreKit: 5aada61a229054694810f3cee231f986004b3c49
+  FBSDKCoreKit: fa3ac4dc9b1afc9ae70b3de4dd704d1b6aeeed0d
   FBSDKLoginKit: 0e4572e0279e477103b57978e3ea05fac1dd673d
   Firebase: 458d109512200d1aca2e1b9b6cf7d68a869a4a46
   FirebaseABTesting: 0d10f3cdc3fa00f3f175b5b56c1003c8e888299f
@@ -333,7 +333,7 @@ SPEC CHECKSUMS:
   Kingfisher: 4569606189149e19c7d9439f47e885d0679b7a90
   M80AttributedLabel: 77fedfe63804c989a6de0fa4d400ea8cad3ab441
   MGFormatter: f7e8a7fa333f6d7cbd55dbdcc142533fdb7c068e
-  MGKeyboardAccessory: 7211d69e6afb5d0659e1b9419ab2f41933eb371b
+  MGKeyboardAccessory: 9b3a5ace073f772809bf88e900729aef86901047
   MGSelector: e6dd39fb0dac1a577d9644f7766579cf9b9b18ad
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   NVActivityIndicatorView: d24b7ebcf80af5dcd994adb650e2b6c93379270f
@@ -347,7 +347,7 @@ SPEC CHECKSUMS:
   RxAlertViewable: 0dbe70c15bd258fba5fadb8418c5401dca228b15
   RxBinding: 58be2cf1311165489a66eacb4a3e33932d598a53
   RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
-  RxController: 9ed586528ad8f64b803e6c7564a82ceb8b55ce8e
+  RxController: 376347c3573c909b05afff6ad91c27debd6382a3
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
   RxDataSourcesSingleSection: 4394e57ae097f33e3845cf3a57bdf7826eca2d38
   RxFlow: f89ea40232813062f5e857fbe19a680a205a15ab
