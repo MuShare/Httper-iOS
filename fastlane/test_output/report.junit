@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<testsuites name='HttperTests.xctest' tests='2' failures='0'>
-  <testsuite name='HttperTests.HttperTests' tests='2' failures='0'>
-    <testcase classname='HttperTests.HttperTests' name='testExample' time='0.001'/>
-    <testcase classname='HttperTests.HttperTests' name='testPerformanceExample' time='0.432'/>
-  </testsuite>
-</testsuites>
