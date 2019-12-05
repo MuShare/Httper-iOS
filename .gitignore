@@ -15,3 +15,10 @@ Pods/
 
 # rxtree
 rxtree
+
+# Fastlane
+/build
+/.bundle
+/vendor
+/fastlane/report.xml
+/fastlane/test_output/

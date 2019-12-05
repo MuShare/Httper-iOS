@@ -1,0 +1,15 @@
+name: pull_request_build_check
+
+on: [pull_request]
+
+jobs:
+  build:
+
+    runs-on: macOS-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Bundle install
+      run: bundle install
+    - name: Run test
+      run: bundle exec fastlane test
