@@ -8,7 +8,7 @@ jobs:
     runs-on: macOS-latest
 
     steps:
-    - uses: CultureHQ/actions-bundler@v1.0.0
+    - uses: actions/checkout@v1
     - name: Bundle install
       run: bundle install
     - name: Run test
