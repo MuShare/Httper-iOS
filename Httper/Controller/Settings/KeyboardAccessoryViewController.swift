@@ -11,7 +11,7 @@ private struct Const {
     struct collection {
         static let marginTop = 2
         static func cellWidth(column: Int) -> CGFloat {
-            (UIScreen.main.bounds.width - CGFloat(column - 1) * 1) / 4
+            (UIScreen.main.bounds.width - CGFloat(column - 1) * 1) / CGFloat(column)
         }
     }
     
