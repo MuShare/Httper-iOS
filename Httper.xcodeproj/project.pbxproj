@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -62,6 +62,8 @@
 		77F39968215381700016978E /* BodyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F39967215381700016978E /* BodyViewModel.swift */; };
 		77F3996A215382BA0016978E /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F39969215382BA0016978E /* MenuViewCell.swift */; };
 		BB07BE0E22A7FF2A00A03CBD /* Kingfisher+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB07BE0D22A7FF2A00A03CBD /* Kingfisher+Rx.swift */; };
+		BB2BD55B23E9BADB00C869EB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2BD55A23E9BADB00C869EB /* ProfileViewController.swift */; };
+		BB2BD55D23E9BAE600C869EB /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2BD55C23E9BAE600C869EB /* ProfileViewModel.swift */; };
 		BB44C51522B687380040DCD3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB44C51422B687370040DCD3 /* GoogleService-Info.plist */; };
 		BBADABF72317F7DD00995AD2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBADABF62317F7DD00995AD2 /* SettingsViewController.swift */; };
 		BBADABFB2317FFDA00995AD2 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBADABFA2317FFDA00995AD2 /* Array+Extension.swift */; };
@@ -210,6 +212,8 @@
 		77F39969215382BA0016978E /* MenuViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewCell.swift; sourceTree = "<group>"; };
 		7EBC322CA510BFBBFF4AB72E /* Pods-Httper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Httper.release.xcconfig"; path = "Pods/Target Support Files/Pods-Httper/Pods-Httper.release.xcconfig"; sourceTree = "<group>"; };
 		BB07BE0D22A7FF2A00A03CBD /* Kingfisher+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Kingfisher+Rx.swift"; sourceTree = "<group>"; };
+		BB2BD55A23E9BADB00C869EB /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		BB2BD55C23E9BAE600C869EB /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		BB44C51422B687370040DCD3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BBADABF62317F7DD00995AD2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BBADABFA2317FFDA00995AD2 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
@@ -484,6 +488,8 @@
 				E46077601E126948002DE839 /* PingViewController.swift */,
 				7782A5F722697497002B6AE2 /* PingViewModel.swift */,
 				E4305A391E2F11EB00010B52 /* ProfileTableViewController.swift */,
+				BB2BD55A23E9BADB00C869EB /* ProfileViewController.swift */,
+				BB2BD55C23E9BAE600C869EB /* ProfileViewModel.swift */,
 				E4DE76981E1D3DF5002A8385 /* RegisterViewController.swift */,
 				E4F16F611E4B685F00C17DA4 /* ResetViewController.swift */,
 				BBADABF62317F7DD00995AD2 /* SettingsViewController.swift */,
@@ -739,7 +745,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0820;
-				ORGANIZATIONNAME = limeng;
+				ORGANIZATIONNAME = MuShare;
 				TargetAttributes = {
 					E48D41531D444F3F0028B84F = {
 						CreatedOnToolsVersion = 7.3;
@@ -760,7 +766,7 @@
 				};
 			};
 			buildConfigurationList = E48D414F1D444F3F0028B84F /* Build configuration list for PBXProject "Httper" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -846,7 +852,7 @@
 			);
 			name = R.swift;
 			outputPaths = (
-				"$SRCROOT/$TARGET_NAME/R.generated.swift",
+				$SRCROOT/$TARGET_NAME/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
@@ -1101,6 +1107,7 @@
 				77A530702165AF070008CC56 /* RequestData.swift in Sources */,
 				E40986A2215523A3006CCC04 /* UIColor+Extension.swift in Sources */,
 				E41642D31DF970CE00F0339E /* CommonTool.swift in Sources */,
+				BB2BD55D23E9BAE600C869EB /* ProfileViewModel.swift in Sources */,
 				77396289225C43080091C669 /* Observable+Extension.swift in Sources */,
 				77CDA186222E130A0063C472 /* AppLog.swift in Sources */,
 				E49F67FC214956C900646892 /* MainViewModel.swift in Sources */,
@@ -1170,6 +1177,7 @@
 				E49F680221495BA500646892 /* RequestViewModel.swift in Sources */,
 				772F8D7021F6D12300858714 /* Eruka+Rx.swift in Sources */,
 				E46CE471214A828B0046BCCA /* AppFlow.swift in Sources */,
+				BB2BD55B23E9BADB00C869EB /* ProfileViewController.swift in Sources */,
 				77A530742165C3F20008CC56 /* String+Extension.swift in Sources */,
 				7739628B225C46320091C669 /* ProjectIntroductionViewModel.swift in Sources */,
 				E411A30A215286C5004ADBAE /* UIView+Extension.swift in Sources */,
@@ -1310,7 +1318,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1330,7 +1339,10 @@
 				DEVELOPMENT_TEAM = 6ANM44X2CJ;
 				INFOPLIST_FILE = Httper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 3.0.10;
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = pw.fczm.Httper;
@@ -1359,7 +1371,10 @@
 				);
 				INFOPLIST_FILE = Httper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 3.0.10;
 				PRODUCT_BUNDLE_IDENTIFIER = pw.fczm.Httper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1380,7 +1395,11 @@
 					"${PODS_ROOT}/Firebase/CoreOnly/Sources",
 				);
 				INFOPLIST_FILE = HttperTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.fczm.HttperTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1398,7 +1417,11 @@
 					"${PODS_ROOT}/Firebase/CoreOnly/Sources",
 				);
 				INFOPLIST_FILE = HttperTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.fczm.HttperTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1411,7 +1434,11 @@
 			baseConfigurationReference = 07890CBA44865462FC605CD2 /* Pods-HttperUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = HttperUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.fczm.HttperUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1424,7 +1451,11 @@
 			baseConfigurationReference = 480B1696B860F2936B6FF2D7 /* Pods-HttperUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = HttperUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.fczm.HttperUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

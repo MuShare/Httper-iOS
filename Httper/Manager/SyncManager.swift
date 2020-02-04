@@ -36,13 +36,17 @@ final class SyncManager {
         let params: Parameters = [
             "revision": localRevision
         ]
-        Alamofire.request(createUrl("api/request/pull"),
-                          method: .get,
-                          parameters: params,
-                          encoding: URLEncoding.default,
-                          headers: tokenHeader())
-        .responseJSON { (responseObject) in
-            let response = InternetResponse(responseObject)
+        Alamofire.request(
+            createUrl("api/request/pull"),
+            method: .get,
+            parameters: params,
+            encoding: URLEncoding.default,
+            headers: tokenHeader()
+        ).responseJSON { [weak self] in
+            guard let `self` = self else {
+                return
+            }
+            let response = InternetResponse($0)
             if response.statusOK() {
                 let result = response.getResult()
                 let revision = result["revision"].intValue
@@ -130,7 +134,10 @@ final class SyncManager {
             parameters: params,
             encoding: URLEncoding.default,
             headers: tokenHeader()
-        ).responseJSON {
+        ).responseJSON { [weak self] in
+            guard let `self` = self else {
+                return
+            }
             let response = InternetResponse($0)
             if response.statusOK() {
                 let dataResult = response.getResult()
@@ -174,7 +181,10 @@ final class SyncManager {
             parameters: params,
             encoding: URLEncoding.default,
             headers: tokenHeader()
-        ).responseJSON {
+        ).responseJSON { [weak self] in
+            guard let `self` = self else {
+                return
+            }
             let response = InternetResponse($0)
             if response.statusOK() {
                 // Update local request revision by the revision from server.
@@ -214,7 +224,10 @@ final class SyncManager {
             parameters: params,
             encoding: URLEncoding.default,
             headers: tokenHeader()
-        ).responseJSON {
+        ).responseJSON { [weak self] in
+            guard let `self` = self else {
+                return
+            }
             let response = InternetResponse($0)
             if response.statusOK() {
                 let result = response.getResult()
@@ -323,7 +336,10 @@ final class SyncManager {
             parameters: params,
             encoding: URLEncoding.default,
             headers: tokenHeader()
-        ).responseJSON {
+        ).responseJSON { [weak self] in
+            guard let `self` = self else {
+                return
+            }
             let response = InternetResponse($0)
             if response.statusOK() {
                 // Update local project revision by the revision from server.
