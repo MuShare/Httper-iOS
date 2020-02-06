@@ -34,6 +34,9 @@ class ProfileViewController: BaseViewController<ProfileViewModel> {
         button.setTitle("Sign out", for: .normal)
         button.setTitleColor(.red, for: .normal)
         button.backgroundColor = .navigation
+        button.rx.tap.bind { [unowned self] in
+            self.viewModel.logout(sourceView: button)
+        }.disposed(by: disposeBag)
         return button
     }()
     
