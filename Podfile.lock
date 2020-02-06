@@ -4,8 +4,8 @@ PODS:
   - Crashlytics (3.14.0):
     - Fabric (~> 1.10.2)
   - Differentiator (4.0.1)
-  - ESPullToRefresh (2.9)
-  - Eureka (5.1.0)
+  - ESPullToRefresh (2.9.2)
+  - Eureka (5.2.0)
   - Fabric (1.10.2)
   - FacebookCore (0.9.0):
     - FBSDKCoreKit (~> 5.0)
@@ -203,7 +203,7 @@ PODS:
   - SwipeBack (1.1.1)
   - UIGradient (1.3.1)
   - "UIImageView+Extension (0.2.6)"
-  - "UITextView+Placeholder (1.3.3)"
+  - "UITextView+Placeholder (1.4.0)"
 
 DEPENDENCIES:
   - Alamofire
@@ -313,8 +313,8 @@ SPEC CHECKSUMS:
   AttributedTextView: 9e01651d96c1af861a9c67c2cc3f94c30320d1c2
   Crashlytics: 540b7e5f5da5a042647227a5e3ac51d85eed06df
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
-  ESPullToRefresh: ce058a36454a5032519cc9d8b45da217728cf104
-  Eureka: 18a5076dcf0c41f9cd9748aa1c42f4d11434bdae
+  ESPullToRefresh: efed00d52597065e9a84e1e52fa444fdb1a1dee0
+  Eureka: 820a761c700f6eaab3b60758f138e0d9b99072b3
   Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
   FacebookCore: ba86524b66cfa86d0f8e65d08faa8504a9f732dd
   FacebookLogin: 6cee9fd6e1fe976fe8f7eec199e27b28b14f5d63
@@ -370,7 +370,7 @@ SPEC CHECKSUMS:
   SwipeBack: d6759601b40da1f4161033feb30ab475d7d04322
   UIGradient: 9c7041327bf202b09aab2db7c33fb41f768b19ea
   "UIImageView+Extension": bc26c60a9c8cd6fb515ae1e37377a6f0988e76d8
-  "UITextView+Placeholder": c407b27599ea23cca425946fee3cf1db5d547008
+  "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
 
 PODFILE CHECKSUM: 3f8c8b52c1796bbeb66e79a7f078ba3d29d6e57e
 
