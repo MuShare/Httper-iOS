@@ -43,14 +43,10 @@ class SettingsFlow: Flow {
             }
             return .none
         case .profile:
-            if let profileTableViewController = R.storyboard.settings.profileTableViewController() {
-                navigationController?.pushViewController(profileTableViewController, animated: true)
-            }
-            return .none
+            let profileViewController = ProfileViewController(viewModel: .init())
+            navigationController?.pushViewController(profileViewController, animated: true)
+            return .viewController(profileViewController)
         case .keyboard:
-//            if let keyboardAccessoryCollectionViewController = R.storyboard.settings.keyboardAccessoryCollectionViewController() {
-//                navigationController?.pushViewController(keyboardAccessoryCollectionViewController, animated: true)
-//            }
             let keyboardAccessoruViewController = KeyboardAccessoryViewController(viewModel: .init())
             navigationController?.pushViewController(keyboardAccessoruViewController, animated: true)
             return .viewController(keyboardAccessoruViewController)

@@ -95,6 +95,14 @@ final class UserManager {
         }
     }
     
+    var displayEmail: String {
+        if type == UserTypeEmail {
+            return email
+        } else {
+            return R.string.localizable.sign_in_facebook()
+        }
+    }
+    
     // Once characters is updated, the keyboard accessory should be updated.
     var charactersRelay = BehaviorRelay<[String]>(value: [])
     
