@@ -18,9 +18,42 @@ default_platform(:ios)
 platform :ios do
   before_all do
     cocoapods(repo_update: true)
+
+    copy_artifacts(
+      artifacts: ["*.mobileprovision"],
+      target_path: File.expand_path("~/Library/MobileDevice/Provisioning Profiles")
+    )
   end
 
   lane :test do
     run_tests(scheme: "HttperTests")
   end
+
+  lane :beta do
+    # Unlock keycahin
+    sh "security unlock-keychain -p \"$KEYCHAIN_PASSWORD\""
+    unlock_keychain(path: "~/Library/Keychains/login.keychain", password: "$KEYCHAIN_PASSWORD")
+
+    build_app(
+      workspace: "Httper.xcworkspace",
+      scheme: "Httper",
+      export_options: {
+        method: "app-store",
+        compileBitcode: true,
+        uploadSymbols: true,
+        provisioningProfiles: {
+          "pw.fczm.Httper" => "Httper_Dist",
+        }
+      }
+    )
+
+    upload_to_testflight(
+      username: "lm2343635@126.com",
+      app_identifier: "pw.fczm.Httper",
+      team_name: "Meng Li",
+      skip_submission: true,
+      skip_waiting_for_build_processing: true
+    )
+  end
+
 end
