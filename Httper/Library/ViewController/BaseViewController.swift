@@ -40,8 +40,11 @@ class BaseViewController<ViewModel: BaseViewModel>: RxViewController<ViewModel> 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.alert ~> rx.alert ~ disposeBag
-        viewModel.loading ~> rx.nvActivityIndicatorAnimating ~ disposeBag
+        disposeBag ~ [
+            viewModel.alert ~> rx.alert,
+            viewModel.actionSheet ~> rx.actionSheet,
+            viewModel.loading ~> rx.nvActivityIndicatorAnimating
+        ]
         
         if let navigationController = navigationController {
             navigationController.swipeBackEnabled = true

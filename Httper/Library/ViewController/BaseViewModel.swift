@@ -13,6 +13,7 @@ import RxController
 class BaseViewModel: RxViewModel {
     
     let alert = PublishSubject<RxAlert>()
+    let actionSheet = PublishSubject<RxActionSheet>()
     let loading = PublishSubject<Bool>()
     
 }

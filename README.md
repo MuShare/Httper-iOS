@@ -13,12 +13,12 @@ Httper is a REST API test tool running on your iOS devices. It helps developers 
 - Get device public IP info, WiFi info and cellular info.
 
 ### Contribution
-Submit issues on https://github.com/lm2343635/Httper/issues or send email to me(lm2343635@126.com).
-Httper is an open source software. If you like my app, please give me a star on Github: https://github.com/lm2343635/Httper
+Submit issues on https://github.com/MuShare/Httper-iOS/issues or send email to me(lm2343635@126.com).
+Httper is an open source software. If you like my app, please give me a star on Github: https://github.com/MuShare/Httper-iOS
 
 [![Httper](https://raw.githubusercontent.com/MuShare/Httper-iOS/master/screenshot/httper.png)](https://itunes.apple.com/app/httper/id1166884043)
 
-Submit issues on https://github.com/lm2343635/Httper/issues or send email to me.
+Submit issues on https://github.com/MuShare/Httper-iOS/issues or send email to me.
 
 Download this app from App Store: https://itunes.apple.com/app/httper/id1166884043
 
