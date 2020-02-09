@@ -44,4 +44,10 @@ class ProfileViewModel: BaseViewModel {
         )
     }
     
+    func pick(at index: Int) {
+        if index == 1 {
+            steps.accept(SettingsStep.modifyName)
+        }
+    }
+    
 }

@@ -149,7 +149,7 @@ PODS:
   - NVActivityIndicatorView (4.8.0):
     - NVActivityIndicatorView/Presenter (= 4.8.0)
   - NVActivityIndicatorView/Presenter (4.8.0)
-  - PagingKit (1.11.0)
+  - PagingKit (1.12.0)
   - PromisesObjC (1.2.8)
   - Protobuf (3.11.3)
   - R.swift (5.1.0):
@@ -346,7 +346,7 @@ SPEC CHECKSUMS:
   MGSelector: e6dd39fb0dac1a577d9644f7766579cf9b9b18ad
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   NVActivityIndicatorView: d24b7ebcf80af5dcd994adb650e2b6c93379270f
-  PagingKit: 0f5ddbf2c742e245eeca450e9c0d1882380c3dc5
+  PagingKit: 3aa34f2547edad4809da888d5fa1b930456753f0
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   Protobuf: 0e94afe3b47cb11876eb6aee296638711a24bf75
   R.swift: 8cbc4fc69b740305b6a17c8a8ed968eb788962d9

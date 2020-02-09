@@ -62,6 +62,8 @@
 		77F39968215381700016978E /* BodyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F39967215381700016978E /* BodyViewModel.swift */; };
 		77F3996A215382BA0016978E /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F39969215382BA0016978E /* MenuViewCell.swift */; };
 		BB07BE0E22A7FF2A00A03CBD /* Kingfisher+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB07BE0D22A7FF2A00A03CBD /* Kingfisher+Rx.swift */; };
+		BB0B7D4D23F05963004AAA5E /* ModifyNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0B7D4C23F05963004AAA5E /* ModifyNameViewController.swift */; };
+		BB0B7D4F23F0596D004AAA5E /* ModifyNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0B7D4E23F0596D004AAA5E /* ModifyNameViewModel.swift */; };
 		BB2BD55B23E9BADB00C869EB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2BD55A23E9BADB00C869EB /* ProfileViewController.swift */; };
 		BB2BD55D23E9BAE600C869EB /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2BD55C23E9BAE600C869EB /* ProfileViewModel.swift */; };
 		BB44C51522B687380040DCD3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB44C51422B687370040DCD3 /* GoogleService-Info.plist */; };
@@ -81,7 +83,6 @@
 		E42A713B214960DA0070D8FC /* SettingsFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42A713A214960DA0070D8FC /* SettingsFlow.swift */; };
 		E42A713D214961780070D8FC /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42A713C214961780070D8FC /* SettingsViewModel.swift */; };
 		E4305A381E2E5FF900010B52 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4305A371E2E5FF900010B52 /* Global.swift */; };
-		E4305A3A1E2F11EB00010B52 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4305A391E2F11EB00010B52 /* ProfileTableViewController.swift */; };
 		E4305A471E34F65000010B52 /* DaoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4305A461E34F65000010B52 /* DaoManager.swift */; };
 		E4305A491E34F8E100010B52 /* DaoTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4305A481E34F8E100010B52 /* DaoTemplate.swift */; };
 		E431C4AC1DF72172006BB2D6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E431C4AB1DF72172006BB2D6 /* Localizable.strings */; };
@@ -123,7 +124,6 @@
 		E4D034491E4A0DB300580FAC /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D034481E4A0DB300580FAC /* ProjectViewController.swift */; };
 		E4D161F71ECEA16A009B1DD9 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D161F61ECEA16A009B1DD9 /* UserManager.swift */; };
 		E4D1CAE51DF5C028008DC4F9 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */; };
-		E4D1F28920EBAC5F002953A1 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4D1F28820EBAC5F002953A1 /* Settings.storyboard */; };
 		E4DE76911E1D2645002A8385 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DE76901E1D2644002A8385 /* LoginViewController.swift */; };
 		E4DE76961E1D3DAE002A8385 /* register-bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4DE76941E1D3DAE002A8385 /* register-bg.jpg */; };
 		E4DE76971E1D3DAE002A8385 /* login-bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4DE76951E1D3DAE002A8385 /* login-bg.jpg */; };
@@ -212,6 +212,8 @@
 		77F39969215382BA0016978E /* MenuViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewCell.swift; sourceTree = "<group>"; };
 		7EBC322CA510BFBBFF4AB72E /* Pods-Httper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Httper.release.xcconfig"; path = "Pods/Target Support Files/Pods-Httper/Pods-Httper.release.xcconfig"; sourceTree = "<group>"; };
 		BB07BE0D22A7FF2A00A03CBD /* Kingfisher+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Kingfisher+Rx.swift"; sourceTree = "<group>"; };
+		BB0B7D4C23F05963004AAA5E /* ModifyNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyNameViewController.swift; sourceTree = "<group>"; };
+		BB0B7D4E23F0596D004AAA5E /* ModifyNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyNameViewModel.swift; sourceTree = "<group>"; };
 		BB2BD55A23E9BADB00C869EB /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		BB2BD55C23E9BAE600C869EB /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		BB44C51422B687370040DCD3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -237,7 +239,6 @@
 		E42A713A214960DA0070D8FC /* SettingsFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFlow.swift; sourceTree = "<group>"; };
 		E42A713C214961780070D8FC /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		E4305A371E2E5FF900010B52 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
-		E4305A391E2F11EB00010B52 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		E4305A461E34F65000010B52 /* DaoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaoManager.swift; sourceTree = "<group>"; };
 		E4305A481E34F8E100010B52 /* DaoTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaoTemplate.swift; sourceTree = "<group>"; };
 		E431C4AB1DF72172006BB2D6 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -290,7 +291,6 @@
 		E4D034481E4A0DB300580FAC /* ProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
 		E4D161F61ECEA16A009B1DD9 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
-		E4D1F28820EBAC5F002953A1 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		E4DE76901E1D2644002A8385 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E4DE76941E1D3DAE002A8385 /* register-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "register-bg.jpg"; sourceTree = "<group>"; };
 		E4DE76951E1D3DAE002A8385 /* login-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "login-bg.jpg"; sourceTree = "<group>"; };
@@ -484,10 +484,11 @@
 				BBB0DAB6237D5A900074B5AE /* KeyboardAccessoryViewController.swift */,
 				BBB0DAB8237D5A9E0074B5AE /* KeyboardAccessoryViewModel.swift */,
 				E4DE76901E1D2644002A8385 /* LoginViewController.swift */,
+				BB0B7D4C23F05963004AAA5E /* ModifyNameViewController.swift */,
+				BB0B7D4E23F0596D004AAA5E /* ModifyNameViewModel.swift */,
 				E4BBC9921E4DCCBB002107DF /* NameViewController.swift */,
 				E46077601E126948002DE839 /* PingViewController.swift */,
 				7782A5F722697497002B6AE2 /* PingViewModel.swift */,
-				E4305A391E2F11EB00010B52 /* ProfileTableViewController.swift */,
 				BB2BD55A23E9BADB00C869EB /* ProfileViewController.swift */,
 				BB2BD55C23E9BAE600C869EB /* ProfileViewModel.swift */,
 				E4DE76981E1D3DF5002A8385 /* RegisterViewController.swift */,
@@ -506,7 +507,6 @@
 			children = (
 				E48D41631D444F3F0028B84F /* LaunchScreen.storyboard */,
 				774C75F120D79B9D00DBD9EC /* Login.storyboard */,
-				E4D1F28820EBAC5F002953A1 /* Settings.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -792,7 +792,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E48D41651D444F3F0028B84F /* LaunchScreen.storyboard in Resources */,
-				E4D1F28920EBAC5F002953A1 /* Settings.storyboard in Resources */,
 				E4DE76971E1D3DAE002A8385 /* login-bg.jpg in Resources */,
 				E4DE76961E1D3DAE002A8385 /* register-bg.jpg in Resources */,
 				E431C4AC1DF72172006BB2D6 /* Localizable.strings in Resources */,
@@ -852,7 +851,7 @@
 			);
 			name = R.swift;
 			outputPaths = (
-				"$SRCROOT/$TARGET_NAME/R.generated.swift",
+				$SRCROOT/$TARGET_NAME/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
@@ -998,6 +997,7 @@
 				BB07BE0E22A7FF2A00A03CBD /* Kingfisher+Rx.swift in Sources */,
 				E46ABF521E140F2E00E0C092 /* InternetTool.m in Sources */,
 				E4E297B11E00021500AD484E /* ResponseHeaderViewController.swift in Sources */,
+				BB0B7D4F23F0596D004AAA5E /* ModifyNameViewModel.swift in Sources */,
 				E4A37A9D1E018D7500586BA1 /* RequestDao.swift in Sources */,
 				BBB0DABB237D5BD60074B5AE /* KeyboardAccessoryCollectionViewCell.swift in Sources */,
 				E4D161F71ECEA16A009B1DD9 /* UserManager.swift in Sources */,
@@ -1037,7 +1037,6 @@
 				77B1991B230B8201003EE42F /* WhoisViewModel.swift in Sources */,
 				77F3995F215373600016978E /* KeyValueViewController.swift in Sources */,
 				E48D41581D444F3F0028B84F /* AppDelegate.swift in Sources */,
-				E4305A3A1E2F11EB00010B52 /* ProfileTableViewController.swift in Sources */,
 				E47FDC651E38697600251EEC /* SyncManager.swift in Sources */,
 				77BBBCBB2181585C00500A3A /* SelectionTableViewCell.swift in Sources */,
 				77A5307A2165C7580008CC56 /* UIImage+Extension.swift in Sources */,
@@ -1052,6 +1051,7 @@
 				E49BC0AC1E4226F400241004 /* Project+CoreDataProperties.swift in Sources */,
 				77055F4F22B75557001F140D /* IPAddressViewController.swift in Sources */,
 				E48553341DF9B2BF00A1DB60 /* RawViewController.swift in Sources */,
+				BB0B7D4D23F05963004AAA5E /* ModifyNameViewController.swift in Sources */,
 				E48553321DF9B2AF00A1DB60 /* PrettyViewController.swift in Sources */,
 				E49BC0B01E4227BA00241004 /* ProjectDao.swift in Sources */,
 				E49F680621495EE300646892 /* ProjectsViewModel.swift in Sources */,
