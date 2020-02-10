@@ -21,7 +21,7 @@ class ProfileViewModel: BaseViewModel {
     var section: Observable<SingleSection<Selection>> {
         reloadRelay.map { _ in
             [
-                Selection(icon: R.image.email(), title: UserManager.shared.displayEmail),
+                Selection(icon: R.image.email(), title: UserManager.shared.displayEmail, isAccessoryHidden: true),
                 Selection(icon: R.image.name(), title: UserManager.shared.name)
             ]
         }.map {
