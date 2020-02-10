@@ -26,7 +26,9 @@ class ModifyNameViewController: BaseViewController<ModifyNameViewModel> {
     private lazy var nameTextField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .navigation
-        textField.textColor = .lightGray
+        textField.textColor = .white
+        textField.textAlignment = .center
+        textField.becomeFirstResponder()
         return textField
     }()
     
@@ -39,7 +41,9 @@ class ModifyNameViewController: BaseViewController<ModifyNameViewModel> {
         createConstraints()
         
         disposeBag ~ [
-            viewModel.title ~> rx.title
+            viewModel.title ~> rx.title,
+            viewModel.name <~> nameTextField.rx.value,
+            viewModel.isSaveEnabled ~> saveBarButtonItem.rx.isEnabled
         ]
     }
     

@@ -118,7 +118,6 @@
 		E49F680421495E3300646892 /* ProjectFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49F680321495E3300646892 /* ProjectFlow.swift */; };
 		E49F680621495EE300646892 /* ProjectsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49F680521495EE300646892 /* ProjectsViewModel.swift */; };
 		E4A37A9D1E018D7500586BA1 /* RequestDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A37A9C1E018D7500586BA1 /* RequestDao.swift */; };
-		E4BBC9931E4DCCBB002107DF /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BBC9921E4DCCBB002107DF /* NameViewController.swift */; };
 		E4CA760C1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CA760B1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift */; };
 		E4CA76131E3F7E1A008D7A52 /* AddProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CA76121E3F7E1A008D7A52 /* AddProjectViewController.swift */; };
 		E4D034491E4A0DB300580FAC /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D034481E4A0DB300580FAC /* ProjectViewController.swift */; };
@@ -284,7 +283,6 @@
 		E49F680321495E3300646892 /* ProjectFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectFlow.swift; sourceTree = "<group>"; };
 		E49F680521495EE300646892 /* ProjectsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsViewModel.swift; sourceTree = "<group>"; };
 		E4A37A9C1E018D7500586BA1 /* RequestDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestDao.swift; sourceTree = "<group>"; };
-		E4BBC9921E4DCCBB002107DF /* NameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
 		E4CA760B1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderKeysTableViewController.swift; sourceTree = "<group>"; };
 		E4CA76121E3F7E1A008D7A52 /* AddProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProjectViewController.swift; sourceTree = "<group>"; };
 		E4CA76141E3F80B2008D7A52 /* Httper_1.3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Httper_1.3.xcdatamodel; sourceTree = "<group>"; };
@@ -486,7 +484,6 @@
 				E4DE76901E1D2644002A8385 /* LoginViewController.swift */,
 				BB0B7D4C23F05963004AAA5E /* ModifyNameViewController.swift */,
 				BB0B7D4E23F0596D004AAA5E /* ModifyNameViewModel.swift */,
-				E4BBC9921E4DCCBB002107DF /* NameViewController.swift */,
 				E46077601E126948002DE839 /* PingViewController.swift */,
 				7782A5F722697497002B6AE2 /* PingViewModel.swift */,
 				BB2BD55A23E9BADB00C869EB /* ProfileViewController.swift */,
@@ -1074,7 +1071,6 @@
 				7782A5FA226977E4002B6AE2 /* PingTableViewCell.swift in Sources */,
 				77B1991D230B8BEA003EE42F /* UIWebView+Rx.swift in Sources */,
 				E49BC0AD1E4226F400241004 /* Request+CoreDataClass.swift in Sources */,
-				E4BBC9931E4DCCBB002107DF /* NameViewController.swift in Sources */,
 				E49F680221495BA500646892 /* RequestViewModel.swift in Sources */,
 				772F8D7021F6D12300858714 /* Eruka+Rx.swift in Sources */,
 				E46CE471214A828B0046BCCA /* AppFlow.swift in Sources */,

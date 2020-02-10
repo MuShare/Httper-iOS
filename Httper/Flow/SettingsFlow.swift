@@ -13,6 +13,7 @@ enum SettingsStep: Step {
     case signin
     case profile
     case profileIsComplete
+    case modifyNameIsComplete
     case modifyName
     case keyboard
     case ping
@@ -58,6 +59,12 @@ class SettingsFlow: Flow {
             let modifyNameViewController = ModifyNameViewController(viewModel: .init())
             navigationController?.pushViewController(modifyNameViewController, animated: true)
             return .viewController(modifyNameViewController)
+        case .modifyNameIsComplete:
+            guard navigationController?.topViewController is ModifyNameViewController else {
+                return .none
+            }
+            navigationController?.popViewController(animated: true)
+            return .none
         case .keyboard:
             let keyboardAccessoruViewController = KeyboardAccessoryViewController(viewModel: .init())
             navigationController?.pushViewController(keyboardAccessoruViewController, animated: true)
