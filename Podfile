@@ -9,7 +9,6 @@ target 'Httper' do
     pod 'Fabric'
     pod 'FacebookCore'
     pod 'FacebookLogin'
-    pod 'Firebase/Core'
     pod 'Firebase/Performance'
     pod 'Kanna'
     pod 'Kingfisher'
@@ -41,12 +40,6 @@ target 'Httper' do
 
     target 'HttperTests' do
         inherit! :search_paths
-        pod 'Firebase/Core'
-    end
-
-    target 'HttperUITests' do
-        inherit! :search_paths
-        pod 'Firebase/Core'
     end
 end
 
