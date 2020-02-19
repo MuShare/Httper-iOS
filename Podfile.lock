@@ -94,9 +94,9 @@ PODS:
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.3.1)
   - Kanna (5.0.0)
-  - Kingfisher (5.13.0):
-    - Kingfisher/Core (= 5.13.0)
-  - Kingfisher/Core (5.13.0)
+  - Kingfisher (5.13.1):
+    - Kingfisher/Core (= 5.13.1)
+  - Kingfisher/Core (5.13.1)
   - M80AttributedLabel (1.9.9)
   - MGFormatter (0.4.1):
     - AttributedTextView (~> 1.3)
@@ -306,7 +306,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: 06eb53bb579efe7099152735900dd04bf09e7275
   GTMSessionFetcher: cea130bbfe5a7edc8d06d3f0d17288c32ffe9925
   Kanna: a32875df62975f8f4b871e933b4ea1a5c3b8be0f
-  Kingfisher: 0d334cada987fcddbe9b5cec516406e1ee9d4748
+  Kingfisher: f33a848445e33c543620812158dc5d47f6bf90df
   M80AttributedLabel: 77fedfe63804c989a6de0fa4d400ea8cad3ab441
   MGFormatter: f7e8a7fa333f6d7cbd55dbdcc142533fdb7c068e
   MGKeyboardAccessory: 9b3a5ace073f772809bf88e900729aef86901047
