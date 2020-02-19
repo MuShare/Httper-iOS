@@ -23,6 +23,7 @@ fileprivate struct Const {
 struct Selection {
     var icon: UIImage?
     var title: String
+    var isAccessoryHidden = false
 }
 
 extension Selection: Equatable {
@@ -48,7 +49,7 @@ class SelectionTableViewCell: UITableViewCell {
         
         backgroundColor = .navigation
         selectionStyle = .none
-        accessoryType = .disclosureIndicator
+        accessoryView = UIView()
         
         addSubview(iconImageView)
         addSubview(titleLabel)
@@ -92,6 +93,7 @@ extension SelectionTableViewCell: Configurable {
     func configure(_ model: Selection) {
         iconImageView.image = model.icon
         titleLabel.text = model.title
+        accessoryView = model.isAccessoryHidden ? UIView() : UIImageView(image: R.image.disclosure_indicator())
     }
     
 }

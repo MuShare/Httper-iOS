@@ -60,6 +60,9 @@ class ProfileViewController: BaseViewController<ProfileViewModel> {
         tableView.tableHeaderView = headerView
         tableView.tableFooterView = footerView
         tableView.register(cellType: SelectionTableViewCell.self)
+        tableView.rx.itemSelected.bind { [unowned self] in
+            self.viewModel.pick(at: $0.row)
+        }.disposed(by: disposeBag)
         return tableView
     }()
     
