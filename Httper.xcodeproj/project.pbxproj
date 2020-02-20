@@ -815,7 +815,7 @@
 			);
 			name = R.swift;
 			outputPaths = (
-				"$SRCROOT/$TARGET_NAME/R.generated.swift",
+				$SRCROOT/$TARGET_NAME/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
@@ -1223,6 +1223,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(SDKROOT)/usr/include/libxml2",
 					"${PODS_ROOT}/Firebase/CoreOnly/Sources",
+					"$(inherited)",
 				);
 				INFOPLIST_FILE = HttperTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1245,6 +1246,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(SDKROOT)/usr/include/libxml2",
 					"${PODS_ROOT}/Firebase/CoreOnly/Sources",
+					"$(inherited)",
 				);
 				INFOPLIST_FILE = HttperTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -147,9 +147,9 @@ PODS:
   - RxCocoa (5.0.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
-  - RxController (0.9.3):
+  - RxController (0.10):
     - RxCocoa (~> 5)
-    - RxFlow (~> 2)
+    - RxFlow (~> 2.7)
     - RxSwift (~> 5)
   - RxDataSources (4.0.1):
     - Differentiator (~> 4.0)
@@ -160,7 +160,7 @@ PODS:
     - RxCocoa (~> 5)
     - RxDataSources (~> 4)
     - RxSwift (~> 5)
-  - RxFlow (2.6.0):
+  - RxFlow (2.7.0):
     - RxCocoa (>= 5.0.0)
     - RxSwift (>= 5.0.0)
   - RxKeyboard (1.0.0):
@@ -324,10 +324,10 @@ SPEC CHECKSUMS:
   RxAlertViewable: 0dbe70c15bd258fba5fadb8418c5401dca228b15
   RxBinding: 58be2cf1311165489a66eacb4a3e33932d598a53
   RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
-  RxController: 376347c3573c909b05afff6ad91c27debd6382a3
+  RxController: c596ce5b2bc9ab933649690838d60118f0e4b110
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
   RxDataSourcesSingleSection: 4394e57ae097f33e3845cf3a57bdf7826eca2d38
-  RxFlow: f89ea40232813062f5e857fbe19a680a205a15ab
+  RxFlow: 605ef6364d7e937bea8f9507a1e99a431cdc2493
   RxKeyboard: 6683c4344304a00f943c158bd8a43ce5469c82a7
   RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
   RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
