@@ -26,17 +26,17 @@ func imageURL(_ source: String) -> URL? {
 }
 
 extension DefaultsKeys {
-    static let type = DefaultsKey<String?>("type")
-    static let email = DefaultsKey<String?>("email")
-    static let name = DefaultsKey<String?>("name")
-    static let avatar = DefaultsKey<String?>("avatar")
-    static let characters = DefaultsKey<[String]?>("characters")
-    static let deviceToken = DefaultsKey<String?>("deviceToken")
-    static let token = DefaultsKey<String?>("token")
-    static let login = DefaultsKey<Bool?>("login")
-    static let requestRevision = DefaultsKey<Int?>("requestRevision")
-    static let projectRevision = DefaultsKey<Int?>("projectRevision")
-    static let version = DefaultsKey<String?>("version")
+    var type: DefaultsKey<String?> { .init("type") }
+    var email: DefaultsKey<String?> { .init("email") }
+    var name: DefaultsKey<String?> { .init("name") }
+    var avatar: DefaultsKey<String?> { .init("avatar") }
+    var characters: DefaultsKey<[String]?> { .init("characters") }
+    var deviceToken: DefaultsKey<String?> { .init("deviceToken") }
+    var token: DefaultsKey<String?> { .init("token") }
+    var login: DefaultsKey<Bool?> { .init("login") }
+    var requestRevision: DefaultsKey<Int?> { .init("requestRevision") }
+    var projectRevision: DefaultsKey<Int?> { .init("projectRevision") }
+    var version: DefaultsKey<String?> { .init("version") }
 }
 
 // JSON style
@@ -100,11 +100,11 @@ enum ErrorCode: Int {
 }
 
 func token() -> String? {
-    return Defaults[.token]
+    return Defaults[\.token]
 }
 
 func tokenHeader() -> HTTPHeaders? {
-    let token = Defaults[.token]
+    let token = Defaults[\.token]
     if token == nil {
         return nil;
     }
@@ -115,11 +115,11 @@ func tokenHeader() -> HTTPHeaders? {
 }
 
 func updateRequestRevision(_ revision: Int) {
-    Defaults[.requestRevision] = revision
+    Defaults[\.requestRevision] = revision
 }
 
 func requestRevision() -> Int {
-    let requestRevision = Defaults[.requestRevision]
+    let requestRevision = Defaults[\.requestRevision]
     if requestRevision == nil {
         return 0
     }
@@ -127,11 +127,11 @@ func requestRevision() -> Int {
 }
 
 func updateProjectRevision(_ revision: Int) {
-    Defaults[.projectRevision] = revision
+    Defaults[\.projectRevision] = revision
 }
 
 func projectRevision() -> Int {
-    let projectRevision = Defaults[.projectRevision]
+    let projectRevision = Defaults[\.projectRevision]
     if projectRevision == nil {
         return 0
     }
@@ -140,10 +140,10 @@ func projectRevision() -> Int {
 
 // App update method, revoked only when app is updated.
 func appUpdate() {
-    if Defaults[.version] == nil {
-        Defaults[.version] = "1.0"
+    if Defaults[\.version] == nil {
+        Defaults[\.version] = "1.0"
     }
-    if Defaults[.version] == App.version {
+    if Defaults[\.version] == App.version {
         return
     }
     switch App.version {
@@ -153,8 +153,8 @@ func appUpdate() {
         for request in dao.requestDao.findWithNilPorject() {
             sync.deleteRequest(request)
         }
-        if Defaults[.token] != nil {
-            Defaults[.version] = App.version
+        if Defaults[\.token] != nil {
+            Defaults[\.version] = App.version
         }
     default:
         break

@@ -171,7 +171,7 @@ PODS:
   - RxSwift (5.0.1)
   - SnapKit (5.0.1)
   - SwiftyJSON (4.3.0)
-  - SwiftyUserDefaults (4.0.0)
+  - SwiftyUserDefaults (5.0.0)
   - SwipeBack (1.1.1)
   - UIGradient (1.3.1)
   - "UIImageView+Extension (0.2.6)"
@@ -333,7 +333,7 @@ SPEC CHECKSUMS:
   RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
-  SwiftyUserDefaults: 6a1951df1daa19337862b677dd9a4b9bd4c288cd
+  SwiftyUserDefaults: 33fcb42bd1feb53a37d873feb62c82967db5f7f6
   SwipeBack: d6759601b40da1f4161033feb30ab475d7d04322
   UIGradient: 9c7041327bf202b09aab2db7c33fb41f768b19ea
   "UIImageView+Extension": bc26c60a9c8cd6fb515ae1e37377a6f0988e76d8

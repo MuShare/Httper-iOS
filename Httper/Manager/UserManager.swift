@@ -19,55 +19,55 @@ final class UserManager {
     
     var login: Bool {
         set {
-            Defaults[.login] = newValue
+            Defaults[\.login] = newValue
         }
         get {
-            return Defaults[.login] ?? false
+            return Defaults[\.login] ?? false
         }
     }
     
     var token: String {
         set {
-            Defaults[.token] = newValue
+            Defaults[\.token] = newValue
         }
         get {
-            return Defaults[.token] ?? ""
+            return Defaults[\.token] ?? ""
         }
     }
     
     var type: String {
         set {
-            Defaults[.type] = newValue
+            Defaults[\.type] = newValue
         }
         get {
-            return Defaults[.type] ?? UserTypeEmail
+            return Defaults[\.type] ?? UserTypeEmail
         }
     }
     
     var email: String {
         set {
-            Defaults[.email] = newValue
+            Defaults[\.email] = newValue
         }
         get {
-            return Defaults[.email] ?? ""
+            return Defaults[\.email] ?? ""
         }
     }
     
     var name: String {
         set {
-            Defaults[.name] = newValue
+            Defaults[\.name] = newValue
         }
         get {
-            return Defaults[.name] ?? ""
+            return Defaults[\.name] ?? ""
         }
     }
     
     var avatar: String {
         set {
-            Defaults[.avatar] = newValue
+            Defaults[\.avatar] = newValue
         }
         get {
-            return Defaults[.avatar] ?? ""
+            return Defaults[\.avatar] ?? ""
         }
     }
     
@@ -82,14 +82,14 @@ final class UserManager {
             guard let newValue = newValue else {
                 return
             }
-            Defaults[.characters] = newValue
+            Defaults[\.characters] = newValue
             charactersRelay.accept(newValue)
         }
         get {
-            var characters = Defaults[.characters]
+            var characters = Defaults[\.characters]
             if characters == nil {
                 characters = [":", "/", "?", "&", ".", "=", "%", "[", "]", "{", "}"]
-                Defaults[.characters] = characters
+                Defaults[\.characters] = characters
             }
             return characters
         }
@@ -166,7 +166,7 @@ final class UserManager {
             "email": email,
             "password": password,
             "deviceIdentifier": UIDevice.current.identifierForVendor!.uuidString,
-            "deviceToken": Defaults[.deviceToken] == nil ? "" : Defaults[.deviceToken]!,
+            "deviceToken": Defaults[\.deviceToken] == nil ? "" : Defaults[\.deviceToken]!,
             "os": "\(UIDevice.current.systemName) \(UIDevice.current.systemVersion)",
             "lan": NSLocale.preferredLanguages[0]
         ]
@@ -207,7 +207,7 @@ final class UserManager {
         let params: Parameters = [
             "accessToken": token,
             "deviceIdentifier": UIDevice.current.identifierForVendor!.uuidString,
-            "deviceToken": Defaults[.deviceToken] == nil ? "" : Defaults[.deviceToken]!,
+            "deviceToken": Defaults[\.deviceToken] == nil ? "" : Defaults[\.deviceToken]!,
             "os": "\(UIDevice.current.systemName) \(UIDevice.current.systemVersion)",
             "lan": NSLocale.preferredLanguages[0]
         ]
@@ -301,7 +301,7 @@ final class UserManager {
         self.avatar = ""
         self.token = ""
         self.login = false
-        Defaults[.requestRevision] = 0
+        Defaults[\.requestRevision] = 0
         
         // Reset revision to 0 for those request entities whose revision is larger than 0.
         for request in dao.requestDao.findRevisionLargerThan(0) {
