@@ -100,11 +100,11 @@ enum ErrorCode: Int {
 }
 
 func token() -> String? {
-    return Defaults[\.token]
+    return Defaults.token
 }
 
 func tokenHeader() -> HTTPHeaders? {
-    let token = Defaults[\.token]
+    let token = Defaults.token
     if token == nil {
         return nil;
     }
@@ -115,11 +115,11 @@ func tokenHeader() -> HTTPHeaders? {
 }
 
 func updateRequestRevision(_ revision: Int) {
-    Defaults[\.requestRevision] = revision
+    Defaults.requestRevision = revision
 }
 
 func requestRevision() -> Int {
-    let requestRevision = Defaults[\.requestRevision]
+    let requestRevision = Defaults.requestRevision
     if requestRevision == nil {
         return 0
     }
@@ -127,11 +127,11 @@ func requestRevision() -> Int {
 }
 
 func updateProjectRevision(_ revision: Int) {
-    Defaults[\.projectRevision] = revision
+    Defaults.projectRevision = revision
 }
 
 func projectRevision() -> Int {
-    let projectRevision = Defaults[\.projectRevision]
+    let projectRevision = Defaults.projectRevision
     if projectRevision == nil {
         return 0
     }
@@ -140,10 +140,10 @@ func projectRevision() -> Int {
 
 // App update method, revoked only when app is updated.
 func appUpdate() {
-    if Defaults[\.version] == nil {
-        Defaults[\.version] = "1.0"
+    if Defaults.version == nil {
+        Defaults.version = "1.0"
     }
-    if Defaults[\.version] == App.version {
+    if Defaults.version == App.version {
         return
     }
     switch App.version {
@@ -153,8 +153,8 @@ func appUpdate() {
         for request in dao.requestDao.findWithNilPorject() {
             sync.deleteRequest(request)
         }
-        if Defaults[\.token] != nil {
-            Defaults[\.version] = App.version
+        if Defaults.token != nil {
+            Defaults.version = App.version
         }
     default:
         break
