@@ -19,55 +19,55 @@ final class UserManager {
     
     var login: Bool {
         set {
-            Defaults[.login] = newValue
+            Defaults.login = newValue
         }
         get {
-            return Defaults[.login] ?? false
+            return Defaults.login ?? false
         }
     }
     
     var token: String {
         set {
-            Defaults[.token] = newValue
+            Defaults.token = newValue
         }
         get {
-            return Defaults[.token] ?? ""
+            return Defaults.token ?? ""
         }
     }
     
     var type: String {
         set {
-            Defaults[.type] = newValue
+            Defaults.type = newValue
         }
         get {
-            return Defaults[.type] ?? UserTypeEmail
+            return Defaults.type ?? UserTypeEmail
         }
     }
     
     var email: String {
         set {
-            Defaults[.email] = newValue
+            Defaults.email = newValue
         }
         get {
-            return Defaults[.email] ?? ""
+            return Defaults.email ?? ""
         }
     }
     
     var name: String {
         set {
-            Defaults[.name] = newValue
+            Defaults.name = newValue
         }
         get {
-            return Defaults[.name] ?? ""
+            return Defaults.name ?? ""
         }
     }
     
     var avatar: String {
         set {
-            Defaults[.avatar] = newValue
+            Defaults.avatar = newValue
         }
         get {
-            return Defaults[.avatar] ?? ""
+            return Defaults.avatar ?? ""
         }
     }
     
@@ -82,14 +82,14 @@ final class UserManager {
             guard let newValue = newValue else {
                 return
             }
-            Defaults[.characters] = newValue
+            Defaults.characters = newValue
             charactersRelay.accept(newValue)
         }
         get {
-            var characters = Defaults[.characters]
+            var characters = Defaults.characters
             if characters == nil {
                 characters = [":", "/", "?", "&", ".", "=", "%", "[", "]", "{", "}"]
-                Defaults[.characters] = characters
+                Defaults.characters = characters
             }
             return characters
         }
@@ -114,21 +114,26 @@ final class UserManager {
     }
     
     func pullUser(_ completionHandler: ((Bool) -> Void)? = nil) {
-        Alamofire.request(createUrl("api/user"),
-                          method: .get,
-                          parameters: nil,
-                          encoding: URLEncoding.default,
-                          headers: tokenHeader())
-        .responseJSON { (responseObject) in
-            let response = InternetResponse(responseObject)
-            if response.statusOK() {
-                let user = response.getResult()["user"]
-                self.name = user["name"].stringValue
-                self.avatar = user["avatar"].stringValue
-                completionHandler?(true)
-            } else {
-                completionHandler?(false)
-            }
+        Alamofire.request(
+            createUrl("api/user"),
+            method: .get,
+            parameters: nil,
+            encoding: URLEncoding.default,
+            headers: tokenHeader()
+        )
+            .responseJSON { [weak self] in
+                guard let `self` = self else {
+                    return
+                }
+                let response = InternetResponse($0)
+                if response.statusOK() {
+                    let user = response.getResult()["user"]
+                    self.name = user["name"].stringValue
+                    self.avatar = user["avatar"].stringValue
+                    completionHandler?(true)
+                } else {
+                    completionHandler?(false)
+                }
         }
     }
     
@@ -139,26 +144,25 @@ final class UserManager {
             "password": password
         ]
 
-        Alamofire.request(createUrl("api/user/register"),
-                          method: .post,
-                          parameters: parameters,
-                          encoding: URLEncoding.default,
-                          headers: nil)
-            .responseJSON { responseObject in
-
-                let response = InternetResponse(responseObject)
-                if response.statusOK() {
-                    completion?(true, nil)
-                } else {
-                    switch response.errorCode() {
-                    case .emailRegistered:
-                        completion?(false, R.string.localizable.email_registered())
-                    default:
-                        completion?(false, R.string.localizable.error_unknown())
-                    }
+        Alamofire.request(
+            createUrl("api/user/register"),
+            method: .post,
+            parameters: parameters,
+            encoding: URLEncoding.default,
+            headers: nil
+        ).responseJSON {
+            let response = InternetResponse($0)
+            if response.statusOK() {
+                completion?(true, nil)
+            } else {
+                switch response.errorCode() {
+                case .emailRegistered:
+                    completion?(false, R.string.localizable.email_registered())
+                default:
+                    completion?(false, R.string.localizable.error_unknown())
                 }
+            }
         }
-
     }
     
     func loginWithEmail(email: String, password: String, completion: ((Bool, String?) -> Void)?) {
@@ -166,40 +170,43 @@ final class UserManager {
             "email": email,
             "password": password,
             "deviceIdentifier": UIDevice.current.identifierForVendor!.uuidString,
-            "deviceToken": Defaults[.deviceToken] == nil ? "" : Defaults[.deviceToken]!,
+            "deviceToken": Defaults.deviceToken ?? "",
             "os": "\(UIDevice.current.systemName) \(UIDevice.current.systemVersion)",
             "lan": NSLocale.preferredLanguages[0]
         ]
         
-        Alamofire.request(createUrl("api/user/login"),
-                          method: .post,
-                          parameters: params,
-                          encoding: URLEncoding.default,
-                          headers: nil)
-            .responseJSON { (responseObject) in
-
-                let response = InternetResponse(responseObject)
-                if response.statusOK() {
-                    let result = response.getResult()
-                    let user = result["user"]
-                    // Login success, save user information to NSUserDefaults.
-                    self.email = email
-                    self.token = result["token"].stringValue
-                    self.name = user["name"].stringValue
-                    self.avatar = user["avatar"].stringValue
-                    self.type = UserTypeEmail
-                    self.login = true
-                    completion?(true, nil)
-                } else {
-                    switch response.errorCode() {
-                    case .emailNotExist:
-                        completion?(false, R.string.localizable.email_not_exist())
-                    case .passwordWrong:
-                        completion?(false, R.string.localizable.password_wrong())
-                    default:
-                        completion?(false, R.string.localizable.error_unknown())
-                    }
+        Alamofire.request(
+            createUrl("api/user/login"),
+            method: .post,
+            parameters: params,
+            encoding: URLEncoding.default,
+            headers: nil
+        ).responseJSON { [weak self] in
+            guard let `self` = self else {
+                return
+            }
+            let response = InternetResponse($0)
+            if response.statusOK() {
+                let result = response.getResult()
+                let user = result["user"]
+                // Login success, save user information to NSUserDefaults.
+                self.email = email
+                self.token = result["token"].stringValue
+                self.name = user["name"].stringValue
+                self.avatar = user["avatar"].stringValue
+                self.type = UserTypeEmail
+                self.login = true
+                completion?(true, nil)
+            } else {
+                switch response.errorCode() {
+                case .emailNotExist:
+                    completion?(false, R.string.localizable.email_not_exist())
+                case .passwordWrong:
+                    completion?(false, R.string.localizable.password_wrong())
+                default:
+                    completion?(false, R.string.localizable.error_unknown())
                 }
+            }
         }
     }
     
@@ -207,18 +214,22 @@ final class UserManager {
         let params: Parameters = [
             "accessToken": token,
             "deviceIdentifier": UIDevice.current.identifierForVendor!.uuidString,
-            "deviceToken": Defaults[.deviceToken] == nil ? "" : Defaults[.deviceToken]!,
+            "deviceToken": Defaults.deviceToken ?? "",
             "os": "\(UIDevice.current.systemName) \(UIDevice.current.systemVersion)",
             "lan": NSLocale.preferredLanguages[0]
         ]
         
-        Alamofire.request(createUrl("/api/user/fblogin"),
-                          method: .post,
-                          parameters: params,
-                          encoding: URLEncoding.default,
-                          headers: nil)
-        .responseJSON(completionHandler: { (responseObject) in
-            let response = InternetResponse(responseObject)
+        Alamofire.request(
+            createUrl("/api/user/fblogin"),
+            method: .post,
+            parameters: params,
+            encoding: URLEncoding.default,
+            headers: nil
+        ).responseJSON { [weak self] in
+            guard let `self` = self else {
+                return
+            }
+            let response = InternetResponse($0)
             if response.statusOK() {
                 let result = response.getResult()
                 let user = result["user"]
@@ -238,7 +249,7 @@ final class UserManager {
                     completion?(false, R.string.localizable.error_unknown())
                 }
             }
-        })
+        }
     }
     
     func reset(_ email: String, completion: ((Bool, String?) -> Void)?) {
@@ -246,25 +257,26 @@ final class UserManager {
             "email": email
         ]
 
-        Alamofire.request(createUrl("api/user/password/reset"),
-                          method: .get,
-                          parameters: params,
-                          encoding: URLEncoding.default,
-                          headers: tokenHeader())
-            .responseJSON { (responseObject) in
-                let response = InternetResponse(responseObject)
-                if response.statusOK() {
-                    completion?(true, nil)
-                } else {
-                    switch response.errorCode() {
-                    case .emailNotExist:
-                        completion?(false, R.string.localizable.email_not_exist())
-                    case .sendResetPasswordMail:
-                        completion?(false, R.string.localizable.reset_password_failed())
-                    default:
-                        completion?(false, R.string.localizable.error_unknown())
-                    }
+        Alamofire.request(
+            createUrl("api/user/password/reset"),
+            method: .get,
+            parameters: params,
+            encoding: URLEncoding.default,
+            headers: tokenHeader()
+        ).responseJSON {
+            let response = InternetResponse($0)
+            if response.statusOK() {
+                completion?(true, nil)
+            } else {
+                switch response.errorCode() {
+                case .emailNotExist:
+                    completion?(false, R.string.localizable.email_not_exist())
+                case .sendResetPasswordMail:
+                    completion?(false, R.string.localizable.reset_password_failed())
+                default:
+                    completion?(false, R.string.localizable.error_unknown())
                 }
+            }
         }
     }
     
@@ -273,35 +285,39 @@ final class UserManager {
             "name": name
         ]
 
-        Alamofire.request(createUrl("api/user/name"),
-                          method: .post,
-                          parameters: params,
-                          encoding: URLEncoding.default,
-                          headers: tokenHeader())
-            .responseJSON { (responseObject) in
-                let response = InternetResponse(responseObject)
-                if response.statusOK() {
-                    self.name = name
-                    completion?(true, nil)
-                } else {
-                    switch response.errorCode() {
-                    case .tokenError:
-                        completion?(false, R.string.localizable.token_error())
-                    default:
-                        completion?(false, R.string.localizable.error_unknown())
-                    }
+        Alamofire.request(
+            createUrl("api/user/name"),
+            method: .post,
+            parameters: params,
+            encoding: URLEncoding.default,
+            headers: tokenHeader()
+        ).responseJSON { [weak self] in
+            guard let `self` = self else {
+                return
+            }
+            let response = InternetResponse($0)
+            if response.statusOK() {
+                self.name = name
+                completion?(true, nil)
+            } else {
+                switch response.errorCode() {
+                case .tokenError:
+                    completion?(false, R.string.localizable.token_error())
+                default:
+                    completion?(false, R.string.localizable.error_unknown())
                 }
+            }
         }
     }
     
     func logout() {
-        self.type = ""
-        self.email = ""
-        self.name = ""
-        self.avatar = ""
-        self.token = ""
-        self.login = false
-        Defaults[.requestRevision] = 0
+        type = ""
+        email = ""
+        name = ""
+        avatar = ""
+        token = ""
+        login = false
+        Defaults.requestRevision = 0
         
         // Reset revision to 0 for those request entities whose revision is larger than 0.
         for request in dao.requestDao.findRevisionLargerThan(0) {
