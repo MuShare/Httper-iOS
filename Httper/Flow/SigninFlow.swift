@@ -24,6 +24,7 @@ class SigninFlow: Flow {
     private lazy var navigationController: UINavigationController = {
         let controller = BaseNavigationController()
         controller.view.backgroundColor = .background
+        controller.modalPresentationStyle = .fullScreen
         return controller
     }()
     
@@ -33,7 +34,9 @@ class SigninFlow: Flow {
         }
         switch signinStep {
         case .start:
-            return .none
+            let signinViewController = SigninViewController(viewModel: .init())
+            navigationController.pushViewController(signinViewController, animated: false)
+            return .viewController(signinViewController)
         case .close:
             navigationController.dismiss(animated: true)
             return .none

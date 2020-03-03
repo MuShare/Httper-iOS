@@ -46,18 +46,30 @@ private enum Const {
         static let marginTop = 20
     }
     
+    struct facebook {
+        static let size = 50
+        static let marginBottom = 15
+    }
+    
     struct signup {
         static let height = 44
-        static let margin = 20
+        static let margin = 15
     }
     
 }
 
-class SigninWithEmailViewController: BaseViewController<SigninViewModel> {
+class SigninViewController: BaseViewController<SigninViewModel> {
+    
+    private lazy var backgroundImageView: UIImageView = {
+        let imageView = UIImageView(frame: view.bounds)
+        imageView.image = R.image.loginBgJpg()
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
     
     private lazy var closeButton: UIButton = {
         let button = UIButton()
-        button.setImage(R.image.back(), for: .normal)
+        button.setImage(R.image.close(), for: .normal)
         button.rx.tap.bind { [unowned self] in
             self.viewModel.close()
         }.disposed(by: disposeBag)
@@ -74,13 +86,15 @@ class SigninWithEmailViewController: BaseViewController<SigninViewModel> {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = R.string.localizable.signin_title()
-        label.textColor = .darkGray
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 20, weight: .semibold)
         return label
     }()
     
     private lazy var emailTextField: UITextField = {
         let textField = SigninTextField()
         textField.placeholder = "Email"
+        textField.backgroundColor = UIColor(hexa: 0xffffff44)
         textField.textAlignment = .center
         textField.keyboardType = .emailAddress
         textField.returnKeyType = .next
@@ -94,6 +108,7 @@ class SigninWithEmailViewController: BaseViewController<SigninViewModel> {
     private lazy var passwordTextField: UITextField = {
         let textField = SigninTextField()
         textField.placeholder = "Password"
+        textField.backgroundColor = UIColor(hexa: 0xffffff44)
         textField.textAlignment = .center
         textField.isSecureTextEntry = true
         textField.returnKeyType = .done
@@ -114,11 +129,13 @@ class SigninWithEmailViewController: BaseViewController<SigninViewModel> {
     private lazy var submitButton: UIButton = {
         let button = UIButton()
         button.setTitle("Sign in", for: .normal)
-        button.setTitleColor(.darkGray, for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.setTitleColor(.lightGray, for: .highlighted)
-        button.backgroundColor = .white
+        button.backgroundColor = UIColor(hexa: 0xffffff44)
         button.layer.cornerRadius = 5
         button.layer.masksToBounds = true
+        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.borderWidth = 1
         button.rx.tap.bind { [unowned self] in
             self.viewModel.submit()
         }.disposed(by: disposeBag)
@@ -128,7 +145,7 @@ class SigninWithEmailViewController: BaseViewController<SigninViewModel> {
     private lazy var forgotButton: UIButton = {
         let button = UIButton()
         button.setTitle("Forget Password", for: .normal)
-        button.setTitleColor(.darkGray, for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.setTitleColor(.lightGray, for: .highlighted)
         button.rx.tap.bind { [unowned self] in
             self.viewModel.forgotPassword()
@@ -136,10 +153,19 @@ class SigninWithEmailViewController: BaseViewController<SigninViewModel> {
         return button
     }()
     
+    private lazy var facebookButton: UIButton = {
+        let button = UIButton()
+        button.setImage(R.image.facebook(), for: .normal)
+        button.rx.tap.bind { [unowned self] in
+            self.viewModel.facebookSignin()
+        }.disposed(by: disposeBag)
+        return button
+    }()
+    
     private lazy var signupButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setTitle("Sign up now!", for: .normal)
-        button.setTitleColor(.darkGray, for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.setTitleColor(.lightGray, for: .highlighted)
         button.rx.tap.bind { [unowned self] in
             self.viewModel.signup()
@@ -150,7 +176,7 @@ class SigninWithEmailViewController: BaseViewController<SigninViewModel> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor(hex: 0xf9f9f9)
+        view.addSubview(backgroundImageView)
         view.addSubview(closeButton)
         view.addSubview(logoImageView)
         view.addSubview(titleLabel)
@@ -159,6 +185,7 @@ class SigninWithEmailViewController: BaseViewController<SigninViewModel> {
         view.addSubview(showPasswordButton)
         view.addSubview(submitButton)
         view.addSubview(forgotButton)
+        view.addSubview(facebookButton)
         view.addSubview(signupButton)
         createConstraints()
         
@@ -234,8 +261,14 @@ class SigninWithEmailViewController: BaseViewController<SigninViewModel> {
             $0.bottom.equalTo(view.safeArea.bottom).offset(-Const.signup.margin)
         }
         
+        facebookButton.snp.makeConstraints {
+            $0.size.equalTo(Const.facebook.size)
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(signupButton.snp.top).offset(-Const.facebook.marginBottom)
+        }
+        
     }
     
 }
 
-extension SigninWithEmailViewController: KeyboardViewController {}
+extension SigninViewController: KeyboardViewController {}

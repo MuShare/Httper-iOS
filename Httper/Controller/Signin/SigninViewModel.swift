@@ -89,6 +89,10 @@ class SigninViewModel: BaseViewModel {
         steps.accept(SigninStep.signup)
     }
     
+    func facebookSignin() {
+        
+    }
+    
 }
 
 extension SigninViewModel: KeyboardViewModel {
