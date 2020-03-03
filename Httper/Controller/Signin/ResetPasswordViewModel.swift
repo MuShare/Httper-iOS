@@ -38,21 +38,7 @@ class ResetPasswordViewModel: BaseViewModel {
             return
         }
         loading.onNext(true)
-//        Pluto.shared.resetPassword(address: email, success: { [weak self] in
-//            self?.loading.onNext(false)
-//            self?.alert.onNextTip(R.string.localizable.signup_send_mail_to_reset_password()) {
-//                self?.steps.accept(SigninStep.forgotIsComplete)
-//            }
-//        }, error: { [weak self] in
-//            self?.loading.onNext(false)
-//            self?.loading.onNext(false)
-//            switch $0 {
-//            case .mailIsAlreadyRegister:
-//                self?.alert.onNextError(R.string.localizable.signup_error_mail_already_registered())
-//            default:
-//                self?.alert.onNextError(R.string.localizable.signup_error_unknown())
-//            }
-//        })
+        // TODO
     }
     
 }

@@ -7,8 +7,67 @@
 //
 
 import RxCocoa
+import RxKeyboard
 import RxSwift
 
 class SignupViewModel: BaseViewModel {
     
+    private let currentTextFieldFrameSubject = PublishSubject<CGRect>()
+    private let isSecureTextEntryRelay = BehaviorRelay<Bool>(value: true)
+    
+    let emailRelay = BehaviorRelay<String?>(value: nil)
+    let usernameRelay = BehaviorRelay<String?>(value: nil)
+    let passwordRelay = BehaviorRelay<String?>(value: nil)
+    
+    var isSubmitEnabled: Observable<Bool> {
+        return Observable.combineLatest(emailRelay, usernameRelay, passwordRelay) { email, username, password in
+            guard let email = email, let username = username, let password = password else {
+                return false
+            }
+            return !email.isEmpty && email.isEmailAddress && !username.isEmpty && !password.isEmpty
+        }
+    }
+    
+    var isSecureTextEntry: Observable<Bool> {
+        isSecureTextEntryRelay.asObservable()
+    }
+    
+    var showPasswordImage: Observable<UIImage?> {
+        isSecureTextEntry.map {
+            $0 ? R.image.password_hidden() : R.image.password_shown()
+        }
+    }
+    
+    func openKeyboardForTextField(with frame: CGRect) {
+        currentTextFieldFrameSubject.onNext(frame)
+    }
+    
+    func back() {
+        steps.accept(SigninStep.signupIsComplete)
+    }
+    
+    func submit() {
+        guard
+            let email = emailRelay.value, !email.isEmpty, email.isEmailAddress,
+            let username = usernameRelay.value, !username.isEmpty,
+            let password = passwordRelay.value, !password.isEmpty
+        else {
+            return
+        }
+        loading.onNext(true)
+        // TODO: signup
+    }
+    
+    func switchSecureTextEntry() {
+        isSecureTextEntryRelay.accept(!isSecureTextEntryRelay.value)
+    }
+    
+}
+
+extension SignupViewModel: KeyboardViewModel {
+    var textFieldBottom: Observable<CGFloat> {
+        currentTextFieldFrameSubject.map {
+            $0.origin.y + $0.height
+        }
+    }
 }

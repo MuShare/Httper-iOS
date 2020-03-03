@@ -107,6 +107,12 @@ sign_out_message = "Are you sure to sign out now?";
 signin_title = "Welcome to Httper Cloud";
 sign_in_facebook = "Sign in with Facebook";
 
+signup_title="Sign up with email";
+signup_email="Email Address";
+signup_username="Username";
+signup_password="Password";
+signup_submit="Submit";
+
 reset_password_with_email="Reset password with email";
 reset_password_send_an_email="Send an email";
 reset_password_not_validate = "Please input a correct email!";
