@@ -15,7 +15,7 @@ private enum Const {
     
     struct logo {
         static let size = 100
-        static let marginTop = 50
+        static let marginTop = 80
     }
     
     struct title {
