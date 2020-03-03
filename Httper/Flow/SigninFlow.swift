@@ -10,6 +10,9 @@ import RxFlow
 
 enum SigninStep: Step {
     case start
+    case close
+    case resetPassword
+    case signup
 }
 
 class SigninFlow: Flow {
@@ -31,6 +34,17 @@ class SigninFlow: Flow {
         switch signinStep {
         case .start:
             return .none
+        case .close:
+            navigationController.dismiss(animated: true)
+            return .none
+        case .resetPassword:
+            let resetPasswordViewController = ResetPasswordViewController(viewModel: .init())
+            navigationController.pushViewController(resetPasswordViewController, animated: true)
+            return .viewController(resetPasswordViewController)
+        case .signup:
+            let signupViewController = SignupViewController(viewModel: .init())
+            navigationController.pushViewController(signupViewController, animated: true)
+            return .viewController(signupViewController)
         }
     }
     

@@ -79,6 +79,9 @@
 		BBFA15A3240E3C7D00AD7294 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFA15A2240E3C7D00AD7294 /* ResetPasswordViewController.swift */; };
 		BBFA15A5240E3C8900AD7294 /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFA15A4240E3C8900AD7294 /* ResetPasswordViewModel.swift */; };
 		BBFA15A7240E3D1200AD7294 /* SigninFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFA15A6240E3D1200AD7294 /* SigninFlow.swift */; };
+		BBFA15AF240E7ACC00AD7294 /* KeyboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFA15AE240E7ACC00AD7294 /* KeyboardViewModel.swift */; };
+		BBFA15B2240E7B1C00AD7294 /* SigninTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFA15B1240E7B1C00AD7294 /* SigninTextField.swift */; };
+		BBFA15B4240E7BCB00AD7294 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFA15B3240E7BCB00AD7294 /* KeyboardViewController.swift */; };
 		E4007EB91DFEE7B7002A87FA /* BodyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4007EB81DFEE7B7002A87FA /* BodyViewController.swift */; };
 		E40986A2215523A3006CCC04 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409869F215523A2006CCC04 /* UIColor+Extension.swift */; };
 		E40986A3215523A3006CCC04 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40986A0215523A2006CCC04 /* UITableView+Extension.swift */; };
@@ -233,6 +236,9 @@
 		BBFA15A2240E3C7D00AD7294 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		BBFA15A4240E3C8900AD7294 /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
 		BBFA15A6240E3D1200AD7294 /* SigninFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninFlow.swift; sourceTree = "<group>"; };
+		BBFA15AE240E7ACC00AD7294 /* KeyboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewModel.swift; sourceTree = "<group>"; };
+		BBFA15B1240E7B1C00AD7294 /* SigninTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninTextField.swift; sourceTree = "<group>"; };
+		BBFA15B3240E7BCB00AD7294 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		BCFC5AC8A9AC43DEF10C1E58 /* Pods-HttperTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HttperTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HttperTests/Pods-HttperTests.release.xcconfig"; sourceTree = "<group>"; };
 		D75F43BCE0AC330659094777 /* Pods-HttperTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HttperTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HttperTests/Pods-HttperTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E4007EB81DFEE7B7002A87FA /* BodyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodyViewController.swift; sourceTree = "<group>"; };
@@ -445,6 +451,7 @@
 			children = (
 				777760D2225D999D0053BA3D /* Protocol */,
 				77271CAE21E744D30072E007 /* Net */,
+				BBFA15B0240E7B1400AD7294 /* View */,
 				77271CAD21E744BA0072E007 /* ViewController */,
 				77CDA185222E130A0063C472 /* AppLog.swift */,
 				E41642D21DF970CE00F0339E /* CommonTool.swift */,
@@ -546,6 +553,8 @@
 			isa = PBXGroup;
 			children = (
 				777760D3225D99B20053BA3D /* RxKeyboardViewController.swift */,
+				BBFA15AE240E7ACC00AD7294 /* KeyboardViewModel.swift */,
+				BBFA15B3240E7BCB00AD7294 /* KeyboardViewController.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -593,6 +602,14 @@
 				BBFA15A4240E3C8900AD7294 /* ResetPasswordViewModel.swift */,
 			);
 			path = Signin;
+			sourceTree = "<group>";
+		};
+		BBFA15B0240E7B1400AD7294 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BBFA15B1240E7B1C00AD7294 /* SigninTextField.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		D8CD94EBE26387F8C13A7757 /* Frameworks */ = {
@@ -934,8 +951,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E49F680421495E3300646892 /* ProjectFlow.swift in Sources */,
+				BBFA15B2240E7B1C00AD7294 /* SigninTextField.swift in Sources */,
 				77055F5122B75598001F140D /* IPAddressViewModel.swift in Sources */,
 				E4DE76991E1D3DF5002A8385 /* RegisterViewController.swift in Sources */,
+				BBFA15AF240E7ACC00AD7294 /* KeyboardViewModel.swift in Sources */,
 				E4712ED81E55FC71002FF8E1 /* ProjectNameViewController.swift in Sources */,
 				77A53082216708F60008CC56 /* DetailViewModel.swift in Sources */,
 				77F39964215374370016978E /* KeyValueTableViewCell.swift in Sources */,
@@ -962,6 +981,7 @@
 				BBB0DABB237D5BD60074B5AE /* KeyboardAccessoryCollectionViewCell.swift in Sources */,
 				E4D161F71ECEA16A009B1DD9 /* UserManager.swift in Sources */,
 				BBB0DAB9237D5A9E0074B5AE /* KeyboardAccessoryViewModel.swift in Sources */,
+				BBFA15B4240E7BCB00AD7294 /* KeyboardViewController.swift in Sources */,
 				E48D41601D444F3F0028B84F /* Httper.xcdatamodeld in Sources */,
 				77CDA192222E1CB90063C472 /* NVActivityIndicatorViewable+Rx.swift in Sources */,
 				77271CB021E747D30072E007 /* SaveToProjectViewController.swift in Sources */,
