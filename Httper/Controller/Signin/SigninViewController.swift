@@ -94,6 +94,7 @@ class SigninViewController: BaseViewController<SigninViewModel> {
     private lazy var emailTextField: UITextField = {
         let textField = SigninTextField()
         textField.placeholder = "Email"
+        textField.textColor = .white
         textField.backgroundColor = UIColor(hexa: 0xffffff44)
         textField.textAlignment = .center
         textField.keyboardType = .emailAddress
@@ -108,6 +109,7 @@ class SigninViewController: BaseViewController<SigninViewModel> {
     private lazy var passwordTextField: UITextField = {
         let textField = SigninTextField()
         textField.placeholder = "Password"
+        textField.textColor = .white
         textField.backgroundColor = UIColor(hexa: 0xffffff44)
         textField.textAlignment = .center
         textField.isSecureTextEntry = true

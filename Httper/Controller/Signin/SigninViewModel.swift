@@ -64,25 +64,21 @@ class SigninViewModel: BaseViewModel {
         else {
             return
         }
-        
-//        UserManager.shared.signinWithEmail(email: email, password: password, prepare: { [weak self] in
-//            self?.loading.onNext(true)
-//        }, success: { [weak self] in
-//            self?.loading.onNext(false)
-//            self?.steps.accept(SigninStep.complete)
-//        }, resendEmail: { [weak self] in
-//            self?.alert.onNextTip(R.string.localizable.signup_error_mail_is_not_verified())
-//        }, error: { [weak self] in
-//            self?.loading.onNext(false)
-//            switch $0 {
-//            case .invalidPassword:
-//                self?.alert.onNextError(R.string.localizable.signup_error_invalid_password())
-//            case .mailIsNotExsit:
-//                self?.alert.onNextError(R.string.localizable.signup_error_mail_is_not_exists())
-//            default:
-//                self?.alert.onNextError(R.string.localizable.signup_error_unknown())
-//            }
-//        })
+        loading.onNext(true)
+        UserManager.shared.loginWithEmail(email: email, password: password) { [weak self] success, tip in
+            guard let `self` = self else {
+                return
+            }
+            self.loading.onNext(false)
+            if success {
+                // Sync project and request entities from server
+                SyncManager.shared.syncAll()
+                // Close SigninViewController
+                self.steps.accept(SigninStep.close)
+            } else if !success, let tip = tip {
+                self.alert.onNextTip(tip)
+            }
+        }
     }
     
     func signup() {
