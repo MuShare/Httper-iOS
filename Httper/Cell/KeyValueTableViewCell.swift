@@ -116,16 +116,30 @@ class KeyValueTableViewCell: UITableViewCell, Reusable {
         addSubview(valueBorderView)
         addSubview(removeButton)
         createConstraints()
-        
-        Observable.combineLatest(keyTextField.rx.text.orEmpty, valueTextField.rx.text.orEmpty).subscribe(onNext: { [weak self] in
+
+        keyTextField.rx.text.orEmpty.subscribe(onNext: { [weak self] in
             guard
                 let delegate = self?.delegate,
-                var keyValue = self?.keyValue
+                var keyValue = self?.keyValue,
+                let value = self?.valueTextField.text
             else {
                 return
             }
             keyValue.key = $0
-            keyValue.value = $1
+            keyValue.value = value
+            delegate.keyValueUpdated(keyValue)
+        }).disposed(by: disposeBag)
+        
+        valueTextField.rx.text.orEmpty.subscribe(onNext: { [weak self] in
+            guard
+                let delegate = self?.delegate,
+                var keyValue = self?.keyValue,
+                let key = self?.keyTextField.text
+            else {
+                return
+            }
+            keyValue.key = key
+            keyValue.value = $0
             delegate.keyValueUpdated(keyValue)
         }).disposed(by: disposeBag)
     }
