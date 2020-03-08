@@ -61,7 +61,7 @@ class RequestViewController: BaseViewController<RequestViewModel>, RxKeyboardVie
         button.setTitleColor(.white, for: .normal)
         button.setTitleColor(.lightGray, for: .highlighted)
         button.rx.tap.bind { [unowned self] in
-            let options = self.viewModel.methods.map { DetailOption(key: $0) }
+            let options = RequestConst.methods.map { DetailOption(key: $0) }
             self.openSelector(title: "Request Methods", options: options, theme: .dark)
         }.disposed(by: disposeBag)
         return button
@@ -81,7 +81,7 @@ class RequestViewController: BaseViewController<RequestViewModel>, RxKeyboardVie
         if #available(iOS 13, *) {
             segmentedControl.selectedSegmentTintColor = .white
         }
-        viewModel.protocols.enumerated().forEach { (index, requestProtocol) in
+        RequestConst.protocols.enumerated().forEach { index, requestProtocol in
             segmentedControl.insertSegment(withTitle: requestProtocol, at: index, animated: false)
         }
         return segmentedControl
