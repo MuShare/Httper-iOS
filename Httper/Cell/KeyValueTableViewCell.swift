@@ -33,6 +33,8 @@ class KeyValueTableViewCell: UITableViewCell, Reusable {
         textField.attributedPlaceholder = NSAttributedString(string: "key", attributes: [.foregroundColor : UIColor.lightGray])
         textField.textColor = .white
         textField.backgroundColor = .clear
+        textField.autocorrectionType = .no
+        textField.autocapitalizationType = .none
         textField.rx.controlEvent(.editingDidBegin).bind { [unowned self] _ in
             guard let identifier = self.keyValue?.identifier else {
                 return
@@ -59,6 +61,8 @@ class KeyValueTableViewCell: UITableViewCell, Reusable {
         textField.attributedPlaceholder = NSAttributedString(string: "value", attributes: [.foregroundColor : UIColor.lightGray])
         textField.textColor = .white
         textField.backgroundColor = .clear
+        textField.autocorrectionType = .no
+        textField.autocapitalizationType = .none
         textField.rx.controlEvent(.editingDidBegin).bind { [unowned self] _ in
             guard let identifier = self.keyValue?.identifier else {
                 return

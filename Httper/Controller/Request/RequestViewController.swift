@@ -96,6 +96,8 @@ class RequestViewController: BaseViewController<RequestViewModel>, RxKeyboardVie
     
     private lazy var urlTextField: UITextField = {
         let textField = UITextField()
+        textField.autocorrectionType = .no
+        textField.autocapitalizationType = .none
         textField.attributedPlaceholder = NSAttributedString(string: "request URL", attributes: [
             .foregroundColor: UIColor.lightGray
         ])
