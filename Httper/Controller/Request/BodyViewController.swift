@@ -22,6 +22,8 @@ class BodyViewController: BaseViewController<BodyViewModel> {
         let textView = UITextView()
         textView.backgroundColor = .clear
         textView.textColor = .white
+        textView.autocorrectionType = .no
+        textView.autocapitalizationType = .none
         return textView
     }()
     
