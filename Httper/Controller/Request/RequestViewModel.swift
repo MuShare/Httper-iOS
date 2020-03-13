@@ -13,6 +13,11 @@ import RxKeyboard
 import MGSelector
 import Alamofire
 
+struct RequestConst {
+    static let protocols = ["http", "https"]
+    static let methods = ["GET", "POST", "HEAD", "PUT", "DELETE", "CONNECT", "OPTIONS", "TRACE", "PATCH"]
+}
+
 struct DetailOption {
     var key: String
 }
@@ -48,7 +53,7 @@ class RequestViewModel: BaseViewModel {
         if let urlString = request?.url {
             let splits = urlString.components(separatedBy: "://")
             if splits.count == 2 {
-                requestProtocol.accept(protocols.firstIndex(of: splits[0]) ?? 0)
+                requestProtocol.accept(RequestConst.protocols.firstIndex(of: splits[0]) ?? 0)
                 url.accept(splits[1])
             }
         }
@@ -67,10 +72,7 @@ class RequestViewModel: BaseViewModel {
         }
     }
     
-    let protocols = ["http", "https"]
-    let methods = ["GET", "POST", "HEAD", "PUT", "DELETE", "CONNECT", "OPTIONS", "TRACE", "PATCH"]
-    
-    let requestMethod = BehaviorRelay<String>(value: "GET")
+    let requestMethod = BehaviorRelay<String>(value: RequestConst.methods[0])
     let url = BehaviorRelay<String?>(value: nil)
     let requestProtocol = BehaviorRelay<Int>(value: 0)
     
@@ -79,7 +81,7 @@ class RequestViewModel: BaseViewModel {
     var requestData: RequestData {
         RequestData(
             method: requestMethod.value,
-            url: protocols[requestProtocol.value] + "://" + (url.value ?? ""),
+            url: RequestConst.protocols[requestProtocol.value] + "://" + (url.value ?? ""),
             headers: Array(headersViewModel.results.values),
             parameters: Array(parametersViewModel.results.values),
             body: bodyViewModel.body.value ?? ""
@@ -87,7 +89,7 @@ class RequestViewModel: BaseViewModel {
     }
     
     var title: Observable<String> {
-        Observable.just(request).unwrap().map { _ in  "Request" }
+        Observable.just(request).unwrap().map { _ in "Request" }
     }
     
     var editingState: Observable<KeyValueEditingState> {
@@ -145,7 +147,7 @@ class RequestViewModel: BaseViewModel {
     
     func clear() {
         alert.onNextCustomConfirm(title: "Clear Request", message: "Are you sure to clear this request?", onConfirm: { [unowned self] in
-            self.requestMethod.accept("GET")
+            self.requestMethod.accept(RequestConst.methods[0])
             self.url.accept(nil)
             self.requestProtocol.accept(0)
             self.parametersViewModel.clear()

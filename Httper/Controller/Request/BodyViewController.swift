@@ -20,8 +20,15 @@ class BodyViewController: BaseViewController<BodyViewModel> {
     
     private lazy var rawBodyTextView: UITextView = {
         let textView = UITextView()
+        textView.font = .systemFont(ofSize: 15)
         textView.backgroundColor = .clear
         textView.textColor = .white
+        textView.autocorrectionType = .no
+        textView.autocapitalizationType = .none
+        textView.backgroundColor = UIColor(hexa: 0xffffff11)
+        textView.textContainerInset = UIEdgeInsets(top: 10, left: 6, bottom: 10, right: 6)
+        textView.layer.cornerRadius = 5
+        textView.layer.masksToBounds = true
         return textView
     }()
     
@@ -39,9 +46,10 @@ class BodyViewController: BaseViewController<BodyViewModel> {
     
     private func createConstraints() {
         rawBodyTextView.snp.makeConstraints {
-            $0.top.bottom.equalToSuperview()
+            $0.top.equalToSuperview()
             $0.left.equalToSuperview().offset(Const.rawBody.margin)
             $0.right.equalToSuperview().offset(-Const.rawBody.margin)
+            $0.bottom.equalToSuperview().offset(-Const.rawBody.margin)
         }
     }
     

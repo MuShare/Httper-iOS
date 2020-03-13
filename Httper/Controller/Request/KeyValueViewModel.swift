@@ -42,6 +42,16 @@ class KeyValueViewModel: BaseViewModel {
     let keyValuesRelay = BehaviorRelay<[KeyValue]>(value: [.empty])
     let editingStateSubject = PublishSubject<KeyValueEditingState>()
     
+    override init() {
+        super.init()
+        
+        keyValuesRelay.skip(1).take(1).subscribe(onNext: { [unowned self] in
+            for keyValue in $0 {
+                self.results[keyValue.identifier] = keyValue
+            }
+        }).disposed(by: disposeBag)
+    }
+    
     var results: [String: KeyValue] = [:]
     
     var keyValueSection: Observable<AnimatableSingleSection<KeyValue>> {
