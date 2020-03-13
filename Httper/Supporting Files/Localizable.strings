@@ -117,7 +117,7 @@ reset_password_with_email="Reset password with email";
 reset_password_send_an_email="Send an email";
 reset_password_not_validate = "Please input a correct email!";
 reset_password_failed = "Send email failed, try again later.";
-reset_password_check_email = "Check Your Email";
+reset_password_check_email = "We have sent a mail to reset password to you, please check your email";
 
 delete_project = "Delete Project";
 delete_project_message = "Are you sure to delete project ";

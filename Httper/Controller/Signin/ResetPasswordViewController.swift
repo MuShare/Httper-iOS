@@ -70,7 +70,10 @@ class ResetPasswordViewController: BaseViewController<ResetPasswordViewModel> {
     private lazy var emailTextField: UITextField = {
         let textField = SigninTextField()
         textField.placeholder = "Email"
+        textField.textColor = .white
         textField.backgroundColor = UIColor(hexa: 0xffffff44)
+        textField.autocorrectionType = .no
+        textField.autocapitalizationType = .none
         textField.textAlignment = .center
         textField.keyboardType = .emailAddress
         textField.rx.controlEvent(.editingDidBegin).subscribe(onNext: { [unowned self] in
@@ -118,6 +121,12 @@ class ResetPasswordViewController: BaseViewController<ResetPasswordViewModel> {
         super.viewWillAppear(true)
         
         navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidLoad()
+        
+        emailTextField.becomeFirstResponder()
     }
     
     private func createConstraints() {

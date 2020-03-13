@@ -38,7 +38,20 @@ class ResetPasswordViewModel: BaseViewModel {
             return
         }
         loading.onNext(true)
-        // TODO
+        UserManager.shared.reset(email) { [weak self] success, tip in
+            guard let `self` = self else {
+                return
+            }
+            self.loading.onNext(false)
+            
+            if success {
+                self.alert.onNextTip(R.string.localizable.reset_password_check_email()) {
+                    self.steps.accept(SigninStep.resetPasswordIsComplete)
+                }
+            } else {
+                self.alert.onNextTip(tip ?? R.string.localizable.error_unknown())
+            }
+        }
     }
     
 }
