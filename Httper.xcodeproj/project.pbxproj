@@ -133,7 +133,6 @@
 		E4D1CAE51DF5C028008DC4F9 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */; };
 		E4DE76961E1D3DAE002A8385 /* register-bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4DE76941E1D3DAE002A8385 /* register-bg.jpg */; };
 		E4DE76971E1D3DAE002A8385 /* login-bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4DE76951E1D3DAE002A8385 /* login-bg.jpg */; };
-		E4DE76991E1D3DF5002A8385 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DE76981E1D3DF5002A8385 /* RegisterViewController.swift */; };
 		E4E297B11E00021500AD484E /* ResponseHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E297B01E00021500AD484E /* ResponseHeaderViewController.swift */; };
 		E4EC89D21E129FA10072ACF3 /* STDPingServices.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EC89D01E129FA10072ACF3 /* STDPingServices.m */; };
 		E4EC89D71E12A4C70072ACF3 /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EC89D61E12A4C70072ACF3 /* SimplePing.m */; };
@@ -304,7 +303,6 @@
 		E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		E4DE76941E1D3DAE002A8385 /* register-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "register-bg.jpg"; sourceTree = "<group>"; };
 		E4DE76951E1D3DAE002A8385 /* login-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "login-bg.jpg"; sourceTree = "<group>"; };
-		E4DE76981E1D3DF5002A8385 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		E4E297B01E00021500AD484E /* ResponseHeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseHeaderViewController.swift; sourceTree = "<group>"; };
 		E4EC89CF1E129FA10072ACF3 /* STDPingServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STDPingServices.h; sourceTree = "<group>"; };
 		E4EC89D01E129FA10072ACF3 /* STDPingServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STDPingServices.m; sourceTree = "<group>"; };
@@ -499,7 +497,6 @@
 				7782A5F722697497002B6AE2 /* PingViewModel.swift */,
 				BB2BD55A23E9BADB00C869EB /* ProfileViewController.swift */,
 				BB2BD55C23E9BAE600C869EB /* ProfileViewModel.swift */,
-				E4DE76981E1D3DF5002A8385 /* RegisterViewController.swift */,
 				E4F16F611E4B685F00C17DA4 /* ResetViewController.swift */,
 				BBADABF62317F7DD00995AD2 /* SettingsViewController.swift */,
 				E42A713C214961780070D8FC /* SettingsViewModel.swift */,
@@ -946,7 +943,6 @@
 				E49F680421495E3300646892 /* ProjectFlow.swift in Sources */,
 				BBFA15B2240E7B1C00AD7294 /* SigninTextField.swift in Sources */,
 				77055F5122B75598001F140D /* IPAddressViewModel.swift in Sources */,
-				E4DE76991E1D3DF5002A8385 /* RegisterViewController.swift in Sources */,
 				BBFA15AF240E7ACC00AD7294 /* KeyboardViewModel.swift in Sources */,
 				E4712ED81E55FC71002FF8E1 /* ProjectNameViewController.swift in Sources */,
 				77A53082216708F60008CC56 /* DetailViewModel.swift in Sources */,
