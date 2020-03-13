@@ -136,7 +136,6 @@
 		E4E297B11E00021500AD484E /* ResponseHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E297B01E00021500AD484E /* ResponseHeaderViewController.swift */; };
 		E4EC89D21E129FA10072ACF3 /* STDPingServices.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EC89D01E129FA10072ACF3 /* STDPingServices.m */; };
 		E4EC89D71E12A4C70072ACF3 /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EC89D61E12A4C70072ACF3 /* SimplePing.m */; };
-		E4F16F621E4B685F00C17DA4 /* ResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F16F611E4B685F00C17DA4 /* ResetViewController.swift */; };
 		E4F95CD61E15685A005A0004 /* WhoisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F95CD51E15685A005A0004 /* WhoisViewController.swift */; };
 		E4F95CD81E1572FD005A0004 /* whois.css in Resources */ = {isa = PBXBuildFile; fileRef = E4F95CD71E1572FD005A0004 /* whois.css */; };
 /* End PBXBuildFile section */
@@ -308,7 +307,6 @@
 		E4EC89D01E129FA10072ACF3 /* STDPingServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STDPingServices.m; sourceTree = "<group>"; };
 		E4EC89D51E12A4C70072ACF3 /* SimplePing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePing.h; sourceTree = "<group>"; };
 		E4EC89D61E12A4C70072ACF3 /* SimplePing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePing.m; sourceTree = "<group>"; };
-		E4F16F611E4B685F00C17DA4 /* ResetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetViewController.swift; sourceTree = "<group>"; };
 		E4F95CD51E15685A005A0004 /* WhoisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhoisViewController.swift; sourceTree = "<group>"; };
 		E4F95CD71E1572FD005A0004 /* whois.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = whois.css; sourceTree = "<group>"; };
 		EF3A954FCEE5E084F25916CA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -497,7 +495,6 @@
 				7782A5F722697497002B6AE2 /* PingViewModel.swift */,
 				BB2BD55A23E9BADB00C869EB /* ProfileViewController.swift */,
 				BB2BD55C23E9BAE600C869EB /* ProfileViewModel.swift */,
-				E4F16F611E4B685F00C17DA4 /* ResetViewController.swift */,
 				BBADABF62317F7DD00995AD2 /* SettingsViewController.swift */,
 				E42A713C214961780070D8FC /* SettingsViewModel.swift */,
 				E4F95CD71E1572FD005A0004 /* whois.css */,
@@ -994,7 +991,6 @@
 				77CDA184222E12B90063C472 /* RxFlow+Extension.swift in Sources */,
 				77396287225C33EE0091C669 /* ProjectNameViewModel.swift in Sources */,
 				E40986A3215523A3006CCC04 /* UITableView+Extension.swift in Sources */,
-				E4F16F621E4B685F00C17DA4 /* ResetViewController.swift in Sources */,
 				7782A5F822697497002B6AE2 /* PingViewModel.swift in Sources */,
 				E4305A491E34F8E100010B52 /* DaoTemplate.swift in Sources */,
 				77A5307E216708CC0008CC56 /* RawViewModel.swift in Sources */,
@@ -1218,7 +1214,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1.1;
+				MARKETING_VERSION = 3.2;
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = pw.fczm.Httper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1251,7 +1247,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1.1;
+				MARKETING_VERSION = 3.2;
 				PRODUCT_BUNDLE_IDENTIFIER = pw.fczm.Httper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
