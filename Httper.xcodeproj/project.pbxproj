@@ -132,7 +132,6 @@
 		E4D034491E4A0DB300580FAC /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D034481E4A0DB300580FAC /* ProjectViewController.swift */; };
 		E4D161F71ECEA16A009B1DD9 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D161F61ECEA16A009B1DD9 /* UserManager.swift */; };
 		E4D1CAE51DF5C028008DC4F9 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */; };
-		E4DE76911E1D2645002A8385 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DE76901E1D2644002A8385 /* LoginViewController.swift */; };
 		E4DE76961E1D3DAE002A8385 /* register-bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4DE76941E1D3DAE002A8385 /* register-bg.jpg */; };
 		E4DE76971E1D3DAE002A8385 /* login-bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4DE76951E1D3DAE002A8385 /* login-bg.jpg */; };
 		E4DE76991E1D3DF5002A8385 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DE76981E1D3DF5002A8385 /* RegisterViewController.swift */; };
@@ -305,7 +304,6 @@
 		E4D034481E4A0DB300580FAC /* ProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
 		E4D161F61ECEA16A009B1DD9 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
-		E4DE76901E1D2644002A8385 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E4DE76941E1D3DAE002A8385 /* register-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "register-bg.jpg"; sourceTree = "<group>"; };
 		E4DE76951E1D3DAE002A8385 /* login-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "login-bg.jpg"; sourceTree = "<group>"; };
 		E4DE76981E1D3DF5002A8385 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -497,7 +495,6 @@
 				77055F5022B75598001F140D /* IPAddressViewModel.swift */,
 				BBB0DAB6237D5A900074B5AE /* KeyboardAccessoryViewController.swift */,
 				BBB0DAB8237D5A9E0074B5AE /* KeyboardAccessoryViewModel.swift */,
-				E4DE76901E1D2644002A8385 /* LoginViewController.swift */,
 				BB0B7D4C23F05963004AAA5E /* ModifyNameViewController.swift */,
 				BB0B7D4E23F0596D004AAA5E /* ModifyNameViewModel.swift */,
 				E46077601E126948002DE839 /* PingViewController.swift */,
@@ -1066,7 +1063,6 @@
 				77A530742165C3F20008CC56 /* String+Extension.swift in Sources */,
 				7739628B225C46320091C669 /* ProjectIntroductionViewModel.swift in Sources */,
 				E411A30A215286C5004ADBAE /* UIView+Extension.swift in Sources */,
-				E4DE76911E1D2645002A8385 /* LoginViewController.swift in Sources */,
 				E4CA76131E3F7E1A008D7A52 /* AddProjectViewController.swift in Sources */,
 				7799F6BA22C5BB9E00E1AFC4 /* IPAddressManager.swift in Sources */,
 				E49BC0AE1E4226F400241004 /* Request+CoreDataProperties.swift in Sources */,
