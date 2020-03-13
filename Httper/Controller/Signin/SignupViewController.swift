@@ -88,6 +88,9 @@ class SignupViewController: BaseViewController<SignupViewModel> {
     private lazy var emailTextField: UITextField = {
         let textField = SigninTextField()
         textField.placeholder = R.string.localizable.signup_email()
+        textField.textColor = .white
+        textField.autocorrectionType = .no
+        textField.autocapitalizationType = .none
         textField.backgroundColor = UIColor(hexa: 0xffffff44)
         textField.keyboardType = .emailAddress
         textField.textAlignment = .center
@@ -102,6 +105,7 @@ class SignupViewController: BaseViewController<SignupViewModel> {
     private lazy var usernameTextField: UITextField = {
         let textField = SigninTextField()
         textField.placeholder = R.string.localizable.signup_username()
+        textField.textColor = .white
         textField.backgroundColor = UIColor(hexa: 0xffffff44)
         textField.textAlignment = .center
         textField.returnKeyType = .next
@@ -115,8 +119,11 @@ class SignupViewController: BaseViewController<SignupViewModel> {
     private lazy var passwordTextField: UITextField = {
         let textField = SigninTextField()
         textField.placeholder = R.string.localizable.signup_password()
+        textField.textColor = .white
         textField.backgroundColor = UIColor(hexa: 0xffffff44)
         textField.textAlignment = .center
+        textField.autocorrectionType = .no
+        textField.autocapitalizationType = .none
         textField.returnKeyType = .done
         textField.rx.controlEvent(.editingDidBegin).subscribe(onNext: { [unowned self] in
             self.viewModel.openKeyboardForTextField(with: textField.frame)

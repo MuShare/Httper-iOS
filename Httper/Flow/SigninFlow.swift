@@ -14,7 +14,7 @@ enum SigninStep: Step {
     case resetPassword
     case resetPasswordIsComplete
     case signup
-    case signupIsComplete
+    case signupIsComplete(email: String?, password: String?)
 }
 
 class SigninFlow: Flow {
@@ -56,11 +56,18 @@ class SigninFlow: Flow {
             let signupViewController = SignupViewController(viewModel: .init())
             navigationController.pushViewController(signupViewController, animated: true)
             return .viewController(signupViewController)
-        case .signupIsComplete:
+        case .signupIsComplete(let email, let password):
             guard navigationController.topViewController is SignupViewController else {
                 return .none
             }
             navigationController.popViewController(animated: true)
+            guard
+                let signinViewController = navigationController.viewControllers.first as? SigninViewController,
+                let email = email, let password = password
+            else {
+                return .none
+            }
+            signinViewController.viewModel.set(email: email, password: password)
             return .none
         }
     }

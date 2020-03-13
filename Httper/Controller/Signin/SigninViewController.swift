@@ -96,6 +96,8 @@ class SigninViewController: BaseViewController<SigninViewModel> {
         textField.placeholder = "Email"
         textField.textColor = .white
         textField.backgroundColor = UIColor(hexa: 0xffffff44)
+        textField.autocorrectionType = .no
+        textField.autocapitalizationType = .none
         textField.textAlignment = .center
         textField.keyboardType = .emailAddress
         textField.returnKeyType = .next
@@ -111,6 +113,8 @@ class SigninViewController: BaseViewController<SigninViewModel> {
         textField.placeholder = "Password"
         textField.textColor = .white
         textField.backgroundColor = UIColor(hexa: 0xffffff44)
+        textField.autocorrectionType = .no
+        textField.autocapitalizationType = .none
         textField.textAlignment = .center
         textField.isSecureTextEntry = true
         textField.returnKeyType = .done

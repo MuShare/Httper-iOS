@@ -43,7 +43,7 @@ class SignupViewModel: BaseViewModel {
     }
     
     func back() {
-        steps.accept(SigninStep.signupIsComplete)
+        steps.accept(SigninStep.signupIsComplete(email: nil, password: nil))
     }
     
     func submit() {
@@ -55,7 +55,17 @@ class SignupViewModel: BaseViewModel {
             return
         }
         loading.onNext(true)
-        // TODO: signup
+        UserManager.shared.register(email: email, name: username, password: password) { [weak self] success, tip in
+            guard let `self` = self else {
+                return
+            }
+            self.loading.onNext(false)
+            if success {
+                self.steps.accept(SigninStep.signupIsComplete(email: email, password: password))
+            } else {
+                self.alert.onNextTip(tip ?? R.string.localizable.error_unknown())
+            }
+        }
     }
     
     func switchSecureTextEntry() {
