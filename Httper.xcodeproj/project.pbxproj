@@ -117,7 +117,6 @@
 		E49F680421495E3300646892 /* ProjectFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49F680321495E3300646892 /* ProjectFlow.swift */; };
 		E49F680621495EE300646892 /* ProjectsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49F680521495EE300646892 /* ProjectsViewModel.swift */; };
 		E4A37A9D1E018D7500586BA1 /* RequestDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A37A9C1E018D7500586BA1 /* RequestDao.swift */; };
-		E4CA760C1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CA760B1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift */; };
 		E4CA76131E3F7E1A008D7A52 /* AddProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CA76121E3F7E1A008D7A52 /* AddProjectViewController.swift */; };
 		E4D034491E4A0DB300580FAC /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D034481E4A0DB300580FAC /* ProjectViewController.swift */; };
 		E4D161F71ECEA16A009B1DD9 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D161F61ECEA16A009B1DD9 /* UserManager.swift */; };
@@ -126,7 +125,6 @@
 		E4DE76961E1D3DAE002A8385 /* register-bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4DE76941E1D3DAE002A8385 /* register-bg.jpg */; };
 		E4DE76971E1D3DAE002A8385 /* login-bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4DE76951E1D3DAE002A8385 /* login-bg.jpg */; };
 		E4DE76991E1D3DF5002A8385 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DE76981E1D3DF5002A8385 /* RegisterViewController.swift */; };
-		E4E297B11E00021500AD484E /* ResponseHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E297B01E00021500AD484E /* ResponseHeaderViewController.swift */; };
 		E4EC89D21E129FA10072ACF3 /* STDPingServices.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EC89D01E129FA10072ACF3 /* STDPingServices.m */; };
 		E4EC89D71E12A4C70072ACF3 /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EC89D61E12A4C70072ACF3 /* SimplePing.m */; };
 		E4F16F621E4B685F00C17DA4 /* ResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F16F611E4B685F00C17DA4 /* ResetViewController.swift */; };
@@ -279,7 +277,6 @@
 		E49F680321495E3300646892 /* ProjectFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectFlow.swift; sourceTree = "<group>"; };
 		E49F680521495EE300646892 /* ProjectsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsViewModel.swift; sourceTree = "<group>"; };
 		E4A37A9C1E018D7500586BA1 /* RequestDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestDao.swift; sourceTree = "<group>"; };
-		E4CA760B1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderKeysTableViewController.swift; sourceTree = "<group>"; };
 		E4CA76121E3F7E1A008D7A52 /* AddProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProjectViewController.swift; sourceTree = "<group>"; };
 		E4CA76141E3F80B2008D7A52 /* Httper_1.3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Httper_1.3.xcdatamodel; sourceTree = "<group>"; };
 		E4D034481E4A0DB300580FAC /* ProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
@@ -289,7 +286,6 @@
 		E4DE76941E1D3DAE002A8385 /* register-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "register-bg.jpg"; sourceTree = "<group>"; };
 		E4DE76951E1D3DAE002A8385 /* login-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "login-bg.jpg"; sourceTree = "<group>"; };
 		E4DE76981E1D3DF5002A8385 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		E4E297B01E00021500AD484E /* ResponseHeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseHeaderViewController.swift; sourceTree = "<group>"; };
 		E4EC89CF1E129FA10072ACF3 /* STDPingServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STDPingServices.h; sourceTree = "<group>"; };
 		E4EC89D01E129FA10072ACF3 /* STDPingServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STDPingServices.m; sourceTree = "<group>"; };
 		E4EC89D51E12A4C70072ACF3 /* SimplePing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePing.h; sourceTree = "<group>"; };
@@ -406,7 +402,6 @@
 				77F39967215381700016978E /* BodyViewModel.swift */,
 				77A53083216709460008CC56 /* DetailViewController.swift */,
 				77A53081216708F60008CC56 /* DetailViewModel.swift */,
-				E4CA760B1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift */,
 				77F3995E215373600016978E /* KeyValueViewController.swift */,
 				77F39960215373770016978E /* KeyValueViewModel.swift */,
 				E48553311DF9B2AF00A1DB60 /* PrettyViewController.swift */,
@@ -417,7 +412,6 @@
 				77A5307D216708CC0008CC56 /* RawViewModel.swift */,
 				E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */,
 				E49F680121495BA500646892 /* RequestViewModel.swift */,
-				E4E297B01E00021500AD484E /* ResponseHeaderViewController.swift */,
 				E447287A1DF7CE80007D2C8B /* ResultViewController.swift */,
 				77A530712165BEE50008CC56 /* ResultViewModel.swift */,
 				77271CAF21E747D30072E007 /* SaveToProjectViewController.swift */,
@@ -926,7 +920,6 @@
 				77A53080216708E00008CC56 /* PreviewViewModel.swift in Sources */,
 				BB07BE0E22A7FF2A00A03CBD /* Kingfisher+Rx.swift in Sources */,
 				E46ABF521E140F2E00E0C092 /* InternetTool.m in Sources */,
-				E4E297B11E00021500AD484E /* ResponseHeaderViewController.swift in Sources */,
 				BB0B7D4F23F0596D004AAA5E /* ModifyNameViewModel.swift in Sources */,
 				E4A37A9D1E018D7500586BA1 /* RequestDao.swift in Sources */,
 				BBB0DABB237D5BD60074B5AE /* KeyboardAccessoryCollectionViewCell.swift in Sources */,
@@ -948,7 +941,6 @@
 				E4D034491E4A0DB300580FAC /* ProjectViewController.swift in Sources */,
 				77271CB221E747FB0072E007 /* SaveToProjectViewModel.swift in Sources */,
 				77F39961215373770016978E /* KeyValueViewModel.swift in Sources */,
-				E4CA760C1E3CEE07008D7A52 /* HeaderKeysTableViewController.swift in Sources */,
 				E4EC89D71E12A4C70072ACF3 /* SimplePing.m in Sources */,
 				E42A713B214960DA0070D8FC /* SettingsFlow.swift in Sources */,
 				77CDA184222E12B90063C472 /* RxFlow+Extension.swift in Sources */,
@@ -1174,7 +1166,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1.1;
+				MARKETING_VERSION = 3.2;
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = pw.fczm.Httper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1207,7 +1199,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1.1;
+				MARKETING_VERSION = 3.2;
 				PRODUCT_BUNDLE_IDENTIFIER = pw.fczm.Httper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
