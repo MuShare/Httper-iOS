@@ -6,6 +6,8 @@
 //  Copyright © 2020 MuShare. All rights reserved.
 //
 
+import FacebookLogin
+import FBSDKLoginKit
 import RxCocoa
 import RxSwift
 
@@ -85,8 +87,35 @@ class SigninViewModel: BaseViewModel {
         steps.accept(SigninStep.signup)
     }
     
-    func facebookSignin() {
-        
+    func facebookSignin(viewController: UIViewController) {
+        let loginManager = LoginManager()
+        loginManager.logIn(permissions: [.publicProfile], viewController: viewController) { loginResult in
+            switch loginResult {
+            case .failed(let error):
+                if DEBUG {
+                    print("Facebook OAuth login error: \(error)");
+                }
+            case .cancelled:
+                if DEBUG {
+                    print("User cancelled login.");
+                }
+            case .success(_, _, let accessToken):
+                self.loading.onNext(true)
+                
+                UserManager.shared.loginWithFacebook(accessToken.tokenString) { [weak self] (success, tip) in
+                    guard let `self` = self else { return }
+                    self.loading.onNext(false)
+                    if success {
+                        // Sync project and request entities from server
+                        SyncManager.shared.syncAll()
+                        
+                        self.steps.accept(SigninStep.close)
+                    } else {
+                        self.alert.onNextTip(tip ?? R.string.localizable.error_unknown())
+                    }
+                }
+            }
+        }
     }
     
 }

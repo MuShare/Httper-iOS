@@ -159,7 +159,7 @@ class SigninViewController: BaseViewController<SigninViewModel> {
         let button = UIButton()
         button.setImage(R.image.facebook(), for: .normal)
         button.rx.tap.bind { [unowned self] in
-            self.viewModel.facebookSignin()
+            self.viewModel.facebookSignin(viewController: self)
         }.disposed(by: disposeBag)
         return button
     }()
