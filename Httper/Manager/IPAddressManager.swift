@@ -81,7 +81,7 @@ final class IPAddressManager {
     func getIpAddressInfo() -> Observable<IPAddress?> {
         guard
             let reachability = try? Reachability(),
-            reachability.connection != .none
+            reachability.connection != .unavailable
         else {
             return .just(nil)
         }
