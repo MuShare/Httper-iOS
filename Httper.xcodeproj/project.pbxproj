@@ -21,7 +21,6 @@
 		77396289225C43080091C669 /* Observable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77396288225C43080091C669 /* Observable+Extension.swift */; };
 		7739628B225C46320091C669 /* ProjectIntroductionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7739628A225C46320091C669 /* ProjectIntroductionViewModel.swift */; };
 		774C75F020D795EE00DBD9EC /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774C75EF20D795EE00DBD9EC /* R.generated.swift */; };
-		774C75F220D79B9D00DBD9EC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 774C75F120D79B9D00DBD9EC /* Login.storyboard */; };
 		77513CDD216DFDD900929068 /* M80AttributedLabel+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77513CDC216DFDD900929068 /* M80AttributedLabel+Rx.swift */; };
 		7766EA7C217DC4AB001A6260 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7766EA7B217DC4AB001A6260 /* DetailTableViewCell.swift */; };
 		777760D4225D99B20053BA3D /* RxKeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777760D3225D99B20053BA3D /* RxKeyboardViewController.swift */; };
@@ -72,6 +71,16 @@
 		BBB0DAB9237D5A9E0074B5AE /* KeyboardAccessoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB0DAB8237D5A9E0074B5AE /* KeyboardAccessoryViewModel.swift */; };
 		BBB0DABB237D5BD60074B5AE /* KeyboardAccessoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB0DABA237D5BD60074B5AE /* KeyboardAccessoryCollectionViewCell.swift */; };
 		BBC41DE7226DE5F500ABF820 /* UITableView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC41DE6226DE5F500ABF820 /* UITableView+Rx.swift */; };
+		BBFA159B240E3C4C00AD7294 /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFA159A240E3C4C00AD7294 /* SigninViewController.swift */; };
+		BBFA159D240E3C5600AD7294 /* SigninViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFA159C240E3C5600AD7294 /* SigninViewModel.swift */; };
+		BBFA159F240E3C6200AD7294 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFA159E240E3C6200AD7294 /* SignupViewController.swift */; };
+		BBFA15A1240E3C6C00AD7294 /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFA15A0240E3C6C00AD7294 /* SignupViewModel.swift */; };
+		BBFA15A3240E3C7D00AD7294 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFA15A2240E3C7D00AD7294 /* ResetPasswordViewController.swift */; };
+		BBFA15A5240E3C8900AD7294 /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFA15A4240E3C8900AD7294 /* ResetPasswordViewModel.swift */; };
+		BBFA15A7240E3D1200AD7294 /* SigninFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFA15A6240E3D1200AD7294 /* SigninFlow.swift */; };
+		BBFA15AF240E7ACC00AD7294 /* KeyboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFA15AE240E7ACC00AD7294 /* KeyboardViewModel.swift */; };
+		BBFA15B2240E7B1C00AD7294 /* SigninTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFA15B1240E7B1C00AD7294 /* SigninTextField.swift */; };
+		BBFA15B4240E7BCB00AD7294 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFA15B3240E7BCB00AD7294 /* KeyboardViewController.swift */; };
 		E4007EB91DFEE7B7002A87FA /* BodyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4007EB81DFEE7B7002A87FA /* BodyViewController.swift */; };
 		E40986A2215523A3006CCC04 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409869F215523A2006CCC04 /* UIColor+Extension.swift */; };
 		E40986A3215523A3006CCC04 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40986A0215523A2006CCC04 /* UITableView+Extension.swift */; };
@@ -121,13 +130,10 @@
 		E4D034491E4A0DB300580FAC /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D034481E4A0DB300580FAC /* ProjectViewController.swift */; };
 		E4D161F71ECEA16A009B1DD9 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D161F61ECEA16A009B1DD9 /* UserManager.swift */; };
 		E4D1CAE51DF5C028008DC4F9 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */; };
-		E4DE76911E1D2645002A8385 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DE76901E1D2644002A8385 /* LoginViewController.swift */; };
 		E4DE76961E1D3DAE002A8385 /* register-bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4DE76941E1D3DAE002A8385 /* register-bg.jpg */; };
 		E4DE76971E1D3DAE002A8385 /* login-bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4DE76951E1D3DAE002A8385 /* login-bg.jpg */; };
-		E4DE76991E1D3DF5002A8385 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DE76981E1D3DF5002A8385 /* RegisterViewController.swift */; };
 		E4EC89D21E129FA10072ACF3 /* STDPingServices.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EC89D01E129FA10072ACF3 /* STDPingServices.m */; };
 		E4EC89D71E12A4C70072ACF3 /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EC89D61E12A4C70072ACF3 /* SimplePing.m */; };
-		E4F16F621E4B685F00C17DA4 /* ResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F16F611E4B685F00C17DA4 /* ResetViewController.swift */; };
 		E4F95CD61E15685A005A0004 /* WhoisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F95CD51E15685A005A0004 /* WhoisViewController.swift */; };
 		E4F95CD81E1572FD005A0004 /* whois.css in Resources */ = {isa = PBXBuildFile; fileRef = E4F95CD71E1572FD005A0004 /* whois.css */; };
 /* End PBXBuildFile section */
@@ -165,7 +171,6 @@
 		77396288225C43080091C669 /* Observable+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observable+Extension.swift"; sourceTree = "<group>"; };
 		7739628A225C46320091C669 /* ProjectIntroductionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectIntroductionViewModel.swift; sourceTree = "<group>"; };
 		774C75EF20D795EE00DBD9EC /* R.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
-		774C75F120D79B9D00DBD9EC /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		77513CDC216DFDD900929068 /* M80AttributedLabel+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "M80AttributedLabel+Rx.swift"; sourceTree = "<group>"; };
 		7766EA7B217DC4AB001A6260 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		777760D3225D99B20053BA3D /* RxKeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxKeyboardViewController.swift; sourceTree = "<group>"; };
@@ -217,6 +222,16 @@
 		BBB0DAB8237D5A9E0074B5AE /* KeyboardAccessoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAccessoryViewModel.swift; sourceTree = "<group>"; };
 		BBB0DABA237D5BD60074B5AE /* KeyboardAccessoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAccessoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		BBC41DE6226DE5F500ABF820 /* UITableView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Rx.swift"; sourceTree = "<group>"; };
+		BBFA159A240E3C4C00AD7294 /* SigninViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
+		BBFA159C240E3C5600AD7294 /* SigninViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewModel.swift; sourceTree = "<group>"; };
+		BBFA159E240E3C6200AD7294 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		BBFA15A0240E3C6C00AD7294 /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
+		BBFA15A2240E3C7D00AD7294 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		BBFA15A4240E3C8900AD7294 /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
+		BBFA15A6240E3D1200AD7294 /* SigninFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninFlow.swift; sourceTree = "<group>"; };
+		BBFA15AE240E7ACC00AD7294 /* KeyboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewModel.swift; sourceTree = "<group>"; };
+		BBFA15B1240E7B1C00AD7294 /* SigninTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninTextField.swift; sourceTree = "<group>"; };
+		BBFA15B3240E7BCB00AD7294 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		BCFC5AC8A9AC43DEF10C1E58 /* Pods-HttperTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HttperTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HttperTests/Pods-HttperTests.release.xcconfig"; sourceTree = "<group>"; };
 		D75F43BCE0AC330659094777 /* Pods-HttperTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HttperTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HttperTests/Pods-HttperTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E4007EB81DFEE7B7002A87FA /* BodyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodyViewController.swift; sourceTree = "<group>"; };
@@ -282,15 +297,12 @@
 		E4D034481E4A0DB300580FAC /* ProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
 		E4D161F61ECEA16A009B1DD9 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		E4D1CAE41DF5C028008DC4F9 /* RequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
-		E4DE76901E1D2644002A8385 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E4DE76941E1D3DAE002A8385 /* register-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "register-bg.jpg"; sourceTree = "<group>"; };
 		E4DE76951E1D3DAE002A8385 /* login-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "login-bg.jpg"; sourceTree = "<group>"; };
-		E4DE76981E1D3DF5002A8385 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		E4EC89CF1E129FA10072ACF3 /* STDPingServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STDPingServices.h; sourceTree = "<group>"; };
 		E4EC89D01E129FA10072ACF3 /* STDPingServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STDPingServices.m; sourceTree = "<group>"; };
 		E4EC89D51E12A4C70072ACF3 /* SimplePing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePing.h; sourceTree = "<group>"; };
 		E4EC89D61E12A4C70072ACF3 /* SimplePing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePing.m; sourceTree = "<group>"; };
-		E4F16F611E4B685F00C17DA4 /* ResetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetViewController.swift; sourceTree = "<group>"; };
 		E4F95CD51E15685A005A0004 /* WhoisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhoisViewController.swift; sourceTree = "<group>"; };
 		E4F95CD71E1572FD005A0004 /* whois.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = whois.css; sourceTree = "<group>"; };
 		EF3A954FCEE5E084F25916CA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -425,6 +437,7 @@
 			children = (
 				777760D2225D999D0053BA3D /* Protocol */,
 				77271CAE21E744D30072E007 /* Net */,
+				BBFA15B0240E7B1400AD7294 /* View */,
 				77271CAD21E744BA0072E007 /* ViewController */,
 				77CDA185222E130A0063C472 /* AppLog.swift */,
 				E41642D21DF970CE00F0339E /* CommonTool.swift */,
@@ -470,15 +483,12 @@
 				77055F5022B75598001F140D /* IPAddressViewModel.swift */,
 				BBB0DAB6237D5A900074B5AE /* KeyboardAccessoryViewController.swift */,
 				BBB0DAB8237D5A9E0074B5AE /* KeyboardAccessoryViewModel.swift */,
-				E4DE76901E1D2644002A8385 /* LoginViewController.swift */,
 				BB0B7D4C23F05963004AAA5E /* ModifyNameViewController.swift */,
 				BB0B7D4E23F0596D004AAA5E /* ModifyNameViewModel.swift */,
 				E46077601E126948002DE839 /* PingViewController.swift */,
 				7782A5F722697497002B6AE2 /* PingViewModel.swift */,
 				BB2BD55A23E9BADB00C869EB /* ProfileViewController.swift */,
 				BB2BD55C23E9BAE600C869EB /* ProfileViewModel.swift */,
-				E4DE76981E1D3DF5002A8385 /* RegisterViewController.swift */,
-				E4F16F611E4B685F00C17DA4 /* ResetViewController.swift */,
 				BBADABF62317F7DD00995AD2 /* SettingsViewController.swift */,
 				E42A713C214961780070D8FC /* SettingsViewModel.swift */,
 				E4F95CD71E1572FD005A0004 /* whois.css */,
@@ -492,7 +502,6 @@
 			isa = PBXGroup;
 			children = (
 				E48D41631D444F3F0028B84F /* LaunchScreen.storyboard */,
-				774C75F120D79B9D00DBD9EC /* Login.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -526,6 +535,8 @@
 			isa = PBXGroup;
 			children = (
 				777760D3225D99B20053BA3D /* RxKeyboardViewController.swift */,
+				BBFA15AE240E7ACC00AD7294 /* KeyboardViewModel.swift */,
+				BBFA15B3240E7BCB00AD7294 /* KeyboardViewController.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -560,6 +571,27 @@
 				BCFC5AC8A9AC43DEF10C1E58 /* Pods-HttperTests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		BBFA1599240E3C3B00AD7294 /* Signin */ = {
+			isa = PBXGroup;
+			children = (
+				BBFA159A240E3C4C00AD7294 /* SigninViewController.swift */,
+				BBFA159C240E3C5600AD7294 /* SigninViewModel.swift */,
+				BBFA159E240E3C6200AD7294 /* SignupViewController.swift */,
+				BBFA15A0240E3C6C00AD7294 /* SignupViewModel.swift */,
+				BBFA15A2240E3C7D00AD7294 /* ResetPasswordViewController.swift */,
+				BBFA15A4240E3C8900AD7294 /* ResetPasswordViewModel.swift */,
+			);
+			path = Signin;
+			sourceTree = "<group>";
+		};
+		BBFA15B0240E7B1400AD7294 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BBFA15B1240E7B1C00AD7294 /* SigninTextField.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		D8CD94EBE26387F8C13A7757 /* Frameworks */ = {
@@ -641,6 +673,7 @@
 				E49F67FF21495B0E00646892 /* RequestFlow.swift */,
 				E49F680321495E3300646892 /* ProjectFlow.swift */,
 				E42A713A214960DA0070D8FC /* SettingsFlow.swift */,
+				BBFA15A6240E3D1200AD7294 /* SigninFlow.swift */,
 			);
 			path = Flow;
 			sourceTree = "<group>";
@@ -648,6 +681,7 @@
 		E49F67F8214955C300646892 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				BBFA1599240E3C3B00AD7294 /* Signin */,
 				772F8D6B21F6C5EE00858714 /* Main */,
 				774C75E820D7921500DBD9EC /* Project */,
 				774C75DF20D7915100DBD9EC /* Request */,
@@ -778,7 +812,6 @@
 				E4F95CD81E1572FD005A0004 /* whois.css in Resources */,
 				BB44C51522B687380040DCD3 /* GoogleService-Info.plist in Resources */,
 				E48D41621D444F3F0028B84F /* Assets.xcassets in Resources */,
-				774C75F220D79B9D00DBD9EC /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -899,8 +932,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E49F680421495E3300646892 /* ProjectFlow.swift in Sources */,
+				BBFA15B2240E7B1C00AD7294 /* SigninTextField.swift in Sources */,
 				77055F5122B75598001F140D /* IPAddressViewModel.swift in Sources */,
-				E4DE76991E1D3DF5002A8385 /* RegisterViewController.swift in Sources */,
+				BBFA15AF240E7ACC00AD7294 /* KeyboardViewModel.swift in Sources */,
 				E4712ED81E55FC71002FF8E1 /* ProjectNameViewController.swift in Sources */,
 				77A53082216708F60008CC56 /* DetailViewModel.swift in Sources */,
 				77F39964215374370016978E /* KeyValueTableViewCell.swift in Sources */,
@@ -915,6 +949,7 @@
 				77A53084216709460008CC56 /* DetailViewController.swift in Sources */,
 				BBC41DE7226DE5F500ABF820 /* UITableView+Rx.swift in Sources */,
 				77A530782165C6C00008CC56 /* UINavigationBar+Extension.swift in Sources */,
+				BBFA159D240E3C5600AD7294 /* SigninViewModel.swift in Sources */,
 				77A530722165BEE50008CC56 /* ResultViewModel.swift in Sources */,
 				E45D3E861E21296F0002E1F2 /* InternetResponse.swift in Sources */,
 				77A53080216708E00008CC56 /* PreviewViewModel.swift in Sources */,
@@ -925,6 +960,7 @@
 				BBB0DABB237D5BD60074B5AE /* KeyboardAccessoryCollectionViewCell.swift in Sources */,
 				E4D161F71ECEA16A009B1DD9 /* UserManager.swift in Sources */,
 				BBB0DAB9237D5A9E0074B5AE /* KeyboardAccessoryViewModel.swift in Sources */,
+				BBFA15B4240E7BCB00AD7294 /* KeyboardViewController.swift in Sources */,
 				E48D41601D444F3F0028B84F /* Httper.xcdatamodeld in Sources */,
 				77CDA192222E1CB90063C472 /* NVActivityIndicatorViewable+Rx.swift in Sources */,
 				77271CB021E747D30072E007 /* SaveToProjectViewController.swift in Sources */,
@@ -937,6 +973,7 @@
 				E49F67FC214956C900646892 /* MainViewModel.swift in Sources */,
 				E4305A381E2E5FF900010B52 /* Global.swift in Sources */,
 				E4D1CAE51DF5C028008DC4F9 /* RequestViewController.swift in Sources */,
+				BBFA15A5240E3C8900AD7294 /* ResetPasswordViewModel.swift in Sources */,
 				E48553361DF9B2CF00A1DB60 /* PreviewViewController.swift in Sources */,
 				E4D034491E4A0DB300580FAC /* ProjectViewController.swift in Sources */,
 				77271CB221E747FB0072E007 /* SaveToProjectViewModel.swift in Sources */,
@@ -946,12 +983,12 @@
 				77CDA184222E12B90063C472 /* RxFlow+Extension.swift in Sources */,
 				77396287225C33EE0091C669 /* ProjectNameViewModel.swift in Sources */,
 				E40986A3215523A3006CCC04 /* UITableView+Extension.swift in Sources */,
-				E4F16F621E4B685F00C17DA4 /* ResetViewController.swift in Sources */,
 				7782A5F822697497002B6AE2 /* PingViewModel.swift in Sources */,
 				E4305A491E34F8E100010B52 /* DaoTemplate.swift in Sources */,
 				77A5307E216708CC0008CC56 /* RawViewModel.swift in Sources */,
 				77055F5322B76570001F140D /* IPAddressInfoTableViewCell.swift in Sources */,
 				E44B98A720EBDE06004FEF67 /* ProjectsViewController.swift in Sources */,
+				BBFA15A3240E3C7D00AD7294 /* ResetPasswordViewController.swift in Sources */,
 				E40986A4215523A3006CCC04 /* UIViewController+Extension.swift in Sources */,
 				77F3996A215382BA0016978E /* MenuViewCell.swift in Sources */,
 				E4712EDA1E55FC81002FF8E1 /* ProjectIntroductionViewController.swift in Sources */,
@@ -967,6 +1004,7 @@
 				E46CE472214A828B0046BCCA /* MainFlow.swift in Sources */,
 				77CDA18B222E13FE0063C472 /* BaseViewController.swift in Sources */,
 				E4F95CD61E15685A005A0004 /* WhoisViewController.swift in Sources */,
+				BBFA15A1240E3C6C00AD7294 /* SignupViewModel.swift in Sources */,
 				77513CDD216DFDD900929068 /* M80AttributedLabel+Rx.swift in Sources */,
 				774C75F020D795EE00DBD9EC /* R.generated.swift in Sources */,
 				E47FDC601E3861AF00251EEC /* Versions.swift in Sources */,
@@ -982,6 +1020,8 @@
 				E49BC0AB1E4226F400241004 /* Project+CoreDataClass.swift in Sources */,
 				779B06112269A8CE00F5B225 /* UITextField+Rx.swift in Sources */,
 				77D6A7ED2186AA4500A65283 /* DeleteTableViewCell.swift in Sources */,
+				BBFA159B240E3C4C00AD7294 /* SigninViewController.swift in Sources */,
+				BBFA15A7240E3D1200AD7294 /* SigninFlow.swift in Sources */,
 				E4798BDF1E2BC92600DCD4E2 /* EditingViewController.swift in Sources */,
 				E4007EB91DFEE7B7002A87FA /* BodyViewController.swift in Sources */,
 				77F39968215381700016978E /* BodyViewModel.swift in Sources */,
@@ -1003,11 +1043,11 @@
 				77A530742165C3F20008CC56 /* String+Extension.swift in Sources */,
 				7739628B225C46320091C669 /* ProjectIntroductionViewModel.swift in Sources */,
 				E411A30A215286C5004ADBAE /* UIView+Extension.swift in Sources */,
-				E4DE76911E1D2645002A8385 /* LoginViewController.swift in Sources */,
 				E4CA76131E3F7E1A008D7A52 /* AddProjectViewController.swift in Sources */,
 				7799F6BA22C5BB9E00E1AFC4 /* IPAddressManager.swift in Sources */,
 				E49BC0AE1E4226F400241004 /* Request+CoreDataProperties.swift in Sources */,
 				77055F5522B76595001F140D /* IPAddressHeadTableViewCell.swift in Sources */,
+				BBFA159F240E3C6200AD7294 /* SignupViewController.swift in Sources */,
 				E447287B1DF7CE80007D2C8B /* ResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1158,7 +1198,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 6ANM44X2CJ;
 				INFOPLIST_FILE = Httper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1187,7 +1227,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 6ANM44X2CJ;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",

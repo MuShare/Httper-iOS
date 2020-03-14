@@ -82,4 +82,10 @@ extension Reactive where Base: UITextField {
         return ControlEvent(events: source)
     }
     
+    var isSecureTextEntry: Binder<Bool> {
+        Binder(base) { textField, isSecureTextEntry in
+            textField.isSecureTextEntry = isSecureTextEntry
+        }
+    }
+
 }

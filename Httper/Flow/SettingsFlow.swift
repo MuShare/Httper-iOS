@@ -41,10 +41,11 @@ class SettingsFlow: Flow {
         case .start:
             return .viewController(settingsViewController)
         case .signin:
-            if let loginViewController = R.storyboard.login().instantiateInitialViewController() {
-                settingsViewController.present(loginViewController, animated: true)
+            let signinFlow = SigninFlow()
+            Flows.whenReady(flow1: signinFlow) {
+                self.settingsViewController.present($0, animated: true)
             }
-            return .none
+            return .flow(signinFlow, with: SigninStep.start)
         case .profile:
             let profileViewController = ProfileViewController(viewModel: .init())
             navigationController?.pushViewController(profileViewController, animated: true)
