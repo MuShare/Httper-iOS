@@ -10,7 +10,7 @@ import Kingfisher
 import RxCocoa
 import RxSwift
 
-extension Reactive where Base == KingfisherWrapper<ImageView> {
+extension Reactive where Base == KingfisherWrapper<KFCrossPlatformImageView> {
     
     var image: Binder<URL?> {
         return Binder(base.base) { imageView, image in
