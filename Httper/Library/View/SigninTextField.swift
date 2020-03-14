@@ -27,7 +27,7 @@ class SigninTextField: UITextField {
             attributedPlaceholder = NSAttributedString(
                 string: placeholder,
                 attributes: [
-                    .foregroundColor: UIColor.lightGray,
+                    .foregroundColor: UIColor.lightText,
                     .paragraphStyle: {
                         let style = NSMutableParagraphStyle()
                         style.alignment = .center
