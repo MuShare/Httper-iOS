@@ -49,144 +49,144 @@ Upgrade = "Ask the server to upgrade to another protocol.";
 Via = "Informs the server of proxies through which the request was sent.";
 Warning = "A general warning about possible problems with the entity body.";
 
-common_tip_name = "Tip";
-common_cancel_name = "Cancel";
-common_yes_name = "Yes";
+common_tip_name = "提示";
+common_cancel_name = "取消";
+common_yes_name = "是";
 common_ok_name = "OK";
-common_clear_name = "Clear";
-common_no_internet_connection = "No Internet connection!";
-common_token_error = "User authorization is invalide. Please sign in again!";
-common_error_unknown = "Unknown error.";
+common_clear_name = "清除";
+common_no_internet_connection = "网络未连接";
+common_token_error = "用户验证失败，请重试。";
+common_error_unknown = "未知错误";
 
 tab_request_title = "Httper";
-tab_project_title = "Projects";
-tab_request = "Request";
-tab_project = "Project";
-tab_settings = "Settings";
-tab_request_clear = "Clear";
+tab_project_title = "工程";
+tab_request = "请求";
+tab_project = "工程";
+tab_settings = "设置";
+tab_request_clear = "清除";
 
 // UserManager
-user_email_registered = "This email has been registered.";
-user_email_not_exist = "This email is not existed.";
-user_password_wrong = "Your password is wrong, check and try again.";
-user_facebook_oauth_error = "Facebook OAuth login failed, plasese try Again!";
+user_email_registered = "此邮箱地址已被注册";
+user_email_not_exist = "邮箱地址不存在";
+user_password_wrong = "密码错误，请检查后重试。";
+user_facebook_oauth_error = "Facebook验证失败，请检查后重试。";
 
 // AddProjectViewController
-add_project_name_title = "Project Name";
-add_project_name_placeholder = "Your project name";
-add_project_privilege_title = "Privilege";
-add_project_privilege_select = "Select Privilege";
-add_project_introduction_title = "Introduction";
+add_project_name_title = "工程名";
+add_project_name_placeholder = "工程名";
+add_project_privilege_title = "权限";
+add_project_privilege_select = "选择权限";
+add_project_introduction_title = "简介";
 
 // ProjectNameViewController
-project_name_placeholder = "New project name";
-project_delete = "Delete project";
-project_delete_message = "Are you sure to delete project ";
+project_name_placeholder = "新工程名";
+project_delete = "删除工程";
+project_delete_message = "确定删除工程？";
 
 // RequestViewController
-request_title = "Request";
-request_menu_parameters = "Parameters";
-request_menu_headers = "Headers";
-request_menu_body = "Body";
-request_method = "Request Method";
-request_methods = "Request Methods";
-request_url_placeholder = "request URL";
-request_send_request = "Send Request";
-request_save_to_project = "Save to Project";
-request_clear_title = "Clear Request";
-request_clear_message = "Are you sure to clear this request?";
-request_url_empty = "Request URL cannot be empty!";
+request_title = "请求";
+request_menu_parameters = "参数";
+request_menu_headers = "报头";
+request_menu_body = "主体";
+request_method = "请求方法";
+request_methods = "请求方法";
+request_url_placeholder = "请求URL";
+request_send_request = "发送请求";
+request_save_to_project = "保存到工程";
+request_clear_title = "清除请求参数";
+request_clear_message = "确定清除此请求？";
+request_url_empty = "请求URL不能为空！";
 
 // ResultViewController
-result_menu_pretty = "Pretty";
-result_menu_raw = "Raw";
-result_menu_preview = "Preview";
-result_menu_detail = "Detail";
-result_nothing = "Nothing from this url.";
+result_menu_pretty = "高亮";
+result_menu_raw = "原文";
+result_menu_preview = "预览";
+result_menu_detail = "详情";
+result_nothing = "此URL下无内容。";
 
 // DetailViewController
-detail_request_url = "Request URL";
-detail_status_code = "Status Code";
+detail_request_url = "请求URL";
+detail_status_code = "状态码";
 
 // KeyValueViewController
-key_value_key_placeholder = "key";
-key_value_value_placeholder = "value";
+key_value_key_placeholder = "名称";
+key_value_value_placeholder = "值";
 
 // SaveToProjectViewController
-save_to_project_title = "Save to Project";
+save_to_project_title = "保存到工程";
 
 // IPAddressViewController
-ip_adress_title = "My IP Address";
-ip_address_unknown = "unknown";
-ip_address_wifi = "WiFi Network";
-ip_address_wifi_local_ip = "Local IP";
-ip_address_wifi_broadcast = "Broadcast";
-ip_address_wifi_gateway = "Gateway";
-ip_address_wifi_netmask = "Netmask";
-ip_address_cellular = "Cellular Network";
-ip_address_cellular_local_ip = "Local IP";
-ip_address_cellular_netmask = "Netmask";
-ip_address_internet = "Internet";
-ip_address_public_ip = "Public IP";
-ip_address_public_city = "City";
-ip_address_public_region = "Region";
-ip_address_public_country = "Country";
-ip_address_public_post_code = "Post Code";
-ip_address_public_time_zone = "Time Zone";
-ip_address_public_latitude = "Latitude";
-ip_address_public_longitude = "Longitude";
+ip_adress_title = "我的IP地址";
+ip_address_unknown = "未知";
+ip_address_wifi = "WiFi网络";
+ip_address_wifi_local_ip = "本地IP";
+ip_address_wifi_broadcast = "广播";
+ip_address_wifi_gateway = "网关";
+ip_address_wifi_netmask = "子网掩码";
+ip_address_cellular = "蜂窝移动网络";
+ip_address_cellular_local_ip = "移动网络IP";
+ip_address_cellular_netmask = "移动网络子网掩码";
+ip_address_internet = "英特网";
+ip_address_public_ip = "公网IP";
+ip_address_public_city = "城市";
+ip_address_public_region = "地区";
+ip_address_public_country = "国家";
+ip_address_public_post_code = "邮政编码";
+ip_address_public_time_zone = "时区";
+ip_address_public_latitude = "纬度";
+ip_address_public_longitude = "经度";
 
 // KeyboardAccessoryViewController
-keyboard_accessory_title = "Customized Keyboard Accessory";
-keyboard_accessory_illegal_character = "Please input a legal character!";
-keyboard_accessory_delete_character = "Are you sure to delete the character '%@'?";
-keyboard_accessory_add_character = "Add Customized Character";
+keyboard_accessory_title = "自定义键盘控件";
+keyboard_accessory_illegal_character = "请输入合法字符!";
+keyboard_accessory_delete_character = "确定删除字符'%@'?";
+keyboard_accessory_add_character = "添加自定义字符";
 
 // ModifyNameViewController
-modify_name_title = "Modify Name";
-modify_name_empty_name = "Name is empty.";
+modify_name_title = "修改用户名";
+modify_name_empty_name = "用户名为空";
 
 // PingViewController
 ping_title = "Ping";
-ping_address_placeholder = "Domain Name";
-ping_result = "Ping Result";
+ping_address_placeholder = "域名";
+ping_result = "结果";
 
 // ProfileViewController
-profile_title = "Profile";
-profile_sign_out = "Sign out";
+profile_title = "个人信息";
+profile_sign_out = "退出登录";
 
 // SettingsViewController
-settings_selection_keyboard = "Keyboard Accessory";
+settings_selection_keyboard = "键盘控件";
 settings_selection_ping = "Ping";
-settings_selection_whois = "Whois";
-settings_selection_ip = "What is my IP address";
-settings_selection_appstore = "Rate me on App Store";
-settings_selection_github = "Give me a star on Github";
-ssettings_selection_about = "About";
+settings_selection_whois = "域名所有者查询";
+settings_selection_ip = "我的IP地址";
+settings_selection_appstore = "请给我一个好评~";
+settings_selection_github = "请在GitHub上为我点星~";
+ssettings_selection_about = "关于";
 
 // WhoisViewController
-whois_title = "Whois";
-whois_address_placeholder = "Domain Name";
+whois_title = "域名所有者查询";
+whois_address_placeholder = "域名";
 
 // SigninViewController
-sign_in_title = "Welcome to Httper Cloud";
-sign_in_email_placeholder = "Email";
-sign_in_password_placeholder = "Password";
-sign_in_submit = "Sign in";
-sign_in_forgot_password = "Forget Password";
-sign_in_sign_up = "Sign up now!";
-sign_in_facebook = "Sign in with Facebook";
+sign_in_title = "欢迎登陆Httper";
+sign_in_email_placeholder = "邮箱";
+sign_in_password_placeholder = "密码";
+sign_in_submit = "登录";
+sign_in_forgot_password = "忘记密码";
+sign_in_sign_up = "立即注册";
+sign_in_facebook = "Facebook登录";
 
 // SignUpViewControlelr
-sign_up_title = "Sign up with email";
-sign_up_email_placeholder = "Email Address";
-sign_up_username_placeholder = "Username";
-sign_up_password_placeholder = "Password";
-sign_up_submit = "Submit";
+sign_up_title = "邮箱注册";
+sign_up_email_placeholder = "邮箱地址";
+sign_up_username_placeholder = "用户名";
+sign_up_password_placeholder = "密码";
+sign_up_submit = "提交";
 
 // ResetPasswordViewController
-reset_password_email_placeholder = "Email";
-reset_password_with_email="Reset password with email";
-reset_password_send_an_email="Send an email";
-reset_password_failed = "Send email failed, try again later.";
-reset_password_check_email = "We have sent a mail to reset password to you, please check your email";
+reset_password_email_placeholder = "邮箱";
+reset_password_with_email="重置密码";
+reset_password_send_an_email="发送邮件";
+reset_password_failed = "邮件发送失败，请重试。";
+reset_password_check_email = "邮件已发送，请查收。";
