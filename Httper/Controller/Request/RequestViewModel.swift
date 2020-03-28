@@ -131,7 +131,7 @@ class RequestViewModel: BaseViewModel {
     
     func sendRequest() {
         guard let url = url.value, !url.isEmpty else {
-            alert.onNext(.warning(R.string.localizable.url_empty()))
+            alert.onNext(.warning(R.string.localizable.request_url_empty()))
             return
         }
         steps.accept(RequestStep.result(requestData))
@@ -139,7 +139,7 @@ class RequestViewModel: BaseViewModel {
     
     func saveToProject() {
         guard let url = url.value, !url.isEmpty else {
-            alert.onNext(.warning(R.string.localizable.url_empty()))
+            alert.onNext(.warning(R.string.localizable.request_url_empty()))
             return
         }
         steps.accept(RequestStep.save(requestData))
