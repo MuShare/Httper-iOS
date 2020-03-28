@@ -8,7 +8,7 @@
 
 import RxDataSourcesSingleSection
 
-fileprivate struct Const {
+private struct Const {
     static let margin = 20
     
     struct title {

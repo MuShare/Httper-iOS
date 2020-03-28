@@ -414,6 +414,7 @@
 			children = (
 				E4007EB81DFEE7B7002A87FA /* BodyViewController.swift */,
 				77F39967215381700016978E /* BodyViewModel.swift */,
+				7766EA7B217DC4AB001A6260 /* DetailTableViewCell.swift */,
 				77A53083216709460008CC56 /* DetailViewController.swift */,
 				77A53081216708F60008CC56 /* DetailViewModel.swift */,
 				77F39963215374370016978E /* KeyValueTableViewCell.swift */,
@@ -484,12 +485,17 @@
 		774C75EA20D7927F00DBD9EC /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				77055F5422B76595001F140D /* IPAddressHeadTableViewCell.swift */,
+				77055F5222B76570001F140D /* IPAddressInfoTableViewCell.swift */,
+				7799F6BB22C5F55F00E1AFC4 /* IPAddressMapTableViewCell.swift */,
 				77055F4E22B75557001F140D /* IPAddressViewController.swift */,
 				77055F5022B75598001F140D /* IPAddressViewModel.swift */,
+				BBB0DABA237D5BD60074B5AE /* KeyboardAccessoryCollectionViewCell.swift */,
 				BBB0DAB6237D5A900074B5AE /* KeyboardAccessoryViewController.swift */,
 				BBB0DAB8237D5A9E0074B5AE /* KeyboardAccessoryViewModel.swift */,
 				BB0B7D4C23F05963004AAA5E /* ModifyNameViewController.swift */,
 				BB0B7D4E23F0596D004AAA5E /* ModifyNameViewModel.swift */,
+				7782A5F9226977E4002B6AE2 /* PingTableViewCell.swift */,
 				E46077601E126948002DE839 /* PingViewController.swift */,
 				7782A5F722697497002B6AE2 /* PingViewModel.swift */,
 				BB2BD55A23E9BADB00C869EB /* ProfileViewController.swift */,
@@ -549,13 +555,7 @@
 		77F399622153741F0016978E /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				7766EA7B217DC4AB001A6260 /* DetailTableViewCell.swift */,
-				77055F5422B76595001F140D /* IPAddressHeadTableViewCell.swift */,
-				77055F5222B76570001F140D /* IPAddressInfoTableViewCell.swift */,
-				7799F6BB22C5F55F00E1AFC4 /* IPAddressMapTableViewCell.swift */,
-				BBB0DABA237D5BD60074B5AE /* KeyboardAccessoryCollectionViewCell.swift */,
 				77F39969215382BA0016978E /* MenuViewCell.swift */,
-				7782A5F9226977E4002B6AE2 /* PingTableViewCell.swift */,
 				77271CB321E74DE60072E007 /* ProjectTableViewCell.swift */,
 				77BBBCBA2181585C00500A3A /* SelectionTableViewCell.swift */,
 			);
