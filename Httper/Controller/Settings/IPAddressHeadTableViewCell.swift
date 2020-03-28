@@ -7,7 +7,6 @@
 //
 
 import RxDataSourcesSingleSection
-import UIKit
 
 private struct Const {
     

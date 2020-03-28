@@ -1,19 +1,18 @@
 //
-//  DeleteTableViewCell.swift
+//  ProjectDeleteTableViewCell.swift
 //  Httper
 //
 //  Created by Meng Li on 2018/10/29.
 //  Copyright © 2018 limeng. All rights reserved.
 //
 
-import UIKit
 import Reusable
 
-class DeleteTableViewCell: UITableViewCell, Reusable {
+class ProjectDeleteTableViewCell: UITableViewCell, Reusable {
     
     private lazy var deleteLabel: UILabel = {
         let label = UILabel()
-        label.text = "Delete"
+        label.text = R.string.localizable.project_delete()
         label.textColor = .red
         label.textAlignment = .center
         return label

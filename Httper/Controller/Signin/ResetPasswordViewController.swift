@@ -69,7 +69,7 @@ class ResetPasswordViewController: BaseViewController<ResetPasswordViewModel> {
     
     private lazy var emailTextField: UITextField = {
         let textField = SigninTextField()
-        textField.placeholder = "Email"
+        textField.placeholder = R.string.localizable.reset_password_email_placeholder()
         textField.textColor = .white
         textField.backgroundColor = UIColor(hexa: 0xffffff44)
         textField.autocorrectionType = .no

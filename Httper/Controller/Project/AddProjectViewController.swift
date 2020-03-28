@@ -12,13 +12,13 @@ import Eureka
 class AddProjectViewController: BaseViewController<AddProjectViewModel> {
     
     private lazy var projectNameTextRow = TextRow() {
-        $0.title = "Project Name"
-        $0.placeholder = "Your project name"
+        $0.title = R.string.localizable.add_project_name_title()
+        $0.placeholder = R.string.localizable.add_project_name_placeholder()
     }
     
     private lazy var privilegePickerInputRow = ActionSheetRow<String>() {
-        $0.title = "Privilege"
-        $0.selectorTitle = "Select Privilege"
+        $0.title = R.string.localizable.add_project_privilege_title()
+        $0.selectorTitle = R.string.localizable.add_project_privilege_select()
         $0.options = ["Private"]
         $0.value = "Private"
     }.onPresent { from, to in
@@ -26,7 +26,7 @@ class AddProjectViewController: BaseViewController<AddProjectViewModel> {
     }
     
     private lazy var introductionTextAreaRow = TextAreaRow("notes") {
-        $0.placeholder = "Introduction"
+        $0.placeholder = R.string.localizable.add_project_introduction_title()
         $0.textAreaHeight = .dynamic(initialTextViewHeight: 200)
     }
     
@@ -61,10 +61,12 @@ class AddProjectViewController: BaseViewController<AddProjectViewModel> {
         view.addSubview(formViewController.view)
         formViewController.didMove(toParent: self)
         
-        viewModel.title ~> rx.title ~ disposeBag
-        viewModel.validate ~> saveBarButtonItem.rx.isEnabled ~ disposeBag
-        viewModel.projectName <~> projectNameTextRow.rx.value ~ disposeBag
-        viewModel.introduction <~> introductionTextAreaRow.rx.value ~ disposeBag
+        disposeBag ~ [
+            viewModel.title ~> rx.title,
+            viewModel.validate ~> saveBarButtonItem.rx.isEnabled,
+            viewModel.projectName <~> projectNameTextRow.rx.value,
+            viewModel.introduction <~> introductionTextAreaRow.rx.value
+        ]
     }
 
 }

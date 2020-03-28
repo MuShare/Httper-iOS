@@ -6,7 +6,6 @@
 //  Copyright © 2018 limeng. All rights reserved.
 //
 
-import UIKit
 import PagingKit
 
 class MenuViewCell: PagingMenuViewCell {

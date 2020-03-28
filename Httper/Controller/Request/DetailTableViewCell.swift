@@ -6,10 +6,9 @@
 //  Copyright © 2018 limeng. All rights reserved.
 //
 
-import UIKit
 import RxDataSourcesSingleSection
 
-fileprivate struct Const {
+private struct Const {
     static let margin = 20
     
     struct title {

@@ -21,6 +21,6 @@ extension UITableView {
     
     func hideFooterView() {
         tableFooterView = UIView(frame: CGRect.zero)
-        tableFooterView?.backgroundColor = UIColor.clear
+        tableFooterView?.backgroundColor = .clear
     }
 }

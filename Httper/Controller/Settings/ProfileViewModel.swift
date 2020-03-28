@@ -15,7 +15,7 @@ class ProfileViewModel: BaseViewModel {
     private let reloadRelay = PublishRelay<Void>()
     
     var title: Observable<String> {
-        .just("Profile")
+        .just(R.string.localizable.profile_title())
     }
     
     var section: Observable<SingleSection<Selection>> {
@@ -36,11 +36,11 @@ class ProfileViewModel: BaseViewModel {
     func logout(sourceView: UIView) {
         actionSheet.onNextActions(
             sourceView: sourceView,
-            .destructive(title: R.string.localizable.sign_out_title(), action: { [unowned self] in
+            .destructive(title: R.string.localizable.profile_sign_out(), action: { [unowned self] in
                 UserManager.shared.logout()
                 self.steps.accept(SettingsStep.profileIsComplete)
             }),
-            .customCancel(title: R.string.localizable.cancel_name())
+            .customCancel(title: R.string.localizable.common_cancel_name())
         )
     }
     

@@ -63,7 +63,7 @@ class SignupViewModel: BaseViewModel {
             if success {
                 self.steps.accept(SigninStep.signupIsComplete(email: email, password: password))
             } else {
-                self.alert.onNextTip(tip ?? R.string.localizable.error_unknown())
+                self.alert.onNextTip(tip ?? R.string.localizable.common_error_unknown())
             }
         }
     }

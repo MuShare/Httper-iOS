@@ -14,7 +14,7 @@ class ModifyNameViewModel: BaseViewModel {
     let name = BehaviorRelay<String?>(value: UserManager.shared.name)
     
     var title: Observable<String> {
-        .just("Modify Name")
+        .just(R.string.localizable.modify_name_title())
     }
     
     var isSaveEnabled: Observable<Bool> {
@@ -28,7 +28,7 @@ class ModifyNameViewModel: BaseViewModel {
     
     func save() {
         guard let name = name.value, !name.isEmpty else {
-            alert.onNextError("Name is empty.")
+            alert.onNextError(R.string.localizable.modify_name_empty_name())
             return
         }
         loading.onNext(true)
@@ -38,7 +38,7 @@ class ModifyNameViewModel: BaseViewModel {
             }
             self.loading.onNext(false)
             guard success else {
-                self.alert.onNextTip(tip ?? R.string.localizable.error_unknown())
+                self.alert.onNextTip(tip ?? R.string.localizable.common_error_unknown())
                 return
             }
             self.steps.accept(SettingsStep.modifyNameIsComplete)

@@ -79,7 +79,7 @@ class SignupViewController: BaseViewController<SignupViewModel> {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = R.string.localizable.signup_title()
+        label.text = R.string.localizable.sign_up_title()
         label.textColor = .white
         label.font = .systemFont(ofSize: 20, weight: .semibold)
         return label
@@ -87,7 +87,7 @@ class SignupViewController: BaseViewController<SignupViewModel> {
     
     private lazy var emailTextField: UITextField = {
         let textField = SigninTextField()
-        textField.placeholder = R.string.localizable.signup_email()
+        textField.placeholder = R.string.localizable.sign_up_email_placeholder()
         textField.textColor = .white
         textField.autocorrectionType = .no
         textField.autocapitalizationType = .none
@@ -104,7 +104,7 @@ class SignupViewController: BaseViewController<SignupViewModel> {
     
     private lazy var usernameTextField: UITextField = {
         let textField = SigninTextField()
-        textField.placeholder = R.string.localizable.signup_username()
+        textField.placeholder = R.string.localizable.sign_up_username_placeholder()
         textField.textColor = .white
         textField.backgroundColor = UIColor(hexa: 0xffffff44)
         textField.textAlignment = .center
@@ -118,7 +118,7 @@ class SignupViewController: BaseViewController<SignupViewModel> {
 
     private lazy var passwordTextField: UITextField = {
         let textField = SigninTextField()
-        textField.placeholder = R.string.localizable.signup_password()
+        textField.placeholder = R.string.localizable.sign_up_password_placeholder()
         textField.textColor = .white
         textField.backgroundColor = UIColor(hexa: 0xffffff44)
         textField.textAlignment = .center
@@ -141,7 +141,7 @@ class SignupViewController: BaseViewController<SignupViewModel> {
     
     private lazy var submitButton: UIButton = {
         let button = UIButton()
-        button.setTitle(R.string.localizable.signup_submit(), for: .normal)
+        button.setTitle(R.string.localizable.sign_up_submit(), for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.setTitleColor(.lightGray, for: .highlighted)
         button.setTitleColor(.lightGray, for: .disabled)

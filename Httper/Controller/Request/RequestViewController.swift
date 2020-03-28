@@ -6,7 +6,6 @@
 //  Copyright © 2016 MuShare Group. All rights reserved.
 //
 
-import UIKit
 import Alamofire
 import MGKeyboardAccessory
 import MGSelector
@@ -42,14 +41,18 @@ fileprivate struct Const {
         static let cell = "menuCell"
     }
 
-    static let menus = ["Parameters", "Headers", "Body"]
+    static let menus = [
+        R.string.localizable.request_menu_parameters(),
+        R.string.localizable.request_menu_headers(),
+        R.string.localizable.request_menu_body()
+    ]
 }
 
 class RequestViewController: BaseViewController<RequestViewModel>, RxKeyboardViewController {
     
     private lazy var requestMethodLabel: UILabel = {
         let label = UILabel()
-        label.text = "Request Method"
+        label.text = R.string.localizable.request_method()
         label.textColor = .white
         return label
     }()
@@ -62,7 +65,7 @@ class RequestViewController: BaseViewController<RequestViewModel>, RxKeyboardVie
         button.setTitleColor(.lightGray, for: .highlighted)
         button.rx.tap.bind { [unowned self] in
             let options = RequestConst.methods.map { DetailOption(key: $0) }
-            self.openSelector(title: "Request Methods", options: options, theme: .dark)
+            self.openSelector(title: R.string.localizable.request_methods(), options: options, theme: .dark)
         }.disposed(by: disposeBag)
         return button
     }()
@@ -98,16 +101,17 @@ class RequestViewController: BaseViewController<RequestViewModel>, RxKeyboardVie
         let textField = UITextField()
         textField.autocorrectionType = .no
         textField.autocapitalizationType = .none
-        textField.attributedPlaceholder = NSAttributedString(string: "request URL", attributes: [
-            .foregroundColor: UIColor.lightGray
-        ])
+        textField.attributedPlaceholder = NSAttributedString(
+            string: R.string.localizable.request_url_placeholder(),
+            attributes: [.foregroundColor: UIColor.lightGray]
+        )
         textField.textColor = .white
         return textField
     }()
     
     private lazy var sendButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Send Request", for: .normal)
+        button.setTitle(R.string.localizable.request_send_request(), for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.layer.borderColor = UIColor.lightGray.cgColor
         button.layer.borderWidth = 1
@@ -120,7 +124,7 @@ class RequestViewController: BaseViewController<RequestViewModel>, RxKeyboardVie
     
     private lazy var saveButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Save to Project", for: .normal)
+        button.setTitle(R.string.localizable.request_save_to_project(), for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.layer.borderColor = UIColor.lightGray.cgColor
         button.layer.borderWidth = 1

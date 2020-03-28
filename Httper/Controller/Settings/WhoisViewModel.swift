@@ -35,7 +35,7 @@ class WhoisViewModel: BaseViewModel {
     let domain = BehaviorRelay<String?>(value: nil)
     
     var title: Observable<String> {
-        return .just("Whois")
+        return .just(R.string.localizable.whois_title())
     }
     
     var isSearchBarButtonItemEnabled: Observable<Bool> {
@@ -54,9 +54,10 @@ class WhoisViewModel: BaseViewModel {
     var html: Observable<String> {
         return htmlSubject.asObservable()
     }
+    
     func search() {
         guard reachability?.connection != .unavailable else {
-            alert.onNextTip(R.string.localizable.not_internet_connection())
+            alert.onNextTip(R.string.localizable.common_no_internet_connection())
             return
         }
         guard let domain = domain.value, !domain.isEmpty else {

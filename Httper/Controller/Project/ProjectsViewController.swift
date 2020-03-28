@@ -6,7 +6,6 @@
 //  Copyright © 2018 MuShare Group. All rights reserved.
 //
 
-import UIKit
 import ESPullToRefresh
 import RxDataSourcesSingleSection
 
@@ -40,7 +39,9 @@ class ProjectsViewController: BaseViewController<ProjectsViewModel> {
         view.addSubview(tableView)
         createConstraints()
         
-        viewModel.projectSection.bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+        disposeBag ~ [
+            viewModel.projectSection ~> tableView.rx.items(dataSource: dataSource)
+        ]
     }
     
     override func viewWillAppear(_ animated: Bool) {

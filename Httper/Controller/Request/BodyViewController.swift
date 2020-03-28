@@ -6,11 +6,10 @@
 //  Copyright © 2016 MuShare Group. All rights reserved.
 //
 
-import UIKit
 import RxSwift
 import MGKeyboardAccessory
 
-fileprivate struct Const {
+private struct Const {
     struct rawBody {
         static let margin = 10
     }

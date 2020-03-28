@@ -1,19 +1,18 @@
 //
-//  RequestTableViewCell.swift
+//  ProjectRequestTableViewCell.swift
 //  Httper
 //
 //  Created by Meng Li on 2018/10/25.
 //  Copyright © 2018 limeng. All rights reserved.
 //
 
-import UIKit
 import Reusable
 
 fileprivate struct Const {
     static let margin = 17
 }
 
-class RequestTableViewCell: UITableViewCell, Reusable {
+class ProjectRequestTableViewCell: UITableViewCell, Reusable {
     
     private lazy var urlLabel: UILabel = {
         let label = UILabel()

@@ -37,22 +37,6 @@ extension UIViewController {
         return bottom
     }
     
-    func showTip(_ tip: String) {
-        showAlert(title: R.string.localizable.tip_name(),
-                  content: tip)
-    }
-
-    func showAlert(title: String, content: String) {
-        DispatchQueue.main.async { [weak self] in
-            let alertController = UIAlertController(title: title,
-                                                    message: content,
-                                                    preferredStyle: .alert)
-            alertController.addAction(UIAlertAction.init(title: R.string.localizable.ok_name(), style: .cancel))
-            self?.present(alertController, animated: true)
-        }
-        
-    }
-
     func replaceBarButtonItemWithActivityIndicator() {
         let activityIndicatorView = UIActivityIndicatorView.init(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
         activityIndicatorView.startAnimating()

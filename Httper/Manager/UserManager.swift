@@ -157,9 +157,9 @@ final class UserManager {
             } else {
                 switch response.errorCode() {
                 case .emailRegistered:
-                    completion?(false, R.string.localizable.email_registered())
+                    completion?(false, R.string.localizable.user_email_registered())
                 default:
-                    completion?(false, R.string.localizable.error_unknown())
+                    completion?(false, R.string.localizable.common_error_unknown())
                 }
             }
         }
@@ -200,11 +200,11 @@ final class UserManager {
             } else {
                 switch response.errorCode() {
                 case .emailNotExist:
-                    completion?(false, R.string.localizable.email_not_exist())
+                    completion?(false, R.string.localizable.user_email_not_exist())
                 case .passwordWrong:
-                    completion?(false, R.string.localizable.password_wrong())
+                    completion?(false, R.string.localizable.user_password_wrong())
                 default:
-                    completion?(false, R.string.localizable.error_unknown())
+                    completion?(false, R.string.localizable.common_error_unknown())
                 }
             }
         }
@@ -244,9 +244,9 @@ final class UserManager {
             } else {
                 switch response.errorCode() {
                 case .accessTokenInvalid:
-                    completion?(false, R.string.localizable.facebook_oauth_error())
+                    completion?(false, R.string.localizable.user_facebook_oauth_error())
                 default:
-                    completion?(false, R.string.localizable.error_unknown())
+                    completion?(false, R.string.localizable.common_error_unknown())
                 }
             }
         }
@@ -270,11 +270,11 @@ final class UserManager {
             } else {
                 switch response.errorCode() {
                 case .emailNotExist:
-                    completion?(false, R.string.localizable.email_not_exist())
+                    completion?(false, R.string.localizable.user_email_not_exist())
                 case .sendResetPasswordMail:
                     completion?(false, R.string.localizable.reset_password_failed())
                 default:
-                    completion?(false, R.string.localizable.error_unknown())
+                    completion?(false, R.string.localizable.common_error_unknown())
                 }
             }
         }
@@ -302,9 +302,9 @@ final class UserManager {
             } else {
                 switch response.errorCode() {
                 case .tokenError:
-                    completion?(false, R.string.localizable.token_error())
+                    completion?(false, R.string.localizable.common_token_error())
                 default:
-                    completion?(false, R.string.localizable.error_unknown())
+                    completion?(false, R.string.localizable.common_error_unknown())
                 }
             }
         }

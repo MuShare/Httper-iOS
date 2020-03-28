@@ -64,17 +64,17 @@ class KeyboardAccessoryViewController: BaseViewController<KeyboardAccessoryViewM
     
     @objc private func addCharacter() {
         let alertController = UIAlertController(
-            title: R.string.localizable.add_character(),
+            title: R.string.localizable.keyboard_accessory_add_character(),
             message: nil,
             preferredStyle: .alert
         )
         alertController.addTextField {
             $0.textAlignment = .center
         }
-        let addAction = UIAlertAction(title: R.string.localizable.ok_name(), style: .default) { [unowned self] _ in
+        let addAction = UIAlertAction(title: R.string.localizable.common_ok_name(), style: .default) { [unowned self] _ in
             self.viewModel.add(character: alertController.textFields?[0].text)
         }
-        let cancelAction = UIAlertAction(title: R.string.localizable.cancel_name(), style: .cancel)
+        let cancelAction = UIAlertAction(title: R.string.localizable.common_cancel_name(), style: .cancel)
         alertController.addAction(addAction)
         alertController.addAction(cancelAction)
         present(alertController, animated: true)
