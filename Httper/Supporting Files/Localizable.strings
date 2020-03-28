@@ -49,27 +49,17 @@ Upgrade = "Ask the server to upgrade to another protocol.";
 Via = "Informs the server of proxies through which the request was sent.";
 Warning = "A general warning about possible problems with the entity body.";
 
-tab_request_title = "Httper";
-tab_project_title = "Projects";
+common_tip_name = "Tip";
+common_cancel_name = "Cancel";
+common_yes_name = "Yes";
+common_ok_name = "OK";
+common_clear_name = "Clear";
+common_no_internet_connection = "No Internet connection!";
+common_token_error = "User authorization is invalide. Please sign in again!";
+common_error_unknown = "Unknown error.";
 
-tab_request = "Request";
-tab_project = "Project";
-tab_settings = "Settings";
-
-tab_request_clear = "Clear";
-
-tip_name = "Tip";
-cancel_name = "Cancel";
-yes_name = "Yes";
-ok_name = "OK";
-clear_name = "Clear";
 tab_name = "Tab";
 delete_name = "Delete";
-
-token_error = "User authorization is invalide. Please sign in again!";
-error_unknown = "Unknown error.";
-
-common_no_internet_connection = "No Internet connection!";
 
 headers = "Headers";
 parameters = "Parameters";
@@ -79,6 +69,14 @@ request_url = "Request URL";
 status = "Status";
 status_code = "Status Code";
 response_headers = "Response Headers";
+
+tab_request_title = "Httper";
+tab_project_title = "Projects";
+
+tab_request = "Request";
+tab_project = "Project";
+tab_settings = "Settings";
+tab_request_clear = "Clear";
 
 url_empty = "Request URL cannot be empty!";
 value_max = "Cannot add more parameters and headers due to max limits 7.";

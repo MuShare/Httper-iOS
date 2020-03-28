@@ -159,7 +159,7 @@ final class UserManager {
                 case .emailRegistered:
                     completion?(false, R.string.localizable.email_registered())
                 default:
-                    completion?(false, R.string.localizable.error_unknown())
+                    completion?(false, R.string.localizable.common_error_unknown())
                 }
             }
         }
@@ -204,7 +204,7 @@ final class UserManager {
                 case .passwordWrong:
                     completion?(false, R.string.localizable.password_wrong())
                 default:
-                    completion?(false, R.string.localizable.error_unknown())
+                    completion?(false, R.string.localizable.common_error_unknown())
                 }
             }
         }
@@ -246,7 +246,7 @@ final class UserManager {
                 case .accessTokenInvalid:
                     completion?(false, R.string.localizable.facebook_oauth_error())
                 default:
-                    completion?(false, R.string.localizable.error_unknown())
+                    completion?(false, R.string.localizable.common_error_unknown())
                 }
             }
         }
@@ -274,7 +274,7 @@ final class UserManager {
                 case .sendResetPasswordMail:
                     completion?(false, R.string.localizable.reset_password_failed())
                 default:
-                    completion?(false, R.string.localizable.error_unknown())
+                    completion?(false, R.string.localizable.common_error_unknown())
                 }
             }
         }
@@ -302,9 +302,9 @@ final class UserManager {
             } else {
                 switch response.errorCode() {
                 case .tokenError:
-                    completion?(false, R.string.localizable.token_error())
+                    completion?(false, R.string.localizable.common_token_error())
                 default:
-                    completion?(false, R.string.localizable.error_unknown())
+                    completion?(false, R.string.localizable.common_error_unknown())
                 }
             }
         }

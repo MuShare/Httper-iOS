@@ -68,7 +68,7 @@ class PingViewModel: BaseViewModel {
         }
         if reachability.connection == .unavailable {
             alert.onNextCustomTip(
-                title: R.string.localizable.tip_name(),
+                title: R.string.localizable.common_tip_name(),
                 message: R.string.localizable.common_no_internet_connection()
             )
             return

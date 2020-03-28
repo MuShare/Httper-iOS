@@ -40,7 +40,7 @@ class ProfileViewModel: BaseViewModel {
                 UserManager.shared.logout()
                 self.steps.accept(SettingsStep.profileIsComplete)
             }),
-            .customCancel(title: R.string.localizable.cancel_name())
+            .customCancel(title: R.string.localizable.common_cancel_name())
         )
     }
     

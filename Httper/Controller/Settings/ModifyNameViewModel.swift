@@ -38,7 +38,7 @@ class ModifyNameViewModel: BaseViewModel {
             }
             self.loading.onNext(false)
             guard success else {
-                self.alert.onNextTip(tip ?? R.string.localizable.error_unknown())
+                self.alert.onNextTip(tip ?? R.string.localizable.common_error_unknown())
                 return
             }
             self.steps.accept(SettingsStep.modifyNameIsComplete)
