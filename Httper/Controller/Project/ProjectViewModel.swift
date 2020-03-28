@@ -127,16 +127,18 @@ class ProjectViewModel: BaseViewModel {
             }
             steps.accept(ProjectStep.request(requests.value[indexPath.row]))
         case (2, 0):
-            let title = R.string.localizable.delete_project()
-            let message = R.string.localizable.delete_project_message()
-            alert.onNext(.customConfirm(title: title, message: message, onConfirm: { [unowned self] in
-                self.loading.onNext(true)
-                SyncManager.shared.deleteProject(self.project.value) { [weak self] _ in
-                    guard let `self` = self else { return }
-                    self.loading.onNext(false)
-                    self.steps.accept(ProjectStep.projectIsComplete)
+            alert.onNextCustomConfirm(
+                title: R.string.localizable.project_delete(),
+                message: R.string.localizable.project_delete_message(),
+                onConfirm: { [unowned self] in
+                    self.loading.onNext(true)
+                    SyncManager.shared.deleteProject(self.project.value) { [weak self] _ in
+                        guard let `self` = self else { return }
+                        self.loading.onNext(false)
+                        self.steps.accept(ProjectStep.projectIsComplete)
+                    }
                 }
-            }))
+            )
         default:
             break
         }

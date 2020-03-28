@@ -64,7 +64,7 @@ class KeyboardAccessoryViewController: BaseViewController<KeyboardAccessoryViewM
     
     @objc private func addCharacter() {
         let alertController = UIAlertController(
-            title: R.string.localizable.add_character(),
+            title: R.string.localizable.keyboard_accessory_add_character(),
             message: nil,
             preferredStyle: .alert
         )

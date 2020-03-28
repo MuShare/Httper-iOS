@@ -36,7 +36,7 @@ class ProfileViewModel: BaseViewModel {
     func logout(sourceView: UIView) {
         actionSheet.onNextActions(
             sourceView: sourceView,
-            .destructive(title: R.string.localizable.sign_out_title(), action: { [unowned self] in
+            .destructive(title: R.string.localizable.profile_sign_out(), action: { [unowned self] in
                 UserManager.shared.logout()
                 self.steps.accept(SettingsStep.profileIsComplete)
             }),

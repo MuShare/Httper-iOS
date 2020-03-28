@@ -65,43 +65,11 @@ tab_project = "Project";
 tab_settings = "Settings";
 tab_request_clear = "Clear";
 
-register_not_validate = "Email, username and password cannot be empty!";
-email_invalidate = "Please input a correct email!";
-back_to_login = "Back";
-email_registered = "This email has been registered.";
-
-login_not_validate = "Input correct emaill and password!";
-email_not_exist = "This email is not existed.";
-password_wrong = "Your password is wrong, check and try again.";
-facebook_oauth_error = "Facebook OAuth login failed, plasese try Again!";
-
-sign_in_sign_up = "Sign in to sync request history";
-
-sign_out_title = "Sign out";
-sign_out_message = "Are you sure to sign out now?";
-
-signin_title = "Welcome to Httper Cloud";
-sign_in_facebook = "Sign in with Facebook";
-
-signup_title="Sign up with email";
-signup_email="Email Address";
-signup_username="Username";
-signup_password="Password";
-signup_submit="Submit";
-
-reset_password_with_email="Reset password with email";
-reset_password_send_an_email="Send an email";
-reset_password_not_validate = "Please input a correct email!";
-reset_password_failed = "Send email failed, try again later.";
-reset_password_check_email = "We have sent a mail to reset password to you, please check your email";
-
-delete_project = "Delete Project";
-delete_project_message = "Are you sure to delete project ";
-delete_request_confirm = "Are you sure to delete request ";
-
-add_character = "Add Customized Character";
-
-name_not_empty = "Name is empty!";
+// UserManager
+user_email_registered = "This email has been registered.";
+user_email_not_exist = "This email is not existed.";
+user_password_wrong = "Your password is wrong, check and try again.";
+user_facebook_oauth_error = "Facebook OAuth login failed, plasese try Again!";
 
 // AddProjectViewController
 add_project_name_title = "Project Name";
@@ -113,6 +81,7 @@ add_project_introduction_title = "Introduction";
 // ProjectNameViewController
 project_name_placeholder = "New project name";
 project_delete = "Delete project";
+project_delete_message = "Are you sure to delete project ";
 
 // RequestViewController
 request_title = "Request";
@@ -167,6 +136,7 @@ ip_address_public_longitude = "Longitude";
 keyboard_accessory_title = "Customized Keyboard Accessory";
 keyboard_accessory_illegal_character = "Please input a legal character!";
 keyboard_accessory_delete_character = "Are you sure to delete the character '%@'?";
+keyboard_accessory_add_character = "Add Customized Character";
 
 // ModifyNameViewController
 modify_name_title = "Modify Name";
@@ -193,3 +163,26 @@ ssettings_selection_about = "About";
 // WhoisViewController
 whois_title = "Whois";
 whois_address_placeholder = "Domain Name";
+
+// SigninViewController
+sign_in_title = "Welcome to Httper Cloud";
+sign_in_email_placeholder = "Email";
+sign_in_password_placeholder = "Password";
+sign_in_submit = "Sign in";
+sign_in_forgot_password = "Forget Password";
+sign_in_sign_up = "Sign up now!";
+sign_in_facebook = "Sign in with Facebook";
+
+// SignUpViewControlelr
+sign_up_title = "Sign up with email";
+sign_up_email_placeholder = "Email Address";
+sign_up_username_placeholder = "Username";
+sign_up_password_placeholder = "Password";
+sign_up_submit = "Submit";
+
+// ResetPasswordViewController
+reset_password_email_placeholder = "Email";
+reset_password_with_email="Reset password with email";
+reset_password_send_an_email="Send an email";
+reset_password_failed = "Send email failed, try again later.";
+reset_password_check_email = "We have sent a mail to reset password to you, please check your email";

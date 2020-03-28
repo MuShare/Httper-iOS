@@ -85,7 +85,7 @@ class SigninViewController: BaseViewController<SigninViewModel> {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = R.string.localizable.signin_title()
+        label.text = R.string.localizable.sign_in_title()
         label.textColor = .white
         label.font = .systemFont(ofSize: 20, weight: .semibold)
         return label
@@ -93,7 +93,7 @@ class SigninViewController: BaseViewController<SigninViewModel> {
     
     private lazy var emailTextField: UITextField = {
         let textField = SigninTextField()
-        textField.placeholder = "Email"
+        textField.placeholder = R.string.localizable.sign_in_email_placeholder()
         textField.textColor = .white
         textField.backgroundColor = UIColor(hexa: 0xffffff44)
         textField.autocorrectionType = .no
@@ -110,7 +110,7 @@ class SigninViewController: BaseViewController<SigninViewModel> {
     
     private lazy var passwordTextField: UITextField = {
         let textField = SigninTextField()
-        textField.placeholder = "Password"
+        textField.placeholder = R.string.localizable.sign_in_password_placeholder()
         textField.textColor = .white
         textField.backgroundColor = UIColor(hexa: 0xffffff44)
         textField.autocorrectionType = .no
@@ -134,7 +134,7 @@ class SigninViewController: BaseViewController<SigninViewModel> {
     
     private lazy var submitButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Sign in", for: .normal)
+        button.setTitle(R.string.localizable.sign_in_submit(), for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.setTitleColor(.lightGray, for: .highlighted)
         button.backgroundColor = UIColor(hexa: 0xffffff44)
@@ -150,7 +150,7 @@ class SigninViewController: BaseViewController<SigninViewModel> {
     
     private lazy var forgotButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Forget Password", for: .normal)
+        button.setTitle(R.string.localizable.sign_in_forgot_password(), for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.setTitleColor(.lightGray, for: .highlighted)
         button.rx.tap.bind { [unowned self] in
@@ -170,7 +170,7 @@ class SigninViewController: BaseViewController<SigninViewModel> {
     
     private lazy var signupButton: UIButton = {
         let button = UIButton(type: .custom)
-        button.setTitle("Sign up now!", for: .normal)
+        button.setTitle(R.string.localizable.sign_in_sign_up(), for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.setTitleColor(.lightGray, for: .highlighted)
         button.rx.tap.bind { [unowned self] in
