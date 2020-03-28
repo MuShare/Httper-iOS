@@ -6,8 +6,6 @@
 //  Copyright © 2017 MuShare Group. All rights reserved.
 //
 
-import UIKit
-
 class ProjectIntroductionViewController: BaseViewController<ProjectIntroductionViewModel> {
 
     private lazy var introductionTextView: UITextView = {
@@ -34,9 +32,12 @@ class ProjectIntroductionViewController: BaseViewController<ProjectIntroductionV
         view.addSubview(introductionTextView)
         createConstraints()
         
-        viewModel.title ~> rx.title ~ disposeBag
-        viewModel.isValidate ~> saveBarButtonItem.rx.isEnabled ~ disposeBag
-        viewModel.introduction <~> introductionTextView.rx.text ~ disposeBag
+        disposeBag ~ [
+            viewModel.title ~> rx.title,
+            viewModel.isValidate ~> saveBarButtonItem.rx.isEnabled,
+            viewModel.introduction <~> introductionTextView.rx.text,
+        ]
+        
     }
     
     private func createConstraints() {

@@ -154,3 +154,6 @@ add_project_name_placeholder = "Your project name";
 add_project_privilege_title = "Privilege";
 add_project_privilege_select = "Select Privilege";
 add_project_introduction_title = "Introduction";
+
+// ProjectNameViewController
+project_name_placeholder = "New Project Name";

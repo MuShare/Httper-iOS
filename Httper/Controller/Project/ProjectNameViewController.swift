@@ -6,8 +6,6 @@
 //  Copyright © 2017 MuShare Group. All rights reserved.
 //
 
-import UIKit
-
 fileprivate struct Const {
     struct name {
         static let marginTop = 20
@@ -19,10 +17,14 @@ class ProjectNameViewController: BaseViewController<ProjectNameViewModel> {
 
     private lazy var nameTextField: UITextField = {
         let textField = UITextField()
-        textField.attributedPlaceholder = NSAttributedString(string: "New Project Name", attributes: [.foregroundColor : UIColor.lightGray])
+        textField.attributedPlaceholder = NSAttributedString(
+            string: R.string.localizable.project_name_placeholder(),
+            attributes: [.foregroundColor : UIColor.lightGray]
+        )
         textField.textColor = .white
         textField.textAlignment = .center
         textField.backgroundColor = .darkGray
+        textField.becomeFirstResponder()
         return textField
     }()
     
@@ -41,13 +43,12 @@ class ProjectNameViewController: BaseViewController<ProjectNameViewModel> {
         navigationItem.rightBarButtonItem = saveBarButtonItem
         view.addSubview(nameTextField)
         createConstraints()
-        
-        nameTextField.becomeFirstResponder()
-        
-        viewModel.title ~> rx.title ~ disposeBag
-        viewModel.isValidate ~> saveBarButtonItem.rx.isEnabled ~ disposeBag
-        viewModel.name <~> nameTextField.rx.text ~ disposeBag
-        
+
+        disposeBag ~ [
+            viewModel.title ~> rx.title,
+            viewModel.isValidate ~> saveBarButtonItem.rx.isEnabled,
+            viewModel.name <~> nameTextField.rx.text,
+        ]
     }
     
     private func createConstraints() {
