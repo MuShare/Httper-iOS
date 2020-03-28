@@ -147,3 +147,10 @@ ip_address_public_post_code = "Post Code";
 ip_address_public_time_zone = "Time Zone";
 ip_address_public_latitude = "Latitude";
 ip_address_public_longitude = "Longitude";
+
+// AddProjectViewController
+add_project_name_title = "Project Name";
+add_project_name_placeholder = "Your project name";
+add_project_privilege_title = "Privilege";
+add_project_privilege_select = "Select Privilege";
+add_project_introduction_title = "Introduction";
