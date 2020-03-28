@@ -32,10 +32,12 @@ class PingViewModel: BaseViewModel {
     deinit {
         pingService?.cancel()
     }
-    
-    let title = Observable.just("Ping")
-    
+
     let address = BehaviorRelay<String?>(value: nil)
+    
+    var title: Observable<String> {
+        .just(R.string.localizable.ping_title())
+    }
     
     var icon: Observable<UIImage?> {
         return pinging.map {
@@ -67,7 +69,7 @@ class PingViewModel: BaseViewModel {
         if reachability.connection == .unavailable {
             alert.onNextCustomTip(
                 title: R.string.localizable.tip_name(),
-                message: R.string.localizable.not_internet_connection()
+                message: R.string.localizable.common_no_internet_connection()
             )
             return
         }
@@ -90,7 +92,7 @@ class PingViewModel: BaseViewModel {
         } else {
             if pingItems.value.count > 0 {
                 alert.onNextCustomTip(
-                    title: "Ping Result",
+                    title: R.string.localizable.ping_result(),
                     message: STDPingItem.statistics(withPingItems: pingItems.value)
                 )
             }

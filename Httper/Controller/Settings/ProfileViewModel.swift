@@ -15,7 +15,7 @@ class ProfileViewModel: BaseViewModel {
     private let reloadRelay = PublishRelay<Void>()
     
     var title: Observable<String> {
-        .just("Profile")
+        .just(R.string.localizable.profile_title())
     }
     
     var section: Observable<SingleSection<Selection>> {

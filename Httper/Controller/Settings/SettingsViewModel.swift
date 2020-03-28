@@ -30,13 +30,13 @@ extension SettingsSectionModel: SectionModelType {
 }
 
 extension Selection {
-    static let keyboard = Selection(icon: R.image.keyboard(), title: "Keyboard Accessory")
-    static let ping = Selection(icon: R.image.ping(), title: "Ping")
-    static let whois = Selection(icon: R.image.domain(), title: "Whois")
-    static let ip = Selection(icon: R.image.ip(), title: "What is my IP address")
-    static let appstore = Selection(icon: R.image.appstore(), title: "Rate me on App Store")
-    static let github = Selection(icon: R.image.github(), title: "Give me a star on Github")
-    static let about = Selection(icon: R.image.about(), title: "About")
+    static let keyboard = Selection(icon: R.image.keyboard(), title: R.string.localizable.settings_selection_keyboard())
+    static let ping = Selection(icon: R.image.ping(), title: R.string.localizable.settings_selection_ping())
+    static let whois = Selection(icon: R.image.domain(), title: R.string.localizable.settings_selection_whois())
+    static let ip = Selection(icon: R.image.ip(), title: R.string.localizable.settings_selection_ip())
+    static let appstore = Selection(icon: R.image.appstore(), title: R.string.localizable.settings_selection_appstore())
+    static let github = Selection(icon: R.image.github(), title: R.string.localizable.settings_selection_github())
+    static let about = Selection(icon: R.image.about(), title: R.string.localizable.ssettings_selection_about())
 }
 
 private enum Const {

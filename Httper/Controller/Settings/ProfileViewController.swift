@@ -31,7 +31,7 @@ class ProfileViewController: BaseViewController<ProfileViewModel> {
 
     private lazy var logoutButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Sign out", for: .normal)
+        button.setTitle(R.string.localizable.profile_sign_out(), for: .normal)
         button.setTitleColor(.red, for: .normal)
         button.backgroundColor = .navigation
         button.rx.tap.bind { [unowned self] in

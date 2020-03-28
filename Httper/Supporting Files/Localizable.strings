@@ -69,6 +69,8 @@ delete_name = "Delete";
 token_error = "User authorization is invalide. Please sign in again!";
 error_unknown = "Unknown error.";
 
+common_no_internet_connection = "No Internet connection!";
+
 headers = "Headers";
 parameters = "Parameters";
 body = "Body";
@@ -86,8 +88,6 @@ clear_request_body = "Are you sure to clear request body?";
 cannot_access = "Cannot access to the URL, check your connection and service provider!";
 
 address_empty = "Input a domain name or IP address!";
-
-not_internet_connection = "No Internet connection!";
 
 register_not_validate = "Email, username and password cannot be empty!";
 email_invalidate = "Please input a correct email!";
@@ -127,27 +127,6 @@ add_character = "Add Customized Character";
 
 name_not_empty = "Name is empty!";
 
-// IPAddressViewController
-ip_adress_title = "My IP Address";
-ip_address_unknown = "unknown";
-ip_address_wifi = "WiFi Network";
-ip_address_wifi_local_ip = "Local IP";
-ip_address_wifi_broadcast = "Broadcast";
-ip_address_wifi_gateway = "Gateway";
-ip_address_wifi_netmask = "Netmask";
-ip_address_cellular = "Cellular Network";
-ip_address_cellular_local_ip = "Local IP";
-ip_address_cellular_netmask = "Netmask";
-ip_address_internet = "Internet";
-ip_address_public_ip = "Public IP";
-ip_address_public_city = "City";
-ip_address_public_region = "Region";
-ip_address_public_country = "Country";
-ip_address_public_post_code = "Post Code";
-ip_address_public_time_zone = "Time Zone";
-ip_address_public_latitude = "Latitude";
-ip_address_public_longitude = "Longitude";
-
 // AddProjectViewController
 add_project_name_title = "Project Name";
 add_project_name_placeholder = "Your project name";
@@ -184,3 +163,55 @@ detail_status_code = "Status Code";
 
 // SaveToProjectViewController
 save_to_project_title = "Save to Project";
+
+// IPAddressViewController
+ip_adress_title = "My IP Address";
+ip_address_unknown = "unknown";
+ip_address_wifi = "WiFi Network";
+ip_address_wifi_local_ip = "Local IP";
+ip_address_wifi_broadcast = "Broadcast";
+ip_address_wifi_gateway = "Gateway";
+ip_address_wifi_netmask = "Netmask";
+ip_address_cellular = "Cellular Network";
+ip_address_cellular_local_ip = "Local IP";
+ip_address_cellular_netmask = "Netmask";
+ip_address_internet = "Internet";
+ip_address_public_ip = "Public IP";
+ip_address_public_city = "City";
+ip_address_public_region = "Region";
+ip_address_public_country = "Country";
+ip_address_public_post_code = "Post Code";
+ip_address_public_time_zone = "Time Zone";
+ip_address_public_latitude = "Latitude";
+ip_address_public_longitude = "Longitude";
+
+// KeyboardAccessoryViewController
+keyboard_accessory_title = "Customized Keyboard Accessory";
+keyboard_accessory_illegal_character = "Please input a legal character!";
+keyboard_accessory_delete_character = "Are you sure to delete the character '%@'?";
+
+// ModifyNameViewController
+modify_name_title = "Modify Name";
+modify_name_empty_name = "Name is empty.";
+
+// PingViewController
+ping_title = "Ping";
+ping_address_placeholder = "Domain Name";
+ping_result = "Ping Result";
+
+// ProfileViewController
+profile_title = "Profile";
+profile_sign_out = "Sign out";
+
+// SettingsViewController
+settings_selection_keyboard = "Keyboard Accessory";
+settings_selection_ping = "Ping";
+settings_selection_whois = "Whois";
+settings_selection_ip = "What is my IP address";
+settings_selection_appstore = "Rate me on App Store";
+settings_selection_github = "Give me a star on Github";
+ssettings_selection_about = "About";
+
+// WhoisViewController
+whois_title = "Whois";
+whois_address_placeholder = "Domain Name";

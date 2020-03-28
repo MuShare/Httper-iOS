@@ -15,7 +15,7 @@ class KeyboardAccessoryViewModel: BaseViewModel {
     private let charactersRelay = BehaviorRelay<[String]>(value: UserManager.shared.characters ?? [])
 
     var title: Observable<String> {
-        .just("Customized Keyboard Accessory")
+        .just(R.string.localizable.keyboard_accessory_title())
     }
     
     var characterSection: Observable<SingleSection<String>> {
@@ -24,7 +24,7 @@ class KeyboardAccessoryViewModel: BaseViewModel {
     
     func add(character: String?) {
         guard let character = character, !character.isEmpty else {
-            alert.onNextWarning("Please input a legal character!")
+            alert.onNextWarning(R.string.localizable.keyboard_accessory_illegal_character())
             return
         }
         var characters = charactersRelay.value
@@ -38,7 +38,7 @@ class KeyboardAccessoryViewModel: BaseViewModel {
             return
         }
         var characters = charactersRelay.value
-        alert.onNextConfirm("Are you sure to delete the character '\(characters[index])'?", onConfirm: {
+        alert.onNextConfirm(R.string.localizable.keyboard_accessory_delete_character(characters[index]), onConfirm: {
             characters.remove(at: index)
             UserManager.shared.characters = characters
             self.charactersRelay.accept(characters)
