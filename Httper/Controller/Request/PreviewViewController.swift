@@ -6,7 +6,6 @@
 //  Copyright © 2016 MuShare Group. All rights reserved.
 //
 
-import UIKit
 import RxSwift
 
 class PreviewViewController: BaseViewController<PreviewViewModel> {

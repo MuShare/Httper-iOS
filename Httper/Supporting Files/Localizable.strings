@@ -157,3 +157,30 @@ add_project_introduction_title = "Introduction";
 
 // ProjectNameViewController
 project_name_placeholder = "New Project Name";
+
+// RequestViewController
+request_title = "Request";
+request_menu_parameters = "Parameters";
+request_menu_headers = "Headers";
+request_menu_body = "Body";
+request_method = "Request Method";
+request_methods = "Request Methods";
+request_url_placeholder = "request URL";
+request_send_request = "Send Request";
+request_save_to_project = "Save to Project";
+request_clear_title = "Clear Request";
+request_clear_message = "Are you sure to clear this request?";
+
+// ResultViewController
+result_menu_pretty = "Pretty";
+result_menu_raw = "Raw";
+result_menu_preview = "Preview";
+result_menu_detail = "Detail";
+result_nothing = "Nothing from this url.";
+
+// DetailViewController
+detail_request_url = "Request URL";
+detail_status_code = "Status Code";
+
+// SaveToProjectViewController
+save_to_project_title = "Save to Project";

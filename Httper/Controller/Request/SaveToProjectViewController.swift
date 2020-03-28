@@ -6,7 +6,6 @@
 //  Copyright © 2019 MuShare Group. All rights reserved.
 //
 
-import UIKit
 import RxDataSourcesSingleSection
 
 class SaveToProjectViewController: BaseViewController<SaveToProjectViewModel> {

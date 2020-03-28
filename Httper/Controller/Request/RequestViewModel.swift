@@ -89,7 +89,7 @@ class RequestViewModel: BaseViewModel {
     }
     
     var title: Observable<String> {
-        Observable.just(request).unwrap().map { _ in "Request" }
+        Observable.just(request).unwrap().map { _ in R.string.localizable.request_title() }
     }
     
     var editingState: Observable<KeyValueEditingState> {
@@ -146,14 +146,18 @@ class RequestViewModel: BaseViewModel {
     }
     
     func clear() {
-        alert.onNextCustomConfirm(title: "Clear Request", message: "Are you sure to clear this request?", onConfirm: { [unowned self] in
-            self.requestMethod.accept(RequestConst.methods[0])
-            self.url.accept(nil)
-            self.requestProtocol.accept(0)
-            self.parametersViewModel.clear()
-            self.headersViewModel.clear()
-            self.bodyViewModel.clear()
-        })
+        alert.onNextCustomConfirm(
+            title: R.string.localizable.request_clear_title(),
+            message: R.string.localizable.request_clear_title(),
+            onConfirm: { [unowned self] in
+                self.requestMethod.accept(RequestConst.methods[0])
+                self.url.accept(nil)
+                self.requestProtocol.accept(0)
+                self.parametersViewModel.clear()
+                self.headersViewModel.clear()
+                self.bodyViewModel.clear()
+            }
+        )
     }
     
 }

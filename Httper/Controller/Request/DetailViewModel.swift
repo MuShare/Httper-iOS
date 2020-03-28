@@ -24,8 +24,8 @@ class DetailViewModel: BaseViewModel {
                 return SingleSection.create([])
             }
             var models: [DetailModel] = []
-            models.append(DetailModel(title: "Request URL", content: response.url?.description ?? ""))
-            models.append(DetailModel(title: "Status Code", content: response.statusCode.description))
+            models.append(DetailModel(title: R.string.localizable.detail_request_url(), content: response.url?.description ?? ""))
+            models.append(DetailModel(title: R.string.localizable.detail_status_code(), content: response.statusCode.description))
             response.allHeaderFields.forEach { (key, value) in
                 models.append(DetailModel(title: key.description, content: value as? String ?? ""))
             }

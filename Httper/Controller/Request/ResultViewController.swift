@@ -6,7 +6,6 @@
 //  Copyright © 2016 MuShare Group. All rights reserved.
 //
 
-import UIKit
 import Alamofire
 import PagingKit
 
@@ -27,7 +26,12 @@ fileprivate struct Const {
         static let cell = "menuCell"
     }
     
-    static let menus = ["Pretty", "Raw", "Preview", "Detail"]
+    static let menus = [
+        R.string.localizable.result_menu_pretty(),
+        R.string.localizable.result_menu_raw(),
+        R.string.localizable.result_menu_preview(),
+        R.string.localizable.result_menu_detail()
+    ]
 }
 
 class ResultViewController: BaseViewController<ResultViewModel> {

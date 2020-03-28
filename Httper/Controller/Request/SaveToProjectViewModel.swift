@@ -32,7 +32,9 @@ class SaveToProjectViewModel: BaseViewModel {
         }
     }
     
-    let title = Observable.just("Save to Project")
+    var title: Observable<String> {
+        .just(R.string.localizable.save_to_project_title())
+    }
     
     var projectSection: Observable<SingleSection<Project>> {
         return projects.map { SingleSection.create($0) }
