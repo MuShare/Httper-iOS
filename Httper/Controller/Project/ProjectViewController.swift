@@ -17,8 +17,8 @@ class ProjectViewController: BaseViewController<ProjectViewModel> {
         tableView.backgroundColor = .clear
         tableView.separatorColor = .background
         tableView.register(cellType: SelectionTableViewCell.self)
-        tableView.register(cellType: RequestTableViewCell.self)
-        tableView.register(cellType: DeleteTableViewCell.self)
+        tableView.register(cellType: ProjectRequestTableViewCell.self)
+        tableView.register(cellType: ProjectDeleteTableViewCell.self)
         tableView.rowHeight = 60
         tableView.es.addPullToRefresh { [unowned self] in
             self.viewModel.syncProject {
@@ -42,11 +42,11 @@ class ProjectViewController: BaseViewController<ProjectViewModel> {
             cell.configure(selection)
             return cell
         case .requestItem(let request):
-            let cell = tableView.dequeueReusableCell(for: indexPath) as RequestTableViewCell
+            let cell = tableView.dequeueReusableCell(for: indexPath) as ProjectRequestTableViewCell
             cell.request = request
             return cell
         case .deleteItem:
-            return tableView.dequeueReusableCell(for: indexPath) as DeleteTableViewCell
+            return tableView.dequeueReusableCell(for: indexPath) as ProjectDeleteTableViewCell
         }
     }, titleForHeaderInSection: { (_, _) in
         return " "

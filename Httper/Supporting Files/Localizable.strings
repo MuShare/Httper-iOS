@@ -111,7 +111,8 @@ add_project_privilege_select = "Select Privilege";
 add_project_introduction_title = "Introduction";
 
 // ProjectNameViewController
-project_name_placeholder = "New Project Name";
+project_name_placeholder = "New project name";
+project_delete = "Delete project";
 
 // RequestViewController
 request_title = "Request";

@@ -45,7 +45,7 @@
 		77B1991D230B8BEA003EE42F /* UIWebView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B1991C230B8BEA003EE42F /* UIWebView+Rx.swift */; };
 		77B474DC21F3593100BE4551 /* AddProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B474DB21F3593100BE4551 /* AddProjectViewModel.swift */; };
 		77BBBCBB2181585C00500A3A /* SelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BBBCBA2181585C00500A3A /* SelectionTableViewCell.swift */; };
-		77BBBCBD21815C9C00500A3A /* RequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BBBCBC21815C9C00500A3A /* RequestTableViewCell.swift */; };
+		77BBBCBD21815C9C00500A3A /* ProjectRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BBBCBC21815C9C00500A3A /* ProjectRequestTableViewCell.swift */; };
 		77BBBCE621819B0700500A3A /* ProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BBBCE521819B0700500A3A /* ProjectViewModel.swift */; };
 		77CDA184222E12B90063C472 /* RxFlow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDA183222E12B80063C472 /* RxFlow+Extension.swift */; };
 		77CDA186222E130A0063C472 /* AppLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDA185222E130A0063C472 /* AppLog.swift */; };
@@ -53,7 +53,7 @@
 		77CDA18C222E13FE0063C472 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDA188222E13FE0063C472 /* BaseViewModel.swift */; };
 		77CDA18D222E13FE0063C472 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDA189222E13FE0063C472 /* BaseNavigationController.swift */; };
 		77CDA192222E1CB90063C472 /* NVActivityIndicatorViewable+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CDA191222E1CB90063C472 /* NVActivityIndicatorViewable+Rx.swift */; };
-		77D6A7ED2186AA4500A65283 /* DeleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D6A7EC2186AA4500A65283 /* DeleteTableViewCell.swift */; };
+		77D6A7ED2186AA4500A65283 /* ProjectDeleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D6A7EC2186AA4500A65283 /* ProjectDeleteTableViewCell.swift */; };
 		77F3995F215373600016978E /* KeyValueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F3995E215373600016978E /* KeyValueViewController.swift */; };
 		77F39961215373770016978E /* KeyValueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F39960215373770016978E /* KeyValueViewModel.swift */; };
 		77F39964215374370016978E /* KeyValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F39963215374370016978E /* KeyValueTableViewCell.swift */; };
@@ -195,7 +195,7 @@
 		77B1991C230B8BEA003EE42F /* UIWebView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWebView+Rx.swift"; sourceTree = "<group>"; };
 		77B474DB21F3593100BE4551 /* AddProjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectViewModel.swift; sourceTree = "<group>"; };
 		77BBBCBA2181585C00500A3A /* SelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTableViewCell.swift; sourceTree = "<group>"; };
-		77BBBCBC21815C9C00500A3A /* RequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTableViewCell.swift; sourceTree = "<group>"; };
+		77BBBCBC21815C9C00500A3A /* ProjectRequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectRequestTableViewCell.swift; sourceTree = "<group>"; };
 		77BBBCE521819B0700500A3A /* ProjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewModel.swift; sourceTree = "<group>"; };
 		77CDA183222E12B80063C472 /* RxFlow+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RxFlow+Extension.swift"; sourceTree = "<group>"; };
 		77CDA185222E130A0063C472 /* AppLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLog.swift; sourceTree = "<group>"; };
@@ -203,7 +203,7 @@
 		77CDA188222E13FE0063C472 /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		77CDA189222E13FE0063C472 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		77CDA191222E1CB90063C472 /* NVActivityIndicatorViewable+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NVActivityIndicatorViewable+Rx.swift"; sourceTree = "<group>"; };
-		77D6A7EC2186AA4500A65283 /* DeleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTableViewCell.swift; sourceTree = "<group>"; };
+		77D6A7EC2186AA4500A65283 /* ProjectDeleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDeleteTableViewCell.swift; sourceTree = "<group>"; };
 		77F3995E215373600016978E /* KeyValueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueViewController.swift; sourceTree = "<group>"; };
 		77F39960215373770016978E /* KeyValueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueViewModel.swift; sourceTree = "<group>"; };
 		77F39963215374370016978E /* KeyValueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueTableViewCell.swift; sourceTree = "<group>"; };
@@ -459,6 +459,8 @@
 				77396286225C33EE0091C669 /* ProjectNameViewModel.swift */,
 				E44B98A620EBDE06004FEF67 /* ProjectsViewController.swift */,
 				E49F680521495EE300646892 /* ProjectsViewModel.swift */,
+				77D6A7EC2186AA4500A65283 /* ProjectDeleteTableViewCell.swift */,
+				77BBBCBC21815C9C00500A3A /* ProjectRequestTableViewCell.swift */,
 				E4D034481E4A0DB300580FAC /* ProjectViewController.swift */,
 				77BBBCE521819B0700500A3A /* ProjectViewModel.swift */,
 			);
@@ -544,7 +546,6 @@
 		77F399622153741F0016978E /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				77D6A7EC2186AA4500A65283 /* DeleteTableViewCell.swift */,
 				7766EA7B217DC4AB001A6260 /* DetailTableViewCell.swift */,
 				77055F5422B76595001F140D /* IPAddressHeadTableViewCell.swift */,
 				77055F5222B76570001F140D /* IPAddressInfoTableViewCell.swift */,
@@ -554,7 +555,6 @@
 				77F39969215382BA0016978E /* MenuViewCell.swift */,
 				7782A5F9226977E4002B6AE2 /* PingTableViewCell.swift */,
 				77271CB321E74DE60072E007 /* ProjectTableViewCell.swift */,
-				77BBBCBC21815C9C00500A3A /* RequestTableViewCell.swift */,
 				77BBBCBA2181585C00500A3A /* SelectionTableViewCell.swift */,
 			);
 			path = Cell;
@@ -992,7 +992,7 @@
 				E40986A4215523A3006CCC04 /* UIViewController+Extension.swift in Sources */,
 				77F3996A215382BA0016978E /* MenuViewCell.swift in Sources */,
 				E4712EDA1E55FC81002FF8E1 /* ProjectIntroductionViewController.swift in Sources */,
-				77BBBCBD21815C9C00500A3A /* RequestTableViewCell.swift in Sources */,
+				77BBBCBD21815C9C00500A3A /* ProjectRequestTableViewCell.swift in Sources */,
 				77B1991B230B8201003EE42F /* WhoisViewModel.swift in Sources */,
 				77F3995F215373600016978E /* KeyValueViewController.swift in Sources */,
 				E48D41581D444F3F0028B84F /* AppDelegate.swift in Sources */,
@@ -1019,7 +1019,7 @@
 				77CDA18C222E13FE0063C472 /* BaseViewModel.swift in Sources */,
 				E49BC0AB1E4226F400241004 /* Project+CoreDataClass.swift in Sources */,
 				779B06112269A8CE00F5B225 /* UITextField+Rx.swift in Sources */,
-				77D6A7ED2186AA4500A65283 /* DeleteTableViewCell.swift in Sources */,
+				77D6A7ED2186AA4500A65283 /* ProjectDeleteTableViewCell.swift in Sources */,
 				BBFA159B240E3C4C00AD7294 /* SigninViewController.swift in Sources */,
 				BBFA15A7240E3D1200AD7294 /* SigninFlow.swift in Sources */,
 				E4798BDF1E2BC92600DCD4E2 /* EditingViewController.swift in Sources */,
