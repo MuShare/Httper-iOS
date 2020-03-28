@@ -1,0 +1,192 @@
+/* 
+  Localizable.strings
+  Httper
+
+  Created by Meng Li on 07/12/2016.
+  Copyright © 2016 MuShare Group. All rights reserved.
+*/
+
+GET = "The GET method is used to retrieve information from the given server using a given URI.";
+HEAD = "Same as GET, but transfers the status line and header section only.";
+POST = "POST request is used to send data to the server, for example, customer information, file upload, etc. using HTML forms.";
+PUT = "Replaces all current representations of the target resource with the uploaded content.";
+DELETE = "Removes all current representations of the target resource given by a URI.";
+CONNECT = "Establishes a tunnel to the server identified by a given URI.";
+OPTIONS = "Describes the communication options for the target resource.";
+TRACE = "Performs a message loop-back test along the path to the target resource.";
+PATCH = "PATCH can be used to update partial resources when you only need to update one field of the resource.";
+
+Accept = "Content-Types that are acceptable for the response.";
+Accept-Charset = "Character sets that are acceptable.";
+Accept-Encoding = "List of acceptable encodings.";
+Accept-Language = "List of acceptable human languages for response.";
+Accept-Datetime = "Acceptable version in time.";
+Authorization = "Authentication credentials for HTTP authentication.";
+Cache-Control = "Used to specify directives that must be obeyed by all caching mechanisms along the request-response chain.";
+Connection = "Control options for the current connection and list of hop-by-hop request fields.";
+Cookie = "An HTTP cookie previously sent by the server with Set-Cookie (below).";
+Content-Length = "The length of the request body in octets (8-bit bytes).";
+Content-MD5 = "A Base64-encoded binary MD5 sum of the content of the request body.";
+Content-Type = "The MIME type of the body of the request (used with POST and PUT requests).";
+Date = "The date and time that the message was originated (as defined by RFC 7231 Date/Time Formats).";
+Expect = "Indicates that particular server behaviors are required by the client.";
+Forwarded = "Disclose original information of a client connecting to a web server through an HTTP proxy.";
+From = "The email address of the user making the request.";
+Host = "The domain name of the server (for virtual hosting), and the TCP port number on which the server is listening.";
+If-Match = "Only perform the action if the client supplied entity matches the same entity on the server.";
+If-Modified-Since = "Allows a 304 Not Modified to be returned if content is unchanged.";
+If-None-Match = "Allows a 304 Not Modified to be returned if content is unchanged, see HTTP ETag.";
+If-Range = "If the entity is unchanged, send me the part(s) that I am missing; otherwise, send me the entire new entity.";
+If-Unmodified-Since = "Only send the response if the entity has not been modified since a specific time.";
+Max-Forwards = "Limit the number of times the message can be forwarded through proxies or gateways.";
+Origin = "Initiates a request for cross-origin resource sharing (asks server for an 'Access-Control-Allow-Origin' response field).";
+Pragma = "Implementation-specific fields that may have various effects anywhere along the request-response chain.";
+Proxy-Authorization = "Authorization credentials for connecting to a proxy.";
+Range = "Request only part of an entity. Bytes are numbered from 0. See Byte serving.";
+Referer = "This is the address of the previous web page from which a link to the currently requested page was followed.";
+User-Agent = "The user agent string of the user agent.";
+Upgrade = "Ask the server to upgrade to another protocol.";
+Via = "Informs the server of proxies through which the request was sent.";
+Warning = "A general warning about possible problems with the entity body.";
+
+common_tip_name = "Tip";
+common_cancel_name = "Cancel";
+common_yes_name = "Yes";
+common_ok_name = "OK";
+common_clear_name = "Clear";
+common_no_internet_connection = "No Internet connection!";
+common_token_error = "User authorization is invalide. Please sign in again!";
+common_error_unknown = "Unknown error.";
+
+tab_request_title = "Httper";
+tab_project_title = "Projects";
+tab_request = "Request";
+tab_project = "Project";
+tab_settings = "Settings";
+tab_request_clear = "Clear";
+
+// UserManager
+user_email_registered = "This email has been registered.";
+user_email_not_exist = "This email is not existed.";
+user_password_wrong = "Your password is wrong, check and try again.";
+user_facebook_oauth_error = "Facebook OAuth login failed, plasese try Again!";
+
+// AddProjectViewController
+add_project_name_title = "Project Name";
+add_project_name_placeholder = "Your project name";
+add_project_privilege_title = "Privilege";
+add_project_privilege_select = "Select Privilege";
+add_project_introduction_title = "Introduction";
+
+// ProjectNameViewController
+project_name_placeholder = "New project name";
+project_delete = "Delete project";
+project_delete_message = "Are you sure to delete project ";
+
+// RequestViewController
+request_title = "Request";
+request_menu_parameters = "Parameters";
+request_menu_headers = "Headers";
+request_menu_body = "Body";
+request_method = "Request Method";
+request_methods = "Request Methods";
+request_url_placeholder = "request URL";
+request_send_request = "Send Request";
+request_save_to_project = "Save to Project";
+request_clear_title = "Clear Request";
+request_clear_message = "Are you sure to clear this request?";
+request_url_empty = "Request URL cannot be empty!";
+
+// ResultViewController
+result_menu_pretty = "Pretty";
+result_menu_raw = "Raw";
+result_menu_preview = "Preview";
+result_menu_detail = "Detail";
+result_nothing = "Nothing from this url.";
+
+// DetailViewController
+detail_request_url = "Request URL";
+detail_status_code = "Status Code";
+
+// KeyValueViewController
+key_value_key_placeholder = "key";
+key_value_value_placeholder = "value";
+
+// SaveToProjectViewController
+save_to_project_title = "Save to Project";
+
+// IPAddressViewController
+ip_adress_title = "My IP Address";
+ip_address_unknown = "unknown";
+ip_address_wifi = "WiFi Network";
+ip_address_wifi_local_ip = "Local IP";
+ip_address_wifi_broadcast = "Broadcast";
+ip_address_wifi_gateway = "Gateway";
+ip_address_wifi_netmask = "Netmask";
+ip_address_cellular = "Cellular Network";
+ip_address_cellular_local_ip = "Local IP";
+ip_address_cellular_netmask = "Netmask";
+ip_address_internet = "Internet";
+ip_address_public_ip = "Public IP";
+ip_address_public_city = "City";
+ip_address_public_region = "Region";
+ip_address_public_country = "Country";
+ip_address_public_post_code = "Post Code";
+ip_address_public_time_zone = "Time Zone";
+ip_address_public_latitude = "Latitude";
+ip_address_public_longitude = "Longitude";
+
+// KeyboardAccessoryViewController
+keyboard_accessory_title = "Customized Keyboard Accessory";
+keyboard_accessory_illegal_character = "Please input a legal character!";
+keyboard_accessory_delete_character = "Are you sure to delete the character '%@'?";
+keyboard_accessory_add_character = "Add Customized Character";
+
+// ModifyNameViewController
+modify_name_title = "Modify Name";
+modify_name_empty_name = "Name is empty.";
+
+// PingViewController
+ping_title = "Ping";
+ping_address_placeholder = "Domain Name";
+ping_result = "Ping Result";
+
+// ProfileViewController
+profile_title = "Profile";
+profile_sign_out = "Sign out";
+
+// SettingsViewController
+settings_selection_keyboard = "Keyboard Accessory";
+settings_selection_ping = "Ping";
+settings_selection_whois = "Whois";
+settings_selection_ip = "What is my IP address";
+settings_selection_appstore = "Rate me on App Store";
+settings_selection_github = "Give me a star on Github";
+ssettings_selection_about = "About";
+
+// WhoisViewController
+whois_title = "Whois";
+whois_address_placeholder = "Domain Name";
+
+// SigninViewController
+sign_in_title = "Welcome to Httper Cloud";
+sign_in_email_placeholder = "Email";
+sign_in_password_placeholder = "Password";
+sign_in_submit = "Sign in";
+sign_in_forgot_password = "Forget Password";
+sign_in_sign_up = "Sign up now!";
+sign_in_facebook = "Sign in with Facebook";
+
+// SignUpViewControlelr
+sign_up_title = "Sign up with email";
+sign_up_email_placeholder = "Email Address";
+sign_up_username_placeholder = "Username";
+sign_up_password_placeholder = "Password";
+sign_up_submit = "Submit";
+
+// ResetPasswordViewController
+reset_password_email_placeholder = "Email";
+reset_password_with_email="Reset password with email";
+reset_password_send_an_email="Send an email";
+reset_password_failed = "Send email failed, try again later.";
+reset_password_check_email = "We have sent a mail to reset password to you, please check your email";

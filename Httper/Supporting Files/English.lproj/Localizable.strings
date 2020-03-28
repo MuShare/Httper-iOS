@@ -108,6 +108,10 @@ result_nothing = "Nothing from this url.";
 detail_request_url = "Request URL";
 detail_status_code = "Status Code";
 
+// KeyValueViewController
+key_value_key_placeholder = "key";
+key_value_value_placeholder = "value";
+
 // SaveToProjectViewController
 save_to_project_title = "Save to Project";
 

@@ -30,7 +30,10 @@ class KeyValueTableViewCell: UITableViewCell, Reusable {
     
     private lazy var keyTextField: UITextField = {
         let textField = UITextField()
-        textField.attributedPlaceholder = NSAttributedString(string: "key", attributes: [.foregroundColor : UIColor.lightGray])
+        textField.attributedPlaceholder = NSAttributedString(
+            string: R.string.localizable.key_value_key_placeholder(),
+            attributes: [.foregroundColor : UIColor.lightGray]
+        )
         textField.textColor = .white
         textField.backgroundColor = .clear
         textField.autocorrectionType = .no
@@ -58,7 +61,10 @@ class KeyValueTableViewCell: UITableViewCell, Reusable {
     
     private lazy var valueTextField: UITextField = {
         let textField = UITextField()
-        textField.attributedPlaceholder = NSAttributedString(string: "value", attributes: [.foregroundColor : UIColor.lightGray])
+        textField.attributedPlaceholder = NSAttributedString(
+            string: R.string.localizable.key_value_value_placeholder(),
+            attributes: [.foregroundColor : UIColor.lightGray]
+        )
         textField.textColor = .white
         textField.backgroundColor = .clear
         textField.autocorrectionType = .no
