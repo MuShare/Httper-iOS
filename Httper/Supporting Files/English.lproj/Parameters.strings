@@ -1,0 +1,17 @@
+/* 
+  Parameters.strings
+  Httper
+
+  Created by Meng Li on 2020/3/30.
+  Copyright © 2020 MuShare. All rights reserved.
+*/
+
+GET = "The GET method is used to retrieve information from the given server using a given URI.";
+HEAD = "Same as GET, but transfers the status line and header section only.";
+POST = "POST request is used to send data to the server, for example, customer information, file upload, etc. using HTML forms.";
+PUT = "Replaces all current representations of the target resource with the uploaded content.";
+DELETE = "Removes all current representations of the target resource given by a URI.";
+CONNECT = "Establishes a tunnel to the server identified by a given URI.";
+OPTIONS = "Describes the communication options for the target resource.";
+TRACE = "Performs a message loop-back test along the path to the target resource.";
+PATCH = "PATCH can be used to update partial resources when you only need to update one field of the resource.";
