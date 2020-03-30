@@ -1,0 +1,40 @@
+/* 
+  Headers.strings
+  Httper
+
+  Created by Meng Li on 2020/3/30.
+  Copyright © 2020 MuShare. All rights reserved.
+*/
+
+Accept = "Content-Types that are acceptable for the response.";
+Accept-Charset = "Character sets that are acceptable.";
+Accept-Encoding = "List of acceptable encodings.";
+Accept-Language = "List of acceptable human languages for response.";
+Accept-Datetime = "Acceptable version in time.";
+Authorization = "Authentication credentials for HTTP authentication.";
+Cache-Control = "Used to specify directives that must be obeyed by all caching mechanisms along the request-response chain.";
+Connection = "Control options for the current connection and list of hop-by-hop request fields.";
+Cookie = "An HTTP cookie previously sent by the server with Set-Cookie (below).";
+Content-Length = "The length of the request body in octets (8-bit bytes).";
+Content-MD5 = "A Base64-encoded binary MD5 sum of the content of the request body.";
+Content-Type = "The MIME type of the body of the request (used with POST and PUT requests).";
+Date = "The date and time that the message was originated (as defined by RFC 7231 Date/Time Formats).";
+Expect = "Indicates that particular server behaviors are required by the client.";
+Forwarded = "Disclose original information of a client connecting to a web server through an HTTP proxy.";
+From = "The email address of the user making the request.";
+Host = "The domain name of the server (for virtual hosting), and the TCP port number on which the server is listening.";
+If-Match = "Only perform the action if the client supplied entity matches the same entity on the server.";
+If-Modified-Since = "Allows a 304 Not Modified to be returned if content is unchanged.";
+If-None-Match = "Allows a 304 Not Modified to be returned if content is unchanged, see HTTP ETag.";
+If-Range = "If the entity is unchanged, send me the part(s) that I am missing; otherwise, send me the entire new entity.";
+If-Unmodified-Since = "Only send the response if the entity has not been modified since a specific time.";
+Max-Forwards = "Limit the number of times the message can be forwarded through proxies or gateways.";
+Origin = "Initiates a request for cross-origin resource sharing (asks server for an 'Access-Control-Allow-Origin' response field).";
+Pragma = "Implementation-specific fields that may have various effects anywhere along the request-response chain.";
+Proxy-Authorization = "Authorization credentials for connecting to a proxy.";
+Range = "Request only part of an entity. Bytes are numbered from 0. See Byte serving.";
+Referer = "This is the address of the previous web page from which a link to the currently requested page was followed.";
+User-Agent = "The user agent string of the user agent.";
+Upgrade = "Ask the server to upgrade to another protocol.";
+Via = "Informs the server of proxies through which the request was sent.";
+Warning = "A general warning about possible problems with the entity body.";
