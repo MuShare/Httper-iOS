@@ -29,7 +29,17 @@ extension DetailOption: MGSelectorOption {
     }
     
     var detail: String? {
-        return NSLocalizedString(key, comment: "")
+        switch key {
+        case "GET": return R.string.parameters.get()
+        case "POST": return R.string.parameters.post()
+        case "HEAD": return R.string.parameters.head()
+        case "DELETE": return R.string.parameters.delete()
+        case "CONNECT": return R.string.parameters.connect()
+        case "OPTIONS": return R.string.parameters.options()
+        case "TRACE": return R.string.parameters.trace()
+        case "PATCH": return R.string.parameters.patch()
+        default: return nil
+        }
     }
     
 }

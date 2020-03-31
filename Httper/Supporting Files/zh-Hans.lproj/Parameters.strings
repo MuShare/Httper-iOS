@@ -6,12 +6,12 @@
   Copyright © 2020 MuShare. All rights reserved.
 */
 
-GET = "GET方法获取被请求URI（Request-URI）指定的信息（以实体的格式）。";
-HEAD = "HEAD方法和GET方法一致，除了服务器不能在响应里返回消息主体。HEAD请求响应里HTTP头域里的元信息应该和GET请求响应里的元信息一致。";
-POST = "POST方法被用于请求源服务器接受请求中的实体作为请求资源的一个新的从属物。";
-PUT = "与GET从服务器读取文档相反，PUT方法会向服务器写入文档。有些发布系统允许用户创建Web页面，并用PUT直接将其安装到Web服务器上去。";
-DELETE = "DELETE方法请求源服务器删除请求URI指定的资源。";
-CONNECT = "CONNECT是为了能用于能动态切换到隧道的代理服务器";
-OPTIONS = "OPTIONS方法表明请求想得到请求/响应链上关于此请求里的URI（Request-URI）指定资源的通信选项信息。";
-TRACE = "TRACE方法被用于激发一个远程的，应用层的请求消息回路。";
-PATCH = "PATCH请求一般用于资源的部分更新，当资源不存在时，PATCH会创建一个新的资源。";
+get = "GET方法获取被请求URI（Request-URI）指定的信息（以实体的格式）。";
+head = "HEAD方法和GET方法一致，除了服务器不能在响应里返回消息主体。HEAD请求响应里HTTP头域里的元信息应该和GET请求响应里的元信息一致。";
+post = "POST方法被用于请求源服务器接受请求中的实体作为请求资源的一个新的从属物。";
+put = "与GET从服务器读取文档相反，PUT方法会向服务器写入文档。有些发布系统允许用户创建Web页面，并用PUT直接将其安装到Web服务器上去。";
+delete = "DELETE方法请求源服务器删除请求URI指定的资源。";
+connect = "CONNECT是为了能用于能动态切换到隧道的代理服务器";
+options = "OPTIONS方法表明请求想得到请求/响应链上关于此请求里的URI（Request-URI）指定资源的通信选项信息。";
+trace = "TRACE方法被用于激发一个远程的，应用层的请求消息回路。";
+patch = "PATCH请求一般用于资源的部分更新，当资源不存在时，PATCH会创建一个新的资源。";
