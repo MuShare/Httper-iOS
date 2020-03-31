@@ -49,6 +49,8 @@ class PingViewController: BaseViewController<PingViewModel> {
     private lazy var addressTextField: UITextField = {
         let textField = UITextField()
         textField.textColor = .white
+        textField.autocorrectionType = .no
+        textField.autocapitalizationType = .none
         textField.attributedPlaceholder = NSAttributedString(
             string: R.string.localizable.ping_address_placeholder(),
             attributes: [.foregroundColor: UIColor.lightGray]
