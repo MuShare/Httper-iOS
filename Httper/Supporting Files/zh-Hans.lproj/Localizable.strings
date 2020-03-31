@@ -16,9 +16,9 @@ common_token_error = "用户验证失败，请重试。";
 common_error_unknown = "未知错误";
 
 tab_request_title = "Httper";
-tab_project_title = "工程";
+tab_project_title = "项目";
 tab_request = "请求";
-tab_project = "工程";
+tab_project = "项目";
 tab_settings = "设置";
 tab_request_clear = "清除";
 
@@ -29,16 +29,16 @@ user_password_wrong = "密码错误，请检查后重试。";
 user_facebook_oauth_error = "Facebook验证失败，请检查后重试。";
 
 // AddProjectViewController
-add_project_name_title = "工程名";
-add_project_name_placeholder = "工程名";
+add_project_name_title = "项目名";
+add_project_name_placeholder = "项目名";
 add_project_privilege_title = "权限";
 add_project_privilege_select = "选择权限";
 add_project_introduction_title = "简介";
 
 // ProjectNameViewController
-project_name_placeholder = "新工程名";
-project_delete = "删除工程";
-project_delete_message = "确定删除工程？";
+project_name_placeholder = "新项目名";
+project_delete = "删除项目";
+project_delete_message = "确定删除项目？";
 
 // RequestViewController
 request_title = "请求";
@@ -49,7 +49,7 @@ request_method = "请求方法";
 request_methods = "请求方法";
 request_url_placeholder = "请求URL";
 request_send_request = "发送请求";
-request_save_to_project = "保存到工程";
+request_save_to_project = "保存到项目";
 request_clear_title = "清除请求参数";
 request_clear_message = "确定清除此请求？";
 request_url_empty = "请求URL不能为空！";
@@ -70,7 +70,7 @@ key_value_key_placeholder = "名称";
 key_value_value_placeholder = "值";
 
 // SaveToProjectViewController
-save_to_project_title = "保存到工程";
+save_to_project_title = "保存到项目";
 
 // IPAddressViewController
 ip_adress_title = "我的IP地址";
