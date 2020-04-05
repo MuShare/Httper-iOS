@@ -54,10 +54,10 @@ class SettingsViewModel: BaseViewModel {
     var avatar: Observable<URL?> {
         return isLoginSubject.distinctUntilChanged().map {
             switch UserManager.shared.type {
-            case UserTypeFacebook:
-                return $0 ? imageURL(UserManager.shared.avatar) :  nil
-            default:
+            case .email:
                 return nil
+            case .facebook:
+                return $0 ? imageURL(UserManager.shared.avatar) :  nil
             }
         }
     }

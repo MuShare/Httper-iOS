@@ -10,8 +10,10 @@ import Alamofire
 import RxCocoa
 import SwiftyUserDefaults
 
-let UserTypeEmail = "email"
-let UserTypeFacebook = "facebook"
+enum UserType: String {
+    case email = "email"
+    case facebook = "facebook"
+}
 
 final class UserManager {
     
@@ -35,12 +37,12 @@ final class UserManager {
         }
     }
     
-    var type: String {
+    var type: UserType {
         set {
-            Defaults.type = newValue
+            Defaults.type = newValue.rawValue
         }
         get {
-            return Defaults.type ?? UserTypeEmail
+            return UserType(rawValue: Defaults.type ?? UserType.email.rawValue) ?? .email
         }
     }
     
@@ -96,9 +98,10 @@ final class UserManager {
     }
     
     var displayEmail: String {
-        if type == UserTypeEmail {
+        switch type {
+        case .email:
             return email
-        } else {
+        case .facebook:
             return R.string.localizable.sign_in_facebook()
         }
     }
@@ -194,7 +197,7 @@ final class UserManager {
                 self.token = result["token"].stringValue
                 self.name = user["name"].stringValue
                 self.avatar = user["avatar"].stringValue
-                self.type = UserTypeEmail
+                self.type = .email
                 self.login = true
                 completion?(true, nil)
             } else {
@@ -237,7 +240,7 @@ final class UserManager {
                 self.token = result["token"].stringValue
                 self.name = user["name"].stringValue
                 self.avatar = user["avatar"].stringValue
-                self.type = UserTypeFacebook
+                self.type = .facebook
                 self.login = true
                 
                 completion?(true, nil)
@@ -311,7 +314,7 @@ final class UserManager {
     }
     
     func logout() {
-        type = ""
+        type = .email
         email = ""
         name = ""
         avatar = ""
