@@ -61,7 +61,7 @@ class KeyValueViewModel: BaseViewModel {
     }
     
     var characters: Observable<[String]> {
-        UserManager.shared.charactersRelay.asObservable()
+        keyValuesRelay.withLatestFrom(UserManager.shared.charactersRelay)
     }
     
     func addNewKey() {
