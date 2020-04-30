@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (4.9.1)
+  - Alamofire (5.1.0)
   - AttributedTextView (1.4.1)
   - Crashlytics (3.14.0):
     - Fabric (~> 1.10.2)
@@ -23,9 +23,9 @@ PODS:
     - FBSDKLoginKit/Login (= 5.15.1)
   - FBSDKLoginKit/Login (5.15.1):
     - FBSDKCoreKit (~> 5.0)
-  - Firebase/CoreOnly (6.21.0):
-    - FirebaseCore (= 6.6.5)
-  - Firebase/Performance (6.21.0):
+  - Firebase/CoreOnly (6.23.0):
+    - FirebaseCore (= 6.6.7)
+  - Firebase/Performance (6.23.0):
     - Firebase/CoreOnly
     - FirebasePerformance (~> 3.1.11)
   - FirebaseABTesting (3.2.0):
@@ -33,23 +33,24 @@ PODS:
     - FirebaseCore (~> 6.1)
     - Protobuf (>= 3.9.2, ~> 3.9)
   - FirebaseAnalyticsInterop (1.5.0)
-  - FirebaseCore (6.6.5):
+  - FirebaseCore (6.6.7):
     - FirebaseCoreDiagnostics (~> 1.2)
     - FirebaseCoreDiagnosticsInterop (~> 1.2)
     - GoogleUtilities/Environment (~> 6.5)
     - GoogleUtilities/Logger (~> 6.5)
-  - FirebaseCoreDiagnostics (1.2.2):
+  - FirebaseCoreDiagnostics (1.2.4):
     - FirebaseCoreDiagnosticsInterop (~> 1.2)
-    - GoogleDataTransportCCTSupport (~> 2.0)
+    - GoogleDataTransportCCTSupport (~> 3.0)
     - GoogleUtilities/Environment (~> 6.5)
     - GoogleUtilities/Logger (~> 6.5)
     - nanopb (~> 0.3.901)
   - FirebaseCoreDiagnosticsInterop (1.2.0)
-  - FirebaseInstallations (1.1.1):
+  - FirebaseInstallations (1.2.0):
     - FirebaseCore (~> 6.6)
-    - GoogleUtilities/UserDefaults (~> 6.5)
+    - GoogleUtilities/Environment (~> 6.6)
+    - GoogleUtilities/UserDefaults (~> 6.6)
     - PromisesObjC (~> 1.2)
-  - FirebaseInstanceID (4.3.2):
+  - FirebaseInstanceID (4.3.4):
     - FirebaseCore (~> 6.6)
     - FirebaseInstallations (~> 1.0)
     - GoogleUtilities/Environment (~> 6.5)
@@ -74,29 +75,30 @@ PODS:
     - "GoogleUtilities/NSData+zlib (~> 6.2)"
     - Protobuf (>= 3.9.2, ~> 3.9)
   - Fuzi (3.1.2)
-  - GoogleDataTransport (5.1.0)
-  - GoogleDataTransportCCTSupport (2.0.1):
-    - GoogleDataTransport (~> 5.1)
+  - GoogleDataTransport (6.0.0)
+  - GoogleDataTransportCCTSupport (3.0.0):
+    - GoogleDataTransport (~> 6.0)
     - nanopb (~> 0.3.901)
   - GoogleToolboxForMac/Defines (2.2.2)
   - GoogleToolboxForMac/Logger (2.2.2):
     - GoogleToolboxForMac/Defines (= 2.2.2)
   - "GoogleToolboxForMac/NSData+zlib (2.2.2)":
     - GoogleToolboxForMac/Defines (= 2.2.2)
-  - GoogleUtilities/Environment (6.5.2)
-  - GoogleUtilities/ISASwizzler (6.5.2)
-  - GoogleUtilities/Logger (6.5.2):
+  - GoogleUtilities/Environment (6.6.0):
+    - PromisesObjC (~> 1.2)
+  - GoogleUtilities/ISASwizzler (6.6.0)
+  - GoogleUtilities/Logger (6.6.0):
     - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (6.5.2):
+  - GoogleUtilities/MethodSwizzler (6.6.0):
     - GoogleUtilities/Logger
-  - "GoogleUtilities/NSData+zlib (6.5.2)"
-  - GoogleUtilities/UserDefaults (6.5.2):
+  - "GoogleUtilities/NSData+zlib (6.6.0)"
+  - GoogleUtilities/UserDefaults (6.6.0):
     - GoogleUtilities/Logger
-  - GTMSessionFetcher/Core (1.3.1)
-  - Kanna (5.2.1)
-  - Kingfisher (5.13.2):
-    - Kingfisher/Core (= 5.13.2)
-  - Kingfisher/Core (5.13.2)
+  - GTMSessionFetcher/Core (1.4.0)
+  - Kanna (5.2.2)
+  - Kingfisher (5.13.4):
+    - Kingfisher/Core (= 5.13.4)
+  - Kingfisher/Core (5.13.4)
   - M80AttributedLabel (1.9.9)
   - MGFormatter (0.4.1):
     - AttributedTextView (~> 1.3)
@@ -124,21 +126,21 @@ PODS:
   - PagingKit (1.12.0)
   - PromisesObjC (1.2.8)
   - Protobuf (3.11.4)
-  - R.swift (5.1.0):
-    - R.swift.Library (~> 5.1.0)
-  - R.swift.Library (5.1.0)
+  - R.swift (5.2.2):
+    - R.swift.Library (~> 5.2.0)
+  - R.swift.Library (5.2.0)
   - ReachabilitySwift (5.0.0)
   - Reusable (4.1.1):
     - Reusable/Storyboard (= 4.1.1)
     - Reusable/View (= 4.1.1)
   - Reusable/Storyboard (4.1.1)
   - Reusable/View (4.1.1)
-  - RxAlamofire (5.1.0):
-    - RxAlamofire/Core (= 5.1.0)
-  - RxAlamofire/Core (5.1.0):
-    - Alamofire (~> 4.8)
-    - RxSwift (~> 5.0)
-  - RxAlertViewable (0.8.4):
+  - RxAlamofire (5.2.0):
+    - RxAlamofire/Core (= 5.2.0)
+  - RxAlamofire/Core (5.2.0):
+    - Alamofire (~> 5.1)
+    - RxSwift (~> 5.1)
+  - RxAlertViewable (0.9):
     - RxCocoa (~> 5)
     - RxSwift (~> 5)
   - RxBinding (0.3.1):
@@ -147,7 +149,7 @@ PODS:
   - RxCocoa (5.1.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
-  - RxController (0.10):
+  - RxController (1.0):
     - RxCocoa (~> 5)
     - RxFlow (~> 2.7)
     - RxSwift (~> 5)
@@ -160,9 +162,9 @@ PODS:
     - RxCocoa (~> 5)
     - RxDataSources (~> 4)
     - RxSwift (~> 5)
-  - RxFlow (2.7.0):
-    - RxCocoa (>= 5.0.0)
-    - RxSwift (>= 5.0.0)
+  - RxFlow (2.8.0):
+    - RxCocoa (>= 5.1.1)
+    - RxSwift (>= 5.1.1)
   - RxKeyboard (1.0.0):
     - RxCocoa (~> 5.0)
     - RxSwift (~> 5.0)
@@ -173,7 +175,7 @@ PODS:
   - SwiftyJSON (4.3.0)
   - SwiftyUserDefaults (5.0.0)
   - SwipeBack (1.1.1)
-  - UIGradient (1.3.1)
+  - UIGradient (1.3.2)
   - "UIImageView+Extension (0.2.6)"
   - "UITextView+Placeholder (1.4.0)"
 
@@ -278,7 +280,7 @@ SPEC REPOS:
     - "UITextView+Placeholder"
 
 SPEC CHECKSUMS:
-  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  Alamofire: 9d5c5f602928e512395b30950c5984eca840093c
   AttributedTextView: 9e01651d96c1af861a9c67c2cc3f94c30320d1c2
   Crashlytics: 540b7e5f5da5a042647227a5e3ac51d85eed06df
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
@@ -289,24 +291,24 @@ SPEC CHECKSUMS:
   FacebookLogin: 6cee9fd6e1fe976fe8f7eec199e27b28b14f5d63
   FBSDKCoreKit: 1d5acf7c9d7a2f92bb1a242dc60cae5b7adb91df
   FBSDKLoginKit: f1ea8026a58b52d30c9f2e6a58ca7d813619fb83
-  Firebase: f378c80340dd41c0ad0914af740c021eb282a04b
+  Firebase: 585ae467b3edda6a5444e788fda6888f024d8d6f
   FirebaseABTesting: 821a3a3e4a145987e80fee3657c4de1cb9adf693
   FirebaseAnalyticsInterop: 3f86269c38ae41f47afeb43ebf32a001f58fcdae
-  FirebaseCore: 9f495d3afacb7b558711e6218ebb14b1c51b5802
-  FirebaseCoreDiagnostics: e9b4cd8ba60dee0f2d13347332e4b7898cca5b61
+  FirebaseCore: a2788a0d5f6c1dff17b8f79b4a73654a8d4bfdbd
+  FirebaseCoreDiagnostics: b59c024493a409f8aecba02c99928d0d8431d159
   FirebaseCoreDiagnosticsInterop: 296e2c5f5314500a850ad0b83e9e7c10b011a850
-  FirebaseInstallations: acb3216eb9784d3b1d2d2d635ff74fa892cc0c44
-  FirebaseInstanceID: 7ee0d6777013bb952f377b41965bf132b6a075be
+  FirebaseInstallations: 2119fb3e46b0a88bfdbf12562f855ee3252462fa
+  FirebaseInstanceID: cef67c4967c7cecb56ea65d8acbb4834825c587b
   FirebasePerformance: 5652d2004001e886da6dca04f478c695f87c4702
   FirebaseRemoteConfig: 47abf7a04a9082091955ea555aa79cfdd249b19c
   Fuzi: dba7215e52fb39dd7b1a62f69ede1e30edff0ae1
-  GoogleDataTransport: b29a21d813e906014ca16c00897827e40e4a24ab
-  GoogleDataTransportCCTSupport: 6f15a89b0ca35d6fa523e1f752ef818588885988
+  GoogleDataTransport: 061fe7d9b476710e3cd8ea51e8e07d8b67c2b420
+  GoogleDataTransportCCTSupport: 0f39025e8cf51f168711bd3fb773938d7e62ddb5
   GoogleToolboxForMac: 800648f8b3127618c1b59c7f97684427630c5ea3
-  GoogleUtilities: ad0f3b691c67909d03a3327cc205222ab8f42e0e
-  GTMSessionFetcher: cea130bbfe5a7edc8d06d3f0d17288c32ffe9925
-  Kanna: 575713fdbe7ac06a4fc1e6d202ade6c2d51c5ce1
-  Kingfisher: d342c8354c10c3d85a27d6d4c42c41285924b898
+  GoogleUtilities: 39530bc0ad980530298e9c4af8549e991fd033b1
+  GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
+  Kanna: 2c4eddaaa4bfb9a1ed19e53c0b3d42ef02838046
+  Kingfisher: d2279a7abece3c7f25a80cd2b7f363ca5cf3f44c
   M80AttributedLabel: 77fedfe63804c989a6de0fa4d400ea8cad3ab441
   MGFormatter: f7e8a7fa333f6d7cbd55dbdcc142533fdb7c068e
   MGKeyboardAccessory: 9b3a5ace073f772809bf88e900729aef86901047
@@ -316,18 +318,18 @@ SPEC CHECKSUMS:
   PagingKit: 3aa34f2547edad4809da888d5fa1b930456753f0
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   Protobuf: 176220c526ad8bd09ab1fb40a978eac3fef665f7
-  R.swift: 8cbc4fc69b740305b6a17c8a8ed968eb788962d9
-  R.swift.Library: fa85ce1e0d0b7e818cd9e080df910ba54d2776cc
+  R.swift: 7c52cdc57a66840ffe6cbd8a823d732059d42a32
+  R.swift.Library: 5ba4f1631300caf9a4d890186930da85d540769d
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   Reusable: 53a9acf5c536f229b31b5865782414b508252ddb
-  RxAlamofire: a2d7621de4c23a0c6e7b476b504acc32838ee341
-  RxAlertViewable: 0dbe70c15bd258fba5fadb8418c5401dca228b15
+  RxAlamofire: 878eb06baefd76df6062889be11592434e6c4a95
+  RxAlertViewable: 82a1ce0033c67215de9212e6e478b3935bd68165
   RxBinding: 58be2cf1311165489a66eacb4a3e33932d598a53
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
-  RxController: c596ce5b2bc9ab933649690838d60118f0e4b110
+  RxController: a7958fae912f3b29a632fec772039b394326124a
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
   RxDataSourcesSingleSection: 4394e57ae097f33e3845cf3a57bdf7826eca2d38
-  RxFlow: 605ef6364d7e937bea8f9507a1e99a431cdc2493
+  RxFlow: 41c9d56e7611c6470d00febdfee08b63b0b018f8
   RxKeyboard: 6683c4344304a00f943c158bd8a43ce5469c82a7
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
@@ -335,7 +337,7 @@ SPEC CHECKSUMS:
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   SwiftyUserDefaults: 33fcb42bd1feb53a37d873feb62c82967db5f7f6
   SwipeBack: d6759601b40da1f4161033feb30ab475d7d04322
-  UIGradient: 9c7041327bf202b09aab2db7c33fb41f768b19ea
+  UIGradient: 2364e9ebac232686db220713b4d42a68222fffb2
   "UIImageView+Extension": bc26c60a9c8cd6fb515ae1e37377a6f0988e76d8
   "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
 
