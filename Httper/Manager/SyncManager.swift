@@ -36,7 +36,7 @@ final class SyncManager {
         let params: Parameters = [
             "revision": localRevision
         ]
-        Alamofire.request(
+        AF.request(
             createUrl("api/request/pull"),
             method: .get,
             parameters: params,
@@ -128,7 +128,7 @@ final class SyncManager {
         let params: Parameters = [
             "requestsJSONArray": JSONStringWithObject(requestArray)!
         ]
-        Alamofire.request(
+        AF.request(
             createUrl("api/request/push"),
             method: .post,
             parameters: params,
@@ -175,7 +175,7 @@ final class SyncManager {
         let params: Parameters = [
             "rid": rid
         ]
-        Alamofire.request(
+        AF.request(
             createUrl("api/request/push"),
             method: HTTPMethod.delete,
             parameters: params,
@@ -218,7 +218,7 @@ final class SyncManager {
         let params: Parameters = [
             "revision": localRevision
         ]
-        Alamofire.request(
+        AF.request(
             createUrl("api/project/pull"),
             method: .get,
             parameters: params,
@@ -287,7 +287,7 @@ final class SyncManager {
         let params: Parameters = [
             "projectsJSONArray": projectsJSONArray
         ]
-        Alamofire.request(
+        AF.request(
             createUrl("api/project/push"),
             method: .post,
             parameters: params,
@@ -330,7 +330,7 @@ final class SyncManager {
         let params: Parameters = [
             "pid": pid
         ]
-        Alamofire.request(
+        AF.request(
             createUrl("api/project/push"),
             method: .delete,
             parameters: params,

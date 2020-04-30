@@ -54,7 +54,7 @@ class IPAddressViewController: BaseViewController<IPAddressViewModel> {
         ]
     }
     
-    private func createConstraints() {
+    override func createConstraints() {
         tableView.snp.makeConstraints {
             $0.left.right.bottom.equalToSuperview()
             $0.top.equalTo(view.safeArea.top)

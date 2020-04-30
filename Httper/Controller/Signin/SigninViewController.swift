@@ -211,7 +211,7 @@ class SigninViewController: BaseViewController<SigninViewModel> {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    private func createConstraints() {
+    override func createConstraints() {
         
         closeButton.snp.makeConstraints {
             $0.size.equalTo(Const.back.size)

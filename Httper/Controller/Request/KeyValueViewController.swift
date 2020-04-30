@@ -49,17 +49,17 @@ class KeyValueViewController: BaseViewController<KeyValueViewModel> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addSubview(addButton)
-        view.addSubview(tableView)
-        createConstraints()
-        
         disposeBag ~ [
             viewModel.keyValueSection ~> tableView.rx.items(dataSource: dataSource),
             viewModel.characters ~> rx.characters
         ]
     }
     
-    private func createConstraints() {
+    override func subviews() -> [UIView] {
+        [addButton, tableView]
+    }
+    
+    override func createConstraints() {
         
         addButton.snp.makeConstraints {
             $0.height.equalTo(Const.add.height)

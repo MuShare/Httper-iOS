@@ -79,7 +79,7 @@ class ResultViewController: BaseViewController<ResultViewModel> {
         ]
     }
     
-    private func createConstraints() {
+    override func createConstraints() {
         
         menuView.snp.makeConstraints {
             $0.left.equalToSuperview().offset(Const.menu.margin)

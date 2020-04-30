@@ -47,7 +47,7 @@ class ModifyNameViewController: BaseViewController<ModifyNameViewModel> {
         ]
     }
     
-    private func createConstraints() {
+    override func createConstraints() {
         nameTextField.snp.makeConstraints {
             $0.height.equalTo(Const.name.height)
             $0.left.right.equalToSuperview()

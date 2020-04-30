@@ -13,14 +13,14 @@ class InternetResponse: NSObject {
     
     var data: [String: Any] = [:]
     
-    init(_ response: DataResponse<Any>) {
+    init(_ response: AFDataResponse<Any>) {
         if DEBUG && response.response != nil {
             NSLog("New response, status:\n\(response.response!)")
         }
         if DEBUG && response.data != nil {
             NSLog("Response body:\n\(String.init(data: response.data!, encoding: .utf8)!)")
         }
-        if let value = response.result.value as? [String: Any] {
+        if let value = response.value as? [String: Any] {
             data = value
         }
         if DEBUG {

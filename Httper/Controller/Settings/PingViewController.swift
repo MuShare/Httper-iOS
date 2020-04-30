@@ -102,7 +102,7 @@ class PingViewController: BaseViewController<PingViewModel> {
         ]
     }
     
-    private func createConstraints() {
+    override func createConstraints() {
         
         iconImageView.snp.makeConstraints {
             $0.size.equalTo(Const.icon.size)

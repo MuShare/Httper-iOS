@@ -188,7 +188,7 @@ class SignupViewController: BaseViewController<SignupViewModel> {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    private func createConstraints() {
+    override func createConstraints() {
         
         backButton.snp.makeConstraints {
             $0.size.equalTo(Const.back.size)

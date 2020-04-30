@@ -73,7 +73,7 @@ class ProjectViewController: BaseViewController<ProjectViewModel> {
         viewModel.syncProject()
     }
     
-    private func createConstraints() {
+    override func createConstraints() {
         tableView.snp.makeConstraints {
             $0.left.right.bottom.equalToSuperview()
             $0.top.equalToSuperview().offset(topPadding)

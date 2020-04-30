@@ -24,7 +24,7 @@ class PreviewViewController: BaseViewController<PreviewViewModel> {
 
     }
     
-    private func createConstraints() {
+    override func createConstraints() {
         previewWebView.snp.makeConstraints {
             $0.size.equalToSuperview()
             $0.center.equalToSuperview()

@@ -51,7 +51,7 @@ class ProjectNameViewController: BaseViewController<ProjectNameViewModel> {
         ]
     }
     
-    private func createConstraints() {
+    override func createConstraints() {
         
         nameTextField.snp.makeConstraints {
             $0.left.right.equalToSuperview()

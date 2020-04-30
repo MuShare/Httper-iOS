@@ -40,7 +40,7 @@ class ProjectIntroductionViewController: BaseViewController<ProjectIntroductionV
         
     }
     
-    private func createConstraints() {
+    override func createConstraints() {
         introductionTextView.snp.makeConstraints {
             $0.left.right.bottom.equalToSuperview()
             $0.top.equalTo(view.safeArea.top)

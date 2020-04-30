@@ -129,7 +129,7 @@ class ResetPasswordViewController: BaseViewController<ResetPasswordViewModel> {
         emailTextField.becomeFirstResponder()
     }
     
-    private func createConstraints() {
+    override func createConstraints() {
         
         backButton.snp.makeConstraints {
             $0.size.equalTo(Const.close.size)

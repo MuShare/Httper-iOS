@@ -43,7 +43,7 @@ class BodyViewController: BaseViewController<BodyViewModel> {
         ]
     }
     
-    private func createConstraints() {
+    override func createConstraints() {
         rawBodyTextView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.left.equalToSuperview().offset(Const.rawBody.margin)

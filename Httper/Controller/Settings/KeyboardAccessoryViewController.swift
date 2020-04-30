@@ -55,7 +55,7 @@ class KeyboardAccessoryViewController: BaseViewController<KeyboardAccessoryViewM
         
     }
 
-    private func createConstraints() {
+    override func createConstraints() {
         collectionView.snp.makeConstraints {
             $0.top.equalTo(view.safeArea.top).offset(Const.collection.marginTop)
             $0.left.right.bottom.equalToSuperview()

@@ -10,6 +10,7 @@ import Alamofire
 import MGKeyboardAccessory
 import MGSelector
 import PagingKit
+import RxSwift
 
 fileprivate struct Const {
     
@@ -171,16 +172,6 @@ class RequestViewController: BaseViewController<RequestViewModel>, RxKeyboardVie
         super.viewDidLoad()
         
         view.backgroundColor = .background
-        view.addSubview(requestMethodLabel)
-        view.addSubview(requestMethodButton)
-        view.addSubview(protocolsSegmentedControl)
-        view.addSubview(separatorLabel)
-        view.addSubview(urlTextField)
-        view.addSubview(menuView)
-        view.addSubview(contentView)
-        view.addSubview(saveButton)
-        view.addSubview(sendButton)
-        createConstraints()
         
         addChild(menuViewController, to: menuView)
         addChild(contentViewController, to: contentView)
@@ -189,8 +180,10 @@ class RequestViewController: BaseViewController<RequestViewModel>, RxKeyboardVie
         contentViewController.reloadData()
         
         viewModel.valueOriginY = topPadding + 300
-        
-        disposeBag ~ [
+    }
+    
+    override func bind() -> [Disposable] {
+        [
             viewModel.title ~> rx.title,
             viewModel.requestMethod ~> requestMethodButton.rx.title(for: .normal),
             viewModel.moveupHeight ~> rx.moveupHeight,
@@ -198,10 +191,23 @@ class RequestViewController: BaseViewController<RequestViewModel>, RxKeyboardVie
             viewModel.requestProtocol <~> protocolsSegmentedControl.rx.selectedSegmentIndex,
             viewModel.characters ~> urlTextField.rx.keyboardAccessoryStrings(style: .black)
         ]
-
     }
     
-    private func createConstraints() {
+    override func subviews() -> [UIView] {
+        [
+            requestMethodLabel,
+            requestMethodButton,
+            protocolsSegmentedControl,
+            separatorLabel,
+            urlTextField,
+            menuView,
+            contentView,
+            saveButton,
+            sendButton
+        ]
+    }
+    
+    override func createConstraints() {
         
         requestMethodButton.snp.makeConstraints {
             $0.top.equalTo(view.safeArea.top).offset(topOffSet + Const.margin)

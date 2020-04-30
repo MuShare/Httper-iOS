@@ -75,7 +75,7 @@ class RequestViewModel: BaseViewModel {
         }
         if let headerData = request?.headers as Data?, let headers = NSKeyedUnarchiver.unarchiveObject(with: headerData) as? HTTPHeaders {
             headersViewModel.keyValuesRelay.accept(headers.map {
-                KeyValue(key: $0.key, value: $0.value)
+                KeyValue(key: $0.name, value: $0.value)
             })
         }
         if let bodyData = request?.body as Data?, let body = String(data: bodyData, encoding: .utf8) {

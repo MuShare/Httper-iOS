@@ -118,7 +118,7 @@ class SettingsViewController: BaseViewController<SettingsViewModel> {
         viewModel.reload()
     }
     
-    private func createConstraints() {
+    override func createConstraints() {
         
         tableView.snp.makeConstraints {
             $0.left.right.bottom.equalToSuperview()
