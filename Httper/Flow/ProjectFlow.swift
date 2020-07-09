@@ -51,8 +51,8 @@ class ProjectFlow: Flow {
             return .none
         case .request(let request):
             let requestFlow = RequestFlow(request: request)
-            Flows.whenReady(flow1: requestFlow) { root in
-                self.navigationController?.pushViewController(root, animated: true)
+            Flows.use(requestFlow, when: .ready) {
+                self.navigationController?.pushViewController($0, animated: true)
             }
             return .flow(requestFlow, with: RequestStep.start)
         case .name(let project):
