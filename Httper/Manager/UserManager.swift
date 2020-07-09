@@ -117,26 +117,25 @@ final class UserManager {
     }
     
     func pullUser(_ completionHandler: ((Bool) -> Void)? = nil) {
-        Alamofire.request(
+        AF.request(
             createUrl("api/user"),
             method: .get,
             parameters: nil,
             encoding: URLEncoding.default,
             headers: tokenHeader()
-        )
-            .responseJSON { [weak self] in
-                guard let `self` = self else {
-                    return
-                }
-                let response = InternetResponse($0)
-                if response.statusOK() {
-                    let user = response.getResult()["user"]
-                    self.name = user["name"].stringValue
-                    self.avatar = user["avatar"].stringValue
-                    completionHandler?(true)
-                } else {
-                    completionHandler?(false)
-                }
+        ).responseJSON { [weak self] in
+            guard let `self` = self else {
+                return
+            }
+            let response = InternetResponse($0)
+            if response.statusOK() {
+                let user = response.getResult()["user"]
+                self.name = user["name"].stringValue
+                self.avatar = user["avatar"].stringValue
+                completionHandler?(true)
+            } else {
+                completionHandler?(false)
+            }
         }
     }
     
@@ -147,7 +146,7 @@ final class UserManager {
             "password": password
         ]
 
-        Alamofire.request(
+        AF.request(
             createUrl("api/user/register"),
             method: .post,
             parameters: parameters,
@@ -178,7 +177,7 @@ final class UserManager {
             "lan": NSLocale.preferredLanguages[0]
         ]
         
-        Alamofire.request(
+        AF.request(
             createUrl("api/user/login"),
             method: .post,
             parameters: params,
@@ -222,7 +221,7 @@ final class UserManager {
             "lan": NSLocale.preferredLanguages[0]
         ]
         
-        Alamofire.request(
+        AF.request(
             createUrl("/api/user/fblogin"),
             method: .post,
             parameters: params,
@@ -260,7 +259,7 @@ final class UserManager {
             "email": email
         ]
 
-        Alamofire.request(
+        AF.request(
             createUrl("api/user/password/reset"),
             method: .get,
             parameters: params,
@@ -288,7 +287,7 @@ final class UserManager {
             "name": name
         ]
 
-        Alamofire.request(
+        AF.request(
             createUrl("api/user/name"),
             method: .post,
             parameters: params,

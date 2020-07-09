@@ -7,6 +7,7 @@
 //
 
 import RxDataSourcesSingleSection
+import RxSwift
 
 class SaveToProjectViewController: BaseViewController<SaveToProjectViewModel> {
     
@@ -42,11 +43,6 @@ class SaveToProjectViewController: BaseViewController<SaveToProjectViewModel> {
         
         view.backgroundColor = .background
         navigationItem.rightBarButtonItem = addProjectBarButtonItem
-        view.addSubview(tableView)
-        createConstraints()
-        
-        viewModel.title.bind(to: rx.title).disposed(by: disposeBag)
-        viewModel.projectSection.bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,8 +50,20 @@ class SaveToProjectViewController: BaseViewController<SaveToProjectViewModel> {
         
         viewModel.syncProjects()
     }
+    override func subviews() -> [UIView] {
+        [
+            tableView
+        ]
+    }
     
-    private func createConstraints() {
+    override func bind() -> [Disposable] {
+        [
+            viewModel.title ~> rx.title,
+            viewModel.projectSection ~> tableView.rx.items(dataSource: dataSource)
+        ]
+    }
+    
+    override func createConstraints() {
         tableView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(topPadding)
             $0.left.right.bottom.equalToSuperview()

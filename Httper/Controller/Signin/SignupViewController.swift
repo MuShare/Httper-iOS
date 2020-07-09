@@ -160,18 +160,30 @@ class SignupViewController: BaseViewController<SignupViewModel> {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor(hex: 0xf9f9f9)
-        view.addSubview(backgroundImageView)
-        view.addSubview(backButton)
-        view.addSubview(logoImageView)
-        view.addSubview(titleLabel)
-        view.addSubview(emailTextField)
-        view.addSubview(usernameTextField)
-        view.addSubview(passwordTextField)
-        view.addSubview(showPasswordButton)
-        view.addSubview(submitButton)
-        createConstraints()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         
-        disposeBag ~ [
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func subviews() -> [UIView] {
+        [
+            backgroundImageView,
+            backButton,
+            logoImageView,
+            titleLabel,
+            emailTextField,
+            usernameTextField,
+            passwordTextField,
+            showPasswordButton,
+            submitButton,
+        ]
+    }
+    
+    override func bind() -> [Disposable] {
+        [
             viewModel.emailRelay <~> emailTextField.rx.text,
             viewModel.usernameRelay <~> usernameTextField.rx.text,
             viewModel.passwordRelay <~> passwordTextField.rx.text,
@@ -182,13 +194,7 @@ class SignupViewController: BaseViewController<SignupViewModel> {
         ]
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-        navigationController?.setNavigationBarHidden(true, animated: false)
-    }
-    
-    private func createConstraints() {
+    override func createConstraints() {
         
         backButton.snp.makeConstraints {
             $0.size.equalTo(Const.back.size)

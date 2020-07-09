@@ -31,19 +31,18 @@ class BodyViewController: BaseViewController<BodyViewModel> {
         return textView
     }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        view.addSubview(rawBodyTextView)
-        createConstraints()
-        
-        disposeBag ~ [
+    override func subviews() -> [UIView] {
+        [rawBodyTextView]
+    }
+    
+    override func bind() -> [Disposable] {
+        [
             viewModel.body <~> rawBodyTextView.rx.text,
             viewModel.characters ~> rawBodyTextView.rx.keyboardAccessoryStrings(style: .black)
         ]
     }
     
-    private func createConstraints() {
+    override func createConstraints() {
         rawBodyTextView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.left.equalToSuperview().offset(Const.rawBody.margin)

@@ -6,6 +6,8 @@
 //  Copyright © 2016 MuShare Group. All rights reserved.
 //
 
+import RxSwift
+
 private struct Const {
     
     struct icon {
@@ -82,14 +84,19 @@ class WhoisViewController: BaseViewController<WhoisViewModel> {
         
         navigationItem.rightBarButtonItem = searchBarButtonItem
         view.backgroundColor = .background
-        view.addSubview(iconImageView)
-        view.addSubview(addressTextField)
-        view.addSubview(lineView)
-        view.addSubview(resultWebView)
-        view.addSubview(loadingActivityIndicatorView)
-        createConstraints()
-        
-        disposeBag ~ [
+    }
+    override func subviews() -> [UIView] {
+        [
+            iconImageView,
+            addressTextField,
+            lineView,
+            resultWebView,
+            loadingActivityIndicatorView
+        ]
+    }
+    
+    override func bind() -> [Disposable] {
+        [
             viewModel.title ~> rx.title,
             viewModel.isSearchBarButtonItemEnabled ~> searchBarButtonItem.rx.isEnabled,
             viewModel.isLoading ~> loadingActivityIndicatorView.rx.isAnimating,
@@ -98,7 +105,7 @@ class WhoisViewController: BaseViewController<WhoisViewModel> {
         ]
     }
     
-    private func createConstraints() {
+    override func createConstraints() {
         
         iconImageView.snp.makeConstraints {
             $0.size.equalTo(Const.icon.size)

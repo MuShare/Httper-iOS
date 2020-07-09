@@ -6,6 +6,8 @@
 //  Copyright © 2020 MuShare. All rights reserved.
 //
 
+import RxSwift
+
 private enum Const {
     
     struct back {
@@ -178,24 +180,31 @@ class SigninViewController: BaseViewController<SigninViewModel> {
         }.disposed(by: disposeBag)
         return button
     }()
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        view.addSubview(backgroundImageView)
-        view.addSubview(closeButton)
-        view.addSubview(logoImageView)
-        view.addSubview(titleLabel)
-        view.addSubview(emailTextField)
-        view.addSubview(passwordTextField)
-        view.addSubview(showPasswordButton)
-        view.addSubview(submitButton)
-        view.addSubview(forgotButton)
-        view.addSubview(facebookButton)
-        view.addSubview(signupButton)
-        createConstraints()
-        
-        disposeBag ~ [
+    override func subviews() -> [UIView] {
+        [
+            backgroundImageView,
+            closeButton,
+            logoImageView,
+            titleLabel,
+            emailTextField,
+            passwordTextField,
+            showPasswordButton,
+            submitButton,
+            forgotButton,
+            facebookButton,
+            signupButton
+        ]
+    }
+    
+    override func bind() -> [Disposable] {
+        [
             viewModel.emailRelay <~> emailTextField.rx.text,
             viewModel.passwordRelay <~> passwordTextField.rx.text,
             viewModel.isSecureTextEntry ~> passwordTextField.rx.isSecureTextEntry,
@@ -205,13 +214,7 @@ class SigninViewController: BaseViewController<SigninViewModel> {
         ]
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-        navigationController?.setNavigationBarHidden(true, animated: false)
-    }
-    
-    private func createConstraints() {
+    override func createConstraints() {
         
         closeButton.snp.makeConstraints {
             $0.size.equalTo(Const.back.size)

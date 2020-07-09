@@ -14,17 +14,18 @@ class PreviewViewController: BaseViewController<PreviewViewModel> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.addSubview(previewWebView)
-        createConstraints()
-        
+
         viewModel.content.subscribe(onNext: { [unowned self] (text, url) in
             self.previewWebView.loadHTMLString(text, baseURL: url)
         }).disposed(by: disposeBag)
 
     }
     
-    private func createConstraints() {
+    override func subviews() -> [UIView] {
+        [previewWebView]
+    }
+    
+    override func createConstraints() {
         previewWebView.snp.makeConstraints {
             $0.size.equalToSuperview()
             $0.center.equalToSuperview()

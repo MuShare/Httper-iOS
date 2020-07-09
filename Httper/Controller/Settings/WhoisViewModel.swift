@@ -64,7 +64,7 @@ class WhoisViewModel: BaseViewModel {
             return
         }
         isSearchRelay.accept(true)
-        Alamofire.request("https://www.whois.com/whois/" + domain).responseString { [weak self] in
+        AF.request("https://www.whois.com/whois/" + domain).responseString { [weak self] in
             guard let `self` = self, let value = $0.result.value else {
                 return
             }

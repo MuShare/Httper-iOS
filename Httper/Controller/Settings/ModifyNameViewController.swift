@@ -6,6 +6,8 @@
 //  Copyright © 2020 MuShare. All rights reserved.
 //
 
+import RxSwift
+
 private struct Const {
     struct name {
         static let marginTop = 20
@@ -37,17 +39,21 @@ class ModifyNameViewController: BaseViewController<ModifyNameViewModel> {
         
         navigationItem.rightBarButtonItem = saveBarButtonItem
         view.backgroundColor = .background
-        view.addSubview(nameTextField)
-        createConstraints()
-        
-        disposeBag ~ [
+    }
+    
+    override func subviews() -> [UIView] {
+        [nameTextField]
+    }
+    
+    override func bind() -> [Disposable] {
+        [
             viewModel.title ~> rx.title,
             viewModel.name <~> nameTextField.rx.value,
             viewModel.isSaveEnabled ~> saveBarButtonItem.rx.isEnabled
         ]
     }
     
-    private func createConstraints() {
+    override func createConstraints() {
         nameTextField.snp.makeConstraints {
             $0.height.equalTo(Const.name.height)
             $0.left.right.equalToSuperview()
