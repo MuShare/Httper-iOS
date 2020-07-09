@@ -42,7 +42,7 @@ class SettingsFlow: Flow {
             return .viewController(settingsViewController)
         case .signin:
             let signinFlow = SigninFlow()
-            Flows.whenReady(flow1: signinFlow) {
+            Flows.use(signinFlow, when: .ready) {
                 self.settingsViewController.present($0, animated: true)
             }
             return .flow(signinFlow, with: SigninStep.start)

@@ -13,7 +13,7 @@ import SwiftyJSON
 class RequestDao: DaoTemplate {
     
     @discardableResult func saveOrUpdate(rid: String?, update: Int64?, revision: Int16?, method: String,
-                      url: String, headers: HTTPHeaders, parameters: Parameters,
+                      url: String, headers: StorageHttpHeaders, parameters: Parameters,
                       bodytype: String, body: NSData?, project: Project) -> Request {
         var request: Request? = nil
         if rid != nil {
@@ -48,7 +48,7 @@ class RequestDao: DaoTemplate {
             revision: requestObject["revision"].int16Value,
             method: requestObject["method"].stringValue,
             url: requestObject["url"].stringValue,
-            headers: serializeJSON(requestObject["headers"].stringValue) as! HTTPHeaders,
+            headers: serializeJSON(requestObject["headers"].stringValue) as! StorageHttpHeaders,
             parameters: serializeJSON(requestObject["parameters"].stringValue) as! Parameters,
             bodytype: requestObject["bodyType"].stringValue,
             body: NSData.init(data: body.data(using: .utf8)!),

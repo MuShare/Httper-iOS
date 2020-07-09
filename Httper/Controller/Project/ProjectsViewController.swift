@@ -8,6 +8,7 @@
 
 import ESPullToRefresh
 import RxDataSourcesSingleSection
+import RxSwift
 
 class ProjectsViewController: BaseViewController<ProjectsViewModel> {
 
@@ -36,12 +37,6 @@ class ProjectsViewController: BaseViewController<ProjectsViewModel> {
         super.viewDidLoad()
 
         view.backgroundColor = .background
-        view.addSubview(tableView)
-        createConstraints()
-        
-        disposeBag ~ [
-            viewModel.projectSection ~> tableView.rx.items(dataSource: dataSource)
-        ]
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,8 +44,17 @@ class ProjectsViewController: BaseViewController<ProjectsViewModel> {
         
         viewModel.syncProjects()
     }
+    override func subviews() -> [UIView] {
+        [tableView]
+    }
     
-    private func createConstraints() {
+    override func bind() -> [Disposable] {
+        [
+            viewModel.projectSection ~> tableView.rx.items(dataSource: dataSource)
+        ]
+    }
+    
+    override func createConstraints() {
         tableView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(topPadding)
             $0.left.right.bottom.equalToSuperview()

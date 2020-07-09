@@ -7,7 +7,7 @@
 //
 
 import RxDataSourcesSingleSection
-import UIKit
+import RxSwift
 
 class IPAddressViewController: BaseViewController<IPAddressViewModel> {
     
@@ -45,16 +45,22 @@ class IPAddressViewController: BaseViewController<IPAddressViewModel> {
         super.viewDidLoad()
         
         view.backgroundColor = .background
-        view.addSubview(tableView)
-        createConstraints()
-        
-        disposeBag ~ [
+    }
+    
+    override func subviews() -> [UIView] {
+        [
+            tableView
+        ]
+    }
+    
+    override func bind() -> [Disposable] {
+        [
             viewModel.title ~> rx.title,
             viewModel.addressTypeSection ~> tableView.rx.items(dataSource: dataSource)
         ]
     }
     
-    private func createConstraints() {
+    override func createConstraints() {
         tableView.snp.makeConstraints {
             $0.left.right.bottom.equalToSuperview()
             $0.top.equalTo(view.safeArea.top)

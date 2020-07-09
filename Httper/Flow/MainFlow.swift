@@ -39,7 +39,7 @@ class MainFlow: Flow {
             let requestFlow = RequestFlow(request: nil)
             let projectFlow = ProjectFlow()
             let settingsFlow = SettingsFlow()
-            Flows.whenReady(flow1: requestFlow, flow2: projectFlow, flow3: settingsFlow) {
+            Flows.use(requestFlow, projectFlow, settingsFlow, when: .ready) {
                 self.mainViewController.viewControllers = [$0, $1, $2]
                 self.requestViewController = $0 as? RequestViewController
             }

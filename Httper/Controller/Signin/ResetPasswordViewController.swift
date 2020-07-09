@@ -6,6 +6,8 @@
 //  Copyright © 2020 MuShare. All rights reserved.
 //
 
+import RxSwift
+
 private struct Const {
     
     struct close {
@@ -102,19 +104,6 @@ class ResetPasswordViewController: BaseViewController<ResetPasswordViewModel> {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor(hex: 0xf9f9f9)
-        view.addSubview(backgroundImageView)
-        view.addSubview(backButton)
-        view.addSubview(logoImageView)
-        view.addSubview(titleLabel)
-        view.addSubview(emailTextField)
-        view.addSubview(submitButton)
-        createConstraints()
-        
-        disposeBag ~ [
-            viewModel.email <~> emailTextField.rx.text,
-            viewModel.isSubmitEnabled ~> submitButton.rx.isEnabled,
-            viewModel.viewOffset ~> rx.viewOffset
-        ]
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -128,8 +117,26 @@ class ResetPasswordViewController: BaseViewController<ResetPasswordViewModel> {
         
         emailTextField.becomeFirstResponder()
     }
+    override func subviews() -> [UIView] {
+        [
+            backgroundImageView,
+            backButton,
+            logoImageView,
+            titleLabel,
+            emailTextField,
+            submitButton
+        ]
+    }
     
-    private func createConstraints() {
+    override func bind() -> [Disposable] {
+        [
+            viewModel.email <~> emailTextField.rx.text,
+            viewModel.isSubmitEnabled ~> submitButton.rx.isEnabled,
+            viewModel.viewOffset ~> rx.viewOffset
+        ]
+    }
+    
+    override func createConstraints() {
         
         backButton.snp.makeConstraints {
             $0.size.equalTo(Const.close.size)

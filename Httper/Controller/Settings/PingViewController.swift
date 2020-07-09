@@ -7,6 +7,7 @@
 //
 
 import RxDataSourcesSingleSection
+import RxSwift
 
 private struct Const {
     
@@ -86,13 +87,19 @@ class PingViewController: BaseViewController<PingViewModel> {
     
         navigationItem.rightBarButtonItem = controlBarButtonItem
         view.backgroundColor = .background
-        view.addSubview(iconImageView)
-        view.addSubview(addressTextField)
-        view.addSubview(lineView)
-        view.addSubview(tableView)
-        createConstraints()
-        
-        disposeBag ~ [
+    }
+    
+    override func subviews() -> [UIView] {
+        [
+            iconImageView,
+            addressTextField,
+            lineView,
+            tableView
+        ]
+    }
+    
+    override func bind() -> [Disposable] {
+        [
             viewModel.title ~> rx.title,
             viewModel.icon ~> controlBarButtonItem.rx.image,
             viewModel.isValidate ~> controlBarButtonItem.rx.isEnabled,
@@ -102,7 +109,7 @@ class PingViewController: BaseViewController<PingViewModel> {
         ]
     }
     
-    private func createConstraints() {
+    override func createConstraints() {
         
         iconImageView.snp.makeConstraints {
             $0.size.equalTo(Const.icon.size)

@@ -101,15 +101,6 @@ class SettingsViewController: BaseViewController<SettingsViewModel> {
         super.viewDidLoad()
         
         view.backgroundColor = .background
-        view.addSubview(tableView)
-        createConstraints()
-        
-        disposeBag ~ [
-            viewModel.avatar ~> rx.avatar,
-            viewModel.name ~> nameButton.rx.title(),
-            viewModel.email ~> emailButton.rx.title(),
-            viewModel.sections ~> tableView.rx.items(dataSource: dataSource)
-        ]
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -118,7 +109,20 @@ class SettingsViewController: BaseViewController<SettingsViewModel> {
         viewModel.reload()
     }
     
-    private func createConstraints() {
+    override func subviews() -> [UIView] {
+        [tableView]
+    }
+    
+    override func bind() -> [Disposable] {
+        [
+            viewModel.avatar ~> rx.avatar,
+            viewModel.name ~> nameButton.rx.title(),
+            viewModel.email ~> emailButton.rx.title(),
+            viewModel.sections ~> tableView.rx.items(dataSource: dataSource)
+        ]
+    }
+    
+    override func createConstraints() {
         
         tableView.snp.makeConstraints {
             $0.left.right.bottom.equalToSuperview()

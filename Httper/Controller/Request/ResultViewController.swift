@@ -8,6 +8,7 @@
 
 import Alamofire
 import PagingKit
+import RxSwift
 
 extension String: ParameterEncoding {
     
@@ -64,22 +65,27 @@ class ResultViewController: BaseViewController<ResultViewModel> {
         super.viewDidLoad()
 
         view.backgroundColor = .background
-        view.addSubview(menuView)
-        view.addSubview(contentView)
-        createConstraints()
         
         addChild(menuViewController, to: menuView)
         addChild(contentViewController, to: contentView)
         
         menuViewController.reloadData()
         contentViewController.reloadData()
-        
-        disposeBag ~ [
+    }
+    override func subviews() -> [UIView] {
+        [
+            menuView,
+            contentView
+        ]
+    }
+    
+    override func bind() -> [Disposable] {
+        [
             viewModel.title ~> rx.title
         ]
     }
     
-    private func createConstraints() {
+    override func createConstraints() {
         
         menuView.snp.makeConstraints {
             $0.left.equalToSuperview().offset(Const.menu.margin)

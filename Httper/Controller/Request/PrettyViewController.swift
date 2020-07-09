@@ -19,16 +19,21 @@ class PrettyViewController: BaseViewController<PrettyViewModel> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.addSubview(formatterView)
-        createConstraints()
-        
-        Observable.combineLatest(viewModel.text, viewModel.style).subscribe(onNext: { [unowned self] (text, style) in
-            self.formatterView.format(string: text, style: style)
-        }).disposed(by: disposeBag)
+
+        Observable.combineLatest(viewModel.text, viewModel.style)
+            .subscribe(onNext: { [unowned self] (text, style) in
+                self.formatterView.format(string: text, style: style)
+            })
+            .disposed(by: disposeBag)
     }
     
-    private func createConstraints() {
+    override func subviews() -> [UIView] {
+        [
+            formatterView
+        ]
+    }
+
+    override func createConstraints() {
         formatterView.snp.makeConstraints {
             $0.left.equalToSuperview().offset(Const.margin)
             $0.right.equalToSuperview().offset(Const.margin)

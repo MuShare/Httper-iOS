@@ -92,7 +92,7 @@ final class IPAddressManager {
             encoding: URLEncoding.default,
             headers: nil
         ).responseJSON().map {
-            guard let info = $0.result.value as? [String: Any] else {
+            guard let info = $0.value as? [String: Any] else {
                 return nil
             }
             return IPAddress(ip: JSON(info))

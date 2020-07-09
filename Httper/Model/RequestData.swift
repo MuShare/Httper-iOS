@@ -12,7 +12,7 @@ struct RequestData {
     
     var method: String
     var url: String
-    var headers: HTTPHeaders
+    var headers: StorageHttpHeaders
     var parameters: Parameters
     var body: String
     

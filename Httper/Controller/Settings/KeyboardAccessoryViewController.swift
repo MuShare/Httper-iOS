@@ -6,6 +6,8 @@
 //  Copyright © 2019 MuShare. All rights reserved.
 //
 
+import RxSwift
+
 private struct Const {
     
     struct collection {
@@ -45,17 +47,20 @@ class KeyboardAccessoryViewController: BaseViewController<KeyboardAccessoryViewM
         super.viewDidLoad()
 
         navigationItem.rightBarButtonItem = addBarButtonItem
-        view.addSubview(collectionView)
-        createConstraints()
-        
-        disposeBag ~ [
+    }
+    
+    override func subviews() -> [UIView] {
+        [collectionView]
+    }
+    
+    override func bind() -> [Disposable] {
+        [
             viewModel.title ~> rx.title,
             viewModel.characterSection ~> collectionView.rx.items(dataSource: dataSource)
         ]
-        
     }
 
-    private func createConstraints() {
+    override func createConstraints() {
         collectionView.snp.makeConstraints {
             $0.top.equalTo(view.safeArea.top).offset(Const.collection.marginTop)
             $0.left.right.bottom.equalToSuperview()

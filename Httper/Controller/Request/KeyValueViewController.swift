@@ -45,21 +45,22 @@ class KeyValueViewController: BaseViewController<KeyValueViewModel> {
         cell.delegate = self
         return cell
     })
+
+    override func subviews() -> [UIView] {
+        [
+            addButton,
+            tableView
+        ]
+    }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        view.addSubview(addButton)
-        view.addSubview(tableView)
-        createConstraints()
-        
-        disposeBag ~ [
+    override func bind() -> [Disposable] {
+        [
             viewModel.keyValueSection ~> tableView.rx.items(dataSource: dataSource),
             viewModel.characters ~> rx.characters
         ]
     }
     
-    private func createConstraints() {
+    override func createConstraints() {
         
         addButton.snp.makeConstraints {
             $0.height.equalTo(Const.add.height)
