@@ -97,16 +97,16 @@ final class SyncManager {
         }
         var requestArray = [[String: Any]]()
         for request in requests {
-            var headers: HTTPHeaders? = nil, parameters: Parameters? = nil
+            var headers: StorageHttpHeaders? = nil, parameters: Parameters? = nil
             var body = ""
-            if request.headers != nil {
-                headers = NSKeyedUnarchiver.unarchiveObject(with: request.headers! as Data) as? HTTPHeaders
+            if let requestHeaders = request.headers {
+                headers = NSKeyedUnarchiver.unarchiveObject(with: requestHeaders as Data) as? StorageHttpHeaders
             }
-            if request.parameters != nil {
-                parameters = NSKeyedUnarchiver.unarchiveObject(with: request.parameters! as Data) as? Parameters
+            if let requestParameters = request.parameters {
+                parameters = NSKeyedUnarchiver.unarchiveObject(with: requestParameters as Data) as? Parameters
             }
-            if request.body != nil {
-                body = String(data: request.body! as Data, encoding: .utf8)!
+            if let requestBody = request.body {
+                body = String(data: requestBody as Data, encoding: .utf8)!
             }
   
             // Add request object to request array.

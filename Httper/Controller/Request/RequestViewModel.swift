@@ -73,10 +73,10 @@ class RequestViewModel: BaseViewModel {
                 KeyValue(key: $0.key, value: $0.value as? String ?? "")
             })
         }
-        if let headerData = request?.headers as Data?, let headers = NSKeyedUnarchiver.unarchiveObject(with: headerData) as? HTTPHeaders {
+        if let headerData = request?.headers as Data?, let headers = NSKeyedUnarchiver.unarchiveObject(with: headerData) as? StorageHttpHeaders {
             headersViewModel.keyValuesRelay.accept(
                 headers.map {
-                    KeyValue(key: $0.name, value: $0.value)
+                    KeyValue(key: $0.key, value: $0.value)
                 }
             )
         }

@@ -68,6 +68,7 @@
 		BB2BD55B23E9BADB00C869EB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2BD55A23E9BADB00C869EB /* ProfileViewController.swift */; };
 		BB2BD55D23E9BAE600C869EB /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2BD55C23E9BAE600C869EB /* ProfileViewModel.swift */; };
 		BB44C51522B687380040DCD3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB44C51422B687370040DCD3 /* GoogleService-Info.plist */; };
+		BB9BE56124B732A000AE4483 /* StorageHttpHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9BE56024B732A000AE4483 /* StorageHttpHeader.swift */; };
 		BBADABF72317F7DD00995AD2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBADABF62317F7DD00995AD2 /* SettingsViewController.swift */; };
 		BBADABFB2317FFDA00995AD2 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBADABFA2317FFDA00995AD2 /* Array+Extension.swift */; };
 		BBB0DAB7237D5A900074B5AE /* KeyboardAccessoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB0DAB6237D5A900074B5AE /* KeyboardAccessoryViewController.swift */; };
@@ -98,7 +99,7 @@
 		E4305A491E34F8E100010B52 /* DaoTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4305A481E34F8E100010B52 /* DaoTemplate.swift */; };
 		E447287B1DF7CE80007D2C8B /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E447287A1DF7CE80007D2C8B /* ResultViewController.swift */; };
 		E44B98A720EBDE06004FEF67 /* ProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44B98A620EBDE06004FEF67 /* ProjectsViewController.swift */; };
-		E45D3E861E21296F0002E1F2 /* InternetResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45D3E851E21296F0002E1F2 /* InternetResponse.swift */; };
+		E45D3E861E21296F0002E1F2 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45D3E851E21296F0002E1F2 /* Response.swift */; };
 		E46077611E126948002DE839 /* PingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46077601E126948002DE839 /* PingViewController.swift */; };
 		E46ABF521E140F2E00E0C092 /* InternetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E46ABF511E140F2E00E0C092 /* InternetTool.m */; };
 		E46CE471214A828B0046BCCA /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46CE46F214A828A0046BCCA /* AppFlow.swift */; };
@@ -225,6 +226,7 @@
 		BB2BD55A23E9BADB00C869EB /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		BB2BD55C23E9BAE600C869EB /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		BB44C51422B687370040DCD3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BB9BE56024B732A000AE4483 /* StorageHttpHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageHttpHeader.swift; sourceTree = "<group>"; };
 		BBADABF62317F7DD00995AD2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BBADABFA2317FFDA00995AD2 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		BBB0DAB6237D5A900074B5AE /* KeyboardAccessoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAccessoryViewController.swift; sourceTree = "<group>"; };
@@ -261,7 +263,7 @@
 		E447287A1DF7CE80007D2C8B /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		E44B98A620EBDE06004FEF67 /* ProjectsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsViewController.swift; sourceTree = "<group>"; };
 		E45BB55D1E5410C90095F959 /* Httper_1.4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Httper_1.4.xcdatamodel; sourceTree = "<group>"; };
-		E45D3E851E21296F0002E1F2 /* InternetResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternetResponse.swift; sourceTree = "<group>"; };
+		E45D3E851E21296F0002E1F2 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		E46077601E126948002DE839 /* PingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PingViewController.swift; sourceTree = "<group>"; };
 		E46ABF4F1E140C6700E0C092 /* route.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = route.h; sourceTree = "<group>"; };
 		E46ABF501E140F2E00E0C092 /* InternetTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InternetTool.h; sourceTree = "<group>"; };
@@ -452,8 +454,9 @@
 				77CDA185222E130A0063C472 /* AppLog.swift */,
 				E41642D21DF970CE00F0339E /* CommonTool.swift */,
 				E4305A371E2E5FF900010B52 /* Global.swift */,
-				E45D3E851E21296F0002E1F2 /* InternetResponse.swift */,
+				E45D3E851E21296F0002E1F2 /* Response.swift */,
 				E47FDC5F1E3861AF00251EEC /* Versions.swift */,
+				BB9BE56024B732A000AE4483 /* StorageHttpHeader.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -963,7 +966,7 @@
 				77A530782165C6C00008CC56 /* UINavigationBar+Extension.swift in Sources */,
 				BBFA159D240E3C5600AD7294 /* SigninViewModel.swift in Sources */,
 				77A530722165BEE50008CC56 /* ResultViewModel.swift in Sources */,
-				E45D3E861E21296F0002E1F2 /* InternetResponse.swift in Sources */,
+				E45D3E861E21296F0002E1F2 /* Response.swift in Sources */,
 				77A53080216708E00008CC56 /* PreviewViewModel.swift in Sources */,
 				BB07BE0E22A7FF2A00A03CBD /* Kingfisher+Rx.swift in Sources */,
 				E46ABF521E140F2E00E0C092 /* InternetTool.m in Sources */,
@@ -1045,6 +1048,7 @@
 				BBADABFB2317FFDA00995AD2 /* Array+Extension.swift in Sources */,
 				BBB0DAB7237D5A900074B5AE /* KeyboardAccessoryViewController.swift in Sources */,
 				E40B257E1DF44BD20039CA8D /* MainViewController.swift in Sources */,
+				BB9BE56124B732A000AE4483 /* StorageHttpHeader.swift in Sources */,
 				7782A5FA226977E4002B6AE2 /* PingTableViewCell.swift in Sources */,
 				77B1991D230B8BEA003EE42F /* UIWebView+Rx.swift in Sources */,
 				E49BC0AD1E4226F400241004 /* Request+CoreDataClass.swift in Sources */,

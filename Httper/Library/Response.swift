@@ -1,5 +1,5 @@
 //
-//  InternetResponse.swift
+//  Response.swift
 //  Httper
 //
 //  Created by Meng Li on 07/01/2017.
@@ -31,21 +31,23 @@ class Response: NSObject {
     }
     
     func statusOK() -> Bool {
-        if data.isEmpty {
+        guard !data.isEmpty, let status = data["status"] as? Int else {
             return false
         }
-        return data["status"] as! Int == 200
+        return status == 200
     }
     
     func getResult() -> JSON {
-        return JSON(data["result"] as! [String: Any])
+        guard let result = data["result"] as? [String: Any] else {
+            return JSON()
+        }
+        return JSON(result)
     }
     
     func errorCode() -> ErrorCode {
-        if data.isEmpty {
+        guard !data.isEmpty, let code = data["errorCode"] as? Int else {
             return .badRequest
         }
-        let code = data["errorCode"] as! Int
         return ErrorCode(rawValue: code) ?? .badRequest
     }
     
