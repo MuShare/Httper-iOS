@@ -108,9 +108,9 @@ PODS:
     - nanopb/encode (= 1.30905.0)
   - nanopb/decode (1.30905.0)
   - nanopb/encode (1.30905.0)
-  - NVActivityIndicatorView (5.0.0):
-    - NVActivityIndicatorView/Base (= 5.0.0)
-  - NVActivityIndicatorView/Base (5.0.0)
+  - NVActivityIndicatorView (4.8.0):
+    - NVActivityIndicatorView/Presenter (= 4.8.0)
+  - NVActivityIndicatorView/Presenter (4.8.0)
   - PagingKit (1.15.0)
   - PromisesObjC (1.2.9)
   - Protobuf (3.12.0)
@@ -182,7 +182,7 @@ DEPENDENCIES:
   - MGFormatter
   - MGKeyboardAccessory/Rx
   - MGSelector
-  - NVActivityIndicatorView
+  - NVActivityIndicatorView (= 4.8.0)
   - PagingKit
   - R.swift
   - ReachabilitySwift
@@ -296,7 +296,7 @@ SPEC CHECKSUMS:
   MGKeyboardAccessory: 9b3a5ace073f772809bf88e900729aef86901047
   MGSelector: e6dd39fb0dac1a577d9644f7766579cf9b9b18ad
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
-  NVActivityIndicatorView: f109ed069924ac1b4adbc1ae9cfaeac0be1d6c2c
+  NVActivityIndicatorView: d24b7ebcf80af5dcd994adb650e2b6c93379270f
   PagingKit: 4bd58b65d71a82ab98486b6927e870c7fbc6c6eb
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
   Protobuf: 2793fcd0622a00b546c60e7cbbcc493e043e9bb9
@@ -323,6 +323,6 @@ SPEC CHECKSUMS:
   "UIImageView+Extension": bc26c60a9c8cd6fb515ae1e37377a6f0988e76d8
   "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
 
-PODFILE CHECKSUM: 867486846469b3cffa59a2b0ec1151a13c888bd7
+PODFILE CHECKSUM: d052f2bbcd9426d3dade075f92bc13f9afe1f22b
 
 COCOAPODS: 1.9.3
