@@ -65,7 +65,7 @@ class WhoisViewModel: BaseViewModel {
         }
         isSearchRelay.accept(true)
         AF.request("https://www.whois.com/whois/" + domain).responseString { [weak self] in
-            guard let `self` = self, let value = $0.result.value else {
+            guard let `self` = self, let value = $0.value else {
                 return
             }
             guard let doc = try? HTML(html: value, encoding: .utf8) else {

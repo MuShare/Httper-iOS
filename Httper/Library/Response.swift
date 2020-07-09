@@ -9,18 +9,18 @@
 import Alamofire
 import SwiftyJSON
 
-class InternetResponse: NSObject {
+class Response: NSObject {
     
     var data: [String: Any] = [:]
     
-    init(_ response: DataResponse<Any>) {
-        if DEBUG && response.response != nil {
-            NSLog("New response, status:\n\(response.response!)")
+    init(_ response: AFDataResponse<Any>) {
+        if DEBUG {
+            NSLog("New response, status:\n\(response)")
+            if let data = response.data, let body = String(data: data, encoding: .utf8) {
+                NSLog("Response body: \n\(body)")
+            }
         }
-        if DEBUG && response.data != nil {
-            NSLog("Response body:\n\(String.init(data: response.data!, encoding: .utf8)!)")
-        }
-        if let value = response.result.value as? [String: Any] {
+        if let value = response.value as? [String: Any] {
             data = value
         }
         if DEBUG {

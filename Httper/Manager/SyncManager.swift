@@ -46,7 +46,7 @@ final class SyncManager {
             guard let `self` = self else {
                 return
             }
-            let response = InternetResponse($0)
+            let response = Response($0)
             if response.statusOK() {
                 let result = response.getResult()
                 let revision = result["revision"].intValue
@@ -138,7 +138,7 @@ final class SyncManager {
             guard let `self` = self else {
                 return
             }
-            let response = InternetResponse($0)
+            let response = Response($0)
             if response.statusOK() {
                 let dataResult = response.getResult()
                 let results = dataResult["results"]
@@ -185,7 +185,7 @@ final class SyncManager {
             guard let `self` = self else {
                 return
             }
-            let response = InternetResponse($0)
+            let response = Response($0)
             if response.statusOK() {
                 // Update local request revision by the revision from server.
                 let revision = response.getResult()["revision"].intValue
@@ -228,7 +228,7 @@ final class SyncManager {
             guard let `self` = self else {
                 return
             }
-            let response = InternetResponse($0)
+            let response = Response($0)
             if response.statusOK() {
                 let result = response.getResult()
                 let revision = result["revision"].intValue
@@ -294,7 +294,7 @@ final class SyncManager {
             encoding: URLEncoding.default,
             headers: tokenHeader()
         ).responseJSON {
-            let response = InternetResponse($0)
+            let response = Response($0)
             if response.statusOK() {
                 let dataResult = response.getResult()
                 let results = dataResult["results"]
@@ -340,7 +340,7 @@ final class SyncManager {
             guard let `self` = self else {
                 return
             }
-            let response = InternetResponse($0)
+            let response = Response($0)
             if response.statusOK() {
                 // Update local project revision by the revision from server.
                 let revision = response.getResult()["revision"].intValue

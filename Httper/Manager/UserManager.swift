@@ -127,7 +127,7 @@ final class UserManager {
             guard let `self` = self else {
                 return
             }
-            let response = InternetResponse($0)
+            let response = Response($0)
             if response.statusOK() {
                 let user = response.getResult()["user"]
                 self.name = user["name"].stringValue
@@ -153,7 +153,7 @@ final class UserManager {
             encoding: URLEncoding.default,
             headers: nil
         ).responseJSON {
-            let response = InternetResponse($0)
+            let response = Response($0)
             if response.statusOK() {
                 completion?(true, nil)
             } else {
@@ -187,7 +187,7 @@ final class UserManager {
             guard let `self` = self else {
                 return
             }
-            let response = InternetResponse($0)
+            let response = Response($0)
             if response.statusOK() {
                 let result = response.getResult()
                 let user = result["user"]
@@ -231,7 +231,7 @@ final class UserManager {
             guard let `self` = self else {
                 return
             }
-            let response = InternetResponse($0)
+            let response = Response($0)
             if response.statusOK() {
                 let result = response.getResult()
                 let user = result["user"]
@@ -266,7 +266,7 @@ final class UserManager {
             encoding: URLEncoding.default,
             headers: tokenHeader()
         ).responseJSON {
-            let response = InternetResponse($0)
+            let response = Response($0)
             if response.statusOK() {
                 completion?(true, nil)
             } else {
@@ -297,7 +297,7 @@ final class UserManager {
             guard let `self` = self else {
                 return
             }
-            let response = InternetResponse($0)
+            let response = Response($0)
             if response.statusOK() {
                 self.name = name
                 completion?(true, nil)
