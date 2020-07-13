@@ -6,12 +6,12 @@
   Copyright © 2020 MuShare. All rights reserved.
 */
 
-get = "The GET method is used to retrieve information from the given server using a given URI.";
-head = "Same as GET, but transfers the status line and header section only.";
-post = "POST request is used to send data to the server, for example, customer information, file upload, etc. using HTML forms.";
-put = "Replaces all current representations of the target resource with the uploaded content.";
-delete = "Removes all current representations of the target resource given by a URI.";
-connect = "Establishes a tunnel to the server identified by a given URI.";
-options = "Describes the communication options for the target resource.";
-trace = "Performs a message loop-back test along the path to the target resource.";
-patch = "PATCH can be used to update partial resources when you only need to update one field of the resource.";
+get = "GETメソッドは、指定したリソースの表現をリクエストします。 GETを使用するリクエストは、データの取り込みに限ります。";
+head = "HEADメソッドは GET リクエストと同じレスポンスを求めますが、レスポンス本文はありません。";
+post = "POSTは指定したリソースに実体を送信するために使用するメソッドであり、サーバー上の状態を変更したり、副作用が発生したりすることがよくあります。";
+put = "PUTメソッドは対象リソースの現在の表現の全体を、リクエストのペイロードで置き換えます。";
+delete = "DELETEメソッドは、指定したリソースを削除します。";
+connect = "CONNECTメソッドは、対象リソースで識別されるサーバーとの間にトンネルを確立します。";
+options = "OPTIONSメソッドは、対象リソースの通信オプションを示すために使用します。";
+trace = "TRACEメソッドは、対象リソースへのパスに沿ってメッセージのループバックテストを実行します。";
+patch = "PATCHメソッドは、リソースを部分的に変更するために使用します。";
