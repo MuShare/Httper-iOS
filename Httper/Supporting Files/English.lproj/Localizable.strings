@@ -38,7 +38,7 @@ add_project_introduction_title = "Introduction";
 // ProjectNameViewController
 project_name_placeholder = "New project name";
 project_delete = "Delete project";
-project_delete_message = "Are you sure to delete project ";
+project_delete_message = "Are you sure to delete project?";
 
 // RequestViewController
 request_title = "Request";
