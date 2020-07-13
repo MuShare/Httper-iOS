@@ -1,0 +1,149 @@
+/* 
+  Localizable.strings
+  Httper
+
+  Created by Meng Li on 07/12/2016.
+  Copyright © 2016 MuShare Group. All rights reserved.
+*/
+
+common_tip_name = "ヒント";
+common_cancel_name = "キャンセル";
+common_yes_name = "はい";
+common_ok_name = "OK";
+common_clear_name = "クリアー";
+common_no_internet_connection = "インターネットに接続できません。";
+common_token_error = "ユーザ認証が失敗しました。もう一度サインインしてください。";
+common_error_unknown = "エラーの原因が不明";
+
+tab_request_title = "Httper";
+tab_project_title = "プロジェクト";
+tab_request = "リクエスト";
+tab_project = "プロジェクト";
+tab_settings = "設定";
+tab_request_clear = "クリアー";
+
+// UserManager
+user_email_registered = "当メールが登録されました。";
+user_email_not_exist = "当メールが登録されません。";
+user_password_wrong = "パスワードエラー";
+user_facebook_oauth_error = "Facebook認証が失敗しました。";
+
+// AddProjectViewController
+add_project_name_title = "プロジェクト名";
+add_project_name_placeholder = "プロジェクター名";
+add_project_privilege_title = "権限";
+add_project_privilege_select = "権限を選択";
+add_project_introduction_title = "紹介";
+
+// ProjectNameViewController
+project_name_placeholder = "新しいプロジェクト名";
+project_delete = "プロジェクトを削除";
+project_delete_message = "このプロジェクトを削除しますか。";
+
+// RequestViewController
+request_title = "リクエスト";
+request_menu_parameters = "パラメーター";
+request_menu_headers = "ヘッダー";
+request_menu_body = "ボディ";
+request_method = "リクエストメソッド";
+request_methods = "リクエストメソッド";
+request_url_placeholder = "リクエストURL";
+request_send_request = "リクエストを送信";
+request_save_to_project = "プロジェクトに保存";
+request_clear_title = "リクエストをリッセト";
+request_clear_message = "このリクエストをリッセトしますか。";
+request_url_empty = "空リクエストURLで送信できません。";
+
+// ResultViewController
+result_menu_pretty = "キレイ";
+result_menu_raw = "生データ";
+result_menu_preview = "プレビュー";
+result_menu_detail = "詳細";
+result_nothing = "このURLからなにも読めません。";
+
+// DetailViewController
+detail_request_url = "リクエストURL";
+detail_status_code = "ステータスコード";
+
+// KeyValueViewController
+key_value_key_placeholder = "キー";
+key_value_value_placeholder = "値";
+
+// SaveToProjectViewController
+save_to_project_title = "プロジェクトに保存";
+
+// IPAddressViewController
+ip_adress_title = "IPアドレス";
+ip_address_unknown = "未知";
+ip_address_wifi = "WiFiネットワーク";
+ip_address_wifi_local_ip = "ローカルIP";
+ip_address_wifi_broadcast = "ブロードキャスト";
+ip_address_wifi_gateway = "Gateway";
+ip_address_wifi_netmask = "ゲートウェイ";
+ip_address_cellular = "セルラーネットワーク";
+ip_address_cellular_local_ip = "ローカルIP";
+ip_address_cellular_netmask = "ネットマスク";
+ip_address_internet = "インターネット";
+ip_address_public_ip = "パブリックIP";
+ip_address_public_city = "市";
+ip_address_public_region = "地域";
+ip_address_public_country = "国";
+ip_address_public_post_code = "郵便番号";
+ip_address_public_time_zone = "タイムゾーン";
+ip_address_public_latitude = "緯度";
+ip_address_public_longitude = "経度";
+
+// KeyboardAccessoryViewController
+keyboard_accessory_title = "カスタマイズキーボードアクセサリ";
+keyboard_accessory_illegal_character = "正しい文字を入力してください。";
+keyboard_accessory_delete_character = "文字：'%@'を削除しますか。";
+keyboard_accessory_add_character = "カスタマイズ文字を追加";
+
+// ModifyNameViewController
+modify_name_title = "ユーザ名を変更";
+modify_name_empty_name = "ユーザ名は空です。";
+
+// PingViewController
+ping_title = "Ping";
+ping_address_placeholder = "ドメイン名";
+ping_result = "Pingの結果";
+
+// ProfileViewController
+profile_title = "プロフィール";
+profile_sign_out = "サインアウト";
+
+// SettingsViewController
+settings_selection_keyboard = "キーボードアクセサリ";
+settings_selection_ping = "Ping";
+settings_selection_whois = "Whois検索";
+settings_selection_ip = "自分のIPアドレス";
+settings_selection_appstore = "App Storeで評価";
+settings_selection_github = "Githubで星をつける";
+ssettings_selection_about = "このアプリについて";
+
+// WhoisViewController
+whois_title = "Whois検索";
+whois_address_placeholder = "ドメイン名";
+
+// SigninViewController
+sign_in_title = "Httper Cloud";
+sign_in_email_placeholder = "メールアドレス";
+sign_in_password_placeholder = "パスワード";
+sign_in_submit = "ログイン";
+sign_in_forgot_password = "パスワードが忘れた方はこちら";
+sign_in_sign_up = "アカウント登録";
+sign_in_facebook = "Facebookでサインイン";
+
+// SignUpViewControlelr
+sign_up_title = "メールでアカウント登録";
+sign_up_email_placeholder = "メールアドレス";
+sign_up_username_placeholder = "ユーザ名";
+sign_up_password_placeholder = "パスワード";
+sign_up_submit = "登録";
+
+// ResetPasswordViewController
+reset_password_email_placeholder = "メールアドレス";
+reset_password_with_email="メールでパスワードをリセット";
+reset_password_send_an_email="メールを転送";
+reset_password_failed = "メールの転送が失敗しました。もう一度やり直してください。";
+reset_password_check_email = "パスワードリッセトのメールを確認してしてください！";
