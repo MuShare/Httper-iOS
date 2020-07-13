@@ -115,14 +115,14 @@ profile_sign_out = "サインアウト";
 // SettingsViewController
 settings_selection_keyboard = "キーボードアクセサリ";
 settings_selection_ping = "Ping";
-settings_selection_whois = "Whois";
-settings_selection_ip = "自分のIP address";
+settings_selection_whois = "Whois検索";
+settings_selection_ip = "自分のIPアドレス";
 settings_selection_appstore = "App Storeで評価";
 settings_selection_github = "Githubで星をつける";
 ssettings_selection_about = "このアプリについて";
 
 // WhoisViewController
-whois_title = "Whois";
+whois_title = "Whois検索";
 whois_address_placeholder = "ドメイン名";
 
 // SigninViewController
