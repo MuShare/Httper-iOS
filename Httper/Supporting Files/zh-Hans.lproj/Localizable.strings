@@ -29,6 +29,8 @@ user_password_wrong = "密码错误，请检查后重试。";
 user_facebook_oauth_error = "Facebook验证失败，请检查后重试。";
 
 // AddProjectViewController
+add_project_title = "新建项目";
+add_project_privilege_private = "私有";
 add_project_name_title = "项目名";
 add_project_name_placeholder = "项目名";
 add_project_privilege_title = "权限";
