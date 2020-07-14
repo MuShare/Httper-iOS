@@ -29,6 +29,8 @@ user_password_wrong = "パスワードエラー";
 user_facebook_oauth_error = "Facebook認証が失敗しました。";
 
 // AddProjectViewController
+add_project_title = "プロジェクトを追加";
+add_project_privilege_private = "プライベート";
 add_project_name_title = "プロジェクト名";
 add_project_name_placeholder = "プロジェクター名";
 add_project_privilege_title = "権限";
