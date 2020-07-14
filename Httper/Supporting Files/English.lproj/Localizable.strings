@@ -29,6 +29,8 @@ user_password_wrong = "Your password is wrong, check and try again.";
 user_facebook_oauth_error = "Facebook OAuth login failed, plasese try Again!";
 
 // AddProjectViewController
+add_project_title = "Add Project";
+add_project_privilege_private = "Private";
 add_project_name_title = "Project Name";
 add_project_name_placeholder = "Your project name";
 add_project_privilege_title = "Privilege";

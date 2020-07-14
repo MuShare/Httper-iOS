@@ -10,6 +10,24 @@ import RxSwift
 import RxCocoa
 import RxFlow
 
+enum ProjectPrivilege: CaseIterable {
+    case `private`
+    
+    var title: String {
+        switch self {
+        case .private:
+            return R.string.localizable.add_project_privilege_private()
+        }
+    }
+    
+    var value: String {
+        switch self {
+        case .private:
+            return "private"
+        }
+    }
+}
+
 class AddProjectViewModel: BaseViewModel {
     
     private let endStep: Step
@@ -23,7 +41,7 @@ class AddProjectViewModel: BaseViewModel {
     }
     
     var title: Observable<String> {
-        return .just("Add Project")
+        return .just(R.string.localizable.add_project_title())
     }
     
     var validate: Observable<Bool> {
@@ -41,7 +59,11 @@ class AddProjectViewModel: BaseViewModel {
         }
         let introdution = introduction.value ?? ""
         loading.onNext(true)
-        DaoManager.shared.projectDao.save(pname: projectName, privilege: "private", introduction: introdution)
+        DaoManager.shared.projectDao.save(
+            pname: projectName,
+            privilege: ProjectPrivilege.private.value,
+            introduction: introdution
+        )
         SyncManager.shared.pushLocalProjects { [weak self] _ in
             guard let `self` = self else { return }
             self.loading.onNext(false)
