@@ -10,20 +10,23 @@ import RxCocoa
 import RxDataSourcesSingleSection
 import RxSwift
 
+private extension Selection {
+    static let email = Selection(icon: R.image.email(), title: UserManager.shared.displayEmail, isAccessoryHidden: true)
+    static let name = Selection(icon: R.image.name(), title: UserManager.shared.name)
+}
+
 class ProfileViewModel: BaseViewModel {
     
     private let reloadRelay = PublishRelay<Void>()
+    private let selections = [Selection.email, .name]
     
     var title: Observable<String> {
         .just(R.string.localizable.profile_title())
     }
     
     var section: Observable<SingleSection<Selection>> {
-        reloadRelay.map { _ in
-            [
-                Selection(icon: R.image.email(), title: UserManager.shared.displayEmail, isAccessoryHidden: true),
-                Selection(icon: R.image.name(), title: UserManager.shared.name)
-            ]
+        reloadRelay.map { [unowned self] _ in
+            self.selections
         }.map {
             SingleSection.create($0)
         }
@@ -45,8 +48,14 @@ class ProfileViewModel: BaseViewModel {
     }
     
     func pick(at index: Int) {
-        if index == 1 {
+        guard selections.isSafe(for: index) else {
+            return
+        }
+        switch selections[index] {
+        case .name:
             steps.accept(SettingsStep.modifyName)
+        default:
+            break
         }
     }
     
