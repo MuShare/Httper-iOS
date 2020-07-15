@@ -121,7 +121,8 @@ settings_selection_whois = "Whois";
 settings_selection_ip = "What is my IP address";
 settings_selection_appstore = "Rate me on App Store";
 settings_selection_github = "Give me a star on Github";
-ssettings_selection_about = "About";
+settings_selection_about = "About";
+settings_sign_in = "Sign in now!";
 
 // WhoisViewController
 whois_title = "Whois";

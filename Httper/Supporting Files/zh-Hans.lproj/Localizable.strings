@@ -121,7 +121,8 @@ settings_selection_whois = "域名所有者查询";
 settings_selection_ip = "我的IP地址";
 settings_selection_appstore = "请给我一个好评~";
 settings_selection_github = "请在GitHub上为我点星~";
-ssettings_selection_about = "关于";
+settings_selection_about = "关于";
+settings_sign_in = "立即登录！";
 
 // WhoisViewController
 whois_title = "域名所有者查询";

@@ -29,14 +29,14 @@ extension SettingsSectionModel: SectionModelType {
     
 }
 
-extension Selection {
+private extension Selection {
     static let keyboard = Selection(icon: R.image.keyboard(), title: R.string.localizable.settings_selection_keyboard())
     static let ping = Selection(icon: R.image.ping(), title: R.string.localizable.settings_selection_ping())
     static let whois = Selection(icon: R.image.domain(), title: R.string.localizable.settings_selection_whois())
     static let ip = Selection(icon: R.image.ip(), title: R.string.localizable.settings_selection_ip())
     static let appstore = Selection(icon: R.image.appstore(), title: R.string.localizable.settings_selection_appstore())
     static let github = Selection(icon: R.image.github(), title: R.string.localizable.settings_selection_github())
-    static let about = Selection(icon: R.image.about(), title: R.string.localizable.ssettings_selection_about())
+    static let about = Selection(icon: R.image.about(), title: R.string.localizable.settings_selection_about())
 }
 
 private enum Const {
@@ -63,19 +63,19 @@ class SettingsViewModel: BaseViewModel {
     }
     
     var name: Observable<String?> {
-        return isLoginSubject.distinctUntilChanged().map {
-            $0 ? UserManager.shared.name : R.string.localizable.sign_in_sign_up()
+        isLoginSubject.distinctUntilChanged().map {
+            $0 ? UserManager.shared.name : R.string.localizable.settings_sign_in()
         }
     }
     
     var email: Observable<String?> {
-        return isLoginSubject.distinctUntilChanged().map {
+        isLoginSubject.distinctUntilChanged().map {
             $0 ? UserManager.shared.email : nil
         }
     }
     
     var sections: Observable<[SettingsSectionModel]> {
-        return .just(Const.sections)
+        .just(Const.sections)
     }
     
     func reload() {
