@@ -15,6 +15,7 @@ Pods/
 
 # rxtree
 rxtree
+.rxtree-version
 
 # Fastlane
 /build

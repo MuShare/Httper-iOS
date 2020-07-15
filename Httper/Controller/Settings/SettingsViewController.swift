@@ -18,7 +18,7 @@ private struct Const {
     }
     
     struct name {
-        static let marginTop = 5
+        static let marginTop = 10
     }
     
     struct header {
