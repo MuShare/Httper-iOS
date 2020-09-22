@@ -34,4 +34,4 @@ Httper is relied on the following frameworks, I am very pleasure if you can give
 ### Copyright
 
 Anyone can copy, read, modify and build this project by yourself.
-Anyone is not allowed to rebuild this project and deploy to any platform besides App Store.
+No one is permitted to recompile and archive this project, in order to publish it on any platforms including but not limited to App Store, for any purpose.

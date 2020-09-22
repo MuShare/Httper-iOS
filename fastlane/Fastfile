@@ -39,21 +39,16 @@ platform :ios do
       scheme: "Httper",
       export_options: {
         method: "app-store",
+        xcargs: "-allowProvisioningUpdates",
         compileBitcode: true,
         uploadSymbols: true,
         provisioningProfiles: {
-          "pw.fczm.Httper" => "Httper_Dist",
+          "pw.fczm.Httper" => "Httper-Dist",
         }
       }
     )
 
-    upload_to_testflight(
-      username: "lm2343635@126.com",
-      app_identifier: "pw.fczm.Httper",
-      team_name: "Meng Li",
-      skip_submission: true,
-      skip_waiting_for_build_processing: true
-    )
+    sh "xcrun altool --upload-app -u \"$APPL_EMAIL\" -p \"$APPL_PWD\" -f \"$IPA_OUTPUT_PATH\""
   end
 
 end
