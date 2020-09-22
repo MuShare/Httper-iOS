@@ -30,3 +30,8 @@ Httper is relied on the following frameworks, I am very pleasure if you can give
 
 - MGKeyboardAccessory(https://github.com/lm2343635/MGKeyboardAccessory)
 - MGFormatter(https://github.com/lm2343635/MGFormatter)
+
+### Copyright
+
+Anyone can copy, read, modify and build this project by yourself.
+Anyone is not allowed to rebuild this project and deploy to any platform besides App Store.
