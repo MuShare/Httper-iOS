@@ -129,7 +129,7 @@ whois_title = "域名所有者查询";
 whois_address_placeholder = "域名";
 
 // SigninViewController
-sign_in_title = "欢迎登陆Httper";
+sign_in_title = "欢迎登录Httper";
 sign_in_email_placeholder = "邮箱";
 sign_in_password_placeholder = "密码";
 sign_in_submit = "登录";

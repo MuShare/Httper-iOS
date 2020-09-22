@@ -1,6 +1,10 @@
-name: pull_request_build_check
+name: build_check
 
-on: [pull_request]
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   build:
