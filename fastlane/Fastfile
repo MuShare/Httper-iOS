@@ -20,7 +20,7 @@ platform :ios do
     cocoapods(repo_update: true)
 
     copy_artifacts(
-      artifacts: ["*.mobileprovision"],
+      artifacts: ["./HttperDist.mobileprovision"],
       target_path: File.expand_path("~/Library/MobileDevice/Provisioning Profiles")
     )
   end
