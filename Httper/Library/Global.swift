@@ -11,14 +11,10 @@ import SwiftyUserDefaults
 import Alamofire
 @_exported import RxBinding
 
-let DEBUG = false
-
-// Server base url
-let baseUrl = "https://httper.mushare.cn/"
-
 func createUrl(_ relative: String) -> String {
-    let requestUrl = baseUrl + relative
-    return requestUrl
+    let baseUrl = UIApplication.shared.isProduction ?
+        "https://httper.mushare.cn/" : "https://beta-httper.mushare.cn/"
+    return baseUrl + relative
 }
 
 func imageURL(_ source: String) -> URL? {
@@ -55,7 +51,7 @@ enum PrettyColor: Int {
 
 enum DesignColor: Int {
     case background = 0x30363b
-    case nagivation = 0x3d4143
+    case navigation = 0x3d4143
     case tableLine = 0xbcbbc1
 }
 
@@ -150,7 +146,7 @@ func appUpdate() {
     case "2.0":
         let dao = DaoManager.shared
         let sync = SyncManager.shared
-        for request in dao.requestDao.findWithNilPorject() {
+        for request in dao.requestDao.findWithNilProject() {
             sync.deleteRequest(request)
         }
         if Defaults.token != nil {

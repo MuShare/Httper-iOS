@@ -92,13 +92,9 @@ class SigninViewModel: BaseViewModel {
         loginManager.logIn(permissions: [.publicProfile], viewController: viewController) { loginResult in
             switch loginResult {
             case .failed(let error):
-                if DEBUG {
-                    print("Facebook OAuth login error: \(error)");
-                }
+                AppLog.debug("Facebook OAuth login error: \(error)")
             case .cancelled:
-                if DEBUG {
-                    print("User cancelled login.");
-                }
+                AppLog.debug("User cancelled login.")
             case .success(_, _, let accessToken):
                 self.loading.onNext(true)
                 

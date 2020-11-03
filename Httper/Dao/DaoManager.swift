@@ -34,9 +34,7 @@ class DaoManager: NSObject {
         // Create the coordinator and store
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
         let url = self.applicationDocumentsDirectory.appendingPathComponent("SingleViewCoreData.sqlite")
-        if DEBUG {
-            NSLog("SQLite file stores at \(url)")
-        }
+        AppLog.debug("SQLite file stores at \(url)")
         var failureReason = "There was an error creating or loading the application's saved data."
         do {
             // Use lightweight migration mode.

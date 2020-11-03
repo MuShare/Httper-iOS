@@ -62,7 +62,7 @@ class RequestDao: DaoTemplate {
         return try! context.fetch(fetchRequest)
     }
     
-    func findWithNilPorject() -> [Request] {
+    func findWithNilProject() -> [Request] {
         let fetchRequest = NSFetchRequest<Request>(entityName: NSStringFromClass(Request.self))
         fetchRequest.predicate = NSPredicate(format: "project=nil")
         return try! context.fetch(fetchRequest)
