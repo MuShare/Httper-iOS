@@ -13,7 +13,7 @@ import Alamofire
 
 func createUrl(_ relative: String) -> String {
     let baseUrl = UIApplication.shared.isProduction ?
-        "https://httper.mushare.cn/" : "https://beta-httper.mushare.cn/"
+        "https://ddns-httper.mushare.cn/" : "https://beta-httper.mushare.cn/"
     return baseUrl + relative
 }
 
