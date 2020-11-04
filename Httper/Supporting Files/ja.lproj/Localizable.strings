@@ -6,11 +6,17 @@
   Copyright © 2016 MuShare Group. All rights reserved.
 */
 
-common_tip_name = "ヒント";
-common_cancel_name = "キャンセル";
-common_yes_name = "はい";
-common_ok_name = "OK";
-common_clear_name = "クリアー";
+common_tip = "ヒント";
+common_confirm = "確認";
+common_error = "エラー";
+common_warning = "警告";
+common_ok = "OK";
+common_yes = "はい";
+common_no = "いいえ";
+common_confirm = "確認";
+common_close = "閉じる";
+common_cancel = "キャンセル";
+common_clear = "クリアー";
 common_no_internet_connection = "インターネットに接続できません。";
 common_token_error = "ユーザ認証が失敗しました。もう一度サインインしてください。";
 common_error_unknown = "エラーの原因が不明";

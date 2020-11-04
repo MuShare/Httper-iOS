@@ -6,13 +6,19 @@
   Copyright © 2016 MuShare Group. All rights reserved.
 */
 
-common_tip_name = "Tip";
-common_cancel_name = "Cancel";
-common_yes_name = "Yes";
-common_ok_name = "OK";
-common_clear_name = "Clear";
+common_tip = "Tip";
+common_confirm = "Confirm";
+common_error = "Error";
+common_warning = "Warning";
+common_ok = "OK";
+common_yes = "Yes";
+common_no = "No";
+common_close = "Close";
+common_confirm = "Confirm";
+common_cancel = "Cancel";
+common_clear = "Clear";
 common_no_internet_connection = "No Internet connection!";
-common_token_error = "User authorization is invalide. Please sign in again!";
+common_token_error = "User authorization is invalid. Please sign in again!";
 common_error_unknown = "Unknown error.";
 
 tab_request_title = "Httper";
@@ -26,7 +32,7 @@ tab_request_clear = "Clear";
 user_email_registered = "This email has been registered.";
 user_email_not_exist = "This email is not existed.";
 user_password_wrong = "Your password is wrong, check and try again.";
-user_facebook_oauth_error = "Facebook OAuth login failed, plasese try Again!";
+user_facebook_oauth_error = "Facebook OAuth login failed, please try Again!";
 
 // AddProjectViewController
 add_project_title = "Add Project";

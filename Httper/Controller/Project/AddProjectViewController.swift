@@ -6,7 +6,6 @@
 //  Copyright © 2017 MuShare Group. All rights reserved.
 //
 
-import UIKit
 import Eureka
 
 class AddProjectViewController: BaseViewController<AddProjectViewModel> {
@@ -19,8 +18,7 @@ class AddProjectViewController: BaseViewController<AddProjectViewModel> {
     private lazy var privilegePickerInputRow = ActionSheetRow<String>() {
         $0.title = R.string.localizable.add_project_privilege_title()
         $0.selectorTitle = R.string.localizable.add_project_privilege_select()
-        $0.cancelTitle = R.string.localizable.common_cancel_name()
-        $0.options = ProjectPrivilege.allCases.map { $0.title }
+        $0.cancelTitle = R.string.localizable.common_cancel()
         $0.value = ProjectPrivilege.private.title
     }.onPresent { from, to in
         to.popoverPresentationController?.permittedArrowDirections = .up
