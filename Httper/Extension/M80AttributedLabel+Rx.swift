@@ -8,7 +8,6 @@
 
 import RxSwift
 import RxCocoa
-import UIKit
 
 #if os(iOS) || os(tvOS)
 

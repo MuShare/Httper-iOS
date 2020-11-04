@@ -8,7 +8,6 @@
 
 import MapKit
 import RxDataSourcesSingleSection
-import UIKit
 
 private struct Const {
     struct map {

@@ -6,11 +6,17 @@
   Copyright © 2016 MuShare Group. All rights reserved.
 */
 
-common_tip_name = "提示";
-common_cancel_name = "取消";
-common_yes_name = "是";
-common_ok_name = "OK";
-common_clear_name = "清除";
+common_tip = "提示";
+common_confirm = "确认";
+common_error = "错误";
+common_warning = "警告";
+common_ok = "好";
+common_yes = "是";
+common_no = "否";
+common_confirm = "确认";
+common_close = "关闭";
+common_cancel = "取消";
+common_clear = "清除";
 common_no_internet_connection = "网络未连接";
 common_token_error = "用户验证失败，请重试。";
 common_error_unknown = "未知错误";

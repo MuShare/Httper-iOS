@@ -6,10 +6,11 @@
 //  Copyright © 2017 MuShare Group. All rights reserved.
 //
 
-import Foundation
-import SwiftyUserDefaults
 import Alamofire
+import Firebase
+import RxAlertViewable
 @_exported import RxBinding
+import SwiftyUserDefaults
 
 func createUrl(_ relative: String) -> String {
     let baseUrl = UIApplication.shared.isProduction ?
@@ -134,25 +135,53 @@ func projectRevision() -> Int {
     return projectRevision!
 }
 
-// App update method, revoked only when app is updated.
-func appUpdate() {
-    if Defaults.version == nil {
-        Defaults.version = "1.0"
-    }
-    if Defaults.version == App.version {
-        return
-    }
-    switch App.version {
-    case "2.0":
-        let dao = DaoManager.shared
-        let sync = SyncManager.shared
-        for request in dao.requestDao.findWithNilProject() {
-            sync.deleteRequest(request)
+struct Global {
+    // App update method, revoked only when app is updated.
+    private static func appUpdate() {
+        if Defaults.version == nil {
+            Defaults.version = "1.0"
         }
-        if Defaults.token != nil {
-            Defaults.version = App.version
+        if Defaults.version == App.version {
+            return
         }
-    default:
-        break
+        switch App.version {
+        case "2.0":
+            let dao = DaoManager.shared
+            let sync = SyncManager.shared
+            for request in dao.requestDao.findWithNilProject() {
+                sync.deleteRequest(request)
+            }
+            if Defaults.token != nil {
+                Defaults.version = App.version
+            }
+        default:
+            break
+        }
     }
+
+    
+    static func setup(_ application: UIApplication) {
+        appUpdate()
+        
+        // Init firebase
+        FirebaseApp.configure()
+        
+        // Pull updated requests and push local requests(if exist) when user login.
+        if UserManager.shared.login {
+            SyncManager.shared.syncAll()
+            UserManager.shared.pullUser()
+        }
+        
+        RxAlertConfig.current = RxAlertConfig(
+            tip: R.string.localizable.common_tip(),
+            confirm: R.string.localizable.common_confirm(),
+            warning: R.string.localizable.common_warning(),
+            error: R.string.localizable.common_error(),
+            yes: R.string.localizable.common_yes(),
+            no: R.string.localizable.common_no(),
+            ok: R.string.localizable.common_ok(),
+            cancel: R.string.localizable.common_cancel()
+        )
+    }
+    
 }

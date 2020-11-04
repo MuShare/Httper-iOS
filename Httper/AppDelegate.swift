@@ -6,9 +6,7 @@
 //  Copyright © 2016 MuShare Group. All rights reserved.
 //
 
-import UIKit
 import FBSDKCoreKit
-import Firebase
 import RxSwift
 import RxCocoa
 import RxFlow
@@ -21,16 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private let window = UIWindow()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        Global.setup(application)
 
-        appUpdate()
-        FirebaseApp.configure()
-        
-        // Pull updated requests and push local requests(if exist) when user login.
-        if UserManager.shared.login {
-            SyncManager.shared.syncAll()
-            UserManager.shared.pullUser()
-        }
-        
         FBSDKCoreKit.ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
         // Listen for Coordinator mechanism is not mandatory
