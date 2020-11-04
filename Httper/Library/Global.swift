@@ -14,7 +14,7 @@ import SwiftyUserDefaults
 
 func createUrl(_ relative: String) -> String {
     let baseUrl = UIApplication.shared.isProduction ?
-        "https://ddns-httper.mushare.cn/" : "https://beta-httper.mushare.cn/"
+        "https://httper.mushare.cn/" : "https://beta-httper.mushare.cn/"
     return baseUrl + relative
 }
 
