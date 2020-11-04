@@ -52,12 +52,12 @@ class SettingsViewModel: BaseViewModel {
     private let isLoginSubject = PublishSubject<Bool>()
     
     var avatar: Observable<URL?> {
-        return isLoginSubject.distinctUntilChanged().map {
+        return isLoginSubject.distinctUntilChanged().map { _ in
             switch UserManager.shared.type {
             case .email:
                 return nil
             case .facebook:
-                return $0 ? imageURL(UserManager.shared.avatar) :  nil
+                return UserManager.shared.avatarURL
             }
         }
     }

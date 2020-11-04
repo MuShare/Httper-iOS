@@ -75,7 +75,7 @@ final class UserManager {
     
     var avatarURL: URL? {
         get {
-            return login ? URL(string: createUrl(avatar)) : nil
+            return login ? URL(string: avatar) : nil
         }
     }
     

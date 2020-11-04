@@ -67,6 +67,7 @@
 		BB168A1D242F92AB000BFB87 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB168A1F242F92AB000BFB87 /* Localizable.strings */; };
 		BB2BD55B23E9BADB00C869EB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2BD55A23E9BADB00C869EB /* ProfileViewController.swift */; };
 		BB2BD55D23E9BAE600C869EB /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2BD55C23E9BAE600C869EB /* ProfileViewModel.swift */; };
+		BB387F3725519A320025C6EA /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB387F3625519A320025C6EA /* UIApplication+Extension.swift */; };
 		BB44C51522B687380040DCD3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB44C51422B687370040DCD3 /* GoogleService-Info.plist */; };
 		BB9BE56124B732A000AE4483 /* StorageHttpHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9BE56024B732A000AE4483 /* StorageHttpHeader.swift */; };
 		BBADABF72317F7DD00995AD2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBADABF62317F7DD00995AD2 /* SettingsViewController.swift */; };
@@ -225,6 +226,7 @@
 		BB168A20242F92B3000BFB87 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BB2BD55A23E9BADB00C869EB /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		BB2BD55C23E9BAE600C869EB /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		BB387F3625519A320025C6EA /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		BB3F77C824B8A42A00B23069 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		BB3F77C924B8A42A00B23069 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BB3F77CA24B8A42A00B23069 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Headers.strings; sourceTree = "<group>"; };
@@ -535,6 +537,7 @@
 		774C75EC20D793D000DBD9EC /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				BBADABFA2317FFDA00995AD2 /* Array+Extension.swift */,
 				772F8D6F21F6D12300858714 /* Eruka+Rx.swift */,
 				BB07BE0D22A7FF2A00A03CBD /* Kingfisher+Rx.swift */,
 				77513CDC216DFDD900929068 /* M80AttributedLabel+Rx.swift */,
@@ -542,6 +545,7 @@
 				77396288225C43080091C669 /* Observable+Extension.swift */,
 				77CDA183222E12B80063C472 /* RxFlow+Extension.swift */,
 				77A530732165C3F20008CC56 /* String+Extension.swift */,
+				BB387F3625519A320025C6EA /* UIApplication+Extension.swift */,
 				779B060E2269A18300F5B225 /* UIBarButtonItem+Rx.swift */,
 				E409869F215523A2006CCC04 /* UIColor+Extension.swift */,
 				77A530792165C7580008CC56 /* UIImage+Extension.swift */,
@@ -552,7 +556,6 @@
 				E411A309215286C5004ADBAE /* UIView+Extension.swift */,
 				E40986A1215523A3006CCC04 /* UIViewController+Extension.swift */,
 				77B1991C230B8BEA003EE42F /* UIWebView+Rx.swift */,
-				BBADABFA2317FFDA00995AD2 /* Array+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1007,6 +1010,7 @@
 				77055F5322B76570001F140D /* IPAddressInfoTableViewCell.swift in Sources */,
 				E44B98A720EBDE06004FEF67 /* ProjectsViewController.swift in Sources */,
 				BBFA15A3240E3C7D00AD7294 /* ResetPasswordViewController.swift in Sources */,
+				BB387F3725519A320025C6EA /* UIApplication+Extension.swift in Sources */,
 				E40986A4215523A3006CCC04 /* UIViewController+Extension.swift in Sources */,
 				77F3996A215382BA0016978E /* MenuViewCell.swift in Sources */,
 				E4712EDA1E55FC81002FF8E1 /* ProjectIntroductionViewController.swift in Sources */,
@@ -1189,6 +1193,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-DDEBUG";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -1251,7 +1256,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = X92HAV9XYP;
 				INFOPLIST_FILE = Httper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1259,7 +1264,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.4.2;
+				MARKETING_VERSION = 3.4.3;
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = pw.fczm.Httper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1279,7 +1284,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = X92HAV9XYP;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -1291,7 +1296,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.4.2;
+				MARKETING_VERSION = 3.4.3;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS";
 				PRODUCT_BUNDLE_IDENTIFIER = pw.fczm.Httper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
