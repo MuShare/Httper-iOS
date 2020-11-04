@@ -6,8 +6,6 @@
 //  Copyright © 2017 MuShare Group. All rights reserved.
 //
 
-import Foundation
-
 //MARK: - Versions string functionality
 enum Semantic {
     case major, minor, patch, same, unknown

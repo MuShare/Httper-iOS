@@ -6,7 +6,6 @@
 //  Copyright © 2018 XFLAG. All rights reserved.
 //
 
-import UIKit
 import SnapKit
 
 extension UIView {

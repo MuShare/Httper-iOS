@@ -6,7 +6,6 @@
 //  Copyright © 2018 XFLAG. All rights reserved.
 //
 
-import UIKit
 
 fileprivate struct AssociatedKeys {
     static var barColor = "barColor"

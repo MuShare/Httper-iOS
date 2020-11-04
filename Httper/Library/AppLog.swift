@@ -6,8 +6,6 @@
 //  Copyright © 2019 MuShare. All rights reserved.
 //
 
-import Foundation
-
 class AppLog {
     enum Level: Int {
         case debug = 0

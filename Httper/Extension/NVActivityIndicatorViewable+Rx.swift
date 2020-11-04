@@ -8,7 +8,6 @@
 
 #if os(iOS)
 
-import UIKit
 import RxSwift
 import RxCocoa
 import NVActivityIndicatorView

@@ -6,7 +6,6 @@
 //  Copyright © 2018 MuShare Group. All rights reserved.
 //
 
-import UIKit
 
 extension UIViewController {
     

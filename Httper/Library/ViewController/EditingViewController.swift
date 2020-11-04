@@ -6,7 +6,6 @@
 //  Copyright © 2017 MuShare Group. All rights reserved.
 //
 
-import UIKit
 
 let keyboardHeight: CGFloat = 340.0
 
