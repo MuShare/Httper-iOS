@@ -54,19 +54,17 @@ class KeyValueViewModel: BaseViewModel {
     
     var results: [String: KeyValue] = [:]
     
-    var keyValueSection: Observable<AnimatableSingleSection<KeyValue>> {
-        keyValuesRelay.map {
-            AnimatableSingleSection.create($0)
-        }
+    var keyValues: Observable<[KeyValue]> {
+        keyValuesRelay.asObservable()
     }
-    
+
     var characters: Observable<[String]> {
         keyValuesRelay.withLatestFrom(UserManager.shared.charactersRelay)
     }
     
     func addNewKey() {
         var value = keyValuesRelay.value
-        value.append(.empty)
+        value.insert(.empty, at: 0)
         keyValuesRelay.accept(value)
     }
     

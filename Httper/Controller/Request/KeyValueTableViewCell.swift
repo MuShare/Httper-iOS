@@ -1,12 +1,11 @@
 //
-//  KeyValueTableViewCell.swift
+//  KeyValueView.swift
 //  Httper
 //
 //  Created by Meng Li on 2018/09/20.
 //  Copyright © 2018 limeng. All rights reserved.
 //
 
-import Reusable
 import MGKeyboardAccessory
 import RxSwift
 
@@ -25,7 +24,7 @@ protocol KeyValueTableViewCellDelegate: class {
     func editingDidEnd(for identifier: String)
 }
 
-class KeyValueTableViewCell: UITableViewCell, Reusable {
+class KeyValueView: UIView {
     
     private lazy var keyTextField: UITextField = {
         let textField = UITextField()
@@ -115,15 +114,15 @@ class KeyValueTableViewCell: UITableViewCell, Reusable {
     
     weak var delegate: KeyValueTableViewCellDelegate?
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
+    init(keyValue: KeyValue) {
+        super.init(frame: .zero)
+
         backgroundColor = .clear
-        contentView.addSubview(keyTextField)
-        contentView.addSubview(keyBorderView)
-        contentView.addSubview(valueTextField)
-        contentView.addSubview(valueBorderView)
-        contentView.addSubview(removeButton)
+        addSubview(keyTextField)
+        addSubview(keyBorderView)
+        addSubview(valueTextField)
+        addSubview(valueBorderView)
+        addSubview(removeButton)
         createConstraints()
 
         keyTextField.rx.text.orEmpty.subscribe(onNext: { [weak self] in
