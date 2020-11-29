@@ -1,6 +1,6 @@
 //
 //  AppLog.swift
-//  Rinrin
+//  Httper
 //
 //  Created by Meng Li on 2019/02/07.
 //  Copyright © 2019 MuShare. All rights reserved.
