@@ -1,12 +1,9 @@
 PODS:
   - Alamofire (5.3.0)
   - AttributedTextView (1.4.1)
-  - Crashlytics (3.14.0):
-    - Fabric (~> 1.10.2)
   - Differentiator (4.0.1)
   - ESPullToRefresh (2.9.3)
   - Eureka (5.3.2)
-  - Fabric (1.10.2)
   - FacebookCore (0.9.0):
     - FBSDKCoreKit (~> 5.0)
   - FacebookLogin (0.9.0):
@@ -39,6 +36,12 @@ PODS:
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/Logger (~> 7.0)
     - nanopb (~> 2.30906.0)
+  - FirebaseCrashlytics (7.1.0):
+    - FirebaseCore (~> 7.0)
+    - FirebaseInstallations (~> 7.0)
+    - GoogleDataTransport (~> 8.0)
+    - nanopb (~> 2.30906.0)
+    - PromisesObjC (~> 1.2)
   - FirebaseInstallations (7.0.0):
     - FirebaseCore (~> 7.0)
     - GoogleUtilities/Environment (~> 7.0)
@@ -167,13 +170,12 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
-  - Crashlytics
   - ESPullToRefresh
   - Eureka
-  - Fabric
   - FacebookCore
   - FacebookLogin
   - Firebase/Performance
+  - FirebaseCrashlytics
   - Kanna
   - Kingfisher
   - M80AttributedLabel
@@ -206,11 +208,9 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - AttributedTextView
-    - Crashlytics
     - Differentiator
     - ESPullToRefresh
     - Eureka
-    - Fabric
     - FacebookCore
     - FacebookLogin
     - FBSDKCoreKit
@@ -219,6 +219,7 @@ SPEC REPOS:
     - FirebaseABTesting
     - FirebaseCore
     - FirebaseCoreDiagnostics
+    - FirebaseCrashlytics
     - FirebaseInstallations
     - FirebasePerformance
     - FirebaseRemoteConfig
@@ -264,11 +265,9 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 2c792affbdc2f18016e08fdbcacd60aebe1ba593
   AttributedTextView: 9e01651d96c1af861a9c67c2cc3f94c30320d1c2
-  Crashlytics: 9220f5bc89e7a618df411b4f639389dbfb0e03d2
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   ESPullToRefresh: 0d68daa602b343c81753a1b95e09fd0bfcddfd40
   Eureka: 1c2b8b5892bfb0e972d0fe05f8c09fd89f8625ec
-  Fabric: ea977e3cd9c20425516d3dafd3bf8c941c51223f
   FacebookCore: ba86524b66cfa86d0f8e65d08faa8504a9f732dd
   FacebookLogin: 6cee9fd6e1fe976fe8f7eec199e27b28b14f5d63
   FBSDKCoreKit: 1d5acf7c9d7a2f92bb1a242dc60cae5b7adb91df
@@ -277,6 +276,7 @@ SPEC CHECKSUMS:
   FirebaseABTesting: b78ae653b7658b8f1c076eaa21029c936d58f758
   FirebaseCore: cf3122185fce1cf71cedbbc498ea84d2b3e7cb69
   FirebaseCoreDiagnostics: 5f4aa04fdb04923693cc704c7ef9158bdf41a48b
+  FirebaseCrashlytics: c722e4ca283272eb90eb5bc245fdc6588e2f22c2
   FirebaseInstallations: c28d4bcbb5c6884d1a39afbc0bd7fc590e31e9b7
   FirebasePerformance: 4341f46dd638e6293aeaeee31d85e30ac34f63f7
   FirebaseRemoteConfig: ff8d3542cbd919c9d3851fd544690b8848fc0402
@@ -319,6 +319,6 @@ SPEC CHECKSUMS:
   "UIImageView+Extension": bc26c60a9c8cd6fb515ae1e37377a6f0988e76d8
   "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
 
-PODFILE CHECKSUM: d052f2bbcd9426d3dade075f92bc13f9afe1f22b
+PODFILE CHECKSUM: 0f64079c649ba3376c1007fdc8c413d407b24c44
 
 COCOAPODS: 1.10.0
