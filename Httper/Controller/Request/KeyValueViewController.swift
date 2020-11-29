@@ -47,21 +47,20 @@ class KeyValueViewController: BaseViewController<KeyValueViewModel> {
     })
 
     override func subviews() -> [UIView] {
-        [
+        return [
             addButton,
             tableView
         ]
     }
     
     override func bind() -> [Disposable] {
-        [
+        return [
             viewModel.keyValueSection ~> tableView.rx.items(dataSource: dataSource),
             viewModel.characters ~> rx.characters
         ]
     }
     
     override func createConstraints() {
-        
         addButton.snp.makeConstraints {
             $0.height.equalTo(Const.add.height)
             $0.left.right.bottom.equalToSuperview()
@@ -71,7 +70,6 @@ class KeyValueViewController: BaseViewController<KeyValueViewModel> {
             $0.left.top.right.equalToSuperview()
             $0.bottom.equalTo(addButton.snp.top)
         }
-        
     }
     
 }

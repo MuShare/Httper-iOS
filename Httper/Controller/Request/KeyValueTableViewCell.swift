@@ -119,11 +119,11 @@ class KeyValueTableViewCell: UITableViewCell, Reusable {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         backgroundColor = .clear
-        addSubview(keyTextField)
-        addSubview(keyBorderView)
-        addSubview(valueTextField)
-        addSubview(valueBorderView)
-        addSubview(removeButton)
+        contentView.addSubview(keyTextField)
+        contentView.addSubview(keyBorderView)
+        contentView.addSubview(valueTextField)
+        contentView.addSubview(valueBorderView)
+        contentView.addSubview(removeButton)
         createConstraints()
 
         keyTextField.rx.text.orEmpty.subscribe(onNext: { [weak self] in
