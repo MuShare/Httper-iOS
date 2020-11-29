@@ -723,7 +723,7 @@
 				E48D41511D444F3F0028B84F /* Frameworks */,
 				E48D41521D444F3F0028B84F /* Resources */,
 				5FBDFA7A01C00541D71051CF /* [CP] Embed Pods Frameworks */,
-				BB3106B922AD1CA5009B9DCF /* Fabric */,
+				BB3106B922AD1CA5009B9DCF /* FirebaseCrashlytics */,
 			);
 			buildRules = (
 			);
@@ -926,7 +926,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BB3106B922AD1CA5009B9DCF /* Fabric */ = {
+		BB3106B922AD1CA5009B9DCF /* FirebaseCrashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -936,14 +936,14 @@
 			inputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
 			);
-			name = Fabric;
+			name = FirebaseCrashlytics;
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\"\n";
+			shellScript = "\n# If installed via CocoaPods, then the \"run\" script will exist there\nif test -f \"${PODS_ROOT}/FirebaseCrashlytics/run\"; then\n  \"${PODS_ROOT}/FirebaseCrashlytics/run\"\n\n# If just the contents of the \"FirebaseCrashlytics\" folder from the\n# zip download was dragged into the Xcode project, check the project root\nelif test -f \"${PROJECT_DIR}/run\"; then\n  \"${PROJECT_DIR}/run\"\n  \n# If the whole \"FirebaseCrashlytics\" folder was dragged in from the\n# zip download, check for it in the root of the project \nelif test -f \"${PROJECT_DIR}/FirebaseCrashlytics/run\"; then\n  \"${PROJECT_DIR}/FirebaseCrashlytics/run\"\n  \n# If we can't find the run script, fail the build so that we\n# know to fix the issue\nelse\n  echo 'error: Could not find path to Crashlytics \"run\" script. Please ensure you have included the Crashlytics \"run\" script in the Xcode project directory, or update the path to the script in the Xcode project \"Build Phases\" > \"Run Script\"'\n  exit 1\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1256,7 +1256,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = X92HAV9XYP;
 				INFOPLIST_FILE = Httper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1264,7 +1264,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.4.3;
+				MARKETING_VERSION = 3.4.4;
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = pw.fczm.Httper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1284,7 +1284,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = X92HAV9XYP;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -1296,7 +1296,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.4.3;
+				MARKETING_VERSION = 3.4.4;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS";
 				PRODUCT_BUNDLE_IDENTIFIER = pw.fczm.Httper;
 				PRODUCT_NAME = "$(TARGET_NAME)";

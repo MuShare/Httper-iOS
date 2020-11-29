@@ -3,12 +3,11 @@ platform :ios, '10.0'
 
 target 'Httper' do
     pod 'Alamofire'
-    pod 'Crashlytics'
     pod 'ESPullToRefresh'
     pod 'Eureka'
-    pod 'Fabric'
     pod 'FacebookCore'
     pod 'FacebookLogin'
+    pod 'FirebaseCrashlytics'
     pod 'Firebase/Performance'
     pod 'Kanna'
     pod 'Kingfisher'
