@@ -3,11 +3,10 @@
 //  Httper
 //
 //  Created by Meng Li on 2018/09/20.
-//  Copyright © 2018 limeng. All rights reserved.
+//  Copyright © 2018 MuShare. All rights reserved.
 //
 
 import MGKeyboardAccessory
-import RxSwift
 
 fileprivate struct Const {
     static let margin = 16
@@ -19,11 +18,19 @@ fileprivate struct Const {
 
 struct KeyValue {
     let identifier = UUID().uuidString
-    var key = ""
-    var value = ""
+    var key: String
+    var value: String
     
     static var empty: KeyValue {
-        return KeyValue(key: "", value: "")
+        KeyValue(key: "", value: "")
+    }
+    
+    var isEmpty: Bool {
+        key.isEmpty && value.isEmpty
+    }
+    
+    var isNotEmpty: Bool {
+        !isEmpty
     }
 }
 
@@ -48,6 +55,7 @@ class KeyValueView: UIView {
         textField.autocorrectionType = .no
         textField.autocapitalizationType = .none
         textField.delegate = self
+        textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         return textField
     }()
     
@@ -69,6 +77,7 @@ class KeyValueView: UIView {
         textField.autocorrectionType = .no
         textField.autocapitalizationType = .none
         textField.delegate = self
+        textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         return textField
     }()
     
@@ -81,16 +90,9 @@ class KeyValueView: UIView {
     private lazy var removeButton: UIButton = {
         let button = UIButton()
         button.setImage(R.image.delete_value(), for: .normal)
-        button.rx.tap.subscribe(onNext: { [weak self] in
-            guard let `self` = self else {
-                return
-            }
-            self.delegate?.cellShouldRemoved(by: self.keyValue.identifier)
-        }).disposed(by: disposeBag)
+        button.addTarget(self, action: #selector(remove), for: .touchUpInside)
         return button
     }()
-    
-    private let disposeBag = DisposeBag()
     
     private var keyValue: KeyValue
     
@@ -107,32 +109,6 @@ class KeyValueView: UIView {
         addSubview(valueBorderView)
         addSubview(removeButton)
         createConstraints()
-        
-        keyTextField.rx.text.orEmpty.subscribe(onNext: { [weak self] in
-            guard
-                let delegate = self?.delegate,
-                var keyValue = self?.keyValue,
-                let value = self?.valueTextField.text
-            else {
-                return
-            }
-            keyValue.key = $0
-            keyValue.value = value
-            delegate.keyValueUpdated(keyValue)
-        }).disposed(by: disposeBag)
-        
-        valueTextField.rx.text.orEmpty.subscribe(onNext: { [weak self] in
-            guard
-                let delegate = self?.delegate,
-                var keyValue = self?.keyValue,
-                let key = self?.keyTextField.text
-            else {
-                return
-            }
-            keyValue.key = key
-            keyValue.value = $0
-            delegate.keyValueUpdated(keyValue)
-        }).disposed(by: disposeBag)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -179,6 +155,19 @@ class KeyValueView: UIView {
     func updateCharacters(_ characters: [String]) {
         keyTextField.setupKeyboardAccessory(characters, barStyle: .black)
         valueTextField.setupKeyboardAccessory(characters, barStyle: .black)
+    }
+    
+    @objc private func textFieldDidChange() {
+        guard let key = keyTextField.text, let value = valueTextField.text else {
+            return
+        }
+        keyValue.key = key
+        keyValue.value = value
+        delegate?.keyValueUpdated(keyValue)
+    }
+    
+    @objc private func remove() {
+        delegate?.cellShouldRemoved(by: self.keyValue.identifier)
     }
     
 }
