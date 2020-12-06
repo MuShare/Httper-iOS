@@ -28,26 +28,31 @@ class ResultViewModel: BaseViewModel {
         super.init()
         
         loading.onNext(true)
-        RequestManager.shared.send(requestData).subscribe(onNext: { [weak self] response, data in
-            guard let `self` = self else {
-                return
-            }
-            self.loading.onNext(false)
-            guard let text = String(data: data, encoding: .utf8) else {
-                self.alert.onNext(.tip(R.string.localizable.result_nothing()))
-                return
-            }
-            self.prettyViewModel.set(text: text, headers: response.allHeaderFields)
-            self.rawViewModel.set(text: text)
-            self.previewViewModel.set(url: response.url, text: text)
-            self.detailViewModel.response.onNext(response)
-        }, onError: { [weak self] error in
-            guard let `self` = self else {
-                return
-            }
-            self.loading.onNext(false)
-            self.alert.onNext(.error(error.localizedDescription))
-        }).disposed(by: disposeBag)
+        RequestManager.shared.send(requestData)
+            .subscribe(
+                onNext: { [weak self] response, data in
+                    guard let `self` = self else {
+                        return
+                    }
+                    self.loading.onNext(false)
+                    guard let text = String(data: data, encoding: .utf8) else {
+                        self.alert.onNext(.tip(R.string.localizable.result_nothing()))
+                        return
+                    }
+                    self.prettyViewModel.set(text: text, headers: response.allHeaderFields)
+                    self.rawViewModel.set(text: text)
+                    self.previewViewModel.set(url: response.url, text: text)
+                    self.detailViewModel.response.onNext(response)
+                },
+                onError: { [weak self] error in
+                    guard let `self` = self else {
+                        return
+                    }
+                    self.loading.onNext(false)
+                    self.alert.onNext(.error(error.localizedDescription))
+                }
+            )
+            .disposed(by: disposeBag)
     }
     
     var title: Observable<String> {
