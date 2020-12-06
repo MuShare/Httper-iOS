@@ -30,19 +30,6 @@ class KeyValueViewModel: BaseViewModel {
     func clear() {
         keyValuesRelay.accept([.empty])
     }
-    /**
-    let keyValuesRelay = BehaviorRelay<[KeyValue]>(value: [.empty])
-    
-    
-    override init() {
-        super.init()
-        
-        keyValuesRelay.skip(1).take(1).subscribe(onNext: { [unowned self] in
-            for keyValue in $0 {
-                self.results[keyValue.identifier] = keyValue
-            }
-        }).disposed(by: disposeBag)
-    }
     
     func beginEditing(at height: CGFloat) {
         editingStateSubject.onNext(.begin(height))
@@ -51,9 +38,8 @@ class KeyValueViewModel: BaseViewModel {
     func endEditing() {
         editingStateSubject.onNext(.end)
     }
-    
-    func clear() {
-        keyValuesRelay.accept([.empty])
+
+    func index(for identifier: String) -> Int? {
+        return keyValues.firstIndex { $0.identifier == identifier }
     }
-    */
 }

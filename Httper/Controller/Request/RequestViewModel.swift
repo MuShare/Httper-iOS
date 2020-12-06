@@ -94,6 +94,39 @@ class RequestViewModel: BaseViewModel {
     
     var valueOriginY: CGFloat = 0
     
+    private var editingState: Observable<KeyValueEditingState> {
+        Observable
+            .merge(parametersViewModel.editingStateSubject, headersViewModel.editingStateSubject)
+            .distinctUntilChanged {
+                switch ($0, $1) {
+                case (.begin(let height1), .begin(let height2)):
+                    return height1 == height2
+                case (.end, .end):
+                    return true
+                default:
+                    return false
+                }
+            }
+    }
+
+    var moveupHeight: Observable<CGFloat> {
+        Observable
+            .combineLatest(
+                editingState,
+                RxKeyboard.instance.visibleHeight.skip(1).asObservable()
+            )
+            .map { [unowned self] in
+                let (state, keyboardHeight) = $0
+                switch state {
+                case .begin(let height):
+                    return max(keyboardHeight + valueOriginY + height - UIScreen.main.bounds.height, 0)
+                case .end:
+                    return 0
+                }
+            }
+            .debug()
+    }
+    
     var requestData: RequestData {
         RequestData(
             method: requestMethod.value,
@@ -109,40 +142,7 @@ class RequestViewModel: BaseViewModel {
             .unwrap()
             .map { _ in R.string.localizable.request_title() }
     }
-    
-    var editingState: Observable<KeyValueEditingState> {
-        Observable.merge(
-            headersViewModel.editingStateSubject,
-            parametersViewModel.editingStateSubject
-        ).distinctUntilChanged {
-            switch ($0, $1) {
-            case (.begin(let height1), .begin(let height2)):
-                return height1 == height2
-            case (.end, .end):
-                return true
-            default:
-                return false
-            }
-        }
-    }
-    
-    var moveupHeight: Observable<CGFloat> {
-        let relativeScreenHeight = UIScreen.main.bounds.height - valueOriginY
 
-        return Observable.combineLatest(
-            editingState,
-            RxKeyboard.instance.visibleHeight.skip(1).asObservable()
-        ).map {
-            let (state, keyboardHeight) = $0
-            switch state {
-            case .begin(let height):
-                return max(keyboardHeight - (relativeScreenHeight - height), 0)
-            case .end:
-                return 0
-            }
-        }
-    }
-    
     var characters: Observable<[String]> {
         UserManager.shared.charactersRelay.asObservable()
     }

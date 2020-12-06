@@ -27,7 +27,7 @@ struct KeyValue {
     }
 }
 
-protocol KeyValueTableViewCellDelegate: class {
+protocol KeyValueViewDelegate: class {
     func cellShouldRemoved(by identifier: String)
     func keyValueUpdated(_ keyValue: KeyValue)
     func editingDidBegin(for identifier: String)
@@ -47,12 +47,7 @@ class KeyValueView: UIView {
         textField.backgroundColor = .clear
         textField.autocorrectionType = .no
         textField.autocapitalizationType = .none
-        textField.rx.controlEvent(.editingDidBegin).bind { [unowned self] _ in
-            self.delegate?.editingDidBegin(for: self.keyValue.identifier)
-        }.disposed(by: disposeBag)
-        textField.rx.controlEvent(.editingDidEnd).bind { [unowned self] _ in
-            self.delegate?.editingDidEnd(for: self.keyValue.identifier)
-        }.disposed(by: disposeBag)
+        textField.delegate = self
         return textField
     }()
     
@@ -73,12 +68,7 @@ class KeyValueView: UIView {
         textField.backgroundColor = .clear
         textField.autocorrectionType = .no
         textField.autocapitalizationType = .none
-        textField.rx.controlEvent(.editingDidBegin).bind { [unowned self] _ in
-            self.delegate?.editingDidBegin(for: self.keyValue.identifier)
-        }.disposed(by: disposeBag)
-        textField.rx.controlEvent(.editingDidEnd).bind { [unowned self] _ in
-            self.delegate?.editingDidEnd(for: self.keyValue.identifier)
-        }.disposed(by: disposeBag)
+        textField.delegate = self
         return textField
     }()
     
@@ -104,7 +94,7 @@ class KeyValueView: UIView {
     
     private var keyValue: KeyValue
     
-    weak var delegate: KeyValueTableViewCellDelegate?
+    weak var delegate: KeyValueViewDelegate?
     
     init(keyValue: KeyValue) {
         self.keyValue = keyValue
@@ -191,4 +181,14 @@ class KeyValueView: UIView {
         valueTextField.setupKeyboardAccessory(characters, barStyle: .black)
     }
     
+}
+
+extension KeyValueView: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        delegate?.editingDidBegin(for: keyValue.identifier)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        delegate?.editingDidEnd(for: keyValue.identifier)
+    }
 }

@@ -78,6 +78,7 @@ class KeyValueViewController: BaseViewController<KeyValueViewModel> {
         
         let keyValueView = KeyValueView(keyValue: keyValue)
         keyValueView.delegate = self
+        keyValueView.updateCharacters(UserManager.shared.characters ?? [])
         stackView.insertArrangedSubview(keyValueView, at: 0)
         keyValueView.snp.makeConstraints {
             $0.height.equalTo(Const.keyValue.height)
@@ -86,6 +87,7 @@ class KeyValueViewController: BaseViewController<KeyValueViewModel> {
     }
     
     func setKeyValues(_ keyValues: [KeyValue]) {
+        viewModel.keyValues = keyValues
         stackView.arrangedSubviews.forEach {
             $0.removeFromSuperview()
         }
@@ -101,9 +103,9 @@ class KeyValueViewController: BaseViewController<KeyValueViewModel> {
     }
 }
 
-extension KeyValueViewController: KeyValueTableViewCellDelegate {
+extension KeyValueViewController: KeyValueViewDelegate {
     func cellShouldRemoved(by identifier: String) {
-        guard let index = viewModel.keyValues.firstIndex(where: { $0.identifier == identifier }) else {
+        guard let index = viewModel.index(for: identifier) else {
             return
         }
         stackView.arrangedSubviews[index].removeFromSuperview()
@@ -111,19 +113,25 @@ extension KeyValueViewController: KeyValueTableViewCellDelegate {
     }
     
     func keyValueUpdated(_ keyValue: KeyValue) {
-        guard let index = viewModel.keyValues.firstIndex(where: { $0.identifier == keyValue.identifier }) else {
+        guard let index = viewModel.index(for: keyValue.identifier) else {
             return
         }
         viewModel.keyValues[index] = keyValue
-        print(viewModel.keyValues)
     }
-    
+
     func editingDidBegin(for identifier: String) {
-        
+        guard
+            let index = viewModel.index(for: identifier),
+            stackView.arrangedSubviews.isSafe(for: index)
+        else {
+            return
+        } 
+        let rectInSuperView = scrollView.convert(stackView.arrangedSubviews[index].frame, to: view)
+        viewModel.beginEditing(at: rectInSuperView.origin.y)
     }
     
     func editingDidEnd(for identifier: String) {
-        
+        viewModel.endEditing()
     }
 }
 
