@@ -2,124 +2,158 @@
 //  KeyValueViewController.swift
 //  Httper
 //
-//  Created by Meng Li on 2018/09/20.
-//  Copyright © 2018 MuShare. All rights reserved.
+//  Created by Meng Li on 2020/12/6.
+//  Copyright © 2020 MuShare. All rights reserved.
 //
 
 import RxCocoa
 import RxSwift
-import RxDataSourcesSingleSection
 
 private struct Const {
     struct add {
         static let height = 60
     }
+    
+    struct keyValue {
+        static let height = 50
+    }
 }
 
 class KeyValueViewController: BaseViewController<KeyValueViewModel> {
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.alignment = .fill
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 0
+        return stackView
+    }()
     
-    private lazy var tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.hideFooterView()
-        tableView.register(cellType: KeyValueTableViewCell.self)
-        tableView.backgroundColor = .clear
-        tableView.rowHeight = 50
-        tableView.separatorStyle = .none
-        tableView.allowsSelection = false
-        return tableView
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.addSubview(stackView)
+        return scrollView
     }()
     
     private lazy var addButton: UIButton = {
         let button = UIButton()
         button.setImage(R.image.add_value(), for: .normal)
-        button.rx.tap.subscribe(onNext: { [unowned self] in
-            self.viewModel.addNewKey()
-            self.tableView.scrollToBottom()
-        }).disposed(by: disposeBag)
+        button.addTarget(self, action: #selector(addNewKey), for: .touchUpInside)
         return button
     }()
     
-    private lazy var dataSource = TableViewAnimatedSingleSectionDataSource<KeyValue>(configureCell: { _, tableView, indexPath, keyValue in
-        let cell = tableView.dequeueReusableCell(for: indexPath) as KeyValueTableViewCell
-        cell.keyValue = keyValue
-        cell.delegate = self
-        return cell
-    })
-
     override func subviews() -> [UIView] {
         return [
-            addButton,
-            tableView
+            scrollView,
+            addButton
         ]
     }
     
     override func bind() -> [Disposable] {
         return [
-            viewModel.keyValueSection ~> tableView.rx.items(dataSource: dataSource),
-            viewModel.characters ~> rx.characters
+            viewModel.characters ~> rx.characters,
+            viewModel.keyValuesRelay ~> rx.keyValues
         ]
     }
     
     override func createConstraints() {
+        scrollView.snp.makeConstraints {
+            $0.left.top.right.equalToSuperview()
+            $0.bottom.equalTo(addButton.snp.top)
+        }
+        
+        stackView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
         addButton.snp.makeConstraints {
             $0.height.equalTo(Const.add.height)
             $0.left.right.bottom.equalToSuperview()
         }
+    }
+    
+    @objc private func addNewKey() {
+        let keyValue = KeyValue.empty
+        viewModel.keyValues.insert(keyValue, at: 0)
         
-        tableView.snp.makeConstraints {
-            $0.left.top.right.equalToSuperview()
-            $0.bottom.equalTo(addButton.snp.top)
+        let keyValueView = KeyValueView(keyValue: keyValue)
+        keyValueView.delegate = self
+        keyValueView.updateCharacters(UserManager.shared.characters ?? [])
+        stackView.insertArrangedSubview(keyValueView, at: 0)
+        keyValueView.snp.makeConstraints {
+            $0.height.equalTo(Const.keyValue.height)
+            $0.width.equalTo(scrollView.snp.width)
         }
     }
     
+    func setKeyValues(_ keyValues: [KeyValue]) {
+        viewModel.keyValues = keyValues
+        stackView.arrangedSubviews.forEach {
+            $0.removeFromSuperview()
+        }
+        keyValues.map { KeyValueView(keyValue: $0) }
+            .forEach { [unowned self] in
+                $0.delegate = self
+                stackView.addArrangedSubview($0)
+                $0.snp.makeConstraints {
+                    $0.height.equalTo(Const.keyValue.height)
+                    $0.width.equalTo(scrollView.snp.width)
+                }
+            }
+    }
 }
 
-extension KeyValueViewController: KeyValueTableViewCellDelegate {
-
-    func keyValueUpdated(_ keyValue: KeyValue) {
-        viewModel.update(keyValue: keyValue)
-    }
-    
+extension KeyValueViewController: KeyValueViewDelegate {
     func cellShouldRemoved(by identifier: String) {
-        viewModel.remove(by: identifier)
-    }
-    
-    func editingDidBegin(for identifier: String) {
-        guard let row = viewModel.index(for: identifier) else {
+        guard let index = viewModel.index(for: identifier) else {
             return
         }
-        let rectInTableView = tableView.rectForRow(at: IndexPath(row: row, section: 0))
-        let rectInSuperView = tableView.convert(rectInTableView, to: view)
+        stackView.arrangedSubviews[index].removeFromSuperview()
+        viewModel.keyValues.remove(at: index)
+    }
+    
+    func keyValueUpdated(_ keyValue: KeyValue) {
+        guard let index = viewModel.index(for: keyValue.identifier) else {
+            return
+        }
+        viewModel.keyValues[index] = keyValue
+    }
+
+    func editingDidBegin(for identifier: String) {
+        guard
+            let index = viewModel.index(for: identifier),
+            stackView.arrangedSubviews.isSafe(for: index)
+        else {
+            return
+        }
+        let rectInSuperView = scrollView.convert(stackView.arrangedSubviews[index].frame, to: view)
         viewModel.beginEditing(at: rectInSuperView.origin.y)
     }
     
     func editingDidEnd(for identifier: String) {
         viewModel.endEditing()
     }
-    
 }
 
+
 private extension KeyValueViewController {
-    
     func updateCharacters(_ characters: [String]) {
-        (0..<tableView.numberOfRows(inSection: 0)).map {
-            IndexPath(row: $0, section: 0)
-        }.compactMap {
-            tableView.cellForRow(at: $0) as? KeyValueTableViewCell
-        }.forEach {
-            $0.updateCharacters(characters)
-        }
+        stackView.arrangedSubviews
+            .compactMap { $0 as? KeyValueView }
+            .forEach { $0.updateCharacters(characters) }
     }
-    
 }
 
 extension Reactive where Base: KeyValueViewController {
-    
     var characters: Binder<[String]> {
         Binder(base) { viewController, characters in
             viewController.updateCharacters(characters)
         }
     }
     
+    var keyValues: Binder<[KeyValue]> {
+        Binder(base) { viewController, keyValues in
+            viewController.setKeyValues(keyValues)
+        }
+    }
 }
-

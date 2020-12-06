@@ -3,7 +3,7 @@
 //  Httper
 //
 //  Created by Meng Li on 2018/10/04.
-//  Copyright © 2018 limeng. All rights reserved.
+//  Copyright © 2018 MuShare. All rights reserved.
 //
 
 import Alamofire
@@ -19,12 +19,17 @@ struct RequestData {
     init(method: String, url: String, headers: [KeyValue], parameters: [KeyValue], body: String) {
         self.method = method
         self.url = url
-        self.headers = [:]
-        self.parameters = [:]
+        self.headers = headers.filter { $0.isNotEmpty }.reduce([:]) {
+            var dict = $0
+            dict[$1.key] = $1.value
+            return dict
+        }
+        self.parameters = parameters.filter { $0.isNotEmpty }.reduce([:]) {
+            var dict = $0
+            dict[$1.key] = $1.value
+            return dict
+        }
         self.body = body
-        
-        headers.forEach { self.headers[$0.key] = $0.value }
-        parameters.forEach { self.parameters[$0.key] = $0.value }
     }
     
 }

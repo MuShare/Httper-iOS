@@ -183,7 +183,7 @@ class RequestViewController: BaseViewController<RequestViewModel>, RxKeyboardVie
     }
     
     override func subviews() -> [UIView] {
-        [
+        return [
             requestMethodLabel,
             requestMethodButton,
             protocolsSegmentedControl,
@@ -197,7 +197,7 @@ class RequestViewController: BaseViewController<RequestViewModel>, RxKeyboardVie
     }
     
     override func bind() -> [Disposable] {
-        [
+        return [
             viewModel.title ~> rx.title,
             viewModel.requestMethod ~> requestMethodButton.rx.title(for: .normal),
             viewModel.moveupHeight ~> rx.moveupHeight,

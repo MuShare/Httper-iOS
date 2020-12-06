@@ -22,17 +22,24 @@ class DetailViewController: BaseViewController<DetailViewModel> {
     }()
     
     private lazy var dataSource = DetailTableViewCell.tableViewSingleSectionDataSource()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        view.addSubview(tableView)
+    
+    override func subviews() -> [UIView] {
+        return [
+            tableView
+        ]
+    }
+    
+    override func bind() -> [Disposable] {
+        return [
+            viewModel.detailSection ~> tableView.rx.items(dataSource: dataSource)
+        ]
+    }
+    
+    override func createConstraints() {
         tableView.snp.makeConstraints {
             $0.center.equalToSuperview()
             $0.size.equalToSuperview()
         }
-        
-        viewModel.detailSection.bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
     }
     
 }

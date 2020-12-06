@@ -34,11 +34,11 @@ class ProjectsViewModel: BaseViewModel {
     }
     
     var projectSection: Observable<SingleSection<Project>> {
-        return projects.map { SingleSection.create($0) }
+        projects.map { SingleSection.create($0) }
     }
 
     func pickProject(at index: Int) {
-        guard index < projects.value.count else {
+        guard projects.value.isSafe(for: index) else {
             return
         }
         steps.accept(ProjectStep.project(projects.value[index]))

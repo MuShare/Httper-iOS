@@ -57,6 +57,7 @@ class RequestViewModel: BaseViewModel {
         self.headersViewModel = headersViewModel
         self.parametersViewModel = parametersViewModel
         self.bodyViewModel = bodyViewModel
+        super.init()
         
         if let method = request?.method {
             requestMethod.accept(method)
@@ -68,17 +69,19 @@ class RequestViewModel: BaseViewModel {
                 url.accept(splits[1])
             }
         }
-        if let requestData = request?.parameters as Data?, let parameters =  NSKeyedUnarchiver.unarchiveObject(with: requestData) as? Parameters {
+        if let requestData = request?.parameters as Data?,
+           let parameters =  NSKeyedUnarchiver.unarchiveObject(with: requestData) as? Parameters,
+           !parameters.isEmpty {
             parametersViewModel.keyValuesRelay.accept(parameters.map {
                 KeyValue(key: $0.key, value: $0.value as? String ?? "")
             })
         }
-        if let headerData = request?.headers as Data?, let headers = NSKeyedUnarchiver.unarchiveObject(with: headerData) as? StorageHttpHeaders {
-            headersViewModel.keyValuesRelay.accept(
-                headers.map {
-                    KeyValue(key: $0.key, value: $0.value)
-                }
-            )
+        if let headerData = request?.headers as Data?,
+           let headers = NSKeyedUnarchiver.unarchiveObject(with: headerData) as? StorageHttpHeaders,
+           !headers.isEmpty {
+            headersViewModel.keyValuesRelay.accept(headers.map {
+                KeyValue(key: $0.key, value: $0.value)
+            })
         }
         if let bodyData = request?.body as Data?, let body = String(data: bodyData, encoding: .utf8) {
             bodyViewModel.body.accept(body)
@@ -91,53 +94,54 @@ class RequestViewModel: BaseViewModel {
     
     var valueOriginY: CGFloat = 0
     
+    private var editingState: Observable<KeyValueEditingState> {
+        Observable
+            .merge(parametersViewModel.editingStateSubject, headersViewModel.editingStateSubject)
+            .distinctUntilChanged {
+                switch ($0, $1) {
+                case (.begin(let height1), .begin(let height2)):
+                    return height1 == height2
+                case (.end, .end):
+                    return true
+                default:
+                    return false
+                }
+            }
+    }
+
+    var moveupHeight: Observable<CGFloat> {
+        Observable
+            .combineLatest(
+                editingState,
+                RxKeyboard.instance.visibleHeight.skip(1).asObservable()
+            )
+            .map { [unowned self] in
+                let (state, keyboardHeight) = $0
+                switch state {
+                case .begin(let height):
+                    return max(keyboardHeight + valueOriginY + height - UIScreen.main.bounds.height, 0)
+                case .end:
+                    return 0
+                }
+            }
+    }
+    
     var requestData: RequestData {
         RequestData(
             method: requestMethod.value,
             url: RequestConst.protocols[requestProtocol.value] + "://" + (url.value ?? ""),
-            headers: Array(headersViewModel.results.values),
-            parameters: Array(parametersViewModel.results.values),
+            headers: headersViewModel.keyValues,
+            parameters: parametersViewModel.keyValues,
             body: bodyViewModel.body.value ?? ""
         )
     }
     
     var title: Observable<String> {
-        Observable.just(request).unwrap().map { _ in R.string.localizable.request_title() }
+        Observable.just(request)
+            .unwrap()
+            .map { _ in R.string.localizable.request_title() }
     }
-    
-    var editingState: Observable<KeyValueEditingState> {
-        Observable.merge(
-            headersViewModel.editingStateSubject,
-            parametersViewModel.editingStateSubject
-        ).distinctUntilChanged {
-            switch ($0, $1) {
-            case (.begin(let height1), .begin(let height2)):
-                return height1 == height2
-            case (.end, .end):
-                return true
-            default:
-                return false
-            }
-        }
-    }
-    
-    var moveupHeight: Observable<CGFloat> {
-        let relativeScreenHeight = UIScreen.main.bounds.height - valueOriginY
 
-        return Observable.combineLatest(
-            editingState,
-            RxKeyboard.instance.visibleHeight.skip(1).asObservable()
-        ).map {
-            let (state, keyboardHeight) = $0
-            switch state {
-            case .begin(let height):
-                return max(keyboardHeight - (relativeScreenHeight - height), 0)
-            case .end:
-                return 0
-            }
-        }
-    }
-    
     var characters: Observable<[String]> {
         UserManager.shared.charactersRelay.asObservable()
     }

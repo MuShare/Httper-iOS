@@ -16,12 +16,14 @@ class RequestDao: DaoTemplate {
                       url: String, headers: StorageHttpHeaders, parameters: Parameters,
                       bodytype: String, body: NSData?, project: Project) -> Request {
         var request: Request? = nil
-        if rid != nil {
-            request = self.getByRid(rid!)
+        if let rid = rid {
+            request = getByRid(rid)
         }
         if request == nil {
-            request = NSEntityDescription.insertNewObject(forEntityName: NSStringFromClass(Request.self),
-                                                          into: context) as? Request
+            request = NSEntityDescription.insertNewObject(
+                forEntityName: NSStringFromClass(Request.self),
+                into: context
+            ) as? Request
         }
         request?.method = method
         request?.url = url
@@ -33,8 +35,8 @@ class RequestDao: DaoTemplate {
         if rid != nil {
             request?.rid = rid
         }
-        request?.update = (update == nil) ? Int64(NSDate().timeIntervalSince1970) : update!
-        request?.revision = (revision == nil) ? 0 : revision!
+        request?.update = update ?? Int64(NSDate().timeIntervalSince1970)
+        request?.revision = revision ?? 0
         request?.project = project
         self.saveContext()
         return request!
