@@ -57,6 +57,7 @@ class RequestViewModel: BaseViewModel {
         self.headersViewModel = headersViewModel
         self.parametersViewModel = parametersViewModel
         self.bodyViewModel = bodyViewModel
+        super.init()
         
         if let method = request?.method {
             requestMethod.accept(method)
@@ -68,17 +69,19 @@ class RequestViewModel: BaseViewModel {
                 url.accept(splits[1])
             }
         }
-        if let requestData = request?.parameters as Data?, let parameters =  NSKeyedUnarchiver.unarchiveObject(with: requestData) as? Parameters {
+        if let requestData = request?.parameters as Data?,
+           let parameters =  NSKeyedUnarchiver.unarchiveObject(with: requestData) as? Parameters,
+           !parameters.isEmpty {
             parametersViewModel.keyValuesRelay.accept(parameters.map {
                 KeyValue(key: $0.key, value: $0.value as? String ?? "")
             })
         }
-        if let headerData = request?.headers as Data?, let headers = NSKeyedUnarchiver.unarchiveObject(with: headerData) as? StorageHttpHeaders {
-            headersViewModel.keyValuesRelay.accept(
-                headers.map {
-                    KeyValue(key: $0.key, value: $0.value)
-                }
-            )
+        if let headerData = request?.headers as Data?,
+           let headers = NSKeyedUnarchiver.unarchiveObject(with: headerData) as? StorageHttpHeaders,
+           !headers.isEmpty {
+            headersViewModel.keyValuesRelay.accept(headers.map {
+                KeyValue(key: $0.key, value: $0.value)
+            })
         }
         if let bodyData = request?.body as Data?, let body = String(data: bodyData, encoding: .utf8) {
             bodyViewModel.body.accept(body)
@@ -95,14 +98,16 @@ class RequestViewModel: BaseViewModel {
         RequestData(
             method: requestMethod.value,
             url: RequestConst.protocols[requestProtocol.value] + "://" + (url.value ?? ""),
-            headers: Array(headersViewModel.results.values),
-            parameters: Array(parametersViewModel.results.values),
+            headers: headersViewModel.keyValues,
+            parameters: parametersViewModel.keyValues,
             body: bodyViewModel.body.value ?? ""
         )
     }
     
     var title: Observable<String> {
-        Observable.just(request).unwrap().map { _ in R.string.localizable.request_title() }
+        Observable.just(request)
+            .unwrap()
+            .map { _ in R.string.localizable.request_title() }
     }
     
     var editingState: Observable<KeyValueEditingState> {

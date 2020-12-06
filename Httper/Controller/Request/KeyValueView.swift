@@ -17,6 +17,16 @@ fileprivate struct Const {
     }
 }
 
+struct KeyValue {
+    let identifier = UUID().uuidString
+    var key = ""
+    var value = ""
+    
+    static var empty: KeyValue {
+        return KeyValue(key: "", value: "")
+    }
+}
+
 protocol KeyValueTableViewCellDelegate: class {
     func cellShouldRemoved(by identifier: String)
     func keyValueUpdated(_ keyValue: KeyValue)
@@ -32,21 +42,16 @@ class KeyValueView: UIView {
             string: R.string.localizable.key_value_key_placeholder(),
             attributes: [.foregroundColor : UIColor.lightGray]
         )
+        textField.text = keyValue.key
         textField.textColor = .white
         textField.backgroundColor = .clear
         textField.autocorrectionType = .no
         textField.autocapitalizationType = .none
         textField.rx.controlEvent(.editingDidBegin).bind { [unowned self] _ in
-            guard let identifier = self.keyValue?.identifier else {
-                return
-            }
-            self.delegate?.editingDidBegin(for: identifier)
+            self.delegate?.editingDidBegin(for: self.keyValue.identifier)
         }.disposed(by: disposeBag)
         textField.rx.controlEvent(.editingDidEnd).bind { [unowned self] _ in
-            guard let identifier = self.keyValue?.identifier else {
-                return
-            }
-            self.delegate?.editingDidEnd(for: identifier)
+            self.delegate?.editingDidEnd(for: self.keyValue.identifier)
         }.disposed(by: disposeBag)
         return textField
     }()
@@ -63,21 +68,16 @@ class KeyValueView: UIView {
             string: R.string.localizable.key_value_value_placeholder(),
             attributes: [.foregroundColor : UIColor.lightGray]
         )
+        textField.text = keyValue.value
         textField.textColor = .white
         textField.backgroundColor = .clear
         textField.autocorrectionType = .no
         textField.autocapitalizationType = .none
         textField.rx.controlEvent(.editingDidBegin).bind { [unowned self] _ in
-            guard let identifier = self.keyValue?.identifier else {
-                return
-            }
-            self.delegate?.editingDidBegin(for: identifier)
+            self.delegate?.editingDidBegin(for: self.keyValue.identifier)
         }.disposed(by: disposeBag)
         textField.rx.controlEvent(.editingDidEnd).bind { [unowned self] _ in
-            guard let identifier = self.keyValue?.identifier else {
-                return
-            }
-            self.delegate?.editingDidEnd(for: identifier)
+            self.delegate?.editingDidEnd(for: self.keyValue.identifier)
         }.disposed(by: disposeBag)
         return textField
     }()
@@ -92,29 +92,22 @@ class KeyValueView: UIView {
         let button = UIButton()
         button.setImage(R.image.delete_value(), for: .normal)
         button.rx.tap.subscribe(onNext: { [weak self] in
-            guard let `self` = self, let identifier = self.keyValue?.identifier else {
+            guard let `self` = self else {
                 return
             }
-            self.delegate?.cellShouldRemoved(by: identifier)
+            self.delegate?.cellShouldRemoved(by: self.keyValue.identifier)
         }).disposed(by: disposeBag)
         return button
     }()
     
     private let disposeBag = DisposeBag()
     
-    var keyValue: KeyValue? {
-        didSet {
-            guard let keyValue = keyValue else {
-                return
-            }
-            keyTextField.text = keyValue.key
-            valueTextField.text = keyValue.value
-        }
-    }
+    private var keyValue: KeyValue
     
     weak var delegate: KeyValueTableViewCellDelegate?
     
     init(keyValue: KeyValue) {
+        self.keyValue = keyValue
         super.init(frame: .zero)
 
         backgroundColor = .clear
@@ -124,7 +117,7 @@ class KeyValueView: UIView {
         addSubview(valueBorderView)
         addSubview(removeButton)
         createConstraints()
-
+        
         keyTextField.rx.text.orEmpty.subscribe(onNext: { [weak self] in
             guard
                 let delegate = self?.delegate,

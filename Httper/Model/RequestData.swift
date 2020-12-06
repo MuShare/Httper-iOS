@@ -19,12 +19,17 @@ struct RequestData {
     init(method: String, url: String, headers: [KeyValue], parameters: [KeyValue], body: String) {
         self.method = method
         self.url = url
-        self.headers = [:]
-        self.parameters = [:]
+        self.headers = headers.reduce([:]) {
+            var dict = $0
+            dict[$1.key] = $1.value
+            return dict
+        }
+        self.parameters = parameters.reduce([:]) {
+            var dict = $0
+            dict[$1.key] = $1.value
+            return dict
+        }
         self.body = body
-        
-        headers.forEach { self.headers[$0.key] = $0.value }
-        parameters.forEach { self.parameters[$0.key] = $0.value }
     }
     
 }

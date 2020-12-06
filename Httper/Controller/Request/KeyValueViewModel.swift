@@ -10,28 +10,6 @@ import RxSwift
 import RxCocoa
 import RxDataSourcesSingleSection
 
-struct KeyValue {
-    
-    let identifier = UUID().uuidString
-    var key = ""
-    var value = ""
-    
-    static var empty: KeyValue {
-        return KeyValue(key: "", value: "")
-    }
-    
-}
-
-extension KeyValue: AnimatableModel {
-
-    typealias Identity = String
-    
-    var identity: String {
-        return identifier
-    }
-    
-}
-
 enum KeyValueEditingState {
     case begin(CGFloat)
     case end
@@ -39,8 +17,22 @@ enum KeyValueEditingState {
 
 class KeyValueViewModel: BaseViewModel {
     
+    var keyValues: [KeyValue] = []
+    
     let keyValuesRelay = BehaviorRelay<[KeyValue]>(value: [.empty])
     let editingStateSubject = PublishSubject<KeyValueEditingState>()
+    
+    var characters: Observable<[String]> {
+        keyValuesRelay.delay(.seconds(1), scheduler: MainScheduler.instance)
+            .withLatestFrom(UserManager.shared.charactersRelay)
+    }
+    
+    func clear() {
+        keyValuesRelay.accept([.empty])
+    }
+    /**
+    let keyValuesRelay = BehaviorRelay<[KeyValue]>(value: [.empty])
+    
     
     override init() {
         super.init()
@@ -50,41 +42,6 @@ class KeyValueViewModel: BaseViewModel {
                 self.results[keyValue.identifier] = keyValue
             }
         }).disposed(by: disposeBag)
-    }
-    
-    var results: [String: KeyValue] = [:]
-    
-    var keyValues: Observable<[KeyValue]> {
-        keyValuesRelay.asObservable()
-    }
-
-    var characters: Observable<[String]> {
-        keyValuesRelay.withLatestFrom(UserManager.shared.charactersRelay)
-    }
-    
-    func addNewKey() {
-        var value = keyValuesRelay.value
-        value.insert(.empty, at: 0)
-        keyValuesRelay.accept(value)
-    }
-    
-    func remove(by identifier: String) {
-        var value = keyValuesRelay.value
-        guard let index = value.firstIndex(where: { $0.identifier == identifier }) else {
-            return
-        }
-        value.remove(at: index)
-        keyValuesRelay.accept(value)
-        
-        results.removeValue(forKey: identifier)
-    }
-    
-    func update(keyValue: KeyValue) {
-        results[keyValue.identifier] = keyValue
-    }
-    
-    func index(for identifier: String) -> Int? {
-        keyValuesRelay.value.firstIndex { $0.identifier == identifier }
     }
     
     func beginEditing(at height: CGFloat) {
@@ -98,5 +55,5 @@ class KeyValueViewModel: BaseViewModel {
     func clear() {
         keyValuesRelay.accept([.empty])
     }
-    
+    */
 }
