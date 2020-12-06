@@ -3,7 +3,7 @@
 //  Httper
 //
 //  Created by Meng Li on 2018/09/20.
-//  Copyright © 2018 limeng. All rights reserved.
+//  Copyright © 2018 MuShare. All rights reserved.
 //
 
 import PagingKit

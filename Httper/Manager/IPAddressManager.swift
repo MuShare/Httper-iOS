@@ -3,7 +3,7 @@
 //  Httper
 //
 //  Created by Meng Li on 2019/06/28.
-//  Copyright © 2019 limeng. All rights reserved.
+//  Copyright © 2019 MuShare. All rights reserved.
 //
 
 import Alamofire

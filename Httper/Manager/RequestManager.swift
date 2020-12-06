@@ -3,7 +3,7 @@
 //  Httper
 //
 //  Created by Meng Li on 2018/10/06.
-//  Copyright © 2018 limeng. All rights reserved.
+//  Copyright © 2018 MuShare. All rights reserved.
 //
 
 import RxSwift
