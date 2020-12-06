@@ -52,7 +52,7 @@ class KeyValueViewController: BaseViewController<KeyValueViewModel> {
     override func bind() -> [Disposable] {
         return [
             viewModel.characters ~> rx.characters,
-            viewModel.keyValuesRelay.debug() ~> rx.keyValues
+            viewModel.keyValuesRelay ~> rx.keyValues
         ]
     }
     
@@ -125,7 +125,7 @@ extension KeyValueViewController: KeyValueViewDelegate {
             stackView.arrangedSubviews.isSafe(for: index)
         else {
             return
-        } 
+        }
         let rectInSuperView = scrollView.convert(stackView.arrangedSubviews[index].frame, to: view)
         viewModel.beginEditing(at: rectInSuperView.origin.y)
     }

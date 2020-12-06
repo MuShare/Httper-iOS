@@ -124,7 +124,6 @@ class RequestViewModel: BaseViewModel {
                     return 0
                 }
             }
-            .debug()
     }
     
     var requestData: RequestData {

@@ -22,7 +22,13 @@ class PreviewViewController: BaseViewController<PreviewViewModel> {
     }
     
     override func subviews() -> [UIView] {
-        [previewWebView]
+        return [
+            previewWebView
+        ]
+    }
+    
+    override func bind() -> [Disposable] {
+        return []
     }
     
     override func createConstraints() {

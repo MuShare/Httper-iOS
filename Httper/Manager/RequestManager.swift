@@ -23,7 +23,6 @@ final class RequestManager {
                 encoding: request.body.isEmpty ? URLEncoding.default : request.body,
                 headers: HTTPHeaders(request.headers.map { HTTPHeader(name: $0.key, value: $0.value) })
             )
-            .debug()
             .responseData()
     }
     
