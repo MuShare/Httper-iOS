@@ -45,8 +45,14 @@ class ProjectNameViewController: BaseViewController<ProjectNameViewModel> {
         navigationItem.rightBarButtonItem = saveBarButtonItem
     }
     
+    override func subviews() -> [UIView] {
+        return [
+            nameTextField
+        ]
+    }
+    
     override func bind() -> [Disposable] {
-        [
+        return [
             viewModel.title ~> rx.title,
             viewModel.isValidate ~> saveBarButtonItem.rx.isEnabled,
             viewModel.name <~> nameTextField.rx.text
@@ -54,13 +60,11 @@ class ProjectNameViewController: BaseViewController<ProjectNameViewModel> {
     }
     
     override func createConstraints() {
-        
         nameTextField.snp.makeConstraints {
             $0.left.right.equalToSuperview()
             $0.top.equalTo(view.safeArea.top).offset(Const.name.marginTop)
             $0.height.equalTo(Const.name.height)
         }
-        
     }
     
 }
