@@ -26,7 +26,14 @@ struct RequestData {
         }
         self.parameters = parameters.filter { $0.isNotEmpty }.reduce([:]) {
             var dict = $0
-            dict[$1.key] = $1.value
+            if var value = dict[$1.key] as? [String] {
+                value.append($1.value)
+                dict[$1.key] = value
+            } else if let value = dict[$1.key] as? String {
+                dict[$1.key] = [value, $1.value]
+            } else {
+                dict[$1.key] = $1.value
+            }
             return dict
         }
         self.body = body
