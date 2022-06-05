@@ -20,7 +20,7 @@ platform :ios do
     cocoapods(repo_update: true)
 
     copy_artifacts(
-      artifacts: ["./HttperDist.mobileprovision"],
+      artifacts: ["./fastlane/*.mobileprovision"],
       target_path: File.expand_path("~/Library/MobileDevice/Provisioning Profiles")
     )
   end
@@ -48,7 +48,7 @@ platform :ios do
       }
     )
 
-    sh "xcrun altool --upload-app -u \"$APPL_EMAIL\" -p \"$APPL_PWD\" -f \"$IPA_OUTPUT_PATH\""
+    sh "xcrun altool --upload-app --type ios -u \"$APPL_EMAIL\" -p \"$APPL_PWD\" -f \"$IPA_OUTPUT_PATH\""
   end
 
 end
