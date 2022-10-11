@@ -8,12 +8,23 @@ on:
 
 jobs:
   build:
-
-    runs-on: macOS-latest
+    runs-on: macOS-12
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Bundle install
-      run: bundle install
+    - uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: '14.0'
+    - uses: actions/checkout@v3
+    - name: Set up ruby env
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.7.2
+        bundler-cache: true
+    - uses: actions/cache@v3
+      with:
+        path: Pods
+        key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-pods-
     - name: Run test
       run: bundle exec fastlane test
