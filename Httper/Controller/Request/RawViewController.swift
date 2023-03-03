@@ -33,7 +33,7 @@ class RawViewController: BaseViewController<RawViewModel> {
     override func createConstraints() {
         rawView.snp.makeConstraints {
             $0.left.equalToSuperview().offset(Const.margin)
-            $0.right.equalToSuperview().offset(Const.margin)
+            $0.right.equalToSuperview().offset(-Const.margin)
             $0.top.bottom.equalToSuperview()
         }
     }

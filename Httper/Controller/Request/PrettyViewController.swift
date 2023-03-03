@@ -36,7 +36,7 @@ class PrettyViewController: BaseViewController<PrettyViewModel> {
     override func createConstraints() {
         formatterView.snp.makeConstraints {
             $0.left.equalToSuperview().offset(Const.margin)
-            $0.right.equalToSuperview().offset(Const.margin)
+            $0.right.equalToSuperview().offset(-Const.margin)
             $0.top.bottom.equalToSuperview()
         }
     }
