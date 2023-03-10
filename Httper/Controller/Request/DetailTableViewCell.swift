@@ -63,7 +63,7 @@ class DetailTableViewCell: UITableViewCell {
         
         contentTextView.snp.makeConstraints {
             $0.left.equalToSuperview().offset(Const.margin)
-            $0.right.equalToSuperview().offset(Const.margin)
+            $0.right.equalToSuperview().offset(-Const.margin)
             $0.bottom.equalToSuperview()
         }
     }
